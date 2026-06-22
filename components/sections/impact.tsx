@@ -51,9 +51,9 @@ function CyberneticGridShader() {
         // Fundo Branco Gelo (#F8F8F8 ≈ 0.972)
         vec3 bg = vec3(0.972, 0.972, 0.972);
 
-        // Linhas pretas suaves, intensidade máx 35%
-        float gridAlpha = line * 0.35;
-        vec3 finalColor = mix(bg, vec3(0.05, 0.05, 0.05), gridAlpha);
+        // Linhas #EDEDED (0.929) sobre fundo #F8F8F8 — sutil e elegante
+        float gridAlpha = line;
+        vec3 finalColor = mix(bg, vec3(0.929, 0.929, 0.929), gridAlpha);
 
         // Pulso cinza suave para profundidade
         float pulse = sin(uv.x * 10.0 + t * 2.0) * cos(uv.y * 10.0 + t * 1.5);
