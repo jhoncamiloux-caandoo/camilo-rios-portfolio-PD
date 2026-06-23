@@ -43,7 +43,7 @@ export function Hero() {
               className="h-7 w-7 shrink-0 md:h-8 md:w-8"
             />
             <span className="font-display text-base font-semibold text-dark md:text-lg">
-              Jhon Camilo Rios
+              Jhon
             </span>
           </a>
 
