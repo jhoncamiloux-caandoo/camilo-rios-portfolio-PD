@@ -177,50 +177,117 @@ function VisualPrototype() {
 }
 
 function VisualSystem() {
-  const tokens = [
-    { label: "Primary", color: "bg-primary" },
-    { label: "Dark", color: "bg-[#0A0A0A] border border-white/10" },
-    { label: "Light", color: "bg-[#F8F8F8]" },
+  const palette = [
+    { label: "Primary", hex: "#622FFD", cls: "bg-[#622FFD]" },
+    { label: "700", hex: "#4B1FD4", cls: "bg-[#4B1FD4]" },
+    { label: "400", hex: "#9B72FF", cls: "bg-[#9B72FF]" },
+    { label: "100", hex: "#E8DEFF", cls: "bg-[#E8DEFF]" },
+    { label: "Dark", hex: "#0A0A0A", cls: "bg-[#0A0A0A] border border-white/10" },
+    { label: "Light", hex: "#F8F8F8", cls: "bg-[#F8F8F8]" },
   ];
-  const components = ["Button", "Card", "Modal", "Input", "Badge", "Nav"];
+
+  const typeScale = [
+    { label: "Display / 56", cls: "text-2xl font-bold", sample: "Aa" },
+    { label: "Heading / 32", cls: "text-lg font-semibold", sample: "Aa" },
+    { label: "Body / 16", cls: "text-sm font-normal", sample: "Aa" },
+    { label: "Caption / 11", cls: "text-[10px] font-medium uppercase tracking-widest", sample: "AA" },
+  ];
+
+  const spacing = [1, 2, 3, 4, 6, 8, 12, 16];
+
+  const components = [
+    { name: "Button/Primary", preview: "bg-primary rounded-full px-3 py-1 text-[9px] text-white font-semibold" },
+    { name: "Button/Ghost", preview: "border border-white/20 rounded-full px-3 py-1 text-[9px] text-white/70 font-semibold" },
+    { name: "Badge", preview: "bg-primary/15 border border-primary/30 rounded-full px-2 py-0.5 text-[9px] text-primary font-semibold" },
+    { name: "Input", preview: "border border-white/10 rounded-lg px-3 py-1 text-[9px] text-white/40 bg-white/[0.04] w-24" },
+  ];
+
   return (
-    <div className="flex h-full flex-col justify-between gap-5 p-8">
-      {/* Token swatches */}
-      <div className="flex flex-col gap-2">
-        <span className="text-[10px] font-semibold uppercase tracking-widest text-white/30">
-          Design Tokens
-        </span>
+    <div className="flex h-full flex-col gap-0 overflow-hidden">
+      {/* ── Row 1: Color Tokens ─────────────────────── */}
+      <div className="border-b border-white/[0.06] p-5">
+        <p className="mb-3 text-[9px] font-semibold uppercase tracking-[0.2em] text-white/25">
+          Color Tokens
+        </p>
         <div className="flex gap-2">
-          {tokens.map((t) => (
+          {palette.map((t) => (
             <div key={t.label} className="flex flex-col items-center gap-1.5">
-              <div className={`h-10 w-10 rounded-lg ${t.color}`} />
-              <span className="text-[9px] text-white/30">{t.label}</span>
+              <div className={`h-7 w-7 rounded-md ${t.cls}`} />
+              <span className="text-[8px] leading-none text-white/25">{t.label}</span>
             </div>
           ))}
         </div>
       </div>
-      {/* Component list */}
-      <div className="flex flex-col gap-2">
-        <span className="text-[10px] font-semibold uppercase tracking-widest text-white/30">
-          Componentes
-        </span>
-        <div className="flex flex-wrap gap-2">
+
+      {/* ── Row 2: Type Scale + Spacing ─────────────── */}
+      <div className="grid grid-cols-2 divide-x divide-white/[0.06] border-b border-white/[0.06]">
+        {/* Type */}
+        <div className="flex flex-col gap-2 p-5">
+          <p className="mb-1 text-[9px] font-semibold uppercase tracking-[0.2em] text-white/25">
+            Type Scale
+          </p>
+          {typeScale.map((t) => (
+            <div key={t.label} className="flex items-center justify-between">
+              <span className={`${t.cls} text-white/80`}>{t.sample}</span>
+              <span className="text-[8px] text-white/20">{t.label}</span>
+            </div>
+          ))}
+        </div>
+        {/* Spacing */}
+        <div className="flex flex-col gap-2 p-5">
+          <p className="mb-1 text-[9px] font-semibold uppercase tracking-[0.2em] text-white/25">
+            Spacing
+          </p>
+          <div className="flex flex-col gap-1.5">
+            {spacing.map((s) => (
+              <div key={s} className="flex items-center gap-2">
+                <div
+                  className="h-1.5 rounded-sm bg-primary/50"
+                  style={{ width: `${s * 4}px` }}
+                />
+                <span className="text-[8px] text-white/20">{s * 4}px</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ── Row 3: Components ───────────────────────── */}
+      <div className="border-b border-white/[0.06] p-5">
+        <p className="mb-3 text-[9px] font-semibold uppercase tracking-[0.2em] text-white/25">
+          Components
+        </p>
+        <div className="grid grid-cols-2 gap-2">
           {components.map((c) => (
-            <span
-              key={c}
-              className="rounded-full border border-white/[0.08] bg-white/[0.04] px-3 py-1 text-xs text-white/60"
+            <div
+              key={c.name}
+              className="flex flex-col gap-2 rounded-lg border border-white/[0.06] bg-white/[0.02] p-3"
             >
-              {c}
-            </span>
+              <span className="text-[8px] text-white/25">{c.name}</span>
+              <div className="flex items-center">
+                <div className={c.preview}>{c.name.split("/")[1]}</div>
+              </div>
+            </div>
           ))}
         </div>
       </div>
-      {/* Handoff row */}
-      <div className="flex items-center justify-between rounded-xl border border-white/[0.06] bg-white/[0.03] px-4 py-3">
-        <span className="text-xs text-white/40">Handoff para eng.</span>
-        <span className="rounded-full bg-green-500/20 px-2.5 py-0.5 text-[10px] font-semibold text-green-400">
-          Ready ✓
-        </span>
+
+      {/* ── Row 4: Handoff status ───────────────────── */}
+      <div className="flex items-center justify-between p-4">
+        <div className="flex items-center gap-2">
+          <div className="h-1.5 w-1.5 rounded-full bg-green-400" />
+          <span className="text-[10px] text-white/35">Handoff para eng.</span>
+        </div>
+        <div className="flex gap-2">
+          {["Tokens", "Figma", "Storybook"].map((tag) => (
+            <span
+              key={tag}
+              className="rounded-full border border-white/[0.08] px-2 py-0.5 text-[8px] text-white/30"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   );
