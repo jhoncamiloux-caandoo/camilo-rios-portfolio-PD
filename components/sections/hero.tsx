@@ -33,9 +33,18 @@ export function Hero() {
         <div className="container flex h-14 items-center justify-between md:h-16">
           <a
             href="#inicio"
-            className="rounded-sm font-display text-base font-semibold text-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light md:text-lg"
+            className="flex items-center gap-2.5 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light"
+            aria-label="Jhon Camilo Rios — voltar ao início"
           >
-            Jhon Camilo Rios
+            <img
+              src="/logo.svg"
+              alt=""
+              aria-hidden="true"
+              className="h-7 w-7 shrink-0 md:h-8 md:w-8"
+            />
+            <span className="font-display text-base font-semibold text-dark md:text-lg">
+              Jhon Camilo Rios
+            </span>
           </a>
 
           {/* Desktop nav */}
