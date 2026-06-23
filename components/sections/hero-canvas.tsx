@@ -133,10 +133,10 @@ export function HeroCanvas({ children }: { children: ReactNode }) {
           aria-hidden="true"
           className="absolute inset-0 hidden md:block bg-[linear-gradient(90deg,#f2f2f4_0%,rgba(242,242,244,0.86)_30%,rgba(242,242,244,0)_58%)]"
         />
-        {/* Véu de luz: mobile no topo, texto sobre o claro e rosto abaixo */}
+        {/* Véu de luz: mobile — sólido nos 65% superiores (zona de texto limpa), face aparece só no terço inferior */}
         <div
           aria-hidden="true"
-          className="absolute inset-0 md:hidden bg-[linear-gradient(180deg,rgba(242,242,244,0.97)_0%,rgba(242,242,244,0.88)_45%,rgba(242,242,244,0.45)_72%,rgba(242,242,244,0)_100%)]"
+          className="absolute inset-0 md:hidden bg-[linear-gradient(180deg,#f2f2f4_0%,#f2f2f4_62%,rgba(242,242,244,0.55)_80%,rgba(242,242,244,0)_100%)]"
         />
 
         {children}

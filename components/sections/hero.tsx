@@ -13,7 +13,7 @@ function Caret() {
     <svg
       aria-hidden="true"
       viewBox="0 0 24 24"
-      className="h-[18px] w-[18px]"
+      className="h-4 w-4"
       fill="none"
       stroke="currentColor"
       strokeWidth="2"
@@ -28,21 +28,42 @@ function Caret() {
 export function Hero() {
   return (
     <>
-      {/* Header fixo — opacidade 10% para deixar o hero "respirar" */}
+      {/* ── Header ─────────────────────────────────────────────── */}
       <header className="fixed inset-x-0 top-0 z-30 border-b border-black/5 bg-white/10 backdrop-blur-xl">
-        <div className="container flex h-16 items-center justify-between">
+        <div className="container flex h-14 items-center justify-between md:h-16">
           <a
             href="#inicio"
-            className="rounded-sm font-display text-lg font-semibold text-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light"
+            className="rounded-sm font-display text-base font-semibold text-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light md:text-lg"
           >
             Jhon Camilo Rios
           </a>
-          <nav className="flex items-center gap-4 text-xs text-dark/60 md:gap-8 md:text-sm">
+
+          {/* Desktop nav */}
+          <nav
+            aria-label="Navegação principal"
+            className="hidden items-center gap-8 text-sm text-dark/60 md:flex"
+          >
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="rounded-sm transition hover:text-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light"
+                className="rounded-sm transition hover:text-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+
+          {/* Mobile nav — icon-free pill links */}
+          <nav
+            aria-label="Navegação mobile"
+            className="flex items-center gap-3 md:hidden"
+          >
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="rounded-full border border-black/8 bg-white/60 px-3 py-1 text-[11px] font-medium text-dark/70 backdrop-blur-sm transition hover:bg-white/90"
               >
                 {link.label}
               </a>
@@ -51,60 +72,64 @@ export function Hero() {
         </div>
       </header>
 
-      {/* Hero animado: o rosto percorre os 100 frames conforme o scroll */}
+      {/* ── Hero animado ───────────────────────────────────────── */}
       <HeroCanvas>
-        <div className="relative z-10 flex h-full items-center py-24 md:py-16">
-          <div className="container grid grid-cols-1 items-center gap-gutter md:grid-cols-12">
+        {/* Mobile: conteúdo alinhado ao topo (na zona sólida do gradiente) */}
+        {/* Desktop: centralizado verticalmente */}
+        <div className="relative z-10 flex h-full flex-col justify-start pt-20 md:justify-center md:py-16">
+          <div className="container grid grid-cols-1 items-start gap-6 md:items-center md:gap-gutter md:grid-cols-12">
+
             {/* Esquerda: texto + CTAs */}
-            <div className="flex flex-col gap-8 md:col-span-6 lg:col-span-5">
+            <div className="flex flex-col gap-5 md:col-span-6 md:gap-8 lg:col-span-5">
+
               <FadeIn immediate>
-                <p className="font-display text-sm uppercase tracking-[0.2em] text-[#3a3a3d]">
+                <p className="font-display text-xs uppercase tracking-[0.2em] text-[#3a3a3d] md:text-sm">
                   Senior Product Designer
                 </p>
               </FadeIn>
 
-              <div className="flex flex-col gap-6">
+              <div className="flex flex-col gap-3 md:gap-6">
                 <FadeIn immediate delay={0.06}>
-                  <h1 className="font-display text-[40px] font-semibold leading-[1.05] tracking-[-0.01em] text-[#262628] md:text-[56px]">
+                  {/* Mobile: 30px — compacto, não vaza sobre o rosto */}
+                  <h1 className="font-display text-[30px] font-semibold leading-[1.08] tracking-[-0.01em] text-[#262628] sm:text-[36px] md:text-[56px]">
                     Eu construo produtos digitais que geram crescimento.
                   </h1>
                 </FadeIn>
                 <FadeIn immediate delay={0.12}>
-                  <p className="text-body text-[#6b6b70]">
-                    Todo crescimento começa entendendo pessoas
+                  <p className="text-sm text-[#6b6b70] md:text-body">
+                    8 anos conectando produto, dados e comportamento humano.
                   </p>
                 </FadeIn>
               </div>
 
               <FadeIn immediate delay={0.18}>
-                <div className="flex flex-wrap items-center gap-4">
+                {/* Mobile: botões lado a lado compactos */}
+                <div className="flex items-center gap-3">
                   <a
                     href="#cases"
-                    className="inline-flex h-[52px] items-center gap-1 rounded-full border border-white/50 bg-[#9f77d6]/30 px-6 text-base font-semibold text-[#1f073f] backdrop-blur-md transition hover:bg-[#9f77d6]/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light"
+                    className="inline-flex h-[42px] items-center gap-1 rounded-full border border-white/50 bg-[#9f77d6]/30 px-5 text-sm font-semibold text-[#1f073f] backdrop-blur-md transition hover:bg-[#9f77d6]/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary md:h-[52px] md:px-6 md:text-base"
                   >
                     Ver Projetos
                     <Caret />
                   </a>
                   <a
                     href="#impacto"
-                    className="inline-flex h-[52px] items-center gap-1 rounded-full border border-black/10 bg-white/40 px-6 text-base font-semibold text-[#1c1c1c] backdrop-blur-md transition hover:bg-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light"
+                    className="inline-flex h-[42px] items-center gap-1 rounded-full border border-black/10 bg-white/40 px-5 text-sm font-semibold text-[#1c1c1c] backdrop-blur-md transition hover:bg-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary md:h-[52px] md:px-6 md:text-base"
                   >
-                    Conhecer Minha Trajetória
+                    {/* Texto curto no mobile */}
+                    <span className="md:hidden">Trajetória</span>
+                    <span className="hidden md:inline">Conhecer Minha Trajetória</span>
                     <Caret />
                   </a>
                 </div>
               </FadeIn>
-
-              {/* Resultados — visível em mobile abaixo dos CTAs */}
-              <div className="md:hidden">
-                <ResultsList />
-              </div>
             </div>
 
-            {/* Direita: lista de resultados interativa (desktop) */}
+            {/* Direita: resultados — apenas desktop */}
             <div className="hidden md:col-span-3 md:col-start-10 md:flex md:flex-col">
               <ResultsList />
             </div>
+
           </div>
         </div>
       </HeroCanvas>
