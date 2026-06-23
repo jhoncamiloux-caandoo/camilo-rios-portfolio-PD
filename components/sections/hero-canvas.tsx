@@ -120,26 +120,30 @@ export function HeroCanvas({ children }: { children: ReactNode }) {
       ref={sectionRef}
       className="relative h-[240vh] bg-light text-dark"
     >
-      <div className="sticky top-0 h-screen overflow-hidden">
-        {/* Rosto animado (recorte sobre fundo claro) */}
-        <canvas
-          ref={canvasRef}
-          aria-label="Sequência animada de Jhon Camilo Rios"
-          className="absolute inset-0 h-full w-full"
-        />
+      {/*
+        Mobile: coluna — texto em cima (fluxo), imagem animada num box embaixo.
+        Desktop (md+): overlay clássico — canvas full-bleed atrás do texto.
+      */}
+      <div className="sticky top-0 flex h-screen flex-col overflow-hidden md:block">
+        {/* TEXTO — fluxo no topo (mobile) / overlay centralizado (desktop) */}
+        <div className="relative z-20 shrink-0 pt-16 md:absolute md:inset-0 md:z-10 md:flex md:h-full md:items-center md:pt-0">
+          {children}
+        </div>
 
-        {/* Véu de luz: desktop à esquerda, para manter a área de texto limpa */}
+        {/* IMAGEM ANIMADA — box emoldurado embaixo (mobile) / full-bleed atrás (desktop) */}
+        <div className="relative z-0 mx-4 mb-4 min-h-0 flex-1 overflow-hidden rounded-3xl border border-black/[0.06] bg-[#f2f2f4] shadow-[0_20px_60px_-24px_rgba(10,10,10,0.18)] md:absolute md:inset-0 md:m-0 md:flex-none md:rounded-none md:border-0 md:shadow-none">
+          <canvas
+            ref={canvasRef}
+            aria-label="Sequência animada de Jhon Camilo Rios"
+            className="absolute inset-0 h-full w-full"
+          />
+        </div>
+
+        {/* Véu de luz: apenas desktop à esquerda — mantém a área de texto limpa */}
         <div
           aria-hidden="true"
-          className="absolute inset-0 hidden md:block bg-[linear-gradient(90deg,#f2f2f4_0%,rgba(242,242,244,0.86)_30%,rgba(242,242,244,0)_58%)]"
+          className="absolute inset-0 z-[5] hidden md:block bg-[linear-gradient(90deg,#f2f2f4_0%,rgba(242,242,244,0.86)_30%,rgba(242,242,244,0)_58%)]"
         />
-        {/* Véu de luz: mobile — sólido nos 65% superiores (zona de texto limpa), face aparece só no terço inferior */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 md:hidden bg-[linear-gradient(180deg,#f2f2f4_0%,#f2f2f4_62%,rgba(242,242,244,0.55)_80%,rgba(242,242,244,0)_100%)]"
-        />
-
-        {children}
       </div>
     </section>
   );

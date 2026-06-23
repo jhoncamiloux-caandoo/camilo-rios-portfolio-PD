@@ -74,10 +74,7 @@ export function Hero() {
 
       {/* ── Hero animado ───────────────────────────────────────── */}
       <HeroCanvas>
-        {/* Mobile: conteúdo alinhado ao topo (na zona sólida do gradiente) */}
-        {/* Desktop: centralizado verticalmente */}
-        <div className="relative z-10 flex h-full flex-col justify-start pt-20 md:justify-center md:py-16">
-          <div className="container grid grid-cols-1 items-start gap-6 md:items-center md:gap-gutter md:grid-cols-12">
+        <div className="container grid grid-cols-1 items-start gap-5 pb-4 md:items-center md:gap-gutter md:grid-cols-12">
 
             {/* Esquerda: texto + CTAs */}
             <div className="flex flex-col gap-5 md:col-span-6 md:gap-8 lg:col-span-5">
@@ -130,7 +127,6 @@ export function Hero() {
               <ResultsList />
             </div>
 
-          </div>
         </div>
       </HeroCanvas>
     </>
