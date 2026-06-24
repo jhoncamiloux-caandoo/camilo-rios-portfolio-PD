@@ -3,6 +3,10 @@
 import { useEffect, useRef, type ReactNode } from "react";
 
 const FRAME_COUNT = 100;
+// Quantos frames baixar em paralelo. Mantém a rede livre no primeiro paint
+// (fonte/JS/LCP) em vez de disparar 100 requisições de uma vez.
+const LOAD_CONCURRENCY = 8;
+
 const frameSrc = (index: number) =>
   `/frames/camilo_${String(index).padStart(3, "0")}.webp`;
 
@@ -26,50 +30,119 @@ function drawCover(
 /**
  * Casca animada do hero: ocupa 240vh de scroll com um canvas "sticky" que
  * percorre os 100 frames do rosto conforme o usuário rola a página.
- * O conteúdo (texto/CTAs/resultados) é passado como children e fica por cima.
+ *
+ * Carregamento: frame 0 primeiro (paint imediato), o restante em fila
+ * ascendente com concorrência limitada — então os frames chegam na mesma
+ * ordem em que serão exibidos. Se o usuário rolar rápido antes de um frame
+ * carregar, desenhamos o frame carregado mais próximo (nunca em branco),
+ * mantendo a animação fluida e refinando quando o frame exato chega.
  */
 export function HeroCanvas({ children }: { children: ReactNode }) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const sectionRef = useRef<HTMLElement | null>(null);
   const imagesRef = useRef<HTMLImageElement[]>([]);
+  const loadedRef = useRef<boolean[]>([]);
   const frameRef = useRef(0);
+  // Cache do tamanho do backing-store: só reabastecemos o canvas quando a
+  // dimensão real muda (evita realocar o bitmap a cada frame de scroll).
+  const sizeRef = useRef({ w: 0, h: 0, dpr: 0 });
 
   const renderFrame = (index: number) => {
     const canvas = canvasRef.current;
-    const image = imagesRef.current[index];
-    if (!canvas || !image?.complete || image.naturalWidth === 0) return;
+    if (!canvas) return;
+
+    const images = imagesRef.current;
+    const loaded = loadedRef.current;
+
+    // Resolve o frame a desenhar: o pedido, ou o carregado mais próximo.
+    let drawIndex = index;
+    if (!loaded[drawIndex]) {
+      let found = -1;
+      for (let d = 1; d < FRAME_COUNT; d++) {
+        if (index - d >= 0 && loaded[index - d]) {
+          found = index - d;
+          break;
+        }
+        if (index + d < FRAME_COUNT && loaded[index + d]) {
+          found = index + d;
+          break;
+        }
+      }
+      if (found === -1) return; // nada carregado ainda
+      drawIndex = found;
+    }
+
+    const image = images[drawIndex];
+    if (!image?.complete || image.naturalWidth === 0) return;
 
     const context = canvas.getContext("2d");
     if (!context) return;
 
-    const pixelRatio = window.devicePixelRatio || 1;
+    const dpr = window.devicePixelRatio || 1;
     const { width, height } = canvas.getBoundingClientRect();
     if (width === 0 || height === 0) return;
 
-    canvas.width = Math.floor(width * pixelRatio);
-    canvas.height = Math.floor(height * pixelRatio);
-    context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+    const size = sizeRef.current;
+    if (size.w !== width || size.h !== height || size.dpr !== dpr) {
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      sizeRef.current = { w: width, h: height, dpr };
+    }
+
+    context.setTransform(dpr, 0, 0, dpr, 0, 0);
     drawCover(context, image, width, height);
   };
 
-  // Pré-carrega os frames e desenha o primeiro assim que disponível.
+  // Carrega os frames de forma progressiva (frame 0 primeiro, resto em fila).
   useEffect(() => {
-    let isMounted = true;
-    const images = Array.from({ length: FRAME_COUNT }, (_, index) => {
-      const image = new Image();
-      image.src = frameSrc(index);
-      return image;
-    });
+    let cancelled = false;
+    const images = Array.from({ length: FRAME_COUNT }, () => new Image());
+    const loaded = new Array<boolean>(FRAME_COUNT).fill(false);
     imagesRef.current = images;
+    loadedRef.current = loaded;
 
-    const drawFirst = () => {
-      if (isMounted) renderFrame(0);
+    const markLoaded = (index: number) => {
+      if (cancelled) return;
+      loaded[index] = true;
+      // Redesenha se este é o frame que o scroll pede agora — ou se ainda não
+      // havíamos desenhado nada (primeiro frame disponível na tela).
+      if (index === frameRef.current || sizeRef.current.dpr === 0) {
+        renderFrame(frameRef.current);
+      }
     };
-    if (images[0].complete) drawFirst();
-    else images[0].onload = drawFirst;
+
+    const load = (index: number) =>
+      new Promise<void>((resolve) => {
+        const image = images[index];
+        image.onload = () => {
+          markLoaded(index);
+          resolve();
+        };
+        image.onerror = () => resolve();
+        image.decoding = "async";
+        image.src = frameSrc(index);
+      });
+
+    void (async () => {
+      // Frame visível primeiro, com prioridade alta.
+      images[0].fetchPriority = "high";
+      await load(0);
+
+      // Restante em fila ascendente, com concorrência limitada.
+      let next = 1;
+      const worker = async () => {
+        while (!cancelled && next < FRAME_COUNT) {
+          const index = next++;
+          await load(index);
+        }
+      };
+      await Promise.all(
+        Array.from({ length: LOAD_CONCURRENCY }, () => worker()),
+      );
+    })();
 
     return () => {
-      isMounted = false;
+      cancelled = true;
     };
   }, []);
 
