@@ -7,6 +7,7 @@ import { Journey } from "@/components/sections/journey";
 import { Metrics } from "@/components/sections/metrics";
 import { Process } from "@/components/sections/process";
 import { Stack } from "@/components/sections/stack";
+import { Testimonials } from "@/components/sections/testimonials";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       <Process />
       <Journey />
       <Stack />
+      <Testimonials />
       <Contact />
     </main>
   );
