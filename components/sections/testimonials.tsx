@@ -1,54 +1,53 @@
 "use client";
 
-import { useReducedMotion } from "framer-motion";
-
-import {
-  CardTransformed,
-  CardsContainer,
-  ContainerScroll,
-} from "@/components/ui/animated-cards-stack";
+import { useState, useEffect, useCallback } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { FadeIn } from "@/components/motion/fade-in";
 
 type Testimonial = {
   id: string;
   name: string;
   role: string;
+  company: string;
   initials: string;
   quote: string;
 };
 
-/* Recomendações reais do LinkedIn — curadas para o posicionamento de
-   Senior Product Designer (produto, design sênior, IA, dados, stakeholders). */
 const testimonials: Testimonial[] = [
-  {
-    id: "camila",
-    name: "Camila Meneghetti",
-    role: "Senior Product Manager · IA",
-    initials: "CM",
-    quote:
-      "Sempre interessado em compreender as motivações do usuário e como elas se conectam aos objetivos de negócio. Transita muito bem entre produto e tecnologia.",
-  },
   {
     id: "juan",
     name: "Juan José H. Ramirez",
-    role: "Senior Experience Designer · Thoughtworks",
+    role: "Senior Experience Designer",
+    company: "Thoughtworks",
     initials: "JR",
     quote:
-      "Profissional dedicado e criativo, sempre atualizado em tendências e metodologias de design, contribuindo nos projetos com seu pensamento crítico.",
+      "Profissional dedicado e criativo que demonstrou estar sempre atualizado em tendências e metodologias de design, contribuindo nos projetos com pensamento crítico.",
+  },
+  {
+    id: "camila",
+    name: "Camila Meneghetti",
+    role: "Senior Product Manager",
+    company: "IA",
+    initials: "CM",
+    quote:
+      "Sempre interessado em compreender as motivações do usuário e como elas se conectam aos objetivos de negócio. Transita muito bem entre produto, design e tecnologia.",
   },
   {
     id: "marcos",
     name: "Marcos Gabriel Moreira",
-    role: "Product Designer · UX/UI",
-    initials: "MM",
+    role: "Product Designer",
+    company: "UX/UI",
+    initials: "MG",
     quote:
       "Combina rigor técnico com um olhar clínico para criar peças de alto impacto, integrando IA ao workflow sem abrir mão da excelência estética. Eleva o nível de qualquer equipe.",
   },
   {
     id: "felippe",
     name: "Felippe Yann Machado",
-    role: "RevOps · Data & AI Integration",
-    initials: "FM",
+    role: "RevOps & AI Integration",
+    company: "Data Analytics",
+    initials: "FY",
     quote:
       "O designer mais versátil com quem já trabalhei. Usa ferramentas diversas para chegar a um produto final conciso, comunicativo e refinado.",
   },
@@ -56,123 +55,206 @@ const testimonials: Testimonial[] = [
     id: "maria",
     name: "Maria Augusta Larré Lemos",
     role: "Analista de Inteligência de Mercado",
-    initials: "ML",
+    company: "Performance",
+    initials: "MA",
     quote:
       "Eu delegava as demandas de UX/UI do briefing ao handoff — e ele sempre entregou com autonomia, técnica e senso de dono.",
   },
 ];
 
+const INTERVAL_MS = 5000;
+
+const variants = {
+  enter: (dir: number) => ({
+    x: dir > 0 ? 48 : -48,
+    opacity: 0,
+  }),
+  center: {
+    x: 0,
+    opacity: 1,
+  },
+  exit: (dir: number) => ({
+    x: dir > 0 ? -48 : 48,
+    opacity: 0,
+  }),
+};
+
 function LinkedInGlyph({ className }: { className?: string }) {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-      fill="currentColor"
-      className={className}
-    >
+    <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor" className={className}>
       <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z" />
     </svg>
   );
 }
 
-function TestimonialCard({ t }: { t: Testimonial }) {
-  return (
-    <figure className="flex size-full flex-col justify-between gap-7 rounded-3xl border border-white/10 bg-white/[0.045] p-7 backdrop-blur-xl md:p-8">
-      <div className="space-y-5">
-        <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/15 text-primary">
-          <LinkedInGlyph className="h-4 w-4" />
-        </span>
-        <blockquote className="font-display text-lg font-medium leading-snug tracking-tight text-white md:text-xl">
-          “{t.quote}”
-        </blockquote>
-      </div>
-
-      <figcaption className="flex items-center gap-3.5">
-        <span
-          aria-hidden="true"
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary/35 to-primary/5 text-sm font-semibold text-white ring-1 ring-white/15"
-        >
-          {t.initials}
-        </span>
-        <span className="min-w-0">
-          <span className="block truncate font-sans text-sm font-semibold text-white">
-            {t.name}
-          </span>
-          <span className="block truncate text-xs text-white/50">{t.role}</span>
-        </span>
-      </figcaption>
-    </figure>
-  );
-}
-
-function SectionHeader() {
-  return (
-    <div className="container">
-      <FadeIn className="max-w-2xl">
-        <p className="mb-5 flex items-center gap-2 text-caption uppercase tracking-[0.22em] text-white/40">
-          <LinkedInGlyph className="h-3.5 w-3.5 text-primary" />
-          Recomendações · LinkedIn
-        </p>
-        <h2 className="font-display text-[40px] font-semibold leading-[1.08] tracking-tight md:text-h2">
-          Quem já construiu comigo.
-        </h2>
-        <p className="mt-5 text-base leading-relaxed text-white/55 md:text-lg">
-          Recomendações reais de líderes de produto, design e dados com quem
-          trabalhei lado a lado nos últimos 8 anos.
-        </p>
-      </FadeIn>
-    </div>
-  );
-}
-
 export function Testimonials() {
-  const reduce = useReducedMotion();
+  const [index, setIndex] = useState(0);
+  const [dir, setDir] = useState(1);
+  const [paused, setPaused] = useState(false);
+
+  const go = useCallback(
+    (next: number) => {
+      const d = next > index ? 1 : -1;
+      setDir(d);
+      setIndex((next + testimonials.length) % testimonials.length);
+    },
+    [index],
+  );
+
+  const prev = useCallback(() => go(index - 1), [go, index]);
+  const next = useCallback(() => go(index + 1), [go, index]);
+
+  // Auto-advance
+  useEffect(() => {
+    if (paused) return;
+    const id = setInterval(() => {
+      setDir(1);
+      setIndex((i) => (i + 1) % testimonials.length);
+    }, INTERVAL_MS);
+    return () => clearInterval(id);
+  }, [paused]);
+
+  const t = testimonials[index];
 
   return (
     <section
       id="recomendacoes"
-      className="relative overflow-hidden bg-dark text-white"
+      className="relative overflow-hidden bg-[#080808] py-24 text-white md:py-32"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
     >
-      {/* Brilho roxo da marca no topo da seção */}
+      {/* Brilho roxo da marca */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-[440px] bg-[radial-gradient(60%_100%_at_50%_0%,rgba(98,47,253,0.16),transparent_72%)]"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[480px] bg-[radial-gradient(55%_80%_at_50%_0%,rgba(98,47,253,0.13),transparent_72%)]"
       />
 
-      <div className="relative pt-24 md:pt-32">
-        <SectionHeader />
-      </div>
+      <div className="container relative flex flex-col gap-14">
 
-      {reduce ? (
-        // Fallback acessível / sem scroll-jacking: grade estática.
-        <div className="container relative grid grid-cols-1 gap-6 pb-28 pt-14 sm:grid-cols-2 lg:grid-cols-3">
-          {testimonials.map((t) => (
-            <div key={t.id} className="h-[340px]">
-              <TestimonialCard t={t} />
+        {/* Header */}
+        <FadeIn>
+          <div className="flex items-start justify-between">
+            <div className="max-w-xl">
+              <p className="mb-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-white/35">
+                <LinkedInGlyph className="h-3 w-3 text-[#622FFD]" />
+                Recomendações · LinkedIn
+              </p>
+              <h2 className="font-display text-[36px] font-semibold leading-[1.08] tracking-tight md:text-[52px]">
+                Quem já construiu<br className="hidden md:block" /> comigo.
+              </h2>
             </div>
-          ))}
-        </div>
-      ) : (
-        <ContainerScroll className="relative h-[300vh]">
-          <div className="sticky top-0 flex h-screen w-full items-center justify-center">
-            <CardsContainer className="h-[420px] w-[88vw] max-w-[380px]">
-              {testimonials.map((t, index) => (
-                <CardTransformed
-                  key={t.id}
-                  arrayLength={testimonials.length + 2}
-                  index={index + 2}
-                  className="size-full"
-                  role="group"
-                  aria-roledescription="recomendação"
-                  aria-label={`${t.name} — ${t.role}`}
-                >
-                  <TestimonialCard t={t} />
-                </CardTransformed>
-              ))}
-            </CardsContainer>
+
+            {/* Setas — desktop */}
+            <div className="hidden items-center gap-2 self-end md:flex">
+              <button
+                onClick={prev}
+                aria-label="Anterior"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-white/50 transition hover:border-white/25 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#622FFD]"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+              <button
+                onClick={next}
+                aria-label="Próxima"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-white/50 transition hover:border-white/25 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#622FFD]"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+            </div>
           </div>
-        </ContainerScroll>
-      )}
+        </FadeIn>
+
+        {/* Card único — AnimatePresence garante 1 visível por vez */}
+        <div className="relative min-h-[300px] w-full overflow-hidden md:min-h-[260px]">
+          <AnimatePresence mode="wait" custom={dir}>
+            <motion.figure
+              key={t.id}
+              custom={dir}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
+              className="absolute inset-0 flex flex-col justify-between gap-8 rounded-2xl border border-white/[0.08] bg-white/[0.04] p-8 md:p-10"
+            >
+              {/* Ícone LinkedIn + quote */}
+              <div className="flex flex-col gap-6">
+                <LinkedInGlyph className="h-5 w-5 text-[#622FFD]" />
+                <blockquote className="font-display text-xl font-medium leading-snug tracking-tight text-white md:text-2xl lg:text-[28px]">
+                  "{t.quote}"
+                </blockquote>
+              </div>
+
+              {/* Pessoa */}
+              <figcaption className="flex items-center gap-4">
+                <span
+                  aria-hidden="true"
+                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#622FFD]/20 text-sm font-semibold text-[#9b87ff] ring-1 ring-[#622FFD]/30"
+                >
+                  {t.initials}
+                </span>
+                <div className="min-w-0">
+                  <span className="block font-sans text-base font-semibold text-white">
+                    {t.name}
+                  </span>
+                  <span className="block text-sm text-white/45">
+                    {t.role} · {t.company}
+                  </span>
+                </div>
+              </figcaption>
+            </motion.figure>
+          </AnimatePresence>
+        </div>
+
+        {/* Dots de navegação + setas mobile */}
+        <div className="flex items-center justify-between">
+          {/* Contador */}
+          <span className="font-mono text-xs tabular-nums text-white/30">
+            {String(index + 1).padStart(2, "0")} /{" "}
+            {String(testimonials.length).padStart(2, "0")}
+          </span>
+
+          {/* Dots */}
+          <div className="flex items-center gap-2" role="tablist" aria-label="Navegar entre recomendações">
+            {testimonials.map((item, i) => (
+              <button
+                key={item.id}
+                role="tab"
+                aria-selected={i === index}
+                aria-label={`Recomendação de ${item.name}`}
+                onClick={() => go(i)}
+                className="group h-5 w-5 rounded-full p-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#622FFD]"
+              >
+                <span
+                  className={`block h-full w-full rounded-full transition-all duration-300 ${
+                    i === index
+                      ? "scale-100 bg-[#622FFD]"
+                      : "scale-75 bg-white/20 group-hover:bg-white/40"
+                  }`}
+                />
+              </button>
+            ))}
+          </div>
+
+          {/* Setas mobile */}
+          <div className="flex items-center gap-2 md:hidden">
+            <button
+              onClick={prev}
+              aria-label="Anterior"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/50 transition active:bg-white/5"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </button>
+            <button
+              onClick={next}
+              aria-label="Próxima"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/50 transition active:bg-white/5"
+            >
+              <ChevronRight className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
