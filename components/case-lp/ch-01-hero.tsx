@@ -14,23 +14,25 @@ const H1_SEGMENTS = [
   { text: " da operação comercial.", highlight: false },
 ];
 
-/* ── Hook: CountUp com easeOutQuart ─────────────────────────────── */
-function useCountUp(target: number, duration = 1400, enabled = true) {
+/* ── Hook: CountUp com easeOutQuart + startDelay ────────────────── */
+function useCountUp(target: number, duration = 1400, startDelay = 0, enabled = true) {
   const [value, setValue] = useState(0);
 
   useEffect(() => {
     if (!enabled) { setValue(target); return; }
     let raf: number;
-    const start = performance.now();
-    const tick = (now: number) => {
-      const t = Math.min((now - start) / duration, 1);
-      const ease = 1 - Math.pow(1 - t, 4); // easeOutQuart
-      setValue(Math.round(ease * target));
-      if (t < 1) raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [target, duration, enabled]);
+    const timeout = setTimeout(() => {
+      const start = performance.now();
+      const tick = (now: number) => {
+        const t = Math.min((now - start) / duration, 1);
+        const e = 1 - Math.pow(1 - t, 4); // easeOutQuart
+        setValue(Math.round(e * target));
+        if (t < 1) raf = requestAnimationFrame(tick);
+      };
+      raf = requestAnimationFrame(tick);
+    }, startDelay);
+    return () => { clearTimeout(timeout); cancelAnimationFrame(raf); };
+  }, [target, duration, startDelay, enabled]);
 
   return value;
 }
@@ -76,7 +78,7 @@ function KpiChip({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
-  const count = useCountUp(value, 1200, inView);
+  const count = useCountUp(value, 1200, delay * 1000, inView);
 
   return (
     <motion.div
