@@ -49,7 +49,8 @@ function BlurWord({
 
   return (
     <motion.span
-      className={`inline-block${highlight ? " text-[#622FFD]" : ""}`}
+      className={highlight ? "text-[#622FFD]" : undefined}
+      style={{ display: "inline-block", marginRight: "0.25em" }}
       initial={reduce ? false : { opacity: 0, y: 28, filter: "blur(14px)" }}
       animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       transition={{ duration: 0.75, delay, ease }}
@@ -112,8 +113,9 @@ export function Ch01Hero() {
   const words: Array<{ word: string; highlight: boolean; delay: number }> = [];
   let wordIndex = 0;
   for (const seg of H1_SEGMENTS) {
-    for (const word of seg.text.split(/(\s+)/)) {
-      if (word.trim()) {
+    for (const raw of seg.text.split(/(\s+)/)) {
+      const word = raw.trim();
+      if (word) {
         words.push({ word, highlight: seg.highlight, delay: 0.1 + wordIndex * 0.03 });
         wordIndex++;
       }
@@ -156,7 +158,7 @@ export function Ch01Hero() {
               aria-label="Como um único produto digital concentrou 79% da geração de demanda da operação comercial."
             >
               {words.map(({ word, highlight, delay }, i) => (
-                <BlurWord key={i} word={word + " "} highlight={highlight} delay={delay} />
+                <BlurWord key={i} word={word} highlight={highlight} delay={delay} />
               ))}
             </h1>
 
@@ -167,7 +169,7 @@ export function Ch01Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.55, ease }}
             >
-              Mais do que criar uma Landing Page — o objetivo foi desenhar
+              Mais do que criar uma Landing Page, o objetivo foi desenhar
               uma experiência capaz de transformar tráfego pago em
               conversas qualificadas.
             </motion.p>
@@ -215,7 +217,7 @@ export function Ch01Hero() {
 
           {/* ── Coluna direita: notebook mockup ─────────────────── */}
           <motion.div
-            className="hidden md:col-span-6 md:col-start-7 md:flex md:items-center lg:col-span-6 lg:col-start-7"
+            className="md:col-span-6 md:col-start-7 md:flex md:items-center lg:col-span-6 lg:col-start-7"
             style={reduce ? {} : { y: notebookY, scale: notebookScale }}
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
