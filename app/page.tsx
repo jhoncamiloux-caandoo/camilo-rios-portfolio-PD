@@ -1,3 +1,4 @@
+import { Blog } from "@/components/sections/blog";
 import { Cases } from "@/components/sections/cases";
 import { Companies } from "@/components/sections/companies";
 import { Contact } from "@/components/sections/contact";
@@ -21,6 +22,7 @@ export default function Home() {
       <Journey />
       <Stack />
       <Testimonials />
+      <Blog />
       <Contact />
     </main>
   );

@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { Calendar, ArrowUpRight } from "lucide-react";
 import { FadeIn } from "@/components/motion/fade-in";
+import LiquidEther from "@/components/backgrounds/liquid-ether";
 import {
   Dialog,
   DialogContent,
@@ -13,7 +14,7 @@ import {
 
 const CALENDAR_URL = "https://calendar.app.google/KVjyGh8sqBStv64V7";
 
-// Animated aurora orbs — each drifts independently on a slow loop
+// Fallback estático para reduced-motion / mobile — mesmas auroras de antes
 const orbs = [
   {
     cls: "h-[480px] w-[480px] bg-primary/25",
@@ -35,8 +36,24 @@ const orbs = [
   },
 ];
 
+function useLiquidEtherEnabled() {
+  const reduce = useReducedMotion();
+  const [wide, setWide] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    setWide(mq.matches);
+    const onChange = () => setWide(mq.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+
+  return wide && !reduce;
+}
+
 export function Contact() {
   const [open, setOpen] = useState(false);
+  const liquidEnabled = useLiquidEtherEnabled();
 
   return (
     <>
@@ -44,22 +61,34 @@ export function Contact() {
         id="contato"
         className="relative overflow-hidden bg-[#0A0A0A] py-28 text-light"
       >
-        {/* ── Aurora gradient background ─────────────── */}
+        {/* ── Background: fluido no desktop, auroras estáticas no fallback ── */}
         <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-          {orbs.map((orb, i) => (
-            <motion.div
-              key={i}
-              className={`absolute rounded-full blur-[100px] ${orb.cls}`}
-              style={orb.initial as React.CSSProperties}
-              animate={orb.animate}
-              transition={{
-                duration: orb.duration,
-                repeat: Infinity,
-                ease: "easeInOut",
-                repeatType: "mirror",
-              }}
+          {liquidEnabled ? (
+            <LiquidEther
+              colors={["#622FFD", "#6670FF", "#3841B9"]}
+              autoDemo
+              autoSpeed={0.4}
+              autoIntensity={1.8}
+              mouseForce={16}
+              resolution={0.5}
+              className="opacity-70"
             />
-          ))}
+          ) : (
+            orbs.map((orb, i) => (
+              <motion.div
+                key={i}
+                className={`absolute rounded-full blur-[100px] ${orb.cls}`}
+                style={orb.initial as React.CSSProperties}
+                animate={orb.animate}
+                transition={{
+                  duration: orb.duration,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  repeatType: "mirror",
+                }}
+              />
+            ))
+          )}
           {/* Radial vignette to keep edges dark */}
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_50%,transparent_40%,#0A0A0A_100%)]" />
           {/* Subtle noise grain overlay */}

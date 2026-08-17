@@ -15,6 +15,7 @@
     "framer-motion": "latest",
     "lucide-react": "^1.21.0",
     "next": "latest",
+    "ogl": "^1.0.11",
     "react": "latest",
     "react-dom": "latest",
     "tailwind-merge": "latest",
