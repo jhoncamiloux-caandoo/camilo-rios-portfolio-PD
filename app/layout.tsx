@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { FloatingActions } from "@/components/floating-actions";
 import "./globals.css";
 
 const dmSans = localFont({
@@ -55,6 +56,7 @@ export default function RootLayout({
     >
       <body className="bg-dark text-light font-sans antialiased selection:bg-primary selection:text-white">
         {children}
+        <FloatingActions />
       </body>
     </html>
   );

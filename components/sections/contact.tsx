@@ -11,8 +11,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-
-const CALENDAR_URL = "https://calendar.app.google/KVjyGh8sqBStv64V7";
+import { CALENDAR_URL } from "@/lib/links";
 
 // Fallback estático para reduced-motion / mobile — mesmas auroras de antes
 const orbs = [

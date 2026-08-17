@@ -10,8 +10,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-
-const CALENDAR_URL = "https://calendar.app.google/KVjyGh8sqBStv64V7";
+import { CALENDAR_URL } from "@/lib/links";
 
 type Case = {
   title: string;
