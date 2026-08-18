@@ -1,7 +1,11 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
-export function CaseHeader() {
+export function CaseHeader({
+  label = "Case 01 · IA para Vendas",
+}: {
+  label?: string;
+}) {
   return (
     <header className="fixed inset-x-0 top-0 z-30 border-b border-black/[0.06] bg-white/80 backdrop-blur-xl">
       <div className="container flex h-14 items-center justify-between md:h-16">
@@ -37,7 +41,7 @@ export function CaseHeader() {
 
         {/* Identificador do case — desktop */}
         <span className="hidden text-[11px] font-semibold uppercase tracking-[0.2em] text-[#0A0A0A]/35 md:block">
-          Case 01 · IA para Vendas
+          {label}
         </span>
       </div>
     </header>
