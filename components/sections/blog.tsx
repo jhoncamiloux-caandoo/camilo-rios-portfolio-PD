@@ -10,10 +10,19 @@ import {
   mediumCoverUrl,
 } from "@/lib/medium-articles";
 
+const DRAG_THRESHOLD = 6;
+
 export function Blog() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(false);
+  const [dragging, setDragging] = useState(false);
+
+  // Estado do arrasto com o mouse — refs porque mudam a cada pixel,
+  // sem precisar re-renderizar o componente.
+  const dragStartX = useRef(0);
+  const dragStartScroll = useRef(0);
+  const dragDistance = useRef(0);
 
   const updateEdges = () => {
     const el = trackRef.current;
@@ -28,6 +37,42 @@ export function Blog() {
     const card = el.querySelector<HTMLElement>("[data-card]");
     const step = card ? card.offsetWidth + 20 : 320;
     el.scrollBy({ left: dir * step, behavior: "smooth" });
+  };
+
+  // Arrastar com o mouse — o touch já rola nativamente com overflow-x-auto,
+  // então só tratamos pointerType "mouse" aqui.
+  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.pointerType !== "mouse") return;
+    const el = trackRef.current;
+    if (!el) return;
+    setDragging(true);
+    dragDistance.current = 0;
+    dragStartX.current = e.clientX;
+    dragStartScroll.current = el.scrollLeft;
+    el.setPointerCapture(e.pointerId);
+  };
+
+  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.pointerType !== "mouse" || !dragging) return;
+    const el = trackRef.current;
+    if (!el) return;
+    const delta = e.clientX - dragStartX.current;
+    dragDistance.current = Math.abs(delta);
+    el.scrollLeft = dragStartScroll.current - delta;
+  };
+
+  const endDrag = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.pointerType !== "mouse") return;
+    setDragging(false);
+  };
+
+  // Se o mouse arrastou de verdade, evita que o clique solto abra o link.
+  const onClickCapture = (e: React.MouseEvent) => {
+    if (dragDistance.current > DRAG_THRESHOLD) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    dragDistance.current = 0;
   };
 
   return (
@@ -66,7 +111,16 @@ export function Blog() {
           <div
             ref={trackRef}
             onScroll={updateEdges}
-            className="flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            onPointerDown={onPointerDown}
+            onPointerMove={onPointerMove}
+            onPointerUp={endDrag}
+            onPointerLeave={endDrag}
+            onClickCapture={onClickCapture}
+            className={`flex snap-x gap-5 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden ${
+              dragging
+                ? "cursor-grabbing snap-none select-none"
+                : "cursor-grab snap-mandatory scroll-smooth"
+            }`}
           >
             {mediumArticles.map((article) => (
               <a
@@ -83,6 +137,7 @@ export function Blog() {
                     src={mediumCoverUrl(article.coverHash)}
                     alt=""
                     loading="lazy"
+                    draggable={false}
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                   />
                 </div>
