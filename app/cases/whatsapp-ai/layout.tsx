@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     type: "article",
   },
   alternates: {
-    canonical: "/case-lp-camilo",
+    canonical: "/cases/whatsapp-ai",
   },
 };
 
