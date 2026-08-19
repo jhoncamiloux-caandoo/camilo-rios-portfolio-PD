@@ -211,30 +211,38 @@ export interface MetricItem {
 export function MetricGrid({
   items,
   dark = false,
+  size = "lg",
+  align = "center",
   className = "",
 }: {
   items: MetricItem[];
   dark?: boolean;
+  size?: "sm" | "lg";
+  align?: "center" | "start";
   className?: string;
 }) {
+  const valueSize = size === "sm" ? "text-2xl md:text-3xl" : "text-4xl md:text-5xl";
+  const gap = size === "sm" ? "gap-x-8 gap-y-6" : "gap-x-10 gap-y-10";
+  const justify = align === "start" ? "justify-start" : "justify-center";
+
   return (
-    <div className={`flex flex-wrap justify-center gap-x-10 gap-y-10 ${className}`}>
+    <div className={`flex flex-wrap ${justify} ${gap} ${className}`}>
       {items.map((m, i) => (
         <Reveal
           key={m.label}
           delay={i * 0.08}
-          className="flex min-w-[120px] flex-col items-center gap-2 text-center"
+          className="flex min-w-[100px] flex-col items-center gap-2 text-center"
         >
           <BigNumber
             value={m.value}
             prefix={m.prefix}
             suffix={m.suffix}
             decimals={m.decimals ?? 0}
-            className={`font-display text-4xl font-semibold tracking-tight md:text-5xl ${
+            className={`font-display font-semibold tracking-tight ${valueSize} ${
               dark ? "text-white" : "text-[#0A0A0A]"
             }`}
           />
-          <span className={`font-sans text-sm ${dark ? "text-white/40" : "text-[#0A0A0A]/45"}`}>
+          <span className={`font-sans text-xs md:text-sm ${dark ? "text-white/40" : "text-[#0A0A0A]/45"}`}>
             {m.label}
           </span>
         </Reveal>

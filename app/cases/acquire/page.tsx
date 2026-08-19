@@ -1,40 +1,38 @@
 import { CaseHeader } from "@/components/case-lp/case-header";
-import { Eyebrow, BlurTitle, Reveal, FlowDiagram } from "@/components/case-lp/case-primitives";
-
-/* Fase 1 — esqueleto de rota. Conteúdo completo (Impact Snapshot,
-   Context, Problem, Discovery, Insight, Strategy, Solution, Visual
-   Showcase, Results) entra na Fase 2, reaproveitando a narrativa e os
-   números já validados em /case-lp-camilo. */
+import { NextCase } from "@/components/case-lp/next-case";
+import { CaseFooter } from "@/components/case-lp/case-footer";
+import { Ch01Hero } from "@/components/cases/acquire/ch-01-hero";
+import { Ch02Impact } from "@/components/cases/acquire/ch-02-impact";
+import { Ch03Context } from "@/components/cases/acquire/ch-03-context";
+import { Ch04Problem } from "@/components/cases/acquire/ch-04-problem";
+import { Ch05Discovery } from "@/components/cases/acquire/ch-05-discovery";
+import { Ch06Insight } from "@/components/cases/acquire/ch-06-insight";
+import { Ch07Strategy } from "@/components/cases/acquire/ch-07-strategy";
+import { Ch08Solution } from "@/components/cases/acquire/ch-08-solution";
+import { Ch09Showcase } from "@/components/cases/acquire/ch-09-showcase";
+import { Ch10Results } from "@/components/cases/acquire/ch-10-results";
 
 export default function CaseAcquirePage() {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-white text-[#0A0A0A]">
       <CaseHeader label="Clint · Acquire" />
-
-      <section className="flex min-h-screen flex-col items-center justify-center gap-8 px-6 pt-24 text-center">
-        <span className="rounded-full bg-[#622FFD]/10 px-4 py-1.5 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-[#622FFD]">
-          Em construção
-        </span>
-
-        <Eyebrow>01 · Acquire — CRO / Produto</Eyebrow>
-
-        <BlurTitle
-          text="Projetando a jornada de aquisição da Clint."
-          className="max-w-3xl font-display text-4xl font-semibold leading-[1.08] tracking-tight text-[#0A0A0A] md:text-6xl"
-        />
-
-        <Reveal delay={0.2}>
-          <p className="max-w-xl font-sans text-base leading-relaxed text-[#0A0A0A]/55 md:text-lg">
-            Transformando pontos de contato, narrativa e hierarquia de
-            informação em uma experiência mais clara para aquisição e
-            conversão.
-          </p>
-        </Reveal>
-
-        <Reveal delay={0.3}>
-          <FlowDiagram nodes={["Tráfego", "Landing Page", "Compreensão", "Conversão"]} activeIndex={3} />
-        </Reveal>
-      </section>
+      <Ch01Hero />
+      <Ch02Impact />
+      <Ch03Context />
+      <Ch04Problem />
+      <Ch05Discovery />
+      <Ch06Insight />
+      <Ch07Strategy />
+      <Ch08Solution />
+      <Ch09Showcase />
+      <Ch10Results />
+      <NextCase
+        eyebrow="Próximo case"
+        title="02 · Intelligence — projetando experiências de IA para equipes comerciais."
+        description="Como transformar modelos, automações e recomendações em interações compreensíveis e controláveis."
+        href="/cases/intelligence"
+      />
+      <CaseFooter />
     </div>
   );
 }
