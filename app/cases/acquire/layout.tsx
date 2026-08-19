@@ -4,6 +4,15 @@ export const metadata: Metadata = {
   title: "Case: Clint Acquire · CRO & Produto | Jhon Camilo Rios",
   description:
     "Projetando a jornada de aquisição da Clint. Product Design e CRO transformando pontos de contato em conversão.",
+  keywords: [
+    "CRO",
+    "Product Design",
+    "UX Strategy",
+    "Growth",
+    "Clint",
+    "Aquisição",
+    "Conversão",
+  ],
   openGraph: {
     title: "Case: Clint Acquire · Jhon Camilo Rios",
     description: "CRO / Produto: arquitetura de conversão da Clint.",

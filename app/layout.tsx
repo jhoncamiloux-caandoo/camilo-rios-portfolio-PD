@@ -32,16 +32,63 @@ const degular = localFont({
   display: "swap",
 });
 
+const SITE_URL = "https://camilo-rios-portfolio.vercel.app";
+
 export const metadata: Metadata = {
-  title: "Jhon Camilo Rios | Senior Product Designer",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Jhon Camilo Rios | Senior Product Designer",
+    template: "%s | Jhon Camilo Rios",
+  },
   description:
     "Portfolio premium de Jhon Camilo Rios, Senior Product Designer especializado em Growth, Inteligência Artificial, CRO e SaaS.",
+  keywords: [
+    "Jhon Camilo Rios",
+    "Senior Product Designer",
+    "Product Design",
+    "UX Designer",
+    "Growth Design",
+    "CRO",
+    "Design System",
+    "IA para produto",
+  ],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
+  },
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Jhon Camilo Rios | Senior Product Designer",
     description: "Growth, IA e SaaS com precisão de produto.",
+    url: SITE_URL,
+    siteName: "Jhon Camilo Rios",
     locale: "pt_BR",
     type: "website",
   },
+};
+
+/* Schema Person — ajuda motores de IA (ChatGPT, Perplexity, Claude) a
+   entender quem é o autor do site como entidade, não só como texto. */
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Jhon Camilo Rios",
+  jobTitle: "Senior Product Designer",
+  url: SITE_URL,
+  sameAs: [
+    // TODO: adicionar LinkedIn e outros perfis reais aqui
+  ],
+  knowsAbout: [
+    "Product Design",
+    "UX Design",
+    "Growth",
+    "CRO",
+    "Design Systems",
+    "Inteligência Artificial aplicada a produto",
+  ],
 };
 
 export default function RootLayout({
@@ -54,6 +101,13 @@ export default function RootLayout({
       lang="pt-BR"
       className={`${dmSans.variable} ${degular.variable} dark`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
+      </head>
       <body className="bg-dark text-light font-sans antialiased selection:bg-primary selection:text-white">
         {children}
         <FloatingActions />

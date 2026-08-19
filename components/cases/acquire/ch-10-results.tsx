@@ -40,7 +40,7 @@ export function Ch10Results() {
 
         <Reveal delay={0.5} className="mt-12 flex flex-wrap items-center justify-center gap-4">
           <Link
-            href="/case-lp-camilo"
+            href="/cases/whatsapp-ai"
             className="group inline-flex h-12 items-center gap-2 rounded-full bg-white px-7 font-sans text-sm font-semibold text-[#0A0A0A] transition-all duration-250 hover:bg-[#622FFD] hover:text-white"
           >
             Ver o case completo
