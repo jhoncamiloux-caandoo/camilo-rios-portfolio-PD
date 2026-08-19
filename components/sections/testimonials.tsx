@@ -58,7 +58,7 @@ const testimonials: Testimonial[] = [
     company: "Performance",
     initials: "MA",
     quote:
-      "Eu delegava as demandas de UX/UI do briefing ao handoff — e ele sempre entregou com autonomia, técnica e senso de dono.",
+      "Eu delegava as demandas de UX/UI do briefing ao handoff, e ele sempre entregou com autonomia, técnica e senso de dono.",
   },
 ];
 

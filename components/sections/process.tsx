@@ -88,7 +88,7 @@ function VisualDiagnostic() {
       {/* Sparkline */}
       <div className="flex flex-col gap-2">
         <span className="text-[10px] font-semibold uppercase tracking-widest text-white/30">
-          Conversão — últimos 7d
+          Conversão · últimos 7d
         </span>
         <div className="flex h-14 items-end gap-1.5">
           {bars.map((h, i) => (
@@ -159,7 +159,7 @@ function VisualPrototype() {
       </div>
       {/* A/B labels */}
       <div className="grid grid-cols-2 gap-3">
-        {["Variante A — 3.2%", "Variante B — 5.8% ↑"].map((label, i) => (
+        {["Variante A: 3.2%", "Variante B: 5.8% ↑"].map((label, i) => (
           <div
             key={i}
             className={`rounded-lg border px-3 py-2 text-center text-xs font-semibold ${

@@ -65,7 +65,7 @@ export function Ch05Showcase() {
         <Reveal delay={0.3} className="mx-auto mt-14 max-w-lg text-center">
           <p className="font-sans text-sm leading-relaxed text-[#0A0A0A]/50 md:text-base">
             O fluxo conversacional que dá vida a esses agentes roda em
-            produção — você pode conversar com ele agora.
+            produção: você pode conversar com ele agora.
           </p>
           <a
             href="https://typebot.co/demonstracao-clint"

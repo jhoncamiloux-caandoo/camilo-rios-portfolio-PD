@@ -16,7 +16,7 @@ export function Ch01Hero() {
       <div className="container relative grid grid-cols-1 items-center gap-14 md:grid-cols-12 md:gap-gutter">
         {/* Coluna esquerda: texto */}
         <div className="flex flex-col gap-7 md:col-span-6 lg:col-span-5">
-          <Eyebrow>01 · Acquire — CRO / Produto</Eyebrow>
+          <Eyebrow>01 · Acquire</Eyebrow>
 
           <BlurTitle
             text="Projetando a jornada de aquisição da Clint."
@@ -62,7 +62,7 @@ export function Ch01Hero() {
           <Reveal delay={0.2}>
             <BrowserMockup
               src="/lp-hero.webp"
-              alt="Landing Page Clint — Agente de IA para Vendas no WhatsApp"
+              alt="Landing Page Clint: Agente de IA para Vendas no WhatsApp"
               url="clintdigital.com.br/agente-ia"
             />
           </Reveal>

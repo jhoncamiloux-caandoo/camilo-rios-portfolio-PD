@@ -26,7 +26,7 @@ export function CaseHeader({
         <Link
           href="/"
           className="flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#622FFD] focus-visible:ring-offset-2"
-          aria-label="Jhon Camilo Rios — ir ao portfólio"
+          aria-label="Ir ao portfólio de Jhon Camilo Rios"
         >
           <img
             src="/logo.svg"

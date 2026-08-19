@@ -18,7 +18,7 @@ export function Ch09Showcase() {
           <Reveal>
             <BrowserMockup
               src="/lp-hero.webp"
-              alt="Landing Page Clint — Agente de IA para Vendas no WhatsApp, versão completa"
+              alt="Landing Page Clint: Agente de IA para Vendas no WhatsApp, versão completa"
               url="clintdigital.com.br/agente-ia"
             />
           </Reveal>

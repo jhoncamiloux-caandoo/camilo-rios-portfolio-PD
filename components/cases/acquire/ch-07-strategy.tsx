@@ -1,7 +1,7 @@
 import { Eyebrow, BlurTitle, Reveal, FlowDiagram } from "@/components/case-lp/case-primitives";
 
 const PILLARS = [
-  { title: "Reduzir esforço cognitivo", description: "Hierarquia visual clara e UX Writing direto — cada dobra comunica uma única ideia." },
+  { title: "Reduzir esforço cognitivo", description: "Hierarquia visual clara e UX Writing direto: cada dobra comunica uma única ideia." },
   { title: "Aumentar confiança", description: "Prova social e demonstração visual posicionadas antes de cada pedido de ação." },
   { title: "Incentivar ação", description: "CTAs presentes ao longo de toda a jornada, sempre após um momento de convencimento." },
 ];

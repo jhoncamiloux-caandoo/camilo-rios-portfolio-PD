@@ -34,7 +34,7 @@ export function Hero() {
           <a
             href="#inicio"
             className="flex items-center gap-2.5 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light"
-            aria-label="Jhon Camilo Rios — voltar ao início"
+            aria-label="Voltar ao início do portfólio de Jhon Camilo Rios"
           >
             <img
               src="/logo.svg"

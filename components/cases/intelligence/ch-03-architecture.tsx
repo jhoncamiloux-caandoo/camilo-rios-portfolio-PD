@@ -1,10 +1,10 @@
 import { Eyebrow, BlurTitle, Reveal, Timeline } from "@/components/case-lp/case-primitives";
 
 const STATES = [
-  { title: "Input", description: "O usuário descreve o que precisa em linguagem natural — sem formulário, sem campos técnicos." },
+  { title: "Input", description: "O usuário descreve o que precisa em linguagem natural, sem formulário e sem campos técnicos." },
   { title: "Contexto", description: "O sistema reúne histórico da conversa, dados do CRM e estágio do funil antes de responder." },
   { title: "Processamento", description: "O modelo interpreta a intenção e decide qual ação, agente ou fluxo se aplica." },
-  { title: "Resultado", description: "Uma recomendação é gerada — nunca uma ação irreversível tomada sozinha." },
+  { title: "Resultado", description: "Uma recomendação é gerada, nunca uma ação irreversível tomada sozinha." },
   { title: "Confiança / explicação", description: "A interface mostra por que aquela recomendação apareceu, não só o que fazer." },
   { title: "Validação humana", description: "O vendedor aprova, edita ou rejeita antes de qualquer coisa ir para o cliente." },
   { title: "Ação", description: "Só depois da validação a mensagem é enviada, a reunião é marcada ou o negócio avança." },
@@ -24,7 +24,7 @@ export function Ch03Architecture() {
           <Reveal delay={0.2}>
             <p className="max-w-xl font-sans text-base leading-relaxed text-[#0A0A0A]/55 md:text-lg">
               Da intenção do usuário até o feedback que refina o próximo
-              ciclo — oito estados, oito decisões de design.
+              ciclo: oito estados, oito decisões de design.
             </p>
           </Reveal>
         </div>

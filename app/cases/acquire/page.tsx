@@ -28,7 +28,7 @@ export default function CaseAcquirePage() {
       <Ch10Results />
       <NextCase
         eyebrow="Próximo case"
-        title="02 · Intelligence — projetando experiências de IA para equipes comerciais."
+        title="02 · Intelligence: projetando experiências de IA para equipes comerciais."
         description="Como transformar modelos, automações e recomendações em interações compreensíveis e controláveis."
         href="/cases/intelligence"
       />

@@ -15,7 +15,7 @@ export function Ch01Hero() {
 
       <div className="container relative grid grid-cols-1 items-center gap-14 md:grid-cols-12 md:gap-gutter">
         <div className="flex flex-col gap-7 md:col-span-6 lg:col-span-5">
-          <Eyebrow>02 · Intelligence — AI / UX</Eyebrow>
+          <Eyebrow>02 · Intelligence</Eyebrow>
 
           <BlurTitle
             text="Uma inteligência. Sua operação inteira."

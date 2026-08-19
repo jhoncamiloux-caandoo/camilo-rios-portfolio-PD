@@ -20,7 +20,7 @@ export default function CaseIntelligencePage() {
       <Ch06Results />
       <NextCase
         eyebrow="Próximo case"
-        title="03 · Scale — criando um sistema para escalar Growth."
+        title="03 · Scale: criando um sistema para escalar Growth."
         description="Como padrões visuais e operacionais aceleram experimentos sem perder consistência."
         href="/cases/scale"
       />

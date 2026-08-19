@@ -16,7 +16,7 @@ export function Ch02Impact() {
           />
           <Reveal delay={0.2}>
             <p className="max-w-lg font-sans text-base leading-relaxed text-white/50 md:text-lg">
-              Estes números não são o objetivo do case — são a consequência de
+              Estes números não são o objetivo do case, são a consequência de
               decisões de Product Design que estão detalhadas a seguir.
             </p>
           </Reveal>

@@ -12,9 +12,9 @@ type Role = {
 
 const roles: Role[] = [
   {
-    company: "Clint — CRM & Plataforma de Vendas",
+    company: "Clint · CRM & Plataforma de Vendas",
     role: "UX/UI Designer · Product & Growth",
-    period: "2024 — Atual",
+    period: "2024 - Atual",
     highlight:
       "Criação de +15 produtos digitais e diagnósticos com IA para geração de demanda e qualificação de leads.",
     current: true,
@@ -22,28 +22,28 @@ const roles: Role[] = [
   {
     company: "e-Saúde Marketing",
     role: "UI Designer",
-    period: "2023 — 2024",
+    period: "2023 - 2024",
     highlight:
-      "Interfaces responsivas para sites e e-mail marketing — +15% na taxa de conversão de leads.",
+      "Interfaces responsivas para sites e e-mail marketing, com +15% na taxa de conversão de leads.",
   },
   {
     company: "Binamik Tecnologia",
     role: "UX/UI Designer",
     period: "2023",
     highlight:
-      "Gestão de Design Systems e UX Research — +20% na taxa de abertura de campanhas.",
+      "Gestão de Design Systems e UX Research, com +20% na taxa de abertura de campanhas.",
   },
   {
     company: "Bonitour Viagens e Turismo",
     role: "Web Designer",
-    period: "2017 — 2023",
+    period: "2017 - 2023",
     highlight:
-      "Rebranding completo e automação de marketing — +40% no reconhecimento de marca.",
+      "Rebranding completo e automação de marketing, com +40% no reconhecimento de marca.",
   },
   {
     company: "Telemark Spain",
     role: "Web Designer Gráfico",
-    period: "2015 — 2016",
+    period: "2015 - 2016",
     highlight:
       "Sites para LATAM e Espanha com design culturalmente adaptado e colaboração internacional.",
   },

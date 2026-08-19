@@ -6,7 +6,7 @@ export function CaseFooter() {
     <footer className="bg-white py-10">
       <div className="container flex flex-col items-center justify-between gap-4 border-t border-black/[0.06] pt-8 text-center md:flex-row md:text-left">
         <p className="font-sans text-xs text-[#0A0A0A]/40">
-          © {new Date().getFullYear()} Jhon Camilo Rios — Senior Product Designer
+          © {new Date().getFullYear()} Jhon Camilo Rios · Senior Product Designer
         </p>
         <Link
           href="/"
