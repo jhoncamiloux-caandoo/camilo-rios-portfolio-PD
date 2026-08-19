@@ -30,6 +30,9 @@ const tools: Tool[] = [
   { name: "RD Station", icon: Workflow },
 ];
 
+const toolsRow1 = tools.slice(0, 5);
+const toolsRow2 = tools.slice(5);
+
 function ToolChip({ name, icon: Icon }: Tool) {
   return (
     <div className="group flex shrink-0 items-center gap-3 rounded-xl border border-white/[0.08] bg-white/[0.04] px-5 py-3.5 backdrop-blur-md transition duration-300 hover:border-primary/40 hover:bg-white/[0.07]">
@@ -45,13 +48,13 @@ function ToolChip({ name, icon: Icon }: Tool) {
   );
 }
 
-function Row({ duplicate = false }: { duplicate?: boolean }) {
+function Row({ items, duplicate = false }: { items: Tool[]; duplicate?: boolean }) {
   return (
     <ul
       aria-hidden={duplicate || undefined}
       className="flex shrink-0 items-center gap-4 pr-4"
     >
-      {tools.map((t) => (
+      {items.map((t) => (
         <li key={t.name}>
           <ToolChip {...t} />
         </li>
@@ -85,15 +88,31 @@ export function Stack() {
           </ul>
         </div>
       ) : (
-        <div className="relative w-full overflow-hidden [-webkit-mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)] [mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)]">
-          <motion.div
-            className="flex w-max"
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ ease: "linear", duration: 30, repeat: Infinity }}
-          >
-            <Row />
-            <Row duplicate />
-          </motion.div>
+        <div className="flex flex-col gap-4">
+          {/* Linha 1 — desliza para a esquerda */}
+          <div className="relative w-full overflow-hidden [-webkit-mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)] [mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)]">
+            <motion.div
+              className="flex w-max"
+              animate={{ x: ["0%", "-50%"] }}
+              transition={{ ease: "linear", duration: 30, repeat: Infinity }}
+            >
+              <Row items={toolsRow1} />
+              <Row items={toolsRow1} duplicate />
+            </motion.div>
+          </div>
+
+          {/* Linha 2 — desliza para a direita, sentido contrário */}
+          <div className="relative w-full overflow-hidden [-webkit-mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)] [mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)]">
+            <motion.div
+              className="flex w-max"
+              initial={{ x: "-50%" }}
+              animate={{ x: ["-50%", "0%"] }}
+              transition={{ ease: "linear", duration: 34, repeat: Infinity }}
+            >
+              <Row items={toolsRow2} />
+              <Row items={toolsRow2} duplicate />
+            </motion.div>
+          </div>
         </div>
       )}
     </section>
