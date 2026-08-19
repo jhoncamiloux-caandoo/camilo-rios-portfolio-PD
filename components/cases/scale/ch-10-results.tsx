@@ -1,15 +1,4 @@
-import { Eyebrow, BlurTitle, Reveal } from "@/components/case-lp/case-primitives";
-
-const PRODUCTS = [
-  {
-    label: "Diagnóstico de IA para vendas",
-    href: "https://diagnostico-ia-vendas.lovable.app/",
-  },
-  {
-    label: "Plataforma completa Clint",
-    href: "https://lps.useclint.com/plataforma-completa",
-  },
-];
+import { Eyebrow, BlurTitle, Reveal, BigNumber } from "@/components/case-lp/case-primitives";
 
 export function Ch10Results() {
   return (
@@ -22,46 +11,52 @@ export function Ch10Results() {
         <div className="mx-auto flex max-w-2xl flex-col items-center gap-6 text-center">
           <Eyebrow light>Resultado</Eyebrow>
           <BlurTitle
-            text="Um sistema compartilhado, vários produtos."
+            text="Um sistema compartilhado torna cada página nova mais rápida de nascer."
             className="font-display text-3xl font-semibold leading-[1.1] tracking-tight text-white md:text-5xl"
           />
           <Reveal delay={0.2}>
             <p className="max-w-xl font-sans text-base leading-relaxed text-white/50 md:text-lg">
-              Um sistema compartilhado tornou decisões visuais mais
-              consistentes e reduziu a necessidade de reconstruir padrões a
-              cada nova experiência. A prova não é um número isolado: é que
-              o mesmo vocabulário visual sustenta produtos diferentes.
+              Tokens e componentes prontos removem a decisão visual repetida
+              de cada nova página, e isso também muda como agentes de IA
+              trabalham dentro do projeto.
             </p>
           </Reveal>
         </div>
 
-        <div className="mx-auto mt-16 flex max-w-2xl flex-col gap-3 md:mt-20">
-          {PRODUCTS.map((product, i) => (
-            <Reveal key={product.href} delay={i * 0.1}>
-              <a
-                href={product.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center justify-between gap-4 rounded-xl border border-white/[0.08] bg-white/[0.03] px-6 py-4 transition-colors duration-300 hover:border-[#622FFD]/40"
-              >
-                <span className="font-sans text-sm font-semibold text-white md:text-base">
-                  {product.label}
-                </span>
-                <svg
-                  viewBox="0 0 24 24"
-                  className="h-4 w-4 shrink-0 text-white/40 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[#622FFD]"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="M7 17L17 7M7 7h10v10" />
-                </svg>
-              </a>
-            </Reveal>
-          ))}
+        <div className="mx-auto mt-16 grid max-w-3xl grid-cols-1 gap-10 md:mt-20 md:grid-cols-2">
+          {/* Velocidade — dado real, com fonte */}
+          <Reveal className="flex flex-col items-center gap-3 text-center">
+            <BigNumber
+              value={47}
+              suffix="%"
+              duration={1600}
+              className="font-display text-6xl font-semibold tracking-tight text-white md:text-7xl"
+            />
+            <span className="font-sans text-sm text-white/50">
+              mais rápido para construir a mesma página
+            </span>
+            <span className="max-w-xs font-sans text-xs leading-relaxed text-white/30">
+              Estudo controlado da Sparkbox: 8 desenvolvedores construíram o
+              mesmo formulário do zero e reutilizando o Design System Carbon
+              da IBM. Tempo mediano caiu de 4h12 para 2h.
+            </span>
+          </Reveal>
+
+          {/* Tokens de IA — estimativa raciocinada, não dado publicado */}
+          <Reveal delay={0.15} className="flex flex-col items-center gap-3 text-center">
+            <span className="font-display text-6xl font-semibold tracking-tight text-white md:text-7xl">
+              70&#8211;85%
+            </span>
+            <span className="font-sans text-sm text-white/50">
+              menos tokens para um agente de IA gerar a mesma interface
+            </span>
+            <span className="max-w-xs font-sans text-xs leading-relaxed text-white/30">
+              Estimativa minha, não um estudo publicado: escrever uma seção do
+              zero (cores, espaçamento, estados, responsivo) custa
+              1.200&#8211;2.000 tokens; importar um componente já pronto
+              custa 150&#8211;300.
+            </span>
+          </Reveal>
         </div>
       </div>
     </section>
