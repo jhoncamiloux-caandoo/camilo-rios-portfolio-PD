@@ -11,7 +11,7 @@ const PRODUCTS = [
   },
 ];
 
-export function Ch08Results() {
+export function Ch10Results() {
   return (
     <section className="relative bg-[#0A0A0A] py-28 md:py-40" aria-label="Resultado do sistema">
       <div
@@ -29,7 +29,7 @@ export function Ch08Results() {
             <p className="max-w-xl font-sans text-base leading-relaxed text-white/50 md:text-lg">
               Um sistema compartilhado tornou decisões visuais mais
               consistentes e reduziu a necessidade de reconstruir padrões a
-              cada nova experiência. A prova não é um número isolado — é que
+              cada nova experiência. A prova não é um número isolado: é que
               o mesmo vocabulário visual sustenta produtos diferentes.
             </p>
           </Reveal>

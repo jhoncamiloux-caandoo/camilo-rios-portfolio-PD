@@ -1,6 +1,6 @@
 import { Eyebrow, BlurTitle, Reveal, FlowDiagram } from "@/components/case-lp/case-primitives";
 
-export function Ch07FigmaStorybook() {
+export function Ch09FigmaStorybook() {
   return (
     <section className="bg-[#F8F8F8] py-28 md:py-40" aria-label="Ponte entre design e desenvolvimento">
       <div className="container">
@@ -14,7 +14,7 @@ export function Ch07FigmaStorybook() {
             <p className="max-w-xl font-sans text-base leading-relaxed text-[#0A0A0A]/55 md:text-lg">
               Tokens e variantes nascem no Figma e se tornam a referência que
               o time de desenvolvimento consulta para implementar cada
-              componente — o objetivo é colaboração, não uma integração
+              componente. O objetivo é colaboração, não uma integração
               automatizada entre as ferramentas.
             </p>
           </Reveal>

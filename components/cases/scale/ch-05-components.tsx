@@ -42,7 +42,7 @@ export function Ch05Components() {
             <p className="max-w-xl font-sans text-base leading-relaxed text-[#0A0A0A]/55 md:text-lg">
               Edite um arquivo em <code className="font-mono text-[#622FFD]">componentes/</code> e a
               mudança aparece em toda página que o usa. Estas são recriações
-              fiéis dos componentes reais em produção — mesma paleta, mesmo
+              fiéis dos componentes reais em produção, mesma paleta, mesmo
               comportamento.
             </p>
           </Reveal>
@@ -61,7 +61,7 @@ export function Ch05Components() {
           <ComponentPanel
             name="BarraPrompt"
             file="componentes/BarraPrompt.dc.html"
-            description="Barra de prompt com borda em gradiente e digitação animada — a mesma peça se repete no hero e dentro do produto."
+            description="Barra de prompt com borda em gradiente e digitação animada: a mesma peça se repete no hero e dentro do produto."
           >
             <div className="w-full max-w-md">
               <ClintBarraPrompt />
@@ -80,7 +80,7 @@ export function Ch05Components() {
           <ComponentPanel
             name="BalaoChat"
             file="componentes/BalaoChat.dc.html"
-            description="Balão de conversa com avatar circular ou quadrado — a peça visual que sustenta toda a narrativa de produto em torno do WhatsApp."
+            description="Balão de conversa com avatar circular ou quadrado: a peça visual que sustenta toda a narrativa de produto em torno do WhatsApp."
           >
             <ClintBalaoChat texto="Quero saber como funciona" hora="22:45" />
           </ComponentPanel>

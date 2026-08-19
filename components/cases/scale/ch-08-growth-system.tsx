@@ -1,6 +1,6 @@
 import { Eyebrow, BlurTitle, Reveal, FlowDiagram } from "@/components/case-lp/case-primitives";
 
-export function Ch06GrowthSystem() {
+export function Ch08GrowthSystem() {
   return (
     <section className="bg-white py-28 md:py-40" aria-label="Design System conectado ao Growth">
       <div className="container">

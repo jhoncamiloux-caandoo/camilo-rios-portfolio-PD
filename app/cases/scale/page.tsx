@@ -6,9 +6,11 @@ import { Ch02Problem } from "@/components/cases/scale/ch-02-problem";
 import { Ch03Architecture } from "@/components/cases/scale/ch-03-architecture";
 import { Ch04Tokens } from "@/components/cases/scale/ch-04-tokens";
 import { Ch05Components } from "@/components/cases/scale/ch-05-components";
-import { Ch06GrowthSystem } from "@/components/cases/scale/ch-06-growth-system";
-import { Ch07FigmaStorybook } from "@/components/cases/scale/ch-07-figma-storybook";
-import { Ch08Results } from "@/components/cases/scale/ch-08-results";
+import { Ch06AiComponents } from "@/components/cases/scale/ch-06-ai-components";
+import { Ch07Governance } from "@/components/cases/scale/ch-07-governance";
+import { Ch08GrowthSystem } from "@/components/cases/scale/ch-08-growth-system";
+import { Ch09FigmaStorybook } from "@/components/cases/scale/ch-09-figma-storybook";
+import { Ch10Results } from "@/components/cases/scale/ch-10-results";
 
 export default function CaseScalePage() {
   return (
@@ -19,12 +21,14 @@ export default function CaseScalePage() {
       <Ch03Architecture />
       <Ch04Tokens />
       <Ch05Components />
-      <Ch06GrowthSystem />
-      <Ch07FigmaStorybook />
-      <Ch08Results />
+      <Ch06AiComponents />
+      <Ch07Governance />
+      <Ch08GrowthSystem />
+      <Ch09FigmaStorybook />
+      <Ch10Results />
       <NextCase
         eyebrow="Ver outro case"
-        title="01 · Acquire — projetando a jornada de aquisição da Clint."
+        title="01 · Acquire: projetando a jornada de aquisição da Clint."
         description="CRO e Product Design transformando pontos de contato em conversão."
         href="/cases/acquire"
       />
