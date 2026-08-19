@@ -1,42 +1,34 @@
 import { CaseHeader } from "@/components/case-lp/case-header";
-import { Eyebrow, BlurTitle, Reveal, FlowDiagram } from "@/components/case-lp/case-primitives";
-
-/* Fase 1 — esqueleto de rota. Conteúdo completo entra na Fase 4,
-   mostrando o Design System real da Clint (tema.css, componentes/)
-   como evidência — não um diagrama abstrato. */
+import { NextCase } from "@/components/case-lp/next-case";
+import { CaseFooter } from "@/components/case-lp/case-footer";
+import { Ch01Hero } from "@/components/cases/scale/ch-01-hero";
+import { Ch02Problem } from "@/components/cases/scale/ch-02-problem";
+import { Ch03Architecture } from "@/components/cases/scale/ch-03-architecture";
+import { Ch04Tokens } from "@/components/cases/scale/ch-04-tokens";
+import { Ch05Components } from "@/components/cases/scale/ch-05-components";
+import { Ch06GrowthSystem } from "@/components/cases/scale/ch-06-growth-system";
+import { Ch07FigmaStorybook } from "@/components/cases/scale/ch-07-figma-storybook";
+import { Ch08Results } from "@/components/cases/scale/ch-08-results";
 
 export default function CaseScalePage() {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-white text-[#0A0A0A]">
       <CaseHeader label="Clint · Scale" />
-
-      <section className="flex min-h-screen flex-col items-center justify-center gap-8 px-6 pt-24 text-center">
-        <span className="rounded-full bg-[#622FFD]/10 px-4 py-1.5 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-[#622FFD]">
-          Em construção
-        </span>
-
-        <Eyebrow>03 · Scale — Growth / Design System</Eyebrow>
-
-        <BlurTitle
-          text="Criando um sistema para escalar Growth."
-          className="max-w-3xl font-display text-4xl font-semibold leading-[1.08] tracking-tight text-[#0A0A0A] md:text-6xl"
-        />
-
-        <Reveal delay={0.2}>
-          <p className="max-w-xl font-sans text-base leading-relaxed text-[#0A0A0A]/55 md:text-lg">
-            Como transformar padrões visuais e operacionais em uma
-            infraestrutura compartilhada para acelerar experimentos sem
-            perder consistência.
-          </p>
-        </Reveal>
-
-        <Reveal delay={0.3}>
-          <FlowDiagram
-            nodes={["Tokens", "Componentes", "Padrões", "Telas", "Produto"]}
-            activeIndex={1}
-          />
-        </Reveal>
-      </section>
+      <Ch01Hero />
+      <Ch02Problem />
+      <Ch03Architecture />
+      <Ch04Tokens />
+      <Ch05Components />
+      <Ch06GrowthSystem />
+      <Ch07FigmaStorybook />
+      <Ch08Results />
+      <NextCase
+        eyebrow="Ver outro case"
+        title="01 · Acquire — projetando a jornada de aquisição da Clint."
+        description="CRO e Product Design transformando pontos de contato em conversão."
+        href="/cases/acquire"
+      />
+      <CaseFooter />
     </div>
   );
 }
