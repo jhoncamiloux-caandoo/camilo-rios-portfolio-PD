@@ -34,6 +34,12 @@ export function Ch02Impact() {
             ]}
           />
         </div>
+
+        <Reveal delay={0.3} className="mx-auto mt-10 max-w-md text-center">
+          <p className="font-sans text-xs text-white/30">
+            Medido via Google Analytics e Meta Ads durante o período da campanha.
+          </p>
+        </Reveal>
       </div>
     </section>
   );

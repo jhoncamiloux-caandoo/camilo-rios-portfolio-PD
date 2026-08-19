@@ -34,10 +34,10 @@ export function Ch07Governance() {
           />
           <Reveal delay={0.2}>
             <p className="max-w-xl font-sans text-base leading-relaxed text-[#0A0A0A]/55 md:text-lg">
-              Em outro sistema que estruturei para o mesmo ecossistema de
-              LPs, cada componente carrega um estado, uma fonte da verdade e
-              uma auditoria automática. É essa disciplina, não a paleta em
-              si, que eu levo para qualquer produto novo.
+              Em outro sistema estruturado para o mesmo ecossistema de LPs,
+              cada componente carrega um estado, uma fonte da verdade e uma
+              auditoria automática. É essa disciplina, não a paleta em si,
+              que se aplica a qualquer produto novo.
             </p>
           </Reveal>
         </div>

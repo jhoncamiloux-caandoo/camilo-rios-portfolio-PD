@@ -52,7 +52,7 @@ const GRID = [
 
 export function Ch04Tokens() {
   return (
-    <section className="bg-[#060309] py-28 md:py-40" aria-label="Tokens reais do design system">
+    <section className="bg-[#0A0A0A] py-28 md:py-40" aria-label="Tokens reais do design system">
       <div className="container">
         <div className="mx-auto flex max-w-2xl flex-col items-center gap-6 text-center">
           <Eyebrow light>Tokens</Eyebrow>
@@ -127,14 +127,14 @@ export function Ch04Tokens() {
           </div>
         </div>
 
-        {/* Espaçamento, raio, sombra, grid — a camada que eu sistematizo */}
+        {/* Espaçamento, raio, sombra, grid — a camada sistematizada além da marca */}
         <div className="mx-auto mt-20 max-w-4xl border-t border-white/[0.08] pt-14 md:mt-24">
           <Reveal>
             <p className="max-w-xl font-sans text-sm leading-relaxed text-white/40">
-              Além da identidade visual da Clint, esta é a camada que eu
-              adiciono em todo Design System: uma escala sistemática de
-              espaçamento, raio e sombra para que qualquer página nova nasça
-              consistente, sem decisão ad-hoc.
+              Além da identidade visual da Clint, esta é a camada que todo
+              Design System bem estruturado adiciona: uma escala sistemática
+              de espaçamento, raio e sombra para que qualquer página nova
+              nasça consistente, sem decisão ad-hoc.
             </p>
           </Reveal>
 

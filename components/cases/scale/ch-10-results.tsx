@@ -51,7 +51,7 @@ export function Ch10Results() {
               menos tokens para um agente de IA gerar a mesma interface
             </span>
             <span className="max-w-xs font-sans text-xs leading-relaxed text-white/30">
-              Estimativa minha, não um estudo publicado: escrever uma seção do
+              Estimativa própria, não um estudo publicado: escrever uma seção do
               zero (cores, espaçamento, estados, responsivo) custa
               1.200&#8211;2.000 tokens; importar um componente já pronto
               custa 150&#8211;300.
