@@ -12,26 +12,46 @@ import {
   Workflow,
   Boxes,
   Wand2,
+  Terminal,
+  Flame,
+  MessagesSquare,
+  Mail,
+  Palette,
+  Triangle,
+  GitBranch,
+  MousePointer2,
+  Search,
   type LucideIcon,
 } from "lucide-react";
 
 type Tool = { name: string; icon: LucideIcon };
 
-const tools: Tool[] = [
+const toolsRow1: Tool[] = [
   { name: "Figma", icon: PenTool },
   { name: "Framer", icon: Frame },
   { name: "Webflow", icon: Boxes },
   { name: "Claude", icon: Sparkles },
   { name: "ChatGPT", icon: Bot },
+  { name: "Codex", icon: Terminal },
+  { name: "Cursor", icon: MousePointer2 },
+  { name: "Vercel", icon: Triangle },
+  { name: "GitHub", icon: GitBranch },
+  { name: "Claude Design", icon: Palette },
+];
+
+const toolsRow2: Tool[] = [
   { name: "Figma Make", icon: Wand2 },
   { name: "Power BI", icon: BarChart3 },
   { name: "Google Analytics", icon: LineChart },
   { name: "Microsoft Clarity", icon: MousePointerClick },
+  { name: "Hotjar", icon: Flame },
   { name: "RD Station", icon: Workflow },
+  { name: "ActiveCampaign", icon: Mail },
+  { name: "Clint", icon: MessagesSquare },
+  { name: "SEO", icon: Search },
 ];
 
-const toolsRow1 = tools.slice(0, 5);
-const toolsRow2 = tools.slice(5);
+const tools: Tool[] = [...toolsRow1, ...toolsRow2];
 
 function ToolChip({ name, icon: Icon }: Tool) {
   return (
@@ -89,14 +109,15 @@ export function Stack() {
         </div>
       ) : (
         <div className="flex flex-col gap-4">
-          {/* Linha 1 — desliza para a esquerda */}
+          {/* Linha 1 — desliza para a esquerda (3 cópias: sempre preenchido, mesmo em telas ultrawide) */}
           <div className="relative w-full overflow-hidden [-webkit-mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)] [mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)]">
             <motion.div
               className="flex w-max"
-              animate={{ x: ["0%", "-50%"] }}
-              transition={{ ease: "linear", duration: 30, repeat: Infinity }}
+              animate={{ x: ["0%", "-33.3333%"] }}
+              transition={{ ease: "linear", duration: 34, repeat: Infinity }}
             >
               <Row items={toolsRow1} />
+              <Row items={toolsRow1} duplicate />
               <Row items={toolsRow1} duplicate />
             </motion.div>
           </div>
@@ -105,11 +126,12 @@ export function Stack() {
           <div className="relative w-full overflow-hidden [-webkit-mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)] [mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)]">
             <motion.div
               className="flex w-max"
-              initial={{ x: "-50%" }}
-              animate={{ x: ["-50%", "0%"] }}
-              transition={{ ease: "linear", duration: 34, repeat: Infinity }}
+              initial={{ x: "-33.3333%" }}
+              animate={{ x: ["-33.3333%", "0%"] }}
+              transition={{ ease: "linear", duration: 38, repeat: Infinity }}
             >
               <Row items={toolsRow2} />
+              <Row items={toolsRow2} duplicate />
               <Row items={toolsRow2} duplicate />
             </motion.div>
           </div>
