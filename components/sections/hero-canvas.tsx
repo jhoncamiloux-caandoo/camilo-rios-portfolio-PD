@@ -191,6 +191,7 @@ export function HeroCanvas({ children }: { children: ReactNode }) {
     <section
       id="inicio"
       ref={sectionRef}
+      data-nav-theme="light"
       className="relative h-[240vh] bg-light text-dark"
     >
       {/*

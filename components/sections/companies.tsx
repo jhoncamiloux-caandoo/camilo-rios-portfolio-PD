@@ -61,7 +61,7 @@ export function Companies() {
   const reduce = useReducedMotion();
 
   return (
-    <section className="overflow-hidden border-y border-white/10 bg-dark py-20 text-light">
+    <section data-nav-theme="dark" className="overflow-hidden border-y border-white/10 bg-dark py-20 text-light">
       <div className="container flex flex-col gap-10 md:flex-row md:items-center md:gap-16">
         <div className="shrink-0">
           <span className="mb-2 block font-display text-xs font-semibold uppercase tracking-[0.22em] text-white/40">

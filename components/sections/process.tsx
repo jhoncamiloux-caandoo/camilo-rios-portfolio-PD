@@ -428,6 +428,7 @@ export function Process() {
   return (
     <section
       ref={sectionRef}
+      data-nav-theme="dark"
       className="relative bg-[#0A0A0A] py-28 text-white"
     >
       <div className="container">

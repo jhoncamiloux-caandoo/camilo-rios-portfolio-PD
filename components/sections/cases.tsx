@@ -72,7 +72,7 @@ const cases: Case[] = [
 
 export function Cases() {
   return (
-    <section id="cases" className="bg-light pb-28 pt-20 text-dark">
+    <section id="cases" data-nav-theme="light" className="bg-light pb-28 pt-20 text-dark">
       <div className="container">
         <FadeIn className="max-w-4xl">
           <p className="mb-6 text-caption uppercase tracking-[0.22em] text-dark/50">

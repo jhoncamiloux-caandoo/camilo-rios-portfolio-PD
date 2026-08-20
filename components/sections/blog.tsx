@@ -76,7 +76,7 @@ export function Blog() {
   };
 
   return (
-    <section id="blog" className="relative bg-white py-24 md:py-32">
+    <section id="blog" data-nav-theme="light" className="relative bg-white py-24 md:py-32">
       <div className="container">
         {/* Cabeçalho */}
         <FadeIn className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">

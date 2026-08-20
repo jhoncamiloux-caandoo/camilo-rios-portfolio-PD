@@ -87,7 +87,7 @@ export function Stack() {
   const reduce = useReducedMotion();
 
   return (
-    <section className="overflow-hidden border-y border-white/10 bg-[#0A0A0A] py-24 text-white">
+    <section data-nav-theme="dark" className="overflow-hidden border-y border-white/10 bg-[#0A0A0A] py-24 text-white">
       <div className="container mb-12 flex flex-col gap-3">
         <span className="font-sans text-xs font-semibold uppercase tracking-[0.22em] text-white/40">
           Stack & Ferramentas

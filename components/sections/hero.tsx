@@ -1,12 +1,7 @@
+import { Header } from "@/components/header";
 import { FadeIn } from "@/components/motion/fade-in";
 import { HeroCanvas } from "@/components/sections/hero-canvas";
 import { ResultsList } from "@/components/sections/results-list";
-
-const navLinks = [
-  { label: "Impacto", href: "#impacto" },
-  { label: "Cases", href: "#cases" },
-  { label: "Contato", href: "#contato" },
-];
 
 function Caret() {
   return (
@@ -28,58 +23,7 @@ function Caret() {
 export function Hero() {
   return (
     <>
-      {/* ── Header ─────────────────────────────────────────────── */}
-      <header className="fixed inset-x-0 top-0 z-30 border-b border-black/5 bg-white/10 backdrop-blur-xl">
-        <div className="container flex h-14 items-center justify-between md:h-16">
-          <a
-            href="#inicio"
-            className="flex items-center gap-2.5 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light"
-            aria-label="Voltar ao início do portfólio de Jhon Camilo Rios"
-          >
-            <img
-              src="/logo.svg"
-              alt=""
-              aria-hidden="true"
-              className="h-7 w-7 shrink-0 md:h-8 md:w-8"
-            />
-            <span className="font-display text-base font-semibold text-dark md:text-lg">
-              Jhon
-            </span>
-          </a>
-
-          {/* Desktop nav */}
-          <nav
-            aria-label="Navegação principal"
-            className="hidden items-center gap-8 text-sm text-dark/60 md:flex"
-          >
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="rounded-sm transition hover:text-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
-
-          {/* Mobile nav — icon-free pill links */}
-          <nav
-            aria-label="Navegação mobile"
-            className="flex items-center gap-3 md:hidden"
-          >
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="rounded-full border border-black/8 bg-white/60 px-3 py-1 text-[11px] font-medium text-dark/70 backdrop-blur-sm transition hover:bg-white/90"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
-        </div>
-      </header>
+      <Header />
 
       {/* ── Hero animado ───────────────────────────────────────── */}
       <HeroCanvas>

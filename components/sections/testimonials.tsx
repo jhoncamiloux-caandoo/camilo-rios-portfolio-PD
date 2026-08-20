@@ -136,6 +136,7 @@ export function Testimonials() {
   return (
     <section
       id="recomendacoes"
+      data-nav-theme="dark"
       className="relative overflow-hidden bg-[#080808] py-24 text-white md:py-32"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}

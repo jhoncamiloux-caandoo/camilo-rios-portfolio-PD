@@ -51,7 +51,7 @@ const roles: Role[] = [
 
 export function Journey() {
   return (
-    <section className="bg-[#F8F8F8] py-28 text-dark">
+    <section data-nav-theme="light" className="bg-[#F8F8F8] py-28 text-dark">
       <div className="container">
         <div className="mb-16 flex flex-col gap-3 md:mb-20">
           <span className="font-sans text-xs font-semibold uppercase tracking-[0.22em] text-dark/40">

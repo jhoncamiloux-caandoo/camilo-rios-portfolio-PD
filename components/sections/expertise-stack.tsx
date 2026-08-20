@@ -81,6 +81,7 @@ export function ExpertiseStack() {
   return (
     <section
       ref={sectionRef}
+      data-nav-theme="dark"
       className="relative overflow-hidden bg-[#0A0A0A] py-28 text-white md:py-32"
     >
       <div

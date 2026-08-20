@@ -148,6 +148,7 @@ export function Impact() {
   return (
     <section
       id="impacto"
+      data-nav-theme="light"
       className="relative overflow-hidden border-b border-neutral-200 bg-[#F8F8F8] py-32 text-[#0A0A0A]"
     >
       <CyberneticGridShader />

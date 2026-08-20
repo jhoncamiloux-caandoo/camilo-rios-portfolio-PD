@@ -58,6 +58,7 @@ export function Contact() {
     <>
       <section
         id="contato"
+        data-nav-theme="dark"
         className="relative overflow-hidden bg-[#0A0A0A] py-28 text-light"
       >
         {/* ── Background: fluido no desktop, auroras estáticas no fallback ── */}
