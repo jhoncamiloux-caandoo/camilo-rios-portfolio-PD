@@ -11,7 +11,7 @@ type Metric = {
 };
 
 const metrics: Metric[] = [
-  { value: 8, prefix: "+", suffix: " anos", label: "Construindo produtos digitais" },
+  { value: 9, prefix: "+", suffix: " anos", label: "Construindo produtos digitais" },
   { value: 15, prefix: "+", suffix: "", label: "Ferramentas e diagnósticos com IA" },
   { value: 140, prefix: "+", suffix: "%", label: "Crescimento na geração de leads" },
   { value: 40, prefix: "+", suffix: "%", label: "Aumento no reconhecimento de marca" },

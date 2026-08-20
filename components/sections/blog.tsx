@@ -85,7 +85,7 @@ export function Blog() {
               Blog
             </p>
             <h2 className="max-w-xl font-display text-[32px] font-semibold leading-[1.08] tracking-tight text-[#0A0A0A] md:text-[44px]">
-              Escrevo sobre Product Design, IA e Growth.
+              Textos sobre Product Design, IA e Growth.
             </h2>
             <p className="max-w-md font-sans text-base leading-relaxed text-[#0A0A0A]/55 md:text-lg">
               {mediumArticles.length} artigos publicados no Medium. Arraste ou

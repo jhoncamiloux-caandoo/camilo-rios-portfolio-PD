@@ -131,11 +131,11 @@ const pillars = [
   },
   {
     title: "AI",
-    desc: "Implementação de camadas inteligentes nas interfaces. Fluxos adaptativos orientados a contexto com automação de ponta para otimizar processos analíticos e operacionais.",
+    desc: "Agentes de IA integrados a fluxos de atendimento e vendas, qualificando leads e automatizando tarefas repetitivas sem perder o contexto da conversa.",
   },
   {
     title: "CRO",
-    desc: "Eliminação sistemática de atritos em checkouts e funis de aquisição. Redesenho de jornadas focado em usabilidade cognitiva e elevação de conversões líquidas em tempo real.",
+    desc: "Eliminação sistemática de atritos em checkouts e funis de aquisição. Redesenho de jornadas guiado por testes e dados reais de comportamento, não por opinião.",
   },
   {
     title: "SaaS",

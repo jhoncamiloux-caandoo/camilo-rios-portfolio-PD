@@ -30,14 +30,14 @@ export function Ch02Resultados() {
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 text-center">
           <Eyebrow light>02 · Resultados</Eyebrow>
           <BlurTitle
-            text="Antes de mostrar o processo, prefiro mostrar o impacto."
+            text="Antes de mostrar o processo, o impacto vem primeiro."
             className="font-display text-4xl font-semibold leading-[1.06] tracking-tight text-white md:text-6xl"
           />
           <Reveal delay={0.2}>
             <p className="max-w-xl font-sans text-base leading-relaxed text-white/50 md:text-lg">
               Os resultados não surgiram de uma grande ideia. Foram consequência
-              de dezenas de pequenas decisões orientadas por comportamento do
-              usuário, dados e experimentação contínua.
+              de pequenas decisões orientadas por comportamento do usuário,
+              dados e experimentação contínua.
             </p>
           </Reveal>
         </div>

@@ -11,7 +11,7 @@ export function Ch02Impact() {
         <div className="mx-auto flex max-w-2xl flex-col items-center gap-6 text-center">
           <Eyebrow light>Antes do processo</Eyebrow>
           <BlurTitle
-            text="Prefiro mostrar o impacto antes de mostrar o processo."
+            text="O impacto vem antes do processo."
             className="font-display text-3xl font-semibold leading-[1.1] tracking-tight text-white md:text-5xl"
           />
           <Reveal delay={0.2}>

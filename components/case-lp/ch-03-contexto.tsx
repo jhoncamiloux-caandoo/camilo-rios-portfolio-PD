@@ -4,7 +4,7 @@ import { Eyebrow, BlurTitle, Reveal } from "./case-primitives";
 
 /* Frases-chave reveladas uma a uma ao scroll */
 const PHRASES = [
-  "O produto era inovador: um agente de IA capaz de atender, qualificar e responder clientes pelo WhatsApp.",
+  "A solução era inovadora: um agente de IA capaz de atender, qualificar e responder clientes pelo WhatsApp.",
   "O desafio nunca foi a tecnologia.",
   "O desafio era fazer com que um vendedor entendesse, em poucos segundos, por que aquela solução era relevante para o seu negócio.",
 ];
@@ -41,9 +41,9 @@ export function Ch03Contexto() {
 
             <Reveal delay={0.3}>
               <p className="font-sans text-base leading-relaxed text-[#0A0A0A]/55 md:text-lg">
-                Minha responsabilidade foi transformar complexidade em clareza,
-                reduzindo esforço cognitivo e conduzindo o usuário naturalmente
-                até a conversa com o time comercial.
+                A responsabilidade do projeto foi transformar complexidade em
+                clareza, reduzindo esforço cognitivo e conduzindo o usuário
+                naturalmente até a conversa com o time comercial.
               </p>
             </Reveal>
           </div>

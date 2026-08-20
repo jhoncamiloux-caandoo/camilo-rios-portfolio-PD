@@ -42,12 +42,12 @@ export function Hero() {
                 <FadeIn immediate delay={0.06}>
                   {/* Mobile: 30px — compacto, não vaza sobre o rosto */}
                   <h1 className="font-display text-[30px] font-semibold leading-[1.08] tracking-[-0.01em] text-[#262628] sm:text-[36px] md:text-[56px]">
-                    Eu construo produtos digitais que geram crescimento.
+                    Produtos digitais construídos para gerar crescimento.
                   </h1>
                 </FadeIn>
                 <FadeIn immediate delay={0.12}>
                   <p className="text-sm text-[#6b6b70] md:text-body">
-                    8 anos conectando produto, dados e comportamento humano.
+                    9 anos conectando produto, dados e comportamento humano.
                   </p>
                 </FadeIn>
               </div>
@@ -59,11 +59,11 @@ export function Hero() {
                     href="#cases"
                     className="inline-flex h-[42px] items-center gap-1 rounded-full border border-white/50 bg-[#9f77d6]/30 px-5 text-sm font-semibold text-[#1f073f] backdrop-blur-md transition hover:bg-[#9f77d6]/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary md:h-[52px] md:px-6 md:text-base"
                   >
-                    Ver Projetos
+                    Ver Cases
                     <Caret />
                   </a>
                   <a
-                    href="#impacto"
+                    href="#trajetoria"
                     className="inline-flex h-[42px] items-center gap-1 rounded-full border border-black/10 bg-white/40 px-5 text-sm font-semibold text-[#1c1c1c] backdrop-blur-md transition hover:bg-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary md:h-[52px] md:px-6 md:text-base"
                   >
                     {/* Texto curto no mobile */}

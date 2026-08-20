@@ -34,10 +34,9 @@ export function Ch07Governance() {
           />
           <Reveal delay={0.2}>
             <p className="max-w-xl font-sans text-base leading-relaxed text-[#0A0A0A]/55 md:text-lg">
-              Em outro sistema estruturado para o mesmo ecossistema de LPs,
-              cada componente carrega um estado, uma fonte da verdade e uma
-              auditoria automática. É essa disciplina, não a paleta em si,
-              que se aplica a qualquer produto novo.
+              No sistema da Clint, cada componente carrega um estado, uma
+              fonte da verdade e uma auditoria automática. É essa disciplina,
+              não a paleta em si, que se estende a qualquer produto novo.
             </p>
           </Reveal>
         </div>
@@ -95,7 +94,7 @@ export function Ch07Governance() {
         <div className="mx-auto mt-16 max-w-4xl">
           <Reveal>
             <p className="mb-3 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-[#0A0A0A]/40">
-              Dívida técnica, só pode diminuir
+              Dívida técnica só pode diminuir
             </p>
           </Reveal>
           <Reveal delay={0.1}>

@@ -5,7 +5,7 @@ export function Ch08GrowthSystem() {
     <section className="bg-white py-28 md:py-40" aria-label="Design System conectado ao Growth">
       <div className="container">
         <div className="mx-auto flex max-w-2xl flex-col items-center gap-6 text-center">
-          <Eyebrow>Growth System</Eyebrow>
+          <Eyebrow>Design System conectado ao Growth</Eyebrow>
           <BlurTitle
             text="Um Design System só importa se acelera o próximo experimento."
             className="font-display text-3xl font-semibold leading-[1.1] tracking-tight text-[#0A0A0A] md:text-5xl"

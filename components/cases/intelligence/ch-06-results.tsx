@@ -27,7 +27,7 @@ const AGENTS: Agent[] = [
   { nome: "Consultor", faz: "Entende a necessidade antes de recomendar a solução.", icon: Compass },
   { nome: "Cobrança", faz: "Lembra do vencimento, envia a segunda via e negocia o atraso.", icon: Wallet },
   { nome: "Suporte", faz: "Resolve a dúvida do cliente e escala para o time quando precisa.", icon: LifeBuoy },
-  { nome: "Recepção", faz: "Agenda, confirma presença e remarca sem ocupar ninguém.", icon: CalendarCheck },
+  { nome: "Recepção", faz: "Agenda, confirma presença e remarca, sem precisar de alguém disponível para isso.", icon: CalendarCheck },
   { nome: "Follow-up", faz: "Volta em quem parou de responder, na hora certa, sem esquecer.", icon: Repeat2 },
   { nome: "Pós-venda", faz: "Acompanha o cliente novo, colhe feedback e abre recompra.", icon: PackageCheck },
   { nome: "Pesquisa", faz: "Faz a pesquisa de satisfação e organiza as respostas.", icon: ClipboardCheck },
@@ -112,15 +112,23 @@ export function Ch06Results() {
       />
       <div className="container relative">
         <div className="mx-auto flex max-w-2xl flex-col items-center gap-6 text-center">
-          <Eyebrow light>O que mais um agente pode fazer</Eyebrow>
+          <Eyebrow light>Mesma arquitetura, mais papéis</Eyebrow>
           <BlurTitle
             text="Um mesmo sistema, dez papéis diferentes na operação."
             className="font-display text-3xl font-semibold leading-[1.1] tracking-tight text-white md:text-5xl"
           />
+          <Reveal delay={0.15}>
+            <p className="max-w-xl font-sans text-base leading-relaxed text-white/50 md:text-lg">
+              O mesmo copiloto que acompanha a conversa de vendas cobre outras
+              nove frentes da operação, cada uma com o nível de autonomia que
+              a situação pede: tarefas de rotina seguem direto, decisões de
+              maior risco continuam passando por uma pessoa.
+            </p>
+          </Reveal>
         </div>
 
         {/* Recriação da interface real de criação de agentes */}
-        <Reveal delay={0.15} className="mx-auto mt-14 max-w-2xl md:mt-16">
+        <Reveal delay={0.25} className="mx-auto mt-14 max-w-2xl md:mt-16">
           <div className="relative overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.02] p-8 text-center md:p-12">
             <div
               aria-hidden="true"
@@ -131,10 +139,10 @@ export function Ch06Results() {
                 Agentes de IA
               </span>
               <h3 className="font-display text-2xl font-medium leading-tight text-white md:text-3xl">
-                Seu <RotatingRole /> é um agente de IA.
+                <RotatingRole /> agora é um agente de IA.
               </h3>
               <p className="max-w-md font-sans text-sm leading-relaxed text-white/50">
-                Atende todo contato assim que chega, qualifica e direciona — sem gargalo, sem oportunidade perdida.
+                Atende todo contato assim que chega, qualifica e direciona, com o mesmo controle humano em cada decisão.
               </p>
               <div className="mt-2 w-full max-w-md">
                 <ClintBarraPrompt
@@ -150,7 +158,7 @@ export function Ch06Results() {
           </div>
         </Reveal>
         <p className="mx-auto mt-4 max-w-md text-center font-sans text-[11px] text-white/25">
-          Recriação fiel da interface real de criação de agentes da Clint.
+          Recriação fiel dos componentes reais de criação de agentes da Clint.
         </p>
 
         {/* Esteira de agentes */}

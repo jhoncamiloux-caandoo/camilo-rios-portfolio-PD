@@ -27,9 +27,9 @@ export function Ch05Discovery() {
           />
           <Reveal delay={0.2}>
             <p className="max-w-xl font-sans text-base leading-relaxed text-[#0A0A0A]/55 md:text-lg">
-              Antes de desenhar qualquer interface, mergulhei no contexto do
-              produto, do mercado e das pessoas. As respostas definiram toda a
-              arquitetura da experiência.
+              Antes de desenhar qualquer interface, a investigação mergulhou no
+              contexto do produto, do mercado e das pessoas. As respostas
+              definiram toda a arquitetura da experiência.
             </p>
           </Reveal>
         </div>

@@ -8,7 +8,7 @@ const STATES = [
   { title: "Confiança / explicação", description: "A interface mostra por que aquela recomendação apareceu, não só o que fazer." },
   { title: "Validação humana", description: "O vendedor aprova, edita ou rejeita antes de qualquer coisa ir para o cliente." },
   { title: "Ação", description: "Só depois da validação a mensagem é enviada, a reunião é marcada ou o negócio avança." },
-  { title: "Feedback", description: "O resultado da ação retro-alimenta o modelo, refinando a próxima recomendação." },
+  { title: "Feedback", description: "O resultado da ação retroalimenta o modelo, refinando a próxima recomendação." },
 ];
 
 export function Ch03Architecture() {

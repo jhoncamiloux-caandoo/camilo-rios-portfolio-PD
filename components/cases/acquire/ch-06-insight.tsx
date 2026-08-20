@@ -28,6 +28,12 @@ export function Ch06Insight() {
             text="Três princípios guiaram cada decisão a partir daqui."
             className="font-display text-3xl font-semibold leading-[1.1] tracking-tight text-[#0A0A0A] md:text-5xl"
           />
+          <Reveal delay={0.15}>
+            <p className="max-w-xl font-sans text-base leading-relaxed text-[#0A0A0A]/55 md:text-lg">
+              As entrevistas com o time comercial, os heatmaps e os dados de
+              campanha do discovery convergiram para três princípios.
+            </p>
+          </Reveal>
         </div>
 
         <div className="mx-auto mt-16 grid max-w-4xl grid-cols-1 gap-5 md:grid-cols-3">

@@ -4,7 +4,7 @@ import { Eyebrow, BlurTitle, Reveal } from "./case-primitives";
 
 const LESSONS = [
   "Clareza converte mais do que complexidade.",
-  "Dados são melhores que opiniões.",
+  "O Clarity mostrou hesitação onde a suposição inicial não via problema.",
   "Pequenas otimizações geram grandes impactos ao longo do tempo.",
   "Conversão começa antes do primeiro CTA.",
   "Product Design é sobre resolver problemas de negócio, não apenas criar interfaces.",
@@ -18,7 +18,7 @@ export function Ch11Aprendizados() {
           <div className="flex flex-col gap-6">
             <Eyebrow>11 · Aprendizados</Eyebrow>
             <BlurTitle
-              text="O que este projeto me ensinou."
+              text="O que este projeto ensinou."
               className="font-display text-4xl font-semibold leading-[1.06] tracking-tight text-[#0A0A0A] md:text-6xl"
             />
           </div>

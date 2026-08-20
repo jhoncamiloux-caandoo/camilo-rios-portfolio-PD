@@ -3,23 +3,23 @@
 import { motion, useReducedMotion } from "framer-motion";
 import {
   Box,
-  Cpu,
+  FlaskConical,
   Layers,
+  PenTool,
   Search,
-  Target,
-  TrendingUp,
+  Zap,
   type LucideIcon,
 } from "lucide-react";
 
 type Expertise = { name: string; icon: LucideIcon };
 
 const expertise: Expertise[] = [
-  { name: "Growth", icon: TrendingUp },
-  { name: "Inteligência Artificial", icon: Cpu },
-  { name: "CRO", icon: Target },
-  { name: "SaaS", icon: Layers },
   { name: "Produto", icon: Box },
   { name: "Pesquisa", icon: Search },
+  { name: "Design Systems", icon: Layers },
+  { name: "Prototipagem", icon: FlaskConical },
+  { name: "Automação com IA", icon: Zap },
+  { name: "UX Writing", icon: PenTool },
 ];
 
 function ExpertiseCard({ name, icon: Icon }: Expertise) {
@@ -65,10 +65,10 @@ export function Companies() {
       <div className="container flex flex-col gap-10 md:flex-row md:items-center md:gap-16">
         <div className="shrink-0">
           <span className="mb-2 block font-display text-xs font-semibold uppercase tracking-[0.22em] text-white/40">
-            Foco Estratégico
+            Atuação
           </span>
           <h2 className="font-display text-2xl font-semibold tracking-tight text-light md:text-3xl">
-            Core Expertise
+            Disciplinas do dia a dia.
           </h2>
         </div>
 

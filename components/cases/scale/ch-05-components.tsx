@@ -43,7 +43,8 @@ export function Ch05Components() {
               Edite um arquivo em <code className="font-mono text-[#622FFD]">componentes/</code> e a
               mudança aparece em toda página que o usa. Estas são recriações
               fiéis dos componentes reais em produção, mesma paleta, mesmo
-              comportamento.
+              comportamento, e cada campanha nova herda isso sem esperar
+              handoff.
             </p>
           </Reveal>
         </div>

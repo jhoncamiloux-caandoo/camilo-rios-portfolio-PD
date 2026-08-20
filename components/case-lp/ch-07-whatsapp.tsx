@@ -16,7 +16,7 @@ const JOURNEY = [
 ];
 
 const RESULTS = [
-  { value: 10722, label: "cliques nos botões de WhatsApp" },
+  { value: 10722, label: "conversas iniciadas pelo WhatsApp" },
   { value: 37, suffix: "%", label: "de conversão" },
   { value: 1.27, prefix: "R$ ", decimals: 2, label: "por conversa iniciada" },
 ];
@@ -54,7 +54,7 @@ export function Ch07Whatsapp() {
             <Reveal delay={0.25}>
               <blockquote className="border-l-2 border-[#25D366] pl-5">
                 <p className="font-display text-xl font-medium leading-snug tracking-tight text-[#0A0A0A] md:text-2xl">
-                  O usuário nunca precisa procurar como entrar em contato. O
+                  O usuário nunca precisa procurar um canal de contato. O
                   próximo passo está sempre disponível.
                 </p>
               </blockquote>

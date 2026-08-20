@@ -26,15 +26,15 @@ export function Ch10Results() {
           />
           <Reveal delay={0.3}>
             <p className="mt-3 max-w-md text-center font-sans text-sm text-white/45 md:text-base">
-              de todo o tráfego pago da operação passou por esta experiência
+              de toda a demanda da operação passou por esta experiência
             </p>
           </Reveal>
         </div>
 
         <Reveal delay={0.4} className="mx-auto mt-20 max-w-xl text-center md:mt-24">
           <p className="font-sans text-base leading-relaxed text-white/50 md:text-lg">
-            Clareza converteu mais do que complexidade. E cada botão de
-            WhatsApp bem posicionado valeu mais do que qualquer formulário.
+            Clareza converteu mais do que complexidade. Cada botão de
+            WhatsApp, posicionado no momento certo, sustentou esse resultado.
           </p>
         </Reveal>
 

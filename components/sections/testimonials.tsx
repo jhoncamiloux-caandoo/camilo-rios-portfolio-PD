@@ -28,7 +28,6 @@ const testimonials: Testimonial[] = [
     id: "camila",
     name: "Camila Meneghetti",
     role: "Senior Product Manager",
-    company: "IA",
     photo: "/testimonials/camila.jpg",
     quote:
       "Sempre interessado em compreender as motivações do usuário e como elas se conectam aos objetivos de negócio. Transita muito bem entre produto, design e tecnologia.",
@@ -37,7 +36,6 @@ const testimonials: Testimonial[] = [
     id: "marcos",
     name: "Marcos Gabriel Moreira",
     role: "Product Designer",
-    company: "UX/UI",
     photo: "/testimonials/marcos.jpg",
     quote:
       "Combina rigor técnico com um olhar clínico para criar peças de alto impacto, integrando IA ao workflow sem abrir mão da excelência estética. Eleva o nível de qualquer equipe.",
@@ -46,7 +44,6 @@ const testimonials: Testimonial[] = [
     id: "felippe",
     name: "Felippe Yann Machado",
     role: "RevOps & AI Integration",
-    company: "Data Analytics",
     photo: "/testimonials/felippe.jpg",
     quote:
       "O designer mais versátil com quem já trabalhei. Usa ferramentas diversas para chegar a um produto final conciso, comunicativo e refinado.",
@@ -55,7 +52,6 @@ const testimonials: Testimonial[] = [
     id: "maria",
     name: "Maria Augusta Larré Lemos",
     role: "Analista de Inteligência de Mercado",
-    company: "Performance",
     photo: "/testimonials/maria.jpg",
     quote:
       "Eu delegava as demandas de UX/UI do briefing ao handoff, e ele sempre entregou com autonomia, técnica e senso de dono.",

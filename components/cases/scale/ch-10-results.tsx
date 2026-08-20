@@ -37,8 +37,8 @@ export function Ch10Results() {
             </span>
             <span className="max-w-xs font-sans text-xs leading-relaxed text-white/30">
               Estudo controlado da Sparkbox: 8 desenvolvedores construíram o
-              mesmo formulário do zero e reutilizando o Design System Carbon
-              da IBM. Tempo mediano caiu de 4h12 para 2h.
+              mesmo formulário duas vezes, uma do zero e outra reutilizando o
+              Design System Carbon da IBM. Tempo mediano caiu de 4h12 para 2h.
             </span>
           </Reveal>
 

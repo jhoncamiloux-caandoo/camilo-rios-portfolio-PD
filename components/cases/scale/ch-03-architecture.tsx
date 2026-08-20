@@ -5,9 +5,9 @@ export function Ch03Architecture() {
     <section className="bg-white py-28 md:py-40" aria-label="Arquitetura do design system">
       <div className="container">
         <div className="mx-auto flex max-w-2xl flex-col items-center gap-6 text-center">
-          <Eyebrow>Design System Architecture</Eyebrow>
+          <Eyebrow>Arquitetura do design system</Eyebrow>
           <BlurTitle
-            text="A peça central de todo o case."
+            text="Uma decisão no token, herdada por todo o produto."
             className="font-display text-3xl font-semibold leading-[1.1] tracking-tight text-[#0A0A0A] md:text-5xl"
           />
           <Reveal delay={0.2}>
@@ -23,7 +23,7 @@ export function Ch03Architecture() {
           <Reveal className="flex min-w-max justify-center px-4 md:min-w-0">
             <FlowDiagram
               direction="vertical"
-              nodes={["Tokens", "Componentes", "Padrões", "Templates", "Telas", "Produto"]}
+              nodes={["Tokens", "Componentes", "Telas", "Produto"]}
             />
           </Reveal>
         </div>

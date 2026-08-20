@@ -24,7 +24,7 @@ export function Ch03Context() {
                 automação e aquisição. Nesse contexto, a experiência digital
                 precisa fazer mais do que apresentar funcionalidades: ela
                 precisa ajudar o usuário a entender valor, reconhecer
-                relevância e avançar para uma próxima ação.
+                relevância e avançar para a próxima ação.
               </p>
             </Reveal>
           </div>
