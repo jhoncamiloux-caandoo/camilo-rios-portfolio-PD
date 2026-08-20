@@ -9,8 +9,8 @@ type Testimonial = {
   id: string;
   name: string;
   role: string;
-  company: string;
-  initials: string;
+  company?: string;
+  photo: string;
   quote: string;
 };
 
@@ -20,7 +20,7 @@ const testimonials: Testimonial[] = [
     name: "Juan José H. Ramirez",
     role: "Senior Experience Designer",
     company: "Thoughtworks",
-    initials: "JR",
+    photo: "/testimonials/juan.jpg",
     quote:
       "Profissional dedicado e criativo que demonstrou estar sempre atualizado em tendências e metodologias de design, contribuindo nos projetos com pensamento crítico.",
   },
@@ -29,7 +29,7 @@ const testimonials: Testimonial[] = [
     name: "Camila Meneghetti",
     role: "Senior Product Manager",
     company: "IA",
-    initials: "CM",
+    photo: "/testimonials/camila.jpg",
     quote:
       "Sempre interessado em compreender as motivações do usuário e como elas se conectam aos objetivos de negócio. Transita muito bem entre produto, design e tecnologia.",
   },
@@ -38,7 +38,7 @@ const testimonials: Testimonial[] = [
     name: "Marcos Gabriel Moreira",
     role: "Product Designer",
     company: "UX/UI",
-    initials: "MG",
+    photo: "/testimonials/marcos.jpg",
     quote:
       "Combina rigor técnico com um olhar clínico para criar peças de alto impacto, integrando IA ao workflow sem abrir mão da excelência estética. Eleva o nível de qualquer equipe.",
   },
@@ -47,7 +47,7 @@ const testimonials: Testimonial[] = [
     name: "Felippe Yann Machado",
     role: "RevOps & AI Integration",
     company: "Data Analytics",
-    initials: "FY",
+    photo: "/testimonials/felippe.jpg",
     quote:
       "O designer mais versátil com quem já trabalhei. Usa ferramentas diversas para chegar a um produto final conciso, comunicativo e refinado.",
   },
@@ -56,9 +56,26 @@ const testimonials: Testimonial[] = [
     name: "Maria Augusta Larré Lemos",
     role: "Analista de Inteligência de Mercado",
     company: "Performance",
-    initials: "MA",
+    photo: "/testimonials/maria.jpg",
     quote:
       "Eu delegava as demandas de UX/UI do briefing ao handoff, e ele sempre entregou com autonomia, técnica e senso de dono.",
+  },
+  {
+    id: "isaque",
+    name: "Isaque",
+    role: "Colega de equipe",
+    photo: "/testimonials/isaque.jpg",
+    quote:
+      "O Camilo é um profissional incrível. Faz produções audiovisuais fantásticas e pode desenhar interfaces para sistemas de fácil usabilidade pro usuário. Muito agradável de se trabalhar, traz leveza pro ambiente.",
+  },
+  {
+    id: "luisa",
+    name: "Luisa Oliveira",
+    role: "Software Engineer",
+    company: "TotalPass",
+    photo: "/testimonials/luisa.jpg",
+    quote:
+      "Tive a oportunidade de trabalhar com o Camilo no mesmo time, onde eu atuava como desenvolvedora e ele como designer. Sempre se mostrou comprometido, criativo e muito colaborativo. Entregava materiais de qualidade com rapidez e cuidado, além de ser organizado e atento aos prazos. Um colega de equipe parceiro e confiável, que contribuiu bastante para o bom andamento dos projetos além de trazer leveza para o dia a dia no trabalho.",
   },
 ];
 
@@ -187,18 +204,19 @@ export function Testimonials() {
 
               {/* Pessoa */}
               <figcaption className="flex items-center gap-4">
-                <span
-                  aria-hidden="true"
-                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#622FFD]/20 text-sm font-semibold text-[#9b87ff] ring-1 ring-[#622FFD]/30"
-                >
-                  {t.initials}
-                </span>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={t.photo}
+                  alt=""
+                  className="h-12 w-12 shrink-0 rounded-full object-cover ring-1 ring-[#622FFD]/30"
+                />
                 <div className="min-w-0">
                   <span className="block font-sans text-base font-semibold text-white">
                     {t.name}
                   </span>
                   <span className="block text-sm text-white/45">
-                    {t.role} · {t.company}
+                    {t.role}
+                    {t.company ? ` · ${t.company}` : ""}
                   </span>
                 </div>
               </figcaption>

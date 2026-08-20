@@ -79,7 +79,9 @@ const personJsonLd = {
   jobTitle: "Senior Product Designer",
   url: SITE_URL,
   sameAs: [
-    // TODO: adicionar LinkedIn e outros perfis reais aqui
+    "https://www.linkedin.com/in/jhon-camilo-rios/",
+    "https://www.behance.net/CamiloRiosQuintero",
+    "https://medium.com/@jhoncamiloux",
   ],
   knowsAbout: [
     "Product Design",
