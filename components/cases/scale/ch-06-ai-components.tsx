@@ -1,5 +1,5 @@
 import { Eyebrow, BlurTitle, Reveal } from "@/components/case-lp/case-primitives";
-import { ClintAiSignature, ClintAiCommandCloud, ClintMeetingIntel } from "./clint-components-live";
+import { ClintAiSignature, ClintAiCommandCloud, ClintMeetingIntel } from "@/components/case-lp/clint-components-live";
 
 export function Ch06AiComponents() {
   return (

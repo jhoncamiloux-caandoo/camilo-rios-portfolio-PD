@@ -1,5 +1,5 @@
 import { Eyebrow, BlurTitle, Reveal } from "@/components/case-lp/case-primitives";
-import { ClintBotaoCTA, ClintChipAgente, ClintBarraPrompt } from "./clint-components-live";
+import { ClintBotaoCTA, ClintChipAgente, ClintBarraPrompt } from "@/components/case-lp/clint-components-live";
 
 const TAGS = ["Design System", "Growth", "UX/UI", "Figma", "Storybook"];
 

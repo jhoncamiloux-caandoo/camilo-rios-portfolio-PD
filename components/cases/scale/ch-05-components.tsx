@@ -1,5 +1,5 @@
 import { Eyebrow, BlurTitle, Reveal } from "@/components/case-lp/case-primitives";
-import { ClintBotaoCTA, ClintChipAgente, ClintBarraPrompt, ClintBalaoChat } from "./clint-components-live";
+import { ClintBotaoCTA, ClintChipAgente, ClintBarraPrompt, ClintBalaoChat } from "@/components/case-lp/clint-components-live";
 
 function ComponentPanel({
   name,

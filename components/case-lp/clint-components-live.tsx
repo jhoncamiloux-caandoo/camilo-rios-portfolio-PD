@@ -129,7 +129,7 @@ const FRASES = [
   "Quero recuperar oportunidades perdidas",
 ];
 
-export function ClintBarraPrompt() {
+export function ClintBarraPrompt({ frases = FRASES }: { frases?: string[] }) {
   const [texto, setTexto] = useState("");
 
   useEffect(() => {
@@ -139,7 +139,7 @@ export function ClintBarraPrompt() {
     let timeout: number;
 
     const tick = () => {
-      const alvo = FRASES[fraseIndex % FRASES.length];
+      const alvo = frases[fraseIndex % frases.length];
       let espera = 88;
       if (!apagando) {
         ci++;
