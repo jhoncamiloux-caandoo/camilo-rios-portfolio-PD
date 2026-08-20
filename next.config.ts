@@ -5,7 +5,12 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/case-lp-camilo",
-        destination: "/cases/whatsapp-ai",
+        destination: "/cases/acquire",
+        permanent: true,
+      },
+      {
+        source: "/cases/whatsapp-ai",
+        destination: "/cases/acquire",
         permanent: true,
       },
     ];

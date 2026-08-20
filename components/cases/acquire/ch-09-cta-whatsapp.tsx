@@ -1,9 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ease, Eyebrow, BlurTitle, Reveal, BigNumber } from "./case-primitives";
+import { ease, Eyebrow, BlurTitle, Reveal } from "@/components/case-lp/case-primitives";
 
-/* Jornada: CTAs de WhatsApp intercalados nos momentos de confiança */
 const JOURNEY = [
   { label: "Hero", cta: false },
   { label: "CTA WhatsApp", cta: true },
@@ -15,12 +14,6 @@ const JOURNEY = [
   { label: "CTA Final", cta: true },
 ];
 
-const RESULTS = [
-  { value: 10722, label: "conversas iniciadas pelo WhatsApp" },
-  { value: 37, suffix: "%", label: "de conversão" },
-  { value: 1.27, prefix: "R$ ", decimals: 2, label: "por conversa iniciada" },
-];
-
 function WhatsGlyph({ className = "h-3.5 w-3.5" }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" className={`${className} fill-current`} aria-hidden="true">
@@ -30,22 +23,20 @@ function WhatsGlyph({ className = "h-3.5 w-3.5" }: { className?: string }) {
   );
 }
 
-export function Ch07Whatsapp() {
+export function Ch09CtaWhatsapp() {
   return (
-    <section className="bg-white py-32 md:py-48" aria-label="A decisão mais importante">
+    <section className="bg-white py-32 md:py-48" aria-label="A decisão do CTA">
       <div className="container">
         <div className="grid grid-cols-1 gap-16 md:grid-cols-12 md:gap-gutter">
-
-          {/* Narrativa */}
           <div className="flex flex-col gap-8 md:col-span-6 lg:col-span-5">
-            <Eyebrow>07 · A decisão mais importante</Eyebrow>
+            <Eyebrow>Decisão do CTA</Eyebrow>
             <BlurTitle
               text="Reduzindo atrito para aumentar conversões."
               className="font-display text-4xl font-semibold leading-[1.06] tracking-tight text-[#0A0A0A] md:text-5xl lg:text-6xl"
             />
             <Reveal delay={0.15}>
               <p className="font-sans text-base leading-relaxed text-[#0A0A0A]/55 md:text-lg">
-                Uma das decisões mais importantes foi substituir formulários
+                A decisão que mais pesou foi substituir formulários
                 tradicionais por conversas imediatas no WhatsApp. Os botões
                 foram distribuídos estrategicamente ao longo da página,
                 aparecendo sempre após momentos de maior confiança.
@@ -59,29 +50,8 @@ export function Ch07Whatsapp() {
                 </p>
               </blockquote>
             </Reveal>
-
-            {/* Resultados da decisão */}
-            <div className="mt-4 flex flex-col gap-6 border-t border-black/[0.06] pt-8">
-              {RESULTS.map((r, i) => (
-                <Reveal key={r.label} delay={0.1 * i}>
-                  <div className="flex items-baseline gap-4">
-                    <BigNumber
-                      value={r.value}
-                      prefix={r.prefix}
-                      suffix={r.suffix}
-                      decimals={r.decimals ?? 0}
-                      className="font-display text-4xl font-semibold tracking-tight text-[#0A0A0A] md:text-5xl"
-                    />
-                    <span className="font-sans text-sm text-[#0A0A0A]/45 md:text-base">
-                      {r.label}
-                    </span>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
           </div>
 
-          {/* Diagrama da jornada */}
           <div className="md:col-span-5 md:col-start-8">
             <div className="sticky top-24 flex flex-col items-center">
               {JOURNEY.map((node, i) => (
@@ -126,8 +96,14 @@ export function Ch07Whatsapp() {
               </Reveal>
             </div>
           </div>
-
         </div>
+
+        <Reveal delay={0.2} className="mx-auto mt-24 max-w-xl text-center md:mt-32">
+          <p className="font-sans text-base leading-relaxed text-[#0A0A0A]/50 md:text-lg">
+            O clique no WhatsApp era só o início. O que acontecia na conversa
+            em seguida decidia se o lead avançava ou parava por ali.
+          </p>
+        </Reveal>
       </div>
     </section>
   );

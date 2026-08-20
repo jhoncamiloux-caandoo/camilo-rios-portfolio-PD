@@ -1,15 +1,14 @@
 "use client";
 
-import { Eyebrow, BlurTitle, Reveal } from "./case-primitives";
+import { Eyebrow, BlurTitle, Reveal } from "@/components/case-lp/case-primitives";
 
-/* Cada seção da LP: a decisão e a hipótese que ela validava */
 const SECTIONS = [
   {
     name: "Hero",
     decision:
       "Apresentar primeiro o benefício, não a tecnologia. A headline comunica o resultado que o vendedor quer: fechar mais vendas.",
     hypothesis:
-      "Se simplificarmos a Hero e apresentarmos primeiro o benefício, mais usuários entenderão a proposta de valor em poucos segundos.",
+      "Simplificar a Hero e apresentar primeiro o benefício ajudaria mais usuários a entender a proposta de valor em poucos segundos.",
   },
   {
     name: "Benefícios",
@@ -21,16 +20,16 @@ const SECTIONS = [
   {
     name: "Demonstração",
     decision:
-      "Mostrar a IA conversando de verdade em uma simulação de chat, em vez de explicar em texto como ela funciona.",
+      "Mostrar a IA conversando de verdade numa simulação de chat, em vez de explicar em texto como ela funciona.",
     hypothesis:
-      "Uma demonstração visual reduzirá a carga cognitiva mais do que uma explicação textual.",
+      "Uma demonstração visual reduziria a carga cognitiva mais do que uma explicação textual.",
   },
   {
     name: "Provas",
     decision:
       "Prova social específica: depoimentos com contexto de negócio, números reais e nomes reais.",
     hypothesis:
-      "Se utilizarmos provas sociais específicas, a percepção de credibilidade aumentará.",
+      "Provas sociais específicas aumentariam a percepção de credibilidade.",
   },
   {
     name: "Autoridade",
@@ -39,16 +38,8 @@ const SECTIONS = [
     hypothesis:
       "Credibilidade percebida reduz o risco da decisão e destrava a ação.",
   },
-  {
-    name: "CTA",
-    decision:
-      "Conversa imediata no WhatsApp em vez de formulário. O próximo passo está sempre a um clique.",
-    hypothesis:
-      "Se direcionarmos o usuário direto para o WhatsApp, reduziremos o esforço para iniciar uma conversa.",
-  },
 ];
 
-/* Mini wireframe abstrato de cada dobra */
 function Sketch({ name, active }: { name: string; active: number }) {
   return (
     <div
@@ -70,26 +61,25 @@ function Sketch({ name, active }: { name: string; active: number }) {
   );
 }
 
-export function Ch06Construcao() {
+export function Ch08Construction() {
   return (
     <section className="bg-[#F8F8F8] py-32 md:py-48" aria-label="Construção da experiência">
       <div className="container">
-        {/* Cabeçalho */}
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 text-center">
-          <Eyebrow>06 · Construção</Eyebrow>
+          <Eyebrow>Construção</Eyebrow>
           <BlurTitle
             text="Cada elemento existe por um motivo."
             className="font-display text-4xl font-semibold leading-[1.06] tracking-tight text-[#0A0A0A] md:text-6xl"
           />
           <Reveal delay={0.2}>
             <p className="max-w-xl font-sans text-base leading-relaxed text-[#0A0A0A]/55 md:text-lg">
-              Nenhum componente foi inserido apenas por estética. Cada dobra
-              valida uma hipótese e responde uma objeção.
+              Os três pilares da estratégia se traduziram dobra a dobra.
+              Nenhum componente foi inserido apenas por estética: cada uma
+              responde a uma objeção específica da jornada.
             </p>
           </Reveal>
         </div>
 
-        {/* Seções da LP, uma a uma */}
         <div className="mx-auto mt-24 flex max-w-5xl flex-col gap-24 md:mt-32 md:gap-32">
           {SECTIONS.map((s, i) => {
             const reversed = i % 2 === 1;
@@ -100,12 +90,10 @@ export function Ch06Construcao() {
                   reversed ? "md:flex-row-reverse" : ""
                 }`}
               >
-                {/* Wireframe */}
                 <Reveal className="flex w-full justify-center md:w-1/2">
                   <Sketch name={s.name} active={i} />
                 </Reveal>
 
-                {/* Explicação */}
                 <div className="flex w-full flex-col gap-4 md:w-1/2">
                   <Reveal>
                     <div className="flex items-center gap-3">
@@ -125,7 +113,7 @@ export function Ch06Construcao() {
                   <Reveal delay={0.2}>
                     <div className="rounded-xl bg-[#622FFD]/[0.05] p-5">
                       <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-[#622FFD]">
-                        Hipótese validada
+                        Hipótese de design
                       </p>
                       <p className="mt-2 font-sans text-sm italic leading-relaxed text-[#0A0A0A]/55 md:text-base">
                         &ldquo;{s.hypothesis}&rdquo;
@@ -137,6 +125,13 @@ export function Ch06Construcao() {
             );
           })}
         </div>
+
+        <Reveal delay={0.2} className="mx-auto mt-24 max-w-xl text-center md:mt-32">
+          <p className="font-sans text-base leading-relaxed text-[#0A0A0A]/50 md:text-lg">
+            Faltava uma última decisão, a que mais pesou no resultado final: o
+            que acontece depois que a confiança já foi construída.
+          </p>
+        </Reveal>
       </div>
     </section>
   );

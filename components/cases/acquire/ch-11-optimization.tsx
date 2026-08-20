@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ease, Eyebrow, BlurTitle, Reveal } from "./case-primitives";
+import { ease, Eyebrow, BlurTitle, Reveal } from "@/components/case-lp/case-primitives";
 
 const INSIGHTS = [
   {
@@ -20,15 +20,12 @@ const INSIGHTS = [
 
 const CYCLE = ["Observação", "Hipótese", "Implementação", "Mensuração", "Aprendizado"];
 
-/* Mini gráfico de linha animado (GA) */
 function LineChart() {
   return (
     <svg viewBox="0 0 320 140" className="w-full" aria-hidden="true">
-      {/* grid */}
       {[35, 70, 105].map((y) => (
         <line key={y} x1="0" y1={y} x2="320" y2={y} stroke="rgba(0,0,0,0.05)" strokeWidth="1" />
       ))}
-      {/* área */}
       <motion.path
         d="M0 120 C40 110, 70 95, 110 88 S 180 70, 220 52 S 290 30, 320 22 L320 140 L0 140 Z"
         fill="url(#gaGradient)"
@@ -37,7 +34,6 @@ function LineChart() {
         viewport={{ once: true }}
         transition={{ duration: 1, delay: 0.5 }}
       />
-      {/* linha */}
       <motion.path
         d="M0 120 C40 110, 70 95, 110 88 S 180 70, 220 52 S 290 30, 320 22"
         fill="none"
@@ -59,7 +55,6 @@ function LineChart() {
   );
 }
 
-/* Heatmap abstrato (Clarity) */
 function Heatmap() {
   const spots = [
     { x: "18%", y: "22%", s: 72, o: 0.5 },
@@ -69,7 +64,6 @@ function Heatmap() {
   ];
   return (
     <div className="relative h-[140px] w-full overflow-hidden rounded-lg bg-[#0A0A0A]/[0.03]" aria-hidden="true">
-      {/* linhas de wireframe */}
       <div className="absolute inset-x-6 top-5 h-2 rounded bg-black/[0.06]" />
       <div className="absolute inset-x-6 top-10 h-2 w-2/3 rounded bg-black/[0.05]" />
       <div className="absolute inset-x-6 top-[72px] h-2 rounded bg-black/[0.05]" />
@@ -95,26 +89,25 @@ function Heatmap() {
   );
 }
 
-export function Ch09Otimizacao() {
+export function Ch11Optimization() {
   return (
     <section className="bg-white py-32 md:py-48" aria-label="Otimização contínua">
       <div className="container">
-        {/* Cabeçalho */}
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 text-center">
-          <Eyebrow>09 · Otimização contínua</Eyebrow>
+          <Eyebrow>Otimização contínua</Eyebrow>
           <BlurTitle
             text="O lançamento foi apenas o começo."
             className="font-display text-4xl font-semibold leading-[1.06] tracking-tight text-[#0A0A0A] md:text-6xl"
           />
           <Reveal delay={0.2}>
             <p className="max-w-xl font-sans text-base leading-relaxed text-[#0A0A0A]/55 md:text-lg">
-              O projeto nunca ficou pronto. Evoluiu continuamente com base em
-              comportamento real dos usuários.
+              A conversa qualificava o lead; a página em si nunca ficou
+              pronta. Evoluiu continuamente com base em comportamento real
+              dos usuários.
             </p>
           </Reveal>
         </div>
 
-        {/* Painéis de dados */}
         <div className="mx-auto mt-20 grid max-w-4xl grid-cols-1 gap-6 md:mt-28 md:grid-cols-2">
           <Reveal>
             <div className="rounded-2xl border border-black/[0.07] bg-white p-6 shadow-[0_16px_48px_-20px_rgba(10,10,10,0.14)]">
@@ -146,7 +139,6 @@ export function Ch09Otimizacao() {
           </Reveal>
         </div>
 
-        {/* Insights */}
         <div className="mx-auto mt-16 grid max-w-4xl grid-cols-1 gap-4 md:grid-cols-3">
           {INSIGHTS.map((item, i) => (
             <Reveal key={item.tool} delay={i * 0.1}>
@@ -162,7 +154,6 @@ export function Ch09Otimizacao() {
           ))}
         </div>
 
-        {/* Ciclo de experimentação */}
         <Reveal className="mt-20 md:mt-24">
           <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-3">
             {CYCLE.map((step, i) => (

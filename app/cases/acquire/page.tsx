@@ -8,9 +8,11 @@ import { Ch04Problem } from "@/components/cases/acquire/ch-04-problem";
 import { Ch05Discovery } from "@/components/cases/acquire/ch-05-discovery";
 import { Ch06Insight } from "@/components/cases/acquire/ch-06-insight";
 import { Ch07Strategy } from "@/components/cases/acquire/ch-07-strategy";
-import { Ch08Solution } from "@/components/cases/acquire/ch-08-solution";
-import { Ch09Showcase } from "@/components/cases/acquire/ch-09-showcase";
-import { Ch10Results } from "@/components/cases/acquire/ch-10-results";
+import { Ch08Construction } from "@/components/cases/acquire/ch-08-construction";
+import { Ch09CtaWhatsapp } from "@/components/cases/acquire/ch-09-cta-whatsapp";
+import { Ch10Typebot } from "@/components/cases/acquire/ch-10-typebot";
+import { Ch11Optimization } from "@/components/cases/acquire/ch-11-optimization";
+import { Ch12Results } from "@/components/cases/acquire/ch-12-results";
 
 export default function CaseAcquirePage() {
   return (
@@ -23,9 +25,11 @@ export default function CaseAcquirePage() {
       <Ch05Discovery />
       <Ch06Insight />
       <Ch07Strategy />
-      <Ch08Solution />
-      <Ch09Showcase />
-      <Ch10Results />
+      <Ch08Construction />
+      <Ch09CtaWhatsapp />
+      <Ch10Typebot />
+      <Ch11Optimization />
+      <Ch12Results />
       <NextCase
         eyebrow="Próximo case"
         title="02 · Intelligence: projetando experiências de IA para equipes comerciais."

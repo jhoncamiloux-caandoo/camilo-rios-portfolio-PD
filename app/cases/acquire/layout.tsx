@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Case: Clint Acquire · CRO & Produto | Jhon Camilo Rios",
   description:
-    "Projetando a jornada de aquisição da Clint. Product Design e CRO transformando pontos de contato em conversão.",
+    "Como uma landing page com IA no WhatsApp e um fluxo Typebot concentrou 79% da demanda comercial da Clint. Product Design, CRO e conversação de ponta a ponta.",
   keywords: [
     "CRO",
     "Product Design",
@@ -12,10 +12,12 @@ export const metadata: Metadata = {
     "Clint",
     "Aquisição",
     "Conversão",
+    "WhatsApp",
+    "Typebot",
   ],
   openGraph: {
     title: "Case: Clint Acquire · Jhon Camilo Rios",
-    description: "CRO / Produto: arquitetura de conversão da Clint.",
+    description: "Da landing page ao Typebot: a jornada completa de aquisição da Clint.",
     locale: "pt_BR",
     type: "article",
   },

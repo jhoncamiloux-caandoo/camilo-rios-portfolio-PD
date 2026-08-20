@@ -19,6 +19,13 @@ export function Ch04Problem() {
               className="font-display text-3xl font-semibold leading-[1.14] tracking-tight text-[#0A0A0A] md:text-4xl"
             />
 
+            <Reveal delay={0.4}>
+              <p className="font-sans text-sm leading-relaxed text-[#0A0A0A]/50 md:text-base">
+                A leitura inicial do funil apontava quatro fricções,
+                confirmadas depois no discovery:
+              </p>
+            </Reveal>
+
             <div className="mt-2 flex flex-col gap-3">
               {FRICTIONS.map((friction, i) => (
                 <Reveal key={friction} delay={0.5 + i * 0.08}>
