@@ -2,6 +2,7 @@ import { Blog } from "@/components/sections/blog";
 import { Cases } from "@/components/sections/cases";
 import { Companies } from "@/components/sections/companies";
 import { Contact } from "@/components/sections/contact";
+import { ExpertiseStack } from "@/components/sections/expertise-stack";
 import { Hero } from "@/components/sections/hero";
 import { Impact } from "@/components/sections/impact";
 import { Journey } from "@/components/sections/journey";
@@ -19,6 +20,7 @@ export default function Home() {
       <Metrics />
       <Cases />
       <Process />
+      <ExpertiseStack />
       <Journey />
       <Stack />
       <Testimonials />
