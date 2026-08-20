@@ -181,8 +181,8 @@ export function Testimonials() {
           </div>
         </FadeIn>
 
-        {/* Card único — AnimatePresence garante 1 visível por vez */}
-        <div className="relative min-h-[300px] w-full overflow-hidden md:min-h-[260px]">
+        {/* Card único — grid stacking: a altura acompanha o conteúdo, nunca corta texto */}
+        <motion.div layout className="relative grid w-full">
           <AnimatePresence mode="wait" custom={dir}>
             <motion.figure
               key={t.id}
@@ -192,18 +192,44 @@ export function Testimonials() {
               animate="center"
               exit="exit"
               transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute inset-0 flex flex-col justify-between gap-8 rounded-2xl border border-white/[0.08] bg-white/[0.04] p-8 md:p-10"
+              className="relative col-start-1 row-start-1 flex flex-col justify-between gap-8 overflow-hidden rounded-2xl border border-transparent bg-white/[0.04] p-6 sm:p-8 md:p-10"
             >
+              {/* Borda em gradiente sutil */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 rounded-2xl"
+                style={{
+                  padding: 1,
+                  background:
+                    "linear-gradient(160deg, rgba(255,255,255,0.18), rgba(98,47,253,0.38) 45%, rgba(255,255,255,0.05))",
+                  WebkitMask:
+                    "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+                  WebkitMaskComposite: "xor",
+                  maskComposite: "exclude",
+                }}
+              />
+
+              {/* Aspas decorativas */}
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute -right-2 -top-4 select-none font-display text-[120px] leading-none text-white/[0.04] md:text-[150px]"
+              >
+                "
+              </span>
+
               {/* Ícone LinkedIn + quote */}
-              <div className="flex flex-col gap-6">
-                <LinkedInGlyph className="h-5 w-5 text-[#622FFD]" />
+              <div className="relative z-10 flex flex-col gap-6">
+                <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-[#622FFD]/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#622FFD]">
+                  <LinkedInGlyph className="h-3 w-3" />
+                  LinkedIn
+                </span>
                 <blockquote className="font-display text-xl font-medium leading-snug tracking-tight text-white md:text-2xl lg:text-[28px]">
                   "{t.quote}"
                 </blockquote>
               </div>
 
               {/* Pessoa */}
-              <figcaption className="flex items-center gap-4">
+              <figcaption className="relative z-10 flex items-center gap-4">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={t.photo}
@@ -222,40 +248,42 @@ export function Testimonials() {
               </figcaption>
             </motion.figure>
           </AnimatePresence>
-        </div>
+        </motion.div>
 
-        {/* Dots de navegação + setas mobile */}
-        <div className="flex items-center justify-between">
-          {/* Contador */}
-          <span className="font-mono text-xs tabular-nums text-white/30">
-            {String(index + 1).padStart(2, "0")} /{" "}
-            {String(testimonials.length).padStart(2, "0")}
-          </span>
+        {/* Navegação */}
+        <div className="flex flex-col gap-4">
+          <div className="flex items-center justify-between">
+            {/* Contador */}
+            <span className="font-mono text-xs tabular-nums text-white/30">
+              {String(index + 1).padStart(2, "0")} /{" "}
+              {String(testimonials.length).padStart(2, "0")}
+            </span>
 
-          {/* Dots */}
-          <div className="flex items-center gap-2" role="tablist" aria-label="Navegar entre recomendações">
-            {testimonials.map((item, i) => (
-              <button
-                key={item.id}
-                role="tab"
-                aria-selected={i === index}
-                aria-label={`Recomendação de ${item.name}`}
-                onClick={() => go(i)}
-                className="group h-5 w-5 rounded-full p-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#622FFD]"
-              >
-                <span
-                  className={`block h-full w-full rounded-full transition-all duration-300 ${
-                    i === index
-                      ? "scale-100 bg-[#622FFD]"
-                      : "scale-75 bg-white/20 group-hover:bg-white/40"
-                  }`}
-                />
-              </button>
-            ))}
+            {/* Dots */}
+            <div className="flex items-center gap-2" role="tablist" aria-label="Navegar entre recomendações">
+              {testimonials.map((item, i) => (
+                <button
+                  key={item.id}
+                  role="tab"
+                  aria-selected={i === index}
+                  aria-label={`Recomendação de ${item.name}`}
+                  onClick={() => go(i)}
+                  className="group flex h-5 w-5 items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#622FFD]"
+                >
+                  <span
+                    className={`block rounded-full transition-all duration-300 ${
+                      i === index
+                        ? "h-2 w-2 bg-[#622FFD]"
+                        : "h-1.5 w-1.5 bg-white/20 group-hover:bg-white/40"
+                    }`}
+                  />
+                </button>
+              ))}
+            </div>
           </div>
 
-          {/* Setas mobile */}
-          <div className="flex items-center gap-2 md:hidden">
+          {/* Setas mobile — linha própria para não disputar espaço com contador/dots */}
+          <div className="flex items-center justify-center gap-3 md:hidden">
             <button
               onClick={prev}
               aria-label="Anterior"
