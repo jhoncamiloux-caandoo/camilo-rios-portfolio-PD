@@ -75,7 +75,7 @@ const testimonials: Testimonial[] = [
     company: "TotalPass",
     photo: "/testimonials/luisa.jpg",
     quote:
-      "Tive a oportunidade de trabalhar com o Camilo no mesmo time, onde eu atuava como desenvolvedora e ele como designer. Sempre se mostrou comprometido, criativo e muito colaborativo. Entregava materiais de qualidade com rapidez e cuidado, além de ser organizado e atento aos prazos. Um colega de equipe parceiro e confiável, que contribuiu bastante para o bom andamento dos projetos além de trazer leveza para o dia a dia no trabalho.",
+      "Trabalhamos no mesmo time, eu como desenvolvedora e ele como designer. Sempre comprometido, criativo e colaborativo, entregava materiais de qualidade com rapidez e cuidado. Um parceiro confiável que trazia leveza para o dia a dia.",
   },
 ];
 
