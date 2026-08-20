@@ -62,8 +62,8 @@ const testimonials: Testimonial[] = [
   },
   {
     id: "isaque",
-    name: "Isaque",
-    role: "Colega de equipe",
+    name: "Isaque Fontinele",
+    role: "Android Specialist",
     photo: "/testimonials/isaque.jpg",
     quote:
       "O Camilo é um profissional incrível. Faz produções audiovisuais fantásticas e pode desenhar interfaces para sistemas de fácil usabilidade pro usuário. Muito agradável de se trabalhar, traz leveza pro ambiente.",
