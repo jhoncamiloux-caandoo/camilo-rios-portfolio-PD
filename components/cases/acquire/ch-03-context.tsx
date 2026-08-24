@@ -5,6 +5,7 @@ const FACTS = [
   { label: "Área", value: "CRM / Vendas / Growth" },
   { label: "Papel", value: "Product Designer" },
   { label: "Foco", value: "Produto · UX · CRO · Growth" },
+  { label: "Time", value: "2 product designers", span: true },
 ];
 
 export function Ch03Context() {
@@ -32,7 +33,7 @@ export function Ch03Context() {
           <div className="md:col-span-5 md:col-start-8">
             <div className="grid grid-cols-2 gap-4">
               {FACTS.map((fact, i) => (
-                <Reveal key={fact.label} delay={0.1 * i}>
+                <Reveal key={fact.label} delay={0.1 * i} className={fact.span ? "col-span-2" : undefined}>
                   <div className="rounded-xl border border-black/[0.06] bg-[#F8F8F8] p-5">
                     <p className="font-sans text-xs font-semibold uppercase tracking-[0.15em] text-[#0A0A0A]/40">
                       {fact.label}

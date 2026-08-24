@@ -40,6 +40,12 @@ export function Ch01Hero() {
               ))}
             </div>
           </Reveal>
+
+          <Reveal delay={0.6}>
+            <p className="font-sans text-xs text-[#0A0A0A]/35">
+              Time: 2 product designers.
+            </p>
+          </Reveal>
         </div>
 
         {/* Vitrine: o design system real, vivo */}

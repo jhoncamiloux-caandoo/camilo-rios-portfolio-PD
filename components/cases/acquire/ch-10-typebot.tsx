@@ -4,24 +4,23 @@ import { motion } from "framer-motion";
 import { ease, Eyebrow, BlurTitle, Reveal } from "@/components/case-lp/case-primitives";
 
 const CHAT = [
-  { from: "bot", text: "Olá! Que bom ter você aqui. Para direcionar ao especialista certo, qual é o segmento do seu negócio?" },
+  { from: "bot", text: "Olá! Que bom ter você aqui. Para direcionar ao vendedor certo, qual é o segmento do seu negócio?" },
   { from: "user", text: "Tenho uma clínica odontológica." },
   { from: "bot", text: "Perfeito! E qual o faturamento mensal aproximado da clínica?" },
   { from: "user", text: "Entre R$ 50 mil e R$ 100 mil." },
   { from: "bot", text: "Ótimo. Você busca uma solução para agora ou está pesquisando para o futuro?" },
   { from: "user", text: "Preciso resolver isso o quanto antes." },
-  { from: "bot", text: "Entendido! Vou te conectar com o especialista ideal. Escolha o melhor horário na agenda abaixo." },
+  { from: "bot", text: "Entendido! Vou te conectar com o vendedor ideal. Escolha o melhor horário na agenda abaixo." },
 ];
 
 const QUALIFIERS = [
-  { label: "Segmento", value: "Saúde · Odontologia" },
+  { label: "Perfil", value: "Saúde · Odontologia" },
   { label: "Faturamento", value: "R$ 50k a R$ 100k / mês" },
-  { label: "Urgência", value: "Alta" },
-  { label: "Maturidade", value: "Operação estruturada" },
-  { label: "Especialista", value: "Closer definido automaticamente" },
+  { label: "Necessidade", value: "Resolver o quanto antes" },
+  { label: "Vendedor", value: "Definido automaticamente pelo perfil" },
 ];
 
-const PIPELINE = ["Typebot", "Calendly", "Closer Especialista", "CRM"];
+const PIPELINE = ["Typebot (SDR de IA)", "Calendly", "Vendedor certo", "CRM"];
 
 export function Ch10Typebot() {
   return (
@@ -36,8 +35,9 @@ export function Ch10Typebot() {
           <Reveal delay={0.2}>
             <p className="max-w-xl font-sans text-base leading-relaxed text-[#0A0A0A]/55 md:text-lg">
               O clique não encerrava a jornada. Ele iniciava uma nova etapa: um
-              fluxo conversacional criado com Typebot para qualificar leads sem
-              a sensação de preencher um formulário.
+              agente de IA no Typebot conversava com o lead como um SDR,
+              qualificava por perfil, faturamento e necessidade, e enviava
+              a conversa direto para o vendedor certo dentro do CRM.
             </p>
           </Reveal>
         </div>
@@ -79,7 +79,7 @@ export function Ch10Typebot() {
                   >
                     <div>
                       <p className="font-sans text-sm font-semibold text-[#0A0A0A]">Agendar reunião</p>
-                      <p className="font-sans text-xs text-[#0A0A0A]/45">Calendly · horários do especialista</p>
+                      <p className="font-sans text-xs text-[#0A0A0A]/45">Calendly · horários do vendedor</p>
                     </div>
                     <span className="rounded-full bg-[#622FFD] px-4 py-2 font-sans text-xs font-semibold text-white">
                       Ver agenda
@@ -140,6 +140,21 @@ export function Ch10Typebot() {
             </Reveal>
           </div>
         </div>
+
+        <Reveal delay={0.2} className="mx-auto mt-16 max-w-4xl md:mt-24">
+          <div className="overflow-hidden rounded-2xl border border-black/[0.08] bg-[#0A0A0A] p-2 shadow-[0_24px_64px_-24px_rgba(10,10,10,0.25)]">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/cases/clint/acquire/typebot-fluxo-real.webp"
+              alt="Editor visual do Typebot com o fluxo real de qualificação e roteamento por vendedor"
+              className="block w-full rounded-xl"
+            />
+          </div>
+          <p className="mt-4 text-center font-sans text-[11px] text-[#0A0A0A]/35">
+            O fluxo real construído no editor visual do Typebot: cada bloco é
+            uma decisão de qualificação ou roteamento para o vendedor certo.
+          </p>
+        </Reveal>
       </div>
     </section>
   );

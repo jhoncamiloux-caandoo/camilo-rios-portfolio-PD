@@ -42,6 +42,13 @@ export function Ch01Hero() {
               ))}
             </div>
           </Reveal>
+
+          <Reveal delay={0.6}>
+            <p className="font-sans text-xs text-[#0A0A0A]/35">
+              Time: 2 product designers, definindo o comportamento dos
+              agentes em parceria com o time de engenharia.
+            </p>
+          </Reveal>
         </div>
 
         <div className="md:col-span-6 md:col-start-7">

@@ -105,6 +105,9 @@ export function Contact() {
               <h2 className="font-display text-[48px] font-semibold leading-[1.05] tracking-tight md:text-[56px]">
                 Vamos desenhar o próximo salto do produto.
               </h2>
+              <p className="mt-4 font-sans text-sm text-white/40">
+                Disponível para modelo híbrido ou remoto · Florianópolis, SC
+              </p>
             </div>
             <div className="flex items-end md:col-span-4 md:justify-end">
               <button

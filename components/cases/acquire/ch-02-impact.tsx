@@ -55,7 +55,10 @@ export function Ch02Impact() {
 
         <Reveal delay={0.3} className="mx-auto mt-10 max-w-md text-center">
           <p className="font-sans text-xs text-white/30">
-            Medido via Google Analytics e Meta Ads durante o período da campanha.
+            Medido via Google Analytics e Meta Ads em um mês de uma campanha
+            específica de IA no WhatsApp. Números acompanhados semanalmente
+            pelo gestor de tráfego e revisados mensalmente em reunião real com
+            tráfego pago, dados e os designers.
           </p>
         </Reveal>
 

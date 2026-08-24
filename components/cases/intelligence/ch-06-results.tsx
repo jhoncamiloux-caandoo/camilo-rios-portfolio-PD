@@ -190,6 +190,14 @@ export function Ch06Results() {
               Resultado na prática
             </p>
           </Reveal>
+          <Reveal delay={0.1}>
+            <p className="mt-4 font-sans text-sm leading-relaxed text-white/45 md:text-base">
+              Os agentes ajudaram a operação a chegar nesses números. O
+              comportamento de cada um foi desenhado pelos designers,
+              programado pelo time de engenharia, e configurado caso a caso a
+              partir dos dados que cada cliente trazia na implantação.
+            </p>
+          </Reveal>
         </div>
 
         <div className="mt-8">
