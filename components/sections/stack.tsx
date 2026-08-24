@@ -21,6 +21,7 @@ import {
   GitBranch,
   MousePointer2,
   Search,
+  Heart,
   type LucideIcon,
 } from "lucide-react";
 
@@ -32,6 +33,7 @@ const toolsRow1: Tool[] = [
   { name: "Webflow", icon: Boxes },
   { name: "Claude", icon: Sparkles },
   { name: "ChatGPT", icon: Bot },
+  { name: "Lovable", icon: Heart },
   { name: "Codex", icon: Terminal },
   { name: "Cursor", icon: MousePointer2 },
   { name: "Vercel", icon: Triangle },

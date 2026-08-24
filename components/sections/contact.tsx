@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { Calendar, ArrowUpRight } from "lucide-react";
+import { Calendar, ArrowUpRight, Download } from "lucide-react";
 import { FadeIn } from "@/components/motion/fade-in";
 import LiquidEther from "@/components/backgrounds/liquid-ether";
 import {
@@ -109,7 +109,7 @@ export function Contact() {
                 Disponível para modelo híbrido ou remoto · Florianópolis, SC
               </p>
             </div>
-            <div className="flex items-end md:col-span-4 md:justify-end">
+            <div className="flex flex-col items-end gap-3 md:col-span-4">
               <button
                 type="button"
                 onClick={() => setOpen(true)}
@@ -118,6 +118,14 @@ export function Contact() {
                 <Calendar className="h-4 w-4" aria-hidden="true" />
                 Iniciar conversa
               </button>
+              <a
+                href="/Camilo-Rios-Product-Designer-2025.docx"
+                download
+                className="inline-flex h-11 items-center gap-2 rounded-full border border-white/15 px-6 text-sm font-medium text-white/70 transition-all duration-200 hover:border-white/30 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A]"
+              >
+                <Download className="h-4 w-4" aria-hidden="true" />
+                Baixar currículo
+              </a>
             </div>
           </FadeIn>
         </div>
