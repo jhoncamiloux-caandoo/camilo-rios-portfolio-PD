@@ -47,7 +47,7 @@ export function Ch01Hero() {
         <div className="md:col-span-6 md:col-start-7">
           <Reveal delay={0.2}>
             <BrowserMockup
-              src="/cases/clint/intelligence/ia-hero-print.png"
+              src="/cases/clint/intelligence/ia-hero-print.webp"
               alt="Plataforma Clint com o copiloto de IA"
               url="useclint.com/plataforma"
             />

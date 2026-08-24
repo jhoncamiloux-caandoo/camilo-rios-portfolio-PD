@@ -47,7 +47,7 @@ export function Hero() {
                 </FadeIn>
                 <FadeIn immediate delay={0.12}>
                   <p className="text-sm text-[#6b6b70] md:text-body">
-                    9 anos conectando produto, dados e comportamento humano.
+                    10 anos conectando produto, dados e comportamento humano.
                   </p>
                 </FadeIn>
               </div>

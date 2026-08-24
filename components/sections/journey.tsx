@@ -58,7 +58,7 @@ export function Journey() {
             Trajetória
           </span>
           <h2 className="max-w-2xl font-display text-[40px] font-semibold leading-[1.08] tracking-tight md:text-5xl">
-            Oito anos transformando produtos em crescimento.
+            Dez anos transformando produtos em crescimento.
           </h2>
         </div>
 

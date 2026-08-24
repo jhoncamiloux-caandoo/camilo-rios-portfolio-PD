@@ -2,22 +2,22 @@ import { Eyebrow, BlurTitle, Reveal, BrowserMockup } from "@/components/case-lp/
 
 const SCREENS = [
   {
-    src: "/cases/clint/intelligence/agentes-inbox-atendimento.png",
+    src: "/cases/clint/intelligence/agentes-inbox-atendimento.webp",
     alt: "Atendimento do agente na Clint",
     caption: "Atendimento",
   },
   {
-    src: "/cases/clint/intelligence/agentes-inbox-conversa.png",
+    src: "/cases/clint/intelligence/agentes-inbox-conversa.webp",
     alt: "Conversas do agente em tempo real",
     caption: "Conversa em tempo real",
   },
   {
-    src: "/cases/clint/intelligence/agentes-negociacoes.png",
+    src: "/cases/clint/intelligence/agentes-negociacoes.webp",
     alt: "Negociações conduzidas pelo agente",
     caption: "Negociações",
   },
   {
-    src: "/cases/clint/intelligence/ia-analise-print.png",
+    src: "/cases/clint/intelligence/ia-analise-print.webp",
     alt: "Análise comercial na Clint",
     caption: "Análise comercial",
   },
@@ -39,7 +39,7 @@ export function Ch05Showcase() {
         <div className="mx-auto mt-16 max-w-3xl md:mt-20">
           <Reveal>
             <BrowserMockup
-              src="/cases/clint/intelligence/ia-chat-copiloto.png"
+              src="/cases/clint/intelligence/ia-chat-copiloto.webp"
               alt="Dashboard criado pela Clint IA"
               url="useclint.com/plataforma"
             />
