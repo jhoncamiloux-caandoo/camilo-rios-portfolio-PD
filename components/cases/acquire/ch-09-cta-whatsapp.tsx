@@ -2,17 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ease, Eyebrow, BlurTitle, Reveal } from "@/components/case-lp/case-primitives";
-
-const JOURNEY = [
-  { label: "Hero", cta: false },
-  { label: "CTA WhatsApp", cta: true },
-  { label: "Benefícios", cta: false },
-  { label: "CTA WhatsApp", cta: true },
-  { label: "Prova Social", cta: false },
-  { label: "CTA WhatsApp", cta: true },
-  { label: "Autoridade", cta: false },
-  { label: "CTA Final", cta: true },
-];
+import { useLocale } from "@/lib/i18n/locale-context";
 
 function WhatsGlyph({ className = "h-3.5 w-3.5" }: { className?: string }) {
   return (
@@ -24,29 +14,27 @@ function WhatsGlyph({ className = "h-3.5 w-3.5" }: { className?: string }) {
 }
 
 export function Ch09CtaWhatsapp() {
+  const { t } = useLocale();
+  const c = t.acquire.ch09;
   return (
-    <section className="bg-white py-32 md:py-48" aria-label="A decisão do CTA">
+    <section className="bg-white py-32 md:py-48" aria-label={c.sectionAriaLabel}>
       <div className="container">
         <div className="grid grid-cols-1 gap-16 md:grid-cols-12 md:gap-gutter">
           <div className="flex flex-col gap-8 md:col-span-6 lg:col-span-5">
-            <Eyebrow>Decisão do CTA</Eyebrow>
+            <Eyebrow>{c.eyebrow}</Eyebrow>
             <BlurTitle
-              text="Reduzindo atrito para aumentar conversões."
+              text={c.title}
               className="font-display text-4xl font-semibold leading-[1.06] tracking-tight text-[#0A0A0A] md:text-5xl lg:text-6xl"
             />
             <Reveal delay={0.15}>
               <p className="font-sans text-base leading-relaxed text-[#0A0A0A]/55 md:text-lg">
-                A decisão que mais pesou foi substituir formulários
-                tradicionais por conversas imediatas no WhatsApp. Os botões
-                foram distribuídos estrategicamente ao longo da página,
-                aparecendo sempre após momentos de maior confiança.
+                {c.paragraph}
               </p>
             </Reveal>
             <Reveal delay={0.25}>
               <blockquote className="border-l-2 border-[#25D366] pl-5">
                 <p className="font-display text-xl font-medium leading-snug tracking-tight text-[#0A0A0A] md:text-2xl">
-                  O usuário nunca precisa procurar um canal de contato. O
-                  próximo passo está sempre disponível.
+                  {c.quote}
                 </p>
               </blockquote>
             </Reveal>
@@ -54,7 +42,7 @@ export function Ch09CtaWhatsapp() {
 
           <div className="md:col-span-5 md:col-start-8">
             <div className="sticky top-24 flex flex-col items-center">
-              {JOURNEY.map((node, i) => (
+              {c.journey.map((node, i) => (
                 <div key={i} className="flex w-full flex-col items-center">
                   {i > 0 && (
                     <motion.div
@@ -90,8 +78,7 @@ export function Ch09CtaWhatsapp() {
               ))}
               <Reveal delay={0.7}>
                 <p className="mt-6 max-w-xs text-center font-sans text-sm text-[#0A0A0A]/40">
-                  Cada botão aparece exatamente após um momento de redução de
-                  objeções.
+                  {c.journeyCaption}
                 </p>
               </Reveal>
             </div>
@@ -100,8 +87,7 @@ export function Ch09CtaWhatsapp() {
 
         <Reveal delay={0.2} className="mx-auto mt-24 max-w-xl text-center md:mt-32">
           <p className="font-sans text-base leading-relaxed text-[#0A0A0A]/50 md:text-lg">
-            O clique no WhatsApp era só o início. O que acontecia na conversa
-            em seguida decidia se o lead avançava ou parava por ali.
+            {c.closing}
           </p>
         </Reveal>
       </div>

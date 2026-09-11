@@ -10,17 +10,11 @@ import {
   Zap,
   type LucideIcon,
 } from "lucide-react";
+import { useLocale } from "@/lib/i18n/locale-context";
 
 type Expertise = { name: string; icon: LucideIcon };
 
-const expertise: Expertise[] = [
-  { name: "Produto", icon: Box },
-  { name: "Pesquisa", icon: Search },
-  { name: "Design Systems", icon: Layers },
-  { name: "Prototipagem", icon: FlaskConical },
-  { name: "Automação com IA", icon: Zap },
-  { name: "UX Writing", icon: PenTool },
-];
+const expertiseIcons: LucideIcon[] = [Box, Search, Layers, FlaskConical, Zap, PenTool];
 
 function ExpertiseCard({ name, icon: Icon }: Expertise) {
   return (
@@ -42,7 +36,13 @@ function ExpertiseCard({ name, icon: Icon }: Expertise) {
  * lado a lado; o `pr-4` final iguala o respiro do gap interno, de modo que
  * deslocar exatamente 50% (= largura de um conjunto) emende sem salto visual.
  */
-function MarqueeRow({ duplicate = false }: { duplicate?: boolean }) {
+function MarqueeRow({
+  expertise,
+  duplicate = false,
+}: {
+  expertise: Expertise[];
+  duplicate?: boolean;
+}) {
   return (
     <ul
       aria-hidden={duplicate || undefined}
@@ -58,6 +58,11 @@ function MarqueeRow({ duplicate = false }: { duplicate?: boolean }) {
 }
 
 export function Companies() {
+  const { t } = useLocale();
+  const expertise: Expertise[] = t.home.companies.items.map((item, i) => ({
+    ...item,
+    icon: expertiseIcons[i],
+  }));
   const reduce = useReducedMotion();
 
   return (
@@ -65,10 +70,10 @@ export function Companies() {
       <div className="container flex flex-col gap-10 md:flex-row md:items-center md:gap-16">
         <div className="shrink-0">
           <span className="mb-2 block font-display text-xs font-semibold uppercase tracking-[0.22em] text-white/40">
-            Atuação
+            {t.home.companies.eyebrow}
           </span>
           <h2 className="font-display text-2xl font-semibold tracking-tight text-light md:text-3xl">
-            Disciplinas do dia a dia.
+            {t.home.companies.title}
           </h2>
         </div>
 
@@ -88,8 +93,8 @@ export function Companies() {
               animate={{ x: ["0%", "-50%"] }}
               transition={{ ease: "linear", duration: 24, repeat: Infinity }}
             >
-              <MarqueeRow />
-              <MarqueeRow duplicate />
+              <MarqueeRow expertise={expertise} />
+              <MarqueeRow expertise={expertise} duplicate />
             </motion.div>
           </div>
         )}

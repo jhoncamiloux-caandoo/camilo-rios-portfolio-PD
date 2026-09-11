@@ -1,3 +1,5 @@
+"use client";
+
 import { CaseHeader } from "@/components/case-lp/case-header";
 import { NextCase } from "@/components/case-lp/next-case";
 import { CaseFooter } from "@/components/case-lp/case-footer";
@@ -11,8 +13,12 @@ import { Ch07Governance } from "@/components/cases/scale/ch-07-governance";
 import { Ch08GrowthSystem } from "@/components/cases/scale/ch-08-growth-system";
 import { Ch09FigmaStorybook } from "@/components/cases/scale/ch-09-figma-storybook";
 import { Ch10Results } from "@/components/cases/scale/ch-10-results";
+import { useLocale } from "@/lib/i18n/locale-context";
 
 export default function CaseScalePage() {
+  const { t } = useLocale();
+  const nextCase = t.scale.nextCase;
+
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-white text-[#0A0A0A]">
       <CaseHeader label="Clint · Scale" />
@@ -27,9 +33,9 @@ export default function CaseScalePage() {
       <Ch09FigmaStorybook />
       <Ch10Results />
       <NextCase
-        eyebrow="Ver outro case"
-        title="01 · Acquire: projetando a jornada de aquisição da Clint."
-        description="CRO e Product Design transformando pontos de contato em conversão."
+        eyebrow={nextCase.eyebrow}
+        title={nextCase.title}
+        description={nextCase.description}
         href="/cases/acquire"
       />
       <CaseFooter />

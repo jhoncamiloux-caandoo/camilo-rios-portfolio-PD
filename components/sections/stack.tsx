@@ -24,6 +24,7 @@ import {
   Heart,
   type LucideIcon,
 } from "lucide-react";
+import { useLocale } from "@/lib/i18n/locale-context";
 
 type Tool = { name: string; icon: LucideIcon };
 
@@ -86,16 +87,17 @@ function Row({ items, duplicate = false }: { items: Tool[]; duplicate?: boolean 
 }
 
 export function Stack() {
+  const { t } = useLocale();
   const reduce = useReducedMotion();
 
   return (
     <section data-nav-theme="dark" className="overflow-hidden border-y border-white/10 bg-[#0A0A0A] py-24 text-white">
       <div className="container mb-12 flex flex-col gap-3">
         <span className="font-sans text-xs font-semibold uppercase tracking-[0.22em] text-white/40">
-          Stack & Ferramentas
+          {t.home.stack.eyebrow}
         </span>
         <h2 className="max-w-2xl font-display text-3xl font-semibold leading-tight tracking-tight md:text-4xl">
-          Do discovery ao handoff, com IA acelerando cada etapa.
+          {t.home.stack.title}
         </h2>
       </div>
 

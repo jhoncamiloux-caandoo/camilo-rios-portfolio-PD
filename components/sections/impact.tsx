@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { motion } from "framer-motion";
+import { useLocale } from "@/lib/i18n/locale-context";
 
 // --- SHADER: fundo claro #F8F8F8, linhas escuras 35% opacidade, distorção por mouse ---
 function CyberneticGridShader() {
@@ -123,28 +124,11 @@ function CyberneticGridShader() {
   );
 }
 
-// --- DADOS ---
-const pillars = [
-  {
-    title: "Growth",
-    desc: "Arquitetura orientada por dados de conversão. Construção de loops de engajamento baseados em testes A/B estruturados e leitura analítica do funil para escalar canais de tração.",
-  },
-  {
-    title: "AI",
-    desc: "Agentes de IA integrados a fluxos de atendimento e vendas, qualificando leads e automatizando tarefas repetitivas sem perder o contexto da conversa.",
-  },
-  {
-    title: "CRO",
-    desc: "Eliminação sistemática de atritos em checkouts e funis de aquisição. Redesenho de jornadas guiado por testes e dados reais de comportamento, não por opinião.",
-  },
-  {
-    title: "SaaS",
-    desc: "Desenvolvimento de Design Systems e ecossistemas consistentes de alta fidelidade. Estruturas pensadas para sustentar escalabilidade técnica e uso diário intenso.",
-  },
-];
-
 // --- SEÇÃO ---
 export function Impact() {
+  const { t } = useLocale();
+  const pillars = t.home.impact.pillars;
+
   return (
     <section
       id="impacto"
@@ -158,19 +142,16 @@ export function Impact() {
         <div className="grid grid-cols-1 items-start gap-gutter md:grid-cols-12">
           <div className="flex flex-col gap-3 md:col-span-7">
             <span className="block font-sans text-xs font-semibold uppercase tracking-[0.22em] text-neutral-400">
-              Impacto &amp; Negócios
+              {t.home.impact.eyebrow}
             </span>
             <h2 className="font-display text-[48px] font-semibold leading-[1.05] tracking-tight text-[#0A0A0A] md:text-[56px]">
-              Design como motor de crescimento.
+              {t.home.impact.title}
             </h2>
           </div>
 
           <div className="pt-0 md:col-span-5 md:pt-8">
             <p className="font-sans text-lg leading-relaxed text-neutral-600">
-              O trabalho combina estratégia de produto de ponta, sistemas
-              visuais robustos e execução técnica detalhada para transformar
-              problemas ambiciosos em jornadas de produto extremamente limpas,
-              mensuráveis e escaláveis.
+              {t.home.impact.description}
             </p>
           </div>
         </div>

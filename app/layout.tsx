@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import Script from "next/script";
 import { FloatingActions } from "@/components/floating-actions";
+import { LocaleProvider, NO_FLASH_LOCALE_SCRIPT } from "@/lib/i18n/locale-context";
 import "./globals.css";
 
 const dmSans = localFont({
@@ -102,6 +104,7 @@ export default function RootLayout({
     <html
       lang="pt-BR"
       className={`${dmSans.variable} ${degular.variable} dark`}
+      suppressHydrationWarning
     >
       <head>
         <script
@@ -109,10 +112,15 @@ export default function RootLayout({
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
+        <Script id="no-flash-locale" strategy="beforeInteractive">
+          {NO_FLASH_LOCALE_SCRIPT}
+        </Script>
       </head>
       <body className="bg-dark text-light font-sans antialiased selection:bg-primary selection:text-white">
-        {children}
-        <FloatingActions />
+        <LocaleProvider>
+          {children}
+          <FloatingActions />
+        </LocaleProvider>
       </body>
     </html>
   );

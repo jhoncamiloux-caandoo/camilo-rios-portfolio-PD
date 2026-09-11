@@ -15,6 +15,7 @@ import {
   Layers,
   type LucideIcon,
 } from "lucide-react";
+import { useLocale } from "@/lib/i18n/locale-context";
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
@@ -26,35 +27,11 @@ type Step = {
   visual: React.FC;
 };
 
-const steps: Step[] = [
-  {
-    num: "01",
-    title: "Diagnóstico de negócio e comportamento",
-    body: "O diagnóstico não começa com telas; começa com dados e funis. Análise das métricas de aquisição e retenção para identificar os gargalos reais de conversão, cruzando dados quantitativos e qualitativos do comportamento do usuário.",
-    icon: BarChart2,
-    visual: VisualDiagnostic,
-  },
-  {
-    num: "02",
-    title: "Arquitetura de experiência e narrativa",
-    body: "A jornada do usuário é estruturada para reduzir o custo de aquisição (CAC) e maximizar o LTV. Frameworks de CRO e IA mapeiam os fluxos de decisão, garantindo que a proposta de valor elimine qualquer atrito cognitivo.",
-    icon: GitBranch,
-    visual: VisualArchitecture,
-  },
-  {
-    num: "03",
-    title: "Prototipagem, teste e refinamento",
-    body: "Hipóteses se transformam em protótipos de alta fidelidade. Cada interação é validada iterativamente com testes A/B e feedback real, garantindo que o design seja uma alavanca comprovada de conversão antes do desenvolvimento.",
-    icon: FlaskConical,
-    visual: VisualPrototype,
-  },
-  {
-    num: "04",
-    title: "Sistema visual pronto para escala",
-    body: "Design Systems robustos e documentados, pensados para escala SaaS. O foco é garantir consistência visual global e um handoff impecável para a equipe de engenharia.",
-    icon: Layers,
-    visual: VisualSystem,
-  },
+const stepsBase = [
+  { num: "01", icon: BarChart2, visual: VisualDiagnostic },
+  { num: "02", icon: GitBranch, visual: VisualArchitecture },
+  { num: "03", icon: FlaskConical, visual: VisualPrototype },
+  { num: "04", icon: Layers, visual: VisualSystem },
 ];
 
 // ─── VISUAL PLACEHOLDERS ─────────────────────────────────────────────────────
@@ -297,9 +274,11 @@ function VisualSystem() {
 
 function StepVisual({
   step,
+  stepLabel,
   isActive,
 }: {
   step: Step;
+  stepLabel: string;
   isActive: boolean;
 }) {
   const Visual = step.visual;
@@ -323,7 +302,7 @@ function StepVisual({
             <Icon className="h-4 w-4" aria-hidden="true" />
           </span>
           <span className="font-display text-sm font-semibold text-white/60">
-            Passo {step.num}
+            {stepLabel} {step.num}
           </span>
         </div>
         {/* Visual content */}
@@ -415,6 +394,12 @@ function StepRow({
 // ─── SECTION ─────────────────────────────────────────────────────────────────
 
 export function Process() {
+  const { t } = useLocale();
+  const steps: Step[] = stepsBase.map((base, i) => ({
+    ...base,
+    title: t.home.process.steps[i].title,
+    body: t.home.process.steps[i].body,
+  }));
   const [activeStep, setActiveStep] = useState(0);
 
   // Overall scroll progress for the section (drives the timeline line)
@@ -435,10 +420,10 @@ export function Process() {
         {/* Section header */}
         <div className="mb-20 flex flex-col gap-3">
           <span className="font-sans text-xs font-semibold uppercase tracking-[0.22em] text-white/40">
-            Método
+            {t.home.process.eyebrow}
           </span>
           <h2 className="font-display text-[48px] font-semibold leading-[1.05] tracking-tight md:text-[56px]">
-            Clareza antes de superfície.
+            {t.home.process.title}
           </h2>
         </div>
 
@@ -452,6 +437,7 @@ export function Process() {
                   <StepVisual
                     key={step.num}
                     step={step}
+                    stepLabel={t.home.process.stepLabel}
                     isActive={activeStep === i}
                   />
                 ))}

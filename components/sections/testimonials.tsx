@@ -4,76 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { FadeIn } from "@/components/motion/fade-in";
-
-type Testimonial = {
-  id: string;
-  name: string;
-  role: string;
-  company?: string;
-  photo: string;
-  quote: string;
-};
-
-const testimonials: Testimonial[] = [
-  {
-    id: "juan",
-    name: "Juan José H. Ramirez",
-    role: "Senior Experience Designer",
-    company: "Thoughtworks",
-    photo: "/testimonials/juan.jpg",
-    quote:
-      "Profissional dedicado e criativo que demonstrou estar sempre atualizado em tendências e metodologias de design, contribuindo nos projetos com pensamento crítico.",
-  },
-  {
-    id: "camila",
-    name: "Camila Meneghetti",
-    role: "Senior Product Manager",
-    photo: "/testimonials/camila.jpg",
-    quote:
-      "Sempre interessado em compreender as motivações do usuário e como elas se conectam aos objetivos de negócio. Transita muito bem entre produto, design e tecnologia.",
-  },
-  {
-    id: "marcos",
-    name: "Marcos Gabriel Moreira",
-    role: "Product Designer",
-    photo: "/testimonials/marcos.jpg",
-    quote:
-      "Combina rigor técnico com um olhar clínico para criar peças de alto impacto, integrando IA ao workflow sem abrir mão da excelência estética. Eleva o nível de qualquer equipe.",
-  },
-  {
-    id: "felippe",
-    name: "Felippe Yann Machado",
-    role: "RevOps & AI Integration",
-    photo: "/testimonials/felippe.jpg",
-    quote:
-      "O designer mais versátil com quem já trabalhei. Usa ferramentas diversas para chegar a um produto final conciso, comunicativo e refinado.",
-  },
-  {
-    id: "maria",
-    name: "Maria Augusta Larré Lemos",
-    role: "Analista de Inteligência de Mercado",
-    photo: "/testimonials/maria.jpg",
-    quote:
-      "Eu delegava as demandas de UX/UI do briefing ao handoff, e ele sempre entregou com autonomia, técnica e senso de dono.",
-  },
-  {
-    id: "isaque",
-    name: "Isaque Fontinele",
-    role: "Android Specialist",
-    photo: "/testimonials/isaque.jpg",
-    quote:
-      "O Camilo é um profissional incrível. Faz produções audiovisuais fantásticas e pode desenhar interfaces para sistemas de fácil usabilidade pro usuário. Muito agradável de se trabalhar, traz leveza pro ambiente.",
-  },
-  {
-    id: "luisa",
-    name: "Luisa Oliveira",
-    role: "Software Engineer",
-    company: "TotalPass",
-    photo: "/testimonials/luisa.jpg",
-    quote:
-      "Trabalhamos no mesmo time, eu como desenvolvedora e ele como designer. Sempre comprometido, criativo e colaborativo, entregava materiais de qualidade com rapidez e cuidado. Um parceiro confiável que trazia leveza para o dia a dia.",
-  },
-];
+import { useLocale } from "@/lib/i18n/locale-context";
 
 const INTERVAL_MS = 5000;
 
@@ -101,6 +32,8 @@ function LinkedInGlyph({ className }: { className?: string }) {
 }
 
 export function Testimonials() {
+  const { t } = useLocale();
+  const testimonials = t.home.testimonials.items;
   const [index, setIndex] = useState(0);
   const [dir, setDir] = useState(1);
   const [paused, setPaused] = useState(false);
@@ -127,7 +60,7 @@ export function Testimonials() {
     return () => clearInterval(id);
   }, [paused]);
 
-  const t = testimonials[index];
+  const current = testimonials[index];
 
   return (
     <section
@@ -151,10 +84,10 @@ export function Testimonials() {
             <div className="max-w-xl">
               <p className="mb-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-white/35">
                 <LinkedInGlyph className="h-3 w-3 text-[#622FFD]" />
-                Recomendações · LinkedIn
+                {t.home.testimonials.eyebrow}
               </p>
               <h2 className="font-display text-[36px] font-semibold leading-[1.08] tracking-tight md:text-[52px]">
-                Quem já construiu<br className="hidden md:block" /> comigo.
+                {t.home.testimonials.titleLine1}<br className="hidden md:block" /> {t.home.testimonials.titleLine2}
               </h2>
             </div>
 
@@ -162,14 +95,14 @@ export function Testimonials() {
             <div className="hidden items-center gap-2 self-end md:flex">
               <button
                 onClick={prev}
-                aria-label="Anterior"
+                aria-label={t.home.testimonials.prevAria}
                 className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-white/50 transition hover:border-white/25 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#622FFD]"
               >
                 <ChevronLeft className="h-5 w-5" />
               </button>
               <button
                 onClick={next}
-                aria-label="Próxima"
+                aria-label={t.home.testimonials.nextAria}
                 className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-white/50 transition hover:border-white/25 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#622FFD]"
               >
                 <ChevronRight className="h-5 w-5" />
@@ -182,7 +115,7 @@ export function Testimonials() {
         <motion.div layout className="relative grid w-full">
           <AnimatePresence mode="wait" custom={dir}>
             <motion.figure
-              key={t.id}
+              key={current.id}
               custom={dir}
               variants={variants}
               initial="enter"
@@ -221,7 +154,7 @@ export function Testimonials() {
                   LinkedIn
                 </span>
                 <blockquote className="font-display text-xl font-medium leading-snug tracking-tight text-white md:text-2xl lg:text-[28px]">
-                  "{t.quote}"
+                  "{current.quote}"
                 </blockquote>
               </div>
 
@@ -229,17 +162,17 @@ export function Testimonials() {
               <figcaption className="relative z-10 flex items-center gap-4">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={t.photo}
+                  src={current.photo}
                   alt=""
                   className="h-12 w-12 shrink-0 rounded-full object-cover ring-1 ring-[#622FFD]/30"
                 />
                 <div className="min-w-0">
                   <span className="block font-sans text-base font-semibold text-white">
-                    {t.name}
+                    {current.name}
                   </span>
                   <span className="block text-sm text-white/45">
-                    {t.role}
-                    {t.company ? ` · ${t.company}` : ""}
+                    {current.role}
+                    {current.company ? ` · ${current.company}` : ""}
                   </span>
                 </div>
               </figcaption>
@@ -257,13 +190,13 @@ export function Testimonials() {
             </span>
 
             {/* Dots */}
-            <div className="flex items-center gap-2" role="tablist" aria-label="Navegar entre recomendações">
+            <div className="flex items-center gap-2" role="tablist" aria-label={t.home.testimonials.navAriaLabel}>
               {testimonials.map((item, i) => (
                 <button
                   key={item.id}
                   role="tab"
                   aria-selected={i === index}
-                  aria-label={`Recomendação de ${item.name}`}
+                  aria-label={`${t.home.testimonials.dotAriaPrefix} ${item.name}`}
                   onClick={() => go(i)}
                   className="group flex h-5 w-5 items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#622FFD]"
                 >
@@ -283,14 +216,14 @@ export function Testimonials() {
           <div className="flex items-center justify-center gap-3 md:hidden">
             <button
               onClick={prev}
-              aria-label="Anterior"
+              aria-label={t.home.testimonials.prevAria}
               className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/50 transition active:bg-white/5"
             >
               <ChevronLeft className="h-4 w-4" />
             </button>
             <button
               onClick={next}
-              aria-label="Próxima"
+              aria-label={t.home.testimonials.nextAria}
               className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/50 transition active:bg-white/5"
             >
               <ChevronRight className="h-4 w-4" />

@@ -1,28 +1,31 @@
+"use client";
+
 import { Eyebrow, BlurTitle, Reveal, FlowDiagram } from "@/components/case-lp/case-primitives";
+import { useLocale } from "@/lib/i18n/locale-context";
 
 export function Ch09FigmaStorybook() {
+  const { t } = useLocale();
+  const c = t.scale.ch09;
+
   return (
-    <section className="bg-[#F8F8F8] py-28 md:py-40" aria-label="Ponte entre design e desenvolvimento">
+    <section className="bg-[#F8F8F8] py-28 md:py-40" aria-label={c.ariaLabel}>
       <div className="container">
         <div className="mx-auto flex max-w-2xl flex-col items-center gap-6 text-center">
-          <Eyebrow>Figma → Storybook</Eyebrow>
+          <Eyebrow>{c.eyebrow}</Eyebrow>
           <BlurTitle
-            text="A ponte entre design e desenvolvimento."
+            text={c.title}
             className="font-display text-3xl font-semibold leading-[1.1] tracking-tight text-[#0A0A0A] md:text-5xl"
           />
           <Reveal delay={0.2}>
             <p className="max-w-xl font-sans text-base leading-relaxed text-[#0A0A0A]/55 md:text-lg">
-              Tokens e variantes nascem no Figma e se tornam a referência que
-              o time de desenvolvimento consulta para implementar cada
-              componente. O objetivo é colaboração, não uma integração
-              automatizada entre as ferramentas.
+              {c.description}
             </p>
           </Reveal>
         </div>
 
         <div className="mt-16 overflow-x-auto md:mt-20">
           <Reveal className="flex min-w-max justify-center px-4 md:min-w-0">
-            <FlowDiagram nodes={["Figma", "Tokens", "Componente", "Storybook", "Produto"]} />
+            <FlowDiagram nodes={c.nodes} />
           </Reveal>
         </div>
       </div>

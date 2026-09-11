@@ -1,11 +1,17 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { useLocale } from "@/lib/i18n/locale-context";
 
 export function CaseHeader({
-  label = "Case 01 · IA para Vendas",
+  label,
 }: {
   label?: string;
 }) {
+  const { t } = useLocale();
+  const c = t.home.common;
+
   return (
     <header className="fixed inset-x-0 top-0 z-30 border-b border-black/[0.06] bg-white/80 backdrop-blur-xl">
       <div className="container flex h-14 items-center justify-between md:h-16">
@@ -19,14 +25,14 @@ export function CaseHeader({
             className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-0.5"
             aria-hidden="true"
           />
-          <span>Portfólio</span>
+          <span>{c.backToPortfolio}</span>
         </Link>
 
         {/* Logo central */}
         <Link
           href="/"
           className="flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#622FFD] focus-visible:ring-offset-2"
-          aria-label="Ir ao portfólio de Jhon Camilo Rios"
+          aria-label={c.backToPortfolioAria}
         >
           <img
             src="/logo.svg"

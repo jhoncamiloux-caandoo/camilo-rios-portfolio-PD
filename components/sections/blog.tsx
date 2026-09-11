@@ -9,10 +9,12 @@ import {
   mediumArticles,
   mediumCoverUrl,
 } from "@/lib/medium-articles";
+import { useLocale } from "@/lib/i18n/locale-context";
 
 const DRAG_THRESHOLD = 6;
 
 export function Blog() {
+  const { t } = useLocale();
   const trackRef = useRef<HTMLDivElement>(null);
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(false);
@@ -82,14 +84,13 @@ export function Blog() {
         <FadeIn className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div className="flex flex-col gap-4">
             <p className="font-sans text-xs font-semibold uppercase tracking-[0.22em] text-primary">
-              Blog
+              {t.home.blog.eyebrow}
             </p>
             <h2 className="max-w-xl font-display text-[32px] font-semibold leading-[1.08] tracking-tight text-[#0A0A0A] md:text-[44px]">
-              Textos sobre Product Design, IA e Growth.
+              {t.home.blog.title}
             </h2>
             <p className="max-w-md font-sans text-base leading-relaxed text-[#0A0A0A]/55 md:text-lg">
-              {mediumArticles.length} artigos publicados no Medium. Arraste ou
-              use as setas para navegar.
+              {mediumArticles.length} {t.home.blog.descriptionSuffix}
             </p>
           </div>
           <a
@@ -98,7 +99,7 @@ export function Blog() {
             rel="noopener noreferrer"
             className="group inline-flex h-11 shrink-0 items-center gap-2 rounded-full border border-black/[0.1] px-6 text-sm font-semibold text-[#0A0A0A] transition-colors duration-250 hover:border-primary hover:text-primary"
           >
-            Ver todos no Medium
+            {t.home.blog.viewAllLabel}
             <ArrowUpRight
               className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
               aria-hidden="true"
@@ -146,7 +147,7 @@ export function Blog() {
                     {article.title}
                   </p>
                   <span className="inline-flex items-center gap-1.5 font-sans text-xs font-semibold text-white/50 transition-colors duration-300 group-hover:text-primary">
-                    Ler artigo
+                    {t.home.blog.readArticleLabel}
                     <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </span>
                 </div>
@@ -159,7 +160,7 @@ export function Blog() {
             <button
               onClick={() => scrollByCard(-1)}
               disabled={atStart}
-              aria-label="Artigos anteriores"
+              aria-label={t.home.blog.prevAria}
               className="flex h-10 w-10 items-center justify-center rounded-full border border-black/[0.1] text-[#0A0A0A]/60 transition disabled:opacity-30 enabled:hover:border-primary enabled:hover:text-primary"
             >
               <ChevronLeft className="h-4 w-4" />
@@ -167,7 +168,7 @@ export function Blog() {
             <button
               onClick={() => scrollByCard(1)}
               disabled={atEnd}
-              aria-label="Próximos artigos"
+              aria-label={t.home.blog.nextAria}
               className="flex h-10 w-10 items-center justify-center rounded-full border border-black/[0.1] text-[#0A0A0A]/60 transition disabled:opacity-30 enabled:hover:border-primary enabled:hover:text-primary"
             >
               <ChevronRight className="h-4 w-4" />

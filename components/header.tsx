@@ -1,16 +1,18 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-
-const navLinks = [
-  { label: "Impacto", href: "#impacto" },
-  { label: "Cases", href: "#cases" },
-  { label: "Contato", href: "#contato" },
-];
+import { LanguageSwitcher } from "@/components/language-switcher";
+import { useLocale } from "@/lib/i18n/locale-context";
 
 type Theme = "light" | "dark";
 
 export function Header() {
+  const { t } = useLocale();
+  const navLinks = [
+    { label: t.home.header.navLinks.impact, href: "#impacto" },
+    { label: t.home.header.navLinks.cases, href: "#cases" },
+    { label: t.home.header.navLinks.contact, href: "#contato" },
+  ];
   const headerRef = useRef<HTMLElement>(null);
   const [theme, setTheme] = useState<Theme>("light");
 
@@ -63,7 +65,7 @@ export function Header() {
           className={`flex items-center gap-2.5 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${
             dark ? "focus-visible:ring-offset-[#0A0A0A]" : "focus-visible:ring-offset-light"
           }`}
-          aria-label="Voltar ao início do portfólio de Jhon Camilo Rios"
+          aria-label={t.home.header.logoAria}
         >
           <img
             src="/logo.svg"
@@ -82,7 +84,7 @@ export function Header() {
 
         {/* Desktop nav */}
         <nav
-          aria-label="Navegação principal"
+          aria-label={t.home.header.navAriaDesktop}
           className={`hidden items-center gap-8 text-sm transition-colors duration-300 md:flex ${
             dark ? "text-white/60" : "text-dark/60"
           }`}
@@ -98,11 +100,12 @@ export function Header() {
               {link.label}
             </a>
           ))}
+          <LanguageSwitcher dark={dark} />
         </nav>
 
         {/* Mobile nav — icon-free pill links */}
         <nav
-          aria-label="Navegação mobile"
+          aria-label={t.home.header.navAriaMobile}
           className="flex items-center gap-3 md:hidden"
         >
           {navLinks.map((link) => (
@@ -118,6 +121,7 @@ export function Header() {
               {link.label}
             </a>
           ))}
+          <LanguageSwitcher dark={dark} />
         </nav>
       </div>
     </header>
