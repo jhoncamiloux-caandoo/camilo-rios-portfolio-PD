@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Calendar, FileText } from "lucide-react";
 import { CALENDAR_URL, RESUME_URL } from "@/lib/links";
+import { useLocale } from "@/lib/i18n/locale-context";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -14,32 +15,33 @@ type Action = {
   variant: "primary" | "secondary";
 };
 
-const actions: Action[] = [
-  {
-    href: CALENDAR_URL,
-    label: "Agendar reunião",
-    icon: Calendar,
-    variant: "primary",
-  },
-  {
-    href: RESUME_URL,
-    label: "Currículo",
-    icon: FileText,
-    variant: "secondary",
-  },
-];
-
 /* Botões fixos no canto inferior direito — visíveis em toda a navegação.
    Desktop: pill com ícone + rótulo. Mobile: círculo só com ícone,
    rótulo aparece como tooltip ao toque/hover para não cobrir conteúdo. */
 export function FloatingActions() {
+  const { t } = useLocale();
   const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
+
+  const actions: Action[] = [
+    {
+      href: CALENDAR_URL,
+      label: t.home.floatingActions.scheduleLabel,
+      icon: Calendar,
+      variant: "primary",
+    },
+    {
+      href: RESUME_URL,
+      label: t.home.floatingActions.resumeLabel,
+      icon: FileText,
+      variant: "secondary",
+    },
+  ];
 
   return (
     <div
       className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3"
       role="group"
-      aria-label="Ações rápidas"
+      aria-label={t.home.floatingActions.groupAria}
     >
       {actions.map((action, i) => {
         const Icon = action.icon;

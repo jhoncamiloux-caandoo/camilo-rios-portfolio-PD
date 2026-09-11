@@ -2,23 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ease, Eyebrow, BlurTitle, Reveal } from "@/components/case-lp/case-primitives";
-
-const INSIGHTS = [
-  {
-    tool: "Microsoft Clarity",
-    finding: "Sessões gravadas e heatmaps revelaram padrões de comportamento e pontos de hesitação.",
-  },
-  {
-    tool: "Google Analytics",
-    finding: "Funis de aquisição mostraram os gargalos reais da jornada, dobra a dobra.",
-  },
-  {
-    tool: "Iterações guiadas por dados",
-    finding: "Ajustes de copy, reposicionamento de elementos e mudanças de hierarquia visual, sempre a partir de uma hipótese.",
-  },
-];
-
-const CYCLE = ["Observação", "Hipótese", "Implementação", "Mensuração", "Aprendizado"];
+import { useLocale } from "@/lib/i18n/locale-context";
 
 function LineChart() {
   return (
@@ -90,20 +74,20 @@ function Heatmap() {
 }
 
 export function Ch11Optimization() {
+  const { t } = useLocale();
+  const c = t.acquire.ch11;
   return (
-    <section className="bg-white py-32 md:py-48" aria-label="Otimização contínua">
+    <section className="bg-white py-32 md:py-48" aria-label={c.sectionAriaLabel}>
       <div className="container">
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 text-center">
-          <Eyebrow>Otimização contínua</Eyebrow>
+          <Eyebrow>{c.eyebrow}</Eyebrow>
           <BlurTitle
-            text="O lançamento foi apenas o começo."
+            text={c.title}
             className="font-display text-4xl font-semibold leading-[1.06] tracking-tight text-[#0A0A0A] md:text-6xl"
           />
           <Reveal delay={0.2}>
             <p className="max-w-xl font-sans text-base leading-relaxed text-[#0A0A0A]/55 md:text-lg">
-              A conversa qualificava o lead; a página em si nunca ficou
-              pronta. Evoluiu continuamente com base em comportamento real
-              dos usuários.
+              {c.paragraph}
             </p>
           </Reveal>
         </div>
@@ -112,35 +96,35 @@ export function Ch11Optimization() {
           <Reveal>
             <div className="rounded-2xl border border-black/[0.07] bg-white p-6 shadow-[0_16px_48px_-20px_rgba(10,10,10,0.14)]">
               <div className="mb-5 flex items-center justify-between">
-                <p className="font-sans text-sm font-semibold text-[#0A0A0A]">Google Analytics</p>
+                <p className="font-sans text-sm font-semibold text-[#0A0A0A]">{c.gaCardTitle}</p>
                 <span className="rounded-full bg-[#622FFD]/10 px-3 py-1 font-sans text-[11px] font-semibold text-[#622FFD]">
-                  Conversão
+                  {c.gaCardTag}
                 </span>
               </div>
               <LineChart />
               <p className="mt-4 font-sans text-xs text-[#0A0A0A]/40">
-                Evolução da taxa de conversão ao longo das iterações
+                {c.gaCardCaption}
               </p>
             </div>
           </Reveal>
           <Reveal delay={0.15}>
             <div className="rounded-2xl border border-black/[0.07] bg-white p-6 shadow-[0_16px_48px_-20px_rgba(10,10,10,0.14)]">
               <div className="mb-5 flex items-center justify-between">
-                <p className="font-sans text-sm font-semibold text-[#0A0A0A]">Microsoft Clarity</p>
+                <p className="font-sans text-sm font-semibold text-[#0A0A0A]">{c.clarityCardTitle}</p>
                 <span className="rounded-full bg-[#F94706]/10 px-3 py-1 font-sans text-[11px] font-semibold text-[#F94706]">
-                  Heatmap
+                  {c.clarityCardTag}
                 </span>
               </div>
               <Heatmap />
               <p className="mt-4 font-sans text-xs text-[#0A0A0A]/40">
-                Zonas de atenção e cliques mapeadas em sessões reais
+                {c.clarityCardCaption}
               </p>
             </div>
           </Reveal>
         </div>
 
         <div className="mx-auto mt-16 grid max-w-4xl grid-cols-1 gap-4 md:grid-cols-3">
-          {INSIGHTS.map((item, i) => (
+          {c.insights.map((item, i) => (
             <Reveal key={item.tool} delay={i * 0.1}>
               <div className="h-full rounded-2xl border border-black/[0.06] bg-[#F8F8F8] p-6">
                 <p className="font-display text-base font-semibold tracking-tight text-[#0A0A0A]">
@@ -156,7 +140,7 @@ export function Ch11Optimization() {
 
         <Reveal className="mt-20 md:mt-24">
           <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-3">
-            {CYCLE.map((step, i) => (
+            {c.cycle.map((step, i) => (
               <div key={step} className="flex items-center gap-3">
                 {i > 0 && (
                   <svg viewBox="0 0 24 24" className="h-4 w-4 text-[#622FFD]" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
@@ -172,11 +156,11 @@ export function Ch11Optimization() {
               <path d="M5 12h14M13 6l6 6-6 6" />
             </svg>
             <span className="rounded-full bg-[#622FFD] px-5 py-2.5 font-sans text-sm font-semibold text-white shadow-[0_8px_28px_-8px_rgba(98,47,253,0.6)]">
-              Nova Hipótese
+              {c.newHypothesisLabel}
             </span>
           </div>
           <p className="mt-8 text-center font-display text-xl font-medium tracking-tight text-[#0A0A0A] md:text-2xl">
-            Nenhuma melhoria foi baseada em opinião. Todas foram guiadas por dados.
+            {c.closing}
           </p>
         </Reveal>
       </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useLocale } from "@/lib/i18n/locale-context";
 
 type Role = {
   company: string;
@@ -10,55 +11,24 @@ type Role = {
   current?: boolean;
 };
 
-const roles: Role[] = [
-  {
-    company: "Clint · CRM & Plataforma de Vendas",
-    role: "UX/UI Designer · Product & Growth",
-    period: "2024 - Atual",
-    highlight:
-      "Criação de +15 produtos digitais e diagnósticos com IA para geração de demanda e qualificação de leads.",
-    current: true,
-  },
-  {
-    company: "e-Saúde Marketing",
-    role: "UI Designer",
-    period: "2023 - 2024",
-    highlight:
-      "Interfaces responsivas para sites e e-mail marketing, com +15% na taxa de conversão de leads.",
-  },
-  {
-    company: "Binamik Tecnologia",
-    role: "UX/UI Designer",
-    period: "2023",
-    highlight:
-      "Gestão de Design Systems e UX Research, com +20% na taxa de abertura de campanhas.",
-  },
-  {
-    company: "Bonitour Viagens e Turismo",
-    role: "Web Designer",
-    period: "2017 - 2023",
-    highlight:
-      "Rebranding completo e automação de marketing, com +40% no reconhecimento de marca.",
-  },
-  {
-    company: "Telemark Spain",
-    role: "Web Designer Gráfico",
-    period: "2015 - 2016",
-    highlight:
-      "Sites para LATAM e Espanha com design culturalmente adaptado e colaboração internacional.",
-  },
-];
+const rolesCurrent = [true, false, false, false, false];
 
 export function Journey() {
+  const { t } = useLocale();
+  const roles: Role[] = t.home.journey.roles.map((r, i) => ({
+    ...r,
+    current: rolesCurrent[i],
+  }));
+
   return (
     <section id="trajetoria" data-nav-theme="light" className="bg-[#F8F8F8] py-28 text-dark">
       <div className="container">
         <div className="mb-16 flex flex-col gap-3 md:mb-20">
           <span className="font-sans text-xs font-semibold uppercase tracking-[0.22em] text-dark/40">
-            Trajetória
+            {t.home.journey.eyebrow}
           </span>
           <h2 className="max-w-2xl font-display text-[40px] font-semibold leading-[1.08] tracking-tight md:text-5xl">
-            Dez anos transformando produtos em crescimento.
+            {t.home.journey.title}
           </h2>
         </div>
 

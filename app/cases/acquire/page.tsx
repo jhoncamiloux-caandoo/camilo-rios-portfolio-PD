@@ -1,3 +1,6 @@
+"use client";
+
+import { useLocale } from "@/lib/i18n/locale-context";
 import { CaseHeader } from "@/components/case-lp/case-header";
 import { NextCase } from "@/components/case-lp/next-case";
 import { CaseFooter } from "@/components/case-lp/case-footer";
@@ -15,6 +18,7 @@ import { Ch11Optimization } from "@/components/cases/acquire/ch-11-optimization"
 import { Ch12Results } from "@/components/cases/acquire/ch-12-results";
 
 export default function CaseAcquirePage() {
+  const { t } = useLocale();
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-white text-[#0A0A0A]">
       <CaseHeader label="Clint · Acquire" />
@@ -31,9 +35,9 @@ export default function CaseAcquirePage() {
       <Ch11Optimization />
       <Ch12Results />
       <NextCase
-        eyebrow="Próximo case"
-        title="02 · Intelligence: projetando experiências de IA para equipes comerciais."
-        description="Como transformar modelos, automações e recomendações em interações compreensíveis e controláveis."
+        eyebrow={t.acquire.nextCase.eyebrow}
+        title={t.acquire.nextCase.title}
+        description={t.acquire.nextCase.description}
         href="/cases/intelligence"
       />
       <CaseFooter />

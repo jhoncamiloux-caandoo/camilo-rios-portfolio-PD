@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
+import { useLocale } from "@/lib/i18n/locale-context";
+import { LOCALE_HTML_LANG } from "@/lib/i18n/types";
 
 /* Ease padrão do case: cubic-bezier(0.22,1,0.36,1) */
 export const ease = [0.22, 1, 0.36, 1] as const;
@@ -164,11 +166,12 @@ export function BigNumber({
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const count = useCountUp(value, { duration, decimals, enabled: inView });
+  const { locale } = useLocale();
 
   return (
     <span ref={ref} className={className} style={{ fontVariantNumeric: "tabular-nums" }}>
       {prefix}
-      {count.toLocaleString("pt-BR", {
+      {count.toLocaleString(LOCALE_HTML_LANG[locale], {
         minimumFractionDigits: decimals,
         maximumFractionDigits: decimals,
       })}

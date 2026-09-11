@@ -11,6 +11,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import type { LucideIcon } from "lucide-react";
+import { useLocale } from "@/lib/i18n/locale-context";
 
 type Result = {
   metric: string;
@@ -19,34 +20,14 @@ type Result = {
   icon: LucideIcon;
 };
 
-const results: Result[] = [
-  {
-    metric: "+140%",
-    title: "Geração de leads",
-    desc: "Estruturação, testes A/B e escala contínua através de 58 landing pages de alta performance, projetadas e validadas iterativamente para otimizar canais de aquisição pagos e orgânicos.",
-    icon: BarChart3,
-  },
-  {
-    metric: "+20%",
-    title: "Aumento em vendas",
-    desc: "Aplicação estrita de frameworks de CRO, mapeamento de gargalos comportamentais e otimização ponta a ponta de fluxos críticos de checkout e conversão digital.",
-    icon: TrendingUp,
-  },
-  {
-    metric: "15+",
-    title: "Automações de IA",
-    desc: "Sistemas inteligentes e agentes personalizados integrados ao fluxo de trabalho para aceleração de pesquisa, qualificação rápida de leads e automação de engajamento em tempo real.",
-    icon: Zap,
-  },
-  {
-    metric: "Q1 Hit",
-    title: "Meta em 20 de Jan",
-    desc: "Validação ágil de hipóteses de growth e engenharia de produto focada em conversão que antecipou os resultados e bateu as metas do trimestre inteiro logo nos primeiros 20 dias do ano.",
-    icon: ShieldCheck,
-  },
-];
+const resultIcons: LucideIcon[] = [BarChart3, TrendingUp, Zap, ShieldCheck];
 
 export function ResultsList() {
+  const { t } = useLocale();
+  const results: Result[] = t.home.resultsList.items.map((item, i) => ({
+    ...item,
+    icon: resultIcons[i],
+  }));
   const [selected, setSelected] = useState<Result | null>(null);
 
   return (
@@ -69,7 +50,7 @@ export function ResultsList() {
                 type="button"
                 onClick={() => setSelected(item)}
                 className="group flex w-full items-center gap-3 rounded-xl border border-[#45506f]/12 bg-white/50 px-4 py-3 text-left backdrop-blur-sm transition-all duration-300 hover:border-primary/30 hover:bg-white/80 hover:shadow-[0_8px_24px_-8px_rgba(98,47,253,0.18)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
-                aria-label={`Ver detalhes: ${item.title}`}
+                aria-label={`${t.home.resultsList.detailsAriaPrefix}: ${item.title}`}
               >
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#45506f]/20 bg-[#393950]/08 text-[#45506f] transition-colors duration-300 group-hover:border-primary/30 group-hover:text-primary">
                   <Icon className="h-4 w-4" aria-hidden="true" />

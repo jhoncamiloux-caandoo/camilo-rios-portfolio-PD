@@ -1,12 +1,16 @@
-import { Eyebrow, BlurTitle, Reveal, BrowserMockup } from "@/components/case-lp/case-primitives";
+"use client";
 
-const TAGS = ["AI UX", "Product Design", "Automation", "Growth"];
+import { Eyebrow, BlurTitle, Reveal, BrowserMockup } from "@/components/case-lp/case-primitives";
+import { useLocale } from "@/lib/i18n/locale-context";
 
 export function Ch01Hero() {
+  const { t } = useLocale();
+  const c = t.intelligence.ch01;
+
   return (
     <section
       className="relative bg-white pb-24 pt-40 md:pb-32 md:pt-48"
-      aria-label="Apresentação do case Intelligence"
+      aria-label={c.ariaLabel}
     >
       <div
         aria-hidden="true"
@@ -15,24 +19,22 @@ export function Ch01Hero() {
 
       <div className="container relative grid grid-cols-1 items-center gap-14 md:grid-cols-12 md:gap-gutter">
         <div className="flex flex-col gap-7 md:col-span-6 lg:col-span-5">
-          <Eyebrow>02 · Intelligence</Eyebrow>
+          <Eyebrow>{c.eyebrow}</Eyebrow>
 
           <BlurTitle
-            text="Uma inteligência. Sua operação inteira."
+            text={c.title}
             className="font-display text-[34px] font-semibold leading-[1.1] tracking-tight text-[#0A0A0A] sm:text-[42px] md:text-[52px]"
           />
 
           <Reveal delay={0.4}>
             <p className="max-w-md font-sans text-base leading-relaxed text-[#0A0A0A]/55 md:text-lg">
-              Como transformar modelos, automações e recomendações em
-              experiências compreensíveis, acionáveis e controláveis pelo
-              usuário.
+              {c.description}
             </p>
           </Reveal>
 
           <Reveal delay={0.5}>
             <div className="flex flex-wrap gap-2">
-              {TAGS.map((tag) => (
+              {c.tags.map((tag) => (
                 <span
                   key={tag}
                   className="rounded-full border border-black/[0.08] px-3.5 py-1.5 font-sans text-xs font-medium text-[#0A0A0A]/60"
@@ -45,8 +47,7 @@ export function Ch01Hero() {
 
           <Reveal delay={0.6}>
             <p className="font-sans text-xs text-[#0A0A0A]/35">
-              Time: 2 product designers, definindo o comportamento dos
-              agentes em parceria com o time de engenharia.
+              {c.teamNote}
             </p>
           </Reveal>
         </div>
@@ -55,7 +56,7 @@ export function Ch01Hero() {
           <Reveal delay={0.2}>
             <BrowserMockup
               src="/cases/clint/intelligence/ia-hero-print.webp"
-              alt="Plataforma Clint com o copiloto de IA"
+              alt={c.heroImageAlt}
               url="useclint.com/plataforma"
             />
           </Reveal>

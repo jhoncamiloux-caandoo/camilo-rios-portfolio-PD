@@ -1,13 +1,19 @@
+"use client";
+
 import { Eyebrow, BlurTitle, Reveal, FlowDiagram } from "@/components/case-lp/case-primitives";
+import { useLocale } from "@/lib/i18n/locale-context";
 
 export function Ch02Problem() {
+  const { t } = useLocale();
+  const c = t.scale.ch02;
+
   return (
-    <section className="bg-[#F8F8F8] py-28 md:py-40" aria-label="O problema da escala sem sistema">
+    <section className="bg-[#F8F8F8] py-28 md:py-40" aria-label={c.ariaLabel}>
       <div className="container">
         <div className="mx-auto flex max-w-2xl flex-col items-center gap-6 text-center">
-          <Eyebrow>Problema</Eyebrow>
+          <Eyebrow>{c.eyebrow}</Eyebrow>
           <BlurTitle
-            text="Crescimento aumenta o número de experiências. Sem sistema, também aumenta o retrabalho."
+            text={c.title}
             className="font-display text-3xl font-semibold leading-[1.15] tracking-tight text-[#0A0A0A] md:text-5xl"
           />
         </div>
@@ -16,11 +22,11 @@ export function Ch02Problem() {
           <div className="flex flex-col items-center gap-6">
             <Reveal>
               <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-[#0A0A0A]/35">
-                Antes
+                {c.beforeLabel}
               </p>
             </Reveal>
             <Reveal delay={0.1} className="grid w-full max-w-xs grid-cols-3 gap-2">
-              {["Botão A", "Botão B", "Botão C", "Card A", "Card B", "Card C"].map((item) => (
+              {c.beforeItems.map((item) => (
                 <span
                   key={item}
                   className="rounded-lg border border-black/[0.08] bg-white px-2 py-3 text-center font-sans text-xs font-medium text-[#0A0A0A]/50"
@@ -34,14 +40,14 @@ export function Ch02Problem() {
           <div className="flex flex-col items-center gap-6">
             <Reveal>
               <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-[#622FFD]">
-                Sistema
+                {c.systemLabel}
               </p>
             </Reveal>
             <Reveal delay={0.1}>
               <FlowDiagram
                 direction="vertical"
                 activeIndex={4}
-                nodes={["Token", "Componente", "Padrão", "Tela", "Experimento"]}
+                nodes={c.systemNodes}
               />
             </Reveal>
           </div>

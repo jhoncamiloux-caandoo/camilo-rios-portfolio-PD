@@ -1,7 +1,10 @@
+"use client";
+
 import { Header } from "@/components/header";
 import { FadeIn } from "@/components/motion/fade-in";
 import { HeroCanvas } from "@/components/sections/hero-canvas";
 import { ResultsList } from "@/components/sections/results-list";
+import { useLocale } from "@/lib/i18n/locale-context";
 
 function Caret() {
   return (
@@ -21,6 +24,8 @@ function Caret() {
 }
 
 export function Hero() {
+  const { t } = useLocale();
+
   return (
     <>
       <Header />
@@ -34,7 +39,7 @@ export function Hero() {
 
               <FadeIn immediate>
                 <p className="font-display text-xs uppercase tracking-[0.2em] text-[#3a3a3d] md:text-sm">
-                  Senior Product Designer
+                  {t.home.hero.eyebrow}
                 </p>
               </FadeIn>
 
@@ -42,12 +47,12 @@ export function Hero() {
                 <FadeIn immediate delay={0.06}>
                   {/* Mobile: 30px — compacto, não vaza sobre o rosto */}
                   <h1 className="font-display text-[30px] font-semibold leading-[1.08] tracking-[-0.01em] text-[#262628] sm:text-[36px] md:text-[56px]">
-                    Produtos digitais construídos para gerar crescimento.
+                    {t.home.hero.title}
                   </h1>
                 </FadeIn>
                 <FadeIn immediate delay={0.12}>
                   <p className="text-sm text-[#6b6b70] md:text-body">
-                    10 anos conectando produto, dados e comportamento humano.
+                    {t.home.hero.subtitle}
                   </p>
                 </FadeIn>
               </div>
@@ -59,7 +64,7 @@ export function Hero() {
                     href="#cases"
                     className="inline-flex h-[42px] items-center gap-1 rounded-full border border-white/50 bg-[#9f77d6]/30 px-5 text-sm font-semibold text-[#1f073f] backdrop-blur-md transition hover:bg-[#9f77d6]/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary md:h-[52px] md:px-6 md:text-base"
                   >
-                    Ver Cases
+                    {t.home.hero.ctaCases}
                     <Caret />
                   </a>
                   <a
@@ -67,8 +72,8 @@ export function Hero() {
                     className="inline-flex h-[42px] items-center gap-1 rounded-full border border-black/10 bg-white/40 px-5 text-sm font-semibold text-[#1c1c1c] backdrop-blur-md transition hover:bg-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary md:h-[52px] md:px-6 md:text-base"
                   >
                     {/* Texto curto no mobile */}
-                    <span className="md:hidden">Trajetória</span>
-                    <span className="hidden md:inline">Conhecer Minha Trajetória</span>
+                    <span className="md:hidden">{t.home.hero.ctaJourneyShort}</span>
+                    <span className="hidden md:inline">{t.home.hero.ctaJourneyFull}</span>
                     <Caret />
                   </a>
                 </div>

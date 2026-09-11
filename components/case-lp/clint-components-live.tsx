@@ -8,6 +8,7 @@
    pixel na paleta e na tipografia (Poppins). */
 
 import { useEffect, useState } from "react";
+import { useLocale } from "@/lib/i18n/locale-context";
 
 const POPPINS = "'Poppins', sans-serif";
 
@@ -122,14 +123,9 @@ export function ClintChipAgente({
 }
 
 /* ── BarraPrompt — variante padrão, com digitação real ───────────── */
-const FRASES = [
-  "O que você deseja criar?",
-  "Crie um agente para atender leads",
-  "Crie um funil de vendas",
-  "Quero recuperar oportunidades perdidas",
-];
-
-export function ClintBarraPrompt({ frases = FRASES }: { frases?: string[] }) {
+export function ClintBarraPrompt({ frases }: { frases?: string[] }) {
+  const { t } = useLocale();
+  const phrases = frases ?? t.sharedCase.clintPrompt.phrases;
   const [texto, setTexto] = useState("");
 
   useEffect(() => {
@@ -139,7 +135,7 @@ export function ClintBarraPrompt({ frases = FRASES }: { frases?: string[] }) {
     let timeout: number;
 
     const tick = () => {
-      const alvo = frases[fraseIndex % frases.length];
+      const alvo = phrases[fraseIndex % phrases.length];
       let espera = 88;
       if (!apagando) {
         ci++;
@@ -154,7 +150,7 @@ export function ClintBarraPrompt({ frases = FRASES }: { frases?: string[] }) {
           ci = 0;
           apagando = false;
           espera = 620;
-          fraseIndex = (fraseIndex + 1) % FRASES.length;
+          fraseIndex = (fraseIndex + 1) % phrases.length;
         }
       }
       setTexto(alvo.slice(0, Math.max(0, ci)));
@@ -162,7 +158,7 @@ export function ClintBarraPrompt({ frases = FRASES }: { frases?: string[] }) {
     };
     timeout = window.setTimeout(tick, 900);
     return () => clearTimeout(timeout);
-  }, []);
+  }, [phrases]);
 
   return (
     <div
@@ -242,6 +238,8 @@ export function ClintBalaoChat({ texto, hora }: { texto: string; hora: string })
 
 /* ── AI Signature — "Você pensa, a Clint faz" ────────────────────── */
 export function ClintAiSignature() {
+  const { t } = useLocale();
+  const { lead, bold } = t.sharedCase.clintAiSignature;
   return (
     <div style={{ display: "inline-flex", alignItems: "center", gap: 10, fontFamily: POPPINS }}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -251,22 +249,18 @@ export function ClintAiSignature() {
         style={{ width: 22, height: 22, borderRadius: "50%", display: "block" }}
       />
       <span style={{ fontSize: 15, color: "#ffffff" }}>
-        Você pensa, <b>a Clint faz</b>
+        {lead} <b>{bold}</b>
       </span>
     </div>
   );
 }
 
 /* ── Nuvem de comandos da IA — 3 trilhas em marquee, sem JS ──────── */
-const COMMAND_ROWS = [
-  ["crie um agente", "recupere carrinhos abandonados", "monte um funil", "crie um indicador"],
-  ["analise as últimas vendas", "qual vendedor mais converte?", "segmente a lista fria", "agende uma reunião"],
-  ["monte um follow-up", "mova negócios de etapa", "consulte o histórico do lead", "gere um dashboard"],
-];
-
 export function ClintAiCommandCloud() {
+  const { t } = useLocale();
+  const { ariaLabel, rows: COMMAND_ROWS } = t.sharedCase.clintCommandCloud;
   return (
-    <div style={{ position: "relative", padding: "8px 0" }} aria-label="Exemplos de comandos para a IA da Clint">
+    <div style={{ position: "relative", padding: "8px 0" }} aria-label={ariaLabel}>
       <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
         {COMMAND_ROWS.map((row, i) => (
           <div
@@ -334,6 +328,8 @@ export function ClintAiCommandCloud() {
 
 /* ── Inteligência de reuniões — transcrição + score, CSS puro ─────── */
 export function ClintMeetingIntel() {
+  const { t } = useLocale();
+  const m = t.sharedCase.clintMeetingIntel;
   const lines = [
     { speaker: "V", widths: [92, 100] },
     { speaker: "L", widths: [78, 48] },
@@ -351,9 +347,9 @@ export function ClintMeetingIntel() {
       >
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14 }}>
           <div>
-            <strong style={{ fontSize: 13, color: "#ffffff" }}>Reunião comercial</strong>
+            <strong style={{ fontSize: 13, color: "#ffffff" }}>{m.title}</strong>
             <div style={{ fontSize: 10, color: "rgba(255,255,255,0.4)", marginTop: 2 }}>
-              32 min · transcrição concluída
+              {m.duration}
             </div>
           </div>
           <span
@@ -366,7 +362,7 @@ export function ClintMeetingIntel() {
               padding: "4px 10px",
             }}
           >
-            analisando
+            {m.statusAnalyzing}
           </span>
         </div>
 
@@ -404,13 +400,13 @@ export function ClintMeetingIntel() {
 
         <div style={{ display: "flex", gap: 20, borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: 14 }}>
           {[
-            { valor: "84%", label: "aderência" },
-            { valor: "3", label: "objeções" },
-            { valor: "2", label: "ações" },
-          ].map((m) => (
-            <div key={m.label} style={{ display: "flex", flexDirection: "column", gap: 2 }}>
-              <b style={{ fontSize: 16, color: "#ffffff" }}>{m.valor}</b>
-              <small style={{ fontSize: 10, color: "rgba(255,255,255,0.4)" }}>{m.label}</small>
+            { valor: "84%", label: m.adherence },
+            { valor: "3", label: m.objections },
+            { valor: "2", label: m.actions },
+          ].map((stat) => (
+            <div key={stat.label} style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+              <b style={{ fontSize: 16, color: "#ffffff" }}>{stat.valor}</b>
+              <small style={{ fontSize: 10, color: "rgba(255,255,255,0.4)" }}>{stat.label}</small>
             </div>
           ))}
         </div>

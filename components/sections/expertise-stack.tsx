@@ -23,22 +23,23 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { FadeIn } from "@/components/motion/fade-in";
+import { useLocale } from "@/lib/i18n/locale-context";
 
 type Pillar = { title: string; icon: LucideIcon; color: string };
 
-const pillars: Pillar[] = [
-  { title: "Descoberta & pesquisa", icon: Search, color: "#3B82F6" },
-  { title: "Arquitetura de informação", icon: Layers, color: "#622FFD" },
-  { title: "UI & design visual", icon: PenTool, color: "#D946EF" },
-  { title: "Design systems", icon: Boxes, color: "#F59E0B" },
-  { title: "Growth & CRO", icon: TrendingUp, color: "#10B981" },
-  { title: "IA aplicada a produto", icon: Sparkles, color: "#8B5CF6" },
-  { title: "Prototipagem", icon: Wand2, color: "#06B6D4" },
-  { title: "Testes com usuários", icon: Users, color: "#F43F5E" },
-  { title: "Dados & métricas", icon: BarChart3, color: "#14B8A6" },
-  { title: "Automação de fluxos", icon: Workflow, color: "#6366F1" },
-  { title: "Handoff para engenharia", icon: Code2, color: "#94A3B8" },
-  { title: "Comunicação com stakeholders", icon: MessageSquare, color: "#F97316" },
+const pillarsBase: { icon: LucideIcon; color: string }[] = [
+  { icon: Search, color: "#3B82F6" },
+  { icon: Layers, color: "#622FFD" },
+  { icon: PenTool, color: "#D946EF" },
+  { icon: Boxes, color: "#F59E0B" },
+  { icon: TrendingUp, color: "#10B981" },
+  { icon: Sparkles, color: "#8B5CF6" },
+  { icon: Wand2, color: "#06B6D4" },
+  { icon: Users, color: "#F43F5E" },
+  { icon: BarChart3, color: "#14B8A6" },
+  { icon: Workflow, color: "#6366F1" },
+  { icon: Code2, color: "#94A3B8" },
+  { icon: MessageSquare, color: "#F97316" },
 ];
 
 const RANGE = 3;
@@ -64,6 +65,11 @@ function styleForSlot(slot: number) {
 }
 
 export function ExpertiseStack() {
+  const { t } = useLocale();
+  const pillars: Pillar[] = pillarsBase.map((base, i) => ({
+    ...base,
+    title: t.home.expertiseStack.items[i].title,
+  }));
   const reducedMotion = useReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { margin: "-15% 0px -15% 0px" });
@@ -92,10 +98,10 @@ export function ExpertiseStack() {
       <div className="container relative">
         <FadeIn className="mx-auto max-w-2xl text-center">
           <p className="mb-4 text-xs font-semibold uppercase tracking-[0.22em] text-white/40">
-            Frentes de atuação
+            {t.home.expertiseStack.eyebrow}
           </p>
           <h2 className="font-display text-[36px] font-semibold leading-[1.1] tracking-tight md:text-[48px]">
-            Um designer, várias camadas de produto.
+            {t.home.expertiseStack.title}
           </h2>
         </FadeIn>
 

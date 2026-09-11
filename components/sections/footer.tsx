@@ -1,3 +1,7 @@
+"use client";
+
+import { useLocale } from "@/lib/i18n/locale-context";
+
 const LINKEDIN_URL = "https://www.linkedin.com/in/jhon-camilo-rios/";
 const BEHANCE_URL = "https://www.behance.net/CamiloRiosQuintero";
 
@@ -18,11 +22,13 @@ function BehanceGlyph({ className }: { className?: string }) {
 }
 
 export function Footer() {
+  const { t } = useLocale();
+
   return (
     <footer data-nav-theme="dark" className="border-t border-white/10 bg-[#0A0A0A] py-10">
       <div className="container flex flex-col items-center gap-6 text-center md:flex-row md:justify-between md:text-left">
         <p className="max-w-md font-sans text-sm text-white/40">
-          Produtos digitais construídos para gerar crescimento.
+          {t.home.footer.tagline}
         </p>
 
         <div className="flex items-center gap-3">
@@ -30,7 +36,7 @@ export function Footer() {
             href={LINKEDIN_URL}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="LinkedIn de Jhon Camilo Rios"
+            aria-label={t.home.footer.linkedinAria}
             className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/50 transition hover:border-primary/50 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
           >
             <LinkedInGlyph className="h-4 w-4" />
@@ -39,7 +45,7 @@ export function Footer() {
             href={BEHANCE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Behance de Jhon Camilo Rios"
+            aria-label={t.home.footer.behanceAria}
             className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/50 transition hover:border-primary/50 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
           >
             <BehanceGlyph className="h-4 w-4" />

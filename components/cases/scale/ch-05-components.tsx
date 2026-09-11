@@ -1,5 +1,8 @@
+"use client";
+
 import { Eyebrow, BlurTitle, Reveal } from "@/components/case-lp/case-primitives";
 import { ClintBotaoCTA, ClintChipAgente, ClintBarraPrompt, ClintBalaoChat } from "@/components/case-lp/clint-components-live";
+import { useLocale } from "@/lib/i18n/locale-context";
 
 function ComponentPanel({
   name,
@@ -29,40 +32,40 @@ function ComponentPanel({
 }
 
 export function Ch05Components() {
+  const { t } = useLocale();
+  const c = t.scale.ch05;
+  const [panelCTA, panelPrompt, panelChip, panelChat] = c.panels;
+
   return (
-    <section className="bg-[#F8F8F8] py-28 md:py-40" aria-label="Componentes do design system">
+    <section className="bg-[#F8F8F8] py-28 md:py-40" aria-label={c.ariaLabel}>
       <div className="container">
         <div className="mx-auto flex max-w-2xl flex-col items-center gap-6 text-center">
-          <Eyebrow>Componentes</Eyebrow>
+          <Eyebrow>{c.eyebrow}</Eyebrow>
           <BlurTitle
-            text="Um componente, todas as páginas."
+            text={c.title}
             className="font-display text-3xl font-semibold leading-[1.1] tracking-tight text-[#0A0A0A] md:text-5xl"
           />
           <Reveal delay={0.2}>
             <p className="max-w-xl font-sans text-base leading-relaxed text-[#0A0A0A]/55 md:text-lg">
-              Edite um arquivo em <code className="font-mono text-[#622FFD]">componentes/</code> e a
-              mudança aparece em toda página que o usa. Estas são recriações
-              fiéis dos componentes reais em produção, mesma paleta, mesmo
-              comportamento, e cada campanha nova herda isso sem esperar
-              handoff.
+              {c.description}
             </p>
           </Reveal>
         </div>
 
         <div className="mx-auto mt-16 grid max-w-4xl grid-cols-1 gap-6 md:mt-20">
           <ComponentPanel
-            name="BotaoCTA"
-            file="componentes/BotaoCTA.dc.html"
-            description="Props: rótulo, selo, variante (primário | contorno). O primário usa gradiente roxo com glow; o contorno é reservado para ações secundárias."
+            name={panelCTA.name}
+            file={panelCTA.file}
+            description={panelCTA.description}
           >
-            <ClintBotaoCTA rotulo="Crie um agente de Pré-vendas" selo="novo" />
-            <ClintBotaoCTA rotulo="Baixar app" variante="contorno" />
+            <ClintBotaoCTA rotulo={c.ctaCreateAgent} selo={c.ctaBadgeNew} />
+            <ClintBotaoCTA rotulo={c.ctaDownloadApp} variante="contorno" />
           </ComponentPanel>
 
           <ComponentPanel
-            name="BarraPrompt"
-            file="componentes/BarraPrompt.dc.html"
-            description="Barra de prompt com borda em gradiente e digitação animada: a mesma peça se repete no hero e dentro do produto."
+            name={panelPrompt.name}
+            file={panelPrompt.file}
+            description={panelPrompt.description}
           >
             <div className="w-full max-w-md">
               <ClintBarraPrompt />
@@ -70,20 +73,20 @@ export function Ch05Components() {
           </ComponentPanel>
 
           <ComponentPanel
-            name="ChipAgente"
-            file="componentes/ChipAgente.dc.html"
-            description="Props: rótulo, variante (compacto | grande), ícone. Usado para sugestões rápidas de ação em toda a plataforma."
+            name={panelChip.name}
+            file={panelChip.file}
+            description={panelChip.description}
           >
-            <ClintChipAgente rotulo="Crie um funil de vendas" />
-            <ClintChipAgente rotulo="Atender contatos" variante="grande" />
+            <ClintChipAgente rotulo={c.chipSalesFunnel} />
+            <ClintChipAgente rotulo={c.chipAttendContacts} variante="grande" />
           </ComponentPanel>
 
           <ComponentPanel
-            name="BalaoChat"
-            file="componentes/BalaoChat.dc.html"
-            description="Balão de conversa com avatar circular ou quadrado: a peça visual que sustenta toda a narrativa de produto em torno do WhatsApp."
+            name={panelChat.name}
+            file={panelChat.file}
+            description={panelChat.description}
           >
-            <ClintBalaoChat texto="Quero saber como funciona" hora="22:45" />
+            <ClintBalaoChat texto={c.chatMessage} hora={c.chatTime} />
           </ComponentPanel>
         </div>
       </div>

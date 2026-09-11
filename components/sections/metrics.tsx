@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
+import { useLocale } from "@/lib/i18n/locale-context";
 
 type Metric = {
   value: number;
@@ -10,11 +11,11 @@ type Metric = {
   label: string;
 };
 
-const metrics: Metric[] = [
-  { value: 10, prefix: "+", suffix: " anos", label: "Construindo produtos digitais" },
-  { value: 15, prefix: "+", suffix: "", label: "Ferramentas e diagnósticos com IA" },
-  { value: 140, prefix: "+", suffix: "%", label: "Crescimento na geração de leads" },
-  { value: 40, prefix: "+", suffix: "%", label: "Aumento no reconhecimento de marca" },
+const metricsBase: Omit<Metric, "label">[] = [
+  { value: 10, prefix: "+", suffix: " anos" },
+  { value: 15, prefix: "+", suffix: "" },
+  { value: 140, prefix: "+", suffix: "%" },
+  { value: 40, prefix: "+", suffix: "%" },
 ];
 
 function Counter({ metric }: { metric: Metric }) {
@@ -51,15 +52,22 @@ function Counter({ metric }: { metric: Metric }) {
 }
 
 export function Metrics() {
+  const { t } = useLocale();
+  const metrics: Metric[] = metricsBase.map((base, i) => ({
+    ...base,
+    suffix: t.home.metrics.items[i].suffix ?? base.suffix,
+    label: t.home.metrics.items[i].label,
+  }));
+
   return (
     <section data-nav-theme="dark" className="border-y border-white/10 bg-[#0A0A0A] py-24 text-white">
       <div className="container">
         <div className="mb-16 flex flex-col gap-3">
           <span className="font-sans text-xs font-semibold uppercase tracking-[0.22em] text-white/40">
-            Em números
+            {t.home.metrics.eyebrow}
           </span>
           <h2 className="max-w-2xl font-display text-3xl font-semibold leading-tight tracking-tight md:text-4xl">
-            Resultados que combinam design, dados e negócio.
+            {t.home.metrics.title}
           </h2>
         </div>
 

@@ -3,14 +3,9 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { Eyebrow, MetricGrid, BrowserMockup } from "@/components/case-lp/case-primitives";
+import { useLocale } from "@/lib/i18n/locale-context";
 
 const ease = [0.22, 1, 0.36, 1] as const;
-
-const H1_SEGMENTS = [
-  { text: "Como um único produto digital concentrou ", highlight: false },
-  { text: "79% da demanda", highlight: true },
-  { text: " da operação comercial.", highlight: false },
-];
 
 function BlurWord({
   word,
@@ -39,6 +34,8 @@ function BlurWord({
 export function Ch01Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
+  const { t } = useLocale();
+  const c = t.acquire.ch01;
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -49,7 +46,7 @@ export function Ch01Hero() {
 
   const words: Array<{ word: string; highlight: boolean; delay: number }> = [];
   let wordIndex = 0;
-  for (const seg of H1_SEGMENTS) {
+  for (const seg of c.headingSegments) {
     for (const raw of seg.text.split(/(\s+)/)) {
       const word = raw.trim();
       if (word) {
@@ -63,7 +60,7 @@ export function Ch01Hero() {
     <section
       ref={sectionRef}
       className="relative h-[120vh] bg-white"
-      aria-label="Apresentação do case Acquire"
+      aria-label={c.sectionAriaLabel}
     >
       <div
         aria-hidden="true"
@@ -73,11 +70,11 @@ export function Ch01Hero() {
       <div className="sticky top-0 flex h-screen items-center overflow-hidden pt-16">
         <div className="container grid grid-cols-1 items-center gap-12 md:grid-cols-12 md:gap-gutter">
           <div className="flex flex-col gap-7 md:col-span-6 lg:col-span-5">
-            <Eyebrow>01 · Acquire</Eyebrow>
+            <Eyebrow>{c.eyebrow}</Eyebrow>
 
             <h1
               className="font-display text-[32px] font-semibold leading-[1.08] tracking-tight text-[#0A0A0A] sm:text-[40px] md:text-[48px] lg:text-[54px]"
-              aria-label="Como um único produto digital concentrou 79% da demanda da operação comercial."
+              aria-label={c.headingAriaLabel}
             >
               {words.map(({ word, highlight, delay }, i) => (
                 <BlurWord key={i} word={word} highlight={highlight} delay={delay} />
@@ -90,9 +87,7 @@ export function Ch01Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.55, ease }}
             >
-              Mais do que criar uma landing page, o objetivo foi desenhar uma
-              experiência capaz de transformar tráfego pago em conversas
-              qualificadas.
+              {c.paragraph}
             </motion.p>
 
             <motion.div
@@ -104,7 +99,7 @@ export function Ch01Hero() {
                 href="#resultados"
                 className="group inline-flex h-11 items-center gap-2 rounded-full bg-[#0A0A0A] px-6 text-sm font-semibold text-white transition-all duration-250 hover:bg-[#622FFD] hover:shadow-[0_8px_28px_-6px_rgba(98,47,253,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#622FFD] focus-visible:ring-offset-2 md:h-12 md:px-7 md:text-base"
               >
-                Ver o processo
+                {c.ctaLabel}
                 <svg
                   viewBox="0 0 24 24"
                   className="h-4 w-4 transition-transform duration-300 group-hover:translate-y-0.5"
@@ -129,11 +124,7 @@ export function Ch01Hero() {
               <MetricGrid
                 size="sm"
                 align="start"
-                items={[
-                  { value: 37, suffix: "%", label: "Conversão" },
-                  { value: 10722, label: "Conversas" },
-                  { value: 79, suffix: "%", label: "da demanda" },
-                ]}
+                items={c.metrics}
               />
             </motion.div>
           </div>
@@ -147,7 +138,7 @@ export function Ch01Hero() {
           >
             <BrowserMockup
               src="/lp-hero.webp"
-              alt="Landing Page Clint: Agente de IA para Vendas no WhatsApp"
+              alt={c.imageAlt}
               url="clintdigital.com.br/agente-ia"
             />
           </motion.div>
@@ -162,7 +153,7 @@ export function Ch01Hero() {
         aria-hidden="true"
       >
         <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#0A0A0A]/30">
-          Scroll
+          {c.scrollLabel}
         </span>
         <motion.div
           className="h-8 w-px bg-gradient-to-b from-[#0A0A0A]/20 to-transparent"
