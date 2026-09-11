@@ -10,6 +10,8 @@ export type HomeDictionary = {
     logoAria: string;
     navAriaDesktop: string;
     navAriaMobile: string;
+    menuOpenAria: string;
+    menuCloseAria: string;
   };
   hero: {
     eyebrow: string;
@@ -136,6 +138,8 @@ export const home: Record<Locale, HomeDictionary> = {
       logoAria: "Voltar ao início do portfólio de Jhon Camilo Rios",
       navAriaDesktop: "Navegação principal",
       navAriaMobile: "Navegação mobile",
+      menuOpenAria: "Abrir menu",
+      menuCloseAria: "Fechar menu",
     },
     hero: {
       eyebrow: "Senior Product Designer",
@@ -439,6 +443,8 @@ export const home: Record<Locale, HomeDictionary> = {
       logoAria: "Back to Jhon Camilo Rios's portfolio home",
       navAriaDesktop: "Main navigation",
       navAriaMobile: "Mobile navigation",
+      menuOpenAria: "Open menu",
+      menuCloseAria: "Close menu",
     },
     hero: {
       eyebrow: "Senior Product Designer",
@@ -742,6 +748,8 @@ export const home: Record<Locale, HomeDictionary> = {
       logoAria: "Volver al inicio del portafolio de Jhon Camilo Rios",
       navAriaDesktop: "Navegación principal",
       navAriaMobile: "Navegación móvil",
+      menuOpenAria: "Abrir menú",
+      menuCloseAria: "Cerrar menú",
     },
     hero: {
       eyebrow: "Senior Product Designer",
