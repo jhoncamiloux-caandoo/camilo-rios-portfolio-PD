@@ -1,9 +1,9 @@
 "use client";
 
-import { EyeOff, ImagePlus, UserRound, Workflow } from "lucide-react";
+import { EyeOff, UserRound, Workflow } from "lucide-react";
 import { Reveal } from "@/components/case-lp/case-primitives";
 import { useLocale } from "@/lib/i18n/locale-context";
-import { ASSET, WnBrowser, WnEyebrow, WnFlow, WnHeading } from "./wn-primitives";
+import { ASSET, WnBrowser, WnCtaLink, WnEyebrow, WnFlow, WnHeading } from "./wn-primitives";
 
 /* ── Landing page da live ─────────────────────────────────────────── */
 const LP_SHOTS = ["lp-problem.webp", "lp-blocks.webp", "lp-form.webp"];
@@ -30,6 +30,9 @@ export function WnLandingPage() {
 
         <Reveal delay={0.1} className="mx-auto mt-12 max-w-5xl">
           <WnBrowser src={`${ASSET}/lp-hero.webp`} alt={c.heroAlt} url="pages.clint.digital/whatsapp-next" />
+        </Reveal>
+        <Reveal className="mt-10 flex justify-center">
+          <WnCtaLink href="https://pages.clint.digital/whatsapp-next" label={c.cta} url={c.ctaUrl} />
         </Reveal>
 
         <Reveal className="mx-auto mt-14 max-w-5xl text-center">
@@ -71,19 +74,29 @@ export function WnAds() {
         <Reveal className="mx-auto mt-10 max-w-4xl">
           <WnFlow items={c.flow} dark={false} />
         </Reveal>
-        {/* Espaço reservado: os criativos não estão nos links públicos do projeto */}
-        <ul className="mx-auto mt-14 grid max-w-5xl grid-cols-2 gap-4 md:grid-cols-4">
-          {[0, 1, 2, 3].map((i) => (
-            <li key={i}>
-              <Reveal delay={i * 0.05}>
-                <div className={`flex flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-black/15 bg-[#F8F8F8] p-4 text-center ${i % 2 ? "aspect-[9/16]" : "aspect-square"}`}>
-                  <ImagePlus className="h-6 w-6 text-[#0A0A0A]/65" aria-hidden="true" />
-                  <span className="font-mono text-[11px] text-[#0A0A0A]/65">{c.placeholder}</span>
-                </div>
-              </Reveal>
-            </li>
+        {/* Criativos reais em 3 colunas de alturas livres (stories 9:16, feed 1:1 e 4:5) */}
+        <div className="mx-auto mt-14 grid max-w-6xl grid-cols-2 items-start gap-4 md:grid-cols-3">
+          {[0, 1, 2].map((col) => (
+            <div key={col} className={`flex flex-col gap-4 ${col === 2 ? "hidden md:flex" : ""}`}>
+              {c.items
+                .map((ad, i) => ({ ad, i }))
+                .filter(({ i }) => i % 3 === col || (col < 2 && i % 3 === 2 && i % 2 === col))
+                .map(({ ad, i }) => (
+                  <Reveal key={ad.title} delay={col * 0.06} className={i % 3 === 2 ? (col === 2 ? "" : "md:hidden") : ""}>
+                    <figure className="overflow-hidden rounded-2xl border border-black/[0.07] bg-[#020403]">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={`${ASSET}/ad-${i + 1}.webp`} alt={ad.alt} loading="lazy" className="block w-full" />
+                      <figcaption className="flex flex-col gap-0.5 bg-white px-4 py-3">
+                        <span className="font-mono text-[11px] uppercase tracking-wider text-[#2f7a00]">{ad.tag}</span>
+                        <span className="font-display text-sm font-semibold text-[#0A0A0A]">{ad.title}</span>
+                      </figcaption>
+                    </figure>
+                  </Reveal>
+                ))}
+            </div>
           ))}
-        </ul>
+        </div>
+        <p className="mx-auto mt-4 max-w-xl text-center font-sans text-sm text-[#0A0A0A]/65">{c.note}</p>
       </div>
     </section>
   );

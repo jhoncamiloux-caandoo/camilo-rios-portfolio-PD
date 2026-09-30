@@ -1,5 +1,7 @@
 "use client";
 
+import { ArrowUpRight } from "lucide-react";
+
 import { Reveal } from "@/components/case-lp/case-primitives";
 
 /* Paleta real do blog WhatsApp Next (tokens publicados em blog.min.css). */
@@ -123,5 +125,23 @@ export function WnPhone({ src, alt, className = "" }: { src: string; alt: string
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={alt} className="block w-full" loading="lazy" />
     </div>
+  );
+}
+
+/* CTA de destino real: botão verde + URL visível, para o recrutador abrir o projeto. */
+export function WnCtaLink({ href, label, url, className = "" }: { href: string; label: string; url: string; className?: string }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`group inline-flex flex-col items-center gap-2 focus-visible:outline-none ${className}`}
+    >
+      <span className="inline-flex h-14 items-center gap-2 rounded-full bg-[#87ff0b] px-7 font-sans text-base font-semibold text-[#020403] shadow-[0_12px_40px_-12px_rgba(135,255,11,0.7)] transition-transform group-hover:-translate-y-0.5 group-focus-visible:ring-2 group-focus-visible:ring-[#87ff0b] group-focus-visible:ring-offset-2 group-focus-visible:ring-offset-[#020403]">
+        {label}
+        <ArrowUpRight className="h-5 w-5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+      </span>
+      <span className="font-mono text-xs text-[#9bada1]">{url}</span>
+    </a>
   );
 }
