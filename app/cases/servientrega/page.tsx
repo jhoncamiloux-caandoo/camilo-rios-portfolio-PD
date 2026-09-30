@@ -6,7 +6,7 @@ import { NextCase } from "@/components/case-lp/next-case";
 import { CaseFooter } from "@/components/case-lp/case-footer";
 import { SvHero, SvConcept, SvVisual } from "@/components/cases/servientrega/sv-part-1";
 import { SvJourney, SvFilm } from "@/components/cases/servientrega/sv-part-2";
-import { SvAI, SvMulti, SvOutro } from "@/components/cases/servientrega/sv-part-3";
+import { SvAI, SvMulti, SvOthers, SvOutro, SvCta } from "@/components/cases/servientrega/sv-part-3";
 
 export default function CaseServientregaPage() {
   const { t } = useLocale();
@@ -20,9 +20,12 @@ export default function CaseServientregaPage() {
       <SvVisual />
       <SvJourney />
       <SvFilm />
+      <SvCta />
       <SvAI />
       <SvMulti />
+      <SvOthers />
       <SvOutro />
+      <SvCta />
       <NextCase eyebrow={c.nextCase.eyebrow} title={c.nextCase.title} description={c.nextCase.description} href="/cases/acquire" />
       <CaseFooter />
     </div>
