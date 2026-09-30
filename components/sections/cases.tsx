@@ -18,7 +18,7 @@ import {
   Sparkles,
   Layers,
   Coins,
-  BookOpen,
+  Users,
   Languages,
   Package,
   Route,
@@ -84,8 +84,8 @@ const casesBase = [
     tags: ["content", "growth", "ux"] as Interest[],
     stats: [
       { icon: Coins, value: "R$ 8" },
-      { icon: BookOpen, value: "5" },
-      { icon: Languages, value: "3" },
+      { icon: Users, value: "1.680" },
+      { icon: Percent, value: "25%" },
     ],
   },
   {

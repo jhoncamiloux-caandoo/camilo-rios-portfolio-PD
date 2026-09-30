@@ -275,7 +275,7 @@ export const home: Record<Locale, HomeDictionary> = {
           title: "Conteúdo como canal de aquisição",
           tag: "Content / UX / Growth",
           body: "Transformar mudanças técnicas do WhatsApp em identidade, blog, landing page e captação conectados na mesma jornada.",
-          stats: ["custo por lead", "trilhas de conteúdo", "idiomas"],
+          stats: ["custo por lead", "inscrições em 4 dias", "conversão da LP"],
         },
         {
           title: "Experiências digitais imersivas",
@@ -606,7 +606,7 @@ export const home: Record<Locale, HomeDictionary> = {
           title: "Content as an acquisition channel",
           tag: "Content / UX / Growth",
           body: "Turning WhatsApp's technical changes into identity, blog, landing page, and lead capture connected in one journey.",
-          stats: ["cost per lead", "content tracks", "languages"],
+          stats: ["cost per lead", "sign-ups in 4 days", "LP conversion"],
         },
         {
           title: "Immersive digital experiences",
@@ -937,7 +937,7 @@ export const home: Record<Locale, HomeDictionary> = {
           title: "Contenido como canal de adquisición",
           tag: "Content / UX / Growth",
           body: "Convertir los cambios técnicos de WhatsApp en identidad, blog, landing page y captación conectados en un mismo recorrido.",
-          stats: ["costo por lead", "líneas de contenido", "idiomas"],
+          stats: ["costo por lead", "inscripciones en 4 días", "conversión de la LP"],
         },
         {
           title: "Experiencias digitales inmersivas",
