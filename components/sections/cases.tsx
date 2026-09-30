@@ -19,6 +19,9 @@ import {
   Coins,
   BookOpen,
   Languages,
+  Package,
+  Route,
+  Box,
   type LucideIcon,
 } from "lucide-react";
 import { FadeIn } from "@/components/motion/fade-in";
@@ -72,6 +75,15 @@ const casesBase = [
       { icon: Languages, value: "3" },
     ],
   },
+  {
+    icon: Package,
+    href: "/cases/servientrega",
+    stats: [
+      { icon: Route, value: "6" },
+      { icon: Box, value: "3D" },
+      { icon: Languages, value: "3" },
+    ],
+  },
 ];
 
 export function Cases() {
@@ -104,7 +116,7 @@ export function Cases() {
           </h2>
         </FadeIn>
 
-        <div className="mt-16 grid grid-cols-1 gap-gutter md:grid-cols-2">
+        <div className="mt-16 grid grid-cols-1 gap-gutter md:grid-cols-2 xl:grid-cols-3">
           {cases.map((item, index) => {
             const LeadIcon = item.icon;
             return (

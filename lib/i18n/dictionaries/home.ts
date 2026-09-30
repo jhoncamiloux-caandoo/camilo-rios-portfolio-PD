@@ -249,6 +249,12 @@ export const home: Record<Locale, HomeDictionary> = {
           body: "Transformar mudanças técnicas do WhatsApp em identidade, blog, landing page e captação conectados na mesma jornada.",
           stats: ["custo por lead", "trilhas de conteúdo", "idiomas"],
         },
+        {
+          title: "Experiências digitais imersivas",
+          tag: "UI / AI / Creative Dev",
+          body: "Transformar a jornada de uma encomenda em narrativa interativa, com scroll, WebGL e direção de arte apoiada por IA.",
+          stats: ["etapas", "cena WebGL", "idiomas"],
+        },
       ],
     },
     process: {
@@ -560,6 +566,12 @@ export const home: Record<Locale, HomeDictionary> = {
           body: "Turning WhatsApp's technical changes into identity, blog, landing page, and lead capture connected in one journey.",
           stats: ["cost per lead", "content tracks", "languages"],
         },
+        {
+          title: "Immersive digital experiences",
+          tag: "UI / AI / Creative Dev",
+          body: "Turning a parcel's journey into an interactive story with scroll, WebGL, and AI-assisted art direction.",
+          stats: ["stages", "WebGL scene", "languages"],
+        },
       ],
     },
     process: {
@@ -870,6 +882,12 @@ export const home: Record<Locale, HomeDictionary> = {
           tag: "Content / UX / Growth",
           body: "Convertir los cambios técnicos de WhatsApp en identidad, blog, landing page y captación conectados en un mismo recorrido.",
           stats: ["costo por lead", "líneas de contenido", "idiomas"],
+        },
+        {
+          title: "Experiencias digitales inmersivas",
+          tag: "UI / AI / Creative Dev",
+          body: "Convertir el recorrido de un envío en una narrativa interactiva, con scroll, WebGL y dirección de arte apoyada por IA.",
+          stats: ["etapas", "escena WebGL", "idiomas"],
         },
       ],
     },
