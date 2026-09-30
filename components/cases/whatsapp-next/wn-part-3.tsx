@@ -169,7 +169,6 @@ export function WnResults() {
             <div className="flex flex-col items-start gap-2 md:items-end md:text-right">
               <span className="font-sans text-sm font-semibold uppercase tracking-[0.18em] text-[#9bada1]">{c.cplLabel}</span>
               <span className="font-display text-7xl font-semibold leading-none tracking-tight text-[#87ff0b] md:text-9xl">{c.cplValue}</span>
-              <span className="font-mono text-xs text-[#9bada1]">{c.cplBefore}</span>
             </div>
           </div>
         </Reveal>
@@ -190,14 +189,6 @@ export function WnResults() {
           ))}
         </ul>
 
-        <ul className="mx-auto mt-4 grid max-w-6xl grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
-          {c.placeholders.map((p) => (
-            <li key={p.label} className="rounded-2xl border border-dashed border-white/15 p-5">
-              <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.18em] text-[#9bada1]">{p.label}</p>
-              <p className="mt-2 font-mono text-xs text-[#c8d6cc]">{p.value}</p>
-            </li>
-          ))}
-        </ul>
       </div>
     </section>
   );

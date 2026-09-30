@@ -136,7 +136,7 @@ export function SvOutro() {
           ))}
         </ul>
 
-        <div className="mt-14 grid grid-cols-1 gap-8 md:grid-cols-[2fr_1fr]">
+        <div className="mt-14">
           <Reveal>
             <p className="mb-4 text-[11px] uppercase tracking-[0.2em] text-white/60" style={{ fontFamily: MONO }}>{c.techLabel}</p>
             <ul className="flex flex-wrap gap-2">
@@ -144,10 +144,6 @@ export function SvOutro() {
                 <li key={x} className="rounded-full border border-white/15 px-3 py-1.5 text-xs text-white" style={{ fontFamily: MONO }}>{x}</li>
               ))}
             </ul>
-          </Reveal>
-          <Reveal delay={0.08}>
-            <p className="mb-4 text-[11px] uppercase tracking-[0.2em] text-white/60" style={{ fontFamily: MONO }}>{c.metricsLabel}</p>
-            <p className="rounded-xl border border-dashed border-white/20 px-4 py-3 text-xs text-white/70" style={{ fontFamily: MONO }}>{c.metricPlaceholder}</p>
           </Reveal>
         </div>
 

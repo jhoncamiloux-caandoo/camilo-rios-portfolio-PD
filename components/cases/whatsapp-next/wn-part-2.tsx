@@ -295,7 +295,6 @@ export function WnMotion() {
               </Reveal>
             ))}
           </div>
-          <p className="mt-6 rounded-xl border border-dashed border-white/15 px-4 py-3 text-center font-mono text-xs text-[#c8d6cc]">{c.perfPlaceholder}</p>
         </div>
       </div>
     </section>
