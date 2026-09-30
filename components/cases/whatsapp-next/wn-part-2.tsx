@@ -4,7 +4,7 @@ import { useReducedMotion } from "framer-motion";
 import { Check, ListTree, Table2, MessageSquareMore, ArrowRightLeft } from "lucide-react";
 import { Reveal } from "@/components/case-lp/case-primitives";
 import { useLocale } from "@/lib/i18n/locale-context";
-import { ASSET, WN, WnBrowser, WnHeading, WnPhone } from "./wn-primitives";
+import { ASSET, WN, WnBrowser, WnCtaLink, WnHeading, WnPhone } from "./wn-primitives";
 
 /* ── Blog ─────────────────────────────────────────────────────────── */
 export function WnBlog() {
@@ -15,8 +15,11 @@ export function WnBlog() {
     <section className="bg-[#020403] py-24 md:py-36" aria-label={c.ariaLabel}>
       <div className="container">
         <WnHeading eyebrow={c.eyebrow} title={c.title} description={c.description} />
+        <Reveal delay={0.1} className="mt-8 flex justify-center">
+          <WnCtaLink href="https://whatsapp-next-seven.vercel.app/" label={c.cta} url={c.ctaUrl} />
+        </Reveal>
 
-        <Reveal className="mx-auto mt-16 grid max-w-6xl grid-cols-1 items-end gap-6 md:grid-cols-[1fr_240px]">
+        <Reveal className="mx-auto mt-14 grid max-w-6xl grid-cols-1 items-end gap-6 md:grid-cols-[1fr_240px]">
           <WnBrowser src={`${ASSET}/article-desktop.webp`} alt={c.articleAlt} url="whatsapp-next-seven.vercel.app/artigos" />
           <WnPhone src={`${ASSET}/article-mobile.webp`} alt={c.mobileAlt} className="mx-auto w-[220px] md:w-full" />
         </Reveal>
