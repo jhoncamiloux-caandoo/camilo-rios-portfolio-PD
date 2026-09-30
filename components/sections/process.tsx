@@ -52,7 +52,7 @@ function VisualDiagnostic() {
             <div
               className={`${row.w} h-8 rounded bg-white/[0.06] flex items-center justify-between px-3`}
             >
-              <span className="text-[10px] font-medium uppercase tracking-wider text-white/40">
+              <span className="text-[10px] font-medium uppercase tracking-wider text-white/60">
                 {row.label}
               </span>
               <span className="font-display text-sm font-semibold text-white/80">
@@ -64,7 +64,7 @@ function VisualDiagnostic() {
       </div>
       {/* Sparkline */}
       <div className="flex flex-col gap-2">
-        <span className="text-[10px] font-semibold uppercase tracking-widest text-white/30">
+        <span className="text-[10px] font-semibold uppercase tracking-widest text-white/60">
           Conversão · últimos 7d
         </span>
         <div className="flex h-14 items-end gap-1.5">
@@ -79,7 +79,7 @@ function VisualDiagnostic() {
       </div>
       {/* Insight pill */}
       <div className="rounded-xl border border-primary/20 bg-primary/10 px-4 py-3">
-        <p className="text-xs text-primary">
+        <p className="text-xs text-primary-light">
           ↑ +23% no checkout após diagnóstico de atrito
         </p>
       </div>
@@ -99,11 +99,11 @@ function VisualArchitecture() {
       ].map((node, i) => (
         <div key={i} className="flex items-start gap-3">
           <div className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-primary/40 bg-primary/10">
-            <span className="text-[9px] font-bold text-primary">{i + 1}</span>
+            <span className="text-[9px] font-bold text-primary-light">{i + 1}</span>
           </div>
           <div className="flex-1 rounded-lg border border-white/[0.06] bg-white/[0.03] px-4 py-2.5">
             <p className="text-sm font-semibold text-white/90">{node.label}</p>
-            <p className="mt-0.5 text-[11px] text-white/35">{node.sub}</p>
+            <p className="mt-0.5 text-[11px] text-white/60">{node.sub}</p>
           </div>
           {i < 3 && (
             <div className="absolute left-[2.55rem] mt-7 h-5 w-px bg-primary/20" />
@@ -141,8 +141,8 @@ function VisualPrototype() {
             key={i}
             className={`rounded-lg border px-3 py-2 text-center text-xs font-semibold ${
               i === 1
-                ? "border-primary/40 bg-primary/10 text-primary"
-                : "border-white/[0.08] bg-white/[0.03] text-white/40"
+                ? "border-primary/40 bg-primary/10 text-primary-light"
+                : "border-white/[0.08] bg-white/[0.03] text-white/60"
             }`}
           >
             {label}
@@ -175,22 +175,22 @@ function VisualSystem() {
   const components = [
     { name: "Button/Primary", preview: "bg-primary rounded-full px-3 py-1 text-[9px] text-white font-semibold" },
     { name: "Button/Ghost", preview: "border border-white/20 rounded-full px-3 py-1 text-[9px] text-white/70 font-semibold" },
-    { name: "Badge", preview: "bg-primary/15 border border-primary/30 rounded-full px-2 py-0.5 text-[9px] text-primary font-semibold" },
-    { name: "Input", preview: "border border-white/10 rounded-lg px-3 py-1 text-[9px] text-white/40 bg-white/[0.04] w-24" },
+    { name: "Badge", preview: "bg-primary/15 border border-primary/30 rounded-full px-2 py-0.5 text-[9px] text-primary-light font-semibold" },
+    { name: "Input", preview: "border border-white/10 rounded-lg px-3 py-1 text-[9px] text-white/60 bg-white/[0.04] w-24" },
   ];
 
   return (
     <div className="flex h-full flex-col gap-0 overflow-hidden">
       {/* ── Row 1: Color Tokens ─────────────────────── */}
       <div className="border-b border-white/[0.06] p-5">
-        <p className="mb-3 text-[9px] font-semibold uppercase tracking-[0.2em] text-white/25">
+        <p className="mb-3 text-[9px] font-semibold uppercase tracking-[0.2em] text-white/60">
           Color Tokens
         </p>
         <div className="flex gap-2">
           {palette.map((t) => (
             <div key={t.label} className="flex flex-col items-center gap-1.5">
               <div className={`h-7 w-7 rounded-md ${t.cls}`} />
-              <span className="text-[8px] leading-none text-white/25">{t.label}</span>
+              <span className="text-[8px] leading-none text-white/60">{t.label}</span>
             </div>
           ))}
         </div>
@@ -200,19 +200,19 @@ function VisualSystem() {
       <div className="grid grid-cols-2 divide-x divide-white/[0.06] border-b border-white/[0.06]">
         {/* Type */}
         <div className="flex flex-col gap-2 p-5">
-          <p className="mb-1 text-[9px] font-semibold uppercase tracking-[0.2em] text-white/25">
+          <p className="mb-1 text-[9px] font-semibold uppercase tracking-[0.2em] text-white/60">
             Type Scale
           </p>
           {typeScale.map((t) => (
             <div key={t.label} className="flex items-center justify-between">
               <span className={`${t.cls} text-white/80`}>{t.sample}</span>
-              <span className="text-[8px] text-white/20">{t.label}</span>
+              <span className="text-[8px] text-white/60">{t.label}</span>
             </div>
           ))}
         </div>
         {/* Spacing */}
         <div className="flex flex-col gap-2 p-5">
-          <p className="mb-1 text-[9px] font-semibold uppercase tracking-[0.2em] text-white/25">
+          <p className="mb-1 text-[9px] font-semibold uppercase tracking-[0.2em] text-white/60">
             Spacing
           </p>
           <div className="flex flex-col gap-1.5">
@@ -222,7 +222,7 @@ function VisualSystem() {
                   className="h-1.5 rounded-sm bg-primary/50"
                   style={{ width: `${s * 4}px` }}
                 />
-                <span className="text-[8px] text-white/20">{s * 4}px</span>
+                <span className="text-[8px] text-white/60">{s * 4}px</span>
               </div>
             ))}
           </div>
@@ -231,7 +231,7 @@ function VisualSystem() {
 
       {/* ── Row 3: Components ───────────────────────── */}
       <div className="border-b border-white/[0.06] p-5">
-        <p className="mb-3 text-[9px] font-semibold uppercase tracking-[0.2em] text-white/25">
+        <p className="mb-3 text-[9px] font-semibold uppercase tracking-[0.2em] text-white/60">
           Components
         </p>
         <div className="grid grid-cols-2 gap-2">
@@ -240,7 +240,7 @@ function VisualSystem() {
               key={c.name}
               className="flex flex-col gap-2 rounded-lg border border-white/[0.06] bg-white/[0.02] p-3"
             >
-              <span className="text-[8px] text-white/25">{c.name}</span>
+              <span className="text-[8px] text-white/60">{c.name}</span>
               <div className="flex items-center">
                 <div className={c.preview}>{c.name.split("/")[1]}</div>
               </div>
@@ -253,13 +253,13 @@ function VisualSystem() {
       <div className="flex items-center justify-between p-4">
         <div className="flex items-center gap-2">
           <div className="h-1.5 w-1.5 rounded-full bg-green-400" />
-          <span className="text-[10px] text-white/35">Handoff para eng.</span>
+          <span className="text-[10px] text-white/60">Handoff para eng.</span>
         </div>
         <div className="flex gap-2">
           {["Tokens", "Figma", "Storybook"].map((tag) => (
             <span
               key={tag}
-              className="rounded-full border border-white/[0.08] px-2 py-0.5 text-[8px] text-white/30"
+              className="rounded-full border border-white/[0.08] px-2 py-0.5 text-[8px] text-white/60"
             >
               {tag}
             </span>
@@ -298,7 +298,7 @@ function StepVisual({
       <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03]">
         {/* Card header */}
         <div className="flex items-center gap-3 border-b border-white/[0.06] px-6 py-4">
-          <span className="flex h-8 w-8 items-center justify-center rounded-full border border-primary/30 bg-primary/10 text-primary">
+          <span className="flex h-8 w-8 items-center justify-center rounded-full border border-primary/30 bg-primary/10 text-primary-light">
             <Icon className="h-4 w-4" aria-hidden="true" />
           </span>
           <span className="font-display text-sm font-semibold text-white/60">
@@ -419,7 +419,7 @@ export function Process() {
       <div className="container">
         {/* Section header */}
         <div className="mb-20 flex flex-col gap-3">
-          <span className="font-sans text-xs font-semibold uppercase tracking-[0.22em] text-white/40">
+          <span className="font-sans text-xs font-semibold uppercase tracking-[0.22em] text-white/60">
             {t.home.process.eyebrow}
           </span>
           <h2 className="font-display text-[48px] font-semibold leading-[1.05] tracking-tight md:text-[56px]">

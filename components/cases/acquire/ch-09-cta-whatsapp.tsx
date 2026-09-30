@@ -27,7 +27,7 @@ export function Ch09CtaWhatsapp() {
               className="font-display text-4xl font-semibold leading-[1.06] tracking-tight text-[#0A0A0A] md:text-5xl lg:text-6xl"
             />
             <Reveal delay={0.15}>
-              <p className="font-sans text-base leading-relaxed text-[#0A0A0A]/55 md:text-lg">
+              <p className="font-sans text-base leading-relaxed text-[#0A0A0A]/65 md:text-lg">
                 {c.paragraph}
               </p>
             </Reveal>
@@ -61,14 +61,14 @@ export function Ch09CtaWhatsapp() {
                     transition={{ duration: 0.5, delay: i * 0.08, ease }}
                     className={
                       node.cta
-                        ? "flex items-center gap-2 rounded-full bg-[#25D366] px-6 py-3 text-white shadow-[0_10px_32px_-10px_rgba(37,211,102,0.65)]"
+                        ? "flex items-center gap-2 rounded-full bg-[#25D366] px-6 py-3 text-[#04260f] shadow-[0_10px_32px_-10px_rgba(37,211,102,0.65)]"
                         : "w-full max-w-[300px] rounded-xl border border-black/[0.07] bg-[#F8F8F8] px-6 py-3.5 text-center"
                     }
                   >
                     {node.cta && <WhatsGlyph />}
                     <span
                       className={`font-sans text-sm font-semibold md:text-base ${
-                        node.cta ? "text-white" : "text-[#0A0A0A]"
+                        node.cta ? "text-[#04260f]" : "text-[#0A0A0A]"
                       }`}
                     >
                       {node.label}
@@ -77,7 +77,7 @@ export function Ch09CtaWhatsapp() {
                 </div>
               ))}
               <Reveal delay={0.7}>
-                <p className="mt-6 max-w-xs text-center font-sans text-sm text-[#0A0A0A]/40">
+                <p className="mt-6 max-w-xs text-center font-sans text-sm text-[#0A0A0A]/65">
                   {c.journeyCaption}
                 </p>
               </Reveal>
@@ -86,7 +86,7 @@ export function Ch09CtaWhatsapp() {
         </div>
 
         <Reveal delay={0.2} className="mx-auto mt-24 max-w-xl text-center md:mt-32">
-          <p className="font-sans text-base leading-relaxed text-[#0A0A0A]/50 md:text-lg">
+          <p className="font-sans text-base leading-relaxed text-[#0A0A0A]/65 md:text-lg">
             {c.closing}
           </p>
         </Reveal>

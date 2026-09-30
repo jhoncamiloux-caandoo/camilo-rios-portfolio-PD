@@ -348,7 +348,7 @@ export function ClintMeetingIntel() {
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14 }}>
           <div>
             <strong style={{ fontSize: 13, color: "#ffffff" }}>{m.title}</strong>
-            <div style={{ fontSize: 10, color: "rgba(255,255,255,0.4)", marginTop: 2 }}>
+            <div style={{ fontSize: 10, color: "rgba(255,255,255,0.6)", marginTop: 2 }}>
               {m.duration}
             </div>
           </div>
@@ -406,7 +406,7 @@ export function ClintMeetingIntel() {
           ].map((stat) => (
             <div key={stat.label} style={{ display: "flex", flexDirection: "column", gap: 2 }}>
               <b style={{ fontSize: 16, color: "#ffffff" }}>{stat.valor}</b>
-              <small style={{ fontSize: 10, color: "rgba(255,255,255,0.4)" }}>{stat.label}</small>
+              <small style={{ fontSize: 10, color: "rgba(255,255,255,0.6)" }}>{stat.label}</small>
             </div>
           ))}
         </div>

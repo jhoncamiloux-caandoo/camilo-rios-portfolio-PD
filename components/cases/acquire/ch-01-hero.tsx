@@ -82,7 +82,7 @@ export function Ch01Hero() {
             </h1>
 
             <motion.p
-              className="max-w-md font-sans text-base leading-relaxed text-[#0A0A0A]/55 md:text-lg"
+              className="max-w-md font-sans text-base leading-relaxed text-[#0A0A0A]/65 md:text-lg"
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.55, ease }}
@@ -152,7 +152,7 @@ export function Ch01Hero() {
         transition={{ duration: 0.6, delay: 1.5, ease }}
         aria-hidden="true"
       >
-        <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#0A0A0A]/30">
+        <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#0A0A0A]/65">
           {c.scrollLabel}
         </span>
         <motion.div

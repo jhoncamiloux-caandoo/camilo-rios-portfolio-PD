@@ -39,7 +39,7 @@ export type HomeDictionary = {
   metrics: {
     eyebrow: string;
     title: string;
-    items: { label: string; suffix?: string }[];
+    items: { label: string; suffix?: string; context?: string }[];
   };
   cases: {
     eyebrow: string;
@@ -154,8 +154,8 @@ export const home: Record<Locale, HomeDictionary> = {
       items: [
         {
           metric: "+140%",
-          title: "Geração de leads",
-          desc: "Estruturação, testes A/B e escala contínua através de 58 landing pages de alta performance, projetadas e validadas iterativamente para otimizar canais de aquisição pagos e orgânicos.",
+          title: "Geração de leads em 2 meses",
+          desc: "Resultado de uma estratégia conjunta do time de Growth Marketing. Minha parte: estruturação, testes A/B e escala contínua através de 58 landing pages de alta performance, projetadas e validadas iterativamente para otimizar canais de aquisição pagos e orgânicos.",
         },
         {
           metric: "+20%",
@@ -216,7 +216,7 @@ export const home: Record<Locale, HomeDictionary> = {
       items: [
         { label: "Construindo produtos digitais", suffix: " anos" },
         { label: "Ferramentas e diagnósticos com IA" },
-        { label: "Crescimento na geração de leads" },
+        { label: "Crescimento na geração de leads", context: "Em 2 meses · estratégia do time de Growth Marketing" },
         { label: "Aumento no reconhecimento de marca" },
       ],
     },
@@ -242,6 +242,18 @@ export const home: Record<Locale, HomeDictionary> = {
           tag: "Growth / Design System",
           body: "Criar padrões visuais e operacionais que aceleram experimentos sem comprometer consistência ou qualidade percebida.",
           stats: ["mais rápido", "menos tokens", "componentes"],
+        },
+        {
+          title: "Conteúdo como canal de aquisição",
+          tag: "Content / UX / Growth",
+          body: "Transformar mudanças técnicas do WhatsApp em identidade, blog, landing page e captação conectados na mesma jornada.",
+          stats: ["custo por lead", "trilhas de conteúdo", "idiomas"],
+        },
+        {
+          title: "Experiências digitais imersivas",
+          tag: "UI / AI / Creative Dev",
+          body: "Transformar a jornada de uma encomenda em narrativa interativa, com scroll, WebGL e direção de arte apoiada por IA.",
+          stats: ["etapas", "cena WebGL", "idiomas"],
         },
       ],
     },
@@ -459,8 +471,8 @@ export const home: Record<Locale, HomeDictionary> = {
       items: [
         {
           metric: "+140%",
-          title: "Lead generation",
-          desc: "Structuring, A/B testing, and continuous scaling across 58 high-performance landing pages, designed and iteratively validated to optimize paid and organic acquisition channels.",
+          title: "Lead generation in 2 months",
+          desc: "Result of a joint Growth Marketing team strategy. My part: structuring, A/B testing, and continuous scaling across 58 high-performance landing pages, designed and iteratively validated to optimize paid and organic acquisition channels.",
         },
         {
           metric: "+20%",
@@ -521,7 +533,7 @@ export const home: Record<Locale, HomeDictionary> = {
       items: [
         { label: "Building digital products", suffix: " years" },
         { label: "AI-powered tools and diagnostics" },
-        { label: "Growth in lead generation" },
+        { label: "Growth in lead generation", context: "In 2 months · Growth Marketing team strategy" },
         { label: "Increase in brand recognition" },
       ],
     },
@@ -547,6 +559,18 @@ export const home: Record<Locale, HomeDictionary> = {
           tag: "Growth / Design System",
           body: "Creating visual and operational standards that speed up experiments without compromising consistency or perceived quality.",
           stats: ["faster", "fewer tokens", "components"],
+        },
+        {
+          title: "Content as an acquisition channel",
+          tag: "Content / UX / Growth",
+          body: "Turning WhatsApp's technical changes into identity, blog, landing page, and lead capture connected in one journey.",
+          stats: ["cost per lead", "content tracks", "languages"],
+        },
+        {
+          title: "Immersive digital experiences",
+          tag: "UI / AI / Creative Dev",
+          body: "Turning a parcel's journey into an interactive story with scroll, WebGL, and AI-assisted art direction.",
+          stats: ["stages", "WebGL scene", "languages"],
         },
       ],
     },
@@ -764,8 +788,8 @@ export const home: Record<Locale, HomeDictionary> = {
       items: [
         {
           metric: "+140%",
-          title: "Generación de leads",
-          desc: "Estructuración, pruebas A/B y escalado continuo a través de 58 landing pages de alto rendimiento, diseñadas y validadas iterativamente para optimizar canales de adquisición pagos y orgánicos.",
+          title: "Generación de leads en 2 meses",
+          desc: "Resultado de una estrategia conjunta del equipo de Growth Marketing. Mi parte: estructuración, pruebas A/B y escalado continuo a través de 58 landing pages de alto rendimiento, diseñadas y validadas iterativamente para optimizar canales de adquisición pagos y orgánicos.",
         },
         {
           metric: "+20%",
@@ -826,7 +850,7 @@ export const home: Record<Locale, HomeDictionary> = {
       items: [
         { label: "Construyendo productos digitales", suffix: " años" },
         { label: "Herramientas y diagnósticos con IA" },
-        { label: "Crecimiento en generación de leads" },
+        { label: "Crecimiento en generación de leads", context: "En 2 meses · estrategia del equipo de Growth Marketing" },
         { label: "Aumento en reconocimiento de marca" },
       ],
     },
@@ -852,6 +876,18 @@ export const home: Record<Locale, HomeDictionary> = {
           tag: "Growth / Design System",
           body: "Crear estándares visuales y operativos que aceleran experimentos sin comprometer la consistencia ni la calidad percibida.",
           stats: ["más rápido", "menos tokens", "componentes"],
+        },
+        {
+          title: "Contenido como canal de adquisición",
+          tag: "Content / UX / Growth",
+          body: "Convertir los cambios técnicos de WhatsApp en identidad, blog, landing page y captación conectados en un mismo recorrido.",
+          stats: ["costo por lead", "líneas de contenido", "idiomas"],
+        },
+        {
+          title: "Experiencias digitales inmersivas",
+          tag: "UI / AI / Creative Dev",
+          body: "Convertir el recorrido de un envío en una narrativa interactiva, con scroll, WebGL y dirección de arte apoyada por IA.",
+          stats: ["etapas", "escena WebGL", "idiomas"],
         },
       ],
     },

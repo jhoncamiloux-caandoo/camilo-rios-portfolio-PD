@@ -86,7 +86,7 @@ export function Ch11Optimization() {
             className="font-display text-4xl font-semibold leading-[1.06] tracking-tight text-[#0A0A0A] md:text-6xl"
           />
           <Reveal delay={0.2}>
-            <p className="max-w-xl font-sans text-base leading-relaxed text-[#0A0A0A]/55 md:text-lg">
+            <p className="max-w-xl font-sans text-base leading-relaxed text-[#0A0A0A]/65 md:text-lg">
               {c.paragraph}
             </p>
           </Reveal>
@@ -102,7 +102,7 @@ export function Ch11Optimization() {
                 </span>
               </div>
               <LineChart />
-              <p className="mt-4 font-sans text-xs text-[#0A0A0A]/40">
+              <p className="mt-4 font-sans text-xs text-[#0A0A0A]/65">
                 {c.gaCardCaption}
               </p>
             </div>
@@ -111,12 +111,12 @@ export function Ch11Optimization() {
             <div className="rounded-2xl border border-black/[0.07] bg-white p-6 shadow-[0_16px_48px_-20px_rgba(10,10,10,0.14)]">
               <div className="mb-5 flex items-center justify-between">
                 <p className="font-sans text-sm font-semibold text-[#0A0A0A]">{c.clarityCardTitle}</p>
-                <span className="rounded-full bg-[#F94706]/10 px-3 py-1 font-sans text-[11px] font-semibold text-[#F94706]">
+                <span className="rounded-full bg-[#F94706]/10 px-3 py-1 font-sans text-[11px] font-semibold text-[#B83303]">
                   {c.clarityCardTag}
                 </span>
               </div>
               <Heatmap />
-              <p className="mt-4 font-sans text-xs text-[#0A0A0A]/40">
+              <p className="mt-4 font-sans text-xs text-[#0A0A0A]/65">
                 {c.clarityCardCaption}
               </p>
             </div>
@@ -130,7 +130,7 @@ export function Ch11Optimization() {
                 <p className="font-display text-base font-semibold tracking-tight text-[#0A0A0A]">
                   {item.tool}
                 </p>
-                <p className="mt-2 font-sans text-sm leading-relaxed text-[#0A0A0A]/50">
+                <p className="mt-2 font-sans text-sm leading-relaxed text-[#0A0A0A]/65">
                   {item.finding}
                 </p>
               </div>

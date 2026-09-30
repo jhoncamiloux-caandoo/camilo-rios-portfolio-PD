@@ -89,7 +89,7 @@ export function Blog() {
             <h2 className="max-w-xl font-display text-[32px] font-semibold leading-[1.08] tracking-tight text-[#0A0A0A] md:text-[44px]">
               {t.home.blog.title}
             </h2>
-            <p className="max-w-md font-sans text-base leading-relaxed text-[#0A0A0A]/55 md:text-lg">
+            <p className="max-w-md font-sans text-base leading-relaxed text-[#0A0A0A]/65 md:text-lg">
               {mediumArticles.length} {t.home.blog.descriptionSuffix}
             </p>
           </div>
@@ -146,7 +146,7 @@ export function Blog() {
                   <p className="font-display text-base font-semibold leading-snug tracking-tight text-white">
                     {article.title}
                   </p>
-                  <span className="inline-flex items-center gap-1.5 font-sans text-xs font-semibold text-white/50 transition-colors duration-300 group-hover:text-primary">
+                  <span className="inline-flex items-center gap-1.5 font-sans text-xs font-semibold text-white/60 transition-colors duration-300 group-hover:text-primary-light">
                     {t.home.blog.readArticleLabel}
                     <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </span>
@@ -161,7 +161,7 @@ export function Blog() {
               onClick={() => scrollByCard(-1)}
               disabled={atStart}
               aria-label={t.home.blog.prevAria}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-black/[0.1] text-[#0A0A0A]/60 transition disabled:opacity-30 enabled:hover:border-primary enabled:hover:text-primary"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-black/[0.1] text-[#0A0A0A]/65 transition disabled:opacity-30 enabled:hover:border-primary enabled:hover:text-primary"
             >
               <ChevronLeft className="h-4 w-4" />
             </button>
@@ -169,7 +169,7 @@ export function Blog() {
               onClick={() => scrollByCard(1)}
               disabled={atEnd}
               aria-label={t.home.blog.nextAria}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-black/[0.1] text-[#0A0A0A]/60 transition disabled:opacity-30 enabled:hover:border-primary enabled:hover:text-primary"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-black/[0.1] text-[#0A0A0A]/65 transition disabled:opacity-30 enabled:hover:border-primary enabled:hover:text-primary"
             >
               <ChevronRight className="h-4 w-4" />
             </button>

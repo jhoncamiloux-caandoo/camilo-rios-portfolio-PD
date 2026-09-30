@@ -16,6 +16,12 @@ import {
   Rocket,
   Sparkles,
   Layers,
+  Coins,
+  BookOpen,
+  Languages,
+  Package,
+  Route,
+  Box,
   type LucideIcon,
 } from "lucide-react";
 import { FadeIn } from "@/components/motion/fade-in";
@@ -60,6 +66,24 @@ const casesBase = [
       { icon: Boxes, value: "7" },
     ],
   },
+  {
+    icon: MessageCircle,
+    href: "/cases/whatsapp-next",
+    stats: [
+      { icon: Coins, value: "R$ 8" },
+      { icon: BookOpen, value: "5" },
+      { icon: Languages, value: "3" },
+    ],
+  },
+  {
+    icon: Package,
+    href: "/cases/servientrega",
+    stats: [
+      { icon: Route, value: "6" },
+      { icon: Box, value: "3D" },
+      { icon: Languages, value: "3" },
+    ],
+  },
 ];
 
 export function Cases() {
@@ -84,7 +108,7 @@ export function Cases() {
     <section id="cases" data-nav-theme="light" className="bg-light pb-28 pt-20 text-dark">
       <div className="container">
         <FadeIn className="max-w-4xl">
-          <p className="mb-6 text-caption uppercase tracking-[0.22em] text-dark/50">
+          <p className="mb-6 text-caption uppercase tracking-[0.22em] text-dark/65">
             {t.home.cases.eyebrow}
           </p>
           <h2 className="font-display text-[48px] font-semibold leading-[1.08] md:text-h2">
@@ -92,7 +116,7 @@ export function Cases() {
           </h2>
         </FadeIn>
 
-        <div className="mt-16 grid grid-cols-1 gap-gutter lg:grid-cols-3">
+        <div className="mt-16 grid grid-cols-1 gap-gutter md:grid-cols-2 xl:grid-cols-3">
           {cases.map((item, index) => {
             const LeadIcon = item.icon;
             return (
@@ -116,7 +140,7 @@ export function Cases() {
                   {/* Seta de canto */}
                   <span
                     aria-hidden="true"
-                    className="absolute right-6 top-6 flex h-9 w-9 items-center justify-center rounded-full border border-dark/10 text-dark/35 transition-all duration-300 group-hover:rotate-45 group-hover:border-primary group-hover:bg-primary group-hover:text-white"
+                    className="absolute right-6 top-6 flex h-9 w-9 items-center justify-center rounded-full border border-dark/10 text-dark/65 transition-all duration-300 group-hover:rotate-45 group-hover:border-primary group-hover:bg-primary group-hover:text-white"
                   >
                     <ArrowUpRight className="h-4 w-4" strokeWidth={2} />
                   </span>
@@ -134,7 +158,7 @@ export function Cases() {
                   <h3 className="mt-7 font-display text-[28px] font-semibold leading-[1.14] transition-colors duration-300 group-hover:text-primary">
                     {item.title}
                   </h3>
-                  <p className="mt-4 text-sm leading-6 text-dark/58">{item.body}</p>
+                  <p className="mt-4 text-sm leading-6 text-dark/65">{item.body}</p>
 
                   {/* Painel de dados-chave */}
                   <div className="mt-auto pt-7">
@@ -150,7 +174,7 @@ export function Cases() {
                             <span className="font-display text-lg font-semibold leading-none tracking-tight tabular-nums text-dark">
                               {stat.value}
                             </span>
-                            <span className="text-[10.5px] leading-tight tracking-wide text-dark/45">
+                            <span className="text-[10.5px] leading-tight tracking-wide text-dark/65">
                               {stat.label}
                             </span>
                           </div>

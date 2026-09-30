@@ -113,6 +113,57 @@ export type ScaleDictionary = {
     description: string;
     nodes: string[];
   };
+  tokenLayers: {
+    ariaLabel: string;
+    eyebrow: string;
+    title: string;
+    description: string;
+    layers: { name: string; hint: string }[];
+    contrastLabel: string;
+    passLabel: string;
+    failLabel: string;
+    contrastNote: string;
+  };
+  playground: {
+    ariaLabel: string;
+    eyebrow: string;
+    title: string;
+    description: string;
+    componentsLabel: string;
+    stateLabel: string;
+    variantLabel: string;
+    sizeLabel: string;
+    anatomyLabel: string;
+    codeLabel: string;
+    tokensLabel: string;
+    states: Record<"default" | "hover" | "focus" | "disabled" | "loading" | "error", string>;
+    demo: {
+      button: string;
+      inputLabel: string;
+      inputPlaceholder: string;
+      inputHelp: string;
+      inputError: string;
+      selectLabel: string;
+      selectOptions: string[];
+      switchLabel: string;
+      checkboxLabel: string;
+      badges: string[];
+      toastTitle: string;
+      toastBody: string;
+      tabs: string[];
+      tooltip: string;
+      modalTitle: string;
+      modalBody: string;
+      modalConfirm: string;
+      modalCancel: string;
+      emptyTitle: string;
+      emptyBody: string;
+    };
+    ctaTitle: string;
+    ctaDescription: string;
+    ctaPrimary: string;
+    ctaSecondary: string;
+  };
   ch10: {
     ariaLabel: string;
     eyebrow: string;
@@ -339,6 +390,36 @@ export const scale: Record<Locale, ScaleDictionary> = {
       description:
         "Tokens e variantes nascem no Figma e se tornam a referência que o time de desenvolvimento consulta para implementar cada componente. O objetivo é colaboração, não uma integração automatizada entre as ferramentas.",
       nodes: ["Figma", "Tokens", "Componente", "Storybook", "Produto"],
+    },
+    tokenLayers: {
+      ariaLabel: "Camadas de tokens",
+      eyebrow: "Arquitetura de tokens",
+      title: "Três camadas, uma decisão por vez.",
+      description: "Primitivos guardam o valor bruto, semânticos dizem para que servem e os de componente amarram tudo na peça. Trocar o tema é mudar uma camada, não caçar hex no código.",
+      layers: [{ name: "Primitivo", hint: "valor bruto" }, { name: "Semântico", hint: "intenção de uso" }, { name: "Componente", hint: "aplicado na peça" }],
+      contrastLabel: "Contraste WCAG",
+      passLabel: "Passa AA",
+      failLabel: "Reprova",
+      contrastNote: "Calculado ao vivo a partir dos tokens. O roxo da marca não passa como texto no escuro, por isso existe um token de texto separado.",
+    },
+    playground: {
+      ariaLabel: "Playground de componentes",
+      eyebrow: "Playground",
+      title: "Componentes vivos, em todos os estados.",
+      description: "Não é print: cada peça abaixo é código rodando. Troque estado, variante e tamanho, veja a anatomia e o código que o time de engenharia recebe.",
+      componentsLabel: "Componentes",
+      stateLabel: "Estado",
+      variantLabel: "Variante",
+      sizeLabel: "Tamanho",
+      anatomyLabel: "Mostrar anatomia",
+      codeLabel: "Código",
+      tokensLabel: "Tokens usados",
+      states: {"default": "Padrão", "hover": "Hover", "focus": "Foco", "disabled": "Desabilitado", "loading": "Carregando", "error": "Erro"},
+      demo: {"button": "Criar agente", "inputLabel": "E-mail de trabalho", "inputPlaceholder": "voce@empresa.com", "inputHelp": "Usado para enviar o convite.", "inputError": "Informe um e-mail válido.", "selectLabel": "Etapa do funil", "selectOptions": ["Prospecção", "Qualificação", "Negociação"], "switchLabel": "Atendimento por IA", "checkboxLabel": "Notificar o vendedor", "badges": ["Ativo", "Rascunho", "Pausado", "Erro"], "toastTitle": "Agente publicado", "toastBody": "A Clara já está atendendo no WhatsApp.", "tabs": ["Resumo", "Configurar", "Testar"], "tooltip": "Duplicar agente", "modalTitle": "Pausar automação?", "modalBody": "O agente para de responder e as conversas voltam para o time.", "modalConfirm": "Pausar", "modalCancel": "Cancelar", "emptyTitle": "Nenhum agente ainda", "emptyBody": "Crie o primeiro e ele começa a atender em minutos."},
+      ctaTitle: "Quer ver o sistema por dentro?",
+      ctaDescription: "Mostro o arquivo do Figma, a documentação e como o time usa no dia a dia numa conversa rápida.",
+      ctaPrimary: "Agendar conversa",
+      ctaSecondary: "Baixar currículo",
     },
     ch10: {
       ariaLabel: "Resultado do sistema",
@@ -575,6 +656,36 @@ export const scale: Record<Locale, ScaleDictionary> = {
         "Tokens and variants are born in Figma and become the reference the development team consults to implement each component. The goal is collaboration, not an automated integration between tools.",
       nodes: ["Figma", "Tokens", "Component", "Storybook", "Product"],
     },
+    tokenLayers: {
+      ariaLabel: "Token layers",
+      eyebrow: "Token architecture",
+      title: "Three layers, one decision at a time.",
+      description: "Primitives hold the raw value, semantics say what they're for, and component tokens bind it all to the piece. Changing the theme means changing one layer, not hunting hex codes.",
+      layers: [{ name: "Primitive", hint: "raw value" }, { name: "Semantic", hint: "usage intent" }, { name: "Component", hint: "applied to the piece" }],
+      contrastLabel: "WCAG contrast",
+      passLabel: "Passes AA",
+      failLabel: "Fails",
+      contrastNote: "Computed live from the tokens. The brand purple fails as text on dark, which is why a separate text token exists.",
+    },
+    playground: {
+      ariaLabel: "Component playground",
+      eyebrow: "Playground",
+      title: "Live components, in every state.",
+      description: "Not screenshots: every piece below is running code. Switch state, variant, and size, inspect the anatomy and the code engineering receives.",
+      componentsLabel: "Components",
+      stateLabel: "State",
+      variantLabel: "Variant",
+      sizeLabel: "Size",
+      anatomyLabel: "Show anatomy",
+      codeLabel: "Code",
+      tokensLabel: "Tokens used",
+      states: {"default": "Default", "hover": "Hover", "focus": "Focus", "disabled": "Disabled", "loading": "Loading", "error": "Error"},
+      demo: {"button": "Create agent", "inputLabel": "Work email", "inputPlaceholder": "you@company.com", "inputHelp": "Used to send the invite.", "inputError": "Enter a valid email.", "selectLabel": "Funnel stage", "selectOptions": ["Prospecting", "Qualification", "Negotiation"], "switchLabel": "AI support", "checkboxLabel": "Notify the rep", "badges": ["Active", "Draft", "Paused", "Error"], "toastTitle": "Agent published", "toastBody": "Clara is already answering on WhatsApp.", "tabs": ["Overview", "Configure", "Test"], "tooltip": "Duplicate agent", "modalTitle": "Pause automation?", "modalBody": "The agent stops replying and conversations go back to the team.", "modalConfirm": "Pause", "modalCancel": "Cancel", "emptyTitle": "No agents yet", "emptyBody": "Create the first one and it starts answering in minutes."},
+      ctaTitle: "Want to see the system from the inside?",
+      ctaDescription: "I'll walk you through the Figma file, the docs, and how the team uses it day to day in a quick call.",
+      ctaPrimary: "Book a call",
+      ctaSecondary: "Download résumé",
+    },
     ch10: {
       ariaLabel: "Result of the system",
       eyebrow: "Result",
@@ -809,6 +920,36 @@ export const scale: Record<Locale, ScaleDictionary> = {
       description:
         "Tokens y variantes nacen en Figma y se convierten en la referencia que el equipo de desarrollo consulta para implementar cada componente. El objetivo es colaboración, no una integración automatizada entre las herramientas.",
       nodes: ["Figma", "Tokens", "Componente", "Storybook", "Producto"],
+    },
+    tokenLayers: {
+      ariaLabel: "Capas de tokens",
+      eyebrow: "Arquitectura de tokens",
+      title: "Tres capas, una decisión a la vez.",
+      description: "Los primitivos guardan el valor bruto, los semánticos dicen para qué sirven y los de componente lo amarran a la pieza. Cambiar el tema es cambiar una capa, no buscar hex en el código.",
+      layers: [{ name: "Primitivo", hint: "valor bruto" }, { name: "Semántico", hint: "intención de uso" }, { name: "Componente", hint: "aplicado a la pieza" }],
+      contrastLabel: "Contraste WCAG",
+      passLabel: "Pasa AA",
+      failLabel: "Reprueba",
+      contrastNote: "Calculado en vivo desde los tokens. El morado de la marca no pasa como texto sobre oscuro, por eso existe un token de texto aparte.",
+    },
+    playground: {
+      ariaLabel: "Playground de componentes",
+      eyebrow: "Playground",
+      title: "Componentes vivos, en todos sus estados.",
+      description: "No son capturas: cada pieza de abajo es código corriendo. Cambia estado, variante y tamaño, mira la anatomía y el código que recibe ingeniería.",
+      componentsLabel: "Componentes",
+      stateLabel: "Estado",
+      variantLabel: "Variante",
+      sizeLabel: "Tamaño",
+      anatomyLabel: "Mostrar anatomía",
+      codeLabel: "Código",
+      tokensLabel: "Tokens usados",
+      states: {"default": "Por defecto", "hover": "Hover", "focus": "Foco", "disabled": "Deshabilitado", "loading": "Cargando", "error": "Error"},
+      demo: {"button": "Crear agente", "inputLabel": "Correo de trabajo", "inputPlaceholder": "tu@empresa.com", "inputHelp": "Se usa para enviar la invitación.", "inputError": "Ingresa un correo válido.", "selectLabel": "Etapa del embudo", "selectOptions": ["Prospección", "Calificación", "Negociación"], "switchLabel": "Atención por IA", "checkboxLabel": "Notificar al vendedor", "badges": ["Activo", "Borrador", "Pausado", "Error"], "toastTitle": "Agente publicado", "toastBody": "Clara ya está atendiendo en WhatsApp.", "tabs": ["Resumen", "Configurar", "Probar"], "tooltip": "Duplicar agente", "modalTitle": "¿Pausar automatización?", "modalBody": "El agente deja de responder y las conversaciones vuelven al equipo.", "modalConfirm": "Pausar", "modalCancel": "Cancelar", "emptyTitle": "Aún no hay agentes", "emptyBody": "Crea el primero y empieza a atender en minutos."},
+      ctaTitle: "¿Quieres ver el sistema por dentro?",
+      ctaDescription: "Te muestro el archivo de Figma, la documentación y cómo lo usa el equipo en el día a día en una llamada corta.",
+      ctaPrimary: "Agendar llamada",
+      ctaSecondary: "Descargar CV",
     },
     ch10: {
       ariaLabel: "Resultado del sistema",

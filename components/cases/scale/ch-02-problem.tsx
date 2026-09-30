@@ -21,7 +21,7 @@ export function Ch02Problem() {
         <div className="mt-20 grid grid-cols-1 gap-16 md:mt-28 md:grid-cols-2 md:gap-10">
           <div className="flex flex-col items-center gap-6">
             <Reveal>
-              <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-[#0A0A0A]/35">
+              <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-[#0A0A0A]/65">
                 {c.beforeLabel}
               </p>
             </Reveal>
@@ -29,7 +29,7 @@ export function Ch02Problem() {
               {c.beforeItems.map((item) => (
                 <span
                   key={item}
-                  className="rounded-lg border border-black/[0.08] bg-white px-2 py-3 text-center font-sans text-xs font-medium text-[#0A0A0A]/50"
+                  className="rounded-lg border border-black/[0.08] bg-white px-2 py-3 text-center font-sans text-xs font-medium text-[#0A0A0A]/65"
                 >
                   {item}
                 </span>

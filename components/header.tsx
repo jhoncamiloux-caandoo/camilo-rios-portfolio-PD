@@ -108,7 +108,7 @@ export function Header() {
         <nav
           aria-label={t.home.header.navAriaDesktop}
           className={`hidden items-center gap-8 text-sm transition-colors duration-300 lg:flex ${
-            dark ? "text-white/60" : "text-dark/60"
+            dark ? "text-white/60" : "text-dark/65"
           }`}
         >
           {navLinks.map((link) => (

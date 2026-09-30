@@ -7,6 +7,8 @@ import { Ch01Hero } from "@/components/cases/scale/ch-01-hero";
 import { Ch02Problem } from "@/components/cases/scale/ch-02-problem";
 import { Ch03Architecture } from "@/components/cases/scale/ch-03-architecture";
 import { Ch04Tokens } from "@/components/cases/scale/ch-04-tokens";
+import { Ch04bTokenLayers } from "@/components/cases/scale/ch-04b-token-layers";
+import { Ch05bPlayground } from "@/components/cases/scale/ch-05b-playground";
 import { Ch05Components } from "@/components/cases/scale/ch-05-components";
 import { Ch06AiComponents } from "@/components/cases/scale/ch-06-ai-components";
 import { Ch07Governance } from "@/components/cases/scale/ch-07-governance";
@@ -26,7 +28,9 @@ export default function CaseScalePage() {
       <Ch02Problem />
       <Ch03Architecture />
       <Ch04Tokens />
+      <Ch04bTokenLayers />
       <Ch05Components />
+      <Ch05bPlayground />
       <Ch06AiComponents />
       <Ch07Governance />
       <Ch08GrowthSystem />

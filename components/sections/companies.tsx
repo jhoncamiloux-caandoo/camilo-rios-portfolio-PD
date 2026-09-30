@@ -22,7 +22,7 @@ function ExpertiseCard({ name, icon: Icon }: Expertise) {
       <Icon
         aria-hidden="true"
         strokeWidth={1.6}
-        className="h-5 w-5 text-white/55 transition-colors duration-300 group-hover:text-primary"
+        className="h-5 w-5 text-white/60 transition-colors duration-300 group-hover:text-primary-light"
       />
       <span className="whitespace-nowrap font-sans text-lg font-medium tracking-tight text-white">
         {name}
@@ -69,7 +69,7 @@ export function Companies() {
     <section data-nav-theme="dark" className="overflow-hidden border-y border-white/10 bg-dark py-20 text-light">
       <div className="container flex flex-col gap-10 md:flex-row md:items-center md:gap-16">
         <div className="shrink-0">
-          <span className="mb-2 block font-display text-xs font-semibold uppercase tracking-[0.22em] text-white/40">
+          <span className="mb-2 block font-display text-xs font-semibold uppercase tracking-[0.22em] text-white/60">
             {t.home.companies.eyebrow}
           </span>
           <h2 className="font-display text-2xl font-semibold tracking-tight text-light md:text-3xl">

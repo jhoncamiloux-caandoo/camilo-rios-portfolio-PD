@@ -18,7 +18,7 @@ export function Ch04Problem() {
             />
 
             <Reveal delay={0.4}>
-              <p className="font-sans text-sm leading-relaxed text-[#0A0A0A]/50 md:text-base">
+              <p className="font-sans text-sm leading-relaxed text-[#0A0A0A]/65 md:text-base">
                 {c.intro}
               </p>
             </Reveal>
@@ -27,7 +27,7 @@ export function Ch04Problem() {
               {c.frictions.map((friction, i) => (
                 <Reveal key={friction} delay={0.5 + i * 0.08}>
                   <div className="flex items-start gap-3 border-l-2 border-black/[0.08] pl-4">
-                    <p className="font-sans text-sm leading-relaxed text-[#0A0A0A]/60 md:text-base">
+                    <p className="font-sans text-sm leading-relaxed text-[#0A0A0A]/65 md:text-base">
                       {friction}
                     </p>
                   </div>

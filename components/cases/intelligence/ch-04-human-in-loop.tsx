@@ -18,7 +18,7 @@ export function Ch04HumanInLoop() {
               className="font-display text-3xl font-semibold leading-[1.1] tracking-tight text-[#0A0A0A] md:text-4xl"
             />
             <Reveal delay={0.15}>
-              <p className="font-sans text-base leading-relaxed text-[#0A0A0A]/55 md:text-lg">
+              <p className="font-sans text-base leading-relaxed text-[#0A0A0A]/65 md:text-lg">
                 {c.description}
               </p>
             </Reveal>
@@ -26,7 +26,7 @@ export function Ch04HumanInLoop() {
             <div className="mt-2 flex flex-wrap gap-2">
               {c.considerations.map((item, i) => (
                 <Reveal key={item} delay={0.05 * i}>
-                  <span className="rounded-full border border-black/[0.08] bg-white px-3.5 py-1.5 font-sans text-xs font-medium text-[#0A0A0A]/60">
+                  <span className="rounded-full border border-black/[0.08] bg-white px-3.5 py-1.5 font-sans text-xs font-medium text-[#0A0A0A]/65">
                     {item}
                   </span>
                 </Reveal>

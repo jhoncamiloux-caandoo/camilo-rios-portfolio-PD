@@ -19,7 +19,7 @@ export function Ch04Tokens() {
             className="font-display text-3xl font-semibold leading-[1.1] tracking-tight text-white md:text-5xl"
           />
           <Reveal delay={0.2}>
-            <p className="max-w-xl font-sans text-base leading-relaxed text-white/50 md:text-lg">
+            <p className="max-w-xl font-sans text-base leading-relaxed text-white/60 md:text-lg">
               {c.description}
             </p>
           </Reveal>
@@ -28,7 +28,7 @@ export function Ch04Tokens() {
         {/* Cores */}
         <div className="mx-auto mt-16 max-w-4xl md:mt-20">
           <Reveal>
-            <p className="mb-5 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-white/40">
+            <p className="mb-5 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
               {c.colorsLabel}
             </p>
           </Reveal>
@@ -41,7 +41,7 @@ export function Ch04Tokens() {
                   aria-hidden="true"
                 />
                 <p className="mt-2 font-sans text-xs font-semibold text-white">{col.name}</p>
-                <p className="font-mono text-[11px] text-white/45">{col.hex}</p>
+                <p className="font-mono text-[11px] text-white/60">{col.hex}</p>
               </Reveal>
             ))}
           </div>
@@ -50,7 +50,7 @@ export function Ch04Tokens() {
         {/* Gradientes */}
         <div className="mx-auto mt-14 max-w-4xl">
           <Reveal>
-            <p className="mb-5 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-white/40">
+            <p className="mb-5 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
               {c.gradientsLabel}
             </p>
           </Reveal>
@@ -58,7 +58,7 @@ export function Ch04Tokens() {
             {c.gradients.map((g, i) => (
               <Reveal key={g.name} delay={i * 0.06} className="min-w-[220px] flex-1">
                 <div className="h-10 rounded-full" style={{ background: g.css }} aria-hidden="true" />
-                <p className="mt-1.5 font-mono text-[11px] text-white/45">{g.name}</p>
+                <p className="mt-1.5 font-mono text-[11px] text-white/60">{g.name}</p>
               </Reveal>
             ))}
           </div>
@@ -67,7 +67,7 @@ export function Ch04Tokens() {
         {/* Tipografia */}
         <div className="mx-auto mt-14 max-w-4xl">
           <Reveal>
-            <p className="mb-5 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-white/40">
+            <p className="mb-5 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
               {c.typographyLabel}
             </p>
           </Reveal>
@@ -77,7 +77,7 @@ export function Ch04Tokens() {
                 <span className="font-sans text-white" style={{ fontSize: `min(${tItem.size}, 28px)` }}>
                   {tItem.label}
                 </span>
-                <span className="shrink-0 font-mono text-xs text-white/40">{tItem.size}</span>
+                <span className="shrink-0 font-mono text-xs text-white/60">{tItem.size}</span>
               </Reveal>
             ))}
           </div>
@@ -86,7 +86,7 @@ export function Ch04Tokens() {
         {/* Espaçamento, raio, sombra, grid — a camada sistematizada além da marca */}
         <div className="mx-auto mt-20 max-w-4xl border-t border-white/[0.08] pt-14 md:mt-24">
           <Reveal>
-            <p className="max-w-xl font-sans text-sm leading-relaxed text-white/40">
+            <p className="max-w-xl font-sans text-sm leading-relaxed text-white/60">
               {c.systemNote}
             </p>
           </Reveal>
@@ -95,7 +95,7 @@ export function Ch04Tokens() {
             {/* Espaçamento */}
             <div>
               <Reveal>
-                <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-white/40">
+                <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
                   {c.spacingLabel}
                 </p>
               </Reveal>
@@ -107,7 +107,7 @@ export function Ch04Tokens() {
                       style={{ width: Math.min(px, 40), height: 6 }}
                       aria-hidden="true"
                     />
-                    <span className="font-mono text-[10px] text-white/35">{px}</span>
+                    <span className="font-mono text-[10px] text-white/60">{px}</span>
                   </div>
                 ))}
               </Reveal>
@@ -116,7 +116,7 @@ export function Ch04Tokens() {
             {/* Grid */}
             <div>
               <Reveal>
-                <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-white/40">
+                <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
                   {c.gridLabel}
                 </p>
               </Reveal>
@@ -127,7 +127,7 @@ export function Ch04Tokens() {
                     delay={0.05 * i}
                     className="flex items-center justify-between gap-4 rounded-lg border border-white/[0.06] px-4 py-2.5"
                   >
-                    <span className="font-sans text-xs text-white/55">{g.label}</span>
+                    <span className="font-sans text-xs text-white/60">{g.label}</span>
                     <span className="font-mono text-xs text-white/70">{g.value}</span>
                   </Reveal>
                 ))}
@@ -137,7 +137,7 @@ export function Ch04Tokens() {
             {/* Raios */}
             <div>
               <Reveal>
-                <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-white/40">
+                <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
                   {c.radiusLabel}
                 </p>
               </Reveal>
@@ -149,7 +149,7 @@ export function Ch04Tokens() {
                       style={{ borderRadius: Math.min(r.px, 20) }}
                       aria-hidden="true"
                     />
-                    <span className="font-mono text-[10px] text-white/35">{r.name}</span>
+                    <span className="font-mono text-[10px] text-white/60">{r.name}</span>
                   </Reveal>
                 ))}
               </div>
@@ -158,7 +158,7 @@ export function Ch04Tokens() {
             {/* Sombras */}
             <div>
               <Reveal>
-                <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-white/40">
+                <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
                   {c.shadowsLabel}
                 </p>
               </Reveal>
@@ -170,7 +170,7 @@ export function Ch04Tokens() {
                       style={{ boxShadow: s.css }}
                       aria-hidden="true"
                     />
-                    <span className="font-mono text-[10px] text-white/35">{s.name}</span>
+                    <span className="font-mono text-[10px] text-white/60">{s.name}</span>
                   </Reveal>
                 ))}
               </div>

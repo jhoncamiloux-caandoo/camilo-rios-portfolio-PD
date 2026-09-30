@@ -101,13 +101,13 @@ export function Contact() {
         <div className="container relative z-10">
           <FadeIn className="grid grid-cols-1 items-end gap-gutter rounded-2xl border border-white/[0.08] bg-white/[0.03] p-8 backdrop-blur-sm md:grid-cols-12 md:p-14">
             <div className="md:col-span-8">
-              <p className="mb-6 text-caption uppercase tracking-[0.22em] text-white/40">
+              <p className="mb-6 text-caption uppercase tracking-[0.22em] text-white/60">
                 {t.home.contact.eyebrow}
               </p>
               <h2 className="font-display text-[48px] font-semibold leading-[1.05] tracking-tight md:text-[56px]">
                 {t.home.contact.title}
               </h2>
-              <p className="mt-4 font-sans text-sm text-white/40">
+              <p className="mt-4 font-sans text-sm text-white/60">
                 {t.home.contact.availability}
               </p>
             </div>
@@ -142,7 +142,7 @@ export function Contact() {
             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
             className="flex flex-col gap-6"
           >
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-light">
               {t.home.contact.eyebrow}
             </p>
 
@@ -150,7 +150,7 @@ export function Contact() {
               <DialogTitle className="font-display text-2xl font-semibold leading-snug tracking-tight text-white">
                 {t.home.contact.title}
               </DialogTitle>
-              <DialogDescription className="font-sans text-sm leading-relaxed text-white/50">
+              <DialogDescription className="font-sans text-sm leading-relaxed text-white/60">
                 {t.home.contact.modal.description}
               </DialogDescription>
             </div>

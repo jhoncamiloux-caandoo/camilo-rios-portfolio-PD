@@ -27,7 +27,7 @@ export function Ch01Hero() {
           />
 
           <Reveal delay={0.4}>
-            <p className="max-w-md font-sans text-base leading-relaxed text-[#0A0A0A]/55 md:text-lg">
+            <p className="max-w-md font-sans text-base leading-relaxed text-[#0A0A0A]/65 md:text-lg">
               {c.description}
             </p>
           </Reveal>
@@ -37,7 +37,7 @@ export function Ch01Hero() {
               {c.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full border border-black/[0.08] px-3.5 py-1.5 font-sans text-xs font-medium text-[#0A0A0A]/60"
+                  className="rounded-full border border-black/[0.08] px-3.5 py-1.5 font-sans text-xs font-medium text-[#0A0A0A]/65"
                 >
                   {tag}
                 </span>
@@ -46,7 +46,7 @@ export function Ch01Hero() {
           </Reveal>
 
           <Reveal delay={0.6}>
-            <p className="font-sans text-xs text-[#0A0A0A]/35">
+            <p className="font-sans text-xs text-[#0A0A0A]/65">
               {c.teamNote}
             </p>
           </Reveal>

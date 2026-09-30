@@ -16,7 +16,7 @@ export function Ch05Discovery() {
             className="font-display text-3xl font-semibold leading-[1.1] tracking-tight text-[#0A0A0A] md:text-5xl"
           />
           <Reveal delay={0.2}>
-            <p className="max-w-xl font-sans text-base leading-relaxed text-[#0A0A0A]/55 md:text-lg">
+            <p className="max-w-xl font-sans text-base leading-relaxed text-[#0A0A0A]/65 md:text-lg">
               {c.paragraph}
             </p>
           </Reveal>

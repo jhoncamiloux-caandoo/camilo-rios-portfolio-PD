@@ -30,7 +30,7 @@ export function Ch12Results() {
             className="font-display text-[100px] font-semibold leading-none tracking-tight text-white md:text-[160px]"
           />
           <Reveal delay={0.3}>
-            <p className="mt-3 max-w-md text-center font-sans text-sm text-white/45 md:text-base">
+            <p className="mt-3 max-w-md text-center font-sans text-sm text-white/60 md:text-base">
               {c.bigNumberCaption}
             </p>
           </Reveal>
@@ -45,7 +45,7 @@ export function Ch12Results() {
                 transition={{ duration: 1.8, ease }}
               />
             </div>
-            <div className="mt-3 flex justify-between font-sans text-xs text-white/35">
+            <div className="mt-3 flex justify-between font-sans text-xs text-white/60">
               <span>{c.barLabelLeft}</span>
               <span>{c.barLabelRight}</span>
             </div>
@@ -53,7 +53,7 @@ export function Ch12Results() {
         </div>
 
         <Reveal delay={0.4} className="mx-auto mt-20 max-w-xl text-center md:mt-24">
-          <p className="font-sans text-base leading-relaxed text-white/50 md:text-lg">
+          <p className="font-sans text-base leading-relaxed text-white/60 md:text-lg">
             {c.paragraph}
           </p>
         </Reveal>

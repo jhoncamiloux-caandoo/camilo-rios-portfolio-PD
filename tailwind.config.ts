@@ -13,7 +13,11 @@ const config: Config = {
     },
     extend: {
       colors: {
-        primary: "#622FFD",
+        primary: {
+          DEFAULT: "#622FFD",
+          // Roxo para TEXTO sobre fundo escuro: #622FFD dá ~2.8:1 no #0A0A0A (reprova AA).
+          light: "#A48BFF",
+        },
         secondary: "#F94706",
         dark: "#0A0A0A",
         surface: "#121212",

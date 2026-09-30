@@ -16,7 +16,7 @@ export function Ch06Insight() {
             className="font-display text-3xl font-semibold leading-[1.1] tracking-tight text-[#0A0A0A] md:text-5xl"
           />
           <Reveal delay={0.15}>
-            <p className="max-w-xl font-sans text-base leading-relaxed text-[#0A0A0A]/55 md:text-lg">
+            <p className="max-w-xl font-sans text-base leading-relaxed text-[#0A0A0A]/65 md:text-lg">
               {c.paragraph}
             </p>
           </Reveal>
@@ -30,7 +30,7 @@ export function Ch06Insight() {
                 <h3 className="font-display text-xl font-semibold tracking-tight text-[#0A0A0A] md:text-2xl">
                   {insight.title}
                 </h3>
-                <p className="font-sans text-sm leading-relaxed text-[#0A0A0A]/55 md:text-base">
+                <p className="font-sans text-sm leading-relaxed text-[#0A0A0A]/65 md:text-base">
                   {insight.description}
                 </p>
               </div>
