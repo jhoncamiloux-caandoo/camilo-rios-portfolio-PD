@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { ArrowUpRight, ImagePlus } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/case-lp/case-primitives";
 import { useLocale } from "@/lib/i18n/locale-context";
 import { MONO, SANS, SV, SV_ASSET, SvEyebrow, SvHeading } from "./sv-part-1";
@@ -20,20 +20,19 @@ export function SvAI() {
         <SvHeading eyebrow={c.eyebrow} title={c.title} description={c.description} />
 
         <div className="relative mt-16">
-          {/* Linha que se desenha e liga os nós (desktop) */}
-          <svg viewBox="0 0 1200 20" preserveAspectRatio="none" className="absolute left-0 top-[27px] hidden h-5 w-full lg:block" aria-hidden="true">
-            <line x1="50" y1="10" x2="1150" y2="10" stroke="#ffffff1f" strokeWidth="2" />
-            <motion.line
-              x1="50" y1="10" x2="1150" y2="10" stroke={SV.greenLight} strokeWidth="2"
-              initial={reduce ? false : { pathLength: 0 }}
-              whileInView={{ pathLength: 1 }}
+          {/* Linha do centro do 1º ao centro do 6º nó, na altura do centro dos círculos (h-14 → 28px) */}
+          <div aria-hidden="true" className="absolute left-[8.333%] right-[8.333%] top-[27px] hidden h-0.5 bg-white/10 lg:block">
+            <motion.div
+              className="h-full origin-left bg-[#56C271]"
+              initial={reduce ? false : { scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
               viewport={{ once: true, margin: "-120px" }}
               transition={{ duration: 2.4, ease: "easeInOut" }}
             />
-          </svg>
+          </div>
           <ol className="relative grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-6">
             {c.steps.map((s, i) => (
-              <li key={s.title} className="flex flex-col items-start gap-3 lg:items-center lg:text-center">
+              <li key={s.title} className="relative flex flex-col items-start gap-3 lg:items-center lg:text-center">
                 <motion.span
                   className="flex h-14 w-14 items-center justify-center rounded-full border text-sm"
                   style={{ fontFamily: MONO }}
@@ -51,44 +50,22 @@ export function SvAI() {
           </ol>
         </div>
 
-        {/* Exploração → interface */}
-        <div className="mt-20 grid grid-cols-1 gap-4 md:grid-cols-[1fr_auto_1.3fr] md:items-center">
-          <Reveal>
-            <p className="mb-3 text-[11px] uppercase tracking-[0.2em] text-white/60" style={{ fontFamily: MONO }}>{c.beforeLabel}</p>
-            <div className="grid grid-cols-2 gap-3">
-              {[0, 1, 2, 3].map((i) => (
-                <div key={i} className="flex aspect-square flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-white/20 p-2 text-center">
-                  <ImagePlus className="h-5 w-5 text-white/60" aria-hidden="true" />
-                  <span className="text-[10px] leading-tight text-white/60" style={{ fontFamily: MONO }}>{c.placeholder}</span>
-                </div>
-              ))}
-            </div>
-          </Reveal>
-          <span className="hidden text-3xl text-[#56C271] md:block" aria-hidden="true">→</span>
-          <Reveal delay={0.1}>
-            <p className="mb-3 text-[11px] uppercase tracking-[0.2em] text-white/60" style={{ fontFamily: MONO }}>{c.afterLabel}</p>
-            <div className="overflow-hidden rounded-2xl border border-[#56C271]/40">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={`${SV_ASSET}/j04.webp`} alt={c.finalAlt} loading="lazy" className="block w-full" />
-            </div>
-          </Reveal>
-        </div>
       </div>
     </section>
   );
 }
 
-/* ── Multilíngue: toggle real ES / EN / PT ────────────────────────── */
-const LANGS = ["es", "en", "pt"] as const;
+/* ── Multilíngue: o próprio site da Servientrega em PT / EN / ES ─── */
+const LANGS = ["pt", "en", "es"] as const;
 
 export function SvMulti() {
   const { t } = useLocale();
   const c = t.servientrega.multi;
-  const [lang, setLang] = useState<(typeof LANGS)[number]>("es");
+  const [lang, setLang] = useState<(typeof LANGS)[number]>("pt");
 
   return (
     <section className="relative overflow-hidden bg-[#07080b] py-24 md:py-36" aria-label={c.ariaLabel}>
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0" style={{ background: "radial-gradient(50% 50% at 80% 30%, rgba(223,25,149,0.14), transparent 70%)" }} />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0" style={{ background: "radial-gradient(50% 50% at 80% 30%, rgba(0,154,68,0.16), transparent 70%)" }} />
       <div className="container relative grid grid-cols-1 items-center gap-12 lg:grid-cols-[1fr_1.4fr]">
         <div className="flex flex-col gap-8">
           <SvHeading eyebrow={c.eyebrow} title={c.title} description={c.description} />
@@ -108,18 +85,18 @@ export function SvMulti() {
               </button>
             ))}
           </div>
-          <a href="https://berry-boost.vercel.app/" target="_blank" rel="noopener noreferrer" className="inline-flex w-fit items-center gap-2 text-sm font-semibold text-white underline-offset-4 hover:underline">
+          <a href="https://servientrega-camilo.vercel.app/" target="_blank" rel="noopener noreferrer" className="inline-flex w-fit items-center gap-2 text-sm font-semibold text-white underline-offset-4 hover:underline">
             {c.link}
             <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
           </a>
         </div>
         <Reveal delay={0.1}>
           <figure>
-            <div className="relative aspect-[16/10] overflow-hidden rounded-3xl border border-white/10 bg-[#DF1995]">
+            <div className="relative aspect-[16/10] overflow-hidden rounded-3xl border border-white/10 bg-[#0c0e13]">
               <AnimatePresence mode="popLayout">
                 <motion.img
                   key={lang}
-                  src={`${SV_ASSET}/berry-${lang}.webp`}
+                  src={`${SV_ASSET}/sv-${lang}.webp`}
                   alt={c.alt}
                   className="absolute inset-0 h-full w-full object-cover object-top"
                   initial={{ opacity: 0, filter: "blur(8px)" }}
@@ -189,6 +166,82 @@ export function SvOutro() {
             </motion.span>
           ))}
         </p>
+      </div>
+    </section>
+  );
+}
+
+/* ── Outros projetos imersivos: nichos diferentes, deixados claramente separados ── */
+export function SvOthers() {
+  const { t } = useLocale();
+  const c = t.servientrega.others;
+
+  return (
+    <section className="border-t border-white/10 bg-[#0c0e13] py-24 md:py-36" aria-label={c.ariaLabel}>
+      <div className="container">
+        <SvHeading eyebrow={c.eyebrow} title={c.title} description={c.description} />
+        <ul className="mt-14 grid grid-cols-1 gap-5 md:grid-cols-3">
+          {c.items.map((p, i) => (
+            <li key={p.name}>
+              <Reveal delay={i * 0.08} className="h-full">
+                <a
+                  href={p.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-[#07080b] transition-colors hover:border-[#56C271]/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#56C271]"
+                >
+                  <div className="aspect-[16/10] overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={`${SV_ASSET}/${p.img}`} alt={p.alt} loading="lazy" className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]" />
+                  </div>
+                  <div className="flex flex-1 flex-col gap-3 p-6">
+                    <span className="w-fit rounded-full border border-white/15 px-2.5 py-1 text-[11px] uppercase tracking-wider text-white/80" style={{ fontFamily: MONO }}>
+                      {p.niche}
+                    </span>
+                    <h3 className="text-2xl font-bold text-white" style={{ fontFamily: SANS }}>{p.name}</h3>
+                    <p className="text-sm leading-relaxed text-white/70">{p.body}</p>
+                    <span className="mt-auto inline-flex items-center gap-1.5 pt-2 text-sm font-semibold text-[#56C271]">
+                      {c.visit}
+                      <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+                    </span>
+                  </div>
+                </a>
+              </Reveal>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+/* ── Faixa de CTA para o site completo (aparece no meio e no fim) ── */
+export function SvCta() {
+  const { t } = useLocale();
+  const c = t.servientrega.cta;
+
+  return (
+    <section className="bg-[#07080b] py-16 md:py-20" aria-label={c.title}>
+      <div className="container">
+        <Reveal>
+          <a
+            href="https://servientrega-camilo.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative flex flex-col items-start justify-between gap-6 overflow-hidden rounded-3xl bg-[#007A38] p-8 transition-colors hover:bg-[#006a31] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#56C271] focus-visible:ring-offset-2 focus-visible:ring-offset-[#07080b] md:flex-row md:items-center md:p-12"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={`${SV_ASSET}/logo-white.svg`} alt="" aria-hidden="true" className="pointer-events-none absolute -right-6 -top-6 h-48 w-auto opacity-10 md:h-64" />
+            <div className="relative flex flex-col gap-2">
+              <span className="text-3xl font-black tracking-[-0.03em] text-white md:text-5xl" style={{ fontFamily: SANS }}>{c.title}</span>
+              <span className="max-w-lg text-base text-white/85">{c.body}</span>
+            </div>
+            <span className="relative inline-flex h-14 shrink-0 items-center gap-2 rounded-full bg-white px-7 text-base font-semibold text-[#07080b]">
+              {c.button}
+              <ArrowUpRight className="h-5 w-5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+            </span>
+          </a>
+        </Reveal>
       </div>
     </section>
   );
