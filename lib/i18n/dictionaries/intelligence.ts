@@ -2,7 +2,7 @@ import type { Locale } from "@/lib/i18n/types";
 
 type FlowState = { title: string; description: string };
 
-type ShowcaseScreen = { alt: string; caption: string };
+type ShowcaseStep = { title: string; body: string; alt: string };
 
 type AgentCopy = { nome: string; faz: string };
 
@@ -53,8 +53,8 @@ export type IntelligenceDictionary = {
     ariaLabel: string;
     eyebrow: string;
     title: string;
-    heroImageAlt: string;
-    screens: ShowcaseScreen[];
+    description: string;
+    steps: ShowcaseStep[];
     ctaText: string;
     ctaButton: string;
   };
@@ -137,14 +137,15 @@ export const intelligence: Record<Locale, IntelligenceDictionary> = {
     },
     ch05: {
       ariaLabel: "Interface do produto de IA",
-      eyebrow: "AI UI Showcase",
-      title: "O copiloto que acompanha cada conversa comercial.",
-      heroImageAlt: "Dashboard criado pela Clint IA",
-      screens: [
-        { alt: "Atendimento do agente na Clint", caption: "Atendimento" },
-        { alt: "Conversas do agente em tempo real", caption: "Conversa em tempo real" },
-        { alt: "Negociações conduzidas pelo agente", caption: "Negociações" },
-        { alt: "Análise comercial na Clint", caption: "Análise comercial" },
+      eyebrow: "Da conversa à decisão",
+      title: "Uma conversa, do primeiro oi ao dashboard.",
+      description: "As telas abaixo são o mesmo fluxo, em ordem: o que o agente faz sozinho, onde o humano entra e o que o gestor enxerga no final.",
+      steps: [
+        { title: "O lead chega e o agente atende", body: "WhatsApp e Instagram caem na mesma caixa de entrada. O agente de IA responde na hora, e a tag “Atendimento IA” deixa claro para o time quem está conduzindo.", alt: "Caixa de entrada da Clint com conversas de WhatsApp e Instagram atendidas por IA" },
+        { title: "O agente qualifica conversando", body: "A Clara faz as perguntas de qualificação no tom da empresa. Do lado, o negócio já aparece vinculado, e qualquer pessoa pode suspender a automação e assumir.", alt: "Conversa em que a agente Clara qualifica um lead com perguntas" },
+        { title: "O negócio anda no funil sozinho", body: "Cada resposta move o card: Prospecção IA, Qualificação IA, Follow IA. O vendedor só entra quando o lead está pronto ou quando o agente pede ajuda.", alt: "Funil kanban com etapas conduzidas pela IA" },
+        { title: "O gestor pergunta, o copiloto prioriza", body: "Em vez de filtrar planilha, o gestor pergunta em linguagem natural quem chamar primeiro. O copiloto lê a base e devolve um panorama com os nomes.", alt: "Copiloto Clint AI respondendo qual base priorizar" },
+        { title: "E vira painel em uma frase", body: "“Crie um dashboard com os dados da minha operação” gera metas, projeções e agendamentos sem montar gráfico por gráfico.", alt: "Dashboard de projeções comerciais gerado pela IA da Clint" },
       ],
       ctaText:
         "O fluxo conversacional que dá vida a esses agentes roda em produção: você pode conversar com ele agora.",
@@ -257,14 +258,15 @@ export const intelligence: Record<Locale, IntelligenceDictionary> = {
     },
     ch05: {
       ariaLabel: "AI product interface",
-      eyebrow: "AI UI Showcase",
-      title: "The copilot that follows every sales conversation.",
-      heroImageAlt: "Dashboard created by Clint AI",
-      screens: [
-        { alt: "Agent handling service on Clint", caption: "Service" },
-        { alt: "Agent conversations in real time", caption: "Real-time conversation" },
-        { alt: "Deals conducted by the agent", caption: "Deals" },
-        { alt: "Sales analysis on Clint", caption: "Sales analysis" },
+      eyebrow: "From conversation to decision",
+      title: "One conversation, from the first hello to the dashboard.",
+      description: "The screens below are one flow, in order: what the agent does on its own, where a human steps in, and what the manager sees at the end.",
+      steps: [
+        { title: "A lead arrives and the agent replies", body: "WhatsApp and Instagram land in the same inbox. The AI agent answers right away, and the “AI Support” tag tells the team who is handling it.", alt: "Clint inbox with WhatsApp and Instagram conversations handled by AI" },
+        { title: "The agent qualifies through conversation", body: "Clara asks the qualifying questions in the company's tone. The linked deal sits alongside, and anyone can pause the automation and take over.", alt: "Conversation where the Clara agent qualifies a lead" },
+        { title: "The deal moves through the funnel on its own", body: "Each answer moves the card: AI Prospecting, AI Qualification, AI Follow-up. The rep steps in only when the lead is ready or the agent asks for help.", alt: "Kanban funnel with AI-driven stages" },
+        { title: "The manager asks, the copilot prioritizes", body: "Instead of filtering spreadsheets, the manager asks in plain language who to call first. The copilot reads the base and returns an overview with names.", alt: "Clint AI copilot answering which leads to prioritize" },
+        { title: "And it becomes a dashboard in one sentence", body: "“Create a dashboard with my sales operation data” builds goals, projections, and meetings without assembling chart by chart.", alt: "Sales projections dashboard generated by Clint AI" },
       ],
       ctaText:
         "The conversational flow that brings these agents to life runs in production: you can chat with it right now.",
@@ -377,14 +379,15 @@ export const intelligence: Record<Locale, IntelligenceDictionary> = {
     },
     ch05: {
       ariaLabel: "Interfaz del producto de IA",
-      eyebrow: "AI UI Showcase",
-      title: "El copiloto que acompaña cada conversación comercial.",
-      heroImageAlt: "Panel creado por Clint IA",
-      screens: [
-        { alt: "Atención del agente en Clint", caption: "Atención" },
-        { alt: "Conversaciones del agente en tiempo real", caption: "Conversación en tiempo real" },
-        { alt: "Negociaciones conducidas por el agente", caption: "Negociaciones" },
-        { alt: "Análisis comercial en Clint", caption: "Análisis comercial" },
+      eyebrow: "De la conversación a la decisión",
+      title: "Una conversación, del primer hola al dashboard.",
+      description: "Las pantallas de abajo son el mismo flujo, en orden: lo que el agente hace solo, dónde entra el humano y lo que ve el gestor al final.",
+      steps: [
+        { title: "Llega el lead y el agente responde", body: "WhatsApp e Instagram caen en la misma bandeja. El agente de IA responde al instante, y la etiqueta “Atención IA” deja claro al equipo quién conduce.", alt: "Bandeja de Clint con conversaciones de WhatsApp e Instagram atendidas por IA" },
+        { title: "El agente califica conversando", body: "Clara hace las preguntas de calificación con el tono de la empresa. Al lado aparece el negocio vinculado, y cualquiera puede pausar la automatización y tomar el control.", alt: "Conversación en la que la agente Clara califica a un lead" },
+        { title: "El negocio avanza solo en el embudo", body: "Cada respuesta mueve la tarjeta: Prospección IA, Calificación IA, Seguimiento IA. El vendedor entra solo cuando el lead está listo o el agente pide ayuda.", alt: "Embudo kanban con etapas conducidas por IA" },
+        { title: "El gestor pregunta, el copiloto prioriza", body: "En lugar de filtrar planillas, el gestor pregunta en lenguaje natural a quién llamar primero. El copiloto lee la base y devuelve un panorama con nombres.", alt: "Copiloto Clint AI respondiendo a quién priorizar" },
+        { title: "Y se vuelve dashboard en una frase", body: "“Crea un dashboard con los datos de mi operación” genera metas, proyecciones y agendamientos sin armar gráfico por gráfico.", alt: "Dashboard de proyecciones comerciales generado por la IA de Clint" },
       ],
       ctaText:
         "El flujo conversacional que da vida a estos agentes corre en producción: puedes conversar con él ahora mismo.",

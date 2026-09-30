@@ -19,7 +19,7 @@ export function CaseHeader({
         {/* Voltar ao portfólio */}
         <Link
           href="/"
-          className="group flex items-center gap-2 text-sm font-medium text-[#0A0A0A]/50 transition-colors hover:text-[#0A0A0A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#622FFD]"
+          className="group flex items-center gap-2 text-sm font-medium text-[#0A0A0A]/65 transition-colors hover:text-[#0A0A0A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#622FFD]"
         >
           <ArrowLeft
             className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-0.5"
@@ -46,7 +46,7 @@ export function CaseHeader({
         </Link>
 
         {/* Identificador do case — desktop */}
-        <span className="hidden text-[11px] font-semibold uppercase tracking-[0.2em] text-[#0A0A0A]/35 md:block">
+        <span className="hidden text-[11px] font-semibold uppercase tracking-[0.2em] text-[#0A0A0A]/65 md:block">
           {label}
         </span>
       </div>

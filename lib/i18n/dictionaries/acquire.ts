@@ -60,6 +60,15 @@ export type AcquireDictionary = {
     flowNodes: string[];
     pillars: { title: string; description: string }[];
   };
+  ownership: {
+    sectionAriaLabel: string;
+    eyebrow: string;
+    title: string;
+    description: string;
+    steps: { tag: string; title: string; body: string }[];
+    videoTitle: string;
+    videoCaption: string;
+  };
   ch08: {
     sectionAriaLabel: string;
     eyebrow: string;
@@ -241,6 +250,20 @@ export const acquire: Record<Locale, AcquireDictionary> = {
         { title: "Aumentar confiança", description: "Prova social e demonstração visual posicionadas antes de cada pedido de ação." },
         { title: "Incentivar ação", description: "CTAs presentes ao longo de toda a jornada, sempre após um momento de convencimento." },
       ],
+    },
+    ownership: {
+      sectionAriaLabel: "O que eu entreguei",
+      eyebrow: "Entrega ponta a ponta",
+      title: "Do agente de IA ao vídeo da página, o fluxo inteiro passou por mim.",
+      description: "O case não foi só o layout. Eu desenhei e conectei cada peça que o lead encontra, do primeiro clique à conversa com o agente.",
+      steps: [
+        { tag: "01 · IA", title: "Agente de IA", body: "Desenhei o comportamento do agente que recebe o lead vindo da página: perguntas de qualificação, tom e quando passar para o time." },
+        { tag: "02 · Página", title: "Landing page", body: "Estrutura, copy visual e componentes da LP, pensados para levar o visitante até a conversa com o agente." },
+        { tag: "03 · Vídeo", title: "Vídeos da LP", body: "Editei os vídeos que aparecem na página, do corte ao ritmo, para explicar o produto em poucos segundos." },
+        { tag: "04 · Motion", title: "Animações", body: "Criei as animações da LP, que mostram o produto funcionando em vez de só descrever." },
+      ],
+      videoTitle: "Vídeo da landing page, editado por mim",
+      videoCaption: "Vídeo usado na landing page · edição: Jhon Camilo Rios",
     },
     ch08: {
       sectionAriaLabel: "Construção da experiência",
@@ -496,6 +519,20 @@ export const acquire: Record<Locale, AcquireDictionary> = {
         { title: "Encourage action", description: "CTAs present throughout the journey, always after a moment of persuasion." },
       ],
     },
+    ownership: {
+      sectionAriaLabel: "What I delivered",
+      eyebrow: "End-to-end delivery",
+      title: "From the AI agent to the page's video, the whole flow went through me.",
+      description: "This case wasn't just the layout. I designed and connected every piece the lead encounters, from the first click to the conversation with the agent.",
+      steps: [
+        { tag: "01 · AI", title: "AI agent", body: "I designed the behavior of the agent that receives leads from the page: qualifying questions, tone, and when to hand off to the team." },
+        { tag: "02 · Page", title: "Landing page", body: "Structure, visual copy, and components of the LP, built to take visitors to the conversation with the agent." },
+        { tag: "03 · Video", title: "LP videos", body: "I edited the videos on the page, from cuts to pacing, to explain the product in a few seconds." },
+        { tag: "04 · Motion", title: "Animations", body: "I created the LP animations, which show the product working instead of just describing it." },
+      ],
+      videoTitle: "Landing page video, edited by me",
+      videoCaption: "Video used on the landing page · editing: Jhon Camilo Rios",
+    },
     ch08: {
       sectionAriaLabel: "Building the experience",
       eyebrow: "Construction",
@@ -750,6 +787,20 @@ export const acquire: Record<Locale, AcquireDictionary> = {
         { title: "Aumentar la confianza", description: "Prueba social y demostración visual ubicadas antes de cada pedido de acción." },
         { title: "Incentivar la acción", description: "CTAs presentes a lo largo de todo el recorrido, siempre después de un momento de convencimiento." },
       ],
+    },
+    ownership: {
+      sectionAriaLabel: "Lo que entregué",
+      eyebrow: "Entrega de punta a punta",
+      title: "Del agente de IA al video de la página, todo el flujo pasó por mí.",
+      description: "El case no fue solo el layout. Diseñé y conecté cada pieza que encuentra el lead, del primer clic a la conversación con el agente.",
+      steps: [
+        { tag: "01 · IA", title: "Agente de IA", body: "Diseñé el comportamiento del agente que recibe al lead desde la página: preguntas de calificación, tono y cuándo pasar al equipo." },
+        { tag: "02 · Página", title: "Landing page", body: "Estructura, copy visual y componentes de la LP, pensados para llevar al visitante a la conversación con el agente." },
+        { tag: "03 · Video", title: "Videos de la LP", body: "Edité los videos que aparecen en la página, del corte al ritmo, para explicar el producto en pocos segundos." },
+        { tag: "04 · Motion", title: "Animaciones", body: "Creé las animaciones de la LP, que muestran el producto funcionando en lugar de solo describirlo." },
+      ],
+      videoTitle: "Video de la landing page, editado por mí",
+      videoCaption: "Video usado en la landing page · edición: Jhon Camilo Rios",
     },
     ch08: {
       sectionAriaLabel: "Construcción de la experiencia",

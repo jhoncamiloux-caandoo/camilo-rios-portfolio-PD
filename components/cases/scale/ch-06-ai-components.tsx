@@ -18,7 +18,7 @@ export function Ch06AiComponents() {
             className="font-display text-3xl font-semibold leading-[1.1] tracking-tight text-[#0A0A0A] md:text-5xl"
           />
           <Reveal delay={0.2}>
-            <p className="max-w-xl font-sans text-base leading-relaxed text-[#0A0A0A]/55 md:text-lg">
+            <p className="max-w-xl font-sans text-base leading-relaxed text-[#0A0A0A]/65 md:text-lg">
               {c.description}
             </p>
           </Reveal>
@@ -32,9 +32,9 @@ export function Ch06AiComponents() {
                 <h3 className="font-display text-lg font-semibold tracking-tight text-[#0A0A0A] md:text-xl">
                   {c.signatureTitle}
                 </h3>
-                <span className="font-mono text-[11px] text-[#0A0A0A]/35">{c.signatureTag}</span>
+                <span className="font-mono text-[11px] text-[#0A0A0A]/65">{c.signatureTag}</span>
               </div>
-              <p className="mb-5 font-sans text-sm leading-relaxed text-[#0A0A0A]/50">
+              <p className="mb-5 font-sans text-sm leading-relaxed text-[#0A0A0A]/65">
                 {c.signatureDescription}
               </p>
               <div className="flex items-center rounded-xl bg-[#060309] p-6">
@@ -50,9 +50,9 @@ export function Ch06AiComponents() {
                 <h3 className="font-display text-lg font-semibold tracking-tight text-[#0A0A0A] md:text-xl">
                   {c.cloudTitle}
                 </h3>
-                <span className="font-mono text-[11px] text-[#0A0A0A]/35">{c.cloudTag}</span>
+                <span className="font-mono text-[11px] text-[#0A0A0A]/65">{c.cloudTag}</span>
               </div>
-              <p className="mb-5 font-sans text-sm leading-relaxed text-[#0A0A0A]/50">
+              <p className="mb-5 font-sans text-sm leading-relaxed text-[#0A0A0A]/65">
                 {c.cloudDescription}
               </p>
               <div className="rounded-xl bg-[#060309] p-6">
@@ -68,9 +68,9 @@ export function Ch06AiComponents() {
                 <h3 className="font-display text-lg font-semibold tracking-tight text-[#0A0A0A] md:text-xl">
                   {c.meetingTitle}
                 </h3>
-                <span className="font-mono text-[11px] text-[#0A0A0A]/35">{c.meetingTag}</span>
+                <span className="font-mono text-[11px] text-[#0A0A0A]/65">{c.meetingTag}</span>
               </div>
-              <p className="mb-5 font-sans text-sm leading-relaxed text-[#0A0A0A]/50">
+              <p className="mb-5 font-sans text-sm leading-relaxed text-[#0A0A0A]/65">
                 {c.meetingDescription}
               </p>
               <div className="grid grid-cols-1 gap-6 rounded-xl bg-[#060309] p-6 md:grid-cols-2 md:items-center">

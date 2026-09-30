@@ -12,6 +12,7 @@ import { Ch05Discovery } from "@/components/cases/acquire/ch-05-discovery";
 import { Ch06Insight } from "@/components/cases/acquire/ch-06-insight";
 import { Ch07Strategy } from "@/components/cases/acquire/ch-07-strategy";
 import { Ch08Construction } from "@/components/cases/acquire/ch-08-construction";
+import { Ch08bOwnership } from "@/components/cases/acquire/ch-08b-ownership";
 import { Ch09CtaWhatsapp } from "@/components/cases/acquire/ch-09-cta-whatsapp";
 import { Ch10Typebot } from "@/components/cases/acquire/ch-10-typebot";
 import { Ch11Optimization } from "@/components/cases/acquire/ch-11-optimization";
@@ -30,6 +31,7 @@ export default function CaseAcquirePage() {
       <Ch06Insight />
       <Ch07Strategy />
       <Ch08Construction />
+      <Ch08bOwnership />
       <Ch09CtaWhatsapp />
       <Ch10Typebot />
       <Ch11Optimization />

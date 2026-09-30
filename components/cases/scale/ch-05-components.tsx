@@ -22,9 +22,9 @@ function ComponentPanel({
           <h3 className="font-display text-lg font-semibold tracking-tight text-[#0A0A0A] md:text-xl">
             {name}
           </h3>
-          <span className="font-mono text-[11px] text-[#0A0A0A]/35">{file}</span>
+          <span className="font-mono text-[11px] text-[#0A0A0A]/65">{file}</span>
         </div>
-        <p className="mb-5 font-sans text-sm leading-relaxed text-[#0A0A0A]/50">{description}</p>
+        <p className="mb-5 font-sans text-sm leading-relaxed text-[#0A0A0A]/65">{description}</p>
         <div className="flex flex-wrap items-center gap-3 rounded-xl bg-[#060309] p-6">{children}</div>
       </div>
     </Reveal>
@@ -46,7 +46,7 @@ export function Ch05Components() {
             className="font-display text-3xl font-semibold leading-[1.1] tracking-tight text-[#0A0A0A] md:text-5xl"
           />
           <Reveal delay={0.2}>
-            <p className="max-w-xl font-sans text-base leading-relaxed text-[#0A0A0A]/55 md:text-lg">
+            <p className="max-w-xl font-sans text-base leading-relaxed text-[#0A0A0A]/65 md:text-lg">
               {c.description}
             </p>
           </Reveal>

@@ -9,6 +9,7 @@ type Metric = {
   prefix?: string;
   suffix: string;
   label: string;
+  context?: string;
 };
 
 const metricsBase: Omit<Metric, "label">[] = [
@@ -57,13 +58,14 @@ export function Metrics() {
     ...base,
     suffix: t.home.metrics.items[i].suffix ?? base.suffix,
     label: t.home.metrics.items[i].label,
+    context: t.home.metrics.items[i].context,
   }));
 
   return (
     <section data-nav-theme="dark" className="border-y border-white/10 bg-[#0A0A0A] py-24 text-white">
       <div className="container">
         <div className="mb-16 flex flex-col gap-3">
-          <span className="font-sans text-xs font-semibold uppercase tracking-[0.22em] text-white/40">
+          <span className="font-sans text-xs font-semibold uppercase tracking-[0.22em] text-white/60">
             {t.home.metrics.eyebrow}
           </span>
           <h2 className="max-w-2xl font-display text-3xl font-semibold leading-tight tracking-tight md:text-4xl">
@@ -84,7 +86,10 @@ export function Metrics() {
               <p className="font-display text-5xl font-bold tracking-tight text-white md:text-6xl">
                 <Counter metric={metric} />
               </p>
-              <p className="text-sm leading-relaxed text-white/55">{metric.label}</p>
+              <p className="text-sm leading-relaxed text-white/60">{metric.label}</p>
+              {metric.context && (
+                <p className="text-xs font-medium leading-relaxed text-primary-light">{metric.context}</p>
+              )}
             </motion.div>
           ))}
         </div>

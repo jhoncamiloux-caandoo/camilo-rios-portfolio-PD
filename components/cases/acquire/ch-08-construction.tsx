@@ -28,7 +28,7 @@ function Sketch({
           } ${i === active ? "h-14" : "h-5"}`}
         />
       ))}
-      <p className="mt-2 text-center font-sans text-[11px] font-semibold uppercase tracking-[0.15em] text-[#0A0A0A]/35">
+      <p className="mt-2 text-center font-sans text-[11px] font-semibold uppercase tracking-[0.15em] text-[#0A0A0A]/65">
         {name} {sketchFocusSuffix}
       </p>
     </div>
@@ -48,7 +48,7 @@ export function Ch08Construction() {
             className="font-display text-4xl font-semibold leading-[1.06] tracking-tight text-[#0A0A0A] md:text-6xl"
           />
           <Reveal delay={0.2}>
-            <p className="max-w-xl font-sans text-base leading-relaxed text-[#0A0A0A]/55 md:text-lg">
+            <p className="max-w-xl font-sans text-base leading-relaxed text-[#0A0A0A]/65 md:text-lg">
               {c.paragraph}
             </p>
           </Reveal>
@@ -80,7 +80,7 @@ export function Ch08Construction() {
                     </div>
                   </Reveal>
                   <Reveal delay={0.1}>
-                    <p className="font-sans text-base leading-relaxed text-[#0A0A0A]/60 md:text-lg">
+                    <p className="font-sans text-base leading-relaxed text-[#0A0A0A]/65 md:text-lg">
                       {s.decision}
                     </p>
                   </Reveal>
@@ -89,7 +89,7 @@ export function Ch08Construction() {
                       <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-[#622FFD]">
                         {c.hypothesisLabel}
                       </p>
-                      <p className="mt-2 font-sans text-sm italic leading-relaxed text-[#0A0A0A]/55 md:text-base">
+                      <p className="mt-2 font-sans text-sm italic leading-relaxed text-[#0A0A0A]/65 md:text-base">
                         &ldquo;{s.hypothesis}&rdquo;
                       </p>
                     </div>
@@ -101,7 +101,7 @@ export function Ch08Construction() {
         </div>
 
         <Reveal delay={0.2} className="mx-auto mt-24 max-w-xl text-center md:mt-32">
-          <p className="font-sans text-base leading-relaxed text-[#0A0A0A]/50 md:text-lg">
+          <p className="font-sans text-base leading-relaxed text-[#0A0A0A]/65 md:text-lg">
             {c.closing}
           </p>
         </Reveal>

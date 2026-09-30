@@ -141,7 +141,7 @@ export function Impact() {
         {/* Cabeçalho: grid 12 cols — H2 em 7, parágrafo em 5 */}
         <div className="grid grid-cols-1 items-start gap-gutter md:grid-cols-12">
           <div className="flex flex-col gap-3 md:col-span-7">
-            <span className="block font-sans text-xs font-semibold uppercase tracking-[0.22em] text-neutral-400">
+            <span className="block font-sans text-xs font-semibold uppercase tracking-[0.22em] text-neutral-600">
               {t.home.impact.eyebrow}
             </span>
             <h2 className="font-display text-[48px] font-semibold leading-[1.05] tracking-tight text-[#0A0A0A] md:text-[56px]">
@@ -174,7 +174,7 @@ export function Impact() {
               <h3 className="font-display text-2xl font-semibold tracking-tight text-[#0A0A0A] transition-colors duration-300 group-hover:text-primary">
                 {item.title}
               </h3>
-              <p className="font-sans text-sm leading-relaxed text-neutral-500">
+              <p className="font-sans text-sm leading-relaxed text-neutral-600">
                 {item.desc}
               </p>
             </motion.div>

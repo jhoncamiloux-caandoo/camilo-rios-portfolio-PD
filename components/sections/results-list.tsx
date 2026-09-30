@@ -84,7 +84,7 @@ export function ResultsList() {
               className="mt-2 flex flex-col gap-5"
             >
               <div className="flex items-center gap-4">
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-primary/20 bg-primary/10 text-primary">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-primary/20 bg-primary/10 text-primary-light">
                   {React.createElement(selected.icon, {
                     className: "h-5 w-5",
                     "aria-hidden": "true",
@@ -99,7 +99,7 @@ export function ResultsList() {
                 <DialogTitle className="font-sans text-xl font-semibold leading-snug tracking-tight text-white">
                   {selected.title}
                 </DialogTitle>
-                <DialogDescription className="pt-1 font-sans text-base leading-relaxed text-white/50">
+                <DialogDescription className="pt-1 font-sans text-base leading-relaxed text-white/60">
                   {selected.desc}
                 </DialogDescription>
               </DialogHeader>

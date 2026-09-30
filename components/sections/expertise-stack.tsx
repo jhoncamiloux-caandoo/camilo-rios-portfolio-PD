@@ -97,7 +97,7 @@ export function ExpertiseStack() {
 
       <div className="container relative">
         <FadeIn className="mx-auto max-w-2xl text-center">
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.22em] text-white/40">
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.22em] text-white/60">
             {t.home.expertiseStack.eyebrow}
           </p>
           <h2 className="font-display text-[36px] font-semibold leading-[1.1] tracking-tight md:text-[48px]">

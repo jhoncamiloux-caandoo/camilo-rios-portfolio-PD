@@ -19,7 +19,7 @@ export function Eyebrow({
   return (
     <motion.p
       className={`font-sans text-xs font-semibold uppercase tracking-[0.22em] ${
-        light ? "text-[#8E6BFF]" : "text-[#622FFD]"
+        light ? "text-primary-light" : "text-[#622FFD]"
       }`}
       initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -245,7 +245,7 @@ export function MetricGrid({
               dark ? "text-white" : "text-[#0A0A0A]"
             }`}
           />
-          <span className={`font-sans text-xs md:text-sm ${dark ? "text-white/40" : "text-[#0A0A0A]/45"}`}>
+          <span className={`font-sans text-xs md:text-sm ${dark ? "text-white/60" : "text-[#0A0A0A]/65"}`}>
             {m.label}
           </span>
         </Reveal>
@@ -298,7 +298,7 @@ export function Timeline({
                 </h3>
                 <p
                   className={`mt-2 font-sans text-sm leading-relaxed md:text-base ${
-                    dark ? "text-white/50" : "text-[#0A0A0A]/50"
+                    dark ? "text-white/60" : "text-[#0A0A0A]/65"
                   }`}
                 >
                   {step.description}
@@ -340,7 +340,7 @@ export function FlowDiagram({
             <svg
               viewBox="0 0 24 24"
               className={`h-4 w-4 shrink-0 ${vertical ? "rotate-90" : ""} ${
-                dark ? "text-white/40" : "text-[#622FFD]"
+                dark ? "text-white/60" : "text-[#622FFD]"
               }`}
               fill="none"
               stroke="currentColor"

@@ -21,7 +21,7 @@ export function Ch02Problem() {
         <div className="mt-20 grid grid-cols-1 gap-16 md:mt-28 md:grid-cols-2 md:gap-10">
           <div className="flex flex-col items-center gap-6">
             <Reveal>
-              <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-white/35">
+              <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
                 {c.withoutUxLabel}
               </p>
             </Reveal>
@@ -32,7 +32,7 @@ export function Ch02Problem() {
 
           <div className="flex flex-col items-center gap-6">
             <Reveal>
-              <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-[#622FFD]">
+              <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-primary-light">
                 {c.designedLabel}
               </p>
             </Reveal>

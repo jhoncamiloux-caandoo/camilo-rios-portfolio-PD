@@ -27,7 +27,7 @@ export function Footer() {
   return (
     <footer data-nav-theme="dark" className="border-t border-white/10 bg-[#0A0A0A] py-10">
       <div className="container flex flex-col items-center gap-6 text-center md:flex-row md:justify-between md:text-left">
-        <p className="max-w-md font-sans text-sm text-white/40">
+        <p className="max-w-md font-sans text-sm text-white/60">
           {t.home.footer.tagline}
         </p>
 
@@ -37,7 +37,7 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={t.home.footer.linkedinAria}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/50 transition hover:border-primary/50 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/60 transition hover:border-primary/50 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
           >
             <LinkedInGlyph className="h-4 w-4" />
           </a>
@@ -46,7 +46,7 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={t.home.footer.behanceAria}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/50 transition hover:border-primary/50 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/60 transition hover:border-primary/50 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
           >
             <BehanceGlyph className="h-4 w-4" />
           </a>

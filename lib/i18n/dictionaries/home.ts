@@ -39,7 +39,7 @@ export type HomeDictionary = {
   metrics: {
     eyebrow: string;
     title: string;
-    items: { label: string; suffix?: string }[];
+    items: { label: string; suffix?: string; context?: string }[];
   };
   cases: {
     eyebrow: string;
@@ -154,8 +154,8 @@ export const home: Record<Locale, HomeDictionary> = {
       items: [
         {
           metric: "+140%",
-          title: "Geração de leads",
-          desc: "Estruturação, testes A/B e escala contínua através de 58 landing pages de alta performance, projetadas e validadas iterativamente para otimizar canais de aquisição pagos e orgânicos.",
+          title: "Geração de leads em 2 meses",
+          desc: "Resultado de uma estratégia conjunta do time de Growth Marketing. Minha parte: estruturação, testes A/B e escala contínua através de 58 landing pages de alta performance, projetadas e validadas iterativamente para otimizar canais de aquisição pagos e orgânicos.",
         },
         {
           metric: "+20%",
@@ -216,7 +216,7 @@ export const home: Record<Locale, HomeDictionary> = {
       items: [
         { label: "Construindo produtos digitais", suffix: " anos" },
         { label: "Ferramentas e diagnósticos com IA" },
-        { label: "Crescimento na geração de leads" },
+        { label: "Crescimento na geração de leads", context: "Em 2 meses · estratégia do time de Growth Marketing" },
         { label: "Aumento no reconhecimento de marca" },
       ],
     },
@@ -459,8 +459,8 @@ export const home: Record<Locale, HomeDictionary> = {
       items: [
         {
           metric: "+140%",
-          title: "Lead generation",
-          desc: "Structuring, A/B testing, and continuous scaling across 58 high-performance landing pages, designed and iteratively validated to optimize paid and organic acquisition channels.",
+          title: "Lead generation in 2 months",
+          desc: "Result of a joint Growth Marketing team strategy. My part: structuring, A/B testing, and continuous scaling across 58 high-performance landing pages, designed and iteratively validated to optimize paid and organic acquisition channels.",
         },
         {
           metric: "+20%",
@@ -521,7 +521,7 @@ export const home: Record<Locale, HomeDictionary> = {
       items: [
         { label: "Building digital products", suffix: " years" },
         { label: "AI-powered tools and diagnostics" },
-        { label: "Growth in lead generation" },
+        { label: "Growth in lead generation", context: "In 2 months · Growth Marketing team strategy" },
         { label: "Increase in brand recognition" },
       ],
     },
@@ -764,8 +764,8 @@ export const home: Record<Locale, HomeDictionary> = {
       items: [
         {
           metric: "+140%",
-          title: "Generación de leads",
-          desc: "Estructuración, pruebas A/B y escalado continuo a través de 58 landing pages de alto rendimiento, diseñadas y validadas iterativamente para optimizar canales de adquisición pagos y orgánicos.",
+          title: "Generación de leads en 2 meses",
+          desc: "Resultado de una estrategia conjunta del equipo de Growth Marketing. Mi parte: estructuración, pruebas A/B y escalado continuo a través de 58 landing pages de alto rendimiento, diseñadas y validadas iterativamente para optimizar canales de adquisición pagos y orgánicos.",
         },
         {
           metric: "+20%",
@@ -826,7 +826,7 @@ export const home: Record<Locale, HomeDictionary> = {
       items: [
         { label: "Construyendo productos digitales", suffix: " años" },
         { label: "Herramientas y diagnósticos con IA" },
-        { label: "Crecimiento en generación de leads" },
+        { label: "Crecimiento en generación de leads", context: "En 2 meses · estrategia del equipo de Growth Marketing" },
         { label: "Aumento en reconocimiento de marca" },
       ],
     },

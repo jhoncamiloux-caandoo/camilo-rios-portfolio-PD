@@ -82,8 +82,8 @@ export function Testimonials() {
         <FadeIn>
           <div className="flex items-start justify-between">
             <div className="max-w-xl">
-              <p className="mb-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-white/35">
-                <LinkedInGlyph className="h-3 w-3 text-[#622FFD]" />
+              <p className="mb-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-white/60">
+                <LinkedInGlyph className="h-3 w-3 text-primary-light" />
                 {t.home.testimonials.eyebrow}
               </p>
               <h2 className="font-display text-[36px] font-semibold leading-[1.08] tracking-tight md:text-[52px]">
@@ -96,14 +96,14 @@ export function Testimonials() {
               <button
                 onClick={prev}
                 aria-label={t.home.testimonials.prevAria}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-white/50 transition hover:border-white/25 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#622FFD]"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-white/60 transition hover:border-white/25 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#622FFD]"
               >
                 <ChevronLeft className="h-5 w-5" />
               </button>
               <button
                 onClick={next}
                 aria-label={t.home.testimonials.nextAria}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-white/50 transition hover:border-white/25 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#622FFD]"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-white/60 transition hover:border-white/25 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#622FFD]"
               >
                 <ChevronRight className="h-5 w-5" />
               </button>
@@ -149,7 +149,7 @@ export function Testimonials() {
 
               {/* Ícone LinkedIn + quote */}
               <div className="relative z-10 flex flex-col gap-6">
-                <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-[#622FFD]/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#622FFD]">
+                <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-[#622FFD]/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-primary-light">
                   <LinkedInGlyph className="h-3 w-3" />
                   LinkedIn
                 </span>
@@ -170,7 +170,7 @@ export function Testimonials() {
                   <span className="block font-sans text-base font-semibold text-white">
                     {current.name}
                   </span>
-                  <span className="block text-sm text-white/45">
+                  <span className="block text-sm text-white/60">
                     {current.role}
                     {current.company ? ` · ${current.company}` : ""}
                   </span>
@@ -184,7 +184,7 @@ export function Testimonials() {
         <div className="flex flex-col gap-4">
           <div className="flex items-center justify-between">
             {/* Contador */}
-            <span className="font-mono text-xs tabular-nums text-white/30">
+            <span className="font-mono text-xs tabular-nums text-white/60">
               {String(index + 1).padStart(2, "0")} /{" "}
               {String(testimonials.length).padStart(2, "0")}
             </span>
@@ -217,14 +217,14 @@ export function Testimonials() {
             <button
               onClick={prev}
               aria-label={t.home.testimonials.prevAria}
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/50 transition active:bg-white/5"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/60 transition active:bg-white/5"
             >
               <ChevronLeft className="h-4 w-4" />
             </button>
             <button
               onClick={next}
               aria-label={t.home.testimonials.nextAria}
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/50 transition active:bg-white/5"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/60 transition active:bg-white/5"
             >
               <ChevronRight className="h-4 w-4" />
             </button>

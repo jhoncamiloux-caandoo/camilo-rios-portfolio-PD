@@ -17,7 +17,7 @@ export function Ch03Context() {
               className="font-display text-3xl font-semibold leading-[1.1] tracking-tight text-[#0A0A0A] md:text-5xl"
             />
             <Reveal delay={0.15}>
-              <p className="font-sans text-base leading-relaxed text-[#0A0A0A]/55 md:text-lg">
+              <p className="font-sans text-base leading-relaxed text-[#0A0A0A]/65 md:text-lg">
                 {c.paragraph}
               </p>
             </Reveal>
@@ -28,7 +28,7 @@ export function Ch03Context() {
               {c.facts.map((fact, i) => (
                 <Reveal key={fact.label} delay={0.1 * i} className={fact.span ? "col-span-2" : undefined}>
                   <div className="rounded-xl border border-black/[0.06] bg-[#F8F8F8] p-5">
-                    <p className="font-sans text-xs font-semibold uppercase tracking-[0.15em] text-[#0A0A0A]/40">
+                    <p className="font-sans text-xs font-semibold uppercase tracking-[0.15em] text-[#0A0A0A]/65">
                       {fact.label}
                     </p>
                     <p className="mt-2 font-display text-base font-semibold tracking-tight text-[#0A0A0A] md:text-lg">

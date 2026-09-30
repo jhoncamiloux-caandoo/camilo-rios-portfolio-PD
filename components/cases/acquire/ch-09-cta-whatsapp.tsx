@@ -27,7 +27,7 @@ export function Ch09CtaWhatsapp() {
               className="font-display text-4xl font-semibold leading-[1.06] tracking-tight text-[#0A0A0A] md:text-5xl lg:text-6xl"
             />
             <Reveal delay={0.15}>
-              <p className="font-sans text-base leading-relaxed text-[#0A0A0A]/55 md:text-lg">
+              <p className="font-sans text-base leading-relaxed text-[#0A0A0A]/65 md:text-lg">
                 {c.paragraph}
               </p>
             </Reveal>
@@ -77,7 +77,7 @@ export function Ch09CtaWhatsapp() {
                 </div>
               ))}
               <Reveal delay={0.7}>
-                <p className="mt-6 max-w-xs text-center font-sans text-sm text-[#0A0A0A]/40">
+                <p className="mt-6 max-w-xs text-center font-sans text-sm text-[#0A0A0A]/65">
                   {c.journeyCaption}
                 </p>
               </Reveal>
@@ -86,7 +86,7 @@ export function Ch09CtaWhatsapp() {
         </div>
 
         <Reveal delay={0.2} className="mx-auto mt-24 max-w-xl text-center md:mt-32">
-          <p className="font-sans text-base leading-relaxed text-[#0A0A0A]/50 md:text-lg">
+          <p className="font-sans text-base leading-relaxed text-[#0A0A0A]/65 md:text-lg">
             {c.closing}
           </p>
         </Reveal>

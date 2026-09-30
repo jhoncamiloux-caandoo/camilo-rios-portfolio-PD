@@ -24,7 +24,7 @@ import { Eyebrow, BlurTitle, Reveal, MetricGrid } from "@/components/case-lp/cas
 import { ClintBarraPrompt } from "@/components/case-lp/clint-components-live";
 import { useLocale } from "@/lib/i18n/locale-context";
 
-type Agent = { nome: string; faz: string; icon: LucideIcon };
+type Agent = { nome: string; faz: string; icon: LucideIcon; avatar: string };
 
 const AGENT_ICONS: LucideIcon[] = [
   MessageCircle,
@@ -50,7 +50,7 @@ function RotatingRole({ words }: { words: string[] }) {
   }, [reduce, words.length]);
 
   return (
-    <span className="relative inline-block text-primary">
+    <span className="relative inline-block text-primary-light">
       <AnimatePresence mode="wait">
         <motion.span
           key={words[i]}
@@ -68,13 +68,13 @@ function RotatingRole({ words }: { words: string[] }) {
 }
 
 const ORB_AVATARS = [
-  "/cases/clint/intelligence/avatares/toy-100.webp",
-  "/cases/clint/intelligence/avatares/toy-87.webp",
-  "/cases/clint/intelligence/avatares/toy-83.webp",
-  "/cases/clint/intelligence/avatares/toy-80.webp",
-  "/cases/clint/intelligence/avatares/toy-79.webp",
-  "/cases/clint/intelligence/avatares/toy-73.webp",
-  "/cases/clint/intelligence/avatares/toy-45.webp",
+  "/cases/clint/intelligence/avatares/agent-01.webp",
+  "/cases/clint/intelligence/avatares/agent-02.webp",
+  "/cases/clint/intelligence/avatares/agent-03.webp",
+  "/cases/clint/intelligence/avatares/agent-04.webp",
+  "/cases/clint/intelligence/avatares/agent-05.webp",
+  "/cases/clint/intelligence/avatares/agent-06.webp",
+  "/cases/clint/intelligence/avatares/agent-07.webp",
 ];
 
 const ORB_ROLE_ICONS: { icon: LucideIcon; color: string }[] = [
@@ -197,23 +197,28 @@ function AgentCard({ agent, activeLabel, duplicate = false }: { agent: Agent; ac
     <li aria-hidden={duplicate || undefined} className="w-[270px] shrink-0">
       <div className="flex h-full flex-col gap-4 rounded-2xl border border-white/[0.08] bg-white/[0.03] p-5">
         <div className="flex items-center gap-3">
-          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary/80 to-fuchsia-500/50 p-[2px]">
-            <span className="flex h-full w-full items-center justify-center rounded-full bg-[#0A0A0A] text-primary">
-              <Icon className="h-5 w-5" strokeWidth={1.8} aria-hidden="true" />
+          <span className="relative h-12 w-12 shrink-0">
+            <span
+              className="block h-full w-full rounded-full bg-cover bg-center ring-1 ring-white/[0.16]"
+              style={{ backgroundImage: `url(${agent.avatar})` }}
+              aria-hidden="true"
+            />
+            <span className="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-[#0a0712] text-primary-light ring-1 ring-primary/40">
+              <Icon className="h-3 w-3" strokeWidth={2} aria-hidden="true" />
             </span>
           </span>
           <div className="flex flex-col gap-1">
             <span className="font-display text-base font-medium leading-none text-white">
               {agent.nome}
             </span>
-            <span className="inline-flex items-center gap-1.5 text-[11px] text-white/40">
+            <span className="inline-flex items-center gap-1.5 text-[11px] text-white/60">
               <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400" aria-hidden="true" />
               {activeLabel}
             </span>
           </div>
         </div>
         <span className="h-px w-full bg-white/[0.08]" aria-hidden="true" />
-        <p className="font-sans text-sm leading-relaxed text-white/55">{agent.faz}</p>
+        <p className="font-sans text-sm leading-relaxed text-white/60">{agent.faz}</p>
       </div>
     </li>
   );
@@ -238,6 +243,7 @@ export function Ch06Results() {
     nome: a.nome,
     faz: a.faz,
     icon: AGENT_ICONS[i % AGENT_ICONS.length],
+    avatar: ORB_AVATARS[i % ORB_AVATARS.length],
   }));
   const roleWords = agents.map((a) => a.nome);
 
@@ -255,7 +261,7 @@ export function Ch06Results() {
             className="font-display text-3xl font-semibold leading-[1.1] tracking-tight text-white md:text-5xl"
           />
           <Reveal delay={0.15}>
-            <p className="max-w-xl font-sans text-base leading-relaxed text-white/50 md:text-lg">
+            <p className="max-w-xl font-sans text-base leading-relaxed text-white/60 md:text-lg">
               {c.description}
             </p>
           </Reveal>
@@ -270,13 +276,13 @@ export function Ch06Results() {
             />
             <div className="relative grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-8">
               <div className="flex flex-col items-center gap-5 text-center md:items-start md:text-left">
-                <span className="text-[11px] font-semibold uppercase tracking-[0.24em] text-primary/70">
+                <span className="text-[11px] font-semibold uppercase tracking-[0.24em] text-primary-light">
                   {c.agentsEyebrow}
                 </span>
                 <h3 className="font-display text-2xl font-medium leading-tight text-white md:text-3xl">
                   <RotatingRole words={roleWords} /> {c.rotatingRoleSuffix}
                 </h3>
-                <p className="max-w-md font-sans text-sm leading-relaxed text-white/50">
+                <p className="max-w-md font-sans text-sm leading-relaxed text-white/60">
                   {c.cardDescription}
                 </p>
                 <div className="mt-2 w-full max-w-md">
@@ -287,7 +293,7 @@ export function Ch06Results() {
             </div>
           </div>
         </Reveal>
-        <p className="mx-auto mt-4 max-w-md text-center font-sans text-[11px] text-white/25">
+        <p className="mx-auto mt-4 max-w-md text-center font-sans text-[11px] text-white/60">
           {c.recreationCaption}
         </p>
 
@@ -301,7 +307,7 @@ export function Ch06Results() {
               className="block w-full"
             />
           </div>
-          <p className="mt-4 text-center font-sans text-[11px] text-white/25">
+          <p className="mt-4 text-center font-sans text-[11px] text-white/60">
             {c.realAgentCaption}
           </p>
         </Reveal>
@@ -331,12 +337,12 @@ export function Ch06Results() {
 
         <div className="mx-auto mt-24 max-w-3xl text-center md:mt-32">
           <Reveal>
-            <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-white/35">
+            <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
               {c.resultLabel}
             </p>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="mt-4 font-sans text-sm leading-relaxed text-white/45 md:text-base">
+            <p className="mt-4 font-sans text-sm leading-relaxed text-white/60 md:text-base">
               {c.resultDescription}
             </p>
           </Reveal>
@@ -346,7 +352,7 @@ export function Ch06Results() {
           <MetricGrid dark size="sm" items={c.metrics} />
         </div>
         <Reveal delay={0.3} className="mx-auto mt-6 max-w-md text-center">
-          <p className="font-sans text-xs text-white/30">
+          <p className="font-sans text-xs text-white/60">
             {c.metricsCaption}
           </p>
         </Reveal>

@@ -41,7 +41,7 @@ function TimeComparisonBars({
         return (
           <div key={row.label} className="flex flex-col gap-1.5">
             <div className="flex items-baseline justify-between gap-2">
-              <span className="font-sans text-xs text-white/45">{row.label}</span>
+              <span className="font-sans text-xs text-white/60">{row.label}</span>
               <span className="font-display text-sm font-semibold text-white">{row.value}</span>
             </div>
             <div className="h-1.5 w-full overflow-hidden rounded-full bg-white/[0.08]">
@@ -82,7 +82,7 @@ export function Ch10Results() {
             className="font-display text-3xl font-semibold leading-[1.1] tracking-tight text-white md:text-5xl"
           />
           <Reveal delay={0.2}>
-            <p className="max-w-xl font-sans text-base leading-relaxed text-white/50 md:text-lg">
+            <p className="max-w-xl font-sans text-base leading-relaxed text-white/60 md:text-lg">
               {c.description}
             </p>
           </Reveal>
@@ -98,11 +98,11 @@ export function Ch10Results() {
                 duration={1600}
                 className="font-display text-6xl font-semibold tracking-tight text-white md:text-7xl"
               />
-              <span className="font-sans text-sm text-white/50">
+              <span className="font-sans text-sm text-white/60">
                 {c.speedCaption}
               </span>
               <TimeComparisonBars rows={c.timeComparison} />
-              <span className="mt-3 max-w-xs font-sans text-xs leading-relaxed text-white/30">
+              <span className="mt-3 max-w-xs font-sans text-xs leading-relaxed text-white/60">
                 {c.speedSource}
               </span>
             </GlassPanel>
@@ -114,10 +114,10 @@ export function Ch10Results() {
               <span className="font-display text-6xl font-semibold tracking-tight text-white md:text-7xl">
                 70&#8211;85%
               </span>
-              <span className="font-sans text-sm text-white/50">
+              <span className="font-sans text-sm text-white/60">
                 {c.aiTokensCaption}
               </span>
-              <span className="max-w-xs font-sans text-xs leading-relaxed text-white/30">
+              <span className="max-w-xs font-sans text-xs leading-relaxed text-white/60">
                 {c.aiTokensSource}
               </span>
             </GlassPanel>

@@ -28,7 +28,7 @@ export function NextCase({
               <h3 className="font-display text-2xl font-semibold leading-snug tracking-tight text-[#0A0A0A] md:text-4xl">
                 {title}
               </h3>
-              <p className="max-w-lg font-sans text-sm leading-relaxed text-[#0A0A0A]/50 md:text-base">
+              <p className="max-w-lg font-sans text-sm leading-relaxed text-[#0A0A0A]/65 md:text-base">
                 {description}
               </p>
             </div>

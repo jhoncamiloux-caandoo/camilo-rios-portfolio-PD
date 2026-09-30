@@ -21,7 +21,7 @@ export function Ch02Impact() {
             className="font-display text-3xl font-semibold leading-[1.1] tracking-tight text-white md:text-5xl"
           />
           <Reveal delay={0.2}>
-            <p className="max-w-lg font-sans text-base leading-relaxed text-white/50 md:text-lg">
+            <p className="max-w-lg font-sans text-base leading-relaxed text-white/60 md:text-lg">
               {c.paragraph}
             </p>
           </Reveal>
@@ -39,7 +39,7 @@ export function Ch02Impact() {
                   decimals={m.decimals ?? 0}
                   className="font-display text-5xl font-semibold leading-none tracking-tight text-white md:text-7xl lg:text-8xl"
                 />
-                <span className="max-w-sm font-sans text-sm text-white/40 md:text-base">
+                <span className="max-w-sm font-sans text-sm text-white/60 md:text-base">
                   {m.label}
                 </span>
               </Reveal>
@@ -48,7 +48,7 @@ export function Ch02Impact() {
         </div>
 
         <Reveal delay={0.3} className="mx-auto mt-10 max-w-md text-center">
-          <p className="font-sans text-xs text-white/30">
+          <p className="font-sans text-xs text-white/60">
             {c.footnote}
           </p>
         </Reveal>
@@ -66,7 +66,7 @@ export function Ch02Impact() {
             className="font-display text-2xl font-semibold leading-snug tracking-tight text-white md:text-4xl"
           />
           <Reveal delay={0.4}>
-            <p className="mt-6 font-sans text-base text-white/40 md:text-lg">
+            <p className="mt-6 font-sans text-base text-white/60 md:text-lg">
               {c.paragraph2}
             </p>
           </Reveal>

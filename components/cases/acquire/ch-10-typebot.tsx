@@ -17,7 +17,7 @@ export function Ch10Typebot() {
             className="font-display text-4xl font-semibold leading-[1.06] tracking-tight text-[#0A0A0A] md:text-6xl"
           />
           <Reveal delay={0.2}>
-            <p className="max-w-xl font-sans text-base leading-relaxed text-[#0A0A0A]/55 md:text-lg">
+            <p className="max-w-xl font-sans text-base leading-relaxed text-[#0A0A0A]/65 md:text-lg">
               {c.paragraph}
             </p>
           </Reveal>
@@ -60,7 +60,7 @@ export function Ch10Typebot() {
                   >
                     <div>
                       <p className="font-sans text-sm font-semibold text-[#0A0A0A]">{c.scheduleTitle}</p>
-                      <p className="font-sans text-xs text-[#0A0A0A]/45">{c.scheduleSubtitle}</p>
+                      <p className="font-sans text-xs text-[#0A0A0A]/65">{c.scheduleSubtitle}</p>
                     </div>
                     <span className="rounded-full bg-[#622FFD] px-4 py-2 font-sans text-xs font-semibold text-white">
                       {c.scheduleCta}
@@ -69,14 +69,14 @@ export function Ch10Typebot() {
                 </div>
               </div>
             </Reveal>
-            <p className="text-center font-sans text-[11px] text-[#0A0A0A]/30">
+            <p className="text-center font-sans text-[11px] text-[#0A0A0A]/65">
               {c.chatCaption}
             </p>
           </div>
 
           <div className="flex flex-col justify-center gap-8">
             <Reveal>
-              <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-[#0A0A0A]/35">
+              <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-[#0A0A0A]/65">
                 {c.qualifiersLabel}
               </p>
             </Reveal>
@@ -90,7 +90,7 @@ export function Ch10Typebot() {
                   transition={{ duration: 0.5, delay: i * 0.1, ease }}
                   className="flex items-center justify-between rounded-xl border border-black/[0.06] bg-white px-5 py-4"
                 >
-                  <span className="font-sans text-sm text-[#0A0A0A]/45">{q.label}</span>
+                  <span className="font-sans text-sm text-[#0A0A0A]/65">{q.label}</span>
                   <span className="font-sans text-sm font-semibold text-[#0A0A0A]">{q.value}</span>
                 </motion.div>
               ))}
@@ -114,7 +114,7 @@ export function Ch10Typebot() {
             </Reveal>
 
             <Reveal delay={0.4}>
-              <p className="font-sans text-base leading-relaxed text-[#0A0A0A]/55">
+              <p className="font-sans text-base leading-relaxed text-[#0A0A0A]/65">
                 {c.resultParagraph}
               </p>
             </Reveal>
@@ -130,7 +130,7 @@ export function Ch10Typebot() {
               className="block w-full rounded-xl"
             />
           </div>
-          <p className="mt-4 text-center font-sans text-[11px] text-[#0A0A0A]/35">
+          <p className="mt-4 text-center font-sans text-[11px] text-[#0A0A0A]/65">
             {c.screenshotCaption}
           </p>
         </Reveal>
