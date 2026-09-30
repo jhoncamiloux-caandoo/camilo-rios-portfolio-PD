@@ -392,7 +392,7 @@ export function BrowserMockup({
           <span className="h-2.5 w-2.5 rounded-full bg-[#FFBD2E]" />
           <span className="h-2.5 w-2.5 rounded-full bg-[#28C840]" />
           <div className="mx-auto flex h-5 w-48 items-center justify-center rounded bg-white/70 px-3">
-            <span className="font-mono text-[9px] text-[#9AA0A6]">{url}</span>
+            <span className="font-mono text-[9px] text-[#6B7178]">{url}</span>
           </div>
         </div>
         {/* eslint-disable-next-line @next/next/no-img-element */}

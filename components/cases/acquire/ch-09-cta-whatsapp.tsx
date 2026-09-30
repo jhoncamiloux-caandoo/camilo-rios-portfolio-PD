@@ -61,14 +61,14 @@ export function Ch09CtaWhatsapp() {
                     transition={{ duration: 0.5, delay: i * 0.08, ease }}
                     className={
                       node.cta
-                        ? "flex items-center gap-2 rounded-full bg-[#25D366] px-6 py-3 text-white shadow-[0_10px_32px_-10px_rgba(37,211,102,0.65)]"
+                        ? "flex items-center gap-2 rounded-full bg-[#25D366] px-6 py-3 text-[#04260f] shadow-[0_10px_32px_-10px_rgba(37,211,102,0.65)]"
                         : "w-full max-w-[300px] rounded-xl border border-black/[0.07] bg-[#F8F8F8] px-6 py-3.5 text-center"
                     }
                   >
                     {node.cta && <WhatsGlyph />}
                     <span
                       className={`font-sans text-sm font-semibold md:text-base ${
-                        node.cta ? "text-white" : "text-[#0A0A0A]"
+                        node.cta ? "text-[#04260f]" : "text-[#0A0A0A]"
                       }`}
                     >
                       {node.label}

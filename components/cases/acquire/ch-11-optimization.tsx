@@ -111,7 +111,7 @@ export function Ch11Optimization() {
             <div className="rounded-2xl border border-black/[0.07] bg-white p-6 shadow-[0_16px_48px_-20px_rgba(10,10,10,0.14)]">
               <div className="mb-5 flex items-center justify-between">
                 <p className="font-sans text-sm font-semibold text-[#0A0A0A]">{c.clarityCardTitle}</p>
-                <span className="rounded-full bg-[#F94706]/10 px-3 py-1 font-sans text-[11px] font-semibold text-[#F94706]">
+                <span className="rounded-full bg-[#F94706]/10 px-3 py-1 font-sans text-[11px] font-semibold text-[#B83303]">
                   {c.clarityCardTag}
                 </span>
               </div>
