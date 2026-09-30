@@ -2,7 +2,19 @@ import type { Locale } from "@/lib/i18n/types";
 
 type FlowState = { title: string; description: string };
 
-type ShowcaseStep = { title: string; body: string; alt: string };
+type ShowcaseStep = { title: string; body: string };
+type PdDemo = {
+  cols: string[];
+  tags: Record<"instagram" | "site" | "mon" | "tue" | "confirmed" | "ret15" | "ret30" | "m8" | "y1", string>;
+  task: string; sched: string; clinic: string; crumb: string; patients: string; addPatient: string;
+  kpis: [string, string][]; kpiUp: string;
+  dash: string; dashChip: string; thisMonth: string; allPros: string;
+  chart1: string; scheduled: string; done: string; today: string;
+  chart2: string; referral: string; chart3: string; less: string; more: string; days: string[];
+  chart4: string; gaugeSub: string; gaugeMeta: string; input: string;
+  stepOf: string; capTitle: string; capDesc: string;
+  convo: [string, string][];
+};
 
 type AgentCopy = { nome: string; faz: string };
 
@@ -54,7 +66,10 @@ export type IntelligenceDictionary = {
     eyebrow: string;
     title: string;
     description: string;
+    nicheNote: string;
     steps: ShowcaseStep[];
+    hint: string;
+    demo: PdDemo;
     ctaText: string;
     ctaButton: string;
   };
@@ -136,20 +151,22 @@ export const intelligence: Record<Locale, IntelligenceDictionary> = {
       },
     },
     ch05: {
-      ariaLabel: "Interface do produto de IA",
+      ariaLabel: "Demo do produto guiada pelo scroll",
       eyebrow: "Da conversa à decisão",
-      title: "Uma conversa, do primeiro oi ao dashboard.",
-      description: "As telas abaixo são o mesmo fluxo, em ordem: o que o agente faz sozinho, onde o humano entra e o que o gestor enxerga no final.",
+      title: "Um atendimento, do começo ao fim.",
+      description: "Role e acompanhe uma paciente dentro da Clint: a conversa no WhatsApp vira card, tarefa, agendamento e indicador, na mesma tela.",
+      nicheNote: "Exemplo: uma clínica. O mesmo agente qualifica e agenda em imobiliárias, escolas, academias e outros negócios que vendem pelo WhatsApp.",
       steps: [
-        { title: "O lead chega e o agente atende", body: "WhatsApp e Instagram caem na mesma caixa de entrada. O agente de IA responde na hora, e a tag “Atendimento IA” deixa claro para o time quem está conduzindo.", alt: "Caixa de entrada da Clint com conversas de WhatsApp e Instagram atendidas por IA" },
-        { title: "O agente qualifica conversando", body: "A Clara faz as perguntas de qualificação no tom da empresa. Do lado, o negócio já aparece vinculado, e qualquer pessoa pode suspender a automação e assumir.", alt: "Conversa em que a agente Clara qualifica um lead com perguntas" },
-        { title: "O negócio anda no funil sozinho", body: "Cada resposta move o card: Prospecção IA, Qualificação IA, Follow IA. O vendedor só entra quando o lead está pronto ou quando o agente pede ajuda.", alt: "Funil kanban com etapas conduzidas pela IA" },
-        { title: "O gestor pergunta, o copiloto prioriza", body: "Em vez de filtrar planilha, o gestor pergunta em linguagem natural quem chamar primeiro. O copiloto lê a base e devolve um panorama com os nomes.", alt: "Copiloto Clint AI respondendo qual base priorizar" },
-        { title: "E vira painel em uma frase", body: "“Crie um dashboard com os dados da minha operação” gera metas, projeções e agendamentos sem montar gráfico por gráfico.", alt: "Dashboard de projeções comerciais gerado pela IA da Clint" },
+        { title: "O paciente chama no WhatsApp", body: "A mensagem chega na mesma tela em que a recepção trabalha. Sem trocar de aba, sem celular na mão." },
+        { title: "O card nasce no CRM", body: "Contato, canal e histórico viram um card em Novo contato, automaticamente." },
+        { title: "A IA cria a próxima tarefa", body: "A Aura lê a conversa e deixa o próximo passo pronto para a recepção." },
+        { title: "O paciente agenda", body: "Horário combinado na conversa, card movido para Agendados." },
+        { title: "O indicador atualiza", body: "Um clique em Indicadores e a operação aparece em linguagem simples: quem agendou, quem veio, quem faltou." },
       ],
-      ctaText:
-        "O fluxo conversacional que dá vida a esses agentes roda em produção: você pode conversar com ele agora.",
-      ctaButton: "Testar o agente de IA",
+      hint: "Role para acompanhar",
+      demo: {"cols": ["Novo contato", "Agendados", "Confirmados", "Retorno", "Reativação"], "tags": {"instagram": "Instagram", "site": "Site", "mon": "Seg 28/09", "tue": "Ter 29/09", "confirmed": "Confirmou", "ret15": "Retorno 15d", "ret30": "Retorno 30d", "m8": "8 meses", "y1": "1 ano"}, "task": "Enviar horários de avaliação · hoje, 14:00", "sched": "Qui, 01/10 · 10:00", "clinic": "Clínica Sorriso", "crumb": "Pacientes", "patients": "pacientes", "addPatient": "Paciente +", "kpis": [["Consultas agendadas", "Este mês"], ["Pacientes atendidos", "90% compareceram"], ["Faltas", "4 a menos que em agosto"], ["Pacientes reativados", "Voltaram após 6+ meses"]], "kpiUp": "+1 agora · Ana Beatriz", "dash": "Indicadores", "dashChip": "Operação da clínica", "thisMonth": "Este mês", "allPros": "Todos os profissionais", "chart1": "Consultas agendadas x realizadas", "scheduled": "Agendadas", "done": "Realizadas", "today": "Hoje", "chart2": "De onde vêm os pacientes", "referral": "Indicação", "chart3": "Quando os pacientes mais chamam", "less": "menos", "more": "mais", "days": ["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"], "chart4": "Taxa de comparecimento", "gaugeSub": "186 de 207 pacientes vieram", "gaugeMeta": "Meta da clínica: 92%", "input": "Escreva uma mensagem…", "stepOf": "Passo {n} de 5", "capTitle": "Um atendimento, do começo ao fim", "capDesc": "Role para acompanhar a jornada de uma paciente dentro da Clint.", "convo": [["Oi, boa tarde! Vi o post de vocês no Instagram sobre clareamento e fiquei curiosa", "13:42"], ["Mas tenho um pouco de sensibilidade nos dentes, será que posso fazer?", "13:42"], ["Oi, Ana! Aqui é a Camila, da Clínica Sorriso. Que bom que você chamou", "13:44"], ["Pode sim. A avaliação serve justamente pra olhar essa sensibilidade com calma e indicar o melhor caminho pra você", "13:45"], ["Ah, que alívio. Confesso que tenho um pouco de medo de doer rs", "13:47"], ["Super entendo. A Dra. Paula é muito cuidadosa e explica tudo antes. Tenho quinta às 10h ou sexta às 16h30, qual fica melhor?", "13:48"], ["Quinta às 10h fica perfeito", "13:50"], ["Prontinho, agendado: quinta, 01/10, às 10h. Um dia antes eu te mando um lembrete por aqui", "13:51"], ["Obrigada, Camila! Até quinta", "13:51"]]},
+      ctaText: "Conheça a experiência completa no site feito para clínicas.",
+      ctaButton: "Ver o site de clínicas",
     },
     ch06: {
       ariaLabel: "Amplitude e resultado",
@@ -233,7 +250,7 @@ export const intelligence: Record<Locale, IntelligenceDictionary> = {
         { title: "Input", description: "The user describes what they need in natural language, with no form and no technical fields." },
         { title: "Context", description: "The system gathers conversation history, CRM data, and funnel stage before responding." },
         { title: "Processing", description: "The model interprets the intent and decides which action, agent, or flow applies." },
-        { title: "Result", description: "A recommendation is generated — never an irreversible action taken alone." },
+        { title: "Result", description: "A recommendation is generated, never an irreversible action taken alone." },
         { title: "Confidence / explanation", description: "The interface shows why that recommendation appeared, not just what to do." },
         { title: "Human validation", description: "The salesperson approves, edits, or rejects before anything reaches the customer." },
         { title: "Action", description: "Only after validation is the message sent, the meeting booked, or the deal moved forward." },
@@ -257,20 +274,22 @@ export const intelligence: Record<Locale, IntelligenceDictionary> = {
       },
     },
     ch05: {
-      ariaLabel: "AI product interface",
+      ariaLabel: "Scroll-guided product demo",
       eyebrow: "From conversation to decision",
-      title: "One conversation, from the first hello to the dashboard.",
-      description: "The screens below are one flow, in order: what the agent does on its own, where a human steps in, and what the manager sees at the end.",
+      title: "One patient, from first message to dashboard.",
+      description: "Scroll and follow a patient inside Clint: the WhatsApp conversation becomes a card, a task, an appointment, and a metric, on the same screen.",
+      nicheNote: "Example: a clinic. The same agent qualifies and books in real estate, schools, gyms, and any business that sells through WhatsApp.",
       steps: [
-        { title: "A lead arrives and the agent replies", body: "WhatsApp and Instagram land in the same inbox. The AI agent answers right away, and the “AI Support” tag tells the team who is handling it.", alt: "Clint inbox with WhatsApp and Instagram conversations handled by AI" },
-        { title: "The agent qualifies through conversation", body: "Clara asks the qualifying questions in the company's tone. The linked deal sits alongside, and anyone can pause the automation and take over.", alt: "Conversation where the Clara agent qualifies a lead" },
-        { title: "The deal moves through the funnel on its own", body: "Each answer moves the card: AI Prospecting, AI Qualification, AI Follow-up. The rep steps in only when the lead is ready or the agent asks for help.", alt: "Kanban funnel with AI-driven stages" },
-        { title: "The manager asks, the copilot prioritizes", body: "Instead of filtering spreadsheets, the manager asks in plain language who to call first. The copilot reads the base and returns an overview with names.", alt: "Clint AI copilot answering which leads to prioritize" },
-        { title: "And it becomes a dashboard in one sentence", body: "“Create a dashboard with my sales operation data” builds goals, projections, and meetings without assembling chart by chart.", alt: "Sales projections dashboard generated by Clint AI" },
+        { title: "The patient messages on WhatsApp", body: "The message lands on the same screen the front desk works on. No switching tabs, no phone in hand." },
+        { title: "The card is created in the CRM", body: "Contact, channel, and history become a card in New contact, automatically." },
+        { title: "AI creates the next task", body: "Aura reads the conversation and leaves the next step ready for the front desk." },
+        { title: "The patient books", body: "Time agreed in the chat, card moved to Booked." },
+        { title: "The dashboard updates", body: "One click on Dashboard and the operation shows up in plain language: who booked, who came, who missed." },
       ],
-      ctaText:
-        "The conversational flow that brings these agents to life runs in production: you can chat with it right now.",
-      ctaButton: "Try the AI agent",
+      hint: "Scroll to follow",
+      demo: {"cols": ["New contact", "Booked", "Confirmed", "Follow-up", "Reactivation"], "tags": {"instagram": "Instagram", "site": "Website", "mon": "Mon 09/28", "tue": "Tue 09/29", "confirmed": "Confirmed", "ret15": "Follow-up 15d", "ret30": "Follow-up 30d", "m8": "8 months", "y1": "1 year"}, "task": "Send assessment times · today, 2:00 pm", "sched": "Thu, 10/01 · 10:00 am", "clinic": "Smile Clinic", "crumb": "Patients", "patients": "patients", "addPatient": "Patient +", "kpis": [["Appointments booked", "This month"], ["Patients seen", "90% showed up"], ["No-shows", "4 fewer than August"], ["Patients reactivated", "Back after 6+ months"]], "kpiUp": "+1 now · Ana Beatriz", "dash": "Dashboard", "dashChip": "Clinic operations", "thisMonth": "This month", "allPros": "All professionals", "chart1": "Appointments booked vs. completed", "scheduled": "Booked", "done": "Completed", "today": "Today", "chart2": "Where patients come from", "referral": "Referral", "chart3": "When patients message most", "less": "less", "more": "more", "days": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"], "chart4": "Attendance rate", "gaugeSub": "186 of 207 patients came", "gaugeMeta": "Clinic goal: 92%", "input": "Type a message…", "stepOf": "Step {n} of 5", "capTitle": "One patient, start to finish", "capDesc": "Scroll to follow a patient's journey inside Clint.", "convo": [["Hi, good afternoon! I saw your Instagram post about whitening and got curious", "1:42 pm"], ["But my teeth are a bit sensitive, can I still do it?", "1:42 pm"], ["Hi, Ana! This is Camila from Smile Clinic. So glad you reached out", "1:44 pm"], ["Yes, you can. The assessment is exactly for looking at that sensitivity carefully and finding the best path for you", "1:45 pm"], ["Oh, what a relief. I'll admit I'm a little afraid it'll hurt haha", "1:47 pm"], ["Totally understand. Dr. Paula is very gentle and explains everything first. I have Thursday at 10 am or Friday at 4:30 pm, which works better?", "1:48 pm"], ["Thursday at 10 is perfect", "1:50 pm"], ["All set: Thursday, 10/01, at 10 am. I'll send you a reminder here the day before", "1:51 pm"], ["Thank you, Camila! See you Thursday", "1:51 pm"]]},
+      ctaText: "See the full experience on the site built for clinics.",
+      ctaButton: "See the clinics site",
     },
     ch06: {
       ariaLabel: "Reach and results",
@@ -378,20 +397,22 @@ export const intelligence: Record<Locale, IntelligenceDictionary> = {
       },
     },
     ch05: {
-      ariaLabel: "Interfaz del producto de IA",
+      ariaLabel: "Demo del producto guiada por el scroll",
       eyebrow: "De la conversación a la decisión",
-      title: "Una conversación, del primer hola al dashboard.",
-      description: "Las pantallas de abajo son el mismo flujo, en orden: lo que el agente hace solo, dónde entra el humano y lo que ve el gestor al final.",
+      title: "Una atención, de principio a fin.",
+      description: "Desplázate y acompaña a una paciente dentro de Clint: la conversación de WhatsApp se vuelve card, tarea, cita e indicador, en la misma pantalla.",
+      nicheNote: "Ejemplo: una clínica. El mismo agente califica y agenda en inmobiliarias, escuelas, gimnasios y cualquier negocio que vende por WhatsApp.",
       steps: [
-        { title: "Llega el lead y el agente responde", body: "WhatsApp e Instagram caen en la misma bandeja. El agente de IA responde al instante, y la etiqueta “Atención IA” deja claro al equipo quién conduce.", alt: "Bandeja de Clint con conversaciones de WhatsApp e Instagram atendidas por IA" },
-        { title: "El agente califica conversando", body: "Clara hace las preguntas de calificación con el tono de la empresa. Al lado aparece el negocio vinculado, y cualquiera puede pausar la automatización y tomar el control.", alt: "Conversación en la que la agente Clara califica a un lead" },
-        { title: "El negocio avanza solo en el embudo", body: "Cada respuesta mueve la tarjeta: Prospección IA, Calificación IA, Seguimiento IA. El vendedor entra solo cuando el lead está listo o el agente pide ayuda.", alt: "Embudo kanban con etapas conducidas por IA" },
-        { title: "El gestor pregunta, el copiloto prioriza", body: "En lugar de filtrar planillas, el gestor pregunta en lenguaje natural a quién llamar primero. El copiloto lee la base y devuelve un panorama con nombres.", alt: "Copiloto Clint AI respondiendo a quién priorizar" },
-        { title: "Y se vuelve dashboard en una frase", body: "“Crea un dashboard con los datos de mi operación” genera metas, proyecciones y agendamientos sin armar gráfico por gráfico.", alt: "Dashboard de proyecciones comerciales generado por la IA de Clint" },
+        { title: "La paciente escribe por WhatsApp", body: "El mensaje llega a la misma pantalla donde trabaja la recepción. Sin cambiar de pestaña, sin el celular en la mano." },
+        { title: "El card nace en el CRM", body: "Contacto, canal e historial se vuelven un card en Nuevo contacto, automáticamente." },
+        { title: "La IA crea la siguiente tarea", body: "Aura lee la conversación y deja el próximo paso listo para la recepción." },
+        { title: "La paciente agenda", body: "Horario acordado en la conversación, card movido a Agendados." },
+        { title: "El indicador se actualiza", body: "Un clic en Indicadores y la operación aparece en lenguaje simple: quién agendó, quién vino, quién faltó." },
       ],
-      ctaText:
-        "El flujo conversacional que da vida a estos agentes corre en producción: puedes conversar con él ahora mismo.",
-      ctaButton: "Probar el agente de IA",
+      hint: "Desplázate para seguir",
+      demo: {"cols": ["Nuevo contacto", "Agendados", "Confirmados", "Control", "Reactivación"], "tags": {"instagram": "Instagram", "site": "Sitio", "mon": "Lun 28/09", "tue": "Mar 29/09", "confirmed": "Confirmó", "ret15": "Control 15d", "ret30": "Control 30d", "m8": "8 meses", "y1": "1 año"}, "task": "Enviar horarios de evaluación · hoy, 14:00", "sched": "Jue, 01/10 · 10:00", "clinic": "Clínica Sonrisa", "crumb": "Pacientes", "patients": "pacientes", "addPatient": "Paciente +", "kpis": [["Citas agendadas", "Este mes"], ["Pacientes atendidos", "90% asistió"], ["Inasistencias", "4 menos que en agosto"], ["Pacientes reactivados", "Volvieron tras 6+ meses"]], "kpiUp": "+1 ahora · Ana Beatriz", "dash": "Indicadores", "dashChip": "Operación de la clínica", "thisMonth": "Este mes", "allPros": "Todos los profesionales", "chart1": "Citas agendadas vs. realizadas", "scheduled": "Agendadas", "done": "Realizadas", "today": "Hoy", "chart2": "De dónde vienen los pacientes", "referral": "Referido", "chart3": "Cuándo escriben más los pacientes", "less": "menos", "more": "más", "days": ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"], "chart4": "Tasa de asistencia", "gaugeSub": "186 de 207 pacientes vinieron", "gaugeMeta": "Meta de la clínica: 92%", "input": "Escribe un mensaje…", "stepOf": "Paso {n} de 5", "capTitle": "Una atención, de principio a fin", "capDesc": "Desplázate para seguir el recorrido de una paciente dentro de Clint.", "convo": [["¡Hola, buenas tardes! Vi su publicación en Instagram sobre blanqueamiento y me dio curiosidad", "13:42"], ["Pero tengo un poco de sensibilidad en los dientes, ¿puedo hacerlo?", "13:42"], ["¡Hola, Ana! Soy Camila, de Clínica Sonrisa. Qué bueno que escribiste", "13:44"], ["Sí, puedes. La evaluación sirve justamente para revisar esa sensibilidad con calma e indicarte el mejor camino", "13:45"], ["Ay, qué alivio. Confieso que me da un poco de miedo que duela jaja", "13:47"], ["Te entiendo. La Dra. Paula es muy cuidadosa y explica todo antes. Tengo el jueves a las 10 o el viernes a las 16:30, ¿cuál te queda mejor?", "13:48"], ["El jueves a las 10 está perfecto", "13:50"], ["Listo, agendado: jueves 01/10 a las 10. Un día antes te mando un recordatorio por aquí", "13:51"], ["¡Gracias, Camila! Hasta el jueves", "13:51"]]},
+      ctaText: "Conoce la experiencia completa en el sitio hecho para clínicas.",
+      ctaButton: "Ver el sitio de clínicas",
     },
     ch06: {
       ariaLabel: "Alcance y resultado",
