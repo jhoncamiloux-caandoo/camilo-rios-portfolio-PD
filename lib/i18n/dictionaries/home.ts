@@ -24,6 +24,8 @@ export type HomeDictionary = {
   resultsList: {
     items: { metric: string; title: string; desc: string }[];
     detailsAriaPrefix: string;
+    hint: string;
+    hintTouch: string;
   };
   companies: {
     eyebrow: string;
@@ -45,6 +47,18 @@ export type HomeDictionary = {
     eyebrow: string;
     title: string;
     ariaPrefix: string;
+    picker: {
+      question: string;
+      helper: string;
+      counter: string;
+      skip: string;
+      showingFor: string;
+      edit: string;
+      because: string;
+      prev: string;
+      next: string;
+      interests: Record<"product" | "ux" | "ai" | "ds" | "growth" | "motion" | "content", string>;
+    };
     items: {
       title: string;
       tag: string;
@@ -151,6 +165,8 @@ export const home: Record<Locale, HomeDictionary> = {
     },
     resultsList: {
       detailsAriaPrefix: "Ver detalhes",
+      hint: "Clique para ver o contexto",
+      hintTouch: "Toque para ver o contexto",
       items: [
         {
           metric: "+140%",
@@ -224,6 +240,18 @@ export const home: Record<Locale, HomeDictionary> = {
       eyebrow: "Cases",
       title: "Projetos pensados para usuários, funis e times.",
       ariaPrefix: "Ver case",
+      picker: {
+        question: "O que você procura hoje?",
+        helper: "Escolha até 3 e os cases se organizam para você.",
+        counter: "{n} de 3",
+        skip: "Pular, mostrar destaques",
+        showingFor: "Mostrando para:",
+        edit: "editar",
+        because: "Porque você escolheu",
+        prev: "Cases anteriores",
+        next: "Próximos cases",
+        interests: {"product": "Product Design", "ux": "UX / CRO", "ai": "IA aplicada", "ds": "Design System", "growth": "Growth / Aquisição", "motion": "Motion e imersivo", "content": "Content Design"},
+      },
       items: [
         {
           title: "Arquitetura de conversão para SaaS",
@@ -468,6 +496,8 @@ export const home: Record<Locale, HomeDictionary> = {
     },
     resultsList: {
       detailsAriaPrefix: "View details",
+      hint: "Click to see the context",
+      hintTouch: "Tap to see the context",
       items: [
         {
           metric: "+140%",
@@ -541,6 +571,18 @@ export const home: Record<Locale, HomeDictionary> = {
       eyebrow: "Cases",
       title: "Projects built for users, funnels, and teams.",
       ariaPrefix: "View case",
+      picker: {
+        question: "What are you looking for today?",
+        helper: "Pick up to 3 and the cases rearrange for you.",
+        counter: "{n} of 3",
+        skip: "Skip, show highlights",
+        showingFor: "Showing for:",
+        edit: "edit",
+        because: "Because you picked",
+        prev: "Previous cases",
+        next: "Next cases",
+        interests: {"product": "Product Design", "ux": "UX / CRO", "ai": "Applied AI", "ds": "Design System", "growth": "Growth / Acquisition", "motion": "Motion & immersive", "content": "Content Design"},
+      },
       items: [
         {
           title: "Conversion architecture for SaaS",
@@ -785,6 +827,8 @@ export const home: Record<Locale, HomeDictionary> = {
     },
     resultsList: {
       detailsAriaPrefix: "Ver detalles",
+      hint: "Haz clic para ver el contexto",
+      hintTouch: "Toca para ver el contexto",
       items: [
         {
           metric: "+140%",
@@ -858,6 +902,18 @@ export const home: Record<Locale, HomeDictionary> = {
       eyebrow: "Cases",
       title: "Proyectos pensados para usuarios, funnels y equipos.",
       ariaPrefix: "Ver case",
+      picker: {
+        question: "¿Qué buscas hoy?",
+        helper: "Elige hasta 3 y los cases se ordenan para ti.",
+        counter: "{n} de 3",
+        skip: "Omitir, mostrar destacados",
+        showingFor: "Mostrando para:",
+        edit: "editar",
+        because: "Porque elegiste",
+        prev: "Cases anteriores",
+        next: "Siguientes cases",
+        interests: {"product": "Product Design", "ux": "UX / CRO", "ai": "IA aplicada", "ds": "Design System", "growth": "Growth / Adquisición", "motion": "Motion e inmersivo", "content": "Content Design"},
+      },
       items: [
         {
           title: "Arquitectura de conversión para SaaS",
