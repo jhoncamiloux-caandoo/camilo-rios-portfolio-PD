@@ -243,6 +243,12 @@ export const home: Record<Locale, HomeDictionary> = {
           body: "Criar padrões visuais e operacionais que aceleram experimentos sem comprometer consistência ou qualidade percebida.",
           stats: ["mais rápido", "menos tokens", "componentes"],
         },
+        {
+          title: "Conteúdo como canal de aquisição",
+          tag: "Content / UX / Growth",
+          body: "Transformar mudanças técnicas do WhatsApp em identidade, blog, landing page e captação conectados na mesma jornada.",
+          stats: ["custo por lead", "trilhas de conteúdo", "idiomas"],
+        },
       ],
     },
     process: {
@@ -548,6 +554,12 @@ export const home: Record<Locale, HomeDictionary> = {
           body: "Creating visual and operational standards that speed up experiments without compromising consistency or perceived quality.",
           stats: ["faster", "fewer tokens", "components"],
         },
+        {
+          title: "Content as an acquisition channel",
+          tag: "Content / UX / Growth",
+          body: "Turning WhatsApp's technical changes into identity, blog, landing page, and lead capture connected in one journey.",
+          stats: ["cost per lead", "content tracks", "languages"],
+        },
       ],
     },
     process: {
@@ -852,6 +864,12 @@ export const home: Record<Locale, HomeDictionary> = {
           tag: "Growth / Design System",
           body: "Crear estándares visuales y operativos que aceleran experimentos sin comprometer la consistencia ni la calidad percibida.",
           stats: ["más rápido", "menos tokens", "componentes"],
+        },
+        {
+          title: "Contenido como canal de adquisición",
+          tag: "Content / UX / Growth",
+          body: "Convertir los cambios técnicos de WhatsApp en identidad, blog, landing page y captación conectados en un mismo recorrido.",
+          stats: ["costo por lead", "líneas de contenido", "idiomas"],
         },
       ],
     },

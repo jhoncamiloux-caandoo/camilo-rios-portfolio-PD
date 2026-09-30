@@ -16,6 +16,9 @@ import {
   Rocket,
   Sparkles,
   Layers,
+  Coins,
+  BookOpen,
+  Languages,
   type LucideIcon,
 } from "lucide-react";
 import { FadeIn } from "@/components/motion/fade-in";
@@ -60,6 +63,15 @@ const casesBase = [
       { icon: Boxes, value: "7" },
     ],
   },
+  {
+    icon: MessageCircle,
+    href: "/cases/whatsapp-next",
+    stats: [
+      { icon: Coins, value: "R$ 8" },
+      { icon: BookOpen, value: "5" },
+      { icon: Languages, value: "3" },
+    ],
+  },
 ];
 
 export function Cases() {
@@ -92,7 +104,7 @@ export function Cases() {
           </h2>
         </FadeIn>
 
-        <div className="mt-16 grid grid-cols-1 gap-gutter lg:grid-cols-3">
+        <div className="mt-16 grid grid-cols-1 gap-gutter md:grid-cols-2">
           {cases.map((item, index) => {
             const LeadIcon = item.icon;
             return (

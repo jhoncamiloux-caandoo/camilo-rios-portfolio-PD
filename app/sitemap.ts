@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/cases/acquire", priority: 0.8, changeFrequency: "monthly" as const },
     { path: "/cases/intelligence", priority: 0.8, changeFrequency: "monthly" as const },
     { path: "/cases/scale", priority: 0.8, changeFrequency: "monthly" as const },
+    { path: "/cases/whatsapp-next", priority: 0.8, changeFrequency: "monthly" as const },
   ];
 
   return routes.map((route) => ({
