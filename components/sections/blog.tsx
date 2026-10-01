@@ -3,16 +3,11 @@
 import { useRef, useState } from "react";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { FadeIn } from "@/components/motion/fade-in";
-import {
-  MEDIUM_PROFILE_URL,
-  mediumArticleUrl,
-  mediumArticles,
-  mediumCoverUrl,
-} from "@/lib/medium-articles";
-import { posts } from "@/lib/blog/posts";
+import { CATEGORIES, posts } from "@/lib/blog/posts";
+import { CoverArt } from "@/components/blog/visuals-kit";
 
-// Artigos já publicados no blog próprio abrem no site; os demais, no Medium.
-const onSite = (mediumSlug: string) => posts.find((p) => p.mediumUrl.endsWith(mediumSlug));
+// Os 10 artigos mais recentes do blog próprio; "ver todos" leva a /blog.
+const latest = [...posts].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 10);
 import { useLocale } from "@/lib/i18n/locale-context";
 
 const DRAG_THRESHOLD = 6;
@@ -94,13 +89,11 @@ export function Blog() {
               {t.home.blog.title}
             </h2>
             <p className="max-w-md font-sans text-base leading-relaxed text-[#0A0A0A]/65 md:text-lg">
-              {mediumArticles.length} {t.home.blog.descriptionSuffix}
+              {posts.length} {t.home.blog.descriptionSuffix}
             </p>
           </div>
           <a
-            href={MEDIUM_PROFILE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/blog"
             className="group inline-flex h-11 shrink-0 items-center gap-2 rounded-full border border-black/[0.1] px-6 text-sm font-semibold text-[#0A0A0A] transition-colors duration-250 hover:border-primary hover:text-primary"
           >
             {t.home.blog.viewAllLabel}
@@ -127,25 +120,27 @@ export function Blog() {
                 : "cursor-grab snap-mandatory scroll-smooth"
             }`}
           >
-            {mediumArticles.map((article) => {
-              const own = onSite(article.slug);
+            {latest.map((article) => {
               return (
               <a
                 key={article.slug}
                 data-card
-                href={own ? `/blog/${own.slug}` : mediumArticleUrl(article.slug)}
-                {...(own ? {} : { target: "_blank", rel: "noopener noreferrer" })}
+                href={`/blog/${article.slug}`}
                 className="group relative flex w-[260px] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-black/[0.06] bg-[#0A0A0A] transition-shadow duration-300 hover:shadow-[0_16px_40px_-12px_rgba(10,10,10,0.35)] sm:w-[300px]"
               >
                 <div className="aspect-[4/3] w-full overflow-hidden bg-black/20">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={mediumCoverUrl(article.coverHash)}
-                    alt=""
-                    loading="lazy"
-                    draggable={false}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-                  />
+                  {article.coverArt ? (
+                    <div className="flex h-full items-center"><CoverArt icons={article.coverArt.icons} label={CATEGORIES[article.category]} /></div>
+                  ) : (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={article.cover}
+                      alt=""
+                      loading="lazy"
+                      draggable={false}
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                    />
+                  )}
                 </div>
                 <div className="flex flex-1 flex-col justify-between gap-4 p-5">
                   <p className="font-display text-base font-semibold leading-snug tracking-tight text-white">

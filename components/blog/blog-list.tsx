@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { CATEGORIES, type Category, type Post } from "@/lib/blog/posts";
+import { CoverArt } from "@/components/blog/visuals-kit";
 
 const ALL = "all" as const;
 
@@ -42,7 +43,7 @@ export function BlogList({ posts }: { posts: Post[] }) {
               className="group flex h-full flex-col overflow-hidden rounded-2xl border border-black/[0.08] bg-white transition hover:-translate-y-1 hover:border-[#622FFD]/30 hover:shadow-[0_24px_60px_rgba(98,47,253,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#622FFD]"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={p.cover} alt="" loading="lazy" className="aspect-[16/9] w-full object-cover" />
+              {p.coverArt ? <CoverArt icons={p.coverArt.icons} label={CATEGORIES[p.category]} /> : <img src={p.cover} alt="" loading="lazy" className="aspect-[16/9] w-full object-cover" />}
               <div className="flex flex-1 flex-col p-6">
                 <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-[#622FFD]">{CATEGORIES[p.category]}</p>
                 <h2 className="mt-3 font-display text-xl font-semibold leading-snug text-[#0A0A0A] group-hover:text-[#622FFD]">{p.title}</h2>

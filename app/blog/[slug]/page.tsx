@@ -5,6 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 import { CaseHeader } from "@/components/case-lp/case-header";
 import { CaseFooter } from "@/components/case-lp/case-footer";
 import { BlogVisual } from "@/components/blog/visuals";
+import { CoverArt } from "@/components/blog/visuals-kit";
 import { CATEGORIES, getPost, posts } from "@/lib/blog/posts";
 
 const SITE = "https://camilo-rios-portfolio.vercel.app";
@@ -22,8 +23,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: p.description,
     keywords: p.tags,
     alternates: { canonical: `/blog/${p.slug}` },
-    openGraph: { title: p.title, description: p.description, type: "article", publishedTime: p.date, locale: "pt_BR", images: [{ url: p.cover }] },
-    twitter: { card: "summary_large_image", title: p.title, description: p.description, images: [p.cover] },
+    openGraph: { title: p.title, description: p.description, type: "article", publishedTime: p.date, locale: "pt_BR", ...(p.cover ? { images: [{ url: p.cover }] } : {}) },
+    twitter: { card: "summary_large_image", title: p.title, description: p.description, ...(p.cover ? { images: [p.cover] } : {}) },
   };
 }
 
@@ -39,7 +40,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       headline: p.title,
       description: p.description,
       datePublished: p.date,
-      image: `${SITE}${p.cover}`,
+      ...(p.cover ? { image: `${SITE}${p.cover}` } : {}),
       url,
       mainEntityOfPage: url,
       inLanguage: "pt-BR",
@@ -77,6 +78,17 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             Jhon Camilo Rios · <time dateTime={p.date}>{new Date(p.date).toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" })}</time> · {p.readMinutes} min de leitura
           </p>
 
+          {p.coverArt ? (
+            <div className="mt-10"><CoverArt icons={p.coverArt.icons} label={CATEGORIES[p.category]} size="hero" /></div>
+          ) : p.cover ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={p.cover} alt="" className="mt-10 aspect-[2/1] w-full rounded-3xl object-cover" />
+          ) : null}
+
+          {p.updateNote && (
+            <p className="mt-8 rounded-2xl border border-[#622FFD]/20 bg-[#622FFD]/[0.05] px-5 py-4 text-sm leading-relaxed text-[#0A0A0A]/80">{p.updateNote}</p>
+          )}
+
           <div className="mt-12">
             {p.blocks.map((b, i) => {
               if (b.type === "h2") return <h2 key={i} className="mt-14 font-display text-2xl font-semibold leading-snug md:text-[32px]">{b.text}</h2>;
@@ -102,6 +114,15 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             })}
           </div>
 
+          {p.sources && (
+            <section aria-label="Fontes" className="mt-12 rounded-2xl border border-black/[0.08] p-5">
+              <p className="font-mono text-xs uppercase tracking-[0.18em] text-[#0A0A0A]/60">Fontes e leituras</p>
+              <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm text-[#0A0A0A]/75">
+                {p.sources.map((s) => <li key={s}>{s}</li>)}
+              </ul>
+            </section>
+          )}
+
           <div className="mt-12 flex flex-wrap gap-2">
             {p.tags.map((tag) => (
               <span key={tag} className="rounded-full border border-black/10 px-3 py-1 text-xs text-[#0A0A0A]/65">{tag}</span>
@@ -119,10 +140,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </Link>
           </aside>
 
-          <p className="mt-10 text-sm text-[#0A0A0A]/60">
+          {p.mediumUrl && <p className="mt-10 text-sm text-[#0A0A0A]/60">
             Também publicado no{" "}
             <a href={p.mediumUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-[#622FFD]">Medium</a>.
-          </p>
+          </p>}
         </article>
       </main>
       <CaseFooter />

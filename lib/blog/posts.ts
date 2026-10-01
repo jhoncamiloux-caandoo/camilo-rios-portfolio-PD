@@ -17,7 +17,7 @@ export type Block =
   | { type: "p"; text: string; lead?: string }
   | { type: "ul"; items: string[] }
   | { type: "quote"; text: string }
-  | { type: "visual"; id?: string; data?: import("@/components/blog/visuals").VisualData; caption: string };
+  | { type: "visual"; id?: string; data?: import("@/components/blog/visuals-kit").VisualData; caption: string };
 
 export type Post = {
   slug: string;
@@ -26,8 +26,11 @@ export type Post = {
   date: string;
   category: Category;
   tags: string[];
-  cover: string;
-  mediumUrl: string;
+  cover?: string;
+  coverArt?: { icons: string[] };
+  updateNote?: string;
+  sources?: string[];
+  mediumUrl?: string;
   readMinutes: number;
   related: { href: string; title: string; body: string };
   blocks: Block[];
