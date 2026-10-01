@@ -7,7 +7,8 @@ import { CATEGORIES, posts } from "@/lib/blog/posts";
 import { CoverArt } from "@/components/blog/visuals-kit";
 
 // Os 10 artigos mais recentes do blog próprio; "ver todos" leva a /blog.
-const latest = [...posts].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 10);
+// Por enquanto a home mostra só os artigos com capa do Medium.
+const latest = posts.filter((p) => p.cover && !p.coverArt).sort((a, b) => b.date.localeCompare(a.date)).slice(0, 10);
 import { useLocale } from "@/lib/i18n/locale-context";
 
 const DRAG_THRESHOLD = 6;
