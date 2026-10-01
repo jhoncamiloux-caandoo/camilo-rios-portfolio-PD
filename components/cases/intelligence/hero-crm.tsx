@@ -68,22 +68,30 @@ export function HeroCrm() {
 
   return (
     <div className="relative">
-      {/* Elementos flutuantes: agente e WhatsApp */}
+      {/* Elementos flutuantes: o negócio chega pelo WhatsApp, entra no funil e o agente cuida dele */}
       <motion.img
-        src="/cases/clint/intelligence/float-agent.png"
+        src="/cases/clint/intelligence/float-new-deal.png"
         alt=""
         aria-hidden="true"
-        className="absolute -bottom-6 -left-4 z-20 w-16 drop-shadow-[0_18px_30px_rgba(98,47,253,0.35)] md:-bottom-10 md:-left-10 md:w-24"
-        animate={reduce ? undefined : { y: [0, -10, 0], rotate: [-3, 2, -3] }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute -left-4 -top-8 z-20 w-36 drop-shadow-[0_18px_30px_rgba(10,10,10,0.35)] md:-left-12 md:-top-10 md:w-52"
+        animate={reduce ? undefined : { y: [0, -8, 0] }}
+        transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
       />
       <motion.img
         src="/cases/clint/intelligence/float-whatsapp.png"
         alt=""
         aria-hidden="true"
-        className="absolute -right-3 top-[38%] z-20 w-14 drop-shadow-[0_18px_30px_rgba(22,163,74,0.35)] md:-right-9 md:w-20"
+        className="absolute -bottom-6 -left-4 z-20 w-14 drop-shadow-[0_18px_30px_rgba(22,163,74,0.35)] md:-bottom-10 md:-left-10 md:w-20"
         animate={reduce ? undefined : { y: [0, 10, 0], rotate: [2, -3, 2] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+      />
+      <motion.img
+        src="/cases/clint/intelligence/float-agent.png"
+        alt=""
+        aria-hidden="true"
+        className="absolute -right-3 top-[38%] z-20 w-16 drop-shadow-[0_18px_30px_rgba(98,47,253,0.35)] md:-right-10 md:w-24"
+        animate={reduce ? undefined : { y: [0, -10, 0], rotate: [-3, 2, -3] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
       />
 
       <div aria-hidden="true" className="absolute -inset-4 rounded-[28px] bg-[#622FFD]/10 blur-3xl" />
