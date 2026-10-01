@@ -52,18 +52,19 @@ export type HomeDictionary = {
     picker: {
       question: string;
       helper: string;
-      counter: string;
-      skip: string;
       showingFor: string;
       edit: string;
+      reset: string;
       because: string;
       prev: string;
       next: string;
-      interests: Record<"product" | "ux" | "ai" | "ds" | "growth" | "motion" | "content", string>;
+      options: Record<"ux" | "ui" | "growth", { label: string; desc: string }>;
     };
+    labels: { role: string; challenge: string; result: string; roleValue: string };
     items: {
-      title: string;
-      tag: string;
+      project: string;
+      company: string;
+      specialty: string;
       body: string;
       stats: [string, string, string];
     }[];
@@ -240,45 +241,54 @@ export const home: Record<Locale, HomeDictionary> = {
       title: "Projetos pensados para usuários, funis e times.",
       ariaPrefix: "Ver case",
       picker: {
-        question: "O que você procura hoje?",
-        helper: "Escolha até 3 e os cases se organizam para você.",
-        counter: "{n} de 3",
-        skip: "Pular, mostrar destaques",
-        showingFor: "Mostrando para:",
-        edit: "editar",
+        question: "O que você gostaria de explorar?",
+        helper: "Escolha um caminho e os 3 primeiros cases se reorganizam. Todos continuam disponíveis.",
+        showingFor: "Mostrando primeiro:",
+        edit: "trocar",
+        reset: "ver ordem padrão",
         because: "Porque você escolheu",
         prev: "Cases anteriores",
         next: "Próximos cases",
-        interests: {"product": "Product Design", "ux": "UX / CRO", "ai": "IA aplicada", "ds": "Design System", "growth": "Growth / Aquisição", "motion": "Motion e imersivo", "content": "Content Design"},
+        options: {
+          "ux": { label: "UX & Product", desc: "Pesquisa, arquitetura, jornadas, prototipagem e decisões de produto." },
+          "ui": { label: "UI & Creative", desc: "Interfaces, sistemas visuais, motion, IA e experiências digitais." },
+          "growth": { label: "Growth & Business", desc: "Aquisição, CRO, conversão, métricas e experimentação." },
+        },
       },
+      labels: { role: "Papel", challenge: "Desafio", result: "Resultado", roleValue: "Product Designer" },
       items: [
         {
-          title: "Arquitetura de conversão para SaaS",
-          tag: "CRO / Produto",
+          project: "Clint Acquire",
+          company: "Clint",
+          specialty: "CRO · PRODUCT · UX",
           body: "Reorganizar narrativa, hierarquia de valor e pontos de decisão para aumentar clareza em jornadas de aquisição.",
           stats: ["da demanda", "conversão", "conversas"],
         },
         {
-          title: "Experiências com inteligência artificial",
-          tag: "AI / UX",
+          project: "Clint Intelligence",
+          company: "Clint",
+          specialty: "AI · UX · PRODUCT",
           body: "Desenhar fluxos onde modelos, automações e feedback humano trabalham sem transformar complexidade técnica em carga cognitiva.",
           stats: ["qualificação", "pós 5º contato", "papéis de IA"],
         },
         {
-          title: "Sistemas para times de crescimento",
-          tag: "Growth / Design System",
+          project: "Clint Scale",
+          company: "Clint",
+          specialty: "DESIGN SYSTEM · GROWTH · AI",
           body: "Criar padrões visuais e operacionais que aceleram experimentos sem comprometer consistência ou qualidade percebida.",
           stats: ["mais rápido", "menos tokens", "componentes"],
         },
         {
-          title: "Conteúdo como canal de aquisição",
-          tag: "Content / UX / Growth",
+          project: "WhatsApp Next",
+          company: "Clint",
+          specialty: "GROWTH · CONTENT · LEAD GENERATION",
           body: "Transformar mudanças técnicas do WhatsApp em identidade, blog, landing page e captação conectados na mesma jornada.",
           stats: ["custo por lead", "inscrições em 4 dias", "conversão da LP"],
         },
         {
-          title: "Experiências digitais imersivas",
-          tag: "UI / AI / Creative Dev",
+          project: "Servientrega",
+          company: "Projeto conceitual",
+          specialty: "UI · AI · MOTION · CREATIVE TECHNOLOGY",
           body: "Transformar a jornada de uma encomenda em narrativa interativa, com scroll, WebGL e direção de arte apoiada por IA.",
           stats: ["etapas", "cena WebGL", "idiomas"],
         },
@@ -568,45 +578,54 @@ export const home: Record<Locale, HomeDictionary> = {
       title: "Projects built for users, funnels, and teams.",
       ariaPrefix: "View case",
       picker: {
-        question: "What are you looking for today?",
-        helper: "Pick up to 3 and the cases rearrange for you.",
-        counter: "{n} of 3",
-        skip: "Skip, show highlights",
-        showingFor: "Showing for:",
-        edit: "edit",
+        question: "What would you like to explore?",
+        helper: "Pick a path and the first 3 cases reorder. All of them stay available.",
+        showingFor: "Showing first:",
+        edit: "change",
+        reset: "default order",
         because: "Because you picked",
         prev: "Previous cases",
         next: "Next cases",
-        interests: {"product": "Product Design", "ux": "UX / CRO", "ai": "Applied AI", "ds": "Design System", "growth": "Growth / Acquisition", "motion": "Motion & immersive", "content": "Content Design"},
+        options: {
+          "ux": { label: "UX & Product", desc: "Research, architecture, journeys, prototyping and product decisions." },
+          "ui": { label: "UI & Creative", desc: "Interfaces, visual systems, motion, AI and digital experiences." },
+          "growth": { label: "Growth & Business", desc: "Acquisition, CRO, conversion, metrics and experimentation." },
+        },
       },
+      labels: { role: "Role", challenge: "Challenge", result: "Result", roleValue: "Product Designer" },
       items: [
         {
-          title: "Conversion architecture for SaaS",
-          tag: "CRO / Product",
+          project: "Clint Acquire",
+          company: "Clint",
+          specialty: "CRO · PRODUCT · UX",
           body: "Reorganizing narrative, value hierarchy, and decision points to bring more clarity to acquisition journeys.",
           stats: ["of demand", "conversion", "conversations"],
         },
         {
-          title: "AI-powered experiences",
-          tag: "AI / UX",
+          project: "Clint Intelligence",
+          company: "Clint",
+          specialty: "AI · UX · PRODUCT",
           body: "Designing flows where models, automation, and human feedback work together without turning technical complexity into cognitive load.",
           stats: ["qualification", "after 5th contact", "AI roles"],
         },
         {
-          title: "Systems for growth teams",
-          tag: "Growth / Design System",
+          project: "Clint Scale",
+          company: "Clint",
+          specialty: "DESIGN SYSTEM · GROWTH · AI",
           body: "Creating visual and operational standards that speed up experiments without compromising consistency or perceived quality.",
           stats: ["faster", "fewer tokens", "components"],
         },
         {
-          title: "Content as an acquisition channel",
-          tag: "Content / UX / Growth",
+          project: "WhatsApp Next",
+          company: "Clint",
+          specialty: "GROWTH · CONTENT · LEAD GENERATION",
           body: "Turning WhatsApp's technical changes into identity, blog, landing page, and lead capture connected in one journey.",
           stats: ["cost per lead", "sign-ups in 4 days", "LP conversion"],
         },
         {
-          title: "Immersive digital experiences",
-          tag: "UI / AI / Creative Dev",
+          project: "Servientrega",
+          company: "Concept project",
+          specialty: "UI · AI · MOTION · CREATIVE TECHNOLOGY",
           body: "Turning a parcel's journey into an interactive story with scroll, WebGL, and AI-assisted art direction.",
           stats: ["stages", "WebGL scene", "languages"],
         },
@@ -896,45 +915,54 @@ export const home: Record<Locale, HomeDictionary> = {
       title: "Proyectos pensados para usuarios, funnels y equipos.",
       ariaPrefix: "Ver case",
       picker: {
-        question: "¿Qué buscas hoy?",
-        helper: "Elige hasta 3 y los cases se ordenan para ti.",
-        counter: "{n} de 3",
-        skip: "Omitir, mostrar destacados",
-        showingFor: "Mostrando para:",
-        edit: "editar",
+        question: "¿Qué te gustaría explorar?",
+        helper: "Elige un camino y los 3 primeros cases se reorganizan. Todos siguen disponibles.",
+        showingFor: "Mostrando primero:",
+        edit: "cambiar",
+        reset: "orden por defecto",
         because: "Porque elegiste",
         prev: "Cases anteriores",
         next: "Siguientes cases",
-        interests: {"product": "Product Design", "ux": "UX / CRO", "ai": "IA aplicada", "ds": "Design System", "growth": "Growth / Adquisición", "motion": "Motion e inmersivo", "content": "Content Design"},
+        options: {
+          "ux": { label: "UX & Product", desc: "Investigación, arquitectura, journeys, prototipado y decisiones de producto." },
+          "ui": { label: "UI & Creative", desc: "Interfaces, sistemas visuales, motion, IA y experiencias digitales." },
+          "growth": { label: "Growth & Business", desc: "Adquisición, CRO, conversión, métricas y experimentación." },
+        },
       },
+      labels: { role: "Rol", challenge: "Desafío", result: "Resultado", roleValue: "Product Designer" },
       items: [
         {
-          title: "Arquitectura de conversión para SaaS",
-          tag: "CRO / Producto",
+          project: "Clint Acquire",
+          company: "Clint",
+          specialty: "CRO · PRODUCT · UX",
           body: "Reorganizar narrativa, jerarquía de valor y puntos de decisión para aumentar la claridad en las experiencias de adquisición.",
           stats: ["de la demanda", "conversión", "conversaciones"],
         },
         {
-          title: "Experiencias con inteligencia artificial",
-          tag: "AI / UX",
+          project: "Clint Intelligence",
+          company: "Clint",
+          specialty: "AI · UX · PRODUCT",
           body: "Diseñar flujos donde modelos, automatizaciones y feedback humano trabajan juntos sin convertir la complejidad técnica en carga cognitiva.",
           stats: ["calificación", "tras 5° contacto", "roles de IA"],
         },
         {
-          title: "Sistemas para equipos de crecimiento",
-          tag: "Growth / Design System",
+          project: "Clint Scale",
+          company: "Clint",
+          specialty: "DESIGN SYSTEM · GROWTH · AI",
           body: "Crear estándares visuales y operativos que aceleran experimentos sin comprometer la consistencia ni la calidad percibida.",
           stats: ["más rápido", "menos tokens", "componentes"],
         },
         {
-          title: "Contenido como canal de adquisición",
-          tag: "Content / UX / Growth",
+          project: "WhatsApp Next",
+          company: "Clint",
+          specialty: "GROWTH · CONTENT · LEAD GENERATION",
           body: "Convertir los cambios técnicos de WhatsApp en identidad, blog, landing page y captación conectados en un mismo recorrido.",
           stats: ["costo por lead", "inscripciones en 4 días", "conversión de la LP"],
         },
         {
-          title: "Experiencias digitales inmersivas",
-          tag: "UI / AI / Creative Dev",
+          project: "Servientrega",
+          company: "Proyecto conceptual",
+          specialty: "UI · AI · MOTION · CREATIVE TECHNOLOGY",
           body: "Convertir el recorrido de un envío en una narrativa interactiva, con scroll, WebGL y dirección de arte apoyada por IA.",
           stats: ["etapas", "escena WebGL", "idiomas"],
         },
