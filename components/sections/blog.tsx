@@ -3,12 +3,18 @@
 import { useRef, useState } from "react";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { FadeIn } from "@/components/motion/fade-in";
-import {
-  MEDIUM_PROFILE_URL,
-  mediumArticleUrl,
-  mediumArticles,
-  mediumCoverUrl,
-} from "@/lib/medium-articles";
+import { CATEGORIES, posts } from "@/lib/blog/posts";
+import { CoverArt } from "@/components/blog/visuals-kit";
+
+// Os 10 artigos mais recentes do blog próprio; "ver todos" leva a /blog.
+// Home mostra só artigos com capa ilustrada.
+// Destaques fixos primeiro; o restante segue por data.
+const FEATURED = ["12-metricas-de-ux", "acessibilidade-digital-melhora-a-experiencia-de-todos", "design-alem-do-design-produto-growth-negocio", "ia-acelera-mas-ate-que-ponto", "design-systems-como-criar-e-manter"];
+const withCover = posts.filter((p) => p.cover && !p.coverArt);
+const latest = [
+  ...FEATURED.map((s) => withCover.find((p) => p.slug === s)).filter((p): p is (typeof posts)[number] => !!p),
+  ...withCover.filter((p) => !FEATURED.includes(p.slug)).sort((a, b) => b.date.localeCompare(a.date)),
+].slice(0, 10);
 import { useLocale } from "@/lib/i18n/locale-context";
 
 const DRAG_THRESHOLD = 6;
@@ -90,13 +96,11 @@ export function Blog() {
               {t.home.blog.title}
             </h2>
             <p className="max-w-md font-sans text-base leading-relaxed text-[#0A0A0A]/65 md:text-lg">
-              {mediumArticles.length} {t.home.blog.descriptionSuffix}
+              {posts.length} {t.home.blog.descriptionSuffix}
             </p>
           </div>
           <a
-            href={MEDIUM_PROFILE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/blog"
             className="group inline-flex h-11 shrink-0 items-center gap-2 rounded-full border border-black/[0.1] px-6 text-sm font-semibold text-[#0A0A0A] transition-colors duration-250 hover:border-primary hover:text-primary"
           >
             {t.home.blog.viewAllLabel}
@@ -123,36 +127,45 @@ export function Blog() {
                 : "cursor-grab snap-mandatory scroll-smooth"
             }`}
           >
-            {mediumArticles.map((article) => (
+            {latest.map((article) => {
+              return (
               <a
                 key={article.slug}
                 data-card
-                href={mediumArticleUrl(article.slug)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative flex w-[260px] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-black/[0.06] bg-[#0A0A0A] transition-shadow duration-300 hover:shadow-[0_16px_40px_-12px_rgba(10,10,10,0.35)] sm:w-[300px]"
+                href={`/blog/${article.slug}`}
+                className="group relative flex w-[280px] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-black/[0.08] bg-white transition hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_24px_60px_rgba(98,47,253,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:w-[320px]"
               >
-                <div className="aspect-[4/3] w-full overflow-hidden bg-black/20">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={mediumCoverUrl(article.coverHash)}
-                    alt=""
-                    loading="lazy"
-                    draggable={false}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-                  />
+                <div className="aspect-[16/9] w-full overflow-hidden bg-[#0d0d12]">
+                  {article.coverArt ? (
+                    <CoverArt icons={article.coverArt.icons} label={CATEGORIES[article.category]} />
+                  ) : (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={article.cover}
+                      alt=""
+                      loading="lazy"
+                      draggable={false}
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                    />
+                  )}
                 </div>
-                <div className="flex flex-1 flex-col justify-between gap-4 p-5">
-                  <p className="font-display text-base font-semibold leading-snug tracking-tight text-white">
-                    {article.title}
-                  </p>
-                  <span className="inline-flex items-center gap-1.5 font-sans text-xs font-semibold text-white/60 transition-colors duration-300 group-hover:text-primary-light">
-                    {t.home.blog.readArticleLabel}
-                    <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </span>
+                <div className="flex flex-1 flex-col p-6">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-primary">{CATEGORIES[article.category]}</p>
+                  <p className="mt-3 font-display text-lg font-semibold leading-snug text-[#0A0A0A] group-hover:text-primary">{article.title}</p>
+                  <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-[#0A0A0A]/65">{article.description}</p>
+                  <div className="mt-auto flex items-center justify-between pt-5 text-xs text-[#0A0A0A]/60">
+                    <span>
+                      {new Date(article.date).toLocaleDateString("pt-BR", { day: "2-digit", month: "short", year: "numeric" })} · {article.readMinutes} min
+                    </span>
+                    <span className="inline-flex items-center gap-1 font-semibold text-[#0A0A0A]/70 group-hover:text-primary">
+                      {t.home.blog.readArticleLabel}
+                      <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                    </span>
+                  </div>
                 </div>
               </a>
-            ))}
+              );
+            })}
           </div>
 
           {/* Setas */}

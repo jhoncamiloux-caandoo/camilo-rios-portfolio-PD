@@ -13,6 +13,8 @@ import {
   GitBranch,
   FlaskConical,
   Layers,
+  Search,
+  Target,
   type LucideIcon,
 } from "lucide-react";
 import { useLocale } from "@/lib/i18n/locale-context";
@@ -23,18 +25,21 @@ type Step = {
   num: string;
   title: string;
   body: string;
+  example?: string;
   icon: LucideIcon;
   visual: React.FC;
 };
 
 const stepsBase = [
-  { num: "01", icon: BarChart2, visual: VisualDiagnostic },
-  { num: "02", icon: GitBranch, visual: VisualArchitecture },
-  { num: "03", icon: FlaskConical, visual: VisualPrototype },
-  { num: "04", icon: Layers, visual: VisualSystem },
+  { num: "01", icon: Search, visual: VisualDiagnostic },
+  { num: "02", icon: Target, visual: VisualDefine },
+  { num: "03", icon: GitBranch, visual: VisualArchitecture },
+  { num: "04", icon: FlaskConical, visual: VisualPrototype },
+  { num: "05", icon: Layers, visual: VisualSystem },
+  { num: "06", icon: BarChart2, visual: VisualMeasure },
 ];
 
-// ─── VISUAL PLACEHOLDERS ─────────────────────────────────────────────────────
+// ─── VISUAIS (ilustrativos: sem números inventados; o passo 06 usa resultados reais) ─────────────────────────────────────────────────────
 
 function VisualDiagnostic() {
   const bars = [55, 72, 48, 88, 63, 79, 41];
@@ -43,10 +48,10 @@ function VisualDiagnostic() {
       {/* Mini funnel */}
       <div className="flex flex-col items-center gap-1">
         {[
-          { w: "w-full", label: "Visitas", val: "24.8k" },
-          { w: "w-4/5", label: "Leads", val: "6.2k" },
-          { w: "w-3/5", label: "MQL", val: "1.9k" },
-          { w: "w-2/5", label: "SQL", val: "480" },
+          { w: "w-full", label: "Visitas", val: "?" },
+          { w: "w-4/5", label: "Leads", val: "?" },
+          { w: "w-3/5", label: "MQL", val: "?" },
+          { w: "w-2/5", label: "SQL", val: "?" },
         ].map((row) => (
           <div key={row.label} className="flex w-full items-center gap-3">
             <div
@@ -65,7 +70,7 @@ function VisualDiagnostic() {
       {/* Sparkline */}
       <div className="flex flex-col gap-2">
         <span className="text-[10px] font-semibold uppercase tracking-widest text-white/60">
-          Conversão · últimos 7d
+          Comportamento · sessões, mapas de calor, entrevistas
         </span>
         <div className="flex h-14 items-end gap-1.5">
           {bars.map((h, i) => (
@@ -80,7 +85,7 @@ function VisualDiagnostic() {
       {/* Insight pill */}
       <div className="rounded-xl border border-primary/20 bg-primary/10 px-4 py-3">
         <p className="text-xs text-primary-light">
-          ↑ +23% no checkout após diagnóstico de atrito
+          Pergunta-guia: onde as pessoas desistem, e por quê?
         </p>
       </div>
     </div>
@@ -136,7 +141,7 @@ function VisualPrototype() {
       </div>
       {/* A/B labels */}
       <div className="grid grid-cols-2 gap-3">
-        {["Variante A: 3.2%", "Variante B: 5.8% ↑"].map((label, i) => (
+        {["Variante A", "Variante B ✓"].map((label, i) => (
           <div
             key={i}
             className={`rounded-lg border px-3 py-2 text-center text-xs font-semibold ${
@@ -270,6 +275,67 @@ function VisualSystem() {
   );
 }
 
+
+function VisualDefine() {
+  const rows = [
+    { k: "Problema", v: "O que trava o usuário e o negócio hoje" },
+    { k: "Oportunidade", v: "Onde uma mudança gera mais valor" },
+    { k: "Hipótese", v: "Se mudarmos X, esperamos Y, medido por Z" },
+  ];
+  return (
+    <div className="flex h-full flex-col justify-center gap-4 p-8">
+      {rows.map((r, i) => (
+        <div
+          key={r.k}
+          className={`rounded-xl border px-5 py-4 ${i === 2 ? "border-primary/40 bg-primary/10" : "border-white/[0.06] bg-white/[0.03]"}`}
+        >
+          <p className={`text-[10px] font-semibold uppercase tracking-[0.2em] ${i === 2 ? "text-primary-light" : "text-white/60"}`}>{r.k}</p>
+          <p className="mt-1.5 text-sm font-medium text-white/90">{r.v}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function VisualMeasure() {
+  // Resultados reais dos cases
+  const bars = [
+    { label: "WhatsApp Next · conversão da LP", value: "25%", pct: 25 },
+    { label: "Geração de leads em 2 meses", value: "+140%", pct: 100 },
+  ];
+  return (
+    <div className="flex h-full flex-col justify-center gap-7 p-8">
+      {bars.map((b) => (
+        <div key={b.label} className="flex flex-col gap-2">
+          <div className="flex items-baseline justify-between">
+            <span className="text-[11px] font-medium uppercase tracking-wider text-white/60">{b.label}</span>
+            <span className="font-display text-2xl font-semibold text-white">{b.value}</span>
+          </div>
+          <div className="h-3 overflow-hidden rounded-full bg-white/[0.06]">
+            <motion.div
+              className="h-full rounded-full bg-primary"
+              initial={{ width: 0 }}
+              whileInView={{ width: `${b.pct}%` }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+            />
+          </div>
+        </div>
+      ))}
+      <div className="grid grid-cols-2 gap-3">
+        <div className="rounded-xl border border-white/[0.06] bg-white/[0.03] px-4 py-3">
+          <p className="font-display text-xl font-semibold text-white">1.680</p>
+          <p className="text-[11px] text-white/60">inscrições na live em 4 dias</p>
+        </div>
+        <div className="rounded-xl border border-primary/30 bg-primary/10 px-4 py-3">
+          <p className="font-display text-xl font-semibold text-white">R$ 8</p>
+          <p className="text-[11px] text-primary-light">custo por lead</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── STEP VISUAL CARD (sticky left) ──────────────────────────────────────────
 
 function StepVisual({
@@ -385,6 +451,11 @@ function StepRow({
           <p className="max-w-md font-sans text-base leading-relaxed text-white/70">
             {step.body}
           </p>
+          {step.example && (
+            <p className="max-w-md border-l-2 border-primary/50 pl-4 font-sans text-sm leading-relaxed text-white/60">
+              {step.example}
+            </p>
+          )}
         </motion.div>
       </div>
     </div>
@@ -399,6 +470,7 @@ export function Process() {
     ...base,
     title: t.home.process.steps[i].title,
     body: t.home.process.steps[i].body,
+    example: t.home.process.steps[i].example,
   }));
   const [activeStep, setActiveStep] = useState(0);
 
@@ -413,6 +485,7 @@ export function Process() {
   return (
     <section
       ref={sectionRef}
+      id="como-trabalho"
       data-nav-theme="dark"
       className="relative bg-[#0A0A0A] py-28 text-white"
     >
@@ -425,6 +498,9 @@ export function Process() {
           <h2 className="font-display text-[48px] font-semibold leading-[1.05] tracking-tight md:text-[56px]">
             {t.home.process.title}
           </h2>
+          <p className="mt-2 max-w-2xl font-sans text-base leading-relaxed text-white/70 md:text-lg">
+            {t.home.process.intro}
+          </p>
         </div>
 
         {/* Two-column scroll layout */}

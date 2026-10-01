@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowUpRight,
   MessageCircle,
@@ -24,7 +24,6 @@ import {
   Route,
   Box,
   Check,
-  Plus,
   ChevronLeft,
   ChevronRight,
   type LucideIcon,
@@ -34,13 +33,12 @@ import { useLocale } from "@/lib/i18n/locale-context";
 
 type Stat = { icon: LucideIcon; value: string; label: string };
 
-type Interest = "product" | "ux" | "ai" | "ds" | "growth" | "motion" | "content";
+type Focus = "ux" | "ui" | "growth";
 
 type Case = {
-  tags: Interest[];
-  rank: number;
-  title: string;
-  tag: string;
+  project: string;
+  company: string;
+  specialty: string;
   icon: LucideIcon;
   body: string;
   href: string;
@@ -51,7 +49,6 @@ const casesBase = [
   {
     icon: Rocket,
     href: "/cases/acquire",
-    tags: ["ux", "growth", "product"] as Interest[],
     stats: [
       { icon: TrendingUp, value: "79%" },
       { icon: Percent, value: "37%" },
@@ -61,7 +58,6 @@ const casesBase = [
   {
     icon: Sparkles,
     href: "/cases/intelligence",
-    tags: ["ai", "product", "ux"] as Interest[],
     stats: [
       { icon: Zap, value: "21x" },
       { icon: Repeat, value: "60%" },
@@ -71,7 +67,6 @@ const casesBase = [
   {
     icon: Layers,
     href: "/cases/scale",
-    tags: ["ds", "ai", "product"] as Interest[],
     stats: [
       { icon: Gauge, value: "47%" },
       { icon: Cpu, value: "70-85%" },
@@ -81,7 +76,6 @@ const casesBase = [
   {
     icon: MessageCircle,
     href: "/cases/whatsapp-next",
-    tags: ["content", "growth", "ux"] as Interest[],
     stats: [
       { icon: Coins, value: "R$ 8" },
       { icon: Users, value: "1.680" },
@@ -91,7 +85,6 @@ const casesBase = [
   {
     icon: Package,
     href: "/cases/servientrega",
-    tags: ["motion", "ai", "product"] as Interest[],
     stats: [
       { icon: Route, value: "6" },
       { icon: Box, value: "3D" },
@@ -100,70 +93,55 @@ const casesBase = [
   },
 ];
 
-// Ordem padrão (sem escolha): os 3 que mais resumem o perfil vêm primeiro.
+// Ordem padrão (sem escolha) e ordem por foco. Nenhum case some, só muda a ordem.
 const DEFAULT_ORDER = ["/cases/intelligence", "/cases/acquire", "/cases/servientrega", "/cases/scale", "/cases/whatsapp-next"];
-const INTERESTS: Interest[] = ["product", "ux", "ai", "ds", "growth", "motion", "content"];
-const STORAGE_KEY = "case-interests";
-const MAX = 3;
+const ORDERS: Record<Focus, string[]> = {
+  ux: ["/cases/intelligence", "/cases/scale", "/cases/acquire", "/cases/whatsapp-next", "/cases/servientrega"],
+  ui: ["/cases/servientrega", "/cases/intelligence", "/cases/scale", "/cases/whatsapp-next", "/cases/acquire"],
+  growth: ["/cases/whatsapp-next", "/cases/acquire", "/cases/intelligence", "/cases/scale", "/cases/servientrega"],
+};
+const FOCUSES: Focus[] = ["ux", "ui", "growth"];
+const STORAGE_KEY = "case-focus";
 
 export function Cases() {
   const { t } = useLocale();
   const c = t.home.cases;
   const p = c.picker;
   const reduce = useReducedMotion();
-  const [picked, setPicked] = useState<Interest[]>([]);
-  const [collapsed, setCollapsed] = useState(false);
+  const [focus, setFocus] = useState<Focus | null>(null);
   const track = useRef<HTMLDivElement>(null);
   const [edges, setEdges] = useState({ start: true, end: false });
 
   // Preferência salva no navegador (conveniência; tudo funciona sem ela)
   useEffect(() => {
     try {
-      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
-      if (saved && Array.isArray(saved.picked)) {
-        setPicked(saved.picked.filter((x: string) => INTERESTS.includes(x as Interest)).slice(0, MAX));
-        setCollapsed(Boolean(saved.collapsed));
-      }
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved && FOCUSES.includes(saved as Focus)) setFocus(saved as Focus);
     } catch {}
   }, []);
-  const persist = (next: Interest[], col: boolean) => {
+  const choose = (next: Focus | null) => {
+    setFocus(next);
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify({ picked: next, collapsed: col }));
+      if (next) localStorage.setItem(STORAGE_KEY, next);
+      else localStorage.removeItem(STORAGE_KEY);
     } catch {}
   };
-
-  const toggle = (id: Interest) => {
-    const next = picked.includes(id) ? picked.filter((x) => x !== id) : picked.length < MAX ? [...picked, id] : picked;
-    const done = next.length === MAX;
-    setPicked(next);
-    setCollapsed(done);
-    persist(next, done);
-  };
-  const skip = () => {
-    setCollapsed(true);
-    persist(picked, true);
-  };
-  const edit = () => {
-    setCollapsed(false);
-    persist(picked, false);
-  };
+  const order = focus ? ORDERS[focus] : DEFAULT_ORDER;
 
   const cases: Case[] = casesBase
     .map((base, i) => {
       const dict = c.items[i];
-      const score = base.tags.reduce((acc, tag, k) => acc + (picked.includes(tag) ? 3 - k : 0), 0);
       return {
-        tags: base.tags,
-        rank: score * 10 - DEFAULT_ORDER.indexOf(base.href),
-        title: dict.title,
-        tag: dict.tag,
+        project: dict.project,
+        company: dict.company,
+        specialty: dict.specialty,
         body: dict.body,
         icon: base.icon,
         href: base.href,
         stats: base.stats.map((st, j) => ({ icon: st.icon, value: st.value, label: dict.stats[j] })) as [Stat, Stat, Stat],
       };
     })
-    .sort((a, b) => b.rank - a.rank);
+    .sort((a, b) => order.indexOf(a.href) - order.indexOf(b.href));
 
   const updateEdges = () => {
     const el = track.current;
@@ -186,7 +164,7 @@ export function Cases() {
     }, 450);
     return () => window.clearTimeout(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [picked]);
+  }, [focus]);
   const page = (dir: 1 | -1) => {
     const el = track.current;
     if (!el) return;
@@ -201,78 +179,49 @@ export function Cases() {
           <h2 className="font-display text-[48px] font-semibold leading-[1.08] md:text-h2">{c.title}</h2>
         </FadeIn>
 
-        {/* Seletor de interesses */}
-        <div className="mt-10">
-          <AnimatePresence mode="wait" initial={false}>
-            {collapsed ? (
-              <motion.p
-                key="summary"
-                initial={{ opacity: 0, y: 6 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -6 }}
-                className="flex flex-wrap items-center gap-2 text-sm text-dark/65"
-              >
-                {picked.length > 0 && (
-                  <>
-                    <span>{p.showingFor}</span>
-                    {picked.map((id) => (
-                      <span key={id} className="rounded-full bg-primary/10 px-2.5 py-1 text-xs font-semibold text-primary">
-                        {p.interests[id]}
-                      </span>
-                    ))}
-                    <span aria-hidden="true">·</span>
-                  </>
-                )}
-                <button type="button" onClick={edit} className="font-semibold text-primary underline-offset-4 hover:underline">
-                  {picked.length > 0 ? p.edit : p.question}
-                </button>
-              </motion.p>
-            ) : (
-              <motion.div
-                key="picker"
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                className="rounded-2xl border border-dark/10 bg-white p-5 md:p-6"
-              >
-                <div className="flex flex-wrap items-baseline justify-between gap-2">
-                  <p className="font-display text-xl font-semibold md:text-2xl">{p.question}</p>
-                  <span className="font-mono text-xs text-dark/65" aria-live="polite">
-                    {p.counter.replace("{n}", String(picked.length))}
+        {/* Seletor de foco: uma escolha reorganiza os 3 primeiros */}
+        <fieldset className="mt-10">
+          <legend className="font-display text-xl font-semibold md:text-2xl">{p.question}</legend>
+          <p className="mt-1 text-sm text-dark/65">{p.helper}</p>
+          <div className="mt-5 grid grid-cols-1 gap-3 md:grid-cols-3">
+            {FOCUSES.map((id) => {
+              const on = focus === id;
+              return (
+                <button
+                  key={id}
+                  type="button"
+                  onClick={() => choose(on ? null : id)}
+                  aria-pressed={on}
+                  className={`group flex items-start gap-3 rounded-2xl border p-4 text-left transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 md:p-5 ${
+                    on ? "border-primary bg-primary/[0.06] shadow-[0_0_0_3px_rgba(98,47,253,0.12)]" : "border-dark/10 bg-white hover:border-primary/40"
+                  }`}
+                >
+                  <span
+                    aria-hidden="true"
+                    className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border transition-colors ${on ? "border-primary bg-primary text-white" : "border-dark/25 text-transparent group-hover:border-primary/60"}`}
+                  >
+                    <Check className="h-3 w-3" strokeWidth={3} />
                   </span>
-                </div>
-                <p className="mt-1 text-sm text-dark/65">{p.helper}</p>
-                <ul className="mt-4 flex flex-wrap gap-2">
-                  {INTERESTS.map((id) => {
-                    const on = picked.includes(id);
-                    const full = !on && picked.length >= MAX;
-                    return (
-                      <li key={id}>
-                        <button
-                          type="button"
-                          onClick={() => toggle(id)}
-                          aria-pressed={on}
-                          disabled={full}
-                          className={`inline-flex h-10 items-center gap-1.5 rounded-full border px-4 text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${
-                            on
-                              ? "border-primary bg-primary text-white"
-                              : "border-dark/15 bg-white text-dark hover:border-primary/50 hover:text-primary disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-dark/15 disabled:hover:text-dark"
-                          }`}
-                        >
-                          {on ? <Check className="h-3.5 w-3.5" aria-hidden="true" /> : <Plus className="h-3.5 w-3.5" aria-hidden="true" />}
-                          {p.interests[id]}
-                        </button>
-                      </li>
-                    );
-                  })}
-                </ul>
-                <button type="button" onClick={skip} className="mt-4 text-sm font-medium text-dark/65 underline-offset-4 hover:text-dark hover:underline">
-                  {p.skip}
+                  <span>
+                    <span className={`block font-display text-lg font-semibold ${on ? "text-primary" : "text-dark"}`}>{p.options[id].label}</span>
+                    <span className="mt-1 block text-sm leading-snug text-dark/65">{p.options[id].desc}</span>
+                  </span>
                 </button>
-              </motion.div>
+              );
+            })}
+          </div>
+          <p className="mt-3 min-h-[20px] text-sm text-dark/65" aria-live="polite">
+            {focus && (
+              <>
+                {p.showingFor} <strong className="font-semibold text-dark">{p.options[focus].label}</strong>
+                <span aria-hidden="true"> · </span>
+                <button type="button" onClick={() => choose(null)} className="font-semibold text-primary underline-offset-4 hover:underline">
+                  {p.reset}
+                </button>
+              </>
             )}
-          </AnimatePresence>
-        </div>
+          </p>
+        </fieldset>
 
         {/* Carrossel: 3 visíveis no desktop, setas nas laterais */}
         <div className="relative mt-10">
@@ -302,7 +251,7 @@ export function Cases() {
           >
             {cases.map((item) => {
               const LeadIcon = item.icon;
-              const match = item.tags.find((tag) => picked.includes(tag));
+              const match = focus && ORDERS[focus].indexOf(item.href) < 3;
               return (
                 <motion.div
                   key={item.href}
@@ -313,7 +262,7 @@ export function Cases() {
                   <Link
                     href={item.href}
                     className="group relative flex h-full flex-col rounded-md border border-dark/10 bg-white p-7 text-left shadow-[0_24px_80px_rgba(10,10,10,0.06)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_32px_80px_rgba(98,47,253,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                    aria-label={`${c.ariaPrefix}: ${item.title}`}
+                    aria-label={`${c.ariaPrefix}: ${item.project}`}
                   >
                     <span
                       aria-hidden="true"
@@ -326,22 +275,28 @@ export function Cases() {
                       <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-primary/8 text-primary">
                         <LeadIcon className="h-5 w-5" strokeWidth={1.8} aria-hidden="true" />
                       </span>
-                      <p className="text-caption font-medium uppercase tracking-[0.16em] text-primary">{item.tag}</p>
+                      <p className="font-mono text-[11px] font-medium uppercase leading-snug tracking-[0.12em] text-primary">{item.specialty}</p>
                     </div>
 
                     {match && (
                       <span className="mt-5 inline-flex w-fit items-center gap-1.5 rounded-full bg-primary/10 px-2.5 py-1 text-[11px] font-semibold text-primary">
                         <Sparkles className="h-3 w-3" aria-hidden="true" />
-                        {p.because} {p.interests[match]}
+                        {p.because} {p.options[focus].label}
                       </span>
                     )}
 
                     <h3 className={`${match ? "mt-4" : "mt-7"} font-display text-[28px] font-semibold leading-[1.14] transition-colors duration-300 group-hover:text-primary`}>
-                      {item.title}
+                      {item.project}
                     </h3>
-                    <p className="mt-4 text-sm leading-6 text-dark/65">{item.body}</p>
+                    <p className="mt-1 text-sm text-dark/65">
+                      {item.company} · <span className="sr-only">{c.labels.role}: </span>
+                      {c.labels.roleValue}
+                    </p>
+                    <p className="mt-5 text-[11px] font-semibold uppercase tracking-[0.16em] text-dark/65">{c.labels.challenge}</p>
+                    <p className="mt-1.5 text-sm leading-6 text-dark/80">{item.body}</p>
 
                     <div className="mt-auto pt-7">
+                      <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-dark/65">{c.labels.result}</p>
                       <div className="grid grid-cols-3 divide-x divide-dark/[0.08] rounded-md border border-dark/[0.08] bg-dark/[0.015] py-4">
                         {item.stats.map((stat) => {
                           const Icon = stat.icon;

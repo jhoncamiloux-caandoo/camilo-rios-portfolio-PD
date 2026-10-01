@@ -29,7 +29,7 @@ export type IntelligenceDictionary = {
     tags: string[];
     teamNote: string;
     heroImageAlt: string;
-    crm: { pipeline: string; cols: string[]; moved: string; agent: string };
+    crm: { pipeline: string; cols: string[]; moved: string; actions: string[]; agent: string };
   };
   ch02: {
     ariaLabel: string;
@@ -108,7 +108,7 @@ export const intelligence: Record<Locale, IntelligenceDictionary> = {
       teamNote:
         "Time: 2 product designers, definindo o comportamento dos agentes em parceria com o time de engenharia.",
       heroImageAlt: "Plataforma Clint com o copiloto de IA",
-      crm: {"pipeline": "Vendas · Funil IA", "cols": ["Prospecção IA", "Qualificação IA", "Follow-up IA", "Ganho"], "moved": "IA moveu {name} para {col}", "agent": "Agente de IA"},
+      crm: {"pipeline": "Vendas · Funil IA", "cols": ["Prospecção IA", "Qualificação IA", "Follow-up IA", "Ganho"], "moved": "IA moveu {name} para {col}", "actions": ["{name} chegou pelo WhatsApp", "IA qualificou {name} pelo WhatsApp", "IA agendou follow-up com {name}", "IA fechou negócio com {name}"], "agent": "Agente de IA"},
     },
     ch02: {
       ariaLabel: "O problema da IA sem UX",
@@ -232,7 +232,7 @@ export const intelligence: Record<Locale, IntelligenceDictionary> = {
       teamNote:
         "Team: 2 product designers, defining agent behavior in partnership with the engineering team.",
       heroImageAlt: "Clint platform with the AI copilot",
-      crm: {"pipeline": "Sales · AI funnel", "cols": ["AI prospecting", "AI qualification", "AI follow-up", "Won"], "moved": "AI moved {name} to {col}", "agent": "AI agent"},
+      crm: {"pipeline": "Sales · AI funnel", "cols": ["AI prospecting", "AI qualification", "AI follow-up", "Won"], "moved": "AI moved {name} to {col}", "actions": ["{name} arrived via WhatsApp", "AI qualified {name} on WhatsApp", "AI scheduled a follow-up with {name}", "AI closed the deal with {name}"], "agent": "AI agent"},
     },
     ch02: {
       ariaLabel: "The problem with AI without UX",
@@ -356,7 +356,7 @@ export const intelligence: Record<Locale, IntelligenceDictionary> = {
       teamNote:
         "Equipo: 2 product designers, definiendo el comportamiento de los agentes junto con el equipo de ingeniería.",
       heroImageAlt: "Plataforma Clint con el copiloto de IA",
-      crm: {"pipeline": "Ventas · Embudo IA", "cols": ["Prospección IA", "Calificación IA", "Seguimiento IA", "Ganado"], "moved": "La IA movió a {name} a {col}", "agent": "Agente de IA"},
+      crm: {"pipeline": "Ventas · Embudo IA", "cols": ["Prospección IA", "Calificación IA", "Seguimiento IA", "Ganado"], "moved": "La IA movió a {name} a {col}", "actions": ["{name} llegó por WhatsApp", "La IA calificó a {name} por WhatsApp", "La IA agendó seguimiento con {name}", "La IA cerró el negocio con {name}"], "agent": "Agente de IA"},
     },
     ch02: {
       ariaLabel: "El problema de la IA sin UX",

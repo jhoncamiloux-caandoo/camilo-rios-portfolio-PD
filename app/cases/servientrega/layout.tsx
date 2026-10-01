@@ -5,7 +5,7 @@ import { Chivo_Mono } from "next/font/google";
 const chivoMono = Chivo_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-sv-mono", display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Case: Servientrega · UI, AI & Creative Development | Jhon Camilo Rios",
+  title: "Case: Servientrega · UI, AI & Creative Development",
   description:
     "A jornada de uma encomenda transformada em narrativa interativa: scroll como storytelling, cena WebGL, direção de arte com IA e UI multilíngue.",
   keywords: ["UI Design", "Creative Development", "WebGL", "Three.js", "GSAP", "Motion", "AI", "Scroll storytelling"],

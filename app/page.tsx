@@ -1,3 +1,4 @@
+import { AiProcess } from "@/components/sections/ai-process";
 import { Blog } from "@/components/sections/blog";
 import { Cases } from "@/components/sections/cases";
 import { Companies } from "@/components/sections/companies";
@@ -26,6 +27,7 @@ export default function Home() {
       <Stack />
       <Testimonials />
       <Blog />
+      <AiProcess />
       <Contact />
       <Footer />
     </main>

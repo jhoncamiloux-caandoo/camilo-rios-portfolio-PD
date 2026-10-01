@@ -5,7 +5,7 @@ import { Poppins } from "next/font/google";
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "600"], variable: "--font-poppins", display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Case: WhatsApp Next · Content, UX & Growth | Jhon Camilo Rios",
+  title: "Case: WhatsApp Next · Content, UX & Growth",
   description:
     "Como as mudanças no WhatsApp viraram um ecossistema de conteúdo e aquisição para a Clint: identidade visual, blog, landing page, criativos e captação de leads.",
   keywords: ["Product Design", "UX/UI", "Content Design", "Acessibilidade", "Motion", "Growth", "WhatsApp", "Clint"],

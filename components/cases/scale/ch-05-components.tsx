@@ -31,13 +31,13 @@ function ComponentPanel({
   );
 }
 
-export function Ch05Components() {
+export function Ch05Components({ embedded = false }: { embedded?: boolean } = {}) {
   const { t } = useLocale();
   const c = t.scale.ch05;
   const [panelCTA, panelPrompt, panelChip, panelChat] = c.panels;
 
   return (
-    <section className="bg-[#F8F8F8] py-28 md:py-40" aria-label={c.ariaLabel}>
+    <section className={embedded ? "bg-[#F8F8F8] rounded-3xl py-14 md:py-16" : "bg-[#F8F8F8] py-28 md:py-40"} aria-label={c.ariaLabel}>
       <div className="container">
         <div className="mx-auto flex max-w-2xl flex-col items-center gap-6 text-center">
           <Eyebrow>{c.eyebrow}</Eyebrow>

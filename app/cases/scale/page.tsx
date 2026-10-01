@@ -3,17 +3,16 @@
 import { CaseHeader } from "@/components/case-lp/case-header";
 import { NextCase } from "@/components/case-lp/next-case";
 import { CaseFooter } from "@/components/case-lp/case-footer";
-import { Ch01Hero } from "@/components/cases/scale/ch-01-hero";
-import { Ch02Problem } from "@/components/cases/scale/ch-02-problem";
-import { Ch03Architecture } from "@/components/cases/scale/ch-03-architecture";
-import { Ch04Tokens } from "@/components/cases/scale/ch-04-tokens";
-import { Ch04bTokenLayers } from "@/components/cases/scale/ch-04b-token-layers";
-import { Ch05bPlayground } from "@/components/cases/scale/ch-05b-playground";
-import { Ch05Components } from "@/components/cases/scale/ch-05-components";
-import { Ch06AiComponents } from "@/components/cases/scale/ch-06-ai-components";
-import { Ch07Governance } from "@/components/cases/scale/ch-07-governance";
-import { Ch08GrowthSystem } from "@/components/cases/scale/ch-08-growth-system";
-import { Ch09FigmaStorybook } from "@/components/cases/scale/ch-09-figma-storybook";
+import { ScHero } from "@/components/cases/scale/lab/sc-hero";
+import { ScBeforeAfter } from "@/components/cases/scale/lab/sc-before-after";
+import { ScTokenArch } from "@/components/cases/scale/lab/sc-token-arch";
+import { ScSystemInterface } from "@/components/cases/scale/lab/sc-system-interface";
+import { ScSystemLab } from "@/components/cases/scale/lab/sc-system-lab";
+import { ScA11y } from "@/components/cases/scale/lab/sc-a11y";
+import { ScAi } from "@/components/cases/scale/lab/sc-ai";
+import { ScGrowth } from "@/components/cases/scale/lab/sc-growth";
+import { ScOps } from "@/components/cases/scale/lab/sc-ops";
+import { ScResult } from "@/components/cases/scale/lab/sc-result";
 import { Ch10Results } from "@/components/cases/scale/ch-10-results";
 import { useLocale } from "@/lib/i18n/locale-context";
 
@@ -22,20 +21,23 @@ export default function CaseScalePage() {
   const nextCase = t.scale.nextCase;
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-white text-[#0A0A0A]">
+    <div className="relative min-h-screen overflow-x-clip bg-white text-[#0A0A0A]">
       <CaseHeader label="Clint · Scale" />
-      <Ch01Hero />
-      <Ch02Problem />
-      <Ch03Architecture />
-      <Ch04Tokens />
-      <Ch04bTokenLayers />
-      <Ch05Components />
-      <Ch05bPlayground />
-      <Ch06AiComponents />
-      <Ch07Governance />
-      <Ch08GrowthSystem />
-      <Ch09FigmaStorybook />
+      {/* Etapa A do Scale reconstruído: capítulos 1 a 4 */}
+      <ScHero />
+      <ScBeforeAfter />
+      <ScTokenArch />
+      <ScSystemInterface />
+      {/* Etapa B: capítulos 5 e 6 */}
+      <ScSystemLab />
+      <ScA11y />
+      {/* Etapa C: capítulos 7 e 8 */}
+      <ScAi />
+      <ScGrowth />
+      {/* Etapa D: capítulos 9 e 10 */}
+      <ScOps />
       <Ch10Results />
+      <ScResult />
       <NextCase
         eyebrow={nextCase.eyebrow}
         title={nextCase.title}

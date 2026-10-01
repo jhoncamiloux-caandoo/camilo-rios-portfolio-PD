@@ -6,7 +6,7 @@ export type HomeDictionary = {
     backToPortfolioAria: string;
   };
   header: {
-    navLinks: { impact: string; cases: string; contact: string };
+    navLinks: { impact: string; cases: string; blog: string; contact: string };
     logoAria: string;
     navAriaDesktop: string;
     navAriaMobile: string;
@@ -20,6 +20,8 @@ export type HomeDictionary = {
     ctaCases: string;
     ctaJourneyShort: string;
     ctaJourneyFull: string;
+    ctaContact: string;
+    ctaResume: string;
   };
   resultsList: {
     items: { metric: string; title: string; desc: string }[];
@@ -50,27 +52,39 @@ export type HomeDictionary = {
     picker: {
       question: string;
       helper: string;
-      counter: string;
-      skip: string;
       showingFor: string;
       edit: string;
+      reset: string;
       because: string;
       prev: string;
       next: string;
-      interests: Record<"product" | "ux" | "ai" | "ds" | "growth" | "motion" | "content", string>;
+      options: Record<"ux" | "ui" | "growth", { label: string; desc: string }>;
     };
+    labels: { role: string; challenge: string; result: string; roleValue: string };
     items: {
-      title: string;
-      tag: string;
+      project: string;
+      company: string;
+      specialty: string;
       body: string;
       stats: [string, string, string];
     }[];
   };
+  aiProcess: {
+    eyebrow: string;
+    title: string;
+    message: string;
+    legendAi: string;
+    legendMe: string;
+    steps: { title: string; body: string }[];
+    proofTitle: string;
+    proofs: { case: string; body: string }[];
+  };
   process: {
     eyebrow: string;
     title: string;
+    intro: string;
     stepLabel: string;
-    steps: { title: string; body: string }[];
+    steps: { title: string; body: string; example?: string }[];
   };
   expertiseStack: {
     eyebrow: string;
@@ -133,6 +147,7 @@ export type HomeDictionary = {
     tagline: string;
     linkedinAria: string;
     behanceAria: string;
+    mediumAria: string;
   };
   floatingActions: {
     scheduleLabel: string;
@@ -148,7 +163,7 @@ export const home: Record<Locale, HomeDictionary> = {
       backToPortfolioAria: "Ir ao portfólio de Jhon Camilo Rios",
     },
     header: {
-      navLinks: { impact: "Impacto", cases: "Cases", contact: "Contato" },
+      navLinks: { impact: "Impacto", cases: "Cases", blog: "Blog", contact: "Contato" },
       logoAria: "Voltar ao início do portfólio de Jhon Camilo Rios",
       navAriaDesktop: "Navegação principal",
       navAriaMobile: "Navegação mobile",
@@ -156,10 +171,12 @@ export const home: Record<Locale, HomeDictionary> = {
       menuCloseAria: "Fechar menu",
     },
     hero: {
-      eyebrow: "Senior Product Designer",
-      title: "Produtos digitais construídos para gerar crescimento.",
-      subtitle: "10 anos conectando produto, dados e comportamento humano.",
-      ctaCases: "Ver Cases",
+      eyebrow: "Product Designer · UX, Growth & AI",
+      title: "Desenho produtos que as pessoas entendem e que o negócio consegue medir.",
+      subtitle: "10 anos unindo pesquisa, interface, dados e IA para transformar problemas complexos em experiências simples.",
+      ctaCases: "Ver projetos",
+      ctaContact: "Entrar em contato",
+      ctaResume: "Currículo",
       ctaJourneyShort: "Trajetória",
       ctaJourneyFull: "Conhecer Minha Trajetória",
     },
@@ -174,19 +191,14 @@ export const home: Record<Locale, HomeDictionary> = {
           desc: "Resultado de uma estratégia conjunta do time de Growth Marketing. Minha parte: estruturação, testes A/B e escala contínua através de 58 landing pages de alta performance, projetadas e validadas iterativamente para otimizar canais de aquisição pagos e orgânicos.",
         },
         {
-          metric: "+20%",
-          title: "Aumento em vendas",
-          desc: "Aplicação estrita de frameworks de CRO, mapeamento de gargalos comportamentais e otimização ponta a ponta de fluxos críticos de checkout e conversão digital.",
-        },
-        {
-          metric: "15+",
-          title: "Automações de IA",
-          desc: "Sistemas inteligentes e agentes personalizados integrados ao fluxo de trabalho para aceleração de pesquisa, qualificação rápida de leads e automação de engajamento em tempo real.",
+          metric: "1.680",
+          title: "Inscrições na live em 4 dias",
+          desc: "WhatsApp Next: campanha de conteúdo, landing page e ads levaram 1.680 pessoas a se inscrever na live em 4 dias. A landing page converteu 25% das visitas em inscrição.",
         },
         {
           metric: "Q1 Hit",
           title: "Meta em 20 de Jan",
-          desc: "Validação ágil de hipóteses de growth e engenharia de produto focada em conversão que antecipou os resultados e bateu as metas do trimestre inteiro logo nos primeiros 20 dias do ano.",
+          desc: "Testamos hipóteses de growth cedo e ajustamos as páginas de conversão rápido. Com isso, a meta do trimestre foi batida em 20 de janeiro, nos primeiros 20 dias do ano.",
         },
       ],
     },
@@ -241,71 +253,96 @@ export const home: Record<Locale, HomeDictionary> = {
       title: "Projetos pensados para usuários, funis e times.",
       ariaPrefix: "Ver case",
       picker: {
-        question: "O que você procura hoje?",
-        helper: "Escolha até 3 e os cases se organizam para você.",
-        counter: "{n} de 3",
-        skip: "Pular, mostrar destaques",
-        showingFor: "Mostrando para:",
-        edit: "editar",
+        question: "O que você gostaria de explorar?",
+        helper: "Escolha um caminho e os 3 primeiros cases se reorganizam. Todos continuam disponíveis.",
+        showingFor: "Mostrando primeiro:",
+        edit: "trocar",
+        reset: "ver ordem padrão",
         because: "Porque você escolheu",
         prev: "Cases anteriores",
         next: "Próximos cases",
-        interests: {"product": "Product Design", "ux": "UX / CRO", "ai": "IA aplicada", "ds": "Design System", "growth": "Growth / Aquisição", "motion": "Motion e imersivo", "content": "Content Design"},
+        options: {
+          "ux": { label: "UX & Product", desc: "Pesquisa, arquitetura, jornadas, prototipagem e decisões de produto." },
+          "ui": { label: "UI & Creative", desc: "Interfaces, sistemas visuais, motion, IA e experiências digitais." },
+          "growth": { label: "Growth & Business", desc: "Aquisição, CRO, conversão, métricas e experimentação." },
+        },
       },
+      labels: { role: "Papel", challenge: "Desafio", result: "Resultado", roleValue: "Product Designer" },
       items: [
         {
-          title: "Arquitetura de conversão para SaaS",
-          tag: "CRO / Produto",
+          project: "Clint Acquire",
+          company: "Clint",
+          specialty: "CRO · PRODUCT · UX",
           body: "Reorganizar narrativa, hierarquia de valor e pontos de decisão para aumentar clareza em jornadas de aquisição.",
           stats: ["da demanda", "conversão", "conversas"],
         },
         {
-          title: "Experiências com inteligência artificial",
-          tag: "AI / UX",
+          project: "Clint Intelligence",
+          company: "Clint",
+          specialty: "AI · UX · PRODUCT",
           body: "Desenhar fluxos onde modelos, automações e feedback humano trabalham sem transformar complexidade técnica em carga cognitiva.",
           stats: ["qualificação", "pós 5º contato", "papéis de IA"],
         },
         {
-          title: "Sistemas para times de crescimento",
-          tag: "Growth / Design System",
+          project: "Clint Scale",
+          company: "Clint",
+          specialty: "DESIGN SYSTEM · GROWTH · AI",
           body: "Criar padrões visuais e operacionais que aceleram experimentos sem comprometer consistência ou qualidade percebida.",
           stats: ["mais rápido", "menos tokens", "componentes"],
         },
         {
-          title: "Conteúdo como canal de aquisição",
-          tag: "Content / UX / Growth",
+          project: "WhatsApp Next",
+          company: "Clint",
+          specialty: "GROWTH · CONTENT · LEAD GENERATION",
           body: "Transformar mudanças técnicas do WhatsApp em identidade, blog, landing page e captação conectados na mesma jornada.",
           stats: ["custo por lead", "inscrições em 4 dias", "conversão da LP"],
         },
         {
-          title: "Experiências digitais imersivas",
-          tag: "UI / AI / Creative Dev",
+          project: "Servientrega",
+          company: "Projeto conceitual",
+          specialty: "UI · AI · MOTION · CREATIVE TECHNOLOGY",
           body: "Transformar a jornada de uma encomenda em narrativa interativa, com scroll, WebGL e direção de arte apoiada por IA.",
           stats: ["etapas", "cena WebGL", "idiomas"],
         },
       ],
     },
-    process: {
-      eyebrow: "Método",
-      title: "Clareza antes de superfície.",
-      stepLabel: "Passo",
+    aiProcess: {
+      eyebrow: "IA no meu processo",
+      title: "A IA amplia, a decisão é minha.",
+      message: "A IA amplia minha capacidade de explorar possibilidades, criar alternativas e acelerar a prototipagem. Eu dou o direcional, envio as referências e faço o refinamento. A IA não substitui o processo de design: curadoria, direção e validação continuam sendo minhas.",
+      legendAi: "Eu direciono, IA acelera",
+      legendMe: "Eu decido",
       steps: [
-        {
-          title: "Diagnóstico de negócio e comportamento",
-          body: "O diagnóstico não começa com telas; começa com dados e funis. Análise das métricas de aquisição e retenção para identificar os gargalos reais de conversão, cruzando dados quantitativos e qualitativos do comportamento do usuário.",
-        },
-        {
-          title: "Arquitetura de experiência e narrativa",
-          body: "A jornada do usuário é estruturada para reduzir o custo de aquisição (CAC) e maximizar o LTV. Frameworks de CRO e IA mapeiam os fluxos de decisão, garantindo que a proposta de valor elimine qualquer atrito cognitivo.",
-        },
-        {
-          title: "Prototipagem, teste e refinamento",
-          body: "Hipóteses se transformam em protótipos de alta fidelidade. Cada interação é validada iterativamente com testes A/B e feedback real, garantindo que o design seja uma alavanca comprovada de conversão antes do desenvolvimento.",
-        },
-        {
-          title: "Sistema visual pronto para escala",
-          body: "Design Systems robustos e documentados, pensados para escala SaaS. O foco é garantir consistência visual global e um handoff impecável para a equipe de engenharia.",
-        },
+        { title: "Research", body: "Eu defino as perguntas; a IA acelera a síntese de entrevistas e a leitura de dados." },
+        { title: "Exploration", body: "Eu envio as referências; a IA abre mais caminhos em menos tempo." },
+        { title: "Ideation", body: "A partir do meu direcional, variações de conceito, copy e estrutura." },
+        { title: "Generation", body: "Imagens e rascunhos gerados com as minhas referências, depois refinados por mim." },
+        { title: "Curation", body: "Escolho o que faz sentido para o usuário e o negócio." },
+        { title: "Art Direction", body: "Defino linguagem visual, tom e consistência." },
+        { title: "Prototype", body: "Eu desenho o fluxo; a IA ajuda a deixar o protótipo navegável mais rápido." },
+        { title: "Build", body: "Do protótipo para código real, com revisão e refinamento meus." },
+        { title: "Test", body: "Testo com pessoas e dados reais." },
+        { title: "Product", body: "O que vai para o ar tem critério, não só velocidade." },
+      ],
+      proofTitle: "Onde isso aparece nos cases",
+      proofs: [
+        { case: "Servientrega", body: "Direção de arte apoiada por IA em uma experiência com scroll e WebGL." },
+        { case: "Clint Intelligence", body: "Desenho do comportamento de agentes de IA dentro do CRM." },
+        { case: "Clint Scale", body: "Componentes de IA dentro do design system." },
+      ],
+    },
+    process: {
+      eyebrow: "Como eu trabalho",
+      title: "Do contexto ao impacto medido.",
+      stepLabel: "Passo",
+      intro: "Um processo simples, que se adapta ao tamanho do problema. O que não muda: entender antes de desenhar e medir depois de entregar.",
+      steps: [
+        { title: "Understand", body: "Usuário, negócio e contexto. Antes de abrir o Figma, olho dados de funil, gravações de sessão e converso com quem usa e com quem vende. O objetivo é entender onde a experiência trava." },
+        { title: "Define", body: "Problema, oportunidade e hipótese. Transformo o que aprendi em uma frase testável: o que vamos mudar, o que esperamos que aconteça e como vamos medir." },
+        { title: "Explore", body: "Arquitetura, fluxos e protótipos. Desenho a jornada inteira antes das telas e uso IA para explorar mais alternativas em menos tempo.", example: "Servientrega: a jornada da encomenda organizada em 6 etapas." },
+        { title: "Validate", body: "Testes, dados e feedback. Protótipos vão para teste com usuários e experimentos A/B. A decisão vem do comportamento, não da opinião mais alta na sala.", example: "Acquire: testes A/B em 58 landing pages." },
+        { title: "Build", body: "UI, design system e desenvolvimento. Tokens, componentes e documentação para o time construir rápido e consistente. Quando faz sentido, eu mesmo levo para código.", example: "Scale: tokens e componentes prontos para o time de Growth." },
+        { title: "Measure", body: "Métricas, comportamento e impacto. Depois de entregar, acompanho os números e o comportamento real. O que aprendo vira o ponto de partida do próximo ciclo.", example: "WhatsApp Next: 25% de conversão na landing page." },
       ],
     },
     expertiseStack: {
@@ -444,8 +481,8 @@ export const home: Record<Locale, HomeDictionary> = {
       eyebrow: "Blog",
       title: "Textos sobre Product Design, IA e Growth.",
       descriptionPrefix: "",
-      descriptionSuffix: "artigos publicados no Medium. Arraste ou use as setas para navegar.",
-      viewAllLabel: "Ver todos no Medium",
+      descriptionSuffix: "artigos sobre produto, UX, dados e IA. Arraste ou use as setas para navegar.",
+      viewAllLabel: "Ver todos no blog",
       readArticleLabel: "Ler artigo",
       prevAria: "Artigos anteriores",
       nextAria: "Próximos artigos",
@@ -466,6 +503,7 @@ export const home: Record<Locale, HomeDictionary> = {
       tagline: "Produtos digitais construídos para gerar crescimento.",
       linkedinAria: "LinkedIn de Jhon Camilo Rios",
       behanceAria: "Behance de Jhon Camilo Rios",
+      mediumAria: "Medium de Jhon Camilo Rios",
     },
     floatingActions: {
       scheduleLabel: "Agendar reunião",
@@ -479,7 +517,7 @@ export const home: Record<Locale, HomeDictionary> = {
       backToPortfolioAria: "Go to Jhon Camilo Rios's portfolio",
     },
     header: {
-      navLinks: { impact: "Impact", cases: "Cases", contact: "Contact" },
+      navLinks: { impact: "Impact", cases: "Cases", blog: "Blog", contact: "Contact" },
       logoAria: "Back to Jhon Camilo Rios's portfolio home",
       navAriaDesktop: "Main navigation",
       navAriaMobile: "Mobile navigation",
@@ -487,10 +525,12 @@ export const home: Record<Locale, HomeDictionary> = {
       menuCloseAria: "Close menu",
     },
     hero: {
-      eyebrow: "Senior Product Designer",
-      title: "Digital products built to drive growth.",
-      subtitle: "10 years connecting product, data, and human behavior.",
-      ctaCases: "View Cases",
+      eyebrow: "Product Designer · UX, Growth & AI",
+      title: "I design products people understand and businesses can measure.",
+      subtitle: "10 years bringing research, interface, data and AI together to turn complex problems into simple experiences.",
+      ctaCases: "View projects",
+      ctaContact: "Get in touch",
+      ctaResume: "Resume",
       ctaJourneyShort: "Journey",
       ctaJourneyFull: "See My Journey",
     },
@@ -505,19 +545,14 @@ export const home: Record<Locale, HomeDictionary> = {
           desc: "Result of a joint Growth Marketing team strategy. My part: structuring, A/B testing, and continuous scaling across 58 high-performance landing pages, designed and iteratively validated to optimize paid and organic acquisition channels.",
         },
         {
-          metric: "+20%",
-          title: "Sales increase",
-          desc: "Rigorous application of CRO frameworks, mapping of behavioral bottlenecks, and end-to-end optimization of critical checkout and conversion flows.",
-        },
-        {
-          metric: "15+",
-          title: "AI automations",
-          desc: "Intelligent systems and custom agents built into the workflow to accelerate research, speed up lead qualification, and automate real-time engagement.",
+          metric: "1,680",
+          title: "Live sign-ups in 4 days",
+          desc: "WhatsApp Next: a content campaign, landing page and ads brought 1,680 people to sign up for the live session in 4 days. The landing page converted 25% of visits into sign-ups.",
         },
         {
           metric: "Q1 Hit",
           title: "Target hit on Jan 20",
-          desc: "Agile validation of growth hypotheses and conversion-focused product engineering that got ahead of results and hit the entire quarter's targets in the first 20 days of the year.",
+          desc: "We tested growth hypotheses early and adjusted the conversion pages fast. As a result, the quarterly target was hit on January 20, within the first 20 days of the year.",
         },
       ],
     },
@@ -572,71 +607,96 @@ export const home: Record<Locale, HomeDictionary> = {
       title: "Projects built for users, funnels, and teams.",
       ariaPrefix: "View case",
       picker: {
-        question: "What are you looking for today?",
-        helper: "Pick up to 3 and the cases rearrange for you.",
-        counter: "{n} of 3",
-        skip: "Skip, show highlights",
-        showingFor: "Showing for:",
-        edit: "edit",
+        question: "What would you like to explore?",
+        helper: "Pick a path and the first 3 cases reorder. All of them stay available.",
+        showingFor: "Showing first:",
+        edit: "change",
+        reset: "default order",
         because: "Because you picked",
         prev: "Previous cases",
         next: "Next cases",
-        interests: {"product": "Product Design", "ux": "UX / CRO", "ai": "Applied AI", "ds": "Design System", "growth": "Growth / Acquisition", "motion": "Motion & immersive", "content": "Content Design"},
+        options: {
+          "ux": { label: "UX & Product", desc: "Research, architecture, journeys, prototyping and product decisions." },
+          "ui": { label: "UI & Creative", desc: "Interfaces, visual systems, motion, AI and digital experiences." },
+          "growth": { label: "Growth & Business", desc: "Acquisition, CRO, conversion, metrics and experimentation." },
+        },
       },
+      labels: { role: "Role", challenge: "Challenge", result: "Result", roleValue: "Product Designer" },
       items: [
         {
-          title: "Conversion architecture for SaaS",
-          tag: "CRO / Product",
+          project: "Clint Acquire",
+          company: "Clint",
+          specialty: "CRO · PRODUCT · UX",
           body: "Reorganizing narrative, value hierarchy, and decision points to bring more clarity to acquisition journeys.",
           stats: ["of demand", "conversion", "conversations"],
         },
         {
-          title: "AI-powered experiences",
-          tag: "AI / UX",
+          project: "Clint Intelligence",
+          company: "Clint",
+          specialty: "AI · UX · PRODUCT",
           body: "Designing flows where models, automation, and human feedback work together without turning technical complexity into cognitive load.",
           stats: ["qualification", "after 5th contact", "AI roles"],
         },
         {
-          title: "Systems for growth teams",
-          tag: "Growth / Design System",
+          project: "Clint Scale",
+          company: "Clint",
+          specialty: "DESIGN SYSTEM · GROWTH · AI",
           body: "Creating visual and operational standards that speed up experiments without compromising consistency or perceived quality.",
           stats: ["faster", "fewer tokens", "components"],
         },
         {
-          title: "Content as an acquisition channel",
-          tag: "Content / UX / Growth",
+          project: "WhatsApp Next",
+          company: "Clint",
+          specialty: "GROWTH · CONTENT · LEAD GENERATION",
           body: "Turning WhatsApp's technical changes into identity, blog, landing page, and lead capture connected in one journey.",
           stats: ["cost per lead", "sign-ups in 4 days", "LP conversion"],
         },
         {
-          title: "Immersive digital experiences",
-          tag: "UI / AI / Creative Dev",
+          project: "Servientrega",
+          company: "Concept project",
+          specialty: "UI · AI · MOTION · CREATIVE TECHNOLOGY",
           body: "Turning a parcel's journey into an interactive story with scroll, WebGL, and AI-assisted art direction.",
           stats: ["stages", "WebGL scene", "languages"],
         },
       ],
     },
-    process: {
-      eyebrow: "Method",
-      title: "Clarity before surface.",
-      stepLabel: "Step",
+    aiProcess: {
+      eyebrow: "AI in my design process",
+      title: "AI expands, I decide.",
+      message: "AI expands my ability to explore possibilities, create alternatives and speed up prototyping. I set the direction, send the references and do the refinement. AI does not replace the design process: curation, direction and validation are still mine.",
+      legendAi: "I direct, AI speeds up",
+      legendMe: "I decide",
       steps: [
-        {
-          title: "Business and behavior diagnosis",
-          body: "The diagnosis doesn't start with screens; it starts with data and funnels. Analyzing acquisition and retention metrics to identify the real conversion bottlenecks, cross-referencing quantitative and qualitative user behavior data.",
-        },
-        {
-          title: "Experience and narrative architecture",
-          body: "The user journey is structured to reduce customer acquisition cost (CAC) and maximize LTV. CRO and AI frameworks map decision flows, ensuring the value proposition eliminates any cognitive friction.",
-        },
-        {
-          title: "Prototyping, testing, and refinement",
-          body: "Hypotheses become high-fidelity prototypes. Every interaction is iteratively validated with A/B tests and real feedback, ensuring design is a proven conversion lever before development.",
-        },
-        {
-          title: "Visual system ready to scale",
-          body: "Robust, well-documented Design Systems built for SaaS scale. The focus is guaranteeing global visual consistency and a flawless handoff to the engineering team.",
-        },
+        { title: "Research", body: "I define the questions; AI speeds up interview synthesis and data reading." },
+        { title: "Exploration", body: "I send the references; AI opens more paths in less time." },
+        { title: "Ideation", body: "From my direction, variations of concept, copy and structure." },
+        { title: "Generation", body: "Images and drafts generated from my references, then refined by me." },
+        { title: "Curation", body: "I pick what makes sense for users and the business." },
+        { title: "Art Direction", body: "I set visual language, tone and consistency." },
+        { title: "Prototype", body: "I design the flow; AI helps make the prototype clickable faster." },
+        { title: "Build", body: "From prototype to real code, with my review and refinement." },
+        { title: "Test", body: "I test with real people and real data." },
+        { title: "Product", body: "What ships has judgment behind it, not just speed." },
+      ],
+      proofTitle: "Where it shows up in the cases",
+      proofs: [
+        { case: "Servientrega", body: "AI-assisted art direction in a scroll and WebGL experience." },
+        { case: "Clint Intelligence", body: "Designing how AI agents behave inside the CRM." },
+        { case: "Clint Scale", body: "AI components inside the design system." },
+      ],
+    },
+    process: {
+      eyebrow: "How I work",
+      title: "From context to measured impact.",
+      stepLabel: "Step",
+      intro: "A simple process that scales with the size of the problem. What never changes: understand before designing, measure after shipping.",
+      steps: [
+        { title: "Understand", body: "Users, business and context. Before opening Figma, I look at funnel data and session recordings, and I talk to the people who use and sell the product. The goal is to find where the experience gets stuck." },
+        { title: "Define", body: "Problem, opportunity and hypothesis. I turn what I learned into a testable statement: what we will change, what we expect to happen and how we will measure it." },
+        { title: "Explore", body: "Architecture, flows and prototypes. I design the whole journey before the screens and use AI to explore more alternatives in less time.", example: "Servientrega: the parcel journey organized in 6 stages." },
+        { title: "Validate", body: "Tests, data and feedback. Prototypes go through user tests and A/B experiments. Decisions come from behavior, not from the loudest opinion in the room.", example: "Acquire: A/B tests across 58 landing pages." },
+        { title: "Build", body: "UI, design system and development. Tokens, components and documentation so the team can build fast and consistently. When it makes sense, I take it to code myself.", example: "Scale: tokens and components ready for the Growth team." },
+        { title: "Measure", body: "Metrics, behavior and impact. After shipping, I follow the numbers and real behavior. What I learn becomes the starting point of the next cycle.", example: "WhatsApp Next: 25% landing page conversion." },
       ],
     },
     expertiseStack: {
@@ -775,8 +835,8 @@ export const home: Record<Locale, HomeDictionary> = {
       eyebrow: "Blog",
       title: "Writing on Product Design, AI, and Growth.",
       descriptionPrefix: "",
-      descriptionSuffix: "articles published on Medium. Drag or use the arrows to browse.",
-      viewAllLabel: "See all on Medium",
+      descriptionSuffix: "articles on product, UX, data and AI (in Portuguese). Drag or use the arrows to browse.",
+      viewAllLabel: "See all on the blog",
       readArticleLabel: "Read article",
       prevAria: "Previous articles",
       nextAria: "Next articles",
@@ -797,6 +857,7 @@ export const home: Record<Locale, HomeDictionary> = {
       tagline: "Digital products built to drive growth.",
       linkedinAria: "Jhon Camilo Rios's LinkedIn",
       behanceAria: "Jhon Camilo Rios's Behance",
+      mediumAria: "Jhon Camilo Rios's Medium",
     },
     floatingActions: {
       scheduleLabel: "Schedule a call",
@@ -810,7 +871,7 @@ export const home: Record<Locale, HomeDictionary> = {
       backToPortfolioAria: "Ir al portafolio de Jhon Camilo Rios",
     },
     header: {
-      navLinks: { impact: "Impacto", cases: "Cases", contact: "Contacto" },
+      navLinks: { impact: "Impacto", cases: "Cases", blog: "Blog", contact: "Contacto" },
       logoAria: "Volver al inicio del portafolio de Jhon Camilo Rios",
       navAriaDesktop: "Navegación principal",
       navAriaMobile: "Navegación móvil",
@@ -818,10 +879,12 @@ export const home: Record<Locale, HomeDictionary> = {
       menuCloseAria: "Cerrar menú",
     },
     hero: {
-      eyebrow: "Senior Product Designer",
-      title: "Productos digitales construidos para generar crecimiento.",
-      subtitle: "10 años conectando producto, datos y comportamiento humano.",
-      ctaCases: "Ver Cases",
+      eyebrow: "Product Designer · UX, Growth & AI",
+      title: "Diseño productos que las personas entienden y que el negocio puede medir.",
+      subtitle: "10 años uniendo investigación, interfaz, datos e IA para convertir problemas complejos en experiencias simples.",
+      ctaCases: "Ver proyectos",
+      ctaContact: "Hablemos",
+      ctaResume: "Currículum",
       ctaJourneyShort: "Trayectoria",
       ctaJourneyFull: "Conocer Mi Trayectoria",
     },
@@ -836,19 +899,14 @@ export const home: Record<Locale, HomeDictionary> = {
           desc: "Resultado de una estrategia conjunta del equipo de Growth Marketing. Mi parte: estructuración, pruebas A/B y escalado continuo a través de 58 landing pages de alto rendimiento, diseñadas y validadas iterativamente para optimizar canales de adquisición pagos y orgánicos.",
         },
         {
-          metric: "+20%",
-          title: "Aumento en ventas",
-          desc: "Aplicación estricta de frameworks de CRO, mapeo de cuellos de botella comportamentales y optimización de punta a punta de flujos críticos de checkout y conversión digital.",
-        },
-        {
-          metric: "15+",
-          title: "Automatizaciones de IA",
-          desc: "Sistemas inteligentes y agentes personalizados integrados al flujo de trabajo para acelerar la investigación, calificar leads rápidamente y automatizar el engagement en tiempo real.",
+          metric: "1.680",
+          title: "Inscripciones al live en 4 días",
+          desc: "WhatsApp Next: una campaña de contenido, landing page y ads llevaron a 1.680 personas a inscribirse al live en 4 días. La landing page convirtió el 25% de las visitas en inscripción.",
         },
         {
           metric: "Q1 Hit",
           title: "Meta cumplida el 20 de ene.",
-          desc: "Validación ágil de hipótesis de growth e ingeniería de producto enfocada en conversión que se adelantó a los resultados y cumplió las metas de todo el trimestre en los primeros 20 días del año.",
+          desc: "Probamos hipótesis de growth temprano y ajustamos rápido las páginas de conversión. Así, la meta del trimestre se cumplió el 20 de enero, en los primeros 20 días del año.",
         },
       ],
     },
@@ -903,71 +961,96 @@ export const home: Record<Locale, HomeDictionary> = {
       title: "Proyectos pensados para usuarios, funnels y equipos.",
       ariaPrefix: "Ver case",
       picker: {
-        question: "¿Qué buscas hoy?",
-        helper: "Elige hasta 3 y los cases se ordenan para ti.",
-        counter: "{n} de 3",
-        skip: "Omitir, mostrar destacados",
-        showingFor: "Mostrando para:",
-        edit: "editar",
+        question: "¿Qué te gustaría explorar?",
+        helper: "Elige un camino y los 3 primeros cases se reorganizan. Todos siguen disponibles.",
+        showingFor: "Mostrando primero:",
+        edit: "cambiar",
+        reset: "orden por defecto",
         because: "Porque elegiste",
         prev: "Cases anteriores",
         next: "Siguientes cases",
-        interests: {"product": "Product Design", "ux": "UX / CRO", "ai": "IA aplicada", "ds": "Design System", "growth": "Growth / Adquisición", "motion": "Motion e inmersivo", "content": "Content Design"},
+        options: {
+          "ux": { label: "UX & Product", desc: "Investigación, arquitectura, journeys, prototipado y decisiones de producto." },
+          "ui": { label: "UI & Creative", desc: "Interfaces, sistemas visuales, motion, IA y experiencias digitales." },
+          "growth": { label: "Growth & Business", desc: "Adquisición, CRO, conversión, métricas y experimentación." },
+        },
       },
+      labels: { role: "Rol", challenge: "Desafío", result: "Resultado", roleValue: "Product Designer" },
       items: [
         {
-          title: "Arquitectura de conversión para SaaS",
-          tag: "CRO / Producto",
+          project: "Clint Acquire",
+          company: "Clint",
+          specialty: "CRO · PRODUCT · UX",
           body: "Reorganizar narrativa, jerarquía de valor y puntos de decisión para aumentar la claridad en las experiencias de adquisición.",
           stats: ["de la demanda", "conversión", "conversaciones"],
         },
         {
-          title: "Experiencias con inteligencia artificial",
-          tag: "AI / UX",
+          project: "Clint Intelligence",
+          company: "Clint",
+          specialty: "AI · UX · PRODUCT",
           body: "Diseñar flujos donde modelos, automatizaciones y feedback humano trabajan juntos sin convertir la complejidad técnica en carga cognitiva.",
           stats: ["calificación", "tras 5° contacto", "roles de IA"],
         },
         {
-          title: "Sistemas para equipos de crecimiento",
-          tag: "Growth / Design System",
+          project: "Clint Scale",
+          company: "Clint",
+          specialty: "DESIGN SYSTEM · GROWTH · AI",
           body: "Crear estándares visuales y operativos que aceleran experimentos sin comprometer la consistencia ni la calidad percibida.",
           stats: ["más rápido", "menos tokens", "componentes"],
         },
         {
-          title: "Contenido como canal de adquisición",
-          tag: "Content / UX / Growth",
+          project: "WhatsApp Next",
+          company: "Clint",
+          specialty: "GROWTH · CONTENT · LEAD GENERATION",
           body: "Convertir los cambios técnicos de WhatsApp en identidad, blog, landing page y captación conectados en un mismo recorrido.",
           stats: ["costo por lead", "inscripciones en 4 días", "conversión de la LP"],
         },
         {
-          title: "Experiencias digitales inmersivas",
-          tag: "UI / AI / Creative Dev",
+          project: "Servientrega",
+          company: "Proyecto conceptual",
+          specialty: "UI · AI · MOTION · CREATIVE TECHNOLOGY",
           body: "Convertir el recorrido de un envío en una narrativa interactiva, con scroll, WebGL y dirección de arte apoyada por IA.",
           stats: ["etapas", "escena WebGL", "idiomas"],
         },
       ],
     },
-    process: {
-      eyebrow: "Método",
-      title: "Claridad antes que superficie.",
-      stepLabel: "Paso",
+    aiProcess: {
+      eyebrow: "IA en mi proceso",
+      title: "La IA amplía, la decisión es mía.",
+      message: "La IA amplía mi capacidad de explorar posibilidades, crear alternativas y acelerar el prototipado. Yo doy la dirección, envío las referencias y hago el refinamiento. La IA no reemplaza el proceso de diseño: curaduría, dirección y validación siguen siendo mías.",
+      legendAi: "Yo dirijo, la IA acelera",
+      legendMe: "Yo decido",
       steps: [
-        {
-          title: "Diagnóstico de negocio y comportamiento",
-          body: "El diagnóstico no comienza con pantallas; comienza con datos y funnels. Análisis de las métricas de adquisición y retención para identificar los cuellos de botella reales de conversión, cruzando datos cuantitativos y cualitativos del comportamiento del usuario.",
-        },
-        {
-          title: "Arquitectura de experiencia y narrativa",
-          body: "El recorrido del usuario se estructura para reducir el costo de adquisición (CAC) y maximizar el LTV. Frameworks de CRO e IA mapean los flujos de decisión, garantizando que la propuesta de valor elimine cualquier fricción cognitiva.",
-        },
-        {
-          title: "Prototipado, prueba y refinamiento",
-          body: "Las hipótesis se convierten en prototipos de alta fidelidad. Cada interacción se valida iterativamente con pruebas A/B y feedback real, garantizando que el diseño sea una palanca comprobada de conversión antes del desarrollo.",
-        },
-        {
-          title: "Sistema visual listo para escalar",
-          body: "Design Systems robustos y documentados, pensados para escala SaaS. El foco está en garantizar consistencia visual global y un handoff impecable para el equipo de ingeniería.",
-        },
+        { title: "Research", body: "Yo defino las preguntas; la IA acelera la síntesis de entrevistas y la lectura de datos." },
+        { title: "Exploration", body: "Yo envío las referencias; la IA abre más caminos en menos tiempo." },
+        { title: "Ideation", body: "A partir de mi dirección, variaciones de concepto, copy y estructura." },
+        { title: "Generation", body: "Imágenes y bocetos generados con mis referencias, luego refinados por mí." },
+        { title: "Curation", body: "Elijo lo que tiene sentido para el usuario y el negocio." },
+        { title: "Art Direction", body: "Defino lenguaje visual, tono y consistencia." },
+        { title: "Prototype", body: "Yo diseño el flujo; la IA ayuda a tener el prototipo navegable más rápido." },
+        { title: "Build", body: "Del prototipo a código real, con mi revisión y refinamiento." },
+        { title: "Test", body: "Pruebo con personas y datos reales." },
+        { title: "Product", body: "Lo que sale al aire tiene criterio, no solo velocidad." },
+      ],
+      proofTitle: "Dónde aparece en los cases",
+      proofs: [
+        { case: "Servientrega", body: "Dirección de arte apoyada por IA en una experiencia con scroll y WebGL." },
+        { case: "Clint Intelligence", body: "Diseño del comportamiento de agentes de IA dentro del CRM." },
+        { case: "Clint Scale", body: "Componentes de IA dentro del design system." },
+      ],
+    },
+    process: {
+      eyebrow: "Cómo trabajo",
+      title: "Del contexto al impacto medido.",
+      stepLabel: "Paso",
+      intro: "Un proceso simple, que se adapta al tamaño del problema. Lo que no cambia: entender antes de diseñar y medir después de entregar.",
+      steps: [
+        { title: "Understand", body: "Usuario, negocio y contexto. Antes de abrir Figma, reviso datos del embudo, grabaciones de sesión y hablo con quien usa y con quien vende. El objetivo es entender dónde se traba la experiencia." },
+        { title: "Define", body: "Problema, oportunidad e hipótesis. Convierto lo aprendido en una frase que se puede probar: qué vamos a cambiar, qué esperamos que pase y cómo lo vamos a medir." },
+        { title: "Explore", body: "Arquitectura, flujos y prototipos. Diseño el journey completo antes de las pantallas y uso IA para explorar más alternativas en menos tiempo.", example: "Servientrega: el viaje del envío organizado en 6 etapas." },
+        { title: "Validate", body: "Pruebas, datos y feedback. Los prototipos pasan por pruebas con usuarios y experimentos A/B. La decisión viene del comportamiento, no de la opinión más fuerte en la sala.", example: "Acquire: pruebas A/B en 58 landing pages." },
+        { title: "Build", body: "UI, design system y desarrollo. Tokens, componentes y documentación para que el equipo construya rápido y con consistencia. Cuando tiene sentido, yo mismo lo llevo a código.", example: "Scale: tokens y componentes listos para el equipo de Growth." },
+        { title: "Measure", body: "Métricas, comportamiento e impacto. Después de entregar, sigo los números y el comportamiento real. Lo que aprendo se vuelve el punto de partida del próximo ciclo.", example: "WhatsApp Next: 25% de conversión en la landing page." },
       ],
     },
     expertiseStack: {
@@ -1106,8 +1189,8 @@ export const home: Record<Locale, HomeDictionary> = {
       eyebrow: "Blog",
       title: "Textos sobre Product Design, IA y Growth.",
       descriptionPrefix: "",
-      descriptionSuffix: "artículos publicados en Medium. Arrastra o usa las flechas para navegar.",
-      viewAllLabel: "Ver todos en Medium",
+      descriptionSuffix: "artículos sobre producto, UX, datos e IA (en portugués). Arrastra o usa las flechas para navegar.",
+      viewAllLabel: "Ver todos en el blog",
       readArticleLabel: "Leer artículo",
       prevAria: "Artículos anteriores",
       nextAria: "Artículos siguientes",
@@ -1128,6 +1211,7 @@ export const home: Record<Locale, HomeDictionary> = {
       tagline: "Productos digitales construidos para generar crecimiento.",
       linkedinAria: "LinkedIn de Jhon Camilo Rios",
       behanceAria: "Behance de Jhon Camilo Rios",
+      mediumAria: "Medium de Jhon Camilo Rios",
     },
     floatingActions: {
       scheduleLabel: "Agendar reunión",
