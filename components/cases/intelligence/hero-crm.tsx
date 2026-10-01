@@ -71,7 +71,7 @@ export function HeroCrm() {
     <div className="relative mt-12 md:mt-0">
       {/* Elementos flutuantes: o negócio chega pelo WhatsApp, entra no funil e o agente cuida dele */}
       <motion.img
-        src="/cases/clint/intelligence/float-new-deal.png"
+        src="/cases/clint/intelligence/float-new-deal.webp"
         alt=""
         aria-hidden="true"
         className="absolute -left-3 -top-14 z-20 w-36 drop-shadow-[0_18px_30px_rgba(10,10,10,0.35)] md:-left-14 md:-top-20 md:w-52"
@@ -79,7 +79,7 @@ export function HeroCrm() {
         transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
       />
       <motion.img
-        src="/cases/clint/intelligence/float-whatsapp.png"
+        src="/cases/clint/intelligence/float-whatsapp.webp"
         alt=""
         aria-hidden="true"
         className="absolute -bottom-6 -left-4 z-20 w-14 drop-shadow-[0_18px_30px_rgba(22,163,74,0.35)] md:-bottom-10 md:-left-10 md:w-20"
@@ -87,7 +87,7 @@ export function HeroCrm() {
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
       />
       <motion.img
-        src="/cases/clint/intelligence/float-agent.png"
+        src="/cases/clint/intelligence/float-agent.webp"
         alt=""
         aria-hidden="true"
         className="absolute right-16 -top-10 z-20 w-14 md:top-[38%] drop-shadow-[0_18px_30px_rgba(98,47,253,0.35)] md:-right-4 md:w-20"
@@ -138,7 +138,7 @@ export function HeroCrm() {
                         >
                           <div className="flex items-center gap-1.5">
                             {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img src={`${AV}${l.ph}.png`} alt="" className="h-5 w-5 shrink-0 rounded-full" />
+                            <img src={`${AV}${l.ph}.webp`} alt="" className="h-5 w-5 shrink-0 rounded-full" />
                             <div className="min-w-0">
                               <p className="truncate font-sans text-[11px] font-semibold leading-tight text-white">{l.name}</p>
                               <p className="truncate font-sans text-[9px] leading-tight text-white/60">{l.co}</p>

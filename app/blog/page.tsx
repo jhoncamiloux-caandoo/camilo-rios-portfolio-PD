@@ -25,9 +25,19 @@ export default function BlogPage() {
       { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE}/blog` },
     ],
   };
+  const blog = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "@id": `${SITE}/blog#blog`,
+    name: "Blog de Jhon Camilo Rios",
+    url: `${SITE}/blog`,
+    inLanguage: "pt-BR",
+    author: { "@id": `${SITE}/#person` },
+    blogPost: sorted.map((p) => ({ "@type": "BlogPosting", headline: p.title, url: `${SITE}/blog/${p.slug}`, datePublished: p.date, dateModified: p.updated ?? p.date })),
+  };
   return (
     <div className="min-h-screen bg-[#F8F8F8] text-[#0A0A0A]">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumb, blog]) }} />
       <CaseHeader label="Blog" />
       <main className="container pb-24 pt-28 md:pt-36">
         <nav aria-label="Breadcrumb" className="mb-8 text-sm text-[#0A0A0A]/60">

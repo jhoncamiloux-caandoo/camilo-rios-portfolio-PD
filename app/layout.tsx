@@ -20,12 +20,12 @@ const dmSans = localFont({
 const degular = localFont({
   src: [
     {
-      path: "../public/fonts/Degular-Regular.otf",
+      path: "../public/fonts/Degular-Regular.woff2",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../public/fonts/Degular-Semibold.otf",
+      path: "../public/fonts/Degular-Semibold.woff2",
       weight: "600",
       style: "normal",
     },
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     template: "%s | Jhon Camilo Rios",
   },
   description:
-    "Portfolio premium de Jhon Camilo Rios, Senior Product Designer especializado em Growth, Inteligência Artificial, CRO e SaaS.",
+    "Jhon Camilo Rios, Senior Product Designer em SaaS B2B. Cases de Growth, CRO, Design Systems e IA aplicada a produto, com resultados medidos, e um blog sobre UX, dados e IA.",
   keywords: [
     "Jhon Camilo Rios",
     "Senior Product Designer",
@@ -70,6 +70,13 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Jhon Camilo Rios | Senior Product Designer",
+    description: "Growth, IA e SaaS com precisão de produto.",
+  },
+  authors: [{ name: "Jhon Camilo Rios", url: SITE_URL }],
+  creator: "Jhon Camilo Rios",
 };
 
 /* Schema Person — ajuda motores de IA (ChatGPT, Perplexity, Claude) a
@@ -77,6 +84,7 @@ export const metadata: Metadata = {
 const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": `${SITE_URL}/#person`,
   name: "Jhon Camilo Rios",
   jobTitle: "Senior Product Designer",
   url: SITE_URL,
@@ -95,6 +103,16 @@ const personJsonLd = {
   ],
 };
 
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${SITE_URL}/#website`,
+  name: "Jhon Camilo Rios",
+  url: SITE_URL,
+  inLanguage: "pt-BR",
+  author: { "@id": `${SITE_URL}/#person` },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -110,7 +128,7 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify([personJsonLd, websiteJsonLd]) }}
         />
         <Script id="no-flash-locale" strategy="beforeInteractive">
           {NO_FLASH_LOCALE_SCRIPT}

@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: p.description,
     keywords: p.tags,
     alternates: { canonical: `/blog/${p.slug}` },
-    openGraph: { title: p.title, description: p.description, type: "article", publishedTime: p.date, locale: "pt_BR", ...(p.cover ? { images: [{ url: p.cover }] } : {}) },
+    openGraph: { title: p.title, description: p.description, type: "article", publishedTime: p.date, modifiedTime: p.updated ?? p.date, authors: ["Jhon Camilo Rios"], tags: p.tags, locale: "pt_BR", ...(p.cover ? { images: [{ url: p.cover }] } : {}) },
     twitter: { card: "summary_large_image", title: p.title, description: p.description, ...(p.cover ? { images: [p.cover] } : {}) },
   };
 }
@@ -40,12 +40,17 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       headline: p.title,
       description: p.description,
       datePublished: p.date,
+      dateModified: p.updated ?? p.date,
+      articleSection: CATEGORIES[p.category],
+      wordCount: p.blocks.reduce((n, b) => n + ("text" in b ? b.text.split(/\s+/).length : "items" in b ? b.items.join(" ").split(/\s+/).length : 0), 0),
       ...(p.cover ? { image: `${SITE}${p.cover}` } : {}),
       url,
       mainEntityOfPage: url,
       inLanguage: "pt-BR",
       keywords: p.tags.join(", "),
-      author: { "@type": "Person", name: "Jhon Camilo Rios", url: SITE },
+      author: { "@type": "Person", "@id": `${SITE}/#person`, name: "Jhon Camilo Rios", url: SITE },
+      publisher: { "@type": "Person", "@id": `${SITE}/#person`, name: "Jhon Camilo Rios" },
+      isPartOf: { "@type": "Blog", "@id": `${SITE}/blog#blog` },
     },
     {
       "@context": "https://schema.org",
@@ -76,6 +81,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <p className="mt-5 text-lg leading-relaxed text-[#0A0A0A]/70">{p.description}</p>
           <p className="mt-6 text-sm text-[#0A0A0A]/60">
             Jhon Camilo Rios · <time dateTime={p.date}>{new Date(p.date).toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" })}</time> · {p.readMinutes} min de leitura
+            {p.updated && p.updated !== p.date && (
+              <> · Atualizado em <time dateTime={p.updated}>{new Date(p.updated).toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" })}</time></>
+            )}
           </p>
 
           {p.coverArt ? (

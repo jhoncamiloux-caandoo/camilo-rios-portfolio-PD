@@ -16,8 +16,8 @@ export function initPd(root, L){
     phone:'M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2',wa:'M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9 M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1',
     ok:'M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0 M9 12l2 2l4 -4',clock:'M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0 M12 7v5l3 3',x:'M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0 M10 10l4 4m0 -4l-4 4',back:'M9 14l-4 -4l4 -4 M5 10h11a4 4 0 1 1 0 8h-1',
     flt:'M4 4h16v2.2a2 2 0 0 1 -.6 1.4l-4.4 4.4v7l-6 2v-8.5l-4.5 -4.9a2 2 0 0 1 -.5 -1.3v-2.3z'};
-  function foot(tasks,days,cls){return '<div class="pd-hr"></div><div class="pd-foot"><img src="'+AV+'p8.png" alt="">'+ic(I.phone,12)+ic(I.wa,12,cls||'currentColor')+'<span class="sp"></span>'+ic(I.ok,11)+'<span class="'+(cls?'pd-slot-t':'')+'">'+tasks+'</span>'+ic(I.clock,11)+'<span>'+days+'</span></div>';}
-  function card(tag,tb,tf,extra,name,ph,tasks,days){return '<div class="pd-card"><div class="pd-card-t"><div><div class="pd-tags"><span class="pd-tag" style="background:'+tb+';color:'+tf+'">'+tag+'</span><span class="pd-x">'+extra+'</span></div><span class="pd-name">'+name+'</span></div><img class="pd-ph" src="'+AV+ph+'.png" alt=""></div>'+foot(tasks,days)+'</div>';}
+  function foot(tasks,days,cls){return '<div class="pd-hr"></div><div class="pd-foot"><img src="'+AV+'p8.webp" alt="">'+ic(I.phone,12)+ic(I.wa,12,cls||'currentColor')+'<span class="sp"></span>'+ic(I.ok,11)+'<span class="'+(cls?'pd-slot-t':'')+'">'+tasks+'</span>'+ic(I.clock,11)+'<span>'+days+'</span></div>';}
+  function card(tag,tb,tf,extra,name,ph,tasks,days){return '<div class="pd-card"><div class="pd-card-t"><div><div class="pd-tags"><span class="pd-tag" style="background:'+tb+';color:'+tf+'">'+tag+'</span><span class="pd-x">'+extra+'</span></div><span class="pd-name">'+name+'</span></div><img class="pd-ph" src="'+AV+ph+'.webp" alt=""></div>'+foot(tasks,days)+'</div>';}
   var T={ig:['#FCE7F3','#BE185D'],site:['#EAEEFF','#4B5563'],ag:['#F4F1FF','#6C19DE'],ok:['#E7F9EE','#15803D'],ret:['#FDE8DF','#C2410C'],re:['#EAEEFF','#4B5563']};
   var COLS=[
     [L.cols[0],42,[[L.tags.instagram,T.ig,'+3','Rafael Nunes','p1','1/4','1d'],[L.tags.site,T.site,'+1','Juliana Prado','p8','0/4','2d']]],
@@ -42,7 +42,7 @@ export function initPd(root, L){
   COLS.forEach(function(c,i){
     h+='<div class="pd-col"><div class="pd-col-h"><span>'+c[0]+'</span><span class="pd-cnt">'+c[1]+'</span></div>';
     if(i<2){
-      h+='<div class="pd-slot"><div class="pd-card"><div class="pd-card-t"><div><div class="pd-tags"><span class="pd-tag" style="background:#E7F9EE;color:#15803D">WhatsApp</span><span class="pd-x">+2</span></div><span class="pd-name">Ana Beatriz Lima</span></div><img class="pd-ph" src="'+AV+'p9.png" alt=""></div>';
+      h+='<div class="pd-slot"><div class="pd-card"><div class="pd-card-t"><div><div class="pd-tags"><span class="pd-tag" style="background:#E7F9EE;color:#15803D">WhatsApp</span><span class="pd-x">+2</span></div><span class="pd-name">Ana Beatriz Lima</span></div><img class="pd-ph" src="'+AV+'p9.webp" alt=""></div>';
       if(i===0)h+='<div class="pd-task"><div><i></i><span>'+L.task+'</span></div></div>';
       else h+='<div class="pd-sched vis"><div>'+ic(I.cal,13)+'<span>'+L.sched+'</span></div></div>';
       h+=foot('0/4','0d','#16A34A')+'</div></div>';
@@ -71,7 +71,7 @@ export function initPd(root, L){
   });
   h+='</div></div><div class="pd-box pd-gauge"><div class="pd-box-h">'+L.chart4+'</div><div class="g"><svg width="150" height="84" viewBox="0 0 150 84"><path d="M12 78 A63 63 0 0 1 138 78" fill="none" stroke="#F1EFFF" stroke-width="14" stroke-linecap="round"/><path d="M12 78 A63 63 0 0 1 138 78" fill="none" stroke="#6C19DE" stroke-width="14" stroke-linecap="round" stroke-dasharray="178 198"/></svg><strong>90%</strong></div><small>'+L.gaugeSub+'</small><span class="meta">'+L.gaugeMeta+'</span></div></div></div></div>';
   h+='<div class="pd-cur"><span></span><svg width="20" height="20" viewBox="0 0 24 24" style="position:relative;display:block"><path d="M4 3l16 7l-7 2.5l-2.5 7z" fill="#2F2C5D" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg></div>';
-  h+='<div class="pd-chat"><div class="pd-chat-h"><img src="'+AV+'p9.png" alt=""><div><b>Ana Beatriz Lima</b><small>'+ic(I.chat,11)+'WhatsApp</small></div></div><div class="pd-msgs">';
+  h+='<div class="pd-chat"><div class="pd-chat-h"><img src="'+AV+'p9.webp" alt=""><div><b>Ana Beatriz Lima</b><small>'+ic(I.chat,11)+'WhatsApp</small></div></div><div class="pd-msgs">';
   CONVO.forEach(function(m){h+='<div class="pd-m '+m[1]+'"><div>'+m[2]+'<small>'+m[3]+'</small></div></div>';});
   h+='<div class="pd-typing"><div><i></i><i></i><i></i></div></div></div><div class="pd-chat-f"><div>'+L.input+'</div></div></div>';
   app.innerHTML=h;

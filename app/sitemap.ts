@@ -12,12 +12,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/cases/whatsapp-next", priority: 0.8, changeFrequency: "monthly" as const },
     { path: "/cases/servientrega", priority: 0.8, changeFrequency: "monthly" as const },
     { path: "/blog", priority: 0.7, changeFrequency: "weekly" as const },
-    ...posts.map((p) => ({ path: `/blog/${p.slug}`, priority: 0.6, changeFrequency: "yearly" as const })),
+    ...posts.map((p) => ({ path: `/blog/${p.slug}`, priority: 0.6, changeFrequency: "yearly" as const, lastModified: new Date(p.updated ?? p.date) })),
   ];
 
   return routes.map((route) => ({
     url: `${BASE_URL}${route.path}`,
-    lastModified: new Date(),
+    lastModified: "lastModified" in route && route.lastModified ? route.lastModified : new Date(),
     changeFrequency: route.changeFrequency,
     priority: route.priority,
   }));

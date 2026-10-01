@@ -523,6 +523,211 @@ export function TokenBridge() {
   );
 }
 
+/* Qual métrica usar: cada pergunta de pesquisa acende o questionário que responde a ela. */
+export function MetricMap() {
+  const M = [
+    { n: "SEQ", x: 110, y: 230, d: "1 item" },
+    { n: "NASA-TLX", x: 200, y: 110, d: "6 dimensões" },
+    { n: "PURE", x: 230, y: 70, d: "especialistas" },
+    { n: "UMUX-LITE", x: 400, y: 240, d: "2 itens" },
+    { n: "NPS", x: 510, y: 250, d: "1 item" },
+    { n: "SUS", x: 440, y: 170, d: "10 itens" },
+    { n: "SUPR-Q", x: 540, y: 160, d: "8 itens" },
+    { n: "UEQ", x: 500, y: 80, d: "26 itens" },
+  ];
+  const Q = [
+    { q: "Esta tarefa ficou mais fácil?", on: ["SEQ"] },
+    { q: "A tarefa exige esforço demais?", on: ["NASA-TLX"] },
+    { q: "O produto é fácil de usar no geral?", on: ["SUS", "UMUX-LITE"] },
+    { q: "As pessoas recomendariam?", on: ["NPS"] },
+  ];
+  const { ref, k, reduce } = useSteps(Q.length, 1600, 1);
+  const cur = Q[Math.min(k, Q.length) - 1];
+  return (
+    <svg ref={ref} viewBox="0 0 640 330" className="h-auto w-full" role="img" aria-label="Mapa de métricas de UX por escopo, da tarefa ao produto inteiro, e por tamanho do questionário">
+      <line x1={60} x2={620} y1={280} y2={280} stroke={LINE} />
+      <line x1={60} x2={60} y1={40} y2={280} stroke={LINE} />
+      <T x={60} y={300} s={9}>UMA TAREFA</T>
+      <T x={620} y={300} a="end" s={9}>O PRODUTO INTEIRO</T>
+      <T x={52} y={50} a="end" s={9}>LONGO</T>
+      <T x={52} y={276} a="end" s={9}>CURTO</T>
+      <line x1={340} x2={340} y1={40} y2={280} stroke="rgba(255,255,255,0.05)" />
+      {M.map((m) => {
+        const on = !!cur && cur.on.includes(m.n);
+        return (
+          <motion.g key={m.n} initial={false} animate={{ opacity: cur ? (on ? 1 : 0.3) : 1, scale: on ? 1.12 : 1 }} transition={tr(reduce, 0.4)} style={{ transformBox: "fill-box", transformOrigin: "center" }}>
+            <rect x={m.x - 48} y={m.y - 18} width={96} height={36} rx={18} fill={on ? P : CARD} stroke={on ? G : LINE} />
+            <T x={m.x} y={m.y - 1} a="middle" c="#fff" s={10} w={700}>{m.n}</T>
+            <T x={m.x} y={m.y + 11} a="middle" c={on ? "rgba(255,255,255,0.8)" : SUB} s={8}>{m.d}</T>
+          </motion.g>
+        );
+      })}
+      <rect x={60} y={6} width={560} height={26} rx={13} fill="rgba(98,47,253,0.16)" stroke={P2} />
+      <T x={340} y={23} a="middle" c={TXT} s={11}>{cur ? `PERGUNTA: ${cur.q}` : "COMECE PELA PERGUNTA, NÃO PELA MÉTRICA"}</T>
+    </svg>
+  );
+}
+
+/* Contraste: o mesmo texto em tons diferentes, com a razão calculada contra os limites da WCAG. */
+function lum(hex: string) {
+  const c = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255).map((v) => (v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
+  return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+}
+const ratio = (a: string, b: string) => { const [x, y] = [lum(a), lum(b)].sort((m, n) => n - m); return (x + 0.05) / (y + 0.05); };
+export function ContrastCheck() {
+  const TONES = ["#D4D4D8", "#A1A1AA", "#767676", "#52525B", "#18181B"];
+  const { ref, k, reduce } = useSteps(TONES.length - 1, 1300, 2);
+  const c = TONES[k];
+  const r = ratio(c, "#FFFFFF");
+  const pos = (v: number) => 60 + Math.min(v / 21, 1) ** 0.5 * 520;
+  return (
+    <svg ref={ref} viewBox="0 0 640 300" className="h-auto w-full" role="img" aria-label="Razão de contraste do texto sobre branco comparada com os limites 3:1 e 4.5:1 da WCAG">
+      <rect x={60} y={24} width={520} height={120} rx={14} fill="#FFFFFF" />
+      <motion.text x={84} y={78} fontSize={26} fontWeight={700} fontFamily="ui-sans-serif, system-ui" initial={false} animate={{ fill: c }} transition={tr(reduce, 0.5)}>Finalizar pedido</motion.text>
+      <motion.text x={84} y={110} fontSize={14} fontFamily="ui-sans-serif, system-ui" initial={false} animate={{ fill: c }} transition={tr(reduce, 0.5)}>Texto de apoio que precisa ser lido por todo mundo</motion.text>
+      <T x={556} y={56} a="end" c="#0d0d12" s={11} w={700}>{c}</T>
+      <rect x={60} y={196} width={520} height={10} rx={5} fill="rgba(255,255,255,0.08)" />
+      {[{ v: 3, l: "3:1 TEXTO GRANDE" }, { v: 4.5, l: "4.5:1 TEXTO NORMAL (AA)" }, { v: 7, l: "7:1 AAA" }].map((m, i) => (
+        <g key={m.l}>
+          <line x1={pos(m.v)} x2={pos(m.v)} y1={186} y2={216} stroke={P2} strokeDasharray="3 3" />
+          <T x={pos(m.v)} y={i % 2 ? 234 : 180} a="middle" c={SUB} s={9}>{m.l}</T>
+        </g>
+      ))}
+      <motion.circle cy={201} r={11} initial={false} animate={{ cx: pos(r), fill: r >= 4.5 ? G : r >= 3 ? "#fbbf24" : "#f87171" }} transition={tr(reduce, 0.6)} />
+      <T x={320} y={276} a="middle" c={r >= 4.5 ? G : r >= 3 ? "#fbbf24" : "#f87171"} s={14} w={700}>{`${r.toFixed(1)}:1  ${r >= 4.5 ? "PASSA PARA QUALQUER TEXTO" : r >= 3 ? "SÓ PARA TEXTO GRANDE" : "NÃO PASSA"}`}</T>
+    </svg>
+  );
+}
+
+/* Tokens em camadas: muda o primitivo, o semântico repassa e todos os componentes acompanham. */
+export function TokenTiers() {
+  const COLORS = [P, "#0EA5E9", "#16A34A"];
+  const { ref, k, reduce } = useSteps(3, 1300, 1);
+  const col = COLORS[Math.max(0, k - 1) % COLORS.length];
+  const step = k % 3;
+  const node = (x: number, y: number, w: number, label: string, sub: string, on: boolean) => (
+    <motion.g initial={false} animate={{ opacity: on ? 1 : 0.5 }}>
+      <rect x={x} y={y} width={w} height={44} rx={10} fill={CARD} stroke={on ? col : LINE} />
+      <T x={x + 12} y={y + 19} c={TXT} s={10} w={700}>{label}</T>
+      <T x={x + 12} y={y + 34} c={SUB} s={9}>{sub}</T>
+    </motion.g>
+  );
+  return (
+    <svg ref={ref} viewBox="0 0 640 300" className="h-auto w-full" role="img" aria-label="Token primitivo alimenta o token semântico, que alimenta botão, link e destaque">
+      <T x={20} y={24} c={P2}>PRIMITIVO</T>
+      <T x={240} y={24} c={P2}>SEMÂNTICO</T>
+      <T x={460} y={24} c={P2}>COMPONENTES</T>
+      {node(20, 120, 180, "purple.600", "valor bruto", true)}
+      <motion.rect x={160} y={132} width={20} height={20} rx={5} initial={false} animate={{ fill: col }} transition={tr(reduce, 0.5)} />
+      {node(240, 120, 180, "color.action.primary", "intenção de uso", step >= 1 || reduce)}
+      {[{ y: 50, l: "Botão" }, { y: 120, l: "Link" }, { y: 190, l: "Destaque" }].map((c, i) => (
+        <g key={c.l}>
+          <path d={`M420 142 C 440 142, 440 ${c.y + 22}, 460 ${c.y + 22}`} stroke={LINE} fill="none" />
+          <rect x={460} y={c.y} width={160} height={44} rx={10} fill={CARD} stroke={LINE} />
+          {i === 0 && <motion.rect x={476} y={c.y + 11} width={70} height={22} rx={11} initial={false} animate={{ fill: col }} transition={{ ...tr(reduce, 0.5), delay: reduce ? 0 : 0.3 }} />}
+          {i === 1 && <motion.text x={476} y={c.y + 27} fontSize={13} fontFamily="ui-sans-serif" textDecoration="underline" initial={false} animate={{ fill: col }} transition={{ ...tr(reduce, 0.5), delay: reduce ? 0 : 0.4 }}>Ver detalhes</motion.text>}
+          {i === 2 && <motion.rect x={476} y={c.y + 10} width={6} height={24} rx={3} initial={false} animate={{ fill: col }} transition={{ ...tr(reduce, 0.5), delay: reduce ? 0 : 0.5 }} />}
+          <T x={604} y={c.y + 27} a="end" s={9}>{c.l.toUpperCase()}</T>
+        </g>
+      ))}
+      <path d="M200 142 H240" stroke={LINE} />
+      <T x={320} y={286} a="middle" c={SUB} s={10}>UMA MUDANÇA NA ORIGEM, CONSISTÊNCIA EM TODO O PRODUTO</T>
+    </svg>
+  );
+}
+
+/* Protótipo funcional: chega mais cedo ao usuário, mas parecer pronto não é estar validado. */
+export function ProtoLoop() {
+  const S = ["CONTEXTO", "PROMPT", "PROTÓTIPO FUNCIONAL", "TESTE COM USUÁRIOS", "APRENDIZADO"];
+  const { ref, k, reduce } = useSteps(S.length, 1100, 2);
+  const cx = 320, cy = 150, R = 105;
+  const pt = (i: number) => { const a = (-90 + i * 72) * Math.PI / 180; return [cx + R * 1.9 * Math.cos(a) * 0.7, cy + R * Math.sin(a)]; };
+  return (
+    <svg ref={ref} viewBox="0 0 640 310" className="h-auto w-full" role="img" aria-label="Ciclo: contexto, prompt, protótipo funcional, teste com usuários e aprendizado">
+      <ellipse cx={cx} cy={cy} rx={R * 1.33} ry={R} fill="none" stroke={LINE} strokeDasharray="4 6" />
+      {S.map((s, i) => {
+        const [x, y] = pt(i);
+        const on = k > i;
+        const gate = i === 3;
+        return (
+          <motion.g key={s} initial={false} animate={{ opacity: on ? 1 : 0.35 }} transition={tr(reduce, 0.4)}>
+            <rect x={x - 78} y={y - 18} width={156} height={36} rx={18} fill={on ? (gate ? "rgba(163,230,53,0.14)" : "rgba(98,47,253,0.22)") : CARD} stroke={on ? (gate ? G : P2) : LINE} />
+            <T x={x} y={y + 4} a="middle" c={TXT} s={9.5} w={700}>{s}</T>
+          </motion.g>
+        );
+      })}
+      <motion.circle r={7} fill={G} initial={false} animate={{ cx: pt(Math.min(k, 4))[0], cy: pt(Math.min(k, 4))[1] - 26 }} transition={tr(reduce, 0.7)} />
+      <T x={cx} y={cy - 4} a="middle" c={SUB} s={10}>PARECER PRONTO</T>
+      <T x={cx} y={cy + 12} a="middle" c={k >= 4 ? G : SUB} s={10} w={700}>{k >= 4 ? "≠ ESTAR VALIDADO" : "…"}</T>
+    </svg>
+  );
+}
+
+/* Do estático ao agente: quanto mais a interface faz sozinha, mais ela precisa explicar e permitir desfazer. */
+export function AgentSpectrum() {
+  const L = [
+    { l: "ESTÁTICA", d: "mesma tela para todos", need: [] as string[] },
+    { l: "ADAPTATIVA", d: "muda por contexto", need: ["explicar por quê"] },
+    { l: "SUGERE", d: "propõe a próxima ação", need: ["explicar por quê", "aceitar ou recusar"] },
+    { l: "AGE COM OK", d: "executa após confirmação", need: ["explicar por quê", "aceitar ou recusar", "prévia do efeito"] },
+    { l: "AGE SOZINHA", d: "executa e avisa", need: ["explicar por quê", "aceitar ou recusar", "prévia do efeito", "desfazer e histórico"] },
+  ];
+  const { ref, k, reduce } = useSteps(L.length - 1, 1300, 2);
+  const x = (i: number) => 70 + i * 125;
+  return (
+    <svg ref={ref} viewBox="0 0 640 320" className="h-auto w-full" role="img" aria-label="Espectro de autonomia da interface e os controles que cada nível exige">
+      <line x1={x(0)} x2={x(4)} y1={70} y2={70} stroke={LINE} strokeWidth={6} strokeLinecap="round" />
+      <motion.line x1={x(0)} y1={70} y2={70} initial={false} animate={{ x2: x(k) }} stroke={P} strokeWidth={6} strokeLinecap="round" transition={tr(reduce, 0.6)} />
+      {L.map((l, i) => (
+        <g key={l.l}>
+          <motion.circle cx={x(i)} cy={70} r={12} initial={false} animate={{ fill: k >= i ? P : "#1b1b24", stroke: k === i ? "#fff" : LINE }} strokeWidth={2} />
+          <T x={x(i)} y={36} a="middle" c={k === i ? TXT : SUB} s={9.5} w={700}>{l.l}</T>
+          <T x={x(i)} y={104} a="middle" c={SUB} s={8.5}>{l.d}</T>
+        </g>
+      ))}
+      <T x={20} y={150} c={P2}>O QUE A INTERFACE PRECISA DAR AO USUÁRIO</T>
+      {L[4].need.map((n, i) => {
+        const on = L[k].need.includes(n);
+        return (
+          <motion.g key={n} initial={false} animate={{ opacity: on ? 1 : 0.15, x: on ? 0 : -8 }} transition={tr(reduce, 0.4)}>
+            <rect x={20 + (i % 2) * 305} y={166 + Math.floor(i / 2) * 58} width={295} height={44} rx={12} fill={CARD} stroke={on ? G : LINE} />
+            <circle cx={44 + (i % 2) * 305} cy={188 + Math.floor(i / 2) * 58} r={8} fill={on ? G : "#222"} />
+            <T x={62 + (i % 2) * 305} y={192 + Math.floor(i / 2) * 58} c={TXT} s={11}>{n}</T>
+          </motion.g>
+        );
+      })}
+    </svg>
+  );
+}
+
+/* Dados de pesquisa com IA: o que é pessoal sai antes de qualquer ferramenta externa. */
+export function ConsentFlow() {
+  const S = ["CONSENTIMENTO", "COLETA", "ANONIMIZAÇÃO", "ANÁLISE COM IA", "DESCARTE"];
+  const { ref, k, reduce } = useSteps(S.length, 1200, 2);
+  const x = (i: number) => 66 + i * 127;
+  const masked = k >= 3;
+  return (
+    <svg ref={ref} viewBox="0 0 640 280" className="h-auto w-full" role="img" aria-label="Fluxo de dados de pesquisa: consentimento, coleta, anonimização, análise com IA e descarte">
+      {S.map((s, i) => (
+        <g key={s}>
+          {i < 4 && <line x1={x(i) + 50} x2={x(i + 1) - 50} y1={60} y2={60} stroke={k > i + 1 ? P2 : LINE} strokeDasharray="4 5" />}
+          <motion.rect x={x(i) - 54} y={40} width={108} height={40} rx={12} initial={false} animate={{ fill: k > i ? (i === 2 ? "rgba(163,230,53,0.14)" : "rgba(98,47,253,0.22)") : CARD, stroke: k > i ? (i === 2 ? G : P2) : LINE }} transition={tr(reduce, 0.4)} />
+          <T x={x(i)} y={64} a="middle" c={TXT} s={8.5} w={700}>{s}</T>
+        </g>
+      ))}
+      <motion.g initial={false} animate={{ x: x(Math.max(0, Math.min(k, 5) - 1)) - 110, opacity: k >= 5 ? 0 : 1 }} transition={tr(reduce, 0.7)}>
+        <rect x={20} y={110} width={180} height={120} rx={12} fill="#101016" stroke={masked ? G : LINE} />
+        <T x={34} y={134} c={SUB} s={9}>TRANSCRIÇÃO</T>
+        <T x={34} y={158} c={TXT} s={10}>{masked ? "Nome: P07" : "Nome: Mariana S."}</T>
+        <T x={34} y={178} c={TXT} s={10}>{masked ? "Contato: ▇▇▇▇▇▇" : "Tel: (11) 9…"}</T>
+        <T x={34} y={198} c={TXT} s={10}>{masked ? "Empresa: ▇▇▇▇" : "Empresa: Loja X"}</T>
+        <T x={34} y={218} c={masked ? G : SUB} s={9}>{masked ? "sem dado pessoal" : "dado pessoal"}</T>
+      </motion.g>
+      <T x={320} y={266} a="middle" c={SUB} s={9}>EXEMPLO FICTÍCIO</T>
+    </svg>
+  );
+}
+
 export const PROMPT_VISUALS: Record<string, React.FC> = {
   "spec-builder": SpecBuilder,
   "prompt-funnel": PromptFunnel,
@@ -538,4 +743,10 @@ export const PROMPT_VISUALS: Record<string, React.FC> = {
   "what-and-why": WhatAndWhy,
   "critique-filter": CritiqueFilter,
   "token-bridge": TokenBridge,
+  "metric-map": MetricMap,
+  "contrast-check": ContrastCheck,
+  "token-tiers": TokenTiers,
+  "proto-loop": ProtoLoop,
+  "agent-spectrum": AgentSpectrum,
+  "consent-flow": ConsentFlow,
 };
