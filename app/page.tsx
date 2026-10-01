@@ -22,12 +22,12 @@ export default function Home() {
       <Metrics />
       <Cases />
       <Process />
-      <AiProcess />
       <ExpertiseStack />
       <Journey />
       <Stack />
       <Testimonials />
       <Blog />
+      <AiProcess />
       <Contact />
       <Footer />
     </main>
