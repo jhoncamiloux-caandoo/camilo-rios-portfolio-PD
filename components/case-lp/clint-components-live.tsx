@@ -176,15 +176,8 @@ export function ClintBarraPrompt({ frases }: { frases?: string[] }) {
         fontFamily: POPPINS,
       }}
     >
-      <span
-        style={{
-          flex: "none",
-          width: 26,
-          height: 26,
-          borderRadius: "50%",
-          background: "linear-gradient(135deg, #a600ff, #8800ff)",
-        }}
-      />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="/cases/clint/ai-logo.png" alt="" width={26} height={26} style={{ flex: "none", width: 26, height: 26, borderRadius: "50%" }} />
       <span style={{ flex: 1, minWidth: 0, fontSize: 14, color: "#ffffff", whiteSpace: "nowrap", overflow: "hidden" }}>
         {texto}
         <span
@@ -221,15 +214,8 @@ export function ClintBalaoChat({ texto, hora }: { texto: string; hora: string })
         fontFamily: POPPINS,
       }}
     >
-      <span
-        style={{
-          flex: "none",
-          width: 26,
-          height: 26,
-          borderRadius: "50%",
-          background: "linear-gradient(135deg, #a600ff, #3739ad)",
-        }}
-      />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="/cases/clint/ai-logo.png" alt="" width={26} height={26} style={{ flex: "none", width: 26, height: 26, borderRadius: "50%" }} />
       <span style={{ fontSize: 14, color: "#ffffff" }}>{texto}</span>
       <span style={{ fontSize: 10.5, fontWeight: 700, color: "rgba(255,255,255,0.8)" }}>{hora}</span>
     </div>

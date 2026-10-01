@@ -1,7 +1,7 @@
 import type { Locale } from "@/lib/i18n/types";
 
 /* Textos do Scale reconstruído (capítulos interativos). */
-export type ScaleLabDictionary = ScaleLabB & ScaleLabC & {
+export type ScaleLabDictionary = ScaleLabB & ScaleLabC & ScaleLabD & {
   hero: {
     ariaLabel: string;
     eyebrow: string;
@@ -66,6 +66,39 @@ export type ScaleLabDictionary = ScaleLabB & ScaleLabC & {
     };
     contrastLabel: string;
     conclusion: string;
+  };
+};
+
+export type ScaleLabD = {
+  ops: {
+    ariaLabel: string;
+    eyebrow: string;
+    title: string;
+    description: string;
+    flow: string[];
+    flowNote: string;
+    storyTitle: string;
+    storyTree: string[];
+    productTitle: string;
+    sourceMessage: string;
+    govTitle: string;
+    govNext: string;
+    govLast: string;
+    dodTitle: string;
+    dodHint: string;
+    ready: string;
+    debtTitle: string;
+    debtColors: string;
+    debtPrimitives: string;
+    debtMessage: string;
+  };
+  result: {
+    ariaLabel: string;
+    eyebrow: string;
+    title: string;
+    areas: { name: string; body: string }[];
+    conclusion: string;
+    conclusionSub: string;
   };
 };
 
@@ -143,6 +176,42 @@ export type ScaleLabB = {
 
 export const scaleLab: Record<Locale, ScaleLabDictionary> = {
   pt: {
+    ops: {
+      ariaLabel: "Operando o sistema: Figma, Storybook, governança e dívida",
+      eyebrow: "Operando o sistema",
+      title: "Uma fonte da verdade entre Design e Engenharia.",
+      description: "O mesmo componente sai do Figma, vira referência no Storybook e chega ao produto. E existem regras claras para mudar qualquer peça.",
+      flow: ["Figma", "Tokens", "Component", "Storybook", "Engineering", "Product"],
+      flowNote: "Colaboração entre design e desenvolvimento, não uma integração automatizada entre as ferramentas.",
+      storyTitle: "Storybook",
+      storyTree: ["Primary", "Secondary", "Ghost", "Loading", "Disabled"],
+      productTitle: "No produto",
+      sourceMessage: "O mesmo botão, documentado e em uso.",
+      govTitle: "Governança: o ciclo de vida de um componente",
+      govNext: "Próximo passo",
+      govLast: "Fica só no changelog.",
+      dodTitle: "Definition of Done",
+      dodHint: "Marque os 6 critérios",
+      ready: "PRONTO PARA SUBIR",
+      debtTitle: "Dívida técnica só pode diminuir",
+      debtColors: "Cores hardcoded",
+      debtPrimitives: "Primitivas expostas",
+      debtMessage: "Um Design System também é uma forma de deixar a inconsistência visível.",
+    },
+    result: {
+      ariaLabel: "O que mudou",
+      eyebrow: "Resultado",
+      title: "O que mudou?",
+      areas: [
+        { name: "Design", body: "Menos decisões repetidas a cada página nova." },
+        { name: "Engineering", body: "Uma referência compartilhada para implementar." },
+        { name: "Growth", body: "Mais velocidade para criar campanhas e experimentos." },
+        { name: "AI", body: "Mais contexto para gerar interfaces consistentes." },
+        { name: "Product", body: "Uma linguagem visual comum." },
+      ],
+      conclusion: "Scale é mais do que uma biblioteca.",
+      conclusionSub: "É uma linguagem compartilhada entre Design, Engenharia, Growth e Produto.",
+    },
     ai: {
       ariaLabel: "Componentes e playground de IA",
       eyebrow: "IA no sistema",
@@ -333,6 +402,42 @@ export const scaleLab: Record<Locale, ScaleLabDictionary> = {
     },
   },
   en: {
+    ops: {
+      ariaLabel: "Operating the system: Figma, Storybook, governance and debt",
+      eyebrow: "Operating the system",
+      title: "One source of truth across Design and Engineering.",
+      description: "The same component leaves Figma, becomes the reference in Storybook and reaches the product. And there are clear rules to change any piece.",
+      flow: ["Figma", "Tokens", "Component", "Storybook", "Engineering", "Product"],
+      flowNote: "Collaboration between design and development, not an automated integration between the tools.",
+      storyTitle: "Storybook",
+      storyTree: ["Primary", "Secondary", "Ghost", "Loading", "Disabled"],
+      productTitle: "In the product",
+      sourceMessage: "The same button, documented and in use.",
+      govTitle: "Governance: a component's life cycle",
+      govNext: "Next step",
+      govLast: "Lives on only in the changelog.",
+      dodTitle: "Definition of Done",
+      dodHint: "Check the 6 criteria",
+      ready: "READY TO SHIP",
+      debtTitle: "Technical debt can only go down",
+      debtColors: "Hardcoded colors",
+      debtPrimitives: "Exposed primitives",
+      debtMessage: "A Design System is also a way to make inconsistency visible.",
+    },
+    result: {
+      ariaLabel: "What changed",
+      eyebrow: "Result",
+      title: "What changed?",
+      areas: [
+        { name: "Design", body: "Fewer repeated decisions on every new page." },
+        { name: "Engineering", body: "A shared reference to build from." },
+        { name: "Growth", body: "More speed to create campaigns and experiments." },
+        { name: "AI", body: "More context to generate consistent interfaces." },
+        { name: "Product", body: "A common visual language." },
+      ],
+      conclusion: "Scale is more than a library.",
+      conclusionSub: "It is a shared language between Design, Engineering, Growth and Product.",
+    },
     ai: {
       ariaLabel: "AI components and playground",
       eyebrow: "AI in the system",
@@ -523,6 +628,42 @@ export const scaleLab: Record<Locale, ScaleLabDictionary> = {
     },
   },
   es: {
+    ops: {
+      ariaLabel: "Operando el sistema: Figma, Storybook, gobernanza y deuda",
+      eyebrow: "Operando el sistema",
+      title: "Una fuente de verdad entre Diseño e Ingeniería.",
+      description: "El mismo componente sale de Figma, se vuelve referencia en Storybook y llega al producto. Y hay reglas claras para cambiar cualquier pieza.",
+      flow: ["Figma", "Tokens", "Component", "Storybook", "Engineering", "Product"],
+      flowNote: "Colaboración entre diseño y desarrollo, no una integración automatizada entre las herramientas.",
+      storyTitle: "Storybook",
+      storyTree: ["Primary", "Secondary", "Ghost", "Loading", "Disabled"],
+      productTitle: "En el producto",
+      sourceMessage: "El mismo botón, documentado y en uso.",
+      govTitle: "Gobernanza: el ciclo de vida de un componente",
+      govNext: "Próximo paso",
+      govLast: "Queda solo en el changelog.",
+      dodTitle: "Definition of Done",
+      dodHint: "Marca los 6 criterios",
+      ready: "LISTO PARA SUBIR",
+      debtTitle: "La deuda técnica solo puede bajar",
+      debtColors: "Colores hardcoded",
+      debtPrimitives: "Primitivas expuestas",
+      debtMessage: "Un Design System también es una forma de hacer visible la inconsistencia.",
+    },
+    result: {
+      ariaLabel: "Qué cambió",
+      eyebrow: "Resultado",
+      title: "¿Qué cambió?",
+      areas: [
+        { name: "Design", body: "Menos decisiones repetidas en cada página nueva." },
+        { name: "Engineering", body: "Una referencia compartida para implementar." },
+        { name: "Growth", body: "Más velocidad para crear campañas y experimentos." },
+        { name: "AI", body: "Más contexto para generar interfaces consistentes." },
+        { name: "Product", body: "Un lenguaje visual común." },
+      ],
+      conclusion: "Scale es más que una librería.",
+      conclusionSub: "Es un lenguaje compartido entre Diseño, Ingeniería, Growth y Producto.",
+    },
     ai: {
       ariaLabel: "Componentes y playground de IA",
       eyebrow: "IA en el sistema",

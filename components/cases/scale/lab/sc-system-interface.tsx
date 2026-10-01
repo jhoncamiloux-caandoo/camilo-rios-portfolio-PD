@@ -190,9 +190,8 @@ export function ScSystemInterface() {
 
                   <div className="flex flex-col border border-white/[0.07] bg-white/[0.02] md:col-span-2" style={{ borderRadius: "var(--r)", padding: "calc(var(--s) * 3)", gap: "calc(var(--s) * 2.5)" }}>
                     <div className="flex items-center gap-2">
-                      <span className="flex h-7 w-7 items-center justify-center rounded-full" style={{ background: "var(--accent)" }}>
-                        <Bot className="h-4 w-4" aria-hidden="true" />
-                      </span>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src="/cases/clint/ai-logo.png" alt="" className="h-7 w-7 rounded-full" />
                       <div>
                         <p className="font-semibold leading-tight" style={{ fontSize: fs(-1) }}>{u.agentName} · {u.online}</p>
                         <p className="text-emerald-300" style={{ fontSize: fs(-2) }}>{u.running}</p>

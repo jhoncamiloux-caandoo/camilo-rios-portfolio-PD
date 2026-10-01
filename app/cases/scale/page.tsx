@@ -11,10 +11,10 @@ import { ScSystemLab } from "@/components/cases/scale/lab/sc-system-lab";
 import { ScA11y } from "@/components/cases/scale/lab/sc-a11y";
 import { ScAi } from "@/components/cases/scale/lab/sc-ai";
 import { ScGrowth } from "@/components/cases/scale/lab/sc-growth";
+import { ScOps } from "@/components/cases/scale/lab/sc-ops";
+import { ScResult } from "@/components/cases/scale/lab/sc-result";
 import { Ch04Tokens } from "@/components/cases/scale/ch-04-tokens";
 import { Ch05Components } from "@/components/cases/scale/ch-05-components";
-import { Ch07Governance } from "@/components/cases/scale/ch-07-governance";
-import { Ch09FigmaStorybook } from "@/components/cases/scale/ch-09-figma-storybook";
 import { Ch10Results } from "@/components/cases/scale/ch-10-results";
 import { useLocale } from "@/lib/i18n/locale-context";
 
@@ -38,9 +38,10 @@ export default function CaseScalePage() {
       <ScGrowth />
       <Ch04Tokens />
       <Ch05Components />
-      <Ch07Governance />
-      <Ch09FigmaStorybook />
+      {/* Etapa D: capítulos 9 e 10 */}
+      <ScOps />
       <Ch10Results />
+      <ScResult />
       <NextCase
         eyebrow={nextCase.eyebrow}
         title={nextCase.title}

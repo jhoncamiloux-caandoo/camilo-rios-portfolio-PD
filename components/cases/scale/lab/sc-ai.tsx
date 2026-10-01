@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { ArrowUp, Bot, Check, Lightbulb, Loader2, RotateCcw, Sparkles } from "lucide-react";
+import { ArrowUp, Check, Lightbulb, Loader2, RotateCcw, Sparkles } from "lucide-react";
 import { useLocale } from "@/lib/i18n/locale-context";
 
 /* Capítulo 7: componentes de IA em uso. Um pedido vira, passo a passo,
@@ -132,7 +132,8 @@ export function ScAi() {
                 {c.promptLabel}
               </label>
               <div className="mt-2 flex items-center gap-2 rounded-2xl border border-[#8b6bff]/50 bg-[#0d0d12] p-2 pl-4 focus-within:ring-2 focus-within:ring-[#8b6bff]">
-                <Sparkles className="h-4 w-4 shrink-0 text-[#A48BFF]" aria-hidden="true" />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/cases/clint/ai-logo.png" alt="" className="h-6 w-6 shrink-0 rounded-full" />
                 <input id="ai-prompt" value={text} onChange={(e) => setText(e.target.value)} placeholder={c.promptPh} className="min-w-0 flex-1 bg-transparent py-2 text-sm text-white placeholder:text-white/40 focus:outline-none" />
                 <button type="submit" aria-label={c.run} className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#622FFD] text-white transition hover:bg-[#7447FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
                   <ArrowUp className="h-4 w-4" aria-hidden="true" />
@@ -175,9 +176,8 @@ export function ScAi() {
               {phase === "complete" ? (
                 <motion.div key="agent" initial={reduce ? false : { opacity: 0, y: 16, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.45 }} className="w-full max-w-md rounded-2xl border border-white/10 bg-[#0d0d12] p-5 shadow-[0_32px_80px_-24px_rgba(98,47,253,0.5)]">
                   <div className="flex items-center gap-3">
-                    <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#622FFD]">
-                      <Bot className="h-5 w-5" aria-hidden="true" />
-                    </span>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src="/cases/clint/ai-logo.png" alt="" className="h-11 w-11 rounded-full" />
                     <div className="min-w-0 flex-1">
                       <p className="font-display text-lg font-semibold">{c.agentName}</p>
                       <p className="text-xs text-white/60">{c.agentRole}</p>
