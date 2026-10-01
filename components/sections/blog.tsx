@@ -126,11 +126,11 @@ export function Blog() {
                 key={article.slug}
                 data-card
                 href={`/blog/${article.slug}`}
-                className="group relative flex w-[260px] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-black/[0.06] bg-[#0A0A0A] transition-shadow duration-300 hover:shadow-[0_16px_40px_-12px_rgba(10,10,10,0.35)] sm:w-[300px]"
+                className="group relative flex w-[280px] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-black/[0.08] bg-white transition hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_24px_60px_rgba(98,47,253,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:w-[320px]"
               >
-                <div className="aspect-[4/3] w-full overflow-hidden bg-black/20">
+                <div className="aspect-[16/9] w-full overflow-hidden bg-[#0d0d12]">
                   {article.coverArt ? (
-                    <div className="flex h-full items-center"><CoverArt icons={article.coverArt.icons} label={CATEGORIES[article.category]} /></div>
+                    <CoverArt icons={article.coverArt.icons} label={CATEGORIES[article.category]} />
                   ) : (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
@@ -142,14 +142,19 @@ export function Blog() {
                     />
                   )}
                 </div>
-                <div className="flex flex-1 flex-col justify-between gap-4 p-5">
-                  <p className="font-display text-base font-semibold leading-snug tracking-tight text-white">
-                    {article.title}
-                  </p>
-                  <span className="inline-flex items-center gap-1.5 font-sans text-xs font-semibold text-white/60 transition-colors duration-300 group-hover:text-primary-light">
-                    {t.home.blog.readArticleLabel}
-                    <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </span>
+                <div className="flex flex-1 flex-col p-6">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-primary">{CATEGORIES[article.category]}</p>
+                  <p className="mt-3 font-display text-lg font-semibold leading-snug text-[#0A0A0A] group-hover:text-primary">{article.title}</p>
+                  <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-[#0A0A0A]/65">{article.description}</p>
+                  <div className="mt-auto flex items-center justify-between pt-5 text-xs text-[#0A0A0A]/60">
+                    <span>
+                      {new Date(article.date).toLocaleDateString("pt-BR", { day: "2-digit", month: "short", year: "numeric" })} · {article.readMinutes} min
+                    </span>
+                    <span className="inline-flex items-center gap-1 font-semibold text-[#0A0A0A]/70 group-hover:text-primary">
+                      {t.home.blog.readArticleLabel}
+                      <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                    </span>
+                  </div>
                 </div>
               </a>
               );
