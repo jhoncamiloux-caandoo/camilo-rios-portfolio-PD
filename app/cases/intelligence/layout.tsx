@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Case: Clint Intelligence · AI / UX | Jhon Camilo Rios",
+  title: "Case: Clint Intelligence · AI / UX",
   description:
     "Projetando experiências de IA para equipes comerciais. Como transformar modelos, automações e recomendações em interações compreensíveis e controláveis.",
   keywords: [

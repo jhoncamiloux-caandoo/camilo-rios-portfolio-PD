@@ -20,6 +20,7 @@ export function Ch01Hero() {
           <Eyebrow>{c.eyebrow}</Eyebrow>
 
           <BlurTitle
+            as="h1"
             text={c.title}
             className="font-display text-[34px] font-semibold leading-[1.1] tracking-tight text-[#0A0A0A] sm:text-[42px] md:text-[52px]"
           />

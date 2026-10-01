@@ -14,10 +14,11 @@ const LEADS = [
   { id: "ju", name: "Juliana Prado", co: "Vertical 360", ph: "p8", ch: "wa", col: 1 },
   { id: "carlos", name: "Carlos Mendes", co: "Nexo Digital", ph: "p2", ch: "wa", col: 1 },
   { id: "marcos", name: "Marcos Costa", co: "Prime", ph: "p3", ch: "wa", col: 2 },
+  { id: "roberta", name: "Roberta Rod", co: "Via WhatsApp", ph: "p-roberta", ch: "wa", col: -1 },
   { id: "lucas", name: "Lucas Ferraz", co: "Impulso", ph: "p5", ch: "ig", col: 3 },
 ] as const;
 // Ordem dos movimentos, em loop: cada passo leva um lead para a coluna seguinte.
-const SEQ = ["ana", "ju", "marcos", "rafa", "ana", "carlos", "ju", "ana"];
+const SEQ = ["roberta", "ana", "ju", "marcos", "rafa", "ana", "carlos", "ju", "ana"];
 
 export function HeroCrm() {
   const { t } = useLocale();
@@ -67,13 +68,13 @@ export function HeroCrm() {
   }, []);
 
   return (
-    <div className="relative">
+    <div className="relative mt-12 md:mt-0">
       {/* Elementos flutuantes: o negócio chega pelo WhatsApp, entra no funil e o agente cuida dele */}
       <motion.img
         src="/cases/clint/intelligence/float-new-deal.png"
         alt=""
         aria-hidden="true"
-        className="absolute -left-4 -top-8 z-20 w-36 drop-shadow-[0_18px_30px_rgba(10,10,10,0.35)] md:-left-12 md:-top-10 md:w-52"
+        className="absolute -left-3 -top-14 z-20 w-36 drop-shadow-[0_18px_30px_rgba(10,10,10,0.35)] md:-left-14 md:-top-20 md:w-52"
         animate={reduce ? undefined : { y: [0, -8, 0] }}
         transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
       />
@@ -89,7 +90,7 @@ export function HeroCrm() {
         src="/cases/clint/intelligence/float-agent.png"
         alt=""
         aria-hidden="true"
-        className="absolute -right-3 top-[38%] z-20 w-16 drop-shadow-[0_18px_30px_rgba(98,47,253,0.35)] md:-right-10 md:w-24"
+        className="absolute right-16 -top-10 z-20 w-14 md:top-[38%] drop-shadow-[0_18px_30px_rgba(98,47,253,0.35)] md:-right-4 md:w-20"
         animate={reduce ? undefined : { y: [0, -10, 0], rotate: [-3, 2, -3] }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
       />
@@ -171,7 +172,7 @@ export function HeroCrm() {
               >
                 <Sparkles className="h-3.5 w-3.5 text-[#c9b8ff]" aria-hidden="true" />
                 <span className="font-sans text-[11px] text-white/90">
-                  {c.moved.replace("{name}", lastLead.name).replace("{col}", c.cols[cols[lastLead.id]])}
+                  {c.actions[cols[lastLead.id]].replace("{name}", lastLead.name)}
                 </span>
               </motion.div>
             )}

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Case: Clint Acquire · CRO & Produto | Jhon Camilo Rios",
+  title: "Case: Clint Acquire · CRO & Produto",
   description:
     "Como uma landing page com IA no WhatsApp e um fluxo Typebot concentrou 79% da demanda comercial da Clint. Product Design, CRO e conversação de ponta a ponta.",
   keywords: [

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Case: Clint Scale · Growth & Design System | Jhon Camilo Rios",
+  title: "Case: Clint Scale · Growth & Design System",
   description:
     "Criando um sistema para escalar Growth. Como padrões visuais e operacionais aceleram experimentos sem perder consistência.",
   keywords: [
