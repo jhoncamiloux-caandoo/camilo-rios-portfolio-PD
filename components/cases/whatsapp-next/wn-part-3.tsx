@@ -1,6 +1,7 @@
 "use client";
 
-import { EyeOff, UserRound, Workflow } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { EyeOff, User, UserRound, Workflow } from "lucide-react";
 import { Reveal } from "@/components/case-lp/case-primitives";
 import { useLocale } from "@/lib/i18n/locale-context";
 import { ASSET, WnBrowser, WnCtaLink, WnEyebrow, WnFlow, WnHeading } from "./wn-primitives";
@@ -168,19 +169,26 @@ export function WnResults() {
             <div className="flex flex-col items-start gap-2 md:items-end md:text-right">
               <span className="font-sans text-sm font-semibold uppercase tracking-[0.18em] text-[#9bada1]">{c.cplLabel}</span>
               <span className="font-display text-7xl font-semibold leading-none tracking-tight text-[#87ff0b] md:text-9xl">{c.cplValue}</span>
-              <span className="font-mono text-xs text-[#9bada1]">{c.cplBefore}</span>
             </div>
           </div>
         </Reveal>
 
-        <ul className="mx-auto mt-6 grid max-w-6xl grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {c.placeholders.map((p) => (
-            <li key={p.label} className="rounded-2xl border border-dashed border-white/15 p-5">
-              <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.18em] text-[#9bada1]">{p.label}</p>
-              <p className="mt-2 font-mono text-xs text-[#c8d6cc]">{p.value}</p>
+        {/* Métricas reais: número + contexto + visualização */}
+        <ul className="mx-auto mt-6 grid max-w-6xl grid-cols-1 gap-4 md:grid-cols-2">
+          {c.metrics.map((m, i) => (
+            <li key={m.label}>
+              <Reveal delay={i * 0.08} className="flex h-full flex-col gap-5 rounded-3xl border border-white/10 bg-[#07100a] p-6 md:p-8">
+                <div className="flex items-end justify-between gap-4">
+                  <span className="font-display text-6xl font-semibold leading-none tracking-tight text-[#f5fff8] md:text-7xl">{m.value}</span>
+                  <span className="text-right font-sans text-xs text-[#9bada1]">{m.context}</span>
+                </div>
+                <p className="font-sans text-sm font-semibold uppercase tracking-[0.16em] text-[#87ff0b]">{m.label}</p>
+                {m.kind === "bars" ? <FourDays /> : <OneInFour />}
+              </Reveal>
             </li>
           ))}
         </ul>
+
       </div>
     </section>
   );
@@ -251,5 +259,51 @@ export function WnLearning() {
         </div>
       </div>
     </section>
+  );
+}
+
+/* 4 dias de campanha: segmentos que se preenchem até o total (sem inventar números por dia). */
+function FourDays() {
+  const reduce = useReducedMotion();
+  return (
+    <div aria-hidden="true">
+      <div className="grid grid-cols-4 gap-1.5">
+        {[0, 1, 2, 3].map((d) => (
+          <div key={d} className="h-3 overflow-hidden rounded-full bg-white/10">
+            <motion.div
+              className="h-full origin-left rounded-full bg-[#87ff0b]"
+              initial={reduce ? false : { scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, delay: 0.2 + d * 0.45, ease: "easeOut" }}
+            />
+          </div>
+        ))}
+      </div>
+      <div className="mt-2 grid grid-cols-4 gap-1.5 font-mono text-[11px] text-[#9bada1]">
+        {["D1", "D2", "D3", "D4"].map((d) => <span key={d}>{d}</span>)}
+      </div>
+    </div>
+  );
+}
+
+/* 25% = 1 em cada 4 visitantes. */
+function OneInFour() {
+  const reduce = useReducedMotion();
+  return (
+    <div className="flex gap-3" aria-hidden="true">
+      {[0, 1, 2, 3].map((i) => (
+        <motion.span
+          key={i}
+          className={`flex h-14 w-14 items-center justify-center rounded-2xl border ${i === 0 ? "border-[#87ff0b] bg-[#87ff0b] text-[#020403]" : "border-white/15 text-white/60"}`}
+          initial={reduce ? false : { opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.4, delay: i === 0 ? 0.9 : 0.15 * i }}
+        >
+          <User className="h-6 w-6" strokeWidth={2} />
+        </motion.span>
+      ))}
+    </div>
   );
 }

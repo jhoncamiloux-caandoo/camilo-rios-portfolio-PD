@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { useLocale } from "@/lib/i18n/locale-context";
+import { LanguageSwitcher } from "@/components/language-switcher";
 
 export function CaseHeader({
   label,
@@ -45,10 +46,13 @@ export function CaseHeader({
           </span>
         </Link>
 
-        {/* Identificador do case — desktop */}
-        <span className="hidden text-[11px] font-semibold uppercase tracking-[0.2em] text-[#0A0A0A]/65 md:block">
-          {label}
-        </span>
+        {/* Identificador do case (desktop) + idioma, disponível em todo case */}
+        <div className="flex items-center gap-4">
+          <span className="hidden text-[11px] font-semibold uppercase tracking-[0.2em] text-[#0A0A0A]/65 lg:block">
+            {label}
+          </span>
+          <LanguageSwitcher />
+        </div>
       </div>
     </header>
   );

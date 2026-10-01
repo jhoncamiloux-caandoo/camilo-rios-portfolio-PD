@@ -121,8 +121,6 @@ const pt = {
     skills: ["UI Design", "Creative Direction", "AI", "Motion", "Interactive Experiences", "Storytelling", "Visual Systems", "Creative Development"],
     techLabel: "Tecnologias e técnicas confirmadas",
     tech: ["SVG", "WebGL · Three.js", "GSAP ScrollTrigger", "Vídeo MP4", "WebP", "i18n PT / EN / ES", "Responsive design", "AI-assisted creation"],
-    metricsLabel: "Números do projeto",
-    metricPlaceholder: "[Adicionar métrica real]",
     statement: "Design digital pode ser mais do que uma interface. Pode guiar, explicar e envolver.",
   },
   nextCase: {
@@ -253,8 +251,6 @@ const en: ServientregaDictionary = {
     skills: ["UI Design", "Creative Direction", "AI", "Motion", "Interactive Experiences", "Storytelling", "Visual Systems", "Creative Development"],
     techLabel: "Confirmed technologies and techniques",
     tech: ["SVG", "WebGL · Three.js", "GSAP ScrollTrigger", "MP4 video", "WebP", "i18n PT / EN / ES", "Responsive design", "AI-assisted creation"],
-    metricsLabel: "Project numbers",
-    metricPlaceholder: "[Add real metric]",
     statement: "Digital design can be more than an interface. It can guide, explain, and engage.",
   },
   nextCase: {
@@ -383,8 +379,6 @@ const es: ServientregaDictionary = {
     skills: ["UI Design", "Creative Direction", "AI", "Motion", "Interactive Experiences", "Storytelling", "Visual Systems", "Creative Development"],
     techLabel: "Tecnologías y técnicas confirmadas",
     tech: ["SVG", "WebGL · Three.js", "GSAP ScrollTrigger", "Video MP4", "WebP", "i18n PT / EN / ES", "Responsive design", "AI-assisted creation"],
-    metricsLabel: "Números del proyecto",
-    metricPlaceholder: "[Agregar métrica real]",
     statement: "El diseño digital puede ser más que una interfaz. Puede guiar, explicar e involucrar.",
   },
   nextCase: {

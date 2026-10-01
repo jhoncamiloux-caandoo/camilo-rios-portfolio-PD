@@ -157,7 +157,6 @@ const pt = {
       { title: "Imagens responsivas", body: "WebP em tamanhos diferentes por tela, com carregamento sob demanda e dimensões reservadas." },
       { title: "Código enxuto", body: "Um CSS e um JS minificados para o blog inteiro, sem framework no navegador." },
     ],
-    perfPlaceholder: "[Adicionar métricas medidas de performance, ex.: Lighthouse ou Core Web Vitals]",
   },
   lp: {
     ariaLabel: "Landing page da live",
@@ -213,18 +212,12 @@ const pt = {
     ariaLabel: "Resultado",
     eyebrow: "Resultado",
     title: "Leads a R$ 8 em um mercado onde isso era difícil.",
-    description: "O custo por lead ficou em R$ 8, bem abaixo do que a operação costumava pagar para atrair esse público.",
+    description: "O custo por lead ficou em R$ 8, bem abaixo do que a operação costumava pagar para atrair esse público. Em 4 dias, 1.680 pessoas se inscreveram na live.",
     cplLabel: "Custo por lead",
     cplValue: "R$ 8",
-    cplBefore: "[Adicionar CPL de referência anterior]",
-    placeholders: [
-      { label: "Leads gerados", value: "[Adicionar quantidade real de leads]" },
-      { label: "Inscrições na live", value: "[Adicionar inscrições]" },
-      { label: "Taxa de conversão da LP", value: "[Adicionar taxa]" },
-      { label: "CTR dos anúncios", value: "[Adicionar CTR]" },
-      { label: "Tráfego do blog", value: "[Adicionar tráfego]" },
-      { label: "MQLs", value: "[Adicionar MQLs]" },
-      { label: "Oportunidades", value: "[Adicionar oportunidades]" },
+    metrics: [
+      { kind: "bars", value: "1.680", label: "inscrições na live", context: "em 4 dias de campanha" },
+      { kind: "ratio", value: "25%", label: "taxa de conversão da LP", context: "1 em cada 4 visitantes se inscreveu" },
     ],
   },
   role: {
@@ -412,7 +405,6 @@ const en: WhatsappNextDictionary = {
       { title: "Responsive images", body: "WebP in different sizes per screen, lazy loaded with reserved dimensions." },
       { title: "Lean code", body: "One minified CSS and one JS file for the whole blog, no framework in the browser." },
     ],
-    perfPlaceholder: "[Add measured performance metrics, e.g. Lighthouse or Core Web Vitals]",
   },
   lp: {
     ariaLabel: "Live landing page",
@@ -468,18 +460,12 @@ const en: WhatsappNextDictionary = {
     ariaLabel: "Result",
     eyebrow: "Result",
     title: "Leads at R$ 8 in a market where that was hard.",
-    description: "Cost per lead landed at R$ 8, well below what the operation used to pay to reach this audience.",
+    description: "Cost per lead landed at R$ 8, well below what the operation used to pay to reach this audience. In 4 days, 1,680 people signed up for the live.",
     cplLabel: "Cost per lead",
     cplValue: "R$ 8",
-    cplBefore: "[Add previous reference CPL]",
-    placeholders: [
-      { label: "Leads generated", value: "[Add real lead count]" },
-      { label: "Live sign-ups", value: "[Add sign-ups]" },
-      { label: "LP conversion rate", value: "[Add rate]" },
-      { label: "Ad CTR", value: "[Add CTR]" },
-      { label: "Blog traffic", value: "[Add traffic]" },
-      { label: "MQLs", value: "[Add MQLs]" },
-      { label: "Opportunities", value: "[Add opportunities]" },
+    metrics: [
+      { kind: "bars", value: "1,680", label: "live sign-ups", context: "in 4 days of campaign" },
+      { kind: "ratio", value: "25%", label: "LP conversion rate", context: "1 in 4 visitors signed up" },
     ],
   },
   role: {
@@ -665,7 +651,6 @@ const es: WhatsappNextDictionary = {
       { title: "Imágenes responsivas", body: "WebP en distintos tamaños por pantalla, con carga diferida y dimensiones reservadas." },
       { title: "Código liviano", body: "Un CSS y un JS minificados para todo el blog, sin framework en el navegador." },
     ],
-    perfPlaceholder: "[Agregar métricas de performance medidas, ej.: Lighthouse o Core Web Vitals]",
   },
   lp: {
     ariaLabel: "Landing page del live",
@@ -721,18 +706,12 @@ const es: WhatsappNextDictionary = {
     ariaLabel: "Resultado",
     eyebrow: "Resultado",
     title: "Leads a R$ 8 en un mercado donde eso era difícil.",
-    description: "El costo por lead quedó en R$ 8, muy por debajo de lo que la operación solía pagar para atraer a este público.",
+    description: "El costo por lead quedó en R$ 8, muy por debajo de lo que la operación solía pagar para atraer a este público. En 4 días, 1.680 personas se inscribieron al live.",
     cplLabel: "Costo por lead",
     cplValue: "R$ 8",
-    cplBefore: "[Agregar CPL de referencia anterior]",
-    placeholders: [
-      { label: "Leads generados", value: "[Agregar cantidad real de leads]" },
-      { label: "Inscripciones al live", value: "[Agregar inscripciones]" },
-      { label: "Tasa de conversión de la LP", value: "[Agregar tasa]" },
-      { label: "CTR de los anuncios", value: "[Agregar CTR]" },
-      { label: "Tráfico del blog", value: "[Agregar tráfico]" },
-      { label: "MQLs", value: "[Agregar MQLs]" },
-      { label: "Oportunidades", value: "[Agregar oportunidades]" },
+    metrics: [
+      { kind: "bars", value: "1.680", label: "inscripciones al live", context: "en 4 días de campaña" },
+      { kind: "ratio", value: "25%", label: "tasa de conversión de la LP", context: "1 de cada 4 visitantes se inscribió" },
     ],
   },
   role: {

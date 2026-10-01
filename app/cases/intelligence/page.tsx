@@ -16,7 +16,7 @@ export default function CaseIntelligencePage() {
   const c = t.intelligence.nextCase;
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-white text-[#0A0A0A]">
+    <div className="relative min-h-screen overflow-x-clip bg-white text-[#0A0A0A]">
       <CaseHeader label="Clint · Intelligence" />
       <Ch01Hero />
       <Ch02Problem />

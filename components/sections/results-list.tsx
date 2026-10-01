@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { BarChart3, TrendingUp, Zap, ShieldCheck } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import { BarChart3, TrendingUp, Zap, ShieldCheck, Plus, MousePointerClick } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -29,9 +29,33 @@ export function ResultsList() {
     icon: resultIcons[i],
   }));
   const [selected, setSelected] = useState<Result | null>(null);
+  const reduce = useReducedMotion();
+  // Pulso de descoberta: só na primeira visita, só no primeiro card, e para depois do primeiro clique.
+  const [hinted, setHinted] = useState(true);
+  useEffect(() => {
+    try {
+      setHinted(localStorage.getItem("results-hint-seen") === "1");
+    } catch {
+      setHinted(false);
+    }
+  }, []);
+  const open = (item: Result) => {
+    setSelected(item);
+    if (!hinted) {
+      setHinted(true);
+      try {
+        localStorage.setItem("results-hint-seen", "1");
+      } catch {}
+    }
+  };
 
   return (
     <>
+      <p className="mb-2.5 flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-[#45506f]">
+        <MousePointerClick className="h-3.5 w-3.5" aria-hidden="true" />
+        <span className="hidden [@media(hover:hover)]:inline">{t.home.resultsList.hint}</span>
+        <span className="[@media(hover:hover)]:hidden">{t.home.resultsList.hintTouch}</span>
+      </p>
       <ul className="flex flex-col gap-3">
         {results.map((item, i) => {
           const Icon = item.icon;
@@ -48,8 +72,8 @@ export function ResultsList() {
             >
               <button
                 type="button"
-                onClick={() => setSelected(item)}
-                className="group flex w-full items-center gap-3 rounded-xl border border-[#45506f]/12 bg-white/50 px-4 py-3 text-left backdrop-blur-sm transition-all duration-300 hover:border-primary/30 hover:bg-white/80 hover:shadow-[0_8px_24px_-8px_rgba(98,47,253,0.18)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+                onClick={() => open(item)}
+                className="group flex w-full items-center gap-3 rounded-xl border border-[#45506f]/12 bg-white/50 px-4 py-3 text-left backdrop-blur-sm transition-all duration-300 hover:translate-x-1 hover:border-primary/30 hover:bg-white/80 hover:shadow-[0_8px_24px_-8px_rgba(98,47,253,0.18)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
                 aria-label={`${t.home.resultsList.detailsAriaPrefix}: ${item.title}`}
               >
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#45506f]/20 bg-[#393950]/08 text-[#45506f] transition-colors duration-300 group-hover:border-primary/30 group-hover:text-primary">
@@ -63,6 +87,14 @@ export function ResultsList() {
                   <span className="truncate text-sm text-[#6b6b70]">
                     {item.title}
                   </span>
+                </span>
+
+                {/* (+) sinaliza que abre mais contexto; gira para × no hover */}
+                <span className="relative ml-auto flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#45506f]/20 bg-white text-[#45506f] transition-all duration-300 group-hover:rotate-90 group-hover:border-primary group-hover:bg-primary group-hover:text-white group-focus-visible:border-primary">
+                  {i === 0 && !hinted && !reduce && (
+                    <span aria-hidden="true" className="absolute inset-0 animate-[ping_1.4s_ease-out_2] rounded-full bg-primary/40" />
+                  )}
+                  <Plus className="relative h-3.5 w-3.5" strokeWidth={2.4} aria-hidden="true" />
                 </span>
               </button>
             </motion.li>
