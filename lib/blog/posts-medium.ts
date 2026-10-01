@@ -3913,6 +3913,11 @@ export const mediumPosts: Post[] = [
     "text": "E os testes podem ajudar a descobrir se a solução realmente funciona."
    },
    {
+    "type": "visual",
+    "id": "what-and-why",
+    "caption": "Dados mostram onde investigar, pesquisa explica o porquê e o teste mostra se a solução funciona."
+   },
+   {
     "type": "h2",
     "text": "O designer também precisa entender o negócio"
    },
@@ -4531,6 +4536,11 @@ export const mediumPosts: Post[] = [
     "text": "Ele passa a ser uma linguagem compartilhada entre design e desenvolvimento."
    },
    {
+    "type": "visual",
+    "id": "token-bridge",
+    "caption": "Quando Figma e código usam os mesmos tokens, o Design System vira linguagem compartilhada."
+   },
+   {
     "type": "h2",
     "text": "E onde entra a IA?"
    },
@@ -4886,33 +4896,8 @@ export const mediumPosts: Post[] = [
    },
    {
     "type": "visual",
-    "data": {
-     "kind": "lanes",
-     "lanes": [
-      {
-       "title": "Começando pelo dado",
-       "steps": [
-        "Coletar tudo",
-        "Dashboard",
-        "E agora?"
-       ]
-      },
-      {
-       "title": "Começando pela decisão",
-       "steps": [
-        "Qual decisão?",
-        "Que dado ajuda?",
-        "Medir",
-        "Decidir"
-       ],
-       "highlight": [
-        0,
-        3
-       ]
-      }
-     ]
-    },
-    "caption": "A pergunta certa vem antes do dashboard."
+    "id": "decision-first",
+    "caption": "Uma pergunta transforma um painel cheio nas poucas métricas que levam a uma decisão."
    },
    {
     "type": "p",
@@ -5813,6 +5798,11 @@ export const mediumPosts: Post[] = [
    {
     "type": "p",
     "text": "Também é importante perceber o que não se encaixa."
+   },
+   {
+    "type": "visual",
+    "id": "ninth-person",
+    "caption": "O resumo agrupa quem é igual. Quem não se encaixa pode revelar a próxima pergunta de design."
    },
    {
     "type": "h2",
@@ -7083,30 +7073,8 @@ export const mediumPosts: Post[] = [
    },
    {
     "type": "visual",
-    "data": {
-     "kind": "levels",
-     "items": [
-      {
-       "level": "Baixo impacto",
-       "example": "Organizar, resumir, sugerir",
-       "control": "Pode agir e avisar",
-       "icon": "bot"
-      },
-      {
-       "level": "Médio impacto",
-       "example": "Enviar mensagem, mover um card",
-       "control": "Mostrar antes e permitir desfazer",
-       "icon": "undo"
-      },
-      {
-       "level": "Alto impacto",
-       "example": "Comprar, cancelar, apagar",
-       "control": "Pedir aprovação explícita",
-       "icon": "hand"
-      }
-     ]
-    },
-    "caption": "Quanto maior o impacto, mais controle a pessoa precisa ter."
+    "id": "autonomy-meter",
+    "caption": "Quanto maior o impacto da ação, mais controle a interface precisa dar antes de a IA agir."
    },
    {
     "type": "p",
@@ -8816,35 +8784,8 @@ export const mediumPosts: Post[] = [
    },
    {
     "type": "visual",
-    "data": {
-     "kind": "gate",
-     "input": "Interface gerada por IA",
-     "checks": [
-      {
-       "label": "Usuário",
-       "icon": "user"
-      },
-      {
-       "label": "Problema",
-       "icon": "target"
-      },
-      {
-       "label": "Evidência",
-       "icon": "file"
-      },
-      {
-       "label": "Acessibilidade",
-       "icon": "accessibility"
-      },
-      {
-       "label": "Negócio",
-       "icon": "briefcase"
-      }
-     ],
-     "pass": "Segue para teste",
-     "fail": "Volta para iteração"
-    },
-    "caption": "O olhar crítico funciona como filtro antes da decisão."
+    "id": "critique-filter",
+    "caption": "Gerar ficou barato. O valor está nas perguntas que decidem o que segue."
    },
    {
     "type": "ul",
@@ -9678,26 +9619,8 @@ export const mediumPosts: Post[] = [
    },
    {
     "type": "visual",
-    "data": {
-     "kind": "compare",
-     "left": {
-      "title": "Só a média",
-      "icon": "chart",
-      "items": [
-       "Esconde quem está sofrendo",
-       "Parece estável"
-      ]
-     },
-     "right": {
-      "title": "Segmentado",
-      "icon": "users",
-      "items": [
-       "Mostra grupos diferentes",
-       "Revela onde agir"
-      ]
-     }
-    },
-    "caption": "A média pode contar uma história que ninguém viveu."
+    "id": "average-trap",
+    "caption": "A média de 5% parece estável. Segmentada, mostra onde a conversão está sofrendo."
    },
    {
     "type": "p",
