@@ -69,6 +69,16 @@ export type HomeDictionary = {
       stats: [string, string, string];
     }[];
   };
+  aiProcess: {
+    eyebrow: string;
+    title: string;
+    message: string;
+    legendAi: string;
+    legendMe: string;
+    steps: { title: string; body: string }[];
+    proofTitle: string;
+    proofs: { case: string; body: string }[];
+  };
   process: {
     eyebrow: string;
     title: string;
@@ -293,6 +303,31 @@ export const home: Record<Locale, HomeDictionary> = {
           body: "Transformar a jornada de uma encomenda em narrativa interativa, com scroll, WebGL e direção de arte apoiada por IA.",
           stats: ["etapas", "cena WebGL", "idiomas"],
         },
+      ],
+    },
+    aiProcess: {
+      eyebrow: "IA no meu processo",
+      title: "A IA amplia, a decisão é minha.",
+      message: "A IA amplia minha capacidade de explorar possibilidades, criar alternativas e acelerar a prototipagem. Ela não substitui o processo de design: curadoria, direção e validação continuam sendo minhas.",
+      legendAi: "IA ajuda",
+      legendMe: "Eu decido",
+      steps: [
+        { title: "Research", body: "Pesquisa de mercado, síntese de entrevistas e leitura de dados." },
+        { title: "Exploration", body: "Mais caminhos possíveis em menos tempo." },
+        { title: "Ideation", body: "Variações de conceito, copy e estrutura." },
+        { title: "Generation", body: "Imagens, layouts e rascunhos de interface." },
+        { title: "Curation", body: "Escolho o que faz sentido para o usuário e o negócio." },
+        { title: "Art Direction", body: "Defino linguagem visual, tom e consistência." },
+        { title: "Prototype", body: "Protótipos navegáveis e interativos mais rápido." },
+        { title: "Build", body: "Do protótipo para código real." },
+        { title: "Test", body: "Testo com pessoas e dados reais." },
+        { title: "Product", body: "O que vai para o ar tem critério, não só velocidade." },
+      ],
+      proofTitle: "Onde isso aparece nos cases",
+      proofs: [
+        { case: "Servientrega", body: "Direção de arte apoiada por IA em uma experiência com scroll e WebGL." },
+        { case: "Clint Intelligence", body: "Desenho do comportamento de agentes de IA dentro do CRM." },
+        { case: "Clint Scale", body: "Componentes de IA dentro do design system." },
       ],
     },
     process: {
@@ -623,6 +658,31 @@ export const home: Record<Locale, HomeDictionary> = {
         },
       ],
     },
+    aiProcess: {
+      eyebrow: "AI in my design process",
+      title: "AI expands, I decide.",
+      message: "AI expands my ability to explore possibilities, create alternatives and speed up prototyping. It does not replace the design process: curation, direction and validation are still mine.",
+      legendAi: "AI helps",
+      legendMe: "I decide",
+      steps: [
+        { title: "Research", body: "Market research, interview synthesis and data reading." },
+        { title: "Exploration", body: "More possible paths in less time." },
+        { title: "Ideation", body: "Variations of concept, copy and structure." },
+        { title: "Generation", body: "Images, layouts and interface drafts." },
+        { title: "Curation", body: "I pick what makes sense for users and the business." },
+        { title: "Art Direction", body: "I set visual language, tone and consistency." },
+        { title: "Prototype", body: "Clickable, interactive prototypes, faster." },
+        { title: "Build", body: "From prototype to real code." },
+        { title: "Test", body: "I test with real people and real data." },
+        { title: "Product", body: "What ships has judgment behind it, not just speed." },
+      ],
+      proofTitle: "Where it shows up in the cases",
+      proofs: [
+        { case: "Servientrega", body: "AI-assisted art direction in a scroll and WebGL experience." },
+        { case: "Clint Intelligence", body: "Designing how AI agents behave inside the CRM." },
+        { case: "Clint Scale", body: "AI components inside the design system." },
+      ],
+    },
     process: {
       eyebrow: "How I work",
       title: "From context to measured impact.",
@@ -949,6 +1009,31 @@ export const home: Record<Locale, HomeDictionary> = {
           body: "Convertir el recorrido de un envío en una narrativa interactiva, con scroll, WebGL y dirección de arte apoyada por IA.",
           stats: ["etapas", "escena WebGL", "idiomas"],
         },
+      ],
+    },
+    aiProcess: {
+      eyebrow: "IA en mi proceso",
+      title: "La IA amplía, la decisión es mía.",
+      message: "La IA amplía mi capacidad de explorar posibilidades, crear alternativas y acelerar el prototipado. No reemplaza el proceso de diseño: curaduría, dirección y validación siguen siendo mías.",
+      legendAi: "La IA ayuda",
+      legendMe: "Yo decido",
+      steps: [
+        { title: "Research", body: "Investigación de mercado, síntesis de entrevistas y lectura de datos." },
+        { title: "Exploration", body: "Más caminos posibles en menos tiempo." },
+        { title: "Ideation", body: "Variaciones de concepto, copy y estructura." },
+        { title: "Generation", body: "Imágenes, layouts y bocetos de interfaz." },
+        { title: "Curation", body: "Elijo lo que tiene sentido para el usuario y el negocio." },
+        { title: "Art Direction", body: "Defino lenguaje visual, tono y consistencia." },
+        { title: "Prototype", body: "Prototipos navegables e interactivos más rápido." },
+        { title: "Build", body: "Del prototipo a código real." },
+        { title: "Test", body: "Pruebo con personas y datos reales." },
+        { title: "Product", body: "Lo que sale al aire tiene criterio, no solo velocidad." },
+      ],
+      proofTitle: "Dónde aparece en los cases",
+      proofs: [
+        { case: "Servientrega", body: "Dirección de arte apoyada por IA en una experiencia con scroll y WebGL." },
+        { case: "Clint Intelligence", body: "Diseño del comportamiento de agentes de IA dentro del CRM." },
+        { case: "Clint Scale", body: "Componentes de IA dentro del design system." },
       ],
     },
     process: {
