@@ -9,6 +9,10 @@ import {
   mediumArticles,
   mediumCoverUrl,
 } from "@/lib/medium-articles";
+import { posts } from "@/lib/blog/posts";
+
+// Artigos já publicados no blog próprio abrem no site; os demais, no Medium.
+const onSite = (mediumSlug: string) => posts.find((p) => p.mediumUrl.endsWith(mediumSlug));
 import { useLocale } from "@/lib/i18n/locale-context";
 
 const DRAG_THRESHOLD = 6;
@@ -123,13 +127,14 @@ export function Blog() {
                 : "cursor-grab snap-mandatory scroll-smooth"
             }`}
           >
-            {mediumArticles.map((article) => (
+            {mediumArticles.map((article) => {
+              const own = onSite(article.slug);
+              return (
               <a
                 key={article.slug}
                 data-card
-                href={mediumArticleUrl(article.slug)}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={own ? `/blog/${own.slug}` : mediumArticleUrl(article.slug)}
+                {...(own ? {} : { target: "_blank", rel: "noopener noreferrer" })}
                 className="group relative flex w-[260px] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-black/[0.06] bg-[#0A0A0A] transition-shadow duration-300 hover:shadow-[0_16px_40px_-12px_rgba(10,10,10,0.35)] sm:w-[300px]"
               >
                 <div className="aspect-[4/3] w-full overflow-hidden bg-black/20">
@@ -152,7 +157,8 @@ export function Blog() {
                   </span>
                 </div>
               </a>
-            ))}
+              );
+            })}
           </div>
 
           {/* Setas */}
