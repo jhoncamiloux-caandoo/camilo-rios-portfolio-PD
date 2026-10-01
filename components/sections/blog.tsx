@@ -7,8 +7,14 @@ import { CATEGORIES, posts } from "@/lib/blog/posts";
 import { CoverArt } from "@/components/blog/visuals-kit";
 
 // Os 10 artigos mais recentes do blog próprio; "ver todos" leva a /blog.
-// Por enquanto a home mostra só os artigos com capa do Medium.
-const latest = posts.filter((p) => p.cover && !p.coverArt).sort((a, b) => b.date.localeCompare(a.date)).slice(0, 10);
+// Home mostra só artigos com capa ilustrada.
+// Destaques fixos primeiro; o restante segue por data.
+const FEATURED = ["12-metricas-de-ux", "acessibilidade-digital-melhora-a-experiencia-de-todos", "design-alem-do-design-produto-growth-negocio", "ia-acelera-mas-ate-que-ponto", "design-systems-como-criar-e-manter"];
+const withCover = posts.filter((p) => p.cover && !p.coverArt);
+const latest = [
+  ...FEATURED.map((s) => withCover.find((p) => p.slug === s)).filter((p): p is (typeof posts)[number] => !!p),
+  ...withCover.filter((p) => !FEATURED.includes(p.slug)).sort((a, b) => b.date.localeCompare(a.date)),
+].slice(0, 10);
 import { useLocale } from "@/lib/i18n/locale-context";
 
 const DRAG_THRESHOLD = 6;
