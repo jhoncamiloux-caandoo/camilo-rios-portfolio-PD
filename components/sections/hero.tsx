@@ -1,5 +1,6 @@
 "use client";
 
+import { RESUME_URL } from "@/lib/links";
 import { Header } from "@/components/header";
 import { FadeIn } from "@/components/motion/fade-in";
 import { HeroCanvas } from "@/components/sections/hero-canvas";
@@ -46,12 +47,12 @@ export function Hero() {
               <div className="flex flex-col gap-3 md:gap-6">
                 <FadeIn immediate delay={0.06}>
                   {/* Mobile: 30px — compacto, não vaza sobre o rosto */}
-                  <h1 className="font-display text-[30px] font-semibold leading-[1.08] tracking-[-0.01em] text-[#262628] sm:text-[36px] md:text-[56px]">
+                  <h1 className="font-display text-[30px] font-semibold leading-[1.08] tracking-[-0.01em] text-[#262628] sm:text-[36px] md:text-[40px] lg:text-[46px]">
                     {t.home.hero.title}
                   </h1>
                 </FadeIn>
                 <FadeIn immediate delay={0.12}>
-                  <p className="text-sm text-[#6b6b70] md:text-body">
+                  <p className="max-w-md text-sm text-[#6b6b70] md:text-body">
                     {t.home.hero.subtitle}
                   </p>
                 </FadeIn>
@@ -62,19 +63,27 @@ export function Hero() {
                 <div className="flex items-center gap-3">
                   <a
                     href="#cases"
-                    className="inline-flex h-[42px] items-center gap-1 rounded-full border border-white/50 bg-[#9f77d6]/30 px-5 text-sm font-semibold text-[#1f073f] backdrop-blur-md transition hover:bg-[#9f77d6]/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary md:h-[52px] md:px-6 md:text-base"
+                    className="inline-flex h-[42px] shrink-0 items-center gap-1 whitespace-nowrap rounded-full border border-white/50 bg-[#9f77d6]/30 px-4 text-sm font-semibold text-[#1f073f] backdrop-blur-md transition hover:bg-[#9f77d6]/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary md:h-[52px] md:px-6 md:text-base"
                   >
                     {t.home.hero.ctaCases}
                     <Caret />
                   </a>
                   <a
-                    href="#trajetoria"
-                    className="inline-flex h-[42px] items-center gap-1 rounded-full border border-black/10 bg-white/40 px-5 text-sm font-semibold text-[#1c1c1c] backdrop-blur-md transition hover:bg-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary md:h-[52px] md:px-6 md:text-base"
+                    href="#contato"
+                    className="inline-flex h-[42px] shrink-0 items-center gap-1 whitespace-nowrap rounded-full border border-black/10 bg-white/40 px-4 text-sm font-semibold text-[#1c1c1c] backdrop-blur-md transition hover:bg-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary md:h-[52px] md:px-6 md:text-base"
                   >
-                    {/* Texto curto no mobile */}
+                    {t.home.hero.ctaContact}
+                    <Caret />
+                  </a>
+                </div>
+                <div className="mt-4 flex items-center gap-4 font-sans text-sm text-[#3a3a3d]">
+                  <a href={RESUME_URL} target="_blank" rel="noopener noreferrer" className="underline decoration-black/20 underline-offset-4 transition hover:decoration-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+                    {t.home.hero.ctaResume}
+                  </a>
+                  <span aria-hidden="true" className="text-black/25">·</span>
+                  <a href="#trajetoria" className="underline decoration-black/20 underline-offset-4 transition hover:decoration-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
                     <span className="md:hidden">{t.home.hero.ctaJourneyShort}</span>
                     <span className="hidden md:inline">{t.home.hero.ctaJourneyFull}</span>
-                    <Caret />
                   </a>
                 </div>
               </FadeIn>

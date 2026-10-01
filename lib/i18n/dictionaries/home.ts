@@ -20,6 +20,8 @@ export type HomeDictionary = {
     ctaCases: string;
     ctaJourneyShort: string;
     ctaJourneyFull: string;
+    ctaContact: string;
+    ctaResume: string;
   };
   resultsList: {
     items: { metric: string; title: string; desc: string }[];
@@ -156,10 +158,12 @@ export const home: Record<Locale, HomeDictionary> = {
       menuCloseAria: "Fechar menu",
     },
     hero: {
-      eyebrow: "Senior Product Designer",
-      title: "Produtos digitais construídos para gerar crescimento.",
-      subtitle: "10 anos conectando produto, dados e comportamento humano.",
-      ctaCases: "Ver Cases",
+      eyebrow: "Product Designer · UX, Growth & AI",
+      title: "Desenho produtos que as pessoas entendem e que o negócio consegue medir.",
+      subtitle: "10 anos unindo pesquisa, interface, dados e IA para transformar problemas complexos em experiências simples.",
+      ctaCases: "Ver projetos",
+      ctaContact: "Entrar em contato",
+      ctaResume: "Currículo",
       ctaJourneyShort: "Trajetória",
       ctaJourneyFull: "Conhecer Minha Trajetória",
     },
@@ -487,10 +491,12 @@ export const home: Record<Locale, HomeDictionary> = {
       menuCloseAria: "Close menu",
     },
     hero: {
-      eyebrow: "Senior Product Designer",
-      title: "Digital products built to drive growth.",
-      subtitle: "10 years connecting product, data, and human behavior.",
-      ctaCases: "View Cases",
+      eyebrow: "Product Designer · UX, Growth & AI",
+      title: "I design products people understand and businesses can measure.",
+      subtitle: "10 years bringing research, interface, data and AI together to turn complex problems into simple experiences.",
+      ctaCases: "View projects",
+      ctaContact: "Get in touch",
+      ctaResume: "Resume",
       ctaJourneyShort: "Journey",
       ctaJourneyFull: "See My Journey",
     },
@@ -818,10 +824,12 @@ export const home: Record<Locale, HomeDictionary> = {
       menuCloseAria: "Cerrar menú",
     },
     hero: {
-      eyebrow: "Senior Product Designer",
-      title: "Productos digitales construidos para generar crecimiento.",
-      subtitle: "10 años conectando producto, datos y comportamiento humano.",
-      ctaCases: "Ver Cases",
+      eyebrow: "Product Designer · UX, Growth & AI",
+      title: "Diseño productos que las personas entienden y que el negocio puede medir.",
+      subtitle: "10 años uniendo investigación, interfaz, datos e IA para convertir problemas complejos en experiencias simples.",
+      ctaCases: "Ver proyectos",
+      ctaContact: "Hablemos",
+      ctaResume: "Currículum",
       ctaJourneyShort: "Trayectoria",
       ctaJourneyFull: "Conocer Mi Trayectoria",
     },
