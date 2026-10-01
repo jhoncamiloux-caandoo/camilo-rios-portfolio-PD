@@ -5198,15 +5198,6 @@ export const mediumPosts: Post[] = [
    "UI",
    "Crítica de design"
   ],
-  "coverArt": {
-   "icons": [
-    "sparkles",
-    "eye",
-    "filter",
-    "users",
-    "checkCircle"
-   ]
-  },
   "readMinutes": 4,
   "related": {
    "href": "/cases/scale",
@@ -5659,7 +5650,8 @@ export const mediumPosts: Post[] = [
     "type": "quote",
     "text": "saber olhar para uma solução e explicar por que ela deveria existir."
    }
-  ]
+  ],
+  "cover": "/blog/ia-cria-interface-quem-decide-se-e-boa.webp"
  },
  {
   "slug": "pesquisa-com-usuarios-na-era-da-ia",
@@ -6212,15 +6204,6 @@ export const mediumPosts: Post[] = [
    "Agentes",
    "Arquitetura"
   ],
-  "coverArt": {
-   "icons": [
-    "brain",
-    "workflow",
-    "bot",
-    "shieldCheck",
-    "user"
-   ]
-  },
   "readMinutes": 5,
   "related": {
    "href": "/cases/intelligence",
@@ -6912,7 +6895,8 @@ export const mediumPosts: Post[] = [
     "type": "p",
     "text": "E alguém precisa garantir que a tecnologia continue fazendo sentido para as pessoas."
    }
-  ]
+  ],
+  "cover": "/blog/contexto-novo-material-do-design.webp"
  },
  {
   "slug": "quando-a-ia-age-desenhar-controle",
