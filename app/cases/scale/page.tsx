@@ -3,9 +3,10 @@
 import { CaseHeader } from "@/components/case-lp/case-header";
 import { NextCase } from "@/components/case-lp/next-case";
 import { CaseFooter } from "@/components/case-lp/case-footer";
-import { Ch01Hero } from "@/components/cases/scale/ch-01-hero";
-import { Ch02Problem } from "@/components/cases/scale/ch-02-problem";
-import { Ch03Architecture } from "@/components/cases/scale/ch-03-architecture";
+import { ScHero } from "@/components/cases/scale/lab/sc-hero";
+import { ScBeforeAfter } from "@/components/cases/scale/lab/sc-before-after";
+import { ScTokenArch } from "@/components/cases/scale/lab/sc-token-arch";
+import { ScSystemInterface } from "@/components/cases/scale/lab/sc-system-interface";
 import { Ch04Tokens } from "@/components/cases/scale/ch-04-tokens";
 import { Ch04bTokenLayers } from "@/components/cases/scale/ch-04b-token-layers";
 import { Ch05bPlayground } from "@/components/cases/scale/ch-05b-playground";
@@ -22,11 +23,13 @@ export default function CaseScalePage() {
   const nextCase = t.scale.nextCase;
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-white text-[#0A0A0A]">
+    <div className="relative min-h-screen overflow-x-clip bg-white text-[#0A0A0A]">
       <CaseHeader label="Clint · Scale" />
-      <Ch01Hero />
-      <Ch02Problem />
-      <Ch03Architecture />
+      {/* Etapa A do Scale reconstruído: capítulos 1 a 4 */}
+      <ScHero />
+      <ScBeforeAfter />
+      <ScTokenArch />
+      <ScSystemInterface />
       <Ch04Tokens />
       <Ch04bTokenLayers />
       <Ch05Components />
