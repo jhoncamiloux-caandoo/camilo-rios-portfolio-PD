@@ -1,7 +1,7 @@
 import type { Locale } from "@/lib/i18n/types";
 
 /* Textos do Scale reconstruído (capítulos interativos). */
-export type ScaleLabDictionary = {
+export type ScaleLabDictionary = ScaleLabB & {
   hero: {
     ariaLabel: string;
     eyebrow: string;
@@ -69,8 +69,79 @@ export type ScaleLabDictionary = {
   };
 };
 
+export type ScaleLabB = {
+  lab: {
+    ariaLabel: string;
+    eyebrow: string;
+    title: string;
+    description: string;
+    tabs: { components: string; spacing: string; anatomy: string };
+    categories: { actions: string; forms: string; navigation: string; feedback: string; data: string };
+    aiNote: string;
+    spacing: { title: string; body: string; hint: string; cardTitle: string; cardBody: string; cta: string; padding: string; conclusion: string };
+    anatomy: { hint: string; parts: Record<"icon" | "label" | "padding" | "radius" | "type" | "focus", { name: string; token: string; note: string }>; button: string; conclusion: string };
+  };
+  a11y: {
+    ariaLabel: string;
+    eyebrow: string;
+    title: string;
+    description: string;
+    realLabel: string;
+    checkerLabel: string;
+    fgLabel: string;
+    bgLabel: string;
+    sample: string;
+    normal: string;
+    large: string;
+    pass: string;
+    fail: string;
+    message: string;
+    note: string;
+  };
+};
+
 export const scaleLab: Record<Locale, ScaleLabDictionary> = {
   pt: {
+    lab: {
+      ariaLabel: "System Lab: componentes, espaçamento e anatomia",
+      eyebrow: "System Lab",
+      title: "Explore as peças do sistema.",
+      description: "Componentes vivos em todos os estados, o espaçamento medido e a anatomia de um botão. Escolha uma aba.",
+      tabs: { components: "Componentes", spacing: "Espaçamento", anatomy: "Anatomia" },
+      categories: { actions: "Actions", forms: "Forms", navigation: "Navigation", feedback: "Feedback", data: "Data display" },
+      aiNote: "Os componentes de IA têm um capítulo próprio, mais abaixo.",
+      spacing: { title: "Uma escala, não um palpite.", body: "Cada distância vem da mesma escala de 4 em 4. Escolha um valor e veja onde ele aparece no card.", hint: "Escolha um token de espaço", cardTitle: "Agente de Pré-vendas", cardBody: "Qualifica leads no WhatsApp e agenda a reunião com o vendedor.", cta: "Criar agente", padding: "padding", conclusion: "O mesmo valor, nos mesmos lugares, em todas as telas." },
+      anatomy: {
+        hint: "Clique em uma parte para ver o token",
+        button: "Criar agente",
+        parts: {
+          icon: { name: "Icon", token: "icon.size.md · 16px", note: "Tamanho fixo, alinhado ao centro da linha de texto." },
+          label: { name: "Label", token: "button.primary.fg", note: "Texto sobre o accent: 6.28:1, passa AA." },
+          padding: { name: "Padding", token: "space.4 · space.6", note: "16px na vertical, 24px na horizontal." },
+          radius: { name: "Radius", token: "radius.full", note: "Pílula: o CTA principal sempre tem a mesma forma." },
+          type: { name: "Typography", token: "font.label.md · 600", note: "Peso 600 para ação, nunca o mesmo do corpo de texto." },
+          focus: { name: "Focus", token: "focus.ring · accent.text", note: "Anel visível no teclado, com espaço entre o botão e o anel." },
+        },
+        conclusion: "Um botão é um conjunto de decisões. O sistema guarda todas elas.",
+      },
+    },
+    a11y: {
+      ariaLabel: "Acessibilidade no sistema",
+      eyebrow: "Acessibilidade",
+      title: "Acessibilidade faz parte do sistema.",
+      description: "O contraste é calculado a partir dos tokens, não conferido no fim. Estes são os pares reais do Scale.",
+      realLabel: "Pares reais do sistema",
+      checkerLabel: "Teste qualquer par",
+      fgLabel: "Texto (foreground)",
+      bgLabel: "Fundo (background)",
+      sample: "Qualificar lead",
+      normal: "Texto normal",
+      large: "Texto grande",
+      pass: "passa",
+      fail: "reprova",
+      message: "Cor da marca não é automaticamente cor de texto.",
+      note: "Cálculo WCAG 2.x feito ao vivo: AA pede 4.5:1 para texto normal e 3:1 para texto grande; AAA pede 7:1.",
+    },
     hero: {
       ariaLabel: "Apresentação do case Scale",
       eyebrow: "03 · Scale Design System · Clint",
@@ -152,6 +223,46 @@ export const scaleLab: Record<Locale, ScaleLabDictionary> = {
     },
   },
   en: {
+    lab: {
+      ariaLabel: "System Lab: components, spacing and anatomy",
+      eyebrow: "System Lab",
+      title: "Explore the pieces of the system.",
+      description: "Live components in every state, measured spacing and the anatomy of a button. Pick a tab.",
+      tabs: { components: "Components", spacing: "Spacing", anatomy: "Anatomy" },
+      categories: { actions: "Actions", forms: "Forms", navigation: "Navigation", feedback: "Feedback", data: "Data display" },
+      aiNote: "AI components have their own chapter, further down.",
+      spacing: { title: "A scale, not a guess.", body: "Every distance comes from the same 4-step scale. Pick a value and see where it shows up in the card.", hint: "Pick a space token", cardTitle: "Pre-sales agent", cardBody: "Qualifies leads on WhatsApp and books the meeting with the sales rep.", cta: "Create agent", padding: "padding", conclusion: "The same value, in the same places, on every screen." },
+      anatomy: {
+        hint: "Click a part to see its token",
+        button: "Create agent",
+        parts: {
+          icon: { name: "Icon", token: "icon.size.md · 16px", note: "Fixed size, centered on the text line." },
+          label: { name: "Label", token: "button.primary.fg", note: "Text on accent: 6.28:1, passes AA." },
+          padding: { name: "Padding", token: "space.4 · space.6", note: "16px vertical, 24px horizontal." },
+          radius: { name: "Radius", token: "radius.full", note: "Pill: the main CTA always has the same shape." },
+          type: { name: "Typography", token: "font.label.md · 600", note: "Weight 600 for actions, never the same as body text." },
+          focus: { name: "Focus", token: "focus.ring · accent.text", note: "Visible ring on keyboard, with space between button and ring." },
+        },
+        conclusion: "A button is a set of decisions. The system keeps all of them.",
+      },
+    },
+    a11y: {
+      ariaLabel: "Accessibility in the system",
+      eyebrow: "Accessibility",
+      title: "Accessibility is part of the system.",
+      description: "Contrast is calculated from the tokens, not checked at the end. These are the real Scale pairs.",
+      realLabel: "Real system pairs",
+      checkerLabel: "Test any pair",
+      fgLabel: "Text (foreground)",
+      bgLabel: "Background",
+      sample: "Qualify lead",
+      normal: "Normal text",
+      large: "Large text",
+      pass: "pass",
+      fail: "fail",
+      message: "Brand color is not automatically text color.",
+      note: "Live WCAG 2.x calculation: AA requires 4.5:1 for normal text and 3:1 for large text; AAA requires 7:1.",
+    },
     hero: {
       ariaLabel: "Scale case introduction",
       eyebrow: "03 · Scale Design System · Clint",
@@ -233,6 +344,46 @@ export const scaleLab: Record<Locale, ScaleLabDictionary> = {
     },
   },
   es: {
+    lab: {
+      ariaLabel: "System Lab: componentes, espaciado y anatomía",
+      eyebrow: "System Lab",
+      title: "Explora las piezas del sistema.",
+      description: "Componentes vivos en todos los estados, el espaciado medido y la anatomía de un botón. Elige una pestaña.",
+      tabs: { components: "Componentes", spacing: "Espaciado", anatomy: "Anatomía" },
+      categories: { actions: "Actions", forms: "Forms", navigation: "Navigation", feedback: "Feedback", data: "Data display" },
+      aiNote: "Los componentes de IA tienen su propio capítulo, más abajo.",
+      spacing: { title: "Una escala, no una suposición.", body: "Cada distancia viene de la misma escala de 4 en 4. Elige un valor y mira dónde aparece en el card.", hint: "Elige un token de espacio", cardTitle: "Agente de Preventa", cardBody: "Califica leads en WhatsApp y agenda la reunión con el vendedor.", cta: "Crear agente", padding: "padding", conclusion: "El mismo valor, en los mismos lugares, en todas las pantallas." },
+      anatomy: {
+        hint: "Haz clic en una parte para ver el token",
+        button: "Crear agente",
+        parts: {
+          icon: { name: "Icon", token: "icon.size.md · 16px", note: "Tamaño fijo, alineado al centro de la línea de texto." },
+          label: { name: "Label", token: "button.primary.fg", note: "Texto sobre el accent: 6.28:1, pasa AA." },
+          padding: { name: "Padding", token: "space.4 · space.6", note: "16px en vertical, 24px en horizontal." },
+          radius: { name: "Radius", token: "radius.full", note: "Píldora: el CTA principal siempre tiene la misma forma." },
+          type: { name: "Typography", token: "font.label.md · 600", note: "Peso 600 para acción, nunca el mismo del texto." },
+          focus: { name: "Focus", token: "focus.ring · accent.text", note: "Anillo visible con teclado, con espacio entre el botón y el anillo." },
+        },
+        conclusion: "Un botón es un conjunto de decisiones. El sistema las guarda todas.",
+      },
+    },
+    a11y: {
+      ariaLabel: "Accesibilidad en el sistema",
+      eyebrow: "Accesibilidad",
+      title: "La accesibilidad es parte del sistema.",
+      description: "El contraste se calcula a partir de los tokens, no se revisa al final. Estos son los pares reales de Scale.",
+      realLabel: "Pares reales del sistema",
+      checkerLabel: "Prueba cualquier par",
+      fgLabel: "Texto (foreground)",
+      bgLabel: "Fondo (background)",
+      sample: "Calificar lead",
+      normal: "Texto normal",
+      large: "Texto grande",
+      pass: "pasa",
+      fail: "no pasa",
+      message: "El color de marca no es automáticamente color de texto.",
+      note: "Cálculo WCAG 2.x en vivo: AA pide 4.5:1 para texto normal y 3:1 para texto grande; AAA pide 7:1.",
+    },
     hero: {
       ariaLabel: "Presentación del case Scale",
       eyebrow: "03 · Scale Design System · Clint",

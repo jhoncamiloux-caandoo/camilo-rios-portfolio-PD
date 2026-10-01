@@ -7,9 +7,9 @@ import { ScHero } from "@/components/cases/scale/lab/sc-hero";
 import { ScBeforeAfter } from "@/components/cases/scale/lab/sc-before-after";
 import { ScTokenArch } from "@/components/cases/scale/lab/sc-token-arch";
 import { ScSystemInterface } from "@/components/cases/scale/lab/sc-system-interface";
+import { ScSystemLab } from "@/components/cases/scale/lab/sc-system-lab";
+import { ScA11y } from "@/components/cases/scale/lab/sc-a11y";
 import { Ch04Tokens } from "@/components/cases/scale/ch-04-tokens";
-import { Ch04bTokenLayers } from "@/components/cases/scale/ch-04b-token-layers";
-import { Ch05bPlayground } from "@/components/cases/scale/ch-05b-playground";
 import { Ch05Components } from "@/components/cases/scale/ch-05-components";
 import { Ch06AiComponents } from "@/components/cases/scale/ch-06-ai-components";
 import { Ch07Governance } from "@/components/cases/scale/ch-07-governance";
@@ -30,10 +30,11 @@ export default function CaseScalePage() {
       <ScBeforeAfter />
       <ScTokenArch />
       <ScSystemInterface />
+      {/* Etapa B: capítulos 5 e 6 */}
+      <ScSystemLab />
+      <ScA11y />
       <Ch04Tokens />
-      <Ch04bTokenLayers />
       <Ch05Components />
-      <Ch05bPlayground />
       <Ch06AiComponents />
       <Ch07Governance />
       <Ch08GrowthSystem />

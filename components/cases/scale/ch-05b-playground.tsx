@@ -385,10 +385,13 @@ function Segmented<T extends string>({ label, options, value, onChange, format }
   );
 }
 
-export function Ch05bPlayground() {
+/* Explorador de componentes: usado no Playground antigo e no System Lab. */
+export function ComponentExplorer({ categories }: { categories?: { label: string; ids: string[] }[] }) {
   const { t } = useLocale();
   const c = t.scale.playground;
-  const [specId, setSpecId] = useState(SPECS[0].id);
+  const [cat, setCat] = useState(0);
+  const visible = categories ? SPECS.filter((s) => categories[cat].ids.includes(s.id)) : SPECS;
+  const [specId, setSpecId] = useState(visible[0].id);
   const spec = SPECS.find((s) => s.id === specId)!;
   const [variant, setVariant] = useState(spec.variants[0]);
   const [state, setState] = useState<State>("default");
@@ -402,27 +405,35 @@ export function Ch05bPlayground() {
     setVariant(next.variants[0]);
     setState("default");
   };
+  const pickCat = (i: number) => {
+    setCat(i);
+    pick(SPECS.find((s) => categories![i].ids.includes(s.id))!.id);
+  };
   const code = spec.code({ variant, state, size });
 
   return (
-    <section className="bg-[#0A0A0A] py-28 md:py-40" aria-label={c.ariaLabel}>
-      <div className="container">
-        <div className="mx-auto flex max-w-2xl flex-col items-center gap-6 text-center">
-          <Eyebrow light>{c.eyebrow}</Eyebrow>
-          <BlurTitle
-            text={c.title}
-            className="font-display text-3xl font-semibold leading-[1.1] tracking-tight text-white md:text-5xl"
-          />
-          <p className="max-w-xl font-sans text-base leading-relaxed text-white/60">{c.description}</p>
+    <>
+      {categories && (
+        <div role="group" aria-label={c.componentsLabel} className="mb-4 flex flex-wrap gap-2">
+          {categories.map((k, i) => (
+            <button
+              key={k.label}
+              type="button"
+              aria-pressed={cat === i}
+              onClick={() => pickCat(i)}
+              className={`rounded-full px-4 py-2 font-sans text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A48BFF] ${cat === i ? "bg-white text-[#0A0A0A]" : "border border-white/15 text-white/75 hover:text-white"}`}
+            >
+              {k.label}
+            </button>
+          ))}
         </div>
-
-        <Reveal className="mx-auto mt-16 max-w-6xl">
+      )}
           <div className="grid grid-cols-1 overflow-hidden rounded-3xl border border-white/[0.08] bg-[#111] lg:grid-cols-[220px_1fr]">
             {/* Lista de componentes */}
             <nav aria-label={c.componentsLabel} className="border-b border-white/[0.08] p-3 lg:border-b-0 lg:border-r">
               <p className="px-3 pb-2 pt-1 font-sans text-[11px] font-semibold uppercase tracking-[0.16em] text-white/60">{c.componentsLabel}</p>
               <ul className="flex gap-1 overflow-x-auto lg:flex-col">
-                {SPECS.map((s) => (
+                {visible.map((s) => (
                   <li key={s.id} className="shrink-0">
                     <button
                       type="button"
@@ -496,6 +507,28 @@ export function Ch05bPlayground() {
               </div>
             </div>
           </div>
+    </>
+  );
+}
+
+export function Ch05bPlayground() {
+  const { t } = useLocale();
+  const c = t.scale.playground;
+
+  return (
+    <section className="bg-[#0A0A0A] py-28 md:py-40" aria-label={c.ariaLabel}>
+      <div className="container">
+        <div className="mx-auto flex max-w-2xl flex-col items-center gap-6 text-center">
+          <Eyebrow light>{c.eyebrow}</Eyebrow>
+          <BlurTitle
+            text={c.title}
+            className="font-display text-3xl font-semibold leading-[1.1] tracking-tight text-white md:text-5xl"
+          />
+          <p className="max-w-xl font-sans text-base leading-relaxed text-white/60">{c.description}</p>
+        </div>
+
+        <Reveal className="mx-auto mt-16 max-w-6xl">
+          <ComponentExplorer />
         </Reveal>
 
         {/* CTA */}
