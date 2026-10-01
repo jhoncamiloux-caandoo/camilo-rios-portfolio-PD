@@ -16,7 +16,8 @@ export type Block =
   | { type: "h2"; text: string }
   | { type: "p"; text: string; lead?: string }
   | { type: "ul"; items: string[] }
-  | { type: "visual"; id: string; caption: string };
+  | { type: "quote"; text: string }
+  | { type: "visual"; id?: string; data?: import("@/components/blog/visuals").VisualData; caption: string };
 
 export type Post = {
   slug: string;
@@ -31,6 +32,8 @@ export type Post = {
   related: { href: string; title: string; body: string };
   blocks: Block[];
 };
+
+import { mediumPosts } from "./posts-medium";
 
 export const posts: Post[] = [
   {
@@ -130,7 +133,10 @@ export const posts: Post[] = [
       { type: "p", text: "Agora me conta: você já conseguiu provar o valor do UX na sua empresa?" },
     ],
   },
+  ...mediumPosts,
 ];
+
+export const allPosts = posts;
 
 export function getPost(slug: string) {
   return posts.find((p) => p.slug === slug);

@@ -86,7 +86,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                     {b.items.map((it) => <li key={it}>{it}</li>)}
                   </ul>
                 );
-              if (b.type === "visual") return <BlogVisual key={i} id={b.id} caption={b.caption} />;
+              if (b.type === "visual") return <BlogVisual key={i} id={b.id} data={b.data} caption={b.caption} />;
+              if (b.type === "quote")
+                return (
+                  <blockquote key={i} className="mt-6 border-l-4 border-[#622FFD] bg-[#F8F8F8] px-5 py-4 text-[17px] leading-relaxed text-[#0A0A0A]/85">
+                    {b.text}
+                  </blockquote>
+                );
               return (
                 <p key={i} className="mt-5 text-[17px] leading-[1.75] text-[#0A0A0A]/80">
                   {b.lead && <strong className="font-semibold text-[#0A0A0A]">{b.lead} </strong>}
