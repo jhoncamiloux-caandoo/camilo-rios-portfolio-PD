@@ -1,6 +1,7 @@
 "use client";
 
-import { Eyebrow, BlurTitle, Reveal, BrowserMockup } from "@/components/case-lp/case-primitives";
+import { Eyebrow, BlurTitle, Reveal } from "@/components/case-lp/case-primitives";
+import { HeroCrm } from "./hero-crm";
 import { useLocale } from "@/lib/i18n/locale-context";
 
 export function Ch01Hero() {
@@ -54,11 +55,9 @@ export function Ch01Hero() {
 
         <div className="md:col-span-6 md:col-start-7">
           <Reveal delay={0.2}>
-            <BrowserMockup
-              src="/cases/clint/intelligence/ia-hero-print.webp"
-              alt={c.heroImageAlt}
-              url="useclint.com/plataforma"
-            />
+            <div role="img" aria-label={c.heroImageAlt}>
+              <HeroCrm />
+            </div>
           </Reveal>
         </div>
       </div>
