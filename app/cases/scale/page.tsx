@@ -9,11 +9,11 @@ import { ScTokenArch } from "@/components/cases/scale/lab/sc-token-arch";
 import { ScSystemInterface } from "@/components/cases/scale/lab/sc-system-interface";
 import { ScSystemLab } from "@/components/cases/scale/lab/sc-system-lab";
 import { ScA11y } from "@/components/cases/scale/lab/sc-a11y";
+import { ScAi } from "@/components/cases/scale/lab/sc-ai";
+import { ScGrowth } from "@/components/cases/scale/lab/sc-growth";
 import { Ch04Tokens } from "@/components/cases/scale/ch-04-tokens";
 import { Ch05Components } from "@/components/cases/scale/ch-05-components";
-import { Ch06AiComponents } from "@/components/cases/scale/ch-06-ai-components";
 import { Ch07Governance } from "@/components/cases/scale/ch-07-governance";
-import { Ch08GrowthSystem } from "@/components/cases/scale/ch-08-growth-system";
 import { Ch09FigmaStorybook } from "@/components/cases/scale/ch-09-figma-storybook";
 import { Ch10Results } from "@/components/cases/scale/ch-10-results";
 import { useLocale } from "@/lib/i18n/locale-context";
@@ -33,11 +33,12 @@ export default function CaseScalePage() {
       {/* Etapa B: capítulos 5 e 6 */}
       <ScSystemLab />
       <ScA11y />
+      {/* Etapa C: capítulos 7 e 8 */}
+      <ScAi />
+      <ScGrowth />
       <Ch04Tokens />
       <Ch05Components />
-      <Ch06AiComponents />
       <Ch07Governance />
-      <Ch08GrowthSystem />
       <Ch09FigmaStorybook />
       <Ch10Results />
       <NextCase

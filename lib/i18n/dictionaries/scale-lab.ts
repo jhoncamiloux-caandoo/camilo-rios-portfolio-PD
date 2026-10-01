@@ -1,7 +1,7 @@
 import type { Locale } from "@/lib/i18n/types";
 
 /* Textos do Scale reconstruído (capítulos interativos). */
-export type ScaleLabDictionary = ScaleLabB & {
+export type ScaleLabDictionary = ScaleLabB & ScaleLabC & {
   hero: {
     ariaLabel: string;
     eyebrow: string;
@@ -69,6 +69,47 @@ export type ScaleLabDictionary = ScaleLabB & {
   };
 };
 
+export type ScaleLabC = {
+  ai: {
+    ariaLabel: string;
+    eyebrow: string;
+    title: string;
+    description: string;
+    promptLabel: string;
+    promptPh: string;
+    promptDefault: string;
+    run: string;
+    reset: string;
+    status: { thinking: string; processing: string; complete: string };
+    steps: { label: string; value: string }[];
+    agentRole: string;
+    agentName: string;
+    action: string;
+    insight: string;
+    kitLabel: string;
+    kit: string[];
+    contextTitle: string;
+    contextBody: string;
+    without: string;
+    with: string;
+    withoutPrompt: string;
+    withPrompt: string;
+    withoutTags: string[];
+    withTags: string[];
+    conclusion: string;
+  };
+  growth: {
+    ariaLabel: string;
+    eyebrow: string;
+    title: string;
+    description: string;
+    blocks: Record<"hero" | "cta" | "card" | "form" | "proof" | "badge", { label: string; options: string[] }>;
+    lp: { badge: string; heroTitle: string; heroTitleB: string; heroBody: string; cta: string; ctaB: string; cards: { title: string; body: string }[]; formTitle: string; formName: string; formEmail: string; formPhone: string; formSubmit: string; proof: string; proofSource: string };
+    reuseLabel: string;
+    conclusion: string;
+  };
+};
+
 export type ScaleLabB = {
   lab: {
     ariaLabel: string;
@@ -102,6 +143,75 @@ export type ScaleLabB = {
 
 export const scaleLab: Record<Locale, ScaleLabDictionary> = {
   pt: {
+    ai: {
+      ariaLabel: "Componentes e playground de IA",
+      eyebrow: "IA no sistema",
+      title: "A IA também precisa de componentes.",
+      description: "Prompt, status, agente, ação e insight são peças do sistema, não telas soltas. Peça um agente e veja a interface se montar com elas.",
+      promptLabel: "O que você quer construir?",
+      promptPh: "Descreva o agente",
+      promptDefault: "Crie um agente de IA de vendas",
+      run: "Gerar",
+      reset: "Recomeçar",
+      status: { thinking: "Entendendo…", processing: "Configurando…", complete: "Pronto" },
+      steps: [
+        { label: "Tipo de agente", value: "Vendas" },
+        { label: "Canal", value: "WhatsApp" },
+        { label: "Objetivo", value: "Qualificação de leads" },
+        { label: "Status", value: "Pronto" },
+      ],
+      agentRole: "Agente de vendas · WhatsApp",
+      agentName: "Clara",
+      action: "Publicar agente",
+      insight: "Sugestão: conectar ao funil Vendas · Funil IA para mover leads qualificados.",
+      kitLabel: "Componentes usados",
+      kit: ["AI Prompt", "AI Status", "AI Response", "AI Agent", "AI Action", "Insight"],
+      contextTitle: "IA precisa de contexto de design.",
+      contextBody: "O mesmo pedido, com e sem o sistema. Sem tokens e componentes, cada geração inventa uma interface nova.",
+      without: "Sem sistema",
+      with: "Com sistema",
+      withoutPrompt: "Crie uma landing page.",
+      withPrompt: "Use os tokens e componentes do produto.",
+      withoutTags: ["Cores diferentes", "Espaçamento diferente", "Componentes diferentes"],
+      withTags: ["Mesmas cores", "Mesmo espaçamento", "Mesmos componentes", "Mesmo comportamento"],
+      conclusion: "Com o sistema, a IA gera dentro das mesmas decisões.",
+    },
+    growth: {
+      ariaLabel: "Growth: montador de campanha",
+      eyebrow: "Growth",
+      title: "Monte uma campanha.",
+      description: "Escolha as peças e a landing page se monta com os componentes do sistema. Nada é desenhado do zero.",
+      blocks: {
+        hero: { label: "Hero", options: ["Centralizado", "Dividido"] },
+        cta: { label: "CTA", options: ["Primário", "Contorno"] },
+        card: { label: "Card", options: ["Benefícios", "Passos"] },
+        form: { label: "Form", options: ["Compacto", "Completo"] },
+        proof: { label: "Social proof", options: ["Mostrar", "Ocultar"] },
+        badge: { label: "Badge", options: ["Novo", "Ao vivo"] },
+      },
+      lp: {
+        badge: "Novo",
+        heroTitle: "Seu WhatsApp vendendo com IA.",
+        heroTitleB: "Atendimento que qualifica sozinho.",
+        heroBody: "Agentes que respondem, qualificam e agendam, direto no CRM.",
+        cta: "Quero participar",
+        ctaB: "Ver como funciona",
+        cards: [
+          { title: "Responde na hora", body: "O agente atende 24h." },
+          { title: "Qualifica", body: "Só chega lead pronto." },
+          { title: "Agenda", body: "A reunião cai no CRM." },
+        ],
+        formTitle: "Garanta sua vaga",
+        formName: "Nome",
+        formEmail: "E-mail",
+        formPhone: "WhatsApp",
+        formSubmit: "Inscrever",
+        proof: "1.680 inscrições em 4 dias",
+        proofSource: "Resultado real da campanha WhatsApp Next",
+      },
+      reuseLabel: "Componentes reaproveitados",
+      conclusion: "Componentes reutilizáveis transformam decisões de design em ativos de growth reutilizáveis.",
+    },
     lab: {
       ariaLabel: "System Lab: componentes, espaçamento e anatomia",
       eyebrow: "System Lab",
@@ -223,6 +333,75 @@ export const scaleLab: Record<Locale, ScaleLabDictionary> = {
     },
   },
   en: {
+    ai: {
+      ariaLabel: "AI components and playground",
+      eyebrow: "AI in the system",
+      title: "AI needs components too.",
+      description: "Prompt, status, agent, action and insight are system pieces, not one-off screens. Ask for an agent and watch the interface assemble itself from them.",
+      promptLabel: "What do you want to build?",
+      promptPh: "Describe the agent",
+      promptDefault: "Create a sales AI agent",
+      run: "Generate",
+      reset: "Start over",
+      status: { thinking: "Understanding…", processing: "Setting up…", complete: "Ready" },
+      steps: [
+        { label: "Agent type", value: "Sales" },
+        { label: "Channel", value: "WhatsApp" },
+        { label: "Goal", value: "Lead qualification" },
+        { label: "Status", value: "Ready" },
+      ],
+      agentRole: "Sales agent · WhatsApp",
+      agentName: "Clara",
+      action: "Publish agent",
+      insight: "Suggestion: connect it to the Sales · AI funnel to move qualified leads.",
+      kitLabel: "Components used",
+      kit: ["AI Prompt", "AI Status", "AI Response", "AI Agent", "AI Action", "Insight"],
+      contextTitle: "AI needs design context.",
+      contextBody: "The same request, with and without the system. Without tokens and components, every generation invents a new interface.",
+      without: "Without system",
+      with: "With system",
+      withoutPrompt: "Create a landing page.",
+      withPrompt: "Use the product tokens and components.",
+      withoutTags: ["Different colors", "Different spacing", "Different components"],
+      withTags: ["Shared colors", "Shared spacing", "Shared components", "Shared behavior"],
+      conclusion: "With the system, AI generates inside the same decisions.",
+    },
+    growth: {
+      ariaLabel: "Growth: campaign builder",
+      eyebrow: "Growth",
+      title: "Build a campaign.",
+      description: "Pick the pieces and the landing page assembles itself from system components. Nothing is drawn from scratch.",
+      blocks: {
+        hero: { label: "Hero", options: ["Centered", "Split"] },
+        cta: { label: "CTA", options: ["Primary", "Outline"] },
+        card: { label: "Card", options: ["Benefits", "Steps"] },
+        form: { label: "Form", options: ["Compact", "Full"] },
+        proof: { label: "Social proof", options: ["Show", "Hide"] },
+        badge: { label: "Badge", options: ["New", "Live"] },
+      },
+      lp: {
+        badge: "New",
+        heroTitle: "Your WhatsApp selling with AI.",
+        heroTitleB: "Support that qualifies on its own.",
+        heroBody: "Agents that reply, qualify and book meetings, right inside the CRM.",
+        cta: "Join now",
+        ctaB: "See how it works",
+        cards: [
+          { title: "Replies instantly", body: "The agent works 24/7." },
+          { title: "Qualifies", body: "Only ready leads get through." },
+          { title: "Books", body: "The meeting lands in the CRM." },
+        ],
+        formTitle: "Save your spot",
+        formName: "Name",
+        formEmail: "Email",
+        formPhone: "WhatsApp",
+        formSubmit: "Sign up",
+        proof: "1,680 sign-ups in 4 days",
+        proofSource: "Real result from the WhatsApp Next campaign",
+      },
+      reuseLabel: "Reused components",
+      conclusion: "Reusable components turn design decisions into reusable growth assets.",
+    },
     lab: {
       ariaLabel: "System Lab: components, spacing and anatomy",
       eyebrow: "System Lab",
@@ -344,6 +523,75 @@ export const scaleLab: Record<Locale, ScaleLabDictionary> = {
     },
   },
   es: {
+    ai: {
+      ariaLabel: "Componentes y playground de IA",
+      eyebrow: "IA en el sistema",
+      title: "La IA también necesita componentes.",
+      description: "Prompt, estado, agente, acción e insight son piezas del sistema, no pantallas sueltas. Pide un agente y mira cómo se arma la interfaz con ellas.",
+      promptLabel: "¿Qué quieres construir?",
+      promptPh: "Describe el agente",
+      promptDefault: "Crea un agente de IA de ventas",
+      run: "Generar",
+      reset: "Reiniciar",
+      status: { thinking: "Entendiendo…", processing: "Configurando…", complete: "Listo" },
+      steps: [
+        { label: "Tipo de agente", value: "Ventas" },
+        { label: "Canal", value: "WhatsApp" },
+        { label: "Objetivo", value: "Calificación de leads" },
+        { label: "Estado", value: "Listo" },
+      ],
+      agentRole: "Agente de ventas · WhatsApp",
+      agentName: "Clara",
+      action: "Publicar agente",
+      insight: "Sugerencia: conectarlo al embudo Ventas · Embudo IA para mover leads calificados.",
+      kitLabel: "Componentes usados",
+      kit: ["AI Prompt", "AI Status", "AI Response", "AI Agent", "AI Action", "Insight"],
+      contextTitle: "La IA necesita contexto de diseño.",
+      contextBody: "El mismo pedido, con y sin el sistema. Sin tokens ni componentes, cada generación inventa una interfaz nueva.",
+      without: "Sin sistema",
+      with: "Con sistema",
+      withoutPrompt: "Crea una landing page.",
+      withPrompt: "Usa los tokens y componentes del producto.",
+      withoutTags: ["Colores distintos", "Espaciado distinto", "Componentes distintos"],
+      withTags: ["Mismos colores", "Mismo espaciado", "Mismos componentes", "Mismo comportamiento"],
+      conclusion: "Con el sistema, la IA genera dentro de las mismas decisiones.",
+    },
+    growth: {
+      ariaLabel: "Growth: armador de campaña",
+      eyebrow: "Growth",
+      title: "Arma una campaña.",
+      description: "Elige las piezas y la landing page se arma con los componentes del sistema. Nada se dibuja desde cero.",
+      blocks: {
+        hero: { label: "Hero", options: ["Centrado", "Dividido"] },
+        cta: { label: "CTA", options: ["Primario", "Contorno"] },
+        card: { label: "Card", options: ["Beneficios", "Pasos"] },
+        form: { label: "Form", options: ["Compacto", "Completo"] },
+        proof: { label: "Social proof", options: ["Mostrar", "Ocultar"] },
+        badge: { label: "Badge", options: ["Nuevo", "En vivo"] },
+      },
+      lp: {
+        badge: "Nuevo",
+        heroTitle: "Tu WhatsApp vendiendo con IA.",
+        heroTitleB: "Atención que califica sola.",
+        heroBody: "Agentes que responden, califican y agendan, directo en el CRM.",
+        cta: "Quiero participar",
+        ctaB: "Ver cómo funciona",
+        cards: [
+          { title: "Responde al instante", body: "El agente atiende 24h." },
+          { title: "Califica", body: "Solo llega el lead listo." },
+          { title: "Agenda", body: "La reunión cae en el CRM." },
+        ],
+        formTitle: "Asegura tu lugar",
+        formName: "Nombre",
+        formEmail: "Email",
+        formPhone: "WhatsApp",
+        formSubmit: "Inscribirme",
+        proof: "1.680 inscripciones en 4 días",
+        proofSource: "Resultado real de la campaña WhatsApp Next",
+      },
+      reuseLabel: "Componentes reutilizados",
+      conclusion: "Los componentes reutilizables convierten decisiones de diseño en activos de growth reutilizables.",
+    },
     lab: {
       ariaLabel: "System Lab: componentes, espaciado y anatomía",
       eyebrow: "System Lab",
