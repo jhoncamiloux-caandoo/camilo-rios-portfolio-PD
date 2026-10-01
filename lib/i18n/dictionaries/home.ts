@@ -72,8 +72,8 @@ export type HomeDictionary = {
   process: {
     eyebrow: string;
     title: string;
-    stepLabel: string;
-    steps: { title: string; body: string }[];
+    intro: string;
+    steps: { title: string; body: string; example?: string }[];
   };
   expertiseStack: {
     eyebrow: string;
@@ -295,26 +295,16 @@ export const home: Record<Locale, HomeDictionary> = {
       ],
     },
     process: {
-      eyebrow: "Método",
-      title: "Clareza antes de superfície.",
-      stepLabel: "Passo",
+      eyebrow: "Como eu trabalho",
+      title: "Do contexto ao impacto medido.",
+      intro: "Um processo simples, que se adapta ao tamanho do problema. O que não muda: entender antes de desenhar e medir depois de entregar.",
       steps: [
-        {
-          title: "Diagnóstico de negócio e comportamento",
-          body: "O diagnóstico não começa com telas; começa com dados e funis. Análise das métricas de aquisição e retenção para identificar os gargalos reais de conversão, cruzando dados quantitativos e qualitativos do comportamento do usuário.",
-        },
-        {
-          title: "Arquitetura de experiência e narrativa",
-          body: "A jornada do usuário é estruturada para reduzir o custo de aquisição (CAC) e maximizar o LTV. Frameworks de CRO e IA mapeiam os fluxos de decisão, garantindo que a proposta de valor elimine qualquer atrito cognitivo.",
-        },
-        {
-          title: "Prototipagem, teste e refinamento",
-          body: "Hipóteses se transformam em protótipos de alta fidelidade. Cada interação é validada iterativamente com testes A/B e feedback real, garantindo que o design seja uma alavanca comprovada de conversão antes do desenvolvimento.",
-        },
-        {
-          title: "Sistema visual pronto para escala",
-          body: "Design Systems robustos e documentados, pensados para escala SaaS. O foco é garantir consistência visual global e um handoff impecável para a equipe de engenharia.",
-        },
+        { title: "Understand", body: "Usuário, negócio e contexto." },
+        { title: "Define", body: "Problema, oportunidade e hipótese." },
+        { title: "Explore", body: "Arquitetura, fluxos e protótipos.", example: "Servientrega: a jornada da encomenda organizada em 6 etapas." },
+        { title: "Validate", body: "Testes, dados e feedback.", example: "Acquire: testes A/B em 58 landing pages." },
+        { title: "Build", body: "UI, design system e desenvolvimento.", example: "Scale: tokens e componentes prontos para o time de Growth." },
+        { title: "Measure", body: "Métricas, comportamento e impacto.", example: "WhatsApp Next: 25% de conversão na landing page." },
       ],
     },
     expertiseStack: {
@@ -632,26 +622,16 @@ export const home: Record<Locale, HomeDictionary> = {
       ],
     },
     process: {
-      eyebrow: "Method",
-      title: "Clarity before surface.",
-      stepLabel: "Step",
+      eyebrow: "How I work",
+      title: "From context to measured impact.",
+      intro: "A simple process that scales with the size of the problem. What never changes: understand before designing, measure after shipping.",
       steps: [
-        {
-          title: "Business and behavior diagnosis",
-          body: "The diagnosis doesn't start with screens; it starts with data and funnels. Analyzing acquisition and retention metrics to identify the real conversion bottlenecks, cross-referencing quantitative and qualitative user behavior data.",
-        },
-        {
-          title: "Experience and narrative architecture",
-          body: "The user journey is structured to reduce customer acquisition cost (CAC) and maximize LTV. CRO and AI frameworks map decision flows, ensuring the value proposition eliminates any cognitive friction.",
-        },
-        {
-          title: "Prototyping, testing, and refinement",
-          body: "Hypotheses become high-fidelity prototypes. Every interaction is iteratively validated with A/B tests and real feedback, ensuring design is a proven conversion lever before development.",
-        },
-        {
-          title: "Visual system ready to scale",
-          body: "Robust, well-documented Design Systems built for SaaS scale. The focus is guaranteeing global visual consistency and a flawless handoff to the engineering team.",
-        },
+        { title: "Understand", body: "Users, business and context." },
+        { title: "Define", body: "Problem, opportunity and hypothesis." },
+        { title: "Explore", body: "Architecture, flows and prototypes.", example: "Servientrega: the parcel journey organized in 6 stages." },
+        { title: "Validate", body: "Tests, data and feedback.", example: "Acquire: A/B tests across 58 landing pages." },
+        { title: "Build", body: "UI, design system and development.", example: "Scale: tokens and components ready for the Growth team." },
+        { title: "Measure", body: "Metrics, behavior and impact.", example: "WhatsApp Next: 25% landing page conversion." },
       ],
     },
     expertiseStack: {
@@ -969,26 +949,16 @@ export const home: Record<Locale, HomeDictionary> = {
       ],
     },
     process: {
-      eyebrow: "Método",
-      title: "Claridad antes que superficie.",
-      stepLabel: "Paso",
+      eyebrow: "Cómo trabajo",
+      title: "Del contexto al impacto medido.",
+      intro: "Un proceso simple, que se adapta al tamaño del problema. Lo que no cambia: entender antes de diseñar y medir después de entregar.",
       steps: [
-        {
-          title: "Diagnóstico de negocio y comportamiento",
-          body: "El diagnóstico no comienza con pantallas; comienza con datos y funnels. Análisis de las métricas de adquisición y retención para identificar los cuellos de botella reales de conversión, cruzando datos cuantitativos y cualitativos del comportamiento del usuario.",
-        },
-        {
-          title: "Arquitectura de experiencia y narrativa",
-          body: "El recorrido del usuario se estructura para reducir el costo de adquisición (CAC) y maximizar el LTV. Frameworks de CRO e IA mapean los flujos de decisión, garantizando que la propuesta de valor elimine cualquier fricción cognitiva.",
-        },
-        {
-          title: "Prototipado, prueba y refinamiento",
-          body: "Las hipótesis se convierten en prototipos de alta fidelidad. Cada interacción se valida iterativamente con pruebas A/B y feedback real, garantizando que el diseño sea una palanca comprobada de conversión antes del desarrollo.",
-        },
-        {
-          title: "Sistema visual listo para escalar",
-          body: "Design Systems robustos y documentados, pensados para escala SaaS. El foco está en garantizar consistencia visual global y un handoff impecable para el equipo de ingeniería.",
-        },
+        { title: "Understand", body: "Usuario, negocio y contexto." },
+        { title: "Define", body: "Problema, oportunidad e hipótesis." },
+        { title: "Explore", body: "Arquitectura, flujos y prototipos.", example: "Servientrega: el viaje del envío organizado en 6 etapas." },
+        { title: "Validate", body: "Pruebas, datos y feedback.", example: "Acquire: pruebas A/B en 58 landing pages." },
+        { title: "Build", body: "UI, design system y desarrollo.", example: "Scale: tokens y componentes listos para el equipo de Growth." },
+        { title: "Measure", body: "Métricas, comportamiento e impacto.", example: "WhatsApp Next: 25% de conversión en la landing page." },
       ],
     },
     expertiseStack: {
