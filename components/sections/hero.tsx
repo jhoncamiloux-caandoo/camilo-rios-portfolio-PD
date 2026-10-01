@@ -1,6 +1,6 @@
 "use client";
 
-import { RESUME_URL } from "@/lib/links";
+import { CALENDAR_URL } from "@/lib/links";
 import { Header } from "@/components/header";
 import { FadeIn } from "@/components/motion/fade-in";
 import { HeroCanvas } from "@/components/sections/hero-canvas";
@@ -69,21 +69,13 @@ export function Hero() {
                     <Caret />
                   </a>
                   <a
-                    href="#contato"
+                    href={CALENDAR_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex h-[42px] shrink-0 items-center gap-1 whitespace-nowrap rounded-full border border-black/10 bg-white/40 px-4 text-sm font-semibold text-[#1c1c1c] backdrop-blur-md transition hover:bg-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary md:h-[52px] md:px-6 md:text-base"
                   >
                     {t.home.hero.ctaContact}
                     <Caret />
-                  </a>
-                </div>
-                <div className="mt-4 flex items-center gap-4 font-sans text-sm text-[#3a3a3d]">
-                  <a href={RESUME_URL} target="_blank" rel="noopener noreferrer" className="underline decoration-black/20 underline-offset-4 transition hover:decoration-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
-                    {t.home.hero.ctaResume}
-                  </a>
-                  <span aria-hidden="true" className="text-black/25">·</span>
-                  <a href="#trajetoria" className="underline decoration-black/20 underline-offset-4 transition hover:decoration-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
-                    <span className="md:hidden">{t.home.hero.ctaJourneyShort}</span>
-                    <span className="hidden md:inline">{t.home.hero.ctaJourneyFull}</span>
                   </a>
                 </div>
               </FadeIn>

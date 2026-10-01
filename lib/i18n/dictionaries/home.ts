@@ -6,7 +6,7 @@ export type HomeDictionary = {
     backToPortfolioAria: string;
   };
   header: {
-    navLinks: { impact: string; cases: string; contact: string };
+    navLinks: { impact: string; cases: string; blog: string; contact: string };
     logoAria: string;
     navAriaDesktop: string;
     navAriaMobile: string;
@@ -162,7 +162,7 @@ export const home: Record<Locale, HomeDictionary> = {
       backToPortfolioAria: "Ir ao portfólio de Jhon Camilo Rios",
     },
     header: {
-      navLinks: { impact: "Impacto", cases: "Cases", contact: "Contato" },
+      navLinks: { impact: "Impacto", cases: "Cases", blog: "Blog", contact: "Contato" },
       logoAria: "Voltar ao início do portfólio de Jhon Camilo Rios",
       navAriaDesktop: "Navegação principal",
       navAriaMobile: "Navegação mobile",
@@ -515,7 +515,7 @@ export const home: Record<Locale, HomeDictionary> = {
       backToPortfolioAria: "Go to Jhon Camilo Rios's portfolio",
     },
     header: {
-      navLinks: { impact: "Impact", cases: "Cases", contact: "Contact" },
+      navLinks: { impact: "Impact", cases: "Cases", blog: "Blog", contact: "Contact" },
       logoAria: "Back to Jhon Camilo Rios's portfolio home",
       navAriaDesktop: "Main navigation",
       navAriaMobile: "Mobile navigation",
@@ -868,7 +868,7 @@ export const home: Record<Locale, HomeDictionary> = {
       backToPortfolioAria: "Ir al portafolio de Jhon Camilo Rios",
     },
     header: {
-      navLinks: { impact: "Impacto", cases: "Cases", contact: "Contacto" },
+      navLinks: { impact: "Impacto", cases: "Cases", blog: "Blog", contact: "Contacto" },
       logoAria: "Volver al inicio del portafolio de Jhon Camilo Rios",
       navAriaDesktop: "Navegación principal",
       navAriaMobile: "Navegación móvil",

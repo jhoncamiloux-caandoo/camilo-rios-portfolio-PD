@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { LanguageSwitcher } from "@/components/language-switcher";
+import { CALENDAR_URL, RESUME_URL } from "@/lib/links";
 import { useLocale } from "@/lib/i18n/locale-context";
 
 type Theme = "light" | "dark";
@@ -15,8 +16,9 @@ export function Header() {
   const navLinks = [
     { label: t.home.header.navLinks.impact, href: "#impacto" },
     { label: t.home.header.navLinks.cases, href: "#cases" },
-    { label: t.home.header.navLinks.contact, href: "#contato" },
+    { label: t.home.header.navLinks.blog, href: "/blog" },
   ];
+  const h = t.home.hero;
   const headerRef = useRef<HTMLElement>(null);
   const [theme, setTheme] = useState<Theme>("light");
   const [menuOpen, setMenuOpen] = useState(false);
@@ -122,6 +124,24 @@ export function Header() {
               {link.label}
             </a>
           ))}
+          <a
+            href={RESUME_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`inline-flex h-9 items-center rounded-full border px-4 font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
+              dark ? "border-white/20 text-white hover:bg-white/10" : "border-black/10 text-dark hover:bg-black/5"
+            }`}
+          >
+            {h.ctaResume}
+          </a>
+          <a
+            href={CALENDAR_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex h-9 items-center rounded-full bg-primary px-4 font-semibold text-white transition-colors hover:bg-[#7447FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+          >
+            {h.ctaContact}
+          </a>
           <LanguageSwitcher dark={dark} />
         </nav>
 
@@ -168,6 +188,14 @@ export function Header() {
                   {link.label}
                 </a>
               ))}
+              <div className="mt-2 grid grid-cols-2 gap-2 px-1 pb-1">
+                <a href={RESUME_URL} target="_blank" rel="noopener noreferrer" className="inline-flex h-11 items-center justify-center rounded-full border border-black/10 text-sm font-semibold text-dark">
+                  {h.ctaResume}
+                </a>
+                <a href={CALENDAR_URL} target="_blank" rel="noopener noreferrer" className="inline-flex h-11 items-center justify-center rounded-full bg-primary text-sm font-semibold text-white">
+                  {h.ctaContact}
+                </a>
+              </div>
             </div>
           </motion.nav>
         )}
