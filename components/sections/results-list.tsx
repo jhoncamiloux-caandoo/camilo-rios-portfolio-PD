@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { BarChart3, TrendingUp, Zap, ShieldCheck, Plus, MousePointerClick } from "lucide-react";
+import { BarChart3, TrendingUp, ShieldCheck, Plus, MousePointerClick } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -20,7 +20,7 @@ type Result = {
   icon: LucideIcon;
 };
 
-const resultIcons: LucideIcon[] = [BarChart3, TrendingUp, Zap, ShieldCheck];
+const resultIcons: LucideIcon[] = [BarChart3, TrendingUp, ShieldCheck];
 
 export function ResultsList() {
   const { t } = useLocale();

@@ -65,7 +65,7 @@ export function SvHero() {
 
       <motion.div className="container relative flex min-h-[100svh] flex-col justify-end pb-16 pt-28 md:pb-20" style={reduce ? undefined : { opacity: fade }}>
         <SvEyebrow>{c.eyebrow}</SvEyebrow>
-        <h1 className="mt-4 overflow-hidden text-[16vw] font-black leading-[0.86] tracking-[-0.05em] text-white md:text-[9.5vw]" style={{ fontFamily: SANS }}>
+        <h1 className="mt-4 overflow-hidden text-[16vw] font-black leading-[0.86] tracking-[-0.05em] pb-[0.12em] text-white md:text-[9.5vw]" style={{ fontFamily: SANS }}>
           {c.title.split("").map((ch, i) => (
             <motion.span
               key={i}
