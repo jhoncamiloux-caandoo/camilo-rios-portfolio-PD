@@ -1,60 +1,539 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useSpring } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useMotionValueEvent,
+} from "framer-motion";
+import { useState } from "react";
+import {
+  BarChart2,
+  GitBranch,
+  FlaskConical,
+  Layers,
+  Search,
+  Target,
+  type LucideIcon,
+} from "lucide-react";
 import { useLocale } from "@/lib/i18n/locale-context";
 
-// Como eu trabalho: 6 passos ligados por uma linha que se preenche com o scroll.
-export function Process() {
-  const { t } = useLocale();
-  const c = t.home.process;
-  const reduce = useReducedMotion();
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start 0.75", "end 0.6"] });
-  const draw = useSpring(scrollYProgress, { stiffness: 120, damping: 30 });
-  const length = reduce ? 1 : draw;
+// ─── DATA ────────────────────────────────────────────────────────────────────
+
+type Step = {
+  num: string;
+  title: string;
+  body: string;
+  example?: string;
+  icon: LucideIcon;
+  visual: React.FC;
+};
+
+const stepsBase = [
+  { num: "01", icon: Search, visual: VisualDiagnostic },
+  { num: "02", icon: Target, visual: VisualDefine },
+  { num: "03", icon: GitBranch, visual: VisualArchitecture },
+  { num: "04", icon: FlaskConical, visual: VisualPrototype },
+  { num: "05", icon: Layers, visual: VisualSystem },
+  { num: "06", icon: BarChart2, visual: VisualMeasure },
+];
+
+// ─── VISUAIS (ilustrativos: sem números inventados; o passo 06 usa resultados reais) ─────────────────────────────────────────────────────
+
+function VisualDiagnostic() {
+  const bars = [55, 72, 48, 88, 63, 79, 41];
+  return (
+    <div className="flex h-full flex-col justify-between gap-6 p-8">
+      {/* Mini funnel */}
+      <div className="flex flex-col items-center gap-1">
+        {[
+          { w: "w-full", label: "Visitas", val: "?" },
+          { w: "w-4/5", label: "Leads", val: "?" },
+          { w: "w-3/5", label: "MQL", val: "?" },
+          { w: "w-2/5", label: "SQL", val: "?" },
+        ].map((row) => (
+          <div key={row.label} className="flex w-full items-center gap-3">
+            <div
+              className={`${row.w} h-8 rounded bg-white/[0.06] flex items-center justify-between px-3`}
+            >
+              <span className="text-[10px] font-medium uppercase tracking-wider text-white/60">
+                {row.label}
+              </span>
+              <span className="font-display text-sm font-semibold text-white/80">
+                {row.val}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+      {/* Sparkline */}
+      <div className="flex flex-col gap-2">
+        <span className="text-[10px] font-semibold uppercase tracking-widest text-white/60">
+          Comportamento · sessões, mapas de calor, entrevistas
+        </span>
+        <div className="flex h-14 items-end gap-1.5">
+          {bars.map((h, i) => (
+            <div
+              key={i}
+              className="flex-1 rounded-sm bg-primary/30 transition-all"
+              style={{ height: `${h}%` }}
+            />
+          ))}
+        </div>
+      </div>
+      {/* Insight pill */}
+      <div className="rounded-xl border border-primary/20 bg-primary/10 px-4 py-3">
+        <p className="text-xs text-primary-light">
+          Pergunta-guia: onde as pessoas desistem, e por quê?
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function VisualArchitecture() {
+  return (
+    <div className="flex h-full flex-col justify-center gap-5 p-8">
+      {/* Flow map nodes */}
+      {[
+        { label: "Entrada orgânica", sub: "SEO · Referral" },
+        { label: "Landing page CRO", sub: "Hero · Social proof · CTA" },
+        { label: "Onboarding IA", sub: "Personalização · Ativação" },
+        { label: "Retenção & Expansão", sub: "NPS · Upsell loop" },
+      ].map((node, i) => (
+        <div key={i} className="flex items-start gap-3">
+          <div className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-primary/40 bg-primary/10">
+            <span className="text-[9px] font-bold text-primary-light">{i + 1}</span>
+          </div>
+          <div className="flex-1 rounded-lg border border-white/[0.06] bg-white/[0.03] px-4 py-2.5">
+            <p className="text-sm font-semibold text-white/90">{node.label}</p>
+            <p className="mt-0.5 text-[11px] text-white/60">{node.sub}</p>
+          </div>
+          {i < 3 && (
+            <div className="absolute left-[2.55rem] mt-7 h-5 w-px bg-primary/20" />
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function VisualPrototype() {
+  return (
+    <div className="flex h-full flex-col gap-5 p-8">
+      {/* Browser chrome mock */}
+      <div className="overflow-hidden rounded-xl border border-white/[0.08]">
+        {/* Title bar */}
+        <div className="flex items-center gap-2 border-b border-white/[0.06] bg-white/[0.04] px-4 py-2.5">
+          <div className="h-2.5 w-2.5 rounded-full bg-white/15" />
+          <div className="h-2.5 w-2.5 rounded-full bg-white/15" />
+          <div className="h-2.5 w-2.5 rounded-full bg-white/15" />
+          <div className="ml-3 h-4 flex-1 rounded bg-white/[0.05]" />
+        </div>
+        {/* Page wireframe */}
+        <div className="flex flex-col gap-3 bg-white/[0.02] p-4">
+          <div className="h-3 w-2/3 rounded bg-white/10" />
+          <div className="h-2 w-full rounded bg-white/[0.06]" />
+          <div className="h-2 w-5/6 rounded bg-white/[0.06]" />
+          <div className="mt-2 h-8 w-32 rounded-full bg-primary/40" />
+        </div>
+      </div>
+      {/* A/B labels */}
+      <div className="grid grid-cols-2 gap-3">
+        {["Variante A", "Variante B ✓"].map((label, i) => (
+          <div
+            key={i}
+            className={`rounded-lg border px-3 py-2 text-center text-xs font-semibold ${
+              i === 1
+                ? "border-primary/40 bg-primary/10 text-primary-light"
+                : "border-white/[0.08] bg-white/[0.03] text-white/60"
+            }`}
+          >
+            {label}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function VisualSystem() {
+  const palette = [
+    { label: "Primary", hex: "#622FFD", cls: "bg-[#622FFD]" },
+    { label: "700", hex: "#4B1FD4", cls: "bg-[#4B1FD4]" },
+    { label: "400", hex: "#9B72FF", cls: "bg-[#9B72FF]" },
+    { label: "100", hex: "#E8DEFF", cls: "bg-[#E8DEFF]" },
+    { label: "Dark", hex: "#0A0A0A", cls: "bg-[#0A0A0A] border border-white/10" },
+    { label: "Light", hex: "#F8F8F8", cls: "bg-[#F8F8F8]" },
+  ];
+
+  const typeScale = [
+    { label: "Display / 56", cls: "text-2xl font-bold", sample: "Aa" },
+    { label: "Heading / 32", cls: "text-lg font-semibold", sample: "Aa" },
+    { label: "Body / 16", cls: "text-sm font-normal", sample: "Aa" },
+    { label: "Caption / 11", cls: "text-[10px] font-medium uppercase tracking-widest", sample: "AA" },
+  ];
+
+  const spacing = [1, 2, 3, 4, 6, 8, 12, 16];
+
+  const components = [
+    { name: "Button/Primary", preview: "bg-primary rounded-full px-3 py-1 text-[9px] text-white font-semibold" },
+    { name: "Button/Ghost", preview: "border border-white/20 rounded-full px-3 py-1 text-[9px] text-white/70 font-semibold" },
+    { name: "Badge", preview: "bg-primary/15 border border-primary/30 rounded-full px-2 py-0.5 text-[9px] text-primary-light font-semibold" },
+    { name: "Input", preview: "border border-white/10 rounded-lg px-3 py-1 text-[9px] text-white/60 bg-white/[0.04] w-24" },
+  ];
 
   return (
-    <section ref={ref} id="como-trabalho" data-nav-theme="dark" className="relative bg-[#0A0A0A] py-24 text-white md:py-28">
-      <div className="container">
-        <div className="mb-14 flex max-w-2xl flex-col gap-3 md:mb-20">
-          <span className="font-sans text-xs font-semibold uppercase tracking-[0.22em] text-white/60">{c.eyebrow}</span>
-          <h2 className="font-display text-[40px] font-semibold leading-[1.05] tracking-tight md:text-[56px]">{c.title}</h2>
-          <p className="mt-2 font-sans text-base leading-relaxed text-white/70 md:text-lg">{c.intro}</p>
+    <div className="flex h-full flex-col gap-0 overflow-hidden">
+      {/* ── Row 1: Color Tokens ─────────────────────── */}
+      <div className="border-b border-white/[0.06] p-5">
+        <p className="mb-3 text-[9px] font-semibold uppercase tracking-[0.2em] text-white/60">
+          Color Tokens
+        </p>
+        <div className="flex gap-2">
+          {palette.map((t) => (
+            <div key={t.label} className="flex flex-col items-center gap-1.5">
+              <div className={`h-7 w-7 rounded-md ${t.cls}`} />
+              <span className="text-[8px] leading-none text-white/60">{t.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ── Row 2: Type Scale + Spacing ─────────────── */}
+      <div className="grid grid-cols-2 divide-x divide-white/[0.06] border-b border-white/[0.06]">
+        {/* Type */}
+        <div className="flex flex-col gap-2 p-5">
+          <p className="mb-1 text-[9px] font-semibold uppercase tracking-[0.2em] text-white/60">
+            Type Scale
+          </p>
+          {typeScale.map((t) => (
+            <div key={t.label} className="flex items-center justify-between">
+              <span className={`${t.cls} text-white/80`}>{t.sample}</span>
+              <span className="text-[8px] text-white/60">{t.label}</span>
+            </div>
+          ))}
+        </div>
+        {/* Spacing */}
+        <div className="flex flex-col gap-2 p-5">
+          <p className="mb-1 text-[9px] font-semibold uppercase tracking-[0.2em] text-white/60">
+            Spacing
+          </p>
+          <div className="flex flex-col gap-1.5">
+            {spacing.map((s) => (
+              <div key={s} className="flex items-center gap-2">
+                <div
+                  className="h-1.5 rounded-sm bg-primary/50"
+                  style={{ width: `${s * 4}px` }}
+                />
+                <span className="text-[8px] text-white/60">{s * 4}px</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ── Row 3: Components ───────────────────────── */}
+      <div className="border-b border-white/[0.06] p-5">
+        <p className="mb-3 text-[9px] font-semibold uppercase tracking-[0.2em] text-white/60">
+          Components
+        </p>
+        <div className="grid grid-cols-2 gap-2">
+          {components.map((c) => (
+            <div
+              key={c.name}
+              className="flex flex-col gap-2 rounded-lg border border-white/[0.06] bg-white/[0.02] p-3"
+            >
+              <span className="text-[8px] text-white/60">{c.name}</span>
+              <div className="flex items-center">
+                <div className={c.preview}>{c.name.split("/")[1]}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ── Row 4: Handoff status ───────────────────── */}
+      <div className="flex items-center justify-between p-4">
+        <div className="flex items-center gap-2">
+          <div className="h-1.5 w-1.5 rounded-full bg-green-400" />
+          <span className="text-[10px] text-white/60">Handoff para eng.</span>
+        </div>
+        <div className="flex gap-2">
+          {["Tokens", "Figma", "Storybook"].map((tag) => (
+            <span
+              key={tag}
+              className="rounded-full border border-white/[0.08] px-2 py-0.5 text-[8px] text-white/60"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+function VisualDefine() {
+  const rows = [
+    { k: "Problema", v: "O que trava o usuário e o negócio hoje" },
+    { k: "Oportunidade", v: "Onde uma mudança gera mais valor" },
+    { k: "Hipótese", v: "Se mudarmos X, esperamos Y, medido por Z" },
+  ];
+  return (
+    <div className="flex h-full flex-col justify-center gap-4 p-8">
+      {rows.map((r, i) => (
+        <div
+          key={r.k}
+          className={`rounded-xl border px-5 py-4 ${i === 2 ? "border-primary/40 bg-primary/10" : "border-white/[0.06] bg-white/[0.03]"}`}
+        >
+          <p className={`text-[10px] font-semibold uppercase tracking-[0.2em] ${i === 2 ? "text-primary-light" : "text-white/60"}`}>{r.k}</p>
+          <p className="mt-1.5 text-sm font-medium text-white/90">{r.v}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function VisualMeasure() {
+  // Resultados reais dos cases
+  const bars = [
+    { label: "WhatsApp Next · conversão da LP", value: "25%", pct: 25 },
+    { label: "Geração de leads em 2 meses", value: "+140%", pct: 100 },
+  ];
+  return (
+    <div className="flex h-full flex-col justify-center gap-7 p-8">
+      {bars.map((b) => (
+        <div key={b.label} className="flex flex-col gap-2">
+          <div className="flex items-baseline justify-between">
+            <span className="text-[11px] font-medium uppercase tracking-wider text-white/60">{b.label}</span>
+            <span className="font-display text-2xl font-semibold text-white">{b.value}</span>
+          </div>
+          <div className="h-3 overflow-hidden rounded-full bg-white/[0.06]">
+            <motion.div
+              className="h-full rounded-full bg-primary"
+              initial={{ width: 0 }}
+              whileInView={{ width: `${b.pct}%` }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+            />
+          </div>
+        </div>
+      ))}
+      <div className="grid grid-cols-2 gap-3">
+        <div className="rounded-xl border border-white/[0.06] bg-white/[0.03] px-4 py-3">
+          <p className="font-display text-xl font-semibold text-white">1.680</p>
+          <p className="text-[11px] text-white/60">inscrições na live em 4 dias</p>
+        </div>
+        <div className="rounded-xl border border-primary/30 bg-primary/10 px-4 py-3">
+          <p className="font-display text-xl font-semibold text-white">R$ 8</p>
+          <p className="text-[11px] text-primary-light">custo por lead</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── STEP VISUAL CARD (sticky left) ──────────────────────────────────────────
+
+function StepVisual({
+  step,
+  stepLabel,
+  isActive,
+}: {
+  step: Step;
+  stepLabel: string;
+  isActive: boolean;
+}) {
+  const Visual = step.visual;
+  const Icon = step.icon;
+
+  return (
+    <motion.div
+      animate={{
+        opacity: isActive ? 1 : 0,
+        scale: isActive ? 1 : 0.97,
+        y: isActive ? 0 : 12,
+      }}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+      className="pointer-events-none absolute inset-0"
+      aria-hidden={!isActive}
+    >
+      <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03]">
+        {/* Card header */}
+        <div className="flex items-center gap-3 border-b border-white/[0.06] px-6 py-4">
+          <span className="flex h-8 w-8 items-center justify-center rounded-full border border-primary/30 bg-primary/10 text-primary-light">
+            <Icon className="h-4 w-4" aria-hidden="true" />
+          </span>
+          <span className="font-display text-sm font-semibold text-white/60">
+            {stepLabel} {step.num}
+          </span>
+        </div>
+        {/* Visual content */}
+        <div className="relative flex-1">
+          <Visual />
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+// ─── STEP ROW (right column) ──────────────────────────────────────────────────
+
+function StepRow({
+  step,
+  index,
+  isActive,
+  isLast,
+  onActivate,
+}: {
+  step: Step;
+  index: number;
+  isActive: boolean;
+  isLast: boolean;
+  onActivate: (i: number) => void;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start 0.65", "center 0.4"],
+  });
+
+  useMotionValueEvent(scrollYProgress, "change", (v) => {
+    if (v > 0.4) onActivate(index);
+  });
+
+  return (
+    <div
+      ref={ref}
+      className="flex min-h-[70vh] items-center"
+      aria-current={isActive ? "step" : undefined}
+    >
+      <div className="flex gap-8">
+        {/* Timeline dot + line */}
+        <div className="relative flex flex-col items-center">
+          <motion.div
+            animate={{
+              backgroundColor: isActive ? "#622FFD" : "rgba(255,255,255,0.1)",
+              boxShadow: isActive
+                ? "0 0 0 4px rgba(98,47,253,0.2)"
+                : "none",
+            }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10"
+          >
+            <span className="font-display text-xs font-bold text-white">
+              {step.num}
+            </span>
+          </motion.div>
+          {!isLast && (
+            <div className="relative mt-2 w-px flex-1 overflow-hidden bg-white/[0.08]">
+              <motion.div
+                className="absolute inset-x-0 top-0 bg-primary"
+                animate={{ height: isActive ? "100%" : "0%" }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              />
+            </div>
+          )}
         </div>
 
-        <div className="relative">
-          {/* Linha de progresso: horizontal no desktop, vertical no mobile */}
-          <div aria-hidden="true" className="absolute left-0 right-0 top-5 hidden h-[2px] bg-white/10 lg:block">
-            <motion.div className="h-full origin-left bg-[#8b6bff]" style={{ scaleX: length }} />
-          </div>
-          <div aria-hidden="true" className="absolute bottom-0 left-5 top-0 w-[2px] -translate-x-1/2 bg-white/10 lg:hidden">
-            <motion.div className="h-full w-full origin-top bg-[#8b6bff]" style={{ scaleY: length }} />
+        {/* Text */}
+        <motion.div
+          animate={{ opacity: isActive ? 1 : 0.35 }}
+          transition={{ duration: 0.4 }}
+          className="flex flex-col gap-4 pb-8 pt-1.5"
+        >
+          <h3 className="font-display text-2xl font-bold leading-snug text-white md:text-3xl">
+            {step.title}
+          </h3>
+          <p className="max-w-md font-sans text-base leading-relaxed text-white/70">
+            {step.body}
+          </p>
+          {step.example && (
+            <p className="max-w-md border-l-2 border-primary/50 pl-4 font-sans text-sm leading-relaxed text-white/60">
+              {step.example}
+            </p>
+          )}
+        </motion.div>
+      </div>
+    </div>
+  );
+}
+
+// ─── SECTION ─────────────────────────────────────────────────────────────────
+
+export function Process() {
+  const { t } = useLocale();
+  const steps: Step[] = stepsBase.map((base, i) => ({
+    ...base,
+    title: t.home.process.steps[i].title,
+    body: t.home.process.steps[i].body,
+    example: t.home.process.steps[i].example,
+  }));
+  const [activeStep, setActiveStep] = useState(0);
+
+  // Overall scroll progress for the section (drives the timeline line)
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end end"],
+  });
+  const timelineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
+  return (
+    <section
+      ref={sectionRef}
+      id="como-trabalho"
+      data-nav-theme="dark"
+      className="relative bg-[#0A0A0A] py-28 text-white"
+    >
+      <div className="container">
+        {/* Section header */}
+        <div className="mb-20 flex flex-col gap-3">
+          <span className="font-sans text-xs font-semibold uppercase tracking-[0.22em] text-white/60">
+            {t.home.process.eyebrow}
+          </span>
+          <h2 className="font-display text-[48px] font-semibold leading-[1.05] tracking-tight md:text-[56px]">
+            {t.home.process.title}
+          </h2>
+          <p className="mt-2 max-w-2xl font-sans text-base leading-relaxed text-white/70 md:text-lg">
+            {t.home.process.intro}
+          </p>
+        </div>
+
+        {/* Two-column scroll layout */}
+        <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-20">
+          {/* LEFT — sticky visual */}
+          <div className="hidden lg:block">
+            <div className="sticky top-[20vh] h-[60vh]">
+              <div className="relative h-full">
+                {steps.map((step, i) => (
+                  <StepVisual
+                    key={step.num}
+                    step={step}
+                    stepLabel={t.home.process.stepLabel}
+                    isActive={activeStep === i}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
 
-          <ol className="relative grid grid-cols-1 gap-10 lg:grid-cols-6 lg:gap-6">
-            {c.steps.map((step, i) => (
-              <motion.li
-                key={step.title}
-                initial={reduce ? false : { opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: reduce ? 0 : i * 0.06 }}
-                className="flex gap-5 lg:flex-col lg:gap-6"
-              >
-                <span className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#8b6bff]/50 bg-[#0A0A0A] font-mono text-xs font-bold text-[#c9b8ff]">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <div className="flex flex-col gap-2">
-                  <h3 className="font-display text-xl font-semibold text-white">{step.title}</h3>
-                  <p className="font-sans text-sm leading-relaxed text-white/70">{step.body}</p>
-                  {step.example && (
-                    <p className="mt-2 border-l border-[#8b6bff]/40 pl-3 font-sans text-xs leading-relaxed text-white/60">{step.example}</p>
-                  )}
-                </div>
-              </motion.li>
+          {/* RIGHT — scrollable steps */}
+          <div className="flex flex-col">
+            {steps.map((step, i) => (
+              <StepRow
+                key={step.num}
+                step={step}
+                index={i}
+                isActive={activeStep === i}
+                isLast={i === steps.length - 1}
+                onActivate={setActiveStep}
+              />
             ))}
-          </ol>
+          </div>
         </div>
       </div>
     </section>

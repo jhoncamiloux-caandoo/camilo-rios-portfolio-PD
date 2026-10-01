@@ -73,6 +73,7 @@ export type HomeDictionary = {
     eyebrow: string;
     title: string;
     intro: string;
+    stepLabel: string;
     steps: { title: string; body: string; example?: string }[];
   };
   expertiseStack: {
@@ -297,14 +298,15 @@ export const home: Record<Locale, HomeDictionary> = {
     process: {
       eyebrow: "Como eu trabalho",
       title: "Do contexto ao impacto medido.",
+      stepLabel: "Passo",
       intro: "Um processo simples, que se adapta ao tamanho do problema. O que não muda: entender antes de desenhar e medir depois de entregar.",
       steps: [
-        { title: "Understand", body: "Usuário, negócio e contexto." },
-        { title: "Define", body: "Problema, oportunidade e hipótese." },
-        { title: "Explore", body: "Arquitetura, fluxos e protótipos.", example: "Servientrega: a jornada da encomenda organizada em 6 etapas." },
-        { title: "Validate", body: "Testes, dados e feedback.", example: "Acquire: testes A/B em 58 landing pages." },
-        { title: "Build", body: "UI, design system e desenvolvimento.", example: "Scale: tokens e componentes prontos para o time de Growth." },
-        { title: "Measure", body: "Métricas, comportamento e impacto.", example: "WhatsApp Next: 25% de conversão na landing page." },
+        { title: "Understand", body: "Usuário, negócio e contexto. Antes de abrir o Figma, olho dados de funil, gravações de sessão e converso com quem usa e com quem vende. O objetivo é entender onde a experiência trava." },
+        { title: "Define", body: "Problema, oportunidade e hipótese. Transformo o que aprendi em uma frase testável: o que vamos mudar, o que esperamos que aconteça e como vamos medir." },
+        { title: "Explore", body: "Arquitetura, fluxos e protótipos. Desenho a jornada inteira antes das telas e uso IA para explorar mais alternativas em menos tempo.", example: "Servientrega: a jornada da encomenda organizada em 6 etapas." },
+        { title: "Validate", body: "Testes, dados e feedback. Protótipos vão para teste com usuários e experimentos A/B. A decisão vem do comportamento, não da opinião mais alta na sala.", example: "Acquire: testes A/B em 58 landing pages." },
+        { title: "Build", body: "UI, design system e desenvolvimento. Tokens, componentes e documentação para o time construir rápido e consistente. Quando faz sentido, eu mesmo levo para código.", example: "Scale: tokens e componentes prontos para o time de Growth." },
+        { title: "Measure", body: "Métricas, comportamento e impacto. Depois de entregar, acompanho os números e o comportamento real. O que aprendo vira o ponto de partida do próximo ciclo.", example: "WhatsApp Next: 25% de conversão na landing page." },
       ],
     },
     expertiseStack: {
@@ -624,14 +626,15 @@ export const home: Record<Locale, HomeDictionary> = {
     process: {
       eyebrow: "How I work",
       title: "From context to measured impact.",
+      stepLabel: "Step",
       intro: "A simple process that scales with the size of the problem. What never changes: understand before designing, measure after shipping.",
       steps: [
-        { title: "Understand", body: "Users, business and context." },
-        { title: "Define", body: "Problem, opportunity and hypothesis." },
-        { title: "Explore", body: "Architecture, flows and prototypes.", example: "Servientrega: the parcel journey organized in 6 stages." },
-        { title: "Validate", body: "Tests, data and feedback.", example: "Acquire: A/B tests across 58 landing pages." },
-        { title: "Build", body: "UI, design system and development.", example: "Scale: tokens and components ready for the Growth team." },
-        { title: "Measure", body: "Metrics, behavior and impact.", example: "WhatsApp Next: 25% landing page conversion." },
+        { title: "Understand", body: "Users, business and context. Before opening Figma, I look at funnel data and session recordings, and I talk to the people who use and sell the product. The goal is to find where the experience gets stuck." },
+        { title: "Define", body: "Problem, opportunity and hypothesis. I turn what I learned into a testable statement: what we will change, what we expect to happen and how we will measure it." },
+        { title: "Explore", body: "Architecture, flows and prototypes. I design the whole journey before the screens and use AI to explore more alternatives in less time.", example: "Servientrega: the parcel journey organized in 6 stages." },
+        { title: "Validate", body: "Tests, data and feedback. Prototypes go through user tests and A/B experiments. Decisions come from behavior, not from the loudest opinion in the room.", example: "Acquire: A/B tests across 58 landing pages." },
+        { title: "Build", body: "UI, design system and development. Tokens, components and documentation so the team can build fast and consistently. When it makes sense, I take it to code myself.", example: "Scale: tokens and components ready for the Growth team." },
+        { title: "Measure", body: "Metrics, behavior and impact. After shipping, I follow the numbers and real behavior. What I learn becomes the starting point of the next cycle.", example: "WhatsApp Next: 25% landing page conversion." },
       ],
     },
     expertiseStack: {
@@ -951,14 +954,15 @@ export const home: Record<Locale, HomeDictionary> = {
     process: {
       eyebrow: "Cómo trabajo",
       title: "Del contexto al impacto medido.",
+      stepLabel: "Paso",
       intro: "Un proceso simple, que se adapta al tamaño del problema. Lo que no cambia: entender antes de diseñar y medir después de entregar.",
       steps: [
-        { title: "Understand", body: "Usuario, negocio y contexto." },
-        { title: "Define", body: "Problema, oportunidad e hipótesis." },
-        { title: "Explore", body: "Arquitectura, flujos y prototipos.", example: "Servientrega: el viaje del envío organizado en 6 etapas." },
-        { title: "Validate", body: "Pruebas, datos y feedback.", example: "Acquire: pruebas A/B en 58 landing pages." },
-        { title: "Build", body: "UI, design system y desarrollo.", example: "Scale: tokens y componentes listos para el equipo de Growth." },
-        { title: "Measure", body: "Métricas, comportamiento e impacto.", example: "WhatsApp Next: 25% de conversión en la landing page." },
+        { title: "Understand", body: "Usuario, negocio y contexto. Antes de abrir Figma, reviso datos del embudo, grabaciones de sesión y hablo con quien usa y con quien vende. El objetivo es entender dónde se traba la experiencia." },
+        { title: "Define", body: "Problema, oportunidad e hipótesis. Convierto lo aprendido en una frase que se puede probar: qué vamos a cambiar, qué esperamos que pase y cómo lo vamos a medir." },
+        { title: "Explore", body: "Arquitectura, flujos y prototipos. Diseño el journey completo antes de las pantallas y uso IA para explorar más alternativas en menos tiempo.", example: "Servientrega: el viaje del envío organizado en 6 etapas." },
+        { title: "Validate", body: "Pruebas, datos y feedback. Los prototipos pasan por pruebas con usuarios y experimentos A/B. La decisión viene del comportamiento, no de la opinión más fuerte en la sala.", example: "Acquire: pruebas A/B en 58 landing pages." },
+        { title: "Build", body: "UI, design system y desarrollo. Tokens, componentes y documentación para que el equipo construya rápido y con consistencia. Cuando tiene sentido, yo mismo lo llevo a código.", example: "Scale: tokens y componentes listos para el equipo de Growth." },
+        { title: "Measure", body: "Métricas, comportamiento e impacto. Después de entregar, sigo los números y el comportamiento real. Lo que aprendo se vuelve el punto de partida del próximo ciclo.", example: "WhatsApp Next: 25% de conversión en la landing page." },
       ],
     },
     expertiseStack: {
