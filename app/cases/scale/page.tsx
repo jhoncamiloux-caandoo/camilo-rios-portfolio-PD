@@ -13,8 +13,6 @@ import { ScAi } from "@/components/cases/scale/lab/sc-ai";
 import { ScGrowth } from "@/components/cases/scale/lab/sc-growth";
 import { ScOps } from "@/components/cases/scale/lab/sc-ops";
 import { ScResult } from "@/components/cases/scale/lab/sc-result";
-import { Ch04Tokens } from "@/components/cases/scale/ch-04-tokens";
-import { Ch05Components } from "@/components/cases/scale/ch-05-components";
 import { Ch10Results } from "@/components/cases/scale/ch-10-results";
 import { useLocale } from "@/lib/i18n/locale-context";
 
@@ -36,8 +34,6 @@ export default function CaseScalePage() {
       {/* Etapa C: capítulos 7 e 8 */}
       <ScAi />
       <ScGrowth />
-      <Ch04Tokens />
-      <Ch05Components />
       {/* Etapa D: capítulos 9 e 10 */}
       <ScOps />
       <Ch10Results />

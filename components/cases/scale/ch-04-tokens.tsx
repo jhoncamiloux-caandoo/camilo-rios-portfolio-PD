@@ -5,12 +5,12 @@ import { useLocale } from "@/lib/i18n/locale-context";
 
 const SPACING = [4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 80, 96];
 
-export function Ch04Tokens() {
+export function Ch04Tokens({ embedded = false }: { embedded?: boolean } = {}) {
   const { t } = useLocale();
   const c = t.scale.ch04;
 
   return (
-    <section className="bg-[#0A0A0A] py-28 md:py-40" aria-label={c.ariaLabel}>
+    <section className={embedded ? "bg-[#0A0A0A] rounded-3xl py-14 md:py-16" : "bg-[#0A0A0A] py-28 md:py-40"} aria-label={c.ariaLabel}>
       <div className="container">
         <div className="mx-auto flex max-w-2xl flex-col items-center gap-6 text-center">
           <Eyebrow light>{c.eyebrow}</Eyebrow>

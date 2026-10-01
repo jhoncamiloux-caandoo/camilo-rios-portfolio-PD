@@ -5,10 +5,12 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Plus } from "lucide-react";
 import { useLocale } from "@/lib/i18n/locale-context";
 import { ComponentExplorer } from "@/components/cases/scale/ch-05b-playground";
+import { Ch04Tokens } from "@/components/cases/scale/ch-04-tokens";
+import { Ch05Components } from "@/components/cases/scale/ch-05-components";
 
 /* Capítulo 5: System Lab em abas (componentes, espaçamento, anatomia). */
 
-type Tab = "components" | "spacing" | "anatomy";
+type Tab = "components" | "spacing" | "anatomy" | "clint";
 const SCALE = [4, 8, 12, 16, 24, 32, 48, 64, 96];
 
 function Spacing() {
@@ -146,8 +148,8 @@ export function ScSystemLab() {
           <p className="mt-4 font-sans text-base leading-relaxed text-white/70 md:text-lg">{c.description}</p>
         </div>
 
-        <div role="tablist" aria-label={c.eyebrow} className="mt-10 inline-flex rounded-full border border-white/15 p-1">
-          {(["components", "spacing", "anatomy"] as Tab[]).map((k) => (
+        <div role="tablist" aria-label={c.eyebrow} className="mt-10 inline-flex max-w-full flex-wrap rounded-3xl border border-white/15 p-1 sm:rounded-full">
+          {(["components", "spacing", "anatomy", "clint"] as Tab[]).map((k) => (
             <button
               key={k}
               role="tab"
@@ -170,6 +172,17 @@ export function ScSystemLab() {
           )}
           {tab === "spacing" && <Spacing />}
           {tab === "anatomy" && <Anatomy />}
+          {tab === "clint" && (
+            <div className="flex flex-col gap-4">
+              <p className="text-sm text-white/70">{c.clintNote}</p>
+              <div className="overflow-hidden rounded-3xl border border-white/10">
+                <Ch04Tokens embedded />
+              </div>
+              <div className="overflow-hidden rounded-3xl">
+                <Ch05Components embedded />
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </section>

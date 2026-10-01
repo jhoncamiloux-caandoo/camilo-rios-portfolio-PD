@@ -149,7 +149,8 @@ export type ScaleLabB = {
     eyebrow: string;
     title: string;
     description: string;
-    tabs: { components: string; spacing: string; anatomy: string };
+    tabs: { components: string; spacing: string; anatomy: string; clint: string };
+    clintNote: string;
     categories: { actions: string; forms: string; navigation: string; feedback: string; data: string };
     aiNote: string;
     spacing: { title: string; body: string; hint: string; cardTitle: string; cardBody: string; cta: string; padding: string; conclusion: string };
@@ -286,7 +287,8 @@ export const scaleLab: Record<Locale, ScaleLabDictionary> = {
       eyebrow: "System Lab",
       title: "Explore as peças do sistema.",
       description: "Componentes vivos em todos os estados, o espaçamento medido e a anatomia de um botão. Escolha uma aba.",
-      tabs: { components: "Componentes", spacing: "Espaçamento", anatomy: "Anatomia" },
+      tabs: { components: "Componentes", spacing: "Espaçamento", anatomy: "Anatomia", clint: "Clint real" },
+      clintNote: "A paleta, a tipografia e os componentes reais da Clint em produção, a base que o Scale organiza.",
       categories: { actions: "Actions", forms: "Forms", navigation: "Navigation", feedback: "Feedback", data: "Data display" },
       aiNote: "Os componentes de IA têm um capítulo próprio, mais abaixo.",
       spacing: { title: "Uma escala, não um palpite.", body: "Cada distância vem da mesma escala de 4 em 4. Escolha um valor e veja onde ele aparece no card.", hint: "Escolha um token de espaço", cardTitle: "Agente de Pré-vendas", cardBody: "Qualifica leads no WhatsApp e agenda a reunião com o vendedor.", cta: "Criar agente", padding: "padding", conclusion: "O mesmo valor, nos mesmos lugares, em todas as telas." },
@@ -512,7 +514,8 @@ export const scaleLab: Record<Locale, ScaleLabDictionary> = {
       eyebrow: "System Lab",
       title: "Explore the pieces of the system.",
       description: "Live components in every state, measured spacing and the anatomy of a button. Pick a tab.",
-      tabs: { components: "Components", spacing: "Spacing", anatomy: "Anatomy" },
+      tabs: { components: "Components", spacing: "Spacing", anatomy: "Anatomy", clint: "Real Clint" },
+      clintNote: "Clint's real palette, typography and production components, the base that Scale organizes.",
       categories: { actions: "Actions", forms: "Forms", navigation: "Navigation", feedback: "Feedback", data: "Data display" },
       aiNote: "AI components have their own chapter, further down.",
       spacing: { title: "A scale, not a guess.", body: "Every distance comes from the same 4-step scale. Pick a value and see where it shows up in the card.", hint: "Pick a space token", cardTitle: "Pre-sales agent", cardBody: "Qualifies leads on WhatsApp and books the meeting with the sales rep.", cta: "Create agent", padding: "padding", conclusion: "The same value, in the same places, on every screen." },
@@ -738,7 +741,8 @@ export const scaleLab: Record<Locale, ScaleLabDictionary> = {
       eyebrow: "System Lab",
       title: "Explora las piezas del sistema.",
       description: "Componentes vivos en todos los estados, el espaciado medido y la anatomía de un botón. Elige una pestaña.",
-      tabs: { components: "Componentes", spacing: "Espaciado", anatomy: "Anatomía" },
+      tabs: { components: "Componentes", spacing: "Espaciado", anatomy: "Anatomía", clint: "Clint real" },
+      clintNote: "La paleta, la tipografía y los componentes reales de Clint en producción, la base que Scale organiza.",
       categories: { actions: "Actions", forms: "Forms", navigation: "Navigation", feedback: "Feedback", data: "Data display" },
       aiNote: "Los componentes de IA tienen su propio capítulo, más abajo.",
       spacing: { title: "Una escala, no una suposición.", body: "Cada distancia viene de la misma escala de 4 en 4. Elige un valor y mira dónde aparece en el card.", hint: "Elige un token de espacio", cardTitle: "Agente de Preventa", cardBody: "Califica leads en WhatsApp y agenda la reunión con el vendedor.", cta: "Crear agente", padding: "padding", conclusion: "El mismo valor, en los mismos lugares, en todas las pantallas." },
