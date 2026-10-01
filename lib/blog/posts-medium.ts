@@ -3620,15 +3620,6 @@ export const mediumPosts: Post[] = [
    "Growth",
    "Produto"
   ],
-  "coverArt": {
-   "icons": [
-    "target",
-    "users",
-    "chart",
-    "flask",
-    "trend"
-   ]
-  },
   "readMinutes": 6,
   "related": {
    "href": "/cases/acquire",
@@ -4176,7 +4167,8 @@ export const mediumPosts: Post[] = [
     "type": "quote",
     "text": "Deveria acontecer por causa dela."
    }
-  ]
+  ],
+  "cover": "/blog/ux-e-growth-nao-deveriam-trabalhar-separados.webp"
  },
  {
   "slug": "product-designer-que-conversa-com-codigo",
@@ -4189,15 +4181,6 @@ export const mediumPosts: Post[] = [
    "Product Design",
    "IA"
   ],
-  "coverArt": {
-   "icons": [
-    "code",
-    "pen",
-    "puzzle",
-    "sparkles",
-    "rocket"
-   ]
-  },
   "readMinutes": 5,
   "related": {
    "href": "/cases/scale",
@@ -4678,7 +4661,8 @@ export const mediumPosts: Post[] = [
     "type": "quote",
     "text": "É aí que ela começa a existir de verdade."
    }
-  ]
+  ],
+  "cover": "/blog/product-designer-que-conversa-com-codigo.webp"
  },
  {
   "slug": "transformar-dados-em-decisao",
@@ -4691,15 +4675,6 @@ export const mediumPosts: Post[] = [
    "Decisão",
    "Product Design"
   ],
-  "coverArt": {
-   "icons": [
-    "database",
-    "chart",
-    "bulb",
-    "target",
-    "line"
-   ]
-  },
   "readMinutes": 5,
   "related": {
    "href": "/cases/acquire",
@@ -5209,7 +5184,8 @@ export const mediumPosts: Post[] = [
     "type": "p",
     "text": "É saber usar os dados certos, no momento certo, para tomar uma decisão."
    }
-  ]
+  ],
+  "cover": "/blog/transformar-dados-em-decisao.webp"
  },
  {
   "slug": "ia-cria-interface-quem-decide-se-e-boa",
@@ -5696,15 +5672,6 @@ export const mediumPosts: Post[] = [
    "IA",
    "Empatia"
   ],
-  "coverArt": {
-   "icons": [
-    "users",
-    "bot",
-    "mic",
-    "bulb",
-    "search"
-   ]
-  },
   "readMinutes": 4,
   "related": {
    "href": "/cases/intelligence",
@@ -6231,7 +6198,8 @@ export const mediumPosts: Post[] = [
     "type": "quote",
     "text": "O que vamos fazer diferente depois de aprender isso?"
    }
-  ]
+  ],
+  "cover": "/blog/pesquisa-com-usuarios-na-era-da-ia.webp"
  },
  {
   "slug": "contexto-novo-material-do-design",
@@ -6957,15 +6925,6 @@ export const mediumPosts: Post[] = [
    "Agentes",
    "Confiança"
   ],
-  "coverArt": {
-   "icons": [
-    "hand",
-    "bot",
-    "shieldCheck",
-    "undo",
-    "eye"
-   ]
-  },
   "readMinutes": 5,
   "related": {
    "href": "/cases/intelligence",
@@ -7643,7 +7602,8 @@ export const mediumPosts: Post[] = [
     "type": "p",
     "text": "É também sobre definir limites, criar confiança e manter as pessoas no controle."
    }
-  ]
+  ],
+  "cover": "/blog/quando-a-ia-age-desenhar-controle.webp"
  },
  {
   "slug": "dados-sao-valiosos-o-que-fazer-com-eles",
@@ -7656,15 +7616,6 @@ export const mediumPosts: Post[] = [
    "UX",
    "Growth"
   ],
-  "coverArt": {
-   "icons": [
-    "chart",
-    "search",
-    "bulb",
-    "flask",
-    "repeat"
-   ]
-  },
   "readMinutes": 5,
   "related": {
    "href": "/cases/whatsapp-next",
@@ -8193,7 +8144,8 @@ export const mediumPosts: Post[] = [
     "type": "p",
     "text": "Mas porque precisa saber conectar as informações certas para ajudar o time a tomar decisões melhores."
    }
-  ]
+  ],
+  "cover": "/blog/dados-sao-valiosos-o-que-fazer-com-eles.webp"
  },
  {
   "slug": "ia-acelera-mas-ate-que-ponto",
@@ -8206,15 +8158,6 @@ export const mediumPosts: Post[] = [
    "Processo",
    "Product Design"
   ],
-  "coverArt": {
-   "icons": [
-    "zap",
-    "sparkles",
-    "eye",
-    "flask",
-    "rocket"
-   ]
-  },
   "readMinutes": 5,
   "related": {
    "href": "/cases/scale",
@@ -8826,7 +8769,8 @@ export const mediumPosts: Post[] = [
     "type": "p",
     "text": "Talvez seja conseguir decidir melhor o que vale a pena criar."
    }
-  ]
+  ],
+  "cover": "/blog/ia-acelera-mas-ate-que-ponto.webp"
  },
  {
   "slug": "olhar-critico-vale-mais-que-ferramentas",
@@ -8839,15 +8783,6 @@ export const mediumPosts: Post[] = [
    "Carreira",
    "IA"
   ],
-  "coverArt": {
-   "icons": [
-    "eye",
-    "filter",
-    "users",
-    "accessibility",
-    "briefcase"
-   ]
-  },
   "readMinutes": 5,
   "related": {
    "href": "/cases/scale",
@@ -9425,7 +9360,8 @@ export const mediumPosts: Post[] = [
     "type": "p",
     "text": "Mas aprender a pensar sobre o que estamos criando é ainda mais importante."
    }
-  ]
+  ],
+  "cover": "/blog/olhar-critico-vale-mais-que-ferramentas.webp"
  },
  {
   "slug": "dados-precisam-de-historia",
@@ -9438,15 +9374,6 @@ export const mediumPosts: Post[] = [
    "Dados",
    "UX"
   ],
-  "coverArt": {
-   "icons": [
-    "presentation",
-    "chart",
-    "bulb",
-    "users",
-    "target"
-   ]
-  },
   "readMinutes": 3,
   "related": {
    "href": "/cases/acquire",
@@ -9943,6 +9870,7 @@ export const mediumPosts: Post[] = [
     "type": "p",
     "text": "Eles geram valor quando ajudam alguém a tomar uma decisão melhor."
    }
-  ]
+  ],
+  "cover": "/blog/dados-precisam-de-historia.webp"
  }
 ];
