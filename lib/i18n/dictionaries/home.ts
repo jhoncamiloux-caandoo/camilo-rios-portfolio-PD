@@ -147,6 +147,7 @@ export type HomeDictionary = {
     tagline: string;
     linkedinAria: string;
     behanceAria: string;
+    mediumAria: string;
   };
   floatingActions: {
     scheduleLabel: string;
@@ -502,6 +503,7 @@ export const home: Record<Locale, HomeDictionary> = {
       tagline: "Produtos digitais construídos para gerar crescimento.",
       linkedinAria: "LinkedIn de Jhon Camilo Rios",
       behanceAria: "Behance de Jhon Camilo Rios",
+      mediumAria: "Medium de Jhon Camilo Rios",
     },
     floatingActions: {
       scheduleLabel: "Agendar reunião",
@@ -855,6 +857,7 @@ export const home: Record<Locale, HomeDictionary> = {
       tagline: "Digital products built to drive growth.",
       linkedinAria: "Jhon Camilo Rios's LinkedIn",
       behanceAria: "Jhon Camilo Rios's Behance",
+      mediumAria: "Jhon Camilo Rios's Medium",
     },
     floatingActions: {
       scheduleLabel: "Schedule a call",
@@ -1208,6 +1211,7 @@ export const home: Record<Locale, HomeDictionary> = {
       tagline: "Productos digitales construidos para generar crecimiento.",
       linkedinAria: "LinkedIn de Jhon Camilo Rios",
       behanceAria: "Behance de Jhon Camilo Rios",
+      mediumAria: "Medium de Jhon Camilo Rios",
     },
     floatingActions: {
       scheduleLabel: "Agendar reunión",
