@@ -29,6 +29,8 @@ export type Post = {
   cover?: string;
   coverArt?: { icons: string[] };
   updateNote?: string;
+  /** Data da última revisão (AAAA-MM-DD), usada em dateModified e no sitemap. */
+  updated?: string;
   sources?: string[];
   mediumUrl?: string;
   readMinutes: number;

@@ -269,13 +269,45 @@ export const mediumPosts: Post[] = [
    },
    {
     "type": "h2",
+    "text": "O que mudou desde este texto"
+   },
+   {
+    "type": "p",
+    "text": "A WCAG 2.2, publicada pelo W3C em outubro de 2023, virou a referência atual. Ela trouxe critérios que conversam diretamente com o dia a dia de produto:"
+   },
+   {
+    "type": "ul",
+    "items": [
+     "Foco visível que não fica escondido atrás de headers fixos ou banners.",
+     "Área de toque mínima de 24 por 24 pixels para alvos interativos.",
+     "Alternativa a gestos de arrastar, com botões ou cliques simples.",
+     "Login sem depender de memorizar ou transcrever códigos."
+    ]
+   },
+   {
+    "type": "p",
+    "text": "Na Europa, o European Accessibility Act passou a valer em junho de 2025 para vários produtos e serviços digitais. No Brasil, a Lei Brasileira de Inclusão já trata acessibilidade como direito. Ou seja: deixou de ser um extra."
+   },
+   {
+    "type": "visual",
+    "id": "contrast-check",
+    "caption": "O mesmo texto em tons diferentes. A razão de contraste é calculada na hora e comparada com os limites da WCAG."
+   },
+   {
+    "type": "p",
+    "text": "Contraste é um dos critérios mais fáceis de checar e um dos mais esquecidos. Cinza claro em fundo branco parece elegante no Figma e some na tela do celular ao sol."
+   },
+   {
+    "type": "h2",
     "text": "Vamos conversar?"
    },
    {
     "type": "p",
     "text": "Você já enfrentou algum desafio por conta de um design inacessível? Já tentou implementar boas práticas de acessibilidade nos seus projetos? Me conta nos comentários, bora trocar experiências e construir produtos mais inclusivos juntos."
    }
-  ]
+  ],
+  "updated": "2026-10-01",
+  "updateNote": "Revisado em outubro de 2026: incluí o que mudou desde a publicação e um novo visual para explicar a ideia central."
  },
  {
   "slug": "whiteboard-challenge-ux-product-design",
@@ -296,7 +328,7 @@ export const mediumPosts: Post[] = [
    "title": "Clint Intelligence",
    "body": "Na prática: agentes de IA que agem dentro do CRM e deixam a pessoa no controle."
   },
-  "updateNote": "Nota de atualização (2026): algumas ferramentas citadas mudaram ou foram substituídas desde a publicação. Vale olhar para o princípio de cada uma, não para o nome.",
+  "updateNote": "Nota de atualização (2026): algumas ferramentas citadas mudaram ou foram substituídas desde a publicação. Vale olhar para o princípio de cada uma, não para o nome. Revisado em outubro de 2026: incluí o que mudou desde a publicação e um novo visual para explicar a ideia central.",
   "blocks": [
    {
     "type": "p",
@@ -405,10 +437,23 @@ export const mediumPosts: Post[] = [
     "text": "O whiteboard challenge pode parecer intimidador à primeira vista, mas é, na verdade, uma excelente oportunidade para mostrar sua capacidade de resolver problemas de maneira criativa e estratégica. Ao transformar a pressão em um exercício de aprendizado, você revela seu potencial e seu verdadeiro talento para lidar com desafios em tempo real. Lembre-se: cada rascunho, cada erro e cada correção fazem parte do processo de crescimento profissional."
    },
    {
+    "type": "h2",
+    "text": "Whiteboard challenge na era da IA"
+   },
+   {
+    "type": "p",
+    "text": "Com tanta coisa gerada por IA, muitos processos seletivos passaram a valorizar ainda mais o raciocínio ao vivo. O que importa é ver como você pensa: as perguntas que faz, as decisões que toma e como justifica cada uma."
+   },
+   {
+    "type": "p",
+    "text": "Pense em voz alta, declare suas suposições e mostre os trade-offs. Isso nenhuma ferramenta faz por você durante a conversa."
+   },
+   {
     "type": "p",
     "text": "E você, já enfrentou um whiteboard challenge? Como foi a experiência e quais dicas você tem para compartilhar? Deixe seu comentário e vamos continuar essa conversa, afinal, cada desafio é uma chance de evoluir no mundo do ux/product design!"
    }
-  ]
+  ],
+  "updated": "2026-10-01"
  },
  {
   "slug": "design-alem-do-design-produto-growth-negocio",
@@ -636,7 +681,7 @@ export const mediumPosts: Post[] = [
    "title": "Clint Intelligence",
    "body": "Na prática: agentes de IA que agem dentro do CRM e deixam a pessoa no controle."
   },
-  "updateNote": "Nota de atualização (2026): este texto foi escrito antes da nova geração de modelos e agentes. Hoje a IA já gera interfaces, código e fluxos inteiros a partir de contexto. O ponto central continua o mesmo: a IA acelera a produção, e a decisão sobre o que é bom para o usuário segue sendo do designer.",
+  "updateNote": "Revisado em outubro de 2026: incluí o que mudou desde a publicação e um novo visual para explicar a ideia central.",
   "blocks": [
    {
     "type": "p",
@@ -781,6 +826,27 @@ export const mediumPosts: Post[] = [
    },
    {
     "type": "h2",
+    "text": "Da interface adaptativa à interface que age"
+   },
+   {
+    "type": "p",
+    "text": "Em 2025 falávamos de interfaces que se adaptam ao usuário. Em 2026, muitas interfaces também agem: agentes sugerem, executam e avisam."
+   },
+   {
+    "type": "p",
+    "text": "Cada passo de autonomia exige algo novo da interface. Não basta a IA acertar, o usuário precisa entender e poder corrigir."
+   },
+   {
+    "type": "visual",
+    "id": "agent-spectrum",
+    "caption": "Quanto mais a interface faz sozinha, mais ela precisa explicar, pedir confirmação e permitir desfazer."
+   },
+   {
+    "type": "p",
+    "text": "Aprofundo esse tema no artigo “Quando a IA age, o designer precisa desenhar controle”."
+   },
+   {
+    "type": "h2",
     "text": "Dicas práticas para potencializar seu trabalho com IA"
    },
    {
@@ -823,7 +889,8 @@ export const mediumPosts: Post[] = [
     "type": "p",
     "text": "E você, como tem integrado a IA no seu processo de design? Compartilhe suas experiências e insights nos comentários! Vamos juntos transformar o futuro do design com inteligência e criatividade!"
    }
-  ]
+  ],
+  "updated": "2026-10-01"
  },
  {
   "slug": "licoes-de-nao-me-faca-pensar",
@@ -1171,6 +1238,28 @@ export const mediumPosts: Post[] = [
    },
    {
     "type": "h2",
+    "text": "Atualização 2026: tokens em camadas e IA"
+   },
+   {
+    "type": "p",
+    "text": "A forma mais saudável de organizar um Design System hoje é separar os tokens em camadas. O primitivo guarda o valor bruto, o semântico diz para que serve e o componente usa o semântico."
+   },
+   {
+    "type": "visual",
+    "id": "token-tiers",
+    "caption": "Muda o primitivo, o token semântico repassa e todos os componentes acompanham, sem caçar cor por cor."
+   },
+   {
+    "type": "p",
+    "text": "O Design Tokens Community Group, do W3C, vem padronizando um formato comum para tokens. Isso facilita levar a mesma decisão do Figma para o código e para outras ferramentas."
+   },
+   {
+    "type": "p",
+    "text": "E existe um motivo novo para cuidar disso: ferramentas de IA geram interfaces muito melhores quando recebem o Design System como contexto. Componentes, tokens e regras bem documentados reduzem o resultado genérico.",
+    "lead": "Design System como contexto para IA:"
+   },
+   {
+    "type": "h2",
     "text": "Integre o Design System na Cultura da Empresa"
    },
    {
@@ -1185,7 +1274,9 @@ export const mediumPosts: Post[] = [
     "type": "p",
     "text": "Deixe seu comentário e compartilhe suas experiências! Se você tem alguma dúvida ou quer saber mais sobre como implementar essa estratégia na sua empresa, vamos conversar!"
    }
-  ]
+  ],
+  "updated": "2026-10-01",
+  "updateNote": "Revisado em outubro de 2026: incluí o que mudou desde a publicação e um novo visual para explicar a ideia central."
  },
  {
   "slug": "ia-na-gestao-de-produtos",
@@ -1927,7 +2018,7 @@ export const mediumPosts: Post[] = [
    "title": "Clint Intelligence",
    "body": "Na prática: agentes de IA que agem dentro do CRM e deixam a pessoa no controle."
   },
-  "updateNote": "Nota de atualização (2026): este texto foi escrito antes da nova geração de modelos e agentes. Hoje a IA já gera interfaces, código e fluxos inteiros a partir de contexto. O ponto central continua o mesmo: a IA acelera a produção, e a decisão sobre o que é bom para o usuário segue sendo do designer.",
+  "updateNote": "Revisado em outubro de 2026: incluí o que mudou desde a publicação e um novo visual para explicar a ideia central.",
   "blocks": [
    {
     "type": "p",
@@ -2080,10 +2171,23 @@ export const mediumPosts: Post[] = [
     "text": "Mas a verdade é que a IA não substitui a intuição, a criatividade e a empatia, que são as verdadeiras forças por trás do UX Design. O segredo é aprender a usá-la como uma aliada estratégica, sem perder o toque humano que faz toda a diferença."
    },
    {
+    "type": "h2",
+    "text": "O que mudou desde então"
+   },
+   {
+    "type": "p",
+    "text": "A previsão deste texto se confirmou, e mais rápido do que eu imaginava. A IA saiu do papel de assistente pontual e passou a gerar fluxos, telas e código inteiros."
+   },
+   {
+    "type": "p",
+    "text": "Com isso, o trabalho do designer foi para o começo e para o fim do processo: definir bem o problema e o contexto, e avaliar com rigor o que foi gerado. Escrevi sobre isso na série “Prompt e Design na era da IA”."
+   },
+   {
     "type": "p",
     "text": "Agora quero saber de você: já experimentou alguma dessas ferramentas no seu fluxo de trabalho? O que acha da ideia de integrar IA no UX Design? Me conta nos comentários!"
    }
-  ]
+  ],
+  "updated": "2026-10-01"
  },
  {
   "slug": "ia-transformando-prototipagem-e-design-de-interfaces",
@@ -2104,7 +2208,7 @@ export const mediumPosts: Post[] = [
    "title": "Clint Scale",
    "body": "Na prática: um design system explorável, com tokens, componentes, contraste e governança."
   },
-  "updateNote": "Nota de atualização (2026): este texto foi escrito antes da nova geração de modelos e agentes. Hoje a IA já gera interfaces, código e fluxos inteiros a partir de contexto. O ponto central continua o mesmo: a IA acelera a produção, e a decisão sobre o que é bom para o usuário segue sendo do designer.",
+  "updateNote": "Revisado em outubro de 2026: incluí o que mudou desde a publicação e um novo visual para explicar a ideia central.",
   "blocks": [
    {
     "type": "p",
@@ -2197,6 +2301,27 @@ export const mediumPosts: Post[] = [
    },
    {
     "type": "h2",
+    "text": "Prototipar em 2026: do clique ao código"
+   },
+   {
+    "type": "p",
+    "text": "Quando escrevi este texto, a IA ajudava em partes do processo. Hoje ferramentas como Figma Make, v0, Lovable e Claude geram protótipos funcionais, com dados e navegação, a partir de um bom contexto."
+   },
+   {
+    "type": "p",
+    "text": "Isso muda o momento em que o usuário entra. Dá para testar uma ideia funcionando muito mais cedo."
+   },
+   {
+    "type": "visual",
+    "id": "proto-loop",
+    "caption": "O protótipo funcional encurta o caminho até o usuário. Mas o teste continua sendo a etapa que valida."
+   },
+   {
+    "type": "p",
+    "text": "O cuidado é não confundir acabamento com validação. Um protótipo que parece pronto convence o time com facilidade, e por isso precisa passar por teste com usuários antes de virar decisão."
+   },
+   {
+    "type": "h2",
     "text": "O futuro do design: mais estratégico e humano"
    },
    {
@@ -2207,7 +2332,8 @@ export const mediumPosts: Post[] = [
     "type": "p",
     "text": "E você, já está utilizando IA no seu processo de design? Como tem sido essa experiência? Compartilhe nos comentários!"
    }
-  ]
+  ],
+  "updated": "2026-10-01"
  },
  {
   "slug": "design-thinking-resolver-problemas",
@@ -2514,6 +2640,33 @@ export const mediumPosts: Post[] = [
    },
    {
     "type": "h2",
+    "text": "Como escolher a métrica certa"
+   },
+   {
+    "type": "p",
+    "text": "Doze métricas é muita coisa. O erro mais comum é escolher a mais famosa, em vez da que responde à pergunta do time."
+   },
+   {
+    "type": "p",
+    "text": "Duas perguntas ajudam a decidir: estou avaliando uma tarefa específica ou o produto inteiro? E quanto tempo a pessoa pode gastar respondendo?"
+   },
+   {
+    "type": "visual",
+    "id": "metric-map",
+    "caption": "Comece pela pergunta. Cada pergunta acende o questionário que responde a ela, da tarefa ao produto inteiro."
+   },
+   {
+    "type": "p",
+    "text": "Questionários medem percepção. Para entender comportamento, combine com dados de uso, como taxa de conclusão, tempo na tarefa e abandono por etapa.",
+    "lead": "Atitude e comportamento:"
+   },
+   {
+    "type": "p",
+    "text": "Hoje a IA ajuda muito a agrupar respostas abertas e encontrar temas. Mas a nota e a interpretação precisam ser revisadas por alguém do time, principalmente em amostras pequenas.",
+    "lead": "E a IA?"
+   },
+   {
+    "type": "h2",
     "text": "Por que essas ferramentas importam?"
    },
    {
@@ -2545,7 +2698,9 @@ export const mediumPosts: Post[] = [
     "type": "p",
     "text": "E você? Já usou alguma dessas métricas? Qual delas te trouxe os insights mais valiosos? Vamos trocar ideias nos comentários!"
    }
-  ]
+  ],
+  "updated": "2026-10-01",
+  "updateNote": "Revisado em outubro de 2026: incluí o que mudou desde a publicação e um novo visual para explicar a ideia central."
  },
  {
   "slug": "rive-e-phase-movimento-no-design",
@@ -2867,6 +3022,28 @@ export const mediumPosts: Post[] = [
    },
    {
     "type": "h2",
+    "text": "Pesquisa com IA e LGPD"
+   },
+   {
+    "type": "p",
+    "text": "Hoje é comum transcrever entrevistas e analisar respostas com ferramentas de IA. Isso economiza tempo, mas cria uma pergunta nova: para onde estão indo os dados dos participantes?"
+   },
+   {
+    "type": "ul",
+    "items": [
+     "Informe no termo de consentimento se gravações ou transcrições passarão por ferramentas de terceiros.",
+     "Remova nome, contato e qualquer dado identificável antes de enviar o material para análise.",
+     "Prefira ferramentas com contrato que proíba o uso dos dados para treinar modelos.",
+     "Defina por quanto tempo o material fica guardado e descarte depois."
+    ]
+   },
+   {
+    "type": "visual",
+    "id": "consent-flow",
+    "caption": "O dado pessoal sai antes de qualquer ferramenta externa. Para a análise, P07 vale tanto quanto o nome real."
+   },
+   {
+    "type": "h2",
     "text": "Proteção de Dados como Pilar de Credibilidade"
    },
    {
@@ -2877,7 +3054,9 @@ export const mediumPosts: Post[] = [
     "type": "p",
     "text": "Em resumo, incorporar a LGPD nas pesquisas UX contribui para um relacionamento mais transparente e respeitoso, e oferece uma experiência onde o participante se sente seguro e valorizado."
    }
-  ]
+  ],
+  "updated": "2026-10-01",
+  "updateNote": "Revisado em outubro de 2026: incluí o que mudou desde a publicação e um novo visual para explicar a ideia central."
  },
  {
   "slug": "double-diamond-papel-do-ux-designer",
@@ -3179,10 +3358,28 @@ export const mediumPosts: Post[] = [
     "text": "5. Pensamento Crítico e Curiosidade"
    },
    {
+    "type": "h2",
+    "text": "6. Saber direcionar a IA (atualização 2026)"
+   },
+   {
+    "type": "p",
+    "text": "Desde a primeira versão deste texto, uma habilidade nova entrou na lista: dar contexto, restrições e critérios para a IA, e avaliar o que ela entrega com olhar crítico. Não é decorar prompts, é saber o que pedir."
+   },
+   {
+    "type": "h2",
+    "text": "7. Entender negócio e conversar com código"
+   },
+   {
+    "type": "p",
+    "text": "Com protótipos funcionais cada vez mais comuns, designers que entendem métricas de negócio e conseguem conversar com desenvolvimento ganham espaço. Escrevo sobre isso em “O novo diferencial do Product Designer pode ser saber conversar com código”."
+   },
+   {
     "type": "p",
     "text": "Em um mercado que exige inovação constante, o pensamento crítico é uma habilidade valorizada, especialmente quando se trata de questionar suposições e propor soluções mais eficazes. Além disso, a curiosidade e o desejo por aprendizado contínuo são características buscadas, já que o setor de UX está em constante transformação. Designers que estão sempre atualizados com as novas tendências e que buscam melhorar suas habilidades são os que se destacam em processos seletivos (CareerFoundry, 2023)."
    }
-  ]
+  ],
+  "updated": "2026-10-01",
+  "updateNote": "Revisado em outubro de 2026: incluí o que mudou desde a publicação e um novo visual para explicar a ideia central."
  },
  {
   "slug": "design-e-credibilidade-da-empresa",
