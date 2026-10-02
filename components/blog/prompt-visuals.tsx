@@ -6,18 +6,18 @@ import { motion, useInView, useReducedMotion } from "framer-motion";
 /* SVGs da série "Prompt e Design": cada um conta a ideia do trecho em etapas,
    em loop enquanto está na tela. Com movimento reduzido mostram o estado final. */
 
-const P = "#622FFD";
-const P2 = "#8b6bff";
-const G = "#A3E635";
-const LINE = "rgba(255,255,255,0.14)";
-const CARD = "#17171f";
-const TXT = "rgba(255,255,255,0.88)";
-const SUB = "rgba(255,255,255,0.58)";
+export const P = "#622FFD";
+export const P2 = "#8b6bff";
+export const G = "#A3E635";
+export const LINE = "rgba(255,255,255,0.14)";
+export const CARD = "#17171f";
+export const TXT = "rgba(255,255,255,0.88)";
+export const SUB = "rgba(255,255,255,0.58)";
 const MONO = "ui-monospace, SFMono-Regular, Menlo, monospace";
 const ease = [0.22, 1, 0.36, 1] as const;
 
 /* Avança de 0 até `steps` (com pausa no final) e recomeça, só quando visível. */
-function useSteps(steps: number, ms = 1100, hold = 3) {
+export function useSteps(steps: number, ms = 1100, hold = 3) {
   const ref = useRef<SVGSVGElement>(null);
   const inView = useInView(ref, { margin: "-80px" });
   const reduce = useReducedMotion();
@@ -31,11 +31,11 @@ function useSteps(steps: number, ms = 1100, hold = 3) {
   return { ref, k: Math.min(k, steps), reduce: !!reduce };
 }
 
-function T({ x, y, children, a = "start", c = SUB, s = 11, w = 400 }: { x: number; y: number; children: React.ReactNode; a?: "start" | "middle" | "end"; c?: string; s?: number; w?: number }) {
+export function T({ x, y, children, a = "start", c = SUB, s = 11, w = 400 }: { x: number; y: number; children: React.ReactNode; a?: "start" | "middle" | "end"; c?: string; s?: number; w?: number }) {
   return <text x={x} y={y} fill={c} fontSize={s} fontWeight={w} fontFamily={MONO} textAnchor={a} letterSpacing="0.05em">{children}</text>;
 }
 
-const tr = (reduce: boolean, d = 0.6) => ({ duration: reduce ? 0 : d, ease });
+export const tr = (reduce: boolean, d = 0.6) => ({ duration: reduce ? 0 : d, ease });
 
 /* 1. Do pedido à especificação: cada item do briefing organiza um pedaço da interface. */
 export function SpecBuilder() {
