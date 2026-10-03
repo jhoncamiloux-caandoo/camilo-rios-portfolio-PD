@@ -345,6 +345,14 @@ export const mediumPosts: Post[] = [
     "text": "O whiteboard challenge é uma etapa comum em entrevistas para vagas de design, onde você precisa resolver um problema real enquanto expõe seu processo de pensamento. Diferente de um teste escrito, aqui o foco está em mostrar como você organiza suas ideias, justifica suas escolhas e constrói uma solução funcional, tudo isso enquanto desenha e vai ajustando seu rascunho. Pense nele como aquele dia em que você precisou montar um móvel do IKEA sem olhar o manual: o nervosismo existe, mas cada passo que você dá vai mostrando sua capacidade de se adaptar e solucionar imprevistos."
    },
    {
+    "type": "scene",
+    "id": "whiteboard",
+    "data": {
+     "title": "Como o raciocínio aparece no quadro",
+     "note": "O que o avaliador quer ver é o caminho: do problema às restrições, do fluxo à ideia e aos trade-offs."
+    }
+   },
+   {
     "type": "h2",
     "text": "Por que esse desafio gera tanta ansiedade?"
    },
@@ -425,14 +433,18 @@ export const mediumPosts: Post[] = [
     "caption": "O processo vale mais que o desenho final."
    },
    {
-    "type": "ul",
-    "items": [
-     "Explique seu raciocínio em voz alta: Não se preocupe em ter a solução perfeita logo de início. O que interessa é acompanhar o seu fluxo de pensamento e entender como você chega às conclusões. Mesmo se você cometer algum erro, mostre como identifica e corrige o problema.",
-     "Utilize exemplos do cotidiano: Conectar o desafio a situações reais pode facilitar a compreensão. Se estiver projetando uma interface para um aplicativo de delivery, por exemplo, imagine as dificuldades de fazer um pedido em um dia de chuva ou durante um pico de tráfego urbano.",
-     "Não busque a perfeição visual: O objetivo não é desenhar um layout impecável, mas sim demonstrar sua capacidade de estruturar ideias e resolver problemas de forma criativa. Lembre-se: o que importa é o processo, não o produto final.",
-     "Treine regularmente: Assim como um músico ensaia para um concerto, praticar whiteboard challenges regularmente vai te ajudar a se sentir mais confiante e preparado. Reserve momentos para simular essas situações e, se possível, faça isso em grupo para receber feedbacks construtivos.",
-     "Peça opiniões e melhore continuamente: Se tiver a oportunidade, pratique com amigos ou colegas e peça feedback sobre sua abordagem. Esse retorno é essencial para identificar pontos de melhoria e ajustar sua metodologia de apresentação."
-    ]
+    "type": "scene",
+    "id": "timer-tips",
+    "data": {
+     "lead": "",
+     "tips": [
+      "Explique seu raciocínio em voz alta: Não se preocupe em ter a solução perfeita logo de início. O que interessa é acompanhar o seu fluxo de pensamento e entender como você chega às conclusões. Mesmo se você cometer algum erro, mostre como identifica e corrige o problema.",
+      "Utilize exemplos do cotidiano: Conectar o desafio a situações reais pode facilitar a compreensão. Se estiver projetando uma interface para um aplicativo de delivery, por exemplo, imagine as dificuldades de fazer um pedido em um dia de chuva ou durante um pico de tráfego urbano.",
+      "Não busque a perfeição visual: O objetivo não é desenhar um layout impecável, mas sim demonstrar sua capacidade de estruturar ideias e resolver problemas de forma criativa. Lembre-se: o que importa é o processo, não o produto final.",
+      "Treine regularmente: Assim como um músico ensaia para um concerto, praticar whiteboard challenges regularmente vai te ajudar a se sentir mais confiante e preparado. Reserve momentos para simular essas situações e, se possível, faça isso em grupo para receber feedbacks construtivos.",
+      "Peça opiniões e melhore continuamente: Se tiver a oportunidade, pratique com amigos ou colegas e peça feedback sobre sua abordagem. Esse retorno é essencial para identificar pontos de melhoria e ajustar sua metodologia de apresentação."
+     ]
+    }
    },
    {
     "type": "quote",
@@ -443,19 +455,24 @@ export const mediumPosts: Post[] = [
     "text": "Whiteboard challenge na era da IA"
    },
    {
-    "type": "p",
-    "text": "Com tanta coisa gerada por IA, muitos processos seletivos passaram a valorizar ainda mais o raciocínio ao vivo. O que importa é ver como você pensa: as perguntas que faz, as decisões que toma e como justifica cada uma."
-   },
-   {
-    "type": "p",
-    "text": "Pense em voz alta, declare suas suposições e mostre os trade-offs. Isso nenhuma ferramenta faz por você durante a conversa."
+    "type": "scene",
+    "id": "think-aloud",
+    "data": {
+     "lines": [
+      "Com tanta coisa gerada por IA, muitos processos seletivos passaram a valorizar ainda mais o raciocínio ao vivo.",
+      "O que importa é ver como você pensa: as perguntas que faz, as decisões que toma e como justifica cada uma.",
+      "Pense em voz alta, declare suas suposições e mostre os trade-offs.",
+      "Isso nenhuma ferramenta faz por você durante a conversa."
+     ]
+    }
    },
    {
     "type": "p",
     "text": "E você, já enfrentou um whiteboard challenge? Como foi a experiência e quais dicas você tem para compartilhar? Deixe seu comentário e vamos continuar essa conversa, afinal, cada desafio é uma chance de evoluir no mundo do ux/product design!"
    }
   ],
-  "updated": "2026-10-01"
+  "updated": "2026-10-01",
+  "lab": true
  },
  {
   "slug": "design-alem-do-design-produto-growth-negocio",
@@ -496,6 +513,19 @@ export const mediumPosts: Post[] = [
    {
     "type": "p",
     "text": "O design é a interface entre o usuário e o produto. Mas se essa interface não for pensada estrategicamente, não adianta ser bonita. Ela precisa ser eficiente, reduzir fricção e facilitar a experiência do usuário."
+   },
+   {
+    "type": "scene",
+    "id": "gears",
+    "data": {
+     "lead": "Uma interface bem pensada coloca o resto do produto em movimento.",
+     "labels": [
+      "Interface",
+      "Menos fricção",
+      "Mais uso",
+      "Mais conversão"
+     ]
+    }
    },
    {
     "type": "visual",
@@ -575,16 +605,16 @@ export const mediumPosts: Post[] = [
     "caption": "Três exemplos clássicos de Growth Design citados no artigo."
    },
    {
-    "type": "p",
-    "text": "Alguns exemplos clássicos de Growth Design na prática:"
-   },
-   {
-    "type": "ul",
-    "items": [
-     "Airbnb: percebeu que usuários não confiavam em acomodações com fotos ruins. Solução? Mandar fotógrafos profissionais para os anfitriões, aumentando reservas.",
-     "Dropbox: implementou um sistema de indicação em que usuários ganhavam espaço extra ao convidar amigos. Resultado? Explosão no crescimento.",
-     "Duolingo: usa gamificação e notificações personalizadas para aumentar retenção. Mais tempo no app, mais chances de conversão para o plano pago."
-    ]
+    "type": "scene",
+    "id": "flip-cases",
+    "data": {
+     "lead": "Alguns exemplos clássicos de Growth Design na prática:",
+     "items": [
+      "Airbnb: percebeu que usuários não confiavam em acomodações com fotos ruins. Solução? Mandar fotógrafos profissionais para os anfitriões, aumentando reservas.",
+      "Dropbox: implementou um sistema de indicação em que usuários ganhavam espaço extra ao convidar amigos. Resultado? Explosão no crescimento.",
+      "Duolingo: usa gamificação e notificações personalizadas para aumentar retenção. Mais tempo no app, mais chances de conversão para o plano pago."
+     ]
+    }
    },
    {
     "type": "quote",
@@ -595,16 +625,16 @@ export const mediumPosts: Post[] = [
     "text": "O impacto do design no negócio"
    },
    {
-    "type": "p",
-    "text": "O design afeta diretamente KPIs essenciais para o negócio, como:"
-   },
-   {
-    "type": "ul",
-    "items": [
-     "Conversão (exemplo: melhorar o onboarding pode aumentar conversão em 20%)",
-     "Retenção (exemplo: reduzir fricções melhora o engajamento e evita churn)",
-     "Lifetime Value (LTV) (exemplo: experiências otimizadas fazem usuários ficarem mais tempo e gastarem mais)"
-    ]
+    "type": "scene",
+    "id": "kpi-dials",
+    "data": {
+     "lead": "O design afeta diretamente KPIs essenciais para o negócio, como:",
+     "items": [
+      "Conversão (exemplo: melhorar o onboarding pode aumentar conversão em 20%)",
+      "Retenção (exemplo: reduzir fricções melhora o engajamento e evita churn)",
+      "Lifetime Value (LTV) (exemplo: experiências otimizadas fazem usuários ficarem mais tempo e gastarem mais)"
+     ]
+    }
    },
    {
     "type": "p",
@@ -662,7 +692,8 @@ export const mediumPosts: Post[] = [
     "type": "p",
     "text": "E você, como tem integrado o design à estratégia do seu produto? Compartilhe suas ideias nos comentários! ↓"
    }
-  ]
+  ],
+  "lab": true
  },
  {
   "slug": "ia-na-user-interface-futuro-do-design",
@@ -714,6 +745,14 @@ export const mediumPosts: Post[] = [
     "text": "Quer um exemplo prático? Pense no Netflix. A interface é ajustada dinamicamente com base no que você assiste, priorizando conteúdos que têm mais chance de capturar seu interesse. Esse tipo de personalização, que parece mágica para o usuário, é possível graças à IA."
    },
    {
+    "type": "scene",
+    "id": "adaptive-rows",
+    "data": {
+     "title": "A interface se ajusta ao que você assiste",
+     "note": "As fileiras mudam de ordem conforme o comportamento: o que você mais assiste sobe para o topo."
+    }
+   },
+   {
     "type": "h2",
     "text": "Exemplos práticos para o dia a dia"
    },
@@ -755,6 +794,19 @@ export const mediumPosts: Post[] = [
     "text": "Agora, com IA, plataformas conseguem detectar em tempo real onde os usuários estão abandonando a página e sugerir modificações automáticas. Talvez o botão de “Saiba Mais” esteja em um lugar de pouca visibilidade ou o tempo de carregamento da página esteja espantando visitantes. A IA aponta soluções que você pode testar rapidamente."
    },
    {
+    "type": "scene",
+    "id": "live-fix",
+    "data": {
+     "title": "Da dor do usuário à solução",
+     "steps": [
+      "Página com conversão baixa",
+      "A IA detecta onde as pessoas param",
+      "Sugere uma mudança",
+      "O time testa e decide"
+     ]
+    }
+   },
+   {
     "type": "h2",
     "text": "Automação de tarefas: mais tempo para criar"
    },
@@ -777,6 +829,14 @@ export const mediumPosts: Post[] = [
    {
     "type": "p",
     "text": "Por exemplo, em um e-commerce, um sistema inteligente pode detectar que os usuários frequentemente param em uma determinada etapa do checkout. Em vez de esperar que isso se torne um problema crônico, a IA sugere soluções, como simplificar campos, oferecer um incentivo ou ajustar o layout para tornar o fluxo mais intuitivo."
+   },
+   {
+    "type": "scene",
+    "id": "proactive-help",
+    "data": {
+     "title": "Antecipando a dúvida",
+     "note": "Em vez de esperar o abandono, a interface oferece ajuda no ponto onde muita gente trava."
+    }
    },
    {
     "type": "h2",
@@ -892,7 +952,8 @@ export const mediumPosts: Post[] = [
     "text": "E você, como tem integrado a IA no seu processo de design? Compartilhe suas experiências e insights nos comentários! Vamos juntos transformar o futuro do design com inteligência e criatividade!"
    }
   ],
-  "updated": "2026-10-01"
+  "updated": "2026-10-01",
+  "lab": true
  },
  {
   "slug": "licoes-de-nao-me-faca-pensar",
@@ -923,6 +984,13 @@ export const mediumPosts: Post[] = [
     "text": "Imagine tentar comprar um ingresso para aquele show imperdível e, ao invés de clicar facilmente, você se perde em menus, formulários intermináveis e botões escondidos. Frustrante, não? Foi justamente essa realidade que Steve Krug resolveu transformar com o clássico Não Me Faça Pensar. Se você é designer, desenvolvedor ou simplesmente alguém que acredita que o digital não precisa ser um labirinto, este artigo é pra você. Prepare-se para descobrir como a simplicidade pode ser o seu maior trunfo no mundo digital."
    },
    {
+    "type": "scene",
+    "id": "think-meter",
+    "data": {
+     "title": "Cada dúvida é um custo"
+    }
+   },
+   {
     "type": "h2",
     "text": "1. A arte de não deixar o usuário pensar"
    },
@@ -943,6 +1011,13 @@ export const mediumPosts: Post[] = [
    {
     "type": "p",
     "text": "Imagine um restaurante onde o cardápio vem com explicações intermináveis de cada prato. Você provavelmente escolheria algo no mesmo instante que um cardápio simples e intuitivo. No universo digital, o mesmo vale: o usuário quer saber onde clicar e o que esperar, sem esforço mental."
+   },
+   {
+    "type": "scene",
+    "id": "menu-simplify",
+    "data": {
+     "title": "Menos explicação, escolha mais rápida"
+    }
    },
    {
     "type": "p",
@@ -1075,6 +1150,13 @@ export const mediumPosts: Post[] = [
     "text": "Lembra daquele site famoso que revolucionou a forma de buscar informações? Ele se tornou referência justamente porque eliminou o desnecessário e focou no que realmente importava: entregar resultados com clareza. Se até gigantes assim apostam na simplicidade, por que seu projeto não pode brilhar dessa forma?"
    },
    {
+    "type": "scene",
+    "id": "portal-search",
+    "data": {
+     "title": "Eliminar o desnecessário"
+    }
+   },
+   {
     "type": "h2",
     "text": "Conclusão: simplifique e conquiste"
    },
@@ -1087,7 +1169,8 @@ export const mediumPosts: Post[] = [
     "text": "E aí, pronto para transformar seus designs em experiências que praticamente se vendem sozinhas? Compartilhe suas histórias, desafios e sucessos nos comentários. Afinal, a melhor forma de aprender é, acima de tudo, simplificar e compartilhar!"
    }
   ],
-  "updated": "2026-10-02"
+  "updated": "2026-10-02",
+  "lab": true
  },
  {
   "slug": "design-systems-como-criar-e-manter",
