@@ -57,7 +57,6 @@ export function Blog() {
     dragDistance.current = 0;
     dragStartX.current = e.clientX;
     dragStartScroll.current = el.scrollLeft;
-    el.setPointerCapture(e.pointerId);
   };
 
   const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
@@ -66,6 +65,9 @@ export function Blog() {
     if (!el) return;
     const delta = e.clientX - dragStartX.current;
     dragDistance.current = Math.abs(delta);
+    // Só captura o ponteiro quando é arrasto de verdade; capturar no clique
+    // desviava o clique do link do card e nada acontecia.
+    if (dragDistance.current > DRAG_THRESHOLD && !el.hasPointerCapture(e.pointerId)) el.setPointerCapture(e.pointerId);
     el.scrollLeft = dragStartScroll.current - delta;
   };
 
