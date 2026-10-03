@@ -158,7 +158,7 @@ function SpaceInner({ p, shortP, longP, notes }: { p: MotionValue<number>; short
             const keep = i < alive;
             const cx = keep ? 160 + ((i % 12) - 5.5) * (alive / N) * 25 : x;
             const cy = keep ? 160 + (Math.floor(i / 12) - 3.5) * (alive / N) * 38 : y;
-            return <motion.circle key={i} r={keep && alive <= 3 ? 9 : 5} initial={false} animate={{ cx, cy, opacity: keep ? 1 : 0.08, fill: keep && alive <= 3 ? M.g : keep ? M.p2 : "#ffffff" }} transition={{ duration: 0.7, ease: M.ease }} />;
+            return <motion.circle key={i} r={keep && alive <= 3 ? 9 : 5} initial={false} animate={{ cx: Math.round(cx * 10) / 10, cy: Math.round(cy * 10) / 10, opacity: keep ? 1 : 0.08, fill: keep && alive <= 3 ? M.g : keep ? M.p2 : "#ffffff" }} transition={{ duration: 0.7, ease: M.ease }} />;
           })}
         </svg>
         <p className="text-center font-mono text-[11px] uppercase tracking-[0.18em] text-white/55">possibilidades em aberto · <span className="text-white">{alive}</span></p>
@@ -194,7 +194,7 @@ function DecisionInner({ p, intro, overloaded, outro, steps, close }: { p: Motio
               return (
                 <motion.span key={it} className="absolute left-1/2 top-1/2 whitespace-nowrap rounded-full border border-white/15 bg-white/[0.04] px-3 py-1 text-xs text-white/80"
                   initial={false}
-                  animate={{ x: Math.cos(ang) * (chaos ? 150 : 110) - 40 + (chaos ? Math.sin(i * 7) * 30 : 0), y: Math.sin(ang) * (chaos ? 95 : 70) - 10, rotate: chaos ? (i % 2 ? 8 : -8) : 0, opacity: phase >= 2 ? 0.15 : 1, borderColor: chaos ? "rgba(248,113,113,0.6)" : "rgba(255,255,255,0.15)" }}
+                  animate={{ x: Math.round(Math.cos(ang) * (chaos ? 150 : 110) - 40 + (chaos ? Math.sin(i * 7) * 30 : 0)), y: Math.round(Math.sin(ang) * (chaos ? 95 : 70) - 10), rotate: chaos ? (i % 2 ? 8 : -8) : 0, opacity: phase >= 2 ? 0.15 : 1, borderColor: chaos ? "rgba(248,113,113,0.6)" : "rgba(255,255,255,0.15)" }}
                   transition={{ duration: 0.7, ease: M.ease }}>
                   {it}
                 </motion.span>
@@ -213,7 +213,7 @@ function DecisionInner({ p, intro, overloaded, outro, steps, close }: { p: Motio
             {steps.map((s, i) => {
               const on = phase >= i + 2;
               return (
-                <motion.li key={s.title} initial={false} animate={{ opacity: on ? 1 : 0.25, x: on ? 0 : 10 }} transition={{ duration: 0.5, ease: M.ease }} className={`rounded-2xl border p-4 ${on ? "border-[#8b6bff]/50 bg-[#622FFD]/10" : "border-white/10"}`}>
+                <motion.li key={s.title} initial={false} animate={{ opacity: on ? 1 : 0.4, x: on ? 0 : 10 }} transition={{ duration: 0.5, ease: M.ease }} className={`rounded-2xl border p-4 ${on ? "border-[#8b6bff]/50 bg-[#622FFD]/10" : "border-white/10"}`}>
                   <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#A3E635]">{s.title}</p>
                   <p className="mt-1.5 text-[15px] text-white/85">{s.prompt}</p>
                 </motion.li>

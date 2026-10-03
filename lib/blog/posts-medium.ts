@@ -99,24 +99,17 @@ export const mediumPosts: Post[] = [
     "caption": "Os dados citados no artigo, cada um com a sua fonte."
    },
    {
-    "type": "quote",
-    "text": "16% da população mundial vive com algum tipo de deficiência (OMS, 2023)"
-   },
-   {
-    "type": "quote",
-    "text": "Mais de 2,5 bilhões de pessoas usam tecnologias assistivas (ONU, 2022)"
-   },
-   {
-    "type": "quote",
-    "text": "Apenas 3% dos sites da web são considerados acessíveis de verdade (WebAIM, 2023)"
-   },
-   {
-    "type": "quote",
-    "text": "No Brasil, mais de 45 milhões de pessoas têm algum grau de deficiência (IBGE, Censo 2022)"
-   },
-   {
-    "type": "quote",
-    "text": "70% dos usuários com deficiência abandonam um site inacessível (Click-Away Pound, 2021)"
+    "type": "scene",
+    "id": "a11y-stats",
+    "data": {
+     "items": [
+      "16% da população mundial vive com algum tipo de deficiência (OMS, 2023)",
+      "Mais de 2,5 bilhões de pessoas usam tecnologias assistivas (ONU, 2022)",
+      "Apenas 3% dos sites da web são considerados acessíveis de verdade (WebAIM, 2023)",
+      "No Brasil, mais de 45 milhões de pessoas têm algum grau de deficiência (IBGE, Censo 2022)",
+      "70% dos usuários com deficiência abandonam um site inacessível (Click-Away Pound, 2021)"
+     ]
+    }
    },
    {
     "type": "p",
@@ -174,6 +167,14 @@ export const mediumPosts: Post[] = [
      "amplia o público",
      "melhora o desempenho de todos os usuários"
     ]
+   },
+   {
+    "type": "scene",
+    "id": "a11y-simulator",
+    "data": {
+     "title": "Experimente a mesma tela de outros jeitos",
+     "body": "Escolha uma simulação e veja como o mesmo card muda para quem tem baixa visão, daltonismo, navega só com teclado ou usa leitor de tela."
+    }
    },
    {
     "type": "p",
@@ -307,7 +308,8 @@ export const mediumPosts: Post[] = [
    }
   ],
   "updated": "2026-10-01",
-  "updateNote": "Revisado em outubro de 2026: incluí o que mudou desde a publicação e um novo visual para explicar a ideia central."
+  "updateNote": "Revisado em outubro de 2026: incluí o que mudou desde a publicação e um novo visual para explicar a ideia central.",
+  "lab": true
  },
  {
   "slug": "whiteboard-challenge-ux-product-design",
@@ -5952,46 +5954,25 @@ export const mediumPosts: Post[] = [
     "text": "A IA consegue analisar. Mas não vive a experiência."
    },
    {
-    "type": "p",
-    "text": "Imagine que você tenha 30 entrevistas com usuários."
-   },
-   {
-    "type": "p",
-    "text": "Uma IA pode ajudar a transcrever, organizar e encontrar temas recorrentes em poucos minutos."
-   },
-   {
-    "type": "p",
-    "text": "Isso economiza muito tempo."
-   },
-   {
-    "type": "p",
-    "text": "Mas existe uma diferença entre ler uma transcrição e estar presente durante uma conversa."
-   },
-   {
-    "type": "p",
-    "text": "Quando você observa uma pessoa tentando usar um produto, existem coisas que não aparecem apenas no texto."
-   },
-   {
-    "type": "ul",
-    "items": [
-     "A hesitação",
-     "A expressão",
-     "O momento em que ela para",
-     "A forma como tenta explicar um problema",
-     "O que ela faz antes de responder"
-    ]
-   },
-   {
-    "type": "p",
-    "text": "Uma frase que parece simples pode ter muito mais significado quando você conhece o contexto em que foi dita."
-   },
-   {
-    "type": "p",
-    "text": "Pesquisa não é apenas coletar respostas."
-   },
-   {
-    "type": "p",
-    "text": "É aprender sobre pessoas."
+    "type": "scene",
+    "id": "presence",
+    "data": {
+     "intro": "Imagine que você tenha 30 entrevistas com usuários.",
+     "ai": "Uma IA pode ajudar a transcrever, organizar e encontrar temas recorrentes em poucos minutos.",
+     "saves": "Isso economiza muito tempo.",
+     "diff": "Mas existe uma diferença entre ler uma transcrição e estar presente durante uma conversa.",
+     "notice": "Quando você observa uma pessoa tentando usar um produto, existem coisas que não aparecem apenas no texto.",
+     "cues": [
+      "A hesitação",
+      "A expressão",
+      "O momento em que ela para",
+      "A forma como tenta explicar um problema",
+      "O que ela faz antes de responder"
+     ],
+     "context": "Uma frase que parece simples pode ter muito mais significado quando você conhece o contexto em que foi dita.",
+     "a": "Pesquisa não é apenas coletar respostas.",
+     "b": "É aprender sobre pessoas."
+    }
    },
    {
     "type": "h2",
@@ -6129,41 +6110,25 @@ export const mediumPosts: Post[] = [
     "caption": "Resposta perfeita demais é um sinal de alerta."
    },
    {
-    "type": "p",
-    "text": "Por exemplo:"
-   },
-   {
-    "type": "quote",
-    "text": "“Imagine que você é uma pessoa de 35 anos usando um aplicativo financeiro pela primeira vez.”"
-   },
-   {
-    "type": "ul",
-    "items": [
-     "A resposta pode parecer muito convincente",
-     "Mas existe um problema",
-     "A IA não é essa pessoa",
-     "Ela não está usando seu dinheiro"
-    ]
-   },
-   {
-    "type": "p",
-    "text": "Não está sentindo medo de perder uma informação."
-   },
-   {
-    "type": "p",
-    "text": "Não está tentando fazer aquilo com pressa."
-   },
-   {
-    "type": "p",
-    "text": "Não está lidando com a realidade daquele contexto."
-   },
-   {
-    "type": "p",
-    "text": "Uma simulação pode ajudar a explorar possibilidades."
-   },
-   {
-    "type": "p",
-    "text": "Mas não deveria ser tratada como evidência sobre usuários reais."
+    "type": "scene",
+    "id": "synthetic",
+    "data": {
+     "lead": "Por exemplo:",
+     "prompt": "“Imagine que você é uma pessoa de 35 anos usando um aplicativo financeiro pela primeira vez.”",
+     "notes": [
+      "A resposta pode parecer muito convincente",
+      "Mas existe um problema",
+      "A IA não é essa pessoa",
+      "Ela não está usando seu dinheiro"
+     ],
+     "lacks": [
+      "Não está sentindo medo de perder uma informação.",
+      "Não está tentando fazer aquilo com pressa.",
+      "Não está lidando com a realidade daquele contexto."
+     ],
+     "a": "Uma simulação pode ajudar a explorar possibilidades.",
+     "b": "Mas não deveria ser tratada como evidência sobre usuários reais."
+    }
    },
    {
     "type": "h2",
@@ -6403,35 +6368,23 @@ export const mediumPosts: Post[] = [
     "text": "E precisa estar conectada a uma decisão."
    },
    {
-    "type": "p",
-    "text": "No fim, podemos usar IA para analisar milhares de respostas."
-   },
-   {
-    "type": "p",
-    "text": "Mas ainda precisamos saber:"
-   },
-   {
-    "type": "quote",
-    "text": "Quem são essas pessoas?"
-   },
-   {
-    "type": "quote",
-    "text": "O que estamos tentando descobrir?"
-   },
-   {
-    "type": "quote",
-    "text": "Qual decisão depende desse aprendizado?"
-   },
-   {
-    "type": "p",
-    "text": "E principalmente:"
-   },
-   {
-    "type": "quote",
-    "text": "O que vamos fazer diferente depois de aprender isso?"
+    "type": "scene",
+    "id": "circle-questions",
+    "data": {
+     "lead": "No fim, podemos usar IA para analisar milhares de respostas.",
+     "lead2": "Mas ainda precisamos saber:",
+     "questions": [
+      "Quem são essas pessoas?",
+      "O que estamos tentando descobrir?",
+      "Qual decisão depende desse aprendizado?"
+     ],
+     "lastLead": "E principalmente:",
+     "last": "O que vamos fazer diferente depois de aprender isso?"
+    }
    }
   ],
-  "cover": "/blog/pesquisa-com-usuarios-na-era-da-ia.webp"
+  "cover": "/blog/pesquisa-com-usuarios-na-era-da-ia.webp",
+  "lab": true
  },
  {
   "slug": "contexto-novo-material-do-design",
@@ -6573,44 +6526,22 @@ export const mediumPosts: Post[] = [
     "text": "Informação não é suficiente. O sistema precisa de contexto."
    },
    {
-    "type": "p",
-    "text": "Imagine um agente que recebe a mensagem:"
-   },
-   {
-    "type": "quote",
-    "text": "“Quero cancelar.”"
-   },
-   {
-    "type": "p",
-    "text": "Cancelar o quê?"
-   },
-   {
-    "type": "p",
-    "text": "Uma compra?"
-   },
-   {
-    "type": "p",
-    "text": "Uma assinatura?"
-   },
-   {
-    "type": "p",
-    "text": "Uma reserva?"
-   },
-   {
-    "type": "p",
-    "text": "Uma transferência?"
-   },
-   {
-    "type": "p",
-    "text": "Uma solicitação?"
-   },
-   {
-    "type": "p",
-    "text": "A frase sozinha não é suficiente."
-   },
-   {
-    "type": "p",
-    "text": "O sistema precisa de contexto."
+    "type": "scene",
+    "id": "orbit",
+    "data": {
+     "lead": "Imagine um agente que recebe a mensagem:",
+     "msg": "“Quero cancelar.”",
+     "options": [
+      "Uma compra?",
+      "Uma assinatura?",
+      "Uma reserva?",
+      "Uma transferência?",
+      "Uma solicitação?"
+     ],
+     "a": "Cancelar o quê? A frase sozinha não é suficiente.",
+     "b": "O sistema precisa de contexto.",
+     "c": ""
+    }
    },
    {
     "type": "p",
@@ -6625,20 +6556,14 @@ export const mediumPosts: Post[] = [
     "text": "O designer começa a desenhar relações"
    },
    {
-    "type": "p",
-    "text": "Antes, poderíamos pensar:"
-   },
-   {
-    "type": "quote",
-    "text": "Tela A → Tela B → Tela C"
-   },
-   {
-    "type": "p",
-    "text": "Agora podemos precisar pensar:"
-   },
-   {
-    "type": "quote",
-    "text": "Intenção → contexto → regras → dados → ação → confirmação"
+    "type": "scene",
+    "id": "graph-morph",
+    "data": {
+     "a": "Antes, poderíamos pensar:",
+     "chainA": "Tela A → Tela B → Tela C",
+     "b": "Agora podemos precisar pensar:",
+     "chainB": "Intenção → contexto → regras → dados → ação → confirmação"
+    }
    },
    {
     "type": "p",
@@ -6689,32 +6614,19 @@ export const mediumPosts: Post[] = [
     "text": "Por isso, experiências com agentes precisam mostrar não apenas o resultado."
    },
    {
-    "type": "p",
-    "text": "Precisam ajudar o usuário a entender:"
-   },
-   {
-    "type": "quote",
-    "text": "O que o sistema entendeu?"
-   },
-   {
-    "type": "quote",
-    "text": "O que ele está fazendo?"
-   },
-   {
-    "type": "quote",
-    "text": "Por que tomou essa decisão?"
-   },
-   {
-    "type": "quote",
-    "text": "O que pode ser alterado?"
-   },
-   {
-    "type": "quote",
-    "text": "Como posso interromper?"
-   },
-   {
-    "type": "p",
-    "text": "Essa transparência começa a fazer parte da UX."
+    "type": "scene",
+    "id": "agent-panel",
+    "data": {
+     "lead": "Precisam ajudar o usuário a entender:",
+     "questions": [
+      "O que o sistema entendeu?",
+      "O que ele está fazendo?",
+      "Por que tomou essa decisão?",
+      "O que pode ser alterado?",
+      "Como posso interromper?"
+     ],
+     "after": "Essa transparência começa a fazer parte da UX."
+    }
    },
    {
     "type": "h2",
@@ -7136,7 +7048,8 @@ export const mediumPosts: Post[] = [
     "text": "E alguém precisa garantir que a tecnologia continue fazendo sentido para as pessoas."
    }
   ],
-  "cover": "/blog/contexto-novo-material-do-design.webp"
+  "cover": "/blog/contexto-novo-material-do-design.webp",
+  "lab": true
  },
  {
   "slug": "quando-a-ia-age-desenhar-controle",
@@ -7174,54 +7087,27 @@ export const mediumPosts: Post[] = [
     "text": "Existe uma diferença importante entre uma IA que responde e uma IA que age."
    },
    {
-    "type": "p",
-    "text": "Se eu pergunto:"
-   },
-   {
-    "type": "quote",
-    "text": "“Qual é o melhor horário para viajar?”"
-   },
-   {
-    "type": "p",
-    "text": "O sistema pode me responder."
-   },
-   {
-    "type": "p",
-    "text": "Mas se eu digo:"
-   },
-   {
-    "type": "quote",
-    "text": "“Compre a passagem para sexta-feira.”"
-   },
-   {
-    "type": "p",
-    "text": "Agora o sistema precisa fazer alguma coisa."
-   },
-   {
-    "type": "ul",
-    "items": [
-     "Pode pesquisar",
-     "Escolher",
-     "Comparar",
-     "Preencher informações",
-     "Realizar uma compra"
-    ]
-   },
-   {
-    "type": "p",
-    "text": "E talvez até tomar decisões que eu não especifiquei."
-   },
-   {
-    "type": "p",
-    "text": "É aqui que a experiência começa a mudar."
-   },
-   {
-    "type": "p",
-    "text": "Quando a IA passa de uma ferramenta que responde para uma tecnologia que age, o design precisa pensar em uma coisa que nem sempre recebe tanta atenção:"
-   },
-   {
-    "type": "quote",
-    "text": "controle."
+    "type": "scene",
+    "id": "respond-vs-act",
+    "data": {
+     "lead1": "Se eu pergunto:",
+     "q1": "“Qual é o melhor horário para viajar?”",
+     "a1": "O sistema pode me responder.",
+     "lead2": "Mas se eu digo:",
+     "q2": "“Compre a passagem para sexta-feira.”",
+     "a2": "Agora o sistema precisa fazer alguma coisa.",
+     "steps": [
+      "Pode pesquisar",
+      "Escolher",
+      "Comparar",
+      "Preencher informações",
+      "Realizar uma compra"
+     ],
+     "maybe": "E talvez até tomar decisões que eu não especifiquei.",
+     "here": "É aqui que a experiência começa a mudar.",
+     "why": "Quando a IA passa de uma ferramenta que responde para uma tecnologia que age, o design precisa pensar em uma coisa que nem sempre recebe tanta atenção:",
+     "word": "controle."
+    }
    },
    {
     "type": "h2",
@@ -7447,36 +7333,20 @@ export const mediumPosts: Post[] = [
     "text": "Mas quando um agente executa uma tarefa complexa, isso pode não ser suficiente."
    },
    {
-    "type": "p",
-    "text": "Talvez o sistema precise mostrar:"
-   },
-   {
-    "type": "quote",
-    "text": "Entendi que você quer X."
-   },
-   {
-    "type": "quote",
-    "text": "Estou verificando Y."
-   },
-   {
-    "type": "quote",
-    "text": "Encontrei duas opções."
-   },
-   {
-    "type": "quote",
-    "text": "Escolhi Z porque atende às suas regras."
-   },
-   {
-    "type": "quote",
-    "text": "Preciso da sua confirmação antes de continuar."
-   },
-   {
-    "type": "p",
-    "text": "Isso não significa transformar a interface em uma lista interminável de mensagens."
-   },
-   {
-    "type": "p",
-    "text": "Significa dar visibilidade suficiente para que o usuário consiga acompanhar uma ação que não está executando diretamente."
+    "type": "scene",
+    "id": "agent-feed",
+    "data": {
+     "lead": "Talvez o sistema precise mostrar:",
+     "msgs": [
+      "Entendi que você quer X.",
+      "Estou verificando Y.",
+      "Encontrei duas opções.",
+      "Escolhi Z porque atende às suas regras.",
+      "Preciso da sua confirmação antes de continuar."
+     ],
+     "a": "Isso não significa transformar a interface em uma lista interminável de mensagens.",
+     "b": "Significa dar visibilidade suficiente para que o usuário consiga acompanhar uma ação que não está executando diretamente."
+    }
    },
    {
     "type": "h2",
@@ -7572,40 +7442,21 @@ export const mediumPosts: Post[] = [
     "text": "Se o agente fez algo errado, precisamos ter caminhos claros para corrigir."
    },
    {
-    "type": "p",
-    "text": "Isso pode significar:"
-   },
-   {
-    "type": "quote",
-    "text": "Desfazer"
-   },
-   {
-    "type": "quote",
-    "text": "Editar"
-   },
-   {
-    "type": "quote",
-    "text": "Cancelar"
-   },
-   {
-    "type": "quote",
-    "text": "Reverter"
-   },
-   {
-    "type": "quote",
-    "text": "Revisar histórico"
-   },
-   {
-    "type": "quote",
-    "text": "Assumir controle manual"
-   },
-   {
-    "type": "p",
-    "text": "Essas opções não deveriam ser pensadas como detalhes."
-   },
-   {
-    "type": "p",
-    "text": "Elas fazem parte da confiança no sistema."
+    "type": "scene",
+    "id": "recovery-bar",
+    "data": {
+     "lead": "Isso pode significar:",
+     "actions": [
+      "Desfazer",
+      "Editar",
+      "Cancelar",
+      "Reverter",
+      "Revisar histórico",
+      "Assumir controle manual"
+     ],
+     "a": "Essas opções não deveriam ser pensadas como detalhes.",
+     "b": "Elas fazem parte da confiança no sistema."
+    }
    },
    {
     "type": "h2",
@@ -7805,7 +7656,8 @@ export const mediumPosts: Post[] = [
     "text": "É também sobre definir limites, criar confiança e manter as pessoas no controle."
    }
   ],
-  "cover": "/blog/quando-a-ia-age-desenhar-controle.webp"
+  "cover": "/blog/quando-a-ia-age-desenhar-controle.webp",
+  "lab": true
  },
  {
   "slug": "dados-sao-valiosos-o-que-fazer-com-eles",
@@ -7893,48 +7745,25 @@ export const mediumPosts: Post[] = [
     "caption": "O processo não é linear: é um ciclo contínuo de aprendizado."
    },
    {
-    "type": "p",
-    "text": "Esse número sozinho não explica muita coisa."
-   },
-   {
-    "type": "p",
-    "text": "É bom?"
-   },
-   {
-    "type": "p",
-    "text": "É ruim?"
-   },
-   {
-    "type": "p",
-    "text": "Comparado com o quê?"
-   },
-   {
-    "type": "p",
-    "text": "O que aconteceu antes?"
-   },
-   {
-    "type": "p",
-    "text": "O que acontece depois?"
-   },
-   {
-    "type": "p",
-    "text": "Quem está convertendo?"
-   },
-   {
-    "type": "p",
-    "text": "Quem está abandonando?"
-   },
-   {
-    "type": "p",
-    "text": "O dado precisa de contexto."
-   },
-   {
-    "type": "p",
-    "text": "Uma métrica pode apontar para um problema, mas raramente explica sozinha o motivo."
-   },
-   {
-    "type": "p",
-    "text": "Por isso, gosto de pensar no dado como o começo de uma investigação."
+    "type": "scene",
+    "id": "evidence-board",
+    "data": {
+     "lead": "Esse número sozinho não explica muita coisa.",
+     "num": "3%",
+     "a": "de conversão",
+     "questions": [
+      "É bom?",
+      "É ruim?",
+      "Comparado com o quê?",
+      "O que aconteceu antes?",
+      "O que acontece depois?",
+      "Quem está convertendo?",
+      "Quem está abandonando?"
+     ],
+     "b": "O dado precisa de contexto.",
+     "c": "Uma métrica pode apontar para um problema, mas raramente explica sozinha o motivo.",
+     "d": "Por isso, gosto de pensar no dado como o começo de uma investigação."
+    }
    },
    {
     "type": "quote",
@@ -8235,36 +8064,38 @@ export const mediumPosts: Post[] = [
     "text": "Mas quando conseguimos conectar uma melhoria de experiência a uma métrica relevante, fica mais fácil mostrar esse impacto."
    },
    {
-    "type": "p",
-    "text": "Por exemplo:"
-   },
-   {
-    "type": "p",
-    "text": "Problema: abandono no onboarding."
-   },
-   {
-    "type": "p",
-    "text": "Evidência: queda de usuários no segundo passo."
-   },
-   {
-    "type": "p",
-    "text": "Pesquisa: usuários não entendem por que precisam preencher determinada informação."
-   },
-   {
-    "type": "p",
-    "text": "Hipótese: explicar o motivo e reduzir campos pode diminuir a fricção."
-   },
-   {
-    "type": "p",
-    "text": "Experimento: testar uma versão simplificada."
-   },
-   {
-    "type": "p",
-    "text": "Métrica: conclusão do onboarding e ativação."
-   },
-   {
-    "type": "p",
-    "text": "Agora temos uma linha clara entre problema, comportamento, design e resultado."
+    "type": "scene",
+    "id": "case-file",
+    "data": {
+     "lead": "Por exemplo:",
+     "cards": [
+      {
+       "k": "Problema",
+       "v": "abandono no onboarding."
+      },
+      {
+       "k": "Evidência",
+       "v": "queda de usuários no segundo passo."
+      },
+      {
+       "k": "Pesquisa",
+       "v": "usuários não entendem por que precisam preencher determinada informação."
+      },
+      {
+       "k": "Hipótese",
+       "v": "explicar o motivo e reduzir campos pode diminuir a fricção."
+      },
+      {
+       "k": "Experimento",
+       "v": "testar uma versão simplificada."
+      },
+      {
+       "k": "Métrica",
+       "v": "conclusão do onboarding e ativação."
+      }
+     ],
+     "close": "Agora temos uma linha clara entre problema, comportamento, design e resultado."
+    }
    },
    {
     "type": "h2",
@@ -8327,27 +8158,21 @@ export const mediumPosts: Post[] = [
     "text": "Quando essas áreas trabalham juntas, conseguimos sair de uma discussão baseada apenas em opinião."
    },
    {
-    "type": "p",
-    "text": "Passamos a trabalhar com:"
-   },
-   {
-    "type": "quote",
-    "text": "dados + contexto + comportamento + hipótese + experimento + resultado."
-   },
-   {
-    "type": "p",
-    "text": "Para mim, é aí que o Product Design fica mais estratégico."
-   },
-   {
-    "type": "p",
-    "text": "Não porque o designer precisa dominar todas as áreas."
-   },
-   {
-    "type": "p",
-    "text": "Mas porque precisa saber conectar as informações certas para ajudar o time a tomar decisões melhores."
+    "type": "scene",
+    "id": "equation",
+    "data": {
+     "lead": "Passamos a trabalhar com:",
+     "terms": "dados + contexto + comportamento + hipótese + experimento + resultado.",
+     "after": [
+      "Para mim, é aí que o Product Design fica mais estratégico.",
+      "Não porque o designer precisa dominar todas as áreas.",
+      "Mas porque precisa saber conectar as informações certas para ajudar o time a tomar decisões melhores."
+     ]
+    }
    }
   ],
-  "cover": "/blog/dados-sao-valiosos-o-que-fazer-com-eles.webp"
+  "cover": "/blog/dados-sao-valiosos-o-que-fazer-com-eles.webp",
+  "lab": true
  },
  {
   "slug": "ia-acelera-mas-ate-que-ponto",
@@ -8373,40 +8198,25 @@ export const mediumPosts: Post[] = [
   ],
   "blocks": [
    {
-    "type": "p",
-    "text": "A velocidade com que conseguimos criar produtos digitais mudou."
-   },
-   {
-    "type": "p",
-    "text": "Uma ideia que antes poderia levar dias para virar um protótipo pode agora aparecer em minutos."
-   },
-   {
-    "type": "ul",
-    "items": [
-     "Podemos gerar interfaces",
-     "Criar textos",
-     "Explorar fluxos",
-     "Produzir imagens",
-     "Gerar código",
-     "Criar variações",
-     "Analisar informações"
-    ]
-   },
-   {
-    "type": "p",
-    "text": "Tudo isso pode acelerar bastante o trabalho de um time de produto."
-   },
-   {
-    "type": "p",
-    "text": "Mas existe uma pergunta que considero importante:"
-   },
-   {
-    "type": "quote",
-    "text": "Acelerar o quê?"
-   },
-   {
-    "type": "p",
-    "text": "Porque ser mais rápido para fazer a coisa errada continua sendo um problema."
+    "type": "scene",
+    "id": "speed-brake",
+    "data": {
+     "a": "A velocidade com que conseguimos criar produtos digitais mudou.",
+     "b": "Uma ideia que antes poderia levar dias para virar um protótipo pode agora aparecer em minutos.",
+     "list": [
+      "Podemos gerar interfaces",
+      "Criar textos",
+      "Explorar fluxos",
+      "Produzir imagens",
+      "Gerar código",
+      "Criar variações",
+      "Analisar informações"
+     ],
+     "c": "Tudo isso pode acelerar bastante o trabalho de um time de produto.",
+     "d": "Mas existe uma pergunta que considero importante:",
+     "q": "Acelerar o quê?",
+     "e": "Porque ser mais rápido para fazer a coisa errada continua sendo um problema."
+    }
    },
    {
     "type": "h2",
@@ -8771,20 +8581,14 @@ export const mediumPosts: Post[] = [
     "text": "Mas isso pode aumentar a quantidade de coisas que precisam ser avaliadas."
    },
    {
-    "type": "p",
-    "text": "Antes:"
-   },
-   {
-    "type": "quote",
-    "text": "10 ideias → 1 protótipo"
-   },
-   {
-    "type": "p",
-    "text": "Agora:"
-   },
-   {
-    "type": "quote",
-    "text": "100 ideias → 20 protótipos → 5 testes → 1 solução"
+    "type": "scene",
+    "id": "funnel-math",
+    "data": {
+     "beforeLabel": "Antes:",
+     "before": "10 ideias → 1 protótipo",
+     "afterLabel": "Agora:",
+     "after": "100 ideias → 20 protótipos → 5 testes → 1 solução"
+    }
    },
    {
     "type": "p",
@@ -8803,40 +8607,27 @@ export const mediumPosts: Post[] = [
     "text": "A pergunta muda"
    },
    {
-    "type": "p",
-    "text": "Talvez antes perguntássemos:"
-   },
-   {
-    "type": "quote",
-    "text": "“Quanto tempo precisamos para criar isso?”"
-   },
-   {
-    "type": "p",
-    "text": "Agora deveríamos perguntar também:"
-   },
-   {
-    "type": "quote",
-    "text": "“Quanto tempo precisamos para avaliar isso?”"
-   },
-   {
-    "type": "p",
-    "text": "E mais:"
-   },
-   {
-    "type": "quote",
-    "text": "“Como sabemos que isso merece ser construído?”"
-   },
-   {
-    "type": "p",
-    "text": "Essa mudança é importante."
-   },
-   {
-    "type": "p",
-    "text": "Porque o gargalo pode deixar de ser produção."
-   },
-   {
-    "type": "p",
-    "text": "Pode passar a ser decisão."
+    "type": "scene",
+    "id": "hourglass",
+    "data": {
+     "items": [
+      {
+       "lead": "Talvez antes perguntássemos:",
+       "q": "“Quanto tempo precisamos para criar isso?”"
+      },
+      {
+       "lead": "Agora deveríamos perguntar também:",
+       "q": "“Quanto tempo precisamos para avaliar isso?”"
+      },
+      {
+       "lead": "E mais:",
+       "q": "“Como sabemos que isso merece ser construído?”"
+      }
+     ],
+     "a": "Essa mudança é importante.",
+     "b": "Porque o gargalo pode deixar de ser produção.",
+     "c": "Pode passar a ser decisão."
+    }
    },
    {
     "type": "h2",
@@ -8972,7 +8763,8 @@ export const mediumPosts: Post[] = [
     "text": "Talvez seja conseguir decidir melhor o que vale a pena criar."
    }
   ],
-  "cover": "/blog/ia-acelera-mas-ate-que-ponto.webp"
+  "cover": "/blog/ia-acelera-mas-ate-que-ponto.webp",
+  "lab": true
  },
  {
   "slug": "olhar-critico-vale-mais-que-ferramentas",
@@ -9088,51 +8880,29 @@ export const mediumPosts: Post[] = [
     "text": "O que o designer precisa enxergar?"
    },
    {
-    "type": "ul",
-    "items": [
-     "Imagine uma tela gerada automaticamente",
-     "Ela tem boa hierarquia",
-     "Os componentes estão alinhados",
-     "As cores combinam",
-     "A tipografia parece correta",
-     "O layout está responsivo"
-    ]
-   },
-   {
-    "type": "p",
-    "text": "Mesmo assim, podemos fazer algumas perguntas."
-   },
-   {
-    "type": "p",
-    "text": "O usuário sabe o que fazer?"
-   },
-   {
-    "type": "p",
-    "text": "A informação mais importante está clara?"
-   },
-   {
-    "type": "p",
-    "text": "O fluxo exige decisões demais?"
-   },
-   {
-    "type": "p",
-    "text": "O sistema explica o que está acontecendo?"
-   },
-   {
-    "type": "p",
-    "text": "O conteúdo usa a linguagem que as pessoas realmente usam?"
-   },
-   {
-    "type": "p",
-    "text": "Existe alguma barreira para pessoas com diferentes necessidades?"
-   },
-   {
-    "type": "p",
-    "text": "O produto está resolvendo o problema certo?"
-   },
-   {
-    "type": "p",
-    "text": "Essas perguntas não aparecem automaticamente porque uma interface está visualmente correta."
+    "type": "scene",
+    "id": "lens",
+    "data": {
+     "intro": [
+      "Imagine uma tela gerada automaticamente",
+      "Ela tem boa hierarquia",
+      "Os componentes estão alinhados",
+      "As cores combinam",
+      "A tipografia parece correta",
+      "O layout está responsivo"
+     ],
+     "lead": "Mesmo assim, podemos fazer algumas perguntas.",
+     "questions": [
+      "O usuário sabe o que fazer?",
+      "A informação mais importante está clara?",
+      "O fluxo exige decisões demais?",
+      "O sistema explica o que está acontecendo?",
+      "O conteúdo usa a linguagem que as pessoas realmente usam?",
+      "Existe alguma barreira para pessoas com diferentes necessidades?",
+      "O produto está resolvendo o problema certo?"
+     ],
+     "outro": "Essas perguntas não aparecem automaticamente porque uma interface está visualmente correta."
+    }
    },
    {
     "type": "h2",
@@ -9168,28 +8938,16 @@ export const mediumPosts: Post[] = [
     "caption": "Boa crítica é feita de perguntas, não de opinião."
    },
    {
-    "type": "p",
-    "text": "Dizer:"
-   },
-   {
-    "type": "quote",
-    "text": "“Eu não gostei.”"
-   },
-   {
-    "type": "p",
-    "text": "é uma opinião."
-   },
-   {
-    "type": "p",
-    "text": "Dizer:"
-   },
-   {
-    "type": "quote",
-    "text": "“Essa informação está competindo visualmente com a ação principal e pode dificultar a decisão.”"
-   },
-   {
-    "type": "p",
-    "text": "é uma análise."
+    "type": "scene",
+    "id": "stamps",
+    "data": {
+     "say": "Dizer:",
+     "opinion": "“Eu não gostei.”",
+     "isOpinion": "é uma opinião.",
+     "say2": "Dizer:",
+     "analysis": "“Essa informação está competindo visualmente com a ação principal e pode dificultar a decisão.”",
+     "isAnalysis": "é uma análise."
+    }
    },
    {
     "type": "p",
@@ -9488,16 +9246,13 @@ export const mediumPosts: Post[] = [
     "text": "Uma solução pode ser visualmente excelente e não funcionar."
    },
    {
-    "type": "p",
-    "text": "Por isso, eu colocaria o olhar crítico como uma combinação:"
-   },
-   {
-    "type": "quote",
-    "text": "Repertório + contexto + evidência + experiência + julgamento."
-   },
-   {
-    "type": "p",
-    "text": "É isso que permite avaliar uma solução de maneira mais completa."
+    "type": "scene",
+    "id": "rings",
+    "data": {
+     "lead": "Por isso, eu colocaria o olhar crítico como uma combinação:",
+     "formula": "Repertório + contexto + evidência + experiência + julgamento.",
+     "after": "É isso que permite avaliar uma solução de maneira mais completa."
+    }
    },
    {
     "type": "h2",
@@ -9536,7 +9291,8 @@ export const mediumPosts: Post[] = [
     "text": "Mas aprender a pensar sobre o que estamos criando é ainda mais importante."
    }
   ],
-  "cover": "/blog/olhar-critico-vale-mais-que-ferramentas.webp"
+  "cover": "/blog/olhar-critico-vale-mais-que-ferramentas.webp",
+  "lab": true
  },
  {
   "slug": "dados-precisam-de-historia",
@@ -9620,40 +9376,20 @@ export const mediumPosts: Post[] = [
     "caption": "A estrutura de uma boa história com dados termina numa decisão."
    },
    {
-    "type": "quote",
-    "text": "Conversão: 4,2%"
-   },
-   {
-    "type": "p",
-    "text": "O número está correto."
-   },
-   {
-    "type": "p",
-    "text": "Mas o que devemos fazer com ele?"
-   },
-   {
-    "type": "p",
-    "text": "Agora imagine:"
-   },
-   {
-    "type": "quote",
-    "text": "“A conversão caiu de 6,1% para 4,2% depois da mudança no formulário. A queda acontece principalmente no mobile, onde o segundo campo apresenta a maior taxa de abandono.”"
-   },
-   {
-    "type": "p",
-    "text": "Agora temos uma história."
-   },
-   {
-    "type": "p",
-    "text": "Existe:"
-   },
-   {
-    "type": "quote",
-    "text": "contexto + mudança + comportamento + hipótese."
-   },
-   {
-    "type": "p",
-    "text": "Isso facilita muito mais uma conversa de produto."
+    "type": "scene",
+    "id": "storyboard",
+    "data": {
+     "lead": "",
+     "kpi": "Conversão: 4,2%",
+     "a": "O número está correto.",
+     "b": "Mas o que devemos fazer com ele?",
+     "c": "Agora imagine:",
+     "story": "“A conversão caiu de 6,1% para 4,2% depois da mudança no formulário. A queda acontece principalmente no mobile, onde o segundo campo apresenta a maior taxa de abandono.”",
+     "d": "Agora temos uma história.",
+     "e": "Existe:",
+     "formula": "contexto + mudança + comportamento + hipótese.",
+     "f": "Isso facilita muito mais uma conversa de produto."
+    }
    },
    {
     "type": "h2",
@@ -9693,36 +9429,26 @@ export const mediumPosts: Post[] = [
     "text": "O que aconteceu?"
    },
    {
-    "type": "p",
-    "text": "Essa é uma boa primeira pergunta."
-   },
-   {
-    "type": "p",
-    "text": "Depois:"
-   },
-   {
-    "type": "quote",
-    "text": "Por que isso importa?"
-   },
-   {
-    "type": "p",
-    "text": "Depois:"
-   },
-   {
-    "type": "quote",
-    "text": "O que podemos fazer?"
-   },
-   {
-    "type": "p",
-    "text": "E finalmente:"
-   },
-   {
-    "type": "quote",
-    "text": "Como saberemos se funcionou?"
-   },
-   {
-    "type": "p",
-    "text": "Essa sequência transforma um relatório em uma conversa de produto."
+    "type": "scene",
+    "id": "page-flip",
+    "data": {
+     "first": "Essa é uma boa primeira pergunta.",
+     "items": [
+      {
+       "lead": "Depois:",
+       "q": "Por que isso importa?"
+      },
+      {
+       "lead": "Depois:",
+       "q": "O que podemos fazer?"
+      },
+      {
+       "lead": "E finalmente:",
+       "q": "Como saberemos se funcionou?"
+      }
+     ],
+     "close": "Essa sequência transforma um relatório em uma conversa de produto."
+    }
    },
    {
     "type": "h2",
@@ -9848,16 +9574,13 @@ export const mediumPosts: Post[] = [
     "text": "O papel da narrativa é ajudar a conectar os pontos."
    },
    {
-    "type": "p",
-    "text": "Por exemplo:"
-   },
-   {
-    "type": "quote",
-    "text": "Tráfego aumentou → mas ativação caiu → principalmente em determinado canal → usuários chegam com uma expectativa diferente → precisamos revisar a proposta de valor."
-   },
-   {
-    "type": "p",
-    "text": "Agora existe uma direção para investigar."
+    "type": "scene",
+    "id": "annotated-line",
+    "data": {
+     "lead": "Por exemplo:",
+     "chain": "Tráfego aumentou → mas ativação caiu → principalmente em determinado canal → usuários chegam com uma expectativa diferente → precisamos revisar a proposta de valor.",
+     "after": "Agora existe uma direção para investigar."
+    }
    },
    {
     "type": "h2",
@@ -10028,6 +9751,7 @@ export const mediumPosts: Post[] = [
     "text": "Eles geram valor quando ajudam alguém a tomar uma decisão melhor."
    }
   ],
-  "cover": "/blog/dados-precisam-de-historia.webp"
+  "cover": "/blog/dados-precisam-de-historia.webp",
+  "lab": true
  }
 ];

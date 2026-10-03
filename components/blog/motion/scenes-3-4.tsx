@@ -59,7 +59,7 @@ function GapInner({ p, lead, prompt, open, questions, fills, close }: { p: Motio
         <p className="mt-4 text-[15px] text-white/65">{open}</p>
         <ul className="mt-4 flex flex-wrap gap-2">
           {questions.map((q, i) => (
-            <motion.li key={q} initial={false} animate={{ opacity: i < qStep ? 1 : 0.15, y: i < qStep ? 0 : 6 }} transition={{ duration: 0.4 }}
+            <motion.li key={q} initial={false} animate={{ opacity: i < qStep ? 1 : 0.4, y: i < qStep ? 0 : 6 }} transition={{ duration: 0.4 }}
               className={`rounded-full border border-dashed px-3 py-1 text-xs ${fStep > 0 && i < fStep ? "border-white/10 text-white/35 line-through" : "border-[#fbbf24]/60 text-[#fbbf24]"}`}>{q}</motion.li>
           ))}
         </ul>
@@ -224,7 +224,7 @@ function RoutesInner({ p, lead, idea, beforeSteps, beforeNote, withAi, to, resul
       </div>
       <div className="mt-10 flex flex-wrap items-baseline gap-x-4 gap-y-1">
         {risk.map((r, i) => (
-          <motion.span key={r} initial={false} animate={{ opacity: i < end ? 1 : 0.15 }} className={`font-display text-xl font-semibold md:text-3xl ${i === risk.length - 1 ? "text-[#f87171]" : "text-white"}`}>{r}</motion.span>
+          <motion.span key={r} initial={false} animate={{ opacity: i < end ? 1 : 0.4 }} className={`font-display text-xl font-semibold md:text-3xl ${i === risk.length - 1 ? "text-[#f87171]" : "text-white"}`}>{r}</motion.span>
         ))}
       </div>
     </div>
@@ -381,7 +381,7 @@ function MorphInner({ p, lines }: { p: MotionValue<number>; lines: string[] }) {
     <div className="container grid max-w-6xl grid-cols-1 items-center gap-10 md:grid-cols-2">
       <div className="flex flex-col gap-3">
         {lines.map((l, i) => (
-          <motion.p key={l} initial={false} animate={{ opacity: i < k ? 1 : 0.25 }} className={`font-display font-semibold leading-tight ${i >= lines.length - 2 ? "text-4xl md:text-6xl" : "text-lg text-white/90 md:text-2xl"} ${i === lines.length - 1 ? "text-[#A3E635]" : ""}`}>{l}</motion.p>
+          <motion.p key={l} initial={false} animate={{ opacity: i < k ? 1 : 0.4 }} className={`font-display font-semibold leading-tight ${i >= lines.length - 2 ? "text-4xl md:text-6xl" : "text-lg text-white/90 md:text-2xl"} ${i === lines.length - 1 ? "text-[#A3E635]" : ""}`}>{l}</motion.p>
         ))}
       </div>
       <svg viewBox="0 0 320 320" className="mx-auto h-auto w-full max-w-[380px]" aria-hidden="true">

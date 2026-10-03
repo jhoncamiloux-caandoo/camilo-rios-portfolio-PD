@@ -29,9 +29,9 @@ function VoicesInner({ p, intro, ux, growth, bridge, question, view, growthSees,
         <motion.p style={{ x: xR }} className="whitespace-nowrap text-center font-display text-[22vw] font-semibold leading-[0.8] tracking-[-0.04em] text-white md:text-[17vw]">GROWTH</motion.p>
       </motion.div>
       <div className="container relative grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-2">
-        <motion.p initial={false} animate={{ opacity: step < 2 ? 1 : 0.25 }} className="max-w-3xl font-display text-2xl font-semibold leading-tight md:col-span-2 md:text-4xl">{intro}</motion.p>
-        <motion.p initial={false} animate={{ opacity: step < 2 ? 1 : 0.25 }} className="text-[15px] text-white/75 md:text-lg"><span className="block font-mono text-[11px] uppercase tracking-[0.2em] text-[#A48BFF]">UX</span>{ux}</motion.p>
-        <motion.p initial={false} animate={{ opacity: step < 2 ? 1 : 0.25 }} className="text-[15px] text-white/75 md:text-right md:text-lg"><span className="block font-mono text-[11px] uppercase tracking-[0.2em] text-[#A3E635]">GROWTH</span>{growth}</motion.p>
+        <motion.p initial={false} animate={{ opacity: step < 2 ? 1 : 0.4 }} className="max-w-3xl font-display text-2xl font-semibold leading-tight md:col-span-2 md:text-4xl">{intro}</motion.p>
+        <motion.p initial={false} animate={{ opacity: step < 2 ? 1 : 0.4 }} className="text-[15px] text-white/75 md:text-lg"><span className="block font-mono text-[11px] uppercase tracking-[0.2em] text-[#A48BFF]">UX</span>{ux}</motion.p>
+        <motion.p initial={false} animate={{ opacity: step < 2 ? 1 : 0.4 }} className="text-[15px] text-white/75 md:text-right md:text-lg"><span className="block font-mono text-[11px] uppercase tracking-[0.2em] text-[#A3E635]">GROWTH</span>{growth}</motion.p>
         <motion.div style={{ opacity: qOp }} className="md:col-span-2">
           <p className="text-center font-mono text-[11px] uppercase tracking-[0.2em] text-white/50">{bridge}</p>
           <p className="mx-auto mt-4 max-w-4xl text-center font-display text-3xl font-semibold leading-[1.08] md:text-6xl">{question}</p>
@@ -262,7 +262,7 @@ function VersusInner({ p, a, b, c, d }: { p: MotionValue<number>; a: string; b: 
   return (
     <div className="container max-w-6xl text-center">
       <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#0A0A0A]/50">{a}</p>
-      <div className="mt-6 flex items-center justify-center gap-4 font-display text-[11vw] font-semibold leading-none tracking-[-0.03em] md:text-[7vw]">
+      <div className="mt-6 flex flex-col items-center justify-center gap-2 font-display text-[12vw] font-semibold leading-none tracking-[-0.03em] md:flex-row md:gap-4 md:text-[7vw]">
         <motion.span style={{ x: gapL }}>{l}</motion.span>
         <span className="relative inline-block w-[1.1em] text-[#622FFD]">
           <motion.span style={{ opacity: vsOp }} className="absolute inset-0 text-[0.5em] leading-[2]">vs.</motion.span>
@@ -296,7 +296,7 @@ function CompileInner({ p, a, b }: { p: MotionValue<number>; a: string; b: strin
         <p className="text-xl text-white/80 md:text-2xl">{a}</p>
         <p className="mt-4 font-display text-4xl font-semibold leading-[1.02] md:text-6xl">{b}</p>
         <div className="mt-8 font-mono text-xs leading-6">
-          {LOG.map((l, i) => <motion.p key={l} initial={false} animate={{ opacity: i < s ? 1 : 0.15 }} className={i === 3 ? "text-[#A3E635]" : "text-white/70"}>{l}</motion.p>)}
+          {LOG.map((l, i) => <motion.p key={l} initial={false} animate={{ opacity: i < s ? 1 : 0.4 }} className={i === 3 ? "text-[#A3E635]" : "text-white/70"}>{l}</motion.p>)}
         </div>
       </div>
       <div className="relative aspect-[4/3] rounded-2xl" aria-hidden="true">

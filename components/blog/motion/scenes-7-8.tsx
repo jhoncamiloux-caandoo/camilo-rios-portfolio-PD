@@ -37,7 +37,7 @@ function DelugeInner({ p, lines, items, list }: { p: MotionValue<number>; lines:
       <div className="container relative max-w-5xl">
         <p className="sr-only">{list}</p>
         {lines.map((l, i) => (
-          <motion.p key={l} initial={false} animate={{ opacity: (i < 3 && s <= 1) || (i >= 3 && s >= 2) ? 1 : 0.15 }} transition={{ duration: 0.5 }}
+          <motion.p key={l} initial={false} animate={{ opacity: (i < 3 && s <= 1) || (i >= 3 && s >= 2) ? 1 : 0.4 }} transition={{ duration: 0.5 }}
             className={i === lines.length - 1 ? "mt-4 font-display text-4xl font-semibold leading-[1.02] text-[#A3E635] md:text-7xl" : "text-lg text-white md:text-2xl"}>
             {l}
           </motion.p>
@@ -107,7 +107,7 @@ function PromptInner({ p, lead, questions, close }: { p: MotionValue<number>; le
       <ol className="mt-6 flex flex-col gap-1">
         {questions.map((q, k) => (
           <motion.li key={q} initial={false}
-            animate={{ opacity: k === i ? 1 : k < i ? 0.28 : 0.14, scale: k === i ? 1 : 0.62, color: k === i ? (k === questions.length - 1 ? M.g : "#ffffff") : "#ffffff" }}
+            animate={{ opacity: k === i ? 1 : k < i ? 0.5 : 0.36, scale: k === i ? 1 : 0.62, color: k === i ? (k === questions.length - 1 ? M.g : "#ffffff") : "#ffffff" }}
             transition={{ duration: 0.5, ease: M.ease }}
             style={{ transformOrigin: "left center" }}
             className="font-display text-4xl font-semibold leading-[1.05] tracking-[-0.02em] md:text-7xl">
@@ -200,7 +200,7 @@ function LooksInner({ p, intro, rules, ruleNote, pull, l1, questions }: { p: Mot
         <p className="text-sm text-white/60">{intro}</p>
         <ul className="mt-4 flex flex-wrap gap-2">
           {rules.map((t, i) => (
-            <motion.li key={t} initial={false} animate={{ opacity: i < r ? 1 : 0.2 }} className="flex items-center gap-1.5 rounded-full border border-[#A3E635]/40 px-3 py-1 text-xs text-white/85">
+            <motion.li key={t} initial={false} animate={{ opacity: i < r ? 1 : 0.4 }} className="flex items-center gap-1.5 rounded-full border border-[#A3E635]/40 px-3 py-1 text-xs text-white/85">
               <span className="text-[#A3E635]">✓</span>{t}
             </motion.li>
           ))}
@@ -209,7 +209,7 @@ function LooksInner({ p, intro, rules, ruleNote, pull, l1, questions }: { p: Mot
         <p className="mt-4 font-display text-2xl font-semibold leading-tight md:text-4xl">{pull}</p>
         <p className="mt-4 text-sm text-white/60">{l1}</p>
         <ul className="mt-2 flex flex-col gap-1">
-          {questions.map((t, i) => <motion.li key={t} initial={false} animate={{ opacity: i < q ? 1 : 0.2, x: i < q ? 0 : -6 }} className="text-lg text-[#f87171] md:text-xl">{t}</motion.li>)}
+          {questions.map((t, i) => <motion.li key={t} initial={false} animate={{ opacity: i < q ? 1 : 0.4, x: i < q ? 0 : -6 }} className="text-lg text-[#f87171] md:text-xl">{t}</motion.li>)}
         </ul>
       </div>
       <div className="relative aspect-[4/3] overflow-hidden rounded-[22px] border border-white/10 bg-[#111118] p-5" aria-hidden="true">

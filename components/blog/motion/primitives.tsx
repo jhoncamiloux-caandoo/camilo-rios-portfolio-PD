@@ -64,7 +64,7 @@ export function useStep(p: MotionValue<number>, steps: number) {
 }
 
 /* Palavras que acendem conforme a leitura avança. `marks` destaca termos. */
-export function ScrollWords({ text, p, from = 0, to = 1, marks = [], className = "", dim = "rgba(255,255,255,0.18)", lit = "#fff", markColor = M.lilac }: { text: string; p: MotionValue<number>; from?: number; to?: number; marks?: string[]; className?: string; dim?: string; lit?: string; markColor?: string }) {
+export function ScrollWords({ text, p, from = 0, to = 1, marks = [], className = "", dim = "rgba(255,255,255,0.34)", lit = "#fff", markColor = M.lilac }: { text: string; p: MotionValue<number>; from?: number; to?: number; marks?: string[]; className?: string; dim?: string; lit?: string; markColor?: string }) {
   const words = text.split(" ");
   const norm = (w: string) => w.toLowerCase().replace(/[.,:;!?“”"()]/g, "");
   const markSet = new Set(marks.flatMap((m) => m.split(" ").map(norm)));
@@ -175,7 +175,7 @@ export function SceneRail({ p, labels }: { p: MotionValue<number>; labels: strin
     <div className="w-full">
       <div className="h-px w-full bg-white/10"><motion.div className="h-px bg-[#A48BFF]" style={{ width: w }} /></div>
       <ol className="mt-3 flex flex-wrap gap-x-5 gap-y-1 font-mono text-[10px] uppercase tracking-[0.16em]">
-        {labels.map((l, i) => <li key={l} className={i === step ? "text-white" : i < step ? "text-white/55" : "text-white/30"}>{String(i + 1).padStart(2, "0")} {l}</li>)}
+        {labels.map((l, i) => <li key={l} className={i === step ? "text-white" : i < step ? "text-white/55" : "text-white/45"}>{String(i + 1).padStart(2, "0")} {l}</li>)}
       </ol>
     </div>
   );

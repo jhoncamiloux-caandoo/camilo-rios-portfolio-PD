@@ -3,6 +3,8 @@
 import { SceneDecisionSequence, ScenePossibilitySpace, SceneProcessMorph, SceneSizeVsPrecision, SceneSpecExpand, KineticQuote } from "./scenes-1-2";
 import { SceneCodeLine, SceneCompile, SceneFillClose, SceneJourneyTrack, SceneQuestionFlip, SceneTechGlossary, SceneTwoVoices, SceneVersus } from "./scenes-5-6";
 import { SceneContactSheet, SceneCritique, SceneDataDeluge, SceneDropCauses, SceneInsightFocus, SceneLooksRight, SceneMarkedQuestion, SceneTeleprompter } from "./scenes-7-8";
+import { SceneAgentFeed, SceneAgentPanel, SceneCaseFile, SceneCircleQuestions, SceneEquation, SceneEvidenceBoard, SceneGraphMorph, SceneOrbit, ScenePresence, SceneRecoveryBar, SceneRespondVsAct, SceneSynthetic } from "./scenes-9-12";
+import { SceneA11ySimulator, SceneA11yStats, SceneAnnotatedLine, SceneFunnelMath, SceneHourglass, SceneLens, ScenePageFlip, SceneRings, SceneSpeedBrake, SceneStamps, SceneStoryboard } from "./scenes-13-16";
 import { SceneCriteriaMorph, SceneFiveInterfaces, SceneGapFiller, SceneIntentMorph, SceneOrdersStory, SceneTwoRoutes } from "./scenes-3-4";
 
 /* Registro das cenas de motion: o artigo aponta um id e passa o texto como dados. */
@@ -35,6 +37,29 @@ const SCENES: Record<string, React.FC<any>> = {
   "looks-right": SceneLooksRight,
   "critique": SceneCritique,
   "contact-sheet": SceneContactSheet,
+  "presence": ScenePresence,
+  "synthetic": SceneSynthetic,
+  "circle-questions": SceneCircleQuestions,
+  "orbit": SceneOrbit,
+  "graph-morph": SceneGraphMorph,
+  "agent-panel": SceneAgentPanel,
+  "respond-vs-act": SceneRespondVsAct,
+  "agent-feed": SceneAgentFeed,
+  "recovery-bar": SceneRecoveryBar,
+  "evidence-board": SceneEvidenceBoard,
+  "case-file": SceneCaseFile,
+  "equation": SceneEquation,
+  "speed-brake": SceneSpeedBrake,
+  "funnel-math": SceneFunnelMath,
+  "hourglass": SceneHourglass,
+  "lens": SceneLens,
+  "stamps": SceneStamps,
+  "rings": SceneRings,
+  "storyboard": SceneStoryboard,
+  "page-flip": ScenePageFlip,
+  "annotated-line": SceneAnnotatedLine,
+  "a11y-stats": SceneA11yStats,
+  "a11y-simulator": SceneA11ySimulator,
 };
 
 export function BlogScene({ id, data }: { id: string; data: Record<string, unknown> }) {
