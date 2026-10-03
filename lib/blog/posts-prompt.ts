@@ -42,20 +42,14 @@ export const promptPosts: Post[] = [
     "text": "Pedir não é especificar"
    },
    {
-    "type": "p",
-    "text": "Existe uma diferença grande entre:"
-   },
-   {
-    "type": "quote",
-    "text": "Crie uma tela de dashboard moderna."
-   },
-   {
-    "type": "p",
-    "text": "e:"
-   },
-   {
-    "type": "quote",
-    "text": "Crie um dashboard para gestores de uma plataforma SaaS B2B. O objetivo principal é acompanhar receita, churn e conversão. A informação mais importante deve aparecer primeiro. Use uma estrutura desktop, priorize leitura rápida e permita comparar períodos. Evite gráficos decorativos e mantenha os componentes compatíveis com o design system existente."
+    "type": "scene",
+    "id": "spec-expand",
+    "data": {
+     "intro": "Existe uma diferença grande entre:",
+     "vague": "Crie uma tela de dashboard moderna.",
+     "joiner": "e:",
+     "spec": "Crie um dashboard para gestores de uma plataforma SaaS B2B. O objetivo principal é acompanhar receita, churn e conversão. A informação mais importante deve aparecer primeiro. Use uma estrutura desktop, priorize leitura rápida e permita comparar períodos. Evite gráficos decorativos e mantenha os componentes compatíveis com o design system existente."
+    }
    },
    {
     "type": "p",
@@ -169,20 +163,14 @@ export const promptPosts: Post[] = [
     "text": "Mas tamanho não significa precisão."
    },
    {
-    "type": "p",
-    "text": "Um prompt com 1.500 palavras pode continuar sendo confuso."
-   },
-   {
-    "type": "p",
-    "text": "Um prompt com 150 palavras pode ser extremamente preciso."
-   },
-   {
-    "type": "p",
-    "text": "O objetivo não é falar mais."
-   },
-   {
-    "type": "p",
-    "text": "É remover ambiguidades."
+    "type": "scene",
+    "id": "size-vs-precision",
+    "data": {
+     "a": "Um prompt com 1.500 palavras pode continuar sendo confuso.",
+     "b": "Um prompt com 150 palavras pode ser extremamente preciso.",
+     "c": "O objetivo não é falar mais.",
+     "d": "É remover ambiguidades."
+    }
    },
    {
     "type": "p",
@@ -193,20 +181,14 @@ export const promptPosts: Post[] = [
     "text": "O novo processo"
    },
    {
-    "type": "p",
-    "text": "Antes:"
-   },
-   {
-    "type": "p",
-    "text": "Problema → Pesquisa → Ideia → Wireframe → UI → Protótipo"
-   },
-   {
-    "type": "p",
-    "text": "Agora podemos ter:"
-   },
-   {
-    "type": "p",
-    "text": "Problema → Contexto → Prompt → Exploração → Crítica → Iteração → Teste"
+    "type": "scene",
+    "id": "process-morph",
+    "data": {
+     "beforeLabel": "Antes:",
+     "before": "Problema → Pesquisa → Ideia → Wireframe → UI → Protótipo",
+     "afterLabel": "Agora podemos ter:",
+     "after": "Problema → Contexto → Prompt → Exploração → Crítica → Iteração → Teste"
+    }
    },
    {
     "type": "p",
@@ -269,7 +251,8 @@ export const promptPosts: Post[] = [
     },
     "caption": "A IA entra no processo, mas não assume o processo: contexto e crítica continuam sendo do designer."
    }
-  ]
+  ],
+  "lab": true
  },
  {
   "slug": "gastar-menos-tokens-habilidade-de-design",
@@ -335,36 +318,20 @@ export const promptPosts: Post[] = [
     "text": "É a quantidade de informação útil por instrução."
    },
    {
-    "type": "p",
-    "text": "Por exemplo:"
-   },
-   {
-    "type": "quote",
-    "text": "Crie uma landing page moderna para uma empresa de tecnologia."
-   },
-   {
-    "type": "p",
-    "text": "É curto."
-   },
-   {
-    "type": "p",
-    "text": "Mas quase não define nada."
-   },
-   {
-    "type": "p",
-    "text": "Já:"
-   },
-   {
-    "type": "quote",
-    "text": "Crie uma landing page para um SaaS B2B de gestão financeira. O objetivo é gerar demonstrações. O público são gestores financeiros de pequenas empresas. Priorize proposta de valor, prova social e CTA. Use desktop-first, estrutura modular e linguagem direta. Não use gradientes, ilustrações genéricas ou excesso de elementos decorativos."
-   },
-   {
-    "type": "p",
-    "text": "É maior."
-   },
-   {
-    "type": "p",
-    "text": "Mas cada informação reduz uma possibilidade desnecessária."
+    "type": "scene",
+    "id": "possibility-space",
+    "data": {
+     "shortP": "Crie uma landing page moderna para uma empresa de tecnologia.",
+     "longP": "Crie uma landing page para um SaaS B2B de gestão financeira. O objetivo é gerar demonstrações. O público são gestores financeiros de pequenas empresas. Priorize proposta de valor, prova social e CTA. Use desktop-first, estrutura modular e linguagem direta. Não use gradientes, ilustrações genéricas ou excesso de elementos decorativos.",
+     "notes": [
+      "Por exemplo:",
+      "É curto.",
+      "Mas quase não define nada.",
+      "Já:",
+      "É maior.",
+      "Mas cada informação reduz uma possibilidade desnecessária."
+     ]
+    }
    },
    {
     "type": "h2",
@@ -399,68 +366,40 @@ export const promptPosts: Post[] = [
     "text": "O problema do prompt que tenta fazer tudo"
    },
    {
-    "type": "p",
-    "text": "Imagine um prompt assim:"
-   },
-   {
-    "type": "quote",
-    "text": "Crie o produto completo, com onboarding, dashboard, configurações, perfil, notificações, pagamentos, responsividade, animações, acessibilidade, dark mode, sistema de componentes..."
-   },
-   {
-    "type": "p",
-    "text": "Pode parecer completo."
-   },
-   {
-    "type": "p",
-    "text": "Mas talvez seja justamente esse o problema."
-   },
-   {
-    "type": "p",
-    "text": "Você está tentando resolver muitas decisões simultaneamente."
-   },
-   {
-    "type": "p",
-    "text": "Uma alternativa pode ser:"
-   },
-   {
-    "type": "p",
-    "text": "1. Definir a estrutura"
-   },
-   {
-    "type": "p",
-    "text": "\"Crie a arquitetura principal do produto.\""
-   },
-   {
-    "type": "p",
-    "text": "2. Definir a experiência"
-   },
-   {
-    "type": "p",
-    "text": "\"Agora desenvolva o fluxo de onboarding.\""
-   },
-   {
-    "type": "p",
-    "text": "3. Definir o comportamento"
-   },
-   {
-    "type": "p",
-    "text": "\"Adicione estados de erro, loading e sucesso.\""
-   },
-   {
-    "type": "p",
-    "text": "4. Refinar a interface"
-   },
-   {
-    "type": "p",
-    "text": "\"Agora ajuste hierarquia, espaçamento e componentes.\""
-   },
-   {
-    "type": "p",
-    "text": "Isso transforma a conversa em uma sequência de decisões."
-   },
-   {
-    "type": "p",
-    "text": "Em vez de tentar construir tudo de uma vez."
+    "type": "scene",
+    "id": "decision-sequence",
+    "data": {
+     "intro": "Imagine um prompt assim:",
+     "overloaded": "Crie o produto completo, com onboarding, dashboard, configurações, perfil, notificações, pagamentos, responsividade, animações, acessibilidade, dark mode, sistema de componentes...",
+     "outro": [
+      "Pode parecer completo.",
+      "Mas talvez seja justamente esse o problema.",
+      "Você está tentando resolver muitas decisões simultaneamente.",
+      "Uma alternativa pode ser:"
+     ],
+     "steps": [
+      {
+       "title": "1. Definir a estrutura",
+       "prompt": "\"Crie a arquitetura principal do produto.\""
+      },
+      {
+       "title": "2. Definir a experiência",
+       "prompt": "\"Agora desenvolva o fluxo de onboarding.\""
+      },
+      {
+       "title": "3. Definir o comportamento",
+       "prompt": "\"Adicione estados de erro, loading e sucesso.\""
+      },
+      {
+       "title": "4. Refinar a interface",
+       "prompt": "\"Agora ajuste hierarquia, espaçamento e componentes.\""
+      }
+     ],
+     "close": [
+      "Isso transforma a conversa em uma sequência de decisões.",
+      "Em vez de tentar construir tudo de uma vez."
+     ]
+    }
    },
    {
     "type": "visual",
@@ -552,15 +491,26 @@ export const promptPosts: Post[] = [
     "text": "Pode ser uma consequência de pensar melhor."
    },
    {
-    "type": "p",
-    "text": "Menos geração desnecessária. Mais intenção."
+    "type": "scene",
+    "id": "kinetic-quote",
+    "data": {
+     "lines": [
+      "Menos geração desnecessária.",
+      "Mais intenção."
+     ],
+     "emphasis": [
+      1
+     ],
+     "tone": "violet"
+    }
    },
    {
     "type": "visual",
     "id": "prompt-funnel",
     "caption": "Clareza reduz desperdício: cada etapa descarta possibilidades até sobrar uma solução."
    }
-  ]
+  ],
+  "lab": true
  },
  {
   "slug": "pergunta-generica-interface-generica",
@@ -674,72 +624,31 @@ export const promptPosts: Post[] = [
     "text": "A IA preenche espaços vazios"
    },
    {
-    "type": "p",
-    "text": "Quando você escreve:"
-   },
-   {
-    "type": "quote",
-    "text": "Crie um app moderno de finanças."
-   },
-   {
-    "type": "p",
-    "text": "Existe uma quantidade enorme de decisões em aberto."
-   },
-   {
-    "type": "p",
-    "text": "Qual público?"
-   },
-   {
-    "type": "p",
-    "text": "Pessoa física ou empresa?"
-   },
-   {
-    "type": "p",
-    "text": "Qual objetivo?"
-   },
-   {
-    "type": "p",
-    "text": "Investir, controlar gastos, pagar contas?"
-   },
-   {
-    "type": "p",
-    "text": "Qual contexto?"
-   },
-   {
-    "type": "p",
-    "text": "Mobile ou desktop?"
-   },
-   {
-    "type": "p",
-    "text": "Qual comportamento?"
-   },
-   {
-    "type": "p",
-    "text": "Qual modelo de negócio?"
-   },
-   {
-    "type": "p",
-    "text": "Qual identidade visual?"
-   },
-   {
-    "type": "p",
-    "text": "Sem essas respostas, o modelo precisa fazer suposições."
-   },
-   {
-    "type": "p",
-    "text": "E essas suposições geralmente vêm de padrões conhecidos."
-   },
-   {
-    "type": "p",
-    "text": "Por isso aparecem cards, dashboards, gráficos, menus laterais, hero sections, botões de CTA e métricas em destaque."
-   },
-   {
-    "type": "p",
-    "text": "Tudo funciona."
-   },
-   {
-    "type": "p",
-    "text": "Mas nada necessariamente pertence àquele produto."
+    "type": "scene",
+    "id": "gap-filler",
+    "data": {
+     "lead": "Quando você escreve:",
+     "prompt": "Crie um app moderno de finanças.",
+     "open": "Existe uma quantidade enorme de decisões em aberto.",
+     "questions": [
+      "Qual público?",
+      "Pessoa física ou empresa?",
+      "Qual objetivo?",
+      "Investir, controlar gastos, pagar contas?",
+      "Qual contexto?",
+      "Mobile ou desktop?",
+      "Qual comportamento?",
+      "Qual modelo de negócio?",
+      "Qual identidade visual?"
+     ],
+     "fills": "E essas suposições geralmente vêm de padrões conhecidos. Por isso aparecem cards, dashboards, gráficos, menus laterais, hero sections, botões de CTA e métricas em destaque.",
+     "close": [
+      "Sem essas respostas, o modelo precisa fazer suposições.",
+      "",
+      "Tudo funciona.",
+      "Mas nada necessariamente pertence àquele produto."
+     ]
+    }
    },
    {
     "type": "h2",
@@ -774,36 +683,20 @@ export const promptPosts: Post[] = [
     "text": "Talvez o prompt esteja começando a funcionar como uma nova camada de especificação."
    },
    {
-    "type": "p",
-    "text": "Não basta dizer:"
-   },
-   {
-    "type": "quote",
-    "text": "Crie uma tela de pedidos."
-   },
-   {
-    "type": "p",
-    "text": "Podemos dizer:"
-   },
-   {
-    "type": "quote",
-    "text": "Esta tela será utilizada por operadores de restaurantes durante horários de alta demanda. O usuário precisa identificar rapidamente novos pedidos, pedidos atrasados e pedidos que precisam de intervenção. A informação mais importante é o status. A interação precisa exigir poucos cliques. O sistema já possui componentes para status, filtros e tabelas."
-   },
-   {
-    "type": "p",
-    "text": "Agora existe um problema."
-   },
-   {
-    "type": "p",
-    "text": "E não apenas uma estética."
-   },
-   {
-    "type": "p",
-    "text": "A IA tem mais informações para tomar decisões."
-   },
-   {
-    "type": "p",
-    "text": "E o designer tem mais controle sobre o resultado."
+    "type": "scene",
+    "id": "orders-story",
+    "data": {
+     "lead": "Não basta dizer:",
+     "shortP": "Crie uma tela de pedidos.",
+     "lead2": "Podemos dizer:",
+     "context": "Esta tela será utilizada por operadores de restaurantes durante horários de alta demanda. O usuário precisa identificar rapidamente novos pedidos, pedidos atrasados e pedidos que precisam de intervenção. A informação mais importante é o status. A interação precisa exigir poucos cliques. O sistema já possui componentes para status, filtros e tabelas.",
+     "close": [
+      "Agora existe um problema.",
+      "E não apenas uma estética.",
+      "A IA tem mais informações para tomar decisões.",
+      "E o designer tem mais controle sobre o resultado."
+     ]
+    }
    },
    {
     "type": "visual",
@@ -925,7 +818,8 @@ export const promptPosts: Post[] = [
     "id": "freedom-dial",
     "caption": "Parte do trabalho é decidir onde a IA pode explorar e onde ela não deve improvisar."
    }
-  ]
+  ],
+  "lab": true
  },
  {
   "slug": "novo-skill-do-designer-dizer-o-que-quer",
@@ -995,104 +889,51 @@ export const promptPosts: Post[] = [
     "text": "Antes, uma ideia vaga precisava passar por várias etapas"
    },
    {
-    "type": "p",
-    "text": "Você dizia:"
-   },
-   {
-    "type": "quote",
-    "text": "Acho que essa tela poderia ser melhor."
-   },
-   {
-    "type": "p",
-    "text": "Isso provavelmente gerava uma conversa."
-   },
-   {
-    "type": "p",
-    "text": "O designer fazia perguntas."
-   },
-   {
-    "type": "p",
-    "text": "O time discutia."
-   },
-   {
-    "type": "p",
-    "text": "Um wireframe aparecia."
-   },
-   {
-    "type": "p",
-    "text": "Depois um protótipo."
-   },
-   {
-    "type": "p",
-    "text": "Existiam vários momentos para perceber que a ideia ainda não estava clara."
-   },
-   {
-    "type": "p",
-    "text": "Com IA, podemos ir diretamente de:"
-   },
-   {
-    "type": "quote",
-    "text": "Acho que essa tela poderia ser melhor."
-   },
-   {
-    "type": "p",
-    "text": "para:"
-   },
-   {
-    "type": "p",
-    "text": "uma nova interface em segundos."
-   },
-   {
-    "type": "p",
-    "text": "Isso parece ótimo."
-   },
-   {
-    "type": "p",
-    "text": "Mas existe um risco."
-   },
-   {
-    "type": "p",
-    "text": "Podemos começar a produzir antes de entender."
+    "type": "scene",
+    "id": "two-routes",
+    "data": {
+     "lead": "Você dizia:",
+     "idea": "Acho que essa tela poderia ser melhor.",
+     "beforeSteps": [
+      "Isso provavelmente gerava uma conversa.",
+      "O designer fazia perguntas.",
+      "O time discutia.",
+      "Um wireframe aparecia.",
+      "Depois um protótipo."
+     ],
+     "beforeNote": "Existiam vários momentos para perceber que a ideia ainda não estava clara.",
+     "withAi": "Com IA, podemos ir diretamente de:",
+     "to": "para:",
+     "result": "uma nova interface em segundos.",
+     "risk": [
+      "Isso parece ótimo.",
+      "Mas existe um risco.",
+      "Podemos começar a produzir antes de entender."
+     ]
+    }
    },
    {
     "type": "h2",
     "text": "A velocidade muda o custo da ambiguidade"
    },
    {
-    "type": "p",
-    "text": "Quando criar algo era caro, pensar antes era quase obrigatório."
-   },
-   {
-    "type": "p",
-    "text": "Agora criar é barato."
-   },
-   {
-    "type": "p",
-    "text": "Podemos gerar cinco interfaces em poucos minutos."
-   },
-   {
-    "type": "p",
-    "text": "Isso é ótimo para exploração."
-   },
-   {
-    "type": "p",
-    "text": "Mas cria uma nova pergunta:"
-   },
-   {
-    "type": "p",
-    "text": "quantas dessas interfaces precisávamos realmente criar?"
-   },
-   {
-    "type": "p",
-    "text": "O designer pode acabar passando mais tempo avaliando possibilidades do que construindo a solução."
-   },
-   {
-    "type": "p",
-    "text": "Por isso, a habilidade não é simplesmente saber gerar."
-   },
-   {
-    "type": "p",
-    "text": "É saber direcionar."
+    "type": "scene",
+    "id": "five-interfaces",
+    "data": {
+     "lines": [
+      "Quando criar algo era caro, pensar antes era quase obrigatório.",
+      "Agora criar é barato.",
+      "Podemos gerar cinco interfaces em poucos minutos.",
+      "Isso é ótimo para exploração.",
+      "Mas cria uma nova pergunta:"
+     ],
+     "question": "quantas dessas interfaces precisávamos realmente criar?",
+     "after": [
+      "O designer pode acabar passando mais tempo avaliando possibilidades do que construindo a solução.",
+      "Por isso, a habilidade não é simplesmente saber gerar."
+     ],
+     "punch": "É saber direcionar."
+    }
    },
    {
     "type": "h2",
@@ -1171,52 +1012,26 @@ export const promptPosts: Post[] = [
     "text": "O designer precisa aprender a escrever critérios"
    },
    {
-    "type": "p",
-    "text": "Em vez de apenas dizer:"
-   },
-   {
-    "type": "quote",
-    "text": "Faça melhor."
-   },
-   {
-    "type": "p",
-    "text": "Começar a dizer:"
-   },
-   {
-    "type": "quote",
-    "text": "Faça com que..."
-   },
-   {
-    "type": "p",
-    "text": "Por exemplo:"
-   },
-   {
-    "type": "p",
-    "text": "\"Faça com que o usuário consiga encontrar o filtro principal em menos de cinco segundos.\""
-   },
-   {
-    "type": "p",
-    "text": "\"Faça com que o estado de erro explique o que aconteceu e qual ação pode ser tomada.\""
-   },
-   {
-    "type": "p",
-    "text": "\"Faça com que a tabela possa ser entendida sem precisar abrir cada linha.\""
-   },
-   {
-    "type": "p",
-    "text": "\"Faça com que o CTA principal tenha prioridade visual sobre as ações secundárias.\""
-   },
-   {
-    "type": "p",
-    "text": "Essas instruções são muito mais próximas de design de produto."
-   },
-   {
-    "type": "p",
-    "text": "Porque descrevem comportamento e intenção."
-   },
-   {
-    "type": "p",
-    "text": "Não apenas aparência."
+    "type": "scene",
+    "id": "criteria-morph",
+    "data": {
+     "lead": "Em vez de apenas dizer:",
+     "vague": "Faça melhor.",
+     "lead2": "Começar a dizer:",
+     "open": "Faça com que...",
+     "intro": "Por exemplo:",
+     "criteria": [
+      "Faça com que o usuário consiga encontrar o filtro principal em menos de cinco segundos.",
+      "Faça com que o estado de erro explique o que aconteceu e qual ação pode ser tomada.",
+      "Faça com que a tabela possa ser entendida sem precisar abrir cada linha.",
+      "Faça com que o CTA principal tenha prioridade visual sobre as ações secundárias."
+     ],
+     "close": [
+      "Essas instruções são muito mais próximas de design de produto.",
+      "Porque descrevem comportamento e intenção.",
+      "Não apenas aparência."
+     ]
+    }
    },
    {
     "type": "visual",
@@ -1293,34 +1108,25 @@ export const promptPosts: Post[] = [
     "text": "Agora, a ferramenta consegue produzir a partir da ideia."
    },
    {
-    "type": "p",
-    "text": "O problema é que uma ideia vaga continua sendo vaga."
-   },
-   {
-    "type": "p",
-    "text": "A IA pode transformar uma intenção em uma interface."
-   },
-   {
-    "type": "p",
-    "text": "Mas ainda precisamos saber qual intenção vale a pena transformar em interface."
-   },
-   {
-    "type": "p",
-    "text": "E talvez esse seja um dos novos diferenciais do Product Designer:"
-   },
-   {
-    "type": "p",
-    "text": "não gerar mais."
-   },
-   {
-    "type": "p",
-    "text": "Gerar melhor."
+    "type": "scene",
+    "id": "intent-morph",
+    "data": {
+     "lines": [
+      "O problema é que uma ideia vaga continua sendo vaga.",
+      "A IA pode transformar uma intenção em uma interface.",
+      "Mas ainda precisamos saber qual intenção vale a pena transformar em interface.",
+      "E talvez esse seja um dos novos diferenciais do Product Designer:",
+      "não gerar mais.",
+      "Gerar melhor."
+     ]
+    }
    },
    {
     "type": "visual",
     "id": "intent-loop",
     "caption": "A intenção ganha forma a cada etapa, e a avaliação volta ao problema. Prompt é uma etapa do pensamento, não o fim."
    }
-  ]
+  ],
+  "lab": true
  }
 ];

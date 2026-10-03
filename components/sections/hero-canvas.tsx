@@ -128,6 +128,29 @@ export function HeroCanvas({ children }: { children: ReactNode }) {
       images[0].fetchPriority = "high";
       await load(0);
 
+      // O resto espera a página terminar de carregar e o navegador ficar livre,
+      // para não disputar banda com textos, fontes e JS. Se a pessoa começar a
+      // rolar antes disso, a fila começa na hora. Mesmos frames, mesma qualidade.
+      await new Promise<void>((resolve) => {
+        let done = false;
+        const go = () => {
+          if (done) return;
+          done = true;
+          window.removeEventListener("scroll", go);
+          window.removeEventListener("pointerdown", go);
+          resolve();
+        };
+        window.addEventListener("scroll", go, { passive: true, once: true });
+        window.addEventListener("pointerdown", go, { once: true });
+        const idle = () => {
+          if (typeof window.requestIdleCallback === "function") window.requestIdleCallback(go, { timeout: 1500 });
+          else setTimeout(go, 300);
+        };
+        if (document.readyState === "complete") idle();
+        else window.addEventListener("load", idle, { once: true });
+      });
+      if (cancelled) return;
+
       // Restante em fila ascendente, com concorrência limitada.
       let next = 1;
       const worker = async () => {

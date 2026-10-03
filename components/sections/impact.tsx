@@ -1,18 +1,13 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import * as THREE from "three";
+import type * as ThreeNS from "three";
 import { motion } from "framer-motion";
 import { useLocale } from "@/lib/i18n/locale-context";
 
 // --- SHADER: fundo claro #F8F8F8, linhas escuras 35% opacidade, distorção por mouse ---
-function CyberneticGridShader() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
+// O Three.js (o maior pacote do site) só é baixado quando a seção chega perto da tela.
+function startGrid(THREE: typeof ThreeNS, container: HTMLDivElement) {
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
@@ -112,6 +107,32 @@ function CyberneticGridShader() {
       material.dispose();
       geometry.dispose();
       renderer.dispose();
+    };
+}
+
+function CyberneticGridShader() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    let cleanup: (() => void) | undefined;
+    let dead = false;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        io.disconnect();
+        import("three").then((THREE) => {
+          if (!dead) cleanup = startGrid(THREE, container);
+        });
+      },
+      { rootMargin: "600px 0px" },
+    );
+    io.observe(container);
+    return () => {
+      dead = true;
+      io.disconnect();
+      cleanup?.();
     };
   }, []);
 

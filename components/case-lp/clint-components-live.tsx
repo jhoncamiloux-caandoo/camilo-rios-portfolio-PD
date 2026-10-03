@@ -177,7 +177,7 @@ export function ClintBarraPrompt({ frases }: { frases?: string[] }) {
       }}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/cases/clint/ai-logo.webp" alt="" width={26} height={26} style={{ flex: "none", width: 26, height: 26, borderRadius: "50%" }} />
+      <img loading="lazy" decoding="async" src="/cases/clint/ai-logo.webp" alt="" width={26} height={26} style={{ flex: "none", width: 26, height: 26, borderRadius: "50%" }} />
       <span style={{ flex: 1, minWidth: 0, fontSize: 14, color: "#ffffff", whiteSpace: "nowrap", overflow: "hidden" }}>
         {texto}
         <span
@@ -215,7 +215,7 @@ export function ClintBalaoChat({ texto, hora }: { texto: string; hora: string })
       }}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/cases/clint/ai-logo.webp" alt="" width={26} height={26} style={{ flex: "none", width: 26, height: 26, borderRadius: "50%" }} />
+      <img loading="lazy" decoding="async" src="/cases/clint/ai-logo.webp" alt="" width={26} height={26} style={{ flex: "none", width: 26, height: 26, borderRadius: "50%" }} />
       <span style={{ fontSize: 14, color: "#ffffff" }}>{texto}</span>
       <span style={{ fontSize: 10.5, fontWeight: 700, color: "rgba(255,255,255,0.8)" }}>{hora}</span>
     </div>
@@ -229,7 +229,7 @@ export function ClintAiSignature() {
   return (
     <div style={{ display: "inline-flex", alignItems: "center", gap: 10, fontFamily: POPPINS }}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
+      <img loading="lazy" decoding="async"
         src="/cases/clint/scale/icone-ia.webp"
         alt=""
         style={{ width: 22, height: 22, borderRadius: "50%", display: "block" }}
@@ -306,7 +306,7 @@ export function ClintAiCommandCloud() {
         aria-hidden="true"
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/cases/clint/scale/icone-ia.webp" alt="" style={{ width: 30, height: 30, borderRadius: "50%" }} />
+        <img loading="lazy" decoding="async" src="/cases/clint/scale/icone-ia.webp" alt="" style={{ width: 30, height: 30, borderRadius: "50%" }} />
       </div>
     </div>
   );

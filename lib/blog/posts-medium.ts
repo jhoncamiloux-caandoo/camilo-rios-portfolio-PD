@@ -955,6 +955,11 @@ export const mediumPosts: Post[] = [
     ]
    },
    {
+    "type": "visual",
+    "id": "lt-hierarchy",
+    "caption": "Mesmo conteúdo, outra leitura: tamanho, contraste e uma única ação principal dizem ao usuário onde olhar e onde clicar."
+   },
+   {
     "type": "h2",
     "text": "2. Menos é mais: a jornada sem obstáculos"
    },
@@ -995,6 +1000,11 @@ export const mediumPosts: Post[] = [
    {
     "type": "p",
     "text": "Pense em um site de compras online. Se o processo de checkout tem mais etapas do que um reality show, é provável que o usuário desista no meio do caminho. Reduzir etapas, eliminar campos desnecessários e fornecer feedback imediato são estratégias que podem aumentar a conversão de maneira surpreendente."
+   },
+   {
+    "type": "visual",
+    "id": "lt-checkout",
+    "caption": "Menos campos, um clique e uma resposta imediata. O usuário nunca fica em dúvida se deu certo."
    },
    {
     "type": "p",
@@ -1041,6 +1051,11 @@ export const mediumPosts: Post[] = [
     ]
    },
    {
+    "type": "visual",
+    "id": "lt-usability",
+    "caption": "Observar uma tarefa mostra o que nenhuma opinião mostra: a hesitação. Quando duas de cinco pessoas travam no mesmo ponto, ali está o problema."
+   },
+   {
     "type": "h2",
     "text": "4. Simplicidade: o superpoder do design"
    },
@@ -1069,7 +1084,8 @@ export const mediumPosts: Post[] = [
     "type": "p",
     "text": "E aí, pronto para transformar seus designs em experiências que praticamente se vendem sozinhas? Compartilhe suas histórias, desafios e sucessos nos comentários. Afinal, a melhor forma de aprender é, acima de tudo, simplificar e compartilhar!"
    }
-  ]
+  ],
+  "updated": "2026-10-02"
  },
  {
   "slug": "design-systems-como-criar-e-manter",
@@ -2376,6 +2392,11 @@ export const mediumPosts: Post[] = [
     "text": "Imagine que você está projetando um novo aplicativo para estudantes universitários. Em vez de começar a desenhar interfaces, você dedica tempo para conversar com estudantes, entender suas rotinas, frustrações e o que realmente precisam para facilitar a vida. Esse processo não apenas guia a criação, mas também humaniza as soluções, garantindo que elas façam sentido no mundo real."
    },
    {
+    "type": "visual",
+    "id": "lt-empathy",
+    "caption": "Antes de desenhar: ouvir, anotar e agrupar até o problema real aparecer."
+   },
+   {
     "type": "h2",
     "text": "Um Exemplo Prático"
    },
@@ -2412,6 +2433,11 @@ export const mediumPosts: Post[] = [
    {
     "type": "p",
     "text": "Esse ciclo de ouvir, criar e ajustar é a essência do Design Thinking. É um processo iterativo que busca a solução ideal ao colocar as pessoas no centro da criação."
+   },
+   {
+    "type": "visual",
+    "id": "lt-iterate",
+    "caption": "Cada volta de teste e ajuste deixa a solução melhor do que a anterior. É o ciclo, não a primeira ideia, que acerta."
    },
    {
     "type": "h2",
@@ -2487,7 +2513,8 @@ export const mediumPosts: Post[] = [
     "type": "p",
     "text": "E você? Já aplicou Design Thinking no seu trabalho ou quer começar? Compartilhe sua experiência nos comentários! Vamos trocar ideias e aprender juntos."
    }
-  ]
+  ],
+  "updated": "2026-10-02"
  },
  {
   "slug": "12-metricas-de-ux",
@@ -3256,6 +3283,11 @@ export const mediumPosts: Post[] = [
    },
    {
     "type": "visual",
+    "id": "lt-double-diamond",
+    "caption": "Role a página: primeiro abrimos o problema e convergimos para uma definição; depois abrimos soluções e convergimos para a entrega."
+   },
+   {
+    "type": "visual",
     "data": {
      "kind": "flow",
      "steps": [
@@ -3425,7 +3457,8 @@ export const mediumPosts: Post[] = [
     "type": "p",
     "text": "Para mais informações e estudos de caso sobre o impacto do UX, confira as plataformas UXDesign.cc e Interaction Design Foundation, além do artigo “Double Diamond e o papel do UX Designer” da Nielsen Norman Group."
    }
-  ]
+  ],
+  "updated": "2026-10-02"
  },
  {
   "slug": "habilidades-mais-procuradas-designer-ux",
@@ -3687,6 +3720,11 @@ export const mediumPosts: Post[] = [
     "text": "Ao invés de criar relatórios extensos, você fragmenta os dados em “átomos de pesquisa” e os organiza para gerar fatos e insights claros. Isso torna o aprendizado contínuo e a informação sempre acessível, ideal para ser aplicada em várias fases do projeto."
    },
    {
+    "type": "visual",
+    "id": "lt-atomize",
+    "caption": "Em vez de um relatório que ninguém relê, pequenos átomos de aprendizado que qualquer pessoa encontra em segundos."
+   },
+   {
     "type": "h2",
     "text": "Por que “Atomizar” a Pesquisa?"
    },
@@ -3739,6 +3777,11 @@ export const mediumPosts: Post[] = [
      "Insights (O que isso nos faz pensar?): Hipóteses baseadas nos fatos. Ex. Substituir a lupa por um campo de busca pode melhorar a experiência.",
      "Conclusões (O que vamos fazer?): Decisões baseadas nos insights. Ex: Trocar o ícone por um campo de busca textual."
     ]
+   },
+   {
+    "type": "visual",
+    "id": "lt-atomic",
+    "caption": "Experimentos geram fatos, fatos sustentam insights e insights levam a decisões. Um mesmo fato pode alimentar novos insights depois."
    },
    {
     "type": "h2",
@@ -3811,7 +3854,8 @@ export const mediumPosts: Post[] = [
     "type": "p",
     "text": "O Atomic Research revoluciona a forma de organizar os dados de UX Research. Modular, ágil e eficiente, ele torna o processo de pesquisa mais dinâmico, garantindo que insights valiosos não se percam e sejam aplicados sempre que necessário."
    }
-  ]
+  ],
+  "updated": "2026-10-02"
  },
  {
   "slug": "criatividade-e-estrategia-no-design-de-produto",

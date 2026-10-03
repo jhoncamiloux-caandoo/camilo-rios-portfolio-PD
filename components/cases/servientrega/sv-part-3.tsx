@@ -188,7 +188,7 @@ export function SvOthers() {
                 >
                   <div className="aspect-[16/10] overflow-hidden">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={`${SV_ASSET}/${p.img}`} alt={p.alt} loading="lazy" className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]" />
+                    <img decoding="async" src={`${SV_ASSET}/${p.img}`} alt={p.alt} loading="lazy" className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]" />
                   </div>
                   <div className="flex flex-1 flex-col gap-3 p-6">
                     <span className="w-fit rounded-full border border-white/15 px-2.5 py-1 text-[11px] uppercase tracking-wider text-white/80" style={{ fontFamily: MONO }}>
@@ -227,7 +227,7 @@ export function SvCta() {
             className="group relative flex flex-col items-start justify-between gap-6 overflow-hidden rounded-3xl bg-[#007A38] p-8 transition-colors hover:bg-[#006a31] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#56C271] focus-visible:ring-offset-2 focus-visible:ring-offset-[#07080b] md:flex-row md:items-center md:p-12"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={`${SV_ASSET}/logo-white.svg`} alt="" aria-hidden="true" className="pointer-events-none absolute -right-6 -top-6 h-48 w-auto opacity-10 md:h-64" />
+            <img loading="lazy" decoding="async" src={`${SV_ASSET}/logo-white.svg`} alt="" aria-hidden="true" className="pointer-events-none absolute -right-6 -top-6 h-48 w-auto opacity-10 md:h-64" />
             <div className="relative flex flex-col gap-2">
               <span className="text-3xl font-black tracking-[-0.03em] text-white md:text-5xl" style={{ fontFamily: SANS }}>{c.title}</span>
               <span className="max-w-lg text-base text-white/85">{c.body}</span>

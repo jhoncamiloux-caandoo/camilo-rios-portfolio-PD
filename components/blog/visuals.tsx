@@ -186,6 +186,7 @@ function BeforeAfter() {
 import { GENERIC, type VisualData } from "./visuals-kit";
 import { PROMPT_VISUALS } from "./prompt-visuals";
 import { METRIC_VISUALS } from "./metric-visuals";
+import { LOTTIE_VISUALS } from "./lottie-demo";
 export type { VisualData };
 
 const VISUALS: Record<string, React.FC> = {
@@ -196,6 +197,7 @@ const VISUALS: Record<string, React.FC> = {
   "before-after": BeforeAfter,
   ...PROMPT_VISUALS,
   ...METRIC_VISUALS,
+  ...LOTTIE_VISUALS,
 };
 
 export function BlogVisual({ id, caption, data }: { id?: string; caption: string; data?: VisualData }) {

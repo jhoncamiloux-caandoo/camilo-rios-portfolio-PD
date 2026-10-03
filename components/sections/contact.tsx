@@ -1,10 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Calendar, ArrowUpRight, Download } from "lucide-react";
 import { FadeIn } from "@/components/motion/fade-in";
-import LiquidEther from "@/components/backgrounds/liquid-ether";
+import dynamic from "next/dynamic";
+
+// Fluido em WebGL (Three.js): baixado só quando a seção de contato chega perto da tela.
+const LiquidEther = dynamic(() => import("@/components/backgrounds/liquid-ether"), { ssr: false });
 import {
   Dialog,
   DialogContent,
@@ -51,21 +54,36 @@ function useLiquidEtherEnabled() {
   return wide && !reduce;
 }
 
+function useNearViewport<T extends Element>() {
+  const ref = useRef<T>(null);
+  const [near, setNear] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || near) return;
+    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setNear(true); io.disconnect(); } }, { rootMargin: "600px 0px" });
+    io.observe(el);
+    return () => io.disconnect();
+  }, [near]);
+  return [ref, near] as const;
+}
+
 export function Contact() {
   const { t } = useLocale();
   const [open, setOpen] = useState(false);
   const liquidEnabled = useLiquidEtherEnabled();
+  const [sectionRef, near] = useNearViewport<HTMLElement>();
 
   return (
     <>
       <section
         id="contato"
+        ref={sectionRef}
         data-nav-theme="dark"
         className="relative overflow-hidden bg-[#0A0A0A] py-28 text-light"
       >
         {/* ── Background: fluido no desktop, auroras estáticas no fallback ── */}
         <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-          {liquidEnabled ? (
+          {liquidEnabled && near ? (
             <LiquidEther
               colors={["#622FFD", "#6670FF", "#3841B9"]}
               autoDemo

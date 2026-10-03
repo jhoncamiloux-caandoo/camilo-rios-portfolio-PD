@@ -6,6 +6,8 @@ import { CaseHeader } from "@/components/case-lp/case-header";
 import { CaseFooter } from "@/components/case-lp/case-footer";
 import { BlogVisual } from "@/components/blog/visuals";
 import { CoverArt } from "@/components/blog/visuals-kit";
+import { BlogScene } from "@/components/blog/motion";
+import { KineticTitle } from "@/components/blog/motion/primitives";
 import { CATEGORIES, getPost, posts } from "@/lib/blog/posts";
 
 const SITE = "https://camilo-rios-portfolio.vercel.app";
@@ -64,7 +66,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   ];
 
   return (
-    <div className="min-h-screen bg-white text-[#0A0A0A]">
+    <div className="min-h-screen overflow-x-clip bg-white text-[#0A0A0A]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
       <CaseHeader label="Blog" />
       <main className="pb-24 pt-28 md:pt-36">
@@ -77,7 +79,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <span aria-current="page" className="line-clamp-1">{p.title}</span>
           </nav>
           <p className="font-mono text-xs uppercase tracking-[0.18em] text-[#622FFD]">{CATEGORIES[p.category]}</p>
-          <h1 className="mt-4 font-display text-[34px] font-semibold leading-[1.1] tracking-tight md:text-[52px]">{p.title}</h1>
+          {p.lab ? (
+            <KineticTitle text={p.title} className="mt-4 font-display text-[38px] font-semibold leading-[1.04] tracking-tight md:text-[64px]" />
+          ) : (
+            <h1 className="mt-4 font-display text-[34px] font-semibold leading-[1.1] tracking-tight md:text-[52px]">{p.title}</h1>
+          )}
           <p className="mt-5 text-lg leading-relaxed text-[#0A0A0A]/70">{p.description}</p>
           <p className="mt-6 text-sm text-[#0A0A0A]/60">
             Jhon Camilo Rios · <time dateTime={p.date}>{new Date(p.date).toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" })}</time> · {p.readMinutes} min de leitura
@@ -90,7 +96,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <div className="mt-10"><CoverArt icons={p.coverArt.icons} label={CATEGORIES[p.category]} size="hero" /></div>
           ) : p.cover ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={p.cover} alt="" className="mt-10 aspect-[2/1] w-full rounded-3xl object-cover" />
+            <img src={p.cover} srcSet={`${p.cover.replace(/\.webp$/, "-800.webp")} 800w, ${p.cover} 1600w`} sizes="(min-width: 768px) 720px, 100vw" width={1600} height={800} fetchPriority="high" decoding="async" alt="" className="mt-10 aspect-[2/1] w-full rounded-3xl object-cover" />
           ) : null}
 
           {p.updateNote && (
@@ -106,6 +112,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                     {b.items.map((it) => <li key={it}>{it}</li>)}
                   </ul>
                 );
+              if (b.type === "scene") return <BlogScene key={i} id={b.id} data={b.data} />;
               if (b.type === "visual") return <BlogVisual key={i} id={b.id} data={b.data} caption={b.caption} />;
               if (b.type === "quote")
                 return (

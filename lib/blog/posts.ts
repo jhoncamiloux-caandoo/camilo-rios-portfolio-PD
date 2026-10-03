@@ -17,6 +17,7 @@ export type Block =
   | { type: "p"; text: string; lead?: string }
   | { type: "ul"; items: string[] }
   | { type: "quote"; text: string }
+  | { type: "scene"; id: string; data: Record<string, unknown> }
   | { type: "visual"; id?: string; data?: import("@/components/blog/visuals-kit").VisualData; caption: string };
 
 export type Post = {
@@ -31,6 +32,8 @@ export type Post = {
   updateNote?: string;
   /** Data da última revisão (AAAA-MM-DD), usada em dateModified e no sitemap. */
   updated?: string;
+  /** Laboratório de motion: título cinético e cenas em tela cheia. */
+  lab?: boolean;
   sources?: string[];
   mediumUrl?: string;
   readMinutes: number;

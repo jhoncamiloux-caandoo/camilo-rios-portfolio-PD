@@ -77,3 +77,21 @@ body {
   from { transform: translateX(-50%); }
   to { transform: translateX(0); }
 }
+
+/* Entrada do conteúdo acima da dobra (FadeIn immediate), sem depender de JS. */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: none; }
+}
+.fade-in-up {
+  animation: fade-in-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-up { animation: none; }
+}
+
+/* Título cinético do blog: palavras sobem de uma máscara (só CSS). */
+.kt-mask { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: 0.08em; }
+.kt-word { display: inline-block; animation: kt-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
+@keyframes kt-up { from { transform: translateY(105%); } to { transform: none; } }
+@media (prefers-reduced-motion: reduce) { .kt-word { animation: none; } }

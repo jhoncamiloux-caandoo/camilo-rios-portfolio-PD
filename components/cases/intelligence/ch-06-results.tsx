@@ -301,7 +301,7 @@ export function Ch06Results() {
         <Reveal delay={0.2} className="mx-auto mt-10 max-w-3xl">
           <div className="overflow-hidden rounded-2xl border border-white/[0.08]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <img loading="lazy" decoding="async"
               src="/cases/clint/intelligence/conversa-agente-baloes.webp"
               alt={c.realAgentImageAlt}
               className="block w-full"
