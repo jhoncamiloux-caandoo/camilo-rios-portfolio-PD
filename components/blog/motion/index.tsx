@@ -6,6 +6,7 @@ import { SceneContactSheet, SceneCritique, SceneDataDeluge, SceneDropCauses, Sce
 import { SceneAgentFeed, SceneAgentPanel, SceneCaseFile, SceneCircleQuestions, SceneEquation, SceneEvidenceBoard, SceneGraphMorph, SceneOrbit, ScenePresence, SceneRecoveryBar, SceneRespondVsAct, SceneSynthetic } from "./scenes-9-12";
 import { SceneA11ySimulator, SceneA11yStats, SceneAnnotatedLine, SceneFunnelMath, SceneHourglass, SceneLens, ScenePageFlip, SceneRings, SceneSpeedBrake, SceneStamps, SceneStoryboard } from "./scenes-13-16";
 import { SceneAdaptiveRows, SceneFlipCases, SceneGears, SceneKpiDials, SceneLiveFix, SceneMenuSimplify, ScenePortalToSearch, SceneProactiveHelp, SceneThinkAloud, SceneThinkMeter, SceneTimerTips, SceneWhiteboard } from "./scenes-17-20";
+import { SceneBigStat, SceneBlinkTest, SceneCareerElevator, SceneDsToggle, SceneExploded, SceneGovernance, SceneMicroPlayground, SceneOrderFromChaos, SceneSharedTransition, SceneStateMachine, SceneTrajectories } from "./scenes-21-24";
 import { SceneCriteriaMorph, SceneFiveInterfaces, SceneGapFiller, SceneIntentMorph, SceneOrdersStory, SceneTwoRoutes } from "./scenes-3-4";
 
 /* Registro das cenas de motion: o artigo aponta um id e passa o texto como dados. */
@@ -73,6 +74,17 @@ const SCENES: Record<string, React.FC<any>> = {
   "think-meter": SceneThinkMeter,
   "menu-simplify": SceneMenuSimplify,
   "portal-search": ScenePortalToSearch,
+  "ds-toggle": SceneDsToggle,
+  "exploded": SceneExploded,
+  "governance": SceneGovernance,
+  "micro-playground": SceneMicroPlayground,
+  "shared-transition": SceneSharedTransition,
+  "state-machine": SceneStateMachine,
+  "career-elevator": SceneCareerElevator,
+  "trajectories": SceneTrajectories,
+  "big-stat": SceneBigStat,
+  "blink-test": SceneBlinkTest,
+  "order-chaos": SceneOrderFromChaos,
 };
 
 export function BlogScene({ id, data }: { id: string; data: Record<string, unknown> }) {

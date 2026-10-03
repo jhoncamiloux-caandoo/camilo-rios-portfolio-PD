@@ -1201,6 +1201,14 @@ export const mediumPosts: Post[] = [
     "text": "Se sua equipe de design e desenvolvimento cresce rápido, você já deve ter se deparado com inconsistências que atrapalham a produtividade: botões com estilos diferentes, espaçamentos desalinhados, fontes que não conversam entre si… O caos pode se instalar a qualquer momento! A solução? Um Design System bem estruturado."
    },
    {
+    "type": "scene",
+    "id": "ds-toggle",
+    "data": {
+     "title": "Botões com estilos diferentes",
+     "body": "Clique no interruptor e veja o mesmo conjunto de botões sem e com um Design System."
+    }
+   },
+   {
     "type": "p",
     "text": "Esse conjunto de diretrizes e componentes não só garante a consistência visual e funcional, mas também reduz custos e acelera o desenvolvimento. Neste artigo, vamos bater um papo descontraído sobre como criar e manter um sistema de design escalável, mostrando exemplos práticos e dicas essenciais para você aplicar hoje mesmo."
    },
@@ -1288,6 +1296,14 @@ export const mediumPosts: Post[] = [
     ]
    },
    {
+    "type": "scene",
+    "id": "exploded",
+    "data": {
+     "title": "Comece pequeno: as decisões básicas",
+     "body": "Cor, tipografia, espaçamento, raio e sombra são camadas que, juntas, formam cada componente."
+    }
+   },
+   {
     "type": "h2",
     "text": "2. Documentação Clara"
    },
@@ -1310,6 +1326,13 @@ export const mediumPosts: Post[] = [
      "Time Responsável: Defina uma equipe ou um responsável pela revisão e atualização dos componentes.",
      "Feedback Constante: Incentive a comunicação entre designers e desenvolvedores para identificar e corrigir inconsistências rapidamente."
     ]
+   },
+   {
+    "type": "scene",
+    "id": "governance",
+    "data": {
+     "title": "Governança evita o cemitério de componentes"
+    }
    },
    {
     "type": "visual",
@@ -1377,7 +1400,8 @@ export const mediumPosts: Post[] = [
    }
   ],
   "updated": "2026-10-01",
-  "updateNote": "Revisado em outubro de 2026: incluí o que mudou desde a publicação e um novo visual para explicar a ideia central."
+  "updateNote": "Revisado em outubro de 2026: incluí o que mudou desde a publicação e um novo visual para explicar a ideia central.",
+  "lab": true
  },
  {
   "slug": "ia-na-gestao-de-produtos",
@@ -1934,6 +1958,35 @@ export const mediumPosts: Post[] = [
     "text": "Passo a passo para UX Designers que querem se tornar líderes"
    },
    {
+    "type": "scene",
+    "id": "career-elevator",
+    "data": {
+     "title": "Cada andar pede uma habilidade nova",
+     "floors": [
+      {
+       "role": "Product Designer",
+       "skill": "Desenvolva habilidades de gestão e liderança"
+      },
+      {
+       "role": "Design Lead",
+       "skill": "Expanda sua visão para além do design"
+      },
+      {
+       "role": "Head de Design",
+       "skill": "Trabalhe próximo a PMs, CPOs e CEOs"
+      },
+      {
+       "role": "CPO",
+       "skill": "Aprenda a comunicar ideias com impacto"
+      },
+      {
+       "role": "CEO",
+       "skill": "Saia da sua zona de conforto e assuma responsabilidades maiores"
+      }
+     ]
+    }
+   },
+   {
     "type": "h2",
     "text": "1. Desenvolva habilidades de gestão e liderança"
    },
@@ -2075,16 +2128,17 @@ export const mediumPosts: Post[] = [
     "caption": "Exemplos citados no artigo."
    },
    {
-    "type": "ul",
-    "items": [
-     "Scott Belsky: Começou como designer e se tornou Chief Product Officer da Adobe.",
-     "Brian Chesky: Designer de formação, hoje é CEO e cofundador do Airbnb.",
-     "Julie Zhuo: Ex-VP de Design do Facebook, influenciando diretamente a estratégia da empresa."
-    ]
-   },
-   {
-    "type": "p",
-    "text": "O que esses líderes têm em comum? Eles foram além do design e se tornaram estrategistas de produto e negócio."
+    "type": "scene",
+    "id": "trajectories",
+    "data": {
+     "lead": "",
+     "items": [
+      "Scott Belsky: Começou como designer e se tornou Chief Product Officer da Adobe.",
+      "Brian Chesky: Designer de formação, hoje é CEO e cofundador do Airbnb.",
+      "Julie Zhuo: Ex-VP de Design do Facebook, influenciando diretamente a estratégia da empresa."
+     ],
+     "close": "O que esses líderes têm em comum? Eles foram além do design e se tornaram estrategistas de produto e negócio."
+    }
    },
    {
     "type": "h2",
@@ -2098,7 +2152,8 @@ export const mediumPosts: Post[] = [
     "type": "p",
     "text": "O mercado está valorizando designers que pensam como líderes. A pergunta é: você está pronto para dar esse passo?"
    }
-  ]
+  ],
+  "lab": true
  },
  {
   "slug": "ia-vai-transformar-seu-trabalho-como-ux-designer",
@@ -3047,6 +3102,13 @@ export const mediumPosts: Post[] = [
     ]
    },
    {
+    "type": "scene",
+    "id": "micro-playground",
+    "data": {
+     "title": "Guiar, responder e encantar"
+    }
+   },
+   {
     "type": "p",
     "text": "Mas, para criar animações eficientes e integradas ao produto, precisamos de ferramentas que combinem facilidade e potência. É exatamente isso que Rive e Phase oferecem."
    },
@@ -3081,6 +3143,14 @@ export const mediumPosts: Post[] = [
     "text": "Usei o Phase em um projeto de redesign para uma plataforma SaaS. Com ele, criei transições animadas entre telas em menos de 2 horas. O cliente adorou as animações fluidas, e o time de desenvolvimento integrou as transições em JSON sem retrabalho."
    },
    {
+    "type": "scene",
+    "id": "shared-transition",
+    "data": {
+     "title": "Transições entre telas",
+     "body": "No Phase, a transição liga uma tela à outra: o elemento tocado se transforma na próxima tela."
+    }
+   },
+   {
     "type": "h2",
     "text": "Rive: Leve sua animação a um novo nível com interatividade"
    },
@@ -3109,6 +3179,14 @@ export const mediumPosts: Post[] = [
    {
     "type": "p",
     "text": "Criei uma animação de personagem interativo para um app de educação infantil no Rive. O personagem reagia ao toque e guiava o usuário pelo app. A solução aumentou o engajamento em 25%, segundo métricas de interação."
+   },
+   {
+    "type": "scene",
+    "id": "state-machine",
+    "data": {
+     "title": "Um personagem que reage ao toque",
+     "body": "No Rive, a animação funciona como uma máquina de estados: parado, cursor por perto e toque. Passe o mouse e clique."
+    }
    },
    {
     "type": "h2",
@@ -3188,7 +3266,8 @@ export const mediumPosts: Post[] = [
     "type": "p",
     "text": "Agora quero ouvir você! Já experimentou alguma dessas ferramentas? Como as animações mudaram a experiência dos seus projetos? Deixe um comentário e vamos trocar ideias!"
    }
-  ]
+  ],
+  "lab": true
  },
  {
   "slug": "lgpd-nas-pesquisas-ux",
@@ -3687,6 +3766,15 @@ export const mediumPosts: Post[] = [
     "text": "Você sabia que 75% dos usuários julgam a credibilidade de uma empresa com base no design do seu produto? Esse dado, destacado em um estudo das “Stanford Guidelines for Web Credibility” , reforça a importância do design na percepção inicial que os usuários têm sobre uma marca. Em um mundo digital cada vez mais competitivo, onde as primeiras impressões são formadas em segundos, o visual do seu produto pode ser determinante para conquistar ou perder a confiança do cliente logo no primeiro contato."
    },
    {
+    "type": "scene",
+    "id": "big-stat",
+    "data": {
+     "value": 75,
+     "label": "dos usuários julgam a credibilidade de uma empresa pelo design",
+     "source": "Stanford Web Credibility, citado no texto"
+    }
+   },
+   {
     "type": "h2",
     "text": "O Impacto do Design na Credibilidade"
    },
@@ -3722,6 +3810,14 @@ export const mediumPosts: Post[] = [
     "text": "Você já percebeu como muitas vezes decidimos rapidamente se confiamos ou não em uma marca com base apenas na sua aparência? Esse fenômeno é explicado por nossa tendência a formar primeiras impressões em questão de segundos. De acordo com um estudo publicado no Behaviour & Information Technology Journal, os usuários levam menos de 50 milissegundos para formar uma opinião sobre um site . E, muitas vezes, essa opinião está diretamente relacionada ao design."
    },
    {
+    "type": "scene",
+    "id": "blink-test",
+    "data": {
+     "title": "A primeira impressão acontece antes da leitura",
+     "body": "Faça o teste: duas telas aparecem por meio segundo. Depois, escolha em qual você confiaria."
+    }
+   },
+   {
     "type": "visual",
     "data": {
      "kind": "compare",
@@ -3751,6 +3847,13 @@ export const mediumPosts: Post[] = [
     "text": "Se o seu produto ou site tem uma aparência confusa, com navegação difícil e visual poluído, o usuário pode associar isso à falta de organização da sua empresa como um todo, perdendo a confiança logo de cara. Por outro lado, um design claro e funcional passa a mensagem de que sua empresa é confiável, profissional e eficiente."
    },
    {
+    "type": "scene",
+    "id": "order-chaos",
+    "data": {
+     "title": "Visual poluído passa a sensação de desorganização"
+    }
+   },
+   {
     "type": "h2",
     "text": "O Design Como Diferencial Competitivo"
    },
@@ -3774,7 +3877,8 @@ export const mediumPosts: Post[] = [
     "type": "p",
     "text": "Investir em design não significa apenas ter algo bonito, mas garantir que a experiência do usuário seja impecável e que a credibilidade da sua marca se fortaleça desde o primeiro contato. E, como mostram os números, isso pode ser o diferencial entre uma empresa que só “existe” e uma empresa que realmente conquista."
    }
-  ]
+  ],
+  "lab": true
  },
  {
   "slug": "atomic-ux-research",
