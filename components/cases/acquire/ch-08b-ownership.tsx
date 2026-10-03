@@ -29,7 +29,7 @@ function LiteYouTube({ title }: { title: string }) {
           aria-label={title}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <img decoding="async"
             src={`https://i.ytimg.com/vi/${VIDEO_ID}/maxresdefault.jpg`}
             alt=""
             className="absolute inset-0 h-full w-full object-cover opacity-90 transition-opacity duration-300 group-hover:opacity-100"

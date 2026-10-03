@@ -90,7 +90,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <div className="mt-10"><CoverArt icons={p.coverArt.icons} label={CATEGORIES[p.category]} size="hero" /></div>
           ) : p.cover ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={p.cover} alt="" className="mt-10 aspect-[2/1] w-full rounded-3xl object-cover" />
+            <img src={p.cover} srcSet={`${p.cover.replace(/\.webp$/, "-800.webp")} 800w, ${p.cover} 1600w`} sizes="(min-width: 768px) 720px, 100vw" width={1600} height={800} fetchPriority="high" decoding="async" alt="" className="mt-10 aspect-[2/1] w-full rounded-3xl object-cover" />
           ) : null}
 
           {p.updateNote && (

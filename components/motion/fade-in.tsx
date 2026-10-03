@@ -24,6 +24,17 @@ export function FadeIn<T extends ElementType = "div">({
   const reduce = useReducedMotion();
   const Component = useMemo(() => motion.create(as || "div"), [as]);
 
+  // Acima da dobra: a mesma entrada, feita em CSS. O texto já vem visível do
+  // servidor e anima sem esperar o JavaScript (melhora o LCP).
+  if (immediate) {
+    const Tag = (as || "div") as ElementType;
+    return (
+      <Tag className={`fade-in-up${className ? ` ${className}` : ""}`} style={{ animationDelay: `${delay}s` }} {...props}>
+        {children}
+      </Tag>
+    );
+  }
+
   return (
     <Component
       initial={reduce ? false : { opacity: 0, y: 28 }}

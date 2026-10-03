@@ -109,7 +109,7 @@ export function SvJourney() {
             <Reveal>
               <div className="overflow-hidden rounded-2xl border border-white/10">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={`${SV_ASSET}/j0${i + 1}.webp`} alt={s.alt} loading="lazy" className="block w-full" />
+                <img decoding="async" src={`${SV_ASSET}/j0${i + 1}.webp`} alt={s.alt} loading="lazy" className="block w-full" />
               </div>
               <span className="mt-4 block text-xs text-[#56C271]" style={{ fontFamily: MONO }}>
                 {c.stepLabel} {String(i + 1).padStart(2, "0")} / 06
@@ -199,7 +199,7 @@ export function SvFilm() {
       {reduce ? (
         <div className="container pb-12">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={`${SV_ASSET}/webgl-stages.webp`} alt={c.beats[3].text} className="w-full rounded-3xl border border-white/10" />
+          <img loading="lazy" decoding="async" src={`${SV_ASSET}/webgl-stages.webp`} alt={c.beats[3].text} className="w-full rounded-3xl border border-white/10" />
         </div>
       ) : (
         <div ref={ref} className="relative" style={{ height: "420vh" }}>
@@ -248,7 +248,7 @@ export function SvFilm() {
             {["film-town.webp", "film-truck.webp"].map((f, i) => (
               <div key={f} className="overflow-hidden rounded-2xl border border-white/10">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={`${SV_ASSET}/${f}`} alt={c.videoAlt[i]} loading="lazy" className="block w-full" />
+                <img decoding="async" src={`${SV_ASSET}/${f}`} alt={c.videoAlt[i]} loading="lazy" className="block w-full" />
               </div>
             ))}
           </div>

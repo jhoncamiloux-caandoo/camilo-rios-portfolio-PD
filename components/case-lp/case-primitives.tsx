@@ -396,7 +396,7 @@ export function BrowserMockup({
           </div>
         </div>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={src} alt={alt} className="block w-full object-cover object-top" draggable={false} />
+        <img loading="lazy" decoding="async" src={src} alt={alt} className="block w-full object-cover object-top" draggable={false} />
       </div>
     </div>
   );
@@ -424,7 +424,7 @@ export function DeviceMockup({
           className="absolute left-1/2 top-0 z-10 h-5 w-24 -translate-x-1/2 rounded-b-2xl bg-[#0A0A0A]"
         />
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={src} alt={alt} className="block w-full object-cover" draggable={false} />
+        <img loading="lazy" decoding="async" src={src} alt={alt} className="block w-full object-cover" draggable={false} />
       </div>
     </div>
   );
@@ -451,13 +451,13 @@ export function BeforeAfter({
       className={`relative w-full select-none overflow-hidden rounded-2xl border border-black/[0.08] ${className}`}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={after} alt={afterLabel} className="block w-full" draggable={false} />
+      <img loading="lazy" decoding="async" src={after} alt={afterLabel} className="block w-full" draggable={false} />
       <div
         className="absolute inset-0 overflow-hidden"
         style={{ clipPath: `inset(0 ${100 - percent}% 0 0)` }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={before} alt={beforeLabel} className="block w-full" draggable={false} />
+        <img loading="lazy" decoding="async" src={before} alt={beforeLabel} className="block w-full" draggable={false} />
       </div>
       <div
         className="pointer-events-none absolute inset-y-0 w-0.5 bg-white shadow-[0_0_0_2px_rgba(0,0,0,0.15)]"

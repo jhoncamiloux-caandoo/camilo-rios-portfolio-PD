@@ -140,8 +140,8 @@ export function Blog() {
                     <CoverArt icons={article.coverArt.icons} label={CATEGORIES[article.category]} />
                   ) : (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={article.cover}
+                    <img decoding="async"
+                      src={article.cover?.replace(/\.webp$/, "-800.webp")}
                       alt=""
                       loading="lazy"
                       draggable={false}

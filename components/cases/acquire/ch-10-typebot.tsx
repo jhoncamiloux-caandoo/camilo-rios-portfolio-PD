@@ -124,7 +124,7 @@ export function Ch10Typebot() {
         <Reveal delay={0.2} className="mx-auto mt-16 max-w-4xl md:mt-24">
           <div className="overflow-hidden rounded-2xl border border-black/[0.08] bg-[#0A0A0A] p-2 shadow-[0_24px_64px_-24px_rgba(10,10,10,0.25)]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <img loading="lazy" decoding="async"
               src="/cases/clint/acquire/typebot-fluxo-real.webp"
               alt={c.screenshotAlt}
               className="block w-full rounded-xl"
