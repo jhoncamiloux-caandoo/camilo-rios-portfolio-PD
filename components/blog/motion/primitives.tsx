@@ -180,3 +180,81 @@ export function SceneRail({ p, labels }: { p: MotionValue<number>; labels: strin
     </div>
   );
 }
+
+/* ── Tipografia expressiva (laboratório 2) ── */
+
+/* Palavras da DM Sans variável que ganham peso conforme a leitura avança. */
+export function WeightWords({ text, p, from = 0, to = 1, className = "" }: { text: string; p: MotionValue<number>; from?: number; to?: number; className?: string }) {
+  const words = text.split(" ");
+  return (
+    <p className={className}>
+      {words.map((w, i) => {
+        const a = from + ((to - from) * i) / words.length;
+        return <WeightWord key={i} p={p} a={a} b={a + ((to - from) * 2.5) / words.length} w={w} />;
+      })}
+    </p>
+  );
+}
+function WeightWord({ p, a, b, w }: { p: MotionValue<number>; a: number; b: number; w: string }) {
+  const wght = useTransform(p, [a, b], [200, 820]);
+  const op = useTransform(p, [a, b], [0.35, 1]);
+  const fv = useTransform(wght, (v) => `"wght" ${Math.round(v)}`);
+  return (
+    <>
+      <motion.span style={{ fontVariationSettings: fv, opacity: op }} className="font-sans">{w}</motion.span>{" "}
+    </>
+  );
+}
+
+/* Texto que se preenche da esquerda para a direita (contorno → sólido). */
+export function FillText({ text, p, from = 0, to = 1, className = "", color = "#ffffff" }: { text: string; p: MotionValue<number>; from?: number; to?: number; className?: string; color?: string }) {
+  const pct = useTransform(p, [from, to], [0, 100], { clamp: true });
+  const bg = useTransform(pct, (v) => `linear-gradient(90deg, ${color} ${v}%, transparent ${v}%)`);
+  return (
+    <motion.span
+      className={`inline bg-clip-text text-transparent [-webkit-background-clip:text] ${className}`}
+      style={{ backgroundImage: bg, WebkitTextStroke: `1.5px ${color}` }}
+    >
+      {text}
+    </motion.span>
+  );
+}
+
+/* Texto que entra em foco (desfocado e apagado → nítido). */
+export function FocusText({ children, p, from, to, className = "" }: { children: ReactNode; p: MotionValue<number>; from: number; to: number; className?: string }) {
+  const blur = useTransform(p, [from, to], [10, 0], { clamp: true });
+  const op = useTransform(p, [from, to], [0.2, 1], { clamp: true });
+  const filter = useTransform(blur, (b) => `blur(${b}px)`);
+  return <motion.div style={{ filter, opacity: op }} className={className}>{children}</motion.div>;
+}
+
+/* Trilha horizontal movida pelo scroll vertical. */
+export function HorizontalTrack({ p, children, className = "" }: { p: MotionValue<number>; children: ReactNode; className?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [max, setMax] = useState(0);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const on = () => setMax(Math.max(0, el.scrollWidth - window.innerWidth + 48));
+    on();
+    window.addEventListener("resize", on);
+    return () => window.removeEventListener("resize", on);
+  }, []);
+  const x = useTransform(p, [0.05, 0.95], [0, -max], { clamp: true });
+  return <motion.div ref={ref} style={{ x }} className={`flex w-max items-center ${className}`}>{children}</motion.div>;
+}
+
+/* Marca-texto desenhado à mão sob uma palavra, ao entrar na tela. */
+export function Marker({ children, color = M.g, delay = 0.2 }: { children: ReactNode; color?: string; delay?: number }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-20% 0px" });
+  const reduce = useReducedMotion();
+  return (
+    <span ref={ref} className="relative inline-block">
+      <svg aria-hidden="true" className="absolute -bottom-[0.12em] left-[-2%] h-[0.38em] w-[104%]" viewBox="0 0 200 20" preserveAspectRatio="none">
+        <motion.path d="M2 14 C 50 6, 120 18, 198 8" fill="none" stroke={color} strokeWidth="9" strokeLinecap="round" initial={{ pathLength: reduce ? 1 : 0 }} animate={inView ? { pathLength: 1 } : undefined} transition={{ duration: 0.8, ease: M.ease, delay }} opacity={0.85} />
+      </svg>
+      <span className="relative">{children}</span>
+    </span>
+  );
+}

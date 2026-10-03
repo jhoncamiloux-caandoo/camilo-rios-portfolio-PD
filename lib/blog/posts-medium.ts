@@ -4032,40 +4032,19 @@ export const mediumPosts: Post[] = [
   },
   "blocks": [
    {
-    "type": "p",
-    "text": "Durante muito tempo, UX e Growth foram tratados como áreas diferentes dentro de um produto."
-   },
-   {
-    "type": "p",
-    "text": "De um lado, UX pensando em pesquisa, usabilidade, jornada e experiência."
-   },
-   {
-    "type": "p",
-    "text": "Do outro, Growth olhando para aquisição, conversão, ativação e retenção."
-   },
-   {
-    "type": "p",
-    "text": "Mas, no fim, os dois estão tentando responder perguntas muito parecidas:"
-   },
-   {
-    "type": "quote",
-    "text": "O que faz uma pessoa usar um produto, continuar usando e perceber valor nele?"
-   },
-   {
-    "type": "p",
-    "text": "A diferença está, muitas vezes, no ponto de vista."
-   },
-   {
-    "type": "p",
-    "text": "Growth olha para os números e identifica onde existe uma oportunidade."
-   },
-   {
-    "type": "p",
-    "text": "UX busca entender o comportamento e os motivos por trás desses números."
-   },
-   {
-    "type": "p",
-    "text": "E é justamente nessa combinação que acredito que existe uma oportunidade muito grande para os times de produto."
+    "type": "scene",
+    "id": "two-voices",
+    "data": {
+     "intro": "Durante muito tempo, UX e Growth foram tratados como áreas diferentes dentro de um produto.",
+     "ux": "De um lado, UX pensando em pesquisa, usabilidade, jornada e experiência.",
+     "growth": "Do outro, Growth olhando para aquisição, conversão, ativação e retenção.",
+     "bridge": "Mas, no fim, os dois estão tentando responder perguntas muito parecidas:",
+     "question": "O que faz uma pessoa usar um produto, continuar usando e perceber valor nele?",
+     "view": "A diferença está, muitas vezes, no ponto de vista.",
+     "growthSees": "Growth olha para os números e identifica onde existe uma oportunidade.",
+     "uxSees": "UX busca entender o comportamento e os motivos por trás desses números.",
+     "close": "E é justamente nessa combinação que acredito que existe uma oportunidade muito grande para os times de produto."
+    }
    },
    {
     "type": "h2",
@@ -4160,16 +4139,13 @@ export const mediumPosts: Post[] = [
     "text": "Por isso, olhar apenas para uma métrica pode levar o time para uma decisão que parece boa no dashboard, mas não necessariamente é boa para o produto."
    },
    {
-    "type": "p",
-    "text": "É aqui que entra uma visão mais completa da jornada."
-   },
-   {
-    "type": "quote",
-    "text": "Aquisição → Ativação → Conversão → Retenção → Receita"
-   },
-   {
-    "type": "p",
-    "text": "Cada etapa tem uma relação com a experiência do usuário."
+    "type": "scene",
+    "id": "journey-track",
+    "data": {
+     "lead": "É aqui que entra uma visão mais completa da jornada.",
+     "stages": "Aquisição → Ativação → Conversão → Retenção → Receita",
+     "after": "Cada etapa tem uma relação com a experiência do usuário."
+    }
    },
    {
     "type": "h2",
@@ -4247,24 +4223,15 @@ export const mediumPosts: Post[] = [
     "text": "Nesse cenário, UX e Growth podem trabalhar juntos para encontrar a causa e testar diferentes soluções."
    },
    {
-    "type": "p",
-    "text": "Não é apenas:"
-   },
-   {
-    "type": "quote",
-    "text": "“Como aumentamos a conversão?”"
-   },
-   {
-    "type": "p",
-    "text": "Mas:"
-   },
-   {
-    "type": "quote",
-    "text": "“Por que as pessoas não estão avançando?”"
-   },
-   {
-    "type": "p",
-    "text": "Essa segunda pergunta pode levar a decisões muito melhores."
+    "type": "scene",
+    "id": "question-flip",
+    "data": {
+     "lead": "Não é apenas:",
+     "a": "“Como aumentamos a conversão?”",
+     "joiner": "Mas:",
+     "b": "“Por que as pessoas não estão avançando?”",
+     "after": "Essa segunda pergunta pode levar a decisões muito melhores."
+    }
    },
    {
     "type": "h2",
@@ -4569,15 +4536,16 @@ export const mediumPosts: Post[] = [
     "text": "Precisamos entender como os dois podem trabalhar juntos para construir produtos melhores."
    },
    {
-    "type": "p",
-    "text": "Porque no final, crescimento sustentável não deveria acontecer apesar da experiência do usuário."
-   },
-   {
-    "type": "quote",
-    "text": "Deveria acontecer por causa dela."
+    "type": "scene",
+    "id": "fill-close",
+    "data": {
+     "lead": "Porque no final, crescimento sustentável não deveria acontecer apesar da experiência do usuário.",
+     "line": "Deveria acontecer por causa dela."
+    }
    }
   ],
-  "cover": "/blog/ux-e-growth-nao-deveriam-trabalhar-separados.webp"
+  "cover": "/blog/ux-e-growth-nao-deveriam-trabalhar-separados.webp",
+  "lab": true
  },
  {
   "slug": "product-designer-que-conversa-com-codigo",
@@ -4614,12 +4582,12 @@ export const mediumPosts: Post[] = [
     "text": "Esse modelo ainda existe, claro. Mas a forma como produtos digitais são construídos está mudando."
    },
    {
-    "type": "p",
-    "text": "Com novas ferramentas, IA e processos cada vez mais próximos entre design e desenvolvimento, acredito que existe uma habilidade que pode se tornar cada vez mais importante para o Product Designer:"
-   },
-   {
-    "type": "quote",
-    "text": "saber conversar com código."
+    "type": "scene",
+    "id": "code-line",
+    "data": {
+     "lead": "Com novas ferramentas, IA e processos cada vez mais próximos entre design e desenvolvimento, acredito que existe uma habilidade que pode se tornar cada vez mais importante para o Product Designer:",
+     "phrase": "saber conversar com código."
+    }
    },
    {
     "type": "p",
@@ -4686,48 +4654,25 @@ export const mediumPosts: Post[] = [
     "text": "Mas entender alguns conceitos pode mudar bastante a forma de trabalhar."
    },
    {
-    "type": "p",
-    "text": "Por exemplo:"
-   },
-   {
-    "type": "p",
-    "text": "O que é um componente?"
-   },
-   {
-    "type": "p",
-    "text": "Como funciona uma API?"
-   },
-   {
-    "type": "p",
-    "text": "O que é um estado?"
-   },
-   {
-    "type": "p",
-    "text": "O que significa uma interface responsiva?"
-   },
-   {
-    "type": "p",
-    "text": "Como funcionam tokens de design?"
-   },
-   {
-    "type": "p",
-    "text": "Como uma variável pode alterar uma interface?"
-   },
-   {
-    "type": "p",
-    "text": "O que acontece quando uma requisição demora?"
-   },
-   {
-    "type": "p",
-    "text": "Como funciona um formulário quando existe um erro?"
-   },
-   {
-    "type": "p",
-    "text": "Essas perguntas fazem parte da experiência do usuário."
-   },
-   {
-    "type": "p",
-    "text": "E entender um pouco da tecnologia ajuda o designer a pensar nessas situações antes que elas se tornem problemas."
+    "type": "scene",
+    "id": "tech-glossary",
+    "data": {
+     "lead": "Por exemplo:",
+     "questions": [
+      "O que é um componente?",
+      "Como funciona uma API?",
+      "O que é um estado?",
+      "O que significa uma interface responsiva?",
+      "Como funcionam tokens de design?",
+      "Como uma variável pode alterar uma interface?",
+      "O que acontece quando uma requisição demora?",
+      "Como funciona um formulário quando existe um erro?"
+     ],
+     "close": [
+      "Essas perguntas fazem parte da experiência do usuário.",
+      "E entender um pouco da tecnologia ajuda o designer a pensar nessas situações antes que elas se tornem problemas."
+     ]
+    }
    },
    {
     "type": "h2",
@@ -4839,20 +4784,14 @@ export const mediumPosts: Post[] = [
     "text": "“Se fizermos dessa maneira, conseguimos manter o mesmo objetivo?”"
    },
    {
-    "type": "p",
-    "text": "A conversa deixa de ser:"
-   },
-   {
-    "type": "quote",
-    "text": "Design vs. Desenvolvimento"
-   },
-   {
-    "type": "p",
-    "text": "e passa a ser:"
-   },
-   {
-    "type": "quote",
-    "text": "Qual é a melhor solução para o produto?"
+    "type": "scene",
+    "id": "versus",
+    "data": {
+     "a": "A conversa deixa de ser:",
+     "b": "Design vs. Desenvolvimento",
+     "c": "e passa a ser:",
+     "d": "Qual é a melhor solução para o produto?"
+    }
    },
    {
     "type": "p",
@@ -5068,15 +5007,16 @@ export const mediumPosts: Post[] = [
     "text": "Mas acredito que precisamos formar designers que entendam melhor o que acontece depois que o arquivo do Figma é entregue."
    },
    {
-    "type": "p",
-    "text": "Porque o trabalho não termina quando a interface fica pronta."
-   },
-   {
-    "type": "quote",
-    "text": "É aí que ela começa a existir de verdade."
+    "type": "scene",
+    "id": "compile",
+    "data": {
+     "a": "Porque o trabalho não termina quando a interface fica pronta.",
+     "b": "É aí que ela começa a existir de verdade."
+    }
    }
   ],
-  "cover": "/blog/product-designer-que-conversa-com-codigo.webp"
+  "cover": "/blog/product-designer-que-conversa-com-codigo.webp",
+  "lab": true
  },
  {
   "slug": "transformar-dados-em-decisao",
@@ -5097,28 +5037,18 @@ export const mediumPosts: Post[] = [
   },
   "blocks": [
    {
-    "type": "p",
-    "text": "Hoje, praticamente qualquer produto digital consegue gerar uma grande quantidade de dados."
-   },
-   {
-    "type": "p",
-    "text": "Cliques, conversões, sessões, retenção, abandono, tempo de uso, pesquisas, avaliações, tickets, gravações de sessão..."
-   },
-   {
-    "type": "p",
-    "text": "Temos mais informações do que nunca."
-   },
-   {
-    "type": "p",
-    "text": "Mas ter muitos dados não significa necessariamente tomar decisões melhores."
-   },
-   {
-    "type": "p",
-    "text": "Na minha visão, um dos maiores desafios dos times de produto hoje não é descobrir novos dados."
-   },
-   {
-    "type": "p",
-    "text": "É saber o que fazer com os dados que já temos."
+    "type": "scene",
+    "id": "data-deluge",
+    "data": {
+     "lines": [
+      "Hoje, praticamente qualquer produto digital consegue gerar uma grande quantidade de dados.",
+      "Temos mais informações do que nunca.",
+      "Mas ter muitos dados não significa necessariamente tomar decisões melhores.",
+      "Na minha visão, um dos maiores desafios dos times de produto hoje não é descobrir novos dados.",
+      "É saber o que fazer com os dados que já temos."
+     ],
+     "list": "Cliques, conversões, sessões, retenção, abandono, tempo de uso, pesquisas, avaliações, tickets, gravações de sessão..."
+    }
    },
    {
     "type": "h2",
@@ -5145,30 +5075,21 @@ export const mediumPosts: Post[] = [
     "text": "Nem sempre existe uma resposta."
    },
    {
-    "type": "p",
-    "text": "Um dashboard pode mostrar que a conversão caiu 15%."
-   },
-   {
-    "type": "ul",
-    "items": [
-     "Mas isso não explica o motivo",
-     "Pode ser um problema de usabilidade",
-     "Pode ser uma mudança no tráfego",
-     "Pode ser uma alteração no preço",
-     "Pode ser um problema técnico"
-    ]
-   },
-   {
-    "type": "p",
-    "text": "Pode ser uma mudança no comportamento dos usuários."
-   },
-   {
-    "type": "p",
-    "text": "O número mostra o que aconteceu."
-   },
-   {
-    "type": "p",
-    "text": "Precisamos investigar para entender por quê."
+    "type": "scene",
+    "id": "drop-causes",
+    "data": {
+     "lead": "Um dashboard pode mostrar que a conversão caiu 15%.",
+     "causes": [
+      "Mas isso não explica o motivo",
+      "Pode ser um problema de usabilidade",
+      "Pode ser uma mudança no tráfego",
+      "Pode ser uma alteração no preço",
+      "Pode ser um problema técnico"
+     ],
+     "extra": "Pode ser uma mudança no comportamento dos usuários.",
+     "a": "O número mostra o que aconteceu.",
+     "b": "Precisamos investigar para entender por quê."
+    }
    },
    {
     "type": "h2",
@@ -5360,36 +5281,22 @@ export const mediumPosts: Post[] = [
     "text": "A visualização precisa ajudar alguém a entender alguma coisa."
    },
    {
-    "type": "p",
-    "text": "Um bom dashboard deveria permitir que uma pessoa respondesse rapidamente:"
-   },
-   {
-    "type": "quote",
-    "text": "O que aconteceu?"
-   },
-   {
-    "type": "quote",
-    "text": "Por que isso importa?"
-   },
-   {
-    "type": "quote",
-    "text": "Onde está o problema?"
-   },
-   {
-    "type": "quote",
-    "text": "O que precisa da minha atenção?"
-   },
-   {
-    "type": "quote",
-    "text": "Qual decisão posso tomar a partir disso?"
-   },
-   {
-    "type": "p",
-    "text": "Se precisamos passar vários minutos olhando para gráficos para descobrir o que está acontecendo, talvez o problema não esteja nos dados."
-   },
-   {
-    "type": "p",
-    "text": "Pode estar na forma como eles estão sendo apresentados."
+    "type": "scene",
+    "id": "teleprompter",
+    "data": {
+     "lead": "Um bom dashboard deveria permitir que uma pessoa respondesse rapidamente:",
+     "questions": [
+      "O que aconteceu?",
+      "Por que isso importa?",
+      "Onde está o problema?",
+      "O que precisa da minha atenção?",
+      "Qual decisão posso tomar a partir disso?"
+     ],
+     "close": [
+      "Se precisamos passar vários minutos olhando para gráficos para descobrir o que está acontecendo, talvez o problema não esteja nos dados.",
+      "Pode estar na forma como eles estão sendo apresentados."
+     ]
+    }
    },
    {
     "type": "h2",
@@ -5429,48 +5336,22 @@ export const mediumPosts: Post[] = [
     "caption": "Mais dados não significa mais clareza."
    },
    {
-    "type": "quote",
-    "text": "Informação:"
-   },
-   {
-    "type": "quote",
-    "text": "A taxa de conversão caiu de 8% para 5%."
-   },
-   {
-    "type": "quote",
-    "text": "Insight:"
-   },
-   {
-    "type": "quote",
-    "text": "A conversão caiu principalmente entre usuários que acessam pelo mobile depois que o novo formulário foi lançado."
-   },
-   {
-    "type": "p",
-    "text": "O segundo caso já começa a apontar para uma investigação."
-   },
-   {
-    "type": "p",
-    "text": "E podemos ir além:"
-   },
-   {
-    "type": "quote",
-    "text": "Testes indicam que usuários mobile estão tendo dificuldade para preencher o segundo campo do formulário."
-   },
-   {
-    "type": "p",
-    "text": "Agora temos uma hipótese mais clara."
-   },
-   {
-    "type": "p",
-    "text": "E a partir dela podemos pensar em uma solução."
-   },
-   {
-    "type": "p",
-    "text": "Esse caminho é muito mais útil:"
-   },
-   {
-    "type": "quote",
-    "text": "Dado → Contexto → Insight → Hipótese → Decisão → Experimento → Resultado"
+    "type": "scene",
+    "id": "insight-focus",
+    "data": {
+     "intro": "",
+     "l1": "Informação:",
+     "info": "A taxa de conversão caiu de 8% para 5%.",
+     "l2": "Insight:",
+     "insight": "A conversão caiu principalmente entre usuários que acessam pelo mobile depois que o novo formulário foi lançado.",
+     "l3": "O segundo caso já começa a apontar para uma investigação.",
+     "l4": "E podemos ir além:",
+     "test": "Testes indicam que usuários mobile estão tendo dificuldade para preencher o segundo campo do formulário.",
+     "l5": "Agora temos uma hipótese mais clara.",
+     "l6": "E a partir dela podemos pensar em uma solução.",
+     "l7": "Esse caminho é muito mais útil:",
+     "chain": "Dado → Contexto → Insight → Hipótese → Decisão → Experimento → Resultado"
+    }
    },
    {
     "type": "h2",
@@ -5574,7 +5455,8 @@ export const mediumPosts: Post[] = [
     "text": "É saber usar os dados certos, no momento certo, para tomar uma decisão."
    }
   ],
-  "cover": "/blog/transformar-dados-em-decisao.webp"
+  "cover": "/blog/transformar-dados-em-decisao.webp",
+  "lab": true
  },
  {
   "slug": "ia-cria-interface-quem-decide-se-e-boa",
@@ -5620,16 +5502,13 @@ export const mediumPosts: Post[] = [
     "text": "Isso é uma mudança importante para quem trabalha com Product Design."
    },
    {
-    "type": "p",
-    "text": "Mas existe uma pergunta que considero ainda mais importante:"
-   },
-   {
-    "type": "quote",
-    "text": "Se a IA consegue criar uma interface rapidamente, quem decide se aquela interface é realmente boa?"
-   },
-   {
-    "type": "p",
-    "text": "Para mim, essa pergunta está começando a ser mais importante do que a própria capacidade de gerar telas."
+    "type": "scene",
+    "id": "marked-question",
+    "data": {
+     "lead": "Mas existe uma pergunta que considero ainda mais importante:",
+     "q": "Se a IA consegue criar uma interface rapidamente, quem decide se aquela interface é realmente boa?",
+     "after": "Para mim, essa pergunta está começando a ser mais importante do que a própria capacidade de gerar telas."
+    }
    },
    {
     "type": "h2",
@@ -5706,47 +5585,28 @@ export const mediumPosts: Post[] = [
     "caption": "O papel do designer muda de produzir tudo para avaliar, selecionar e direcionar."
    },
    {
-    "type": "p",
-    "text": "Isso significa que ela consegue produzir interfaces que parecem familiares."
-   },
-   {
-    "type": "ul",
-    "items": [
-     "Botões no lugar esperado",
-     "Cards bem organizados",
-     "Espaçamentos consistentes",
-     "Hierarquia visual",
-     "Componentes conhecidos",
-     "Tudo parece correto"
-    ]
-   },
-   {
-    "type": "p",
-    "text": "Mas uma interface pode seguir todas essas regras e ainda não resolver o problema certo."
-   },
-   {
-    "type": "quote",
-    "text": "Uma interface visualmente boa não é necessariamente uma boa experiência."
-   },
-   {
-    "type": "p",
-    "text": "Ela pode estar bonita, consistente e tecnicamente bem construída."
-   },
-   {
-    "type": "p",
-    "text": "Mas será que o usuário entende?"
-   },
-   {
-    "type": "p",
-    "text": "Será que consegue completar a tarefa?"
-   },
-   {
-    "type": "p",
-    "text": "Será que confia no que está vendo?"
-   },
-   {
-    "type": "p",
-    "text": "Será que aquilo realmente ajuda?"
+    "type": "scene",
+    "id": "looks-right",
+    "data": {
+     "intro": "Isso significa que ela consegue produzir interfaces que parecem familiares.",
+     "rules": [
+      "Botões no lugar esperado",
+      "Cards bem organizados",
+      "Espaçamentos consistentes",
+      "Hierarquia visual",
+      "Componentes conhecidos",
+      "Tudo parece correto"
+     ],
+     "ruleNote": "Mas uma interface pode seguir todas essas regras e ainda não resolver o problema certo.",
+     "pull": "Uma interface visualmente boa não é necessariamente uma boa experiência.",
+     "l1": "Ela pode estar bonita, consistente e tecnicamente bem construída.",
+     "questions": [
+      "Mas será que o usuário entende?",
+      "Será que consegue completar a tarefa?",
+      "Será que confia no que está vendo?",
+      "Será que aquilo realmente ajuda?"
+     ]
+    }
    },
    {
     "type": "h2",
@@ -5805,20 +5665,14 @@ export const mediumPosts: Post[] = [
     "text": "Criticar também é uma habilidade de design"
    },
    {
-    "type": "p",
-    "text": "Existe uma diferença entre olhar para uma interface e dizer:"
-   },
-   {
-    "type": "quote",
-    "text": "“Está bonita.”"
-   },
-   {
-    "type": "p",
-    "text": "E conseguir dizer:"
-   },
-   {
-    "type": "quote",
-    "text": "“Essa solução reduz a carga cognitiva nessa etapa, mas cria uma nova dúvida sobre o que acontece depois do envio.”"
+    "type": "scene",
+    "id": "critique",
+    "data": {
+     "lead": "Existe uma diferença entre olhar para uma interface e dizer:",
+     "shallow": "“Está bonita.”",
+     "lead2": "E conseguir dizer:",
+     "deep": "“Essa solução reduz a carga cognitiva nessa etapa, mas cria uma nova dúvida sobre o que acontece depois do envio.”"
+    }
    },
    {
     "type": "p",
@@ -5980,32 +5834,23 @@ export const mediumPosts: Post[] = [
     "text": "E como usar IA sem perder o pensamento crítico?"
    },
    {
-    "type": "p",
-    "text": "Eu gosto de pensar em um processo simples:"
-   },
-   {
-    "type": "quote",
-    "text": "Gerar → Questionar → Comparar → Testar → Aprender"
-   },
-   {
-    "type": "ul",
-    "items": [
-     "Primeiro, usamos IA para explorar",
-     "Depois, questionamos as soluções",
-     "Comparamos diferentes caminhos",
-     "Testamos com pessoas ou com dados",
-     "E usamos o aprendizado para melhorar",
-     "O erro está em parar na primeira etapa",
-     "Gerar não é validar"
-    ]
-   },
-   {
-    "type": "p",
-    "text": "Uma interface criada pela IA é uma hipótese."
-   },
-   {
-    "type": "p",
-    "text": "Não é uma resposta definitiva."
+    "type": "scene",
+    "id": "contact-sheet",
+    "data": {
+     "lead": "Eu gosto de pensar em um processo simples:",
+     "process": "Gerar → Questionar → Comparar → Testar → Aprender",
+     "steps": [
+      "Primeiro, usamos IA para explorar",
+      "Depois, questionamos as soluções",
+      "Comparamos diferentes caminhos",
+      "Testamos com pessoas ou com dados",
+      "E usamos o aprendizado para melhorar",
+      "O erro está em parar na primeira etapa",
+      "Gerar não é validar"
+     ],
+     "a": "Uma interface criada pela IA é uma hipótese.",
+     "b": "Não é uma resposta definitiva."
+    }
    },
    {
     "type": "h2",
@@ -6040,7 +5885,8 @@ export const mediumPosts: Post[] = [
     "text": "saber olhar para uma solução e explicar por que ela deveria existir."
    }
   ],
-  "cover": "/blog/ia-cria-interface-quem-decide-se-e-boa.webp"
+  "cover": "/blog/ia-cria-interface-quem-decide-se-e-boa.webp",
+  "lab": true
  },
  {
   "slug": "pesquisa-com-usuarios-na-era-da-ia",
