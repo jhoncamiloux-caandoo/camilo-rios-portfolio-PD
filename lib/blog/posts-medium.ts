@@ -2502,7 +2502,7 @@ export const mediumPosts: Post[] = [
   ],
   "cover": "/blog/12-metricas-de-ux.webp",
   "mediumUrl": "https://medium.com/@jhoncamiloux/as-12-principais-m%C3%A9tricas-de-ux-para-avaliar-e-melhorar-a-experi%C3%AAncia-do-usu%C3%A1rio-1d87208f133f",
-  "readMinutes": 3,
+  "readMinutes": 6,
   "related": {
    "href": "/cases/acquire",
    "title": "Clint Acquire",
@@ -2519,36 +2519,23 @@ export const mediumPosts: Post[] = [
    },
    {
     "type": "p",
-    "text": "Propósito: Avaliar usabilidade, confiança, lealdade e aparência geral.  Exemplo: Um e-commerce compara seu site com os concorrentes usando o SUPR-Q, identificando se o design é confiável e fácil de navegar."
+    "lead": "Propósito:",
+    "text": "Avaliar usabilidade, confiança, lealdade e aparência geral."
+   },
+   {
+    "type": "p",
+    "lead": "Exemplo:",
+    "text": "Um e-commerce compara seu site com os concorrentes usando o SUPR-Q, identificando se o design é confiável e fácil de navegar."
+   },
+   {
+    "type": "p",
+    "lead": "Como funciona:",
+    "text": "São 8 itens que resultam em quatro fatores: usabilidade, confiança, aparência e lealdade. Como é padronizado, permite comparar o seu site com outros que usaram o mesmo questionário."
    },
    {
     "type": "visual",
-    "data": {
-     "kind": "cards",
-     "items": [
-      {
-       "title": "SUPR-Q",
-       "body": "Confiança e usabilidade",
-       "icon": "shieldCheck"
-      },
-      {
-       "title": "SUS",
-       "body": "Usabilidade rápida",
-       "icon": "gauge"
-      },
-      {
-       "title": "NPS",
-       "body": "Fidelidade",
-       "icon": "heart"
-      },
-      {
-       "title": "SEQ",
-       "body": "Dificuldade da tarefa",
-       "icon": "target"
-      }
-     ]
-    },
-    "caption": "As quatro métricas mais usadas no dia a dia; as outras oito estão abaixo."
+    "id": "m-suprq",
+    "caption": "Os 8 itens viram quatro fatores. O fator mais baixo mostra onde a experiência perde força."
    },
    {
     "type": "h2",
@@ -2556,7 +2543,23 @@ export const mediumPosts: Post[] = [
    },
    {
     "type": "p",
-    "text": "Propósito: Escala de 10 itens para medir usabilidade de forma rápida.  Exemplo: Um banco digital usa o SUS após lançar uma nova funcionalidade para saber se os clientes conseguem utilizá-la com facilidade."
+    "lead": "Propósito:",
+    "text": "Escala de 10 itens para medir usabilidade de forma rápida."
+   },
+   {
+    "type": "p",
+    "lead": "Exemplo:",
+    "text": "Um banco digital usa o SUS após lançar uma nova funcionalidade para saber se os clientes conseguem utilizá-la com facilidade."
+   },
+   {
+    "type": "p",
+    "lead": "Como funciona:",
+    "text": "São 10 afirmações respondidas de 1 a 5, alternando frases positivas e negativas. Nas positivas, subtrai 1 da resposta; nas negativas, subtrai a resposta de 5. A soma multiplicada por 2,5 vira uma nota de 0 a 100. A média de referência mais usada é 68."
+   },
+   {
+    "type": "visual",
+    "id": "m-sus",
+    "caption": "Do questionário à nota: cada resposta vira pontos, e a soma vezes 2,5 é comparada com a média de referência de 68."
    },
    {
     "type": "h2",
@@ -2564,7 +2567,23 @@ export const mediumPosts: Post[] = [
    },
    {
     "type": "p",
-    "text": "Propósito: Mede a probabilidade de clientes recomendarem seu produto.  Exemplo: Após uma compra, um e-commerce envia uma pesquisa de NPS para avaliar a satisfação e lealdade do cliente."
+    "lead": "Propósito:",
+    "text": "Mede a probabilidade de clientes recomendarem seu produto."
+   },
+   {
+    "type": "p",
+    "lead": "Exemplo:",
+    "text": "Após uma compra, um e-commerce envia uma pesquisa de NPS para avaliar a satisfação e lealdade do cliente."
+   },
+   {
+    "type": "p",
+    "lead": "Como funciona:",
+    "text": "Uma única pergunta, de 0 a 10. Quem dá 9 ou 10 é promotor, 7 ou 8 é neutro e de 0 a 6 é detrator. O NPS é a porcentagem de promotores menos a de detratores, e vai de −100 a 100."
+   },
+   {
+    "type": "visual",
+    "id": "m-nps",
+    "caption": "Cada resposta cai em um dos três grupos. Neutros não entram na conta."
    },
    {
     "type": "h2",
@@ -2572,7 +2591,23 @@ export const mediumPosts: Post[] = [
    },
    {
     "type": "p",
-    "text": "Propósito: Pergunta única para medir a dificuldade de uma tarefa específica.  Exemplo: Uma empresa de contabilidade usa o SEQ para saber se os clientes conseguem gerar relatórios financeiros sem problemas."
+    "lead": "Propósito:",
+    "text": "Pergunta única para medir a dificuldade de uma tarefa específica."
+   },
+   {
+    "type": "p",
+    "lead": "Exemplo:",
+    "text": "Uma empresa de contabilidade usa o SEQ para saber se os clientes conseguem gerar relatórios financeiros sem problemas."
+   },
+   {
+    "type": "p",
+    "lead": "Como funciona:",
+    "text": "Logo depois de cada tarefa, a pessoa responde uma pergunta de 1 (muito difícil) a 7 (muito fácil). Comparar as notas entre tarefas mostra onde o fluxo trava."
+   },
+   {
+    "type": "visual",
+    "id": "m-seq",
+    "caption": "Uma pergunta por tarefa. A tarefa com a nota mais baixa é a primeira a investigar."
    },
    {
     "type": "h2",
@@ -2580,7 +2615,23 @@ export const mediumPosts: Post[] = [
    },
    {
     "type": "p",
-    "text": "Propósito: Avaliação compacta da usabilidade percebida.  Exemplo: Uma empresa de mídia aplica o UMUX-LITE para testar a aceitação de um novo layout no portal de notícias."
+    "lead": "Propósito:",
+    "text": "Avaliação compacta da usabilidade percebida."
+   },
+   {
+    "type": "p",
+    "lead": "Exemplo:",
+    "text": "Uma empresa de mídia aplica o UMUX-LITE para testar a aceitação de um novo layout no portal de notícias."
+   },
+   {
+    "type": "p",
+    "lead": "Como funciona:",
+    "text": "O UMUX-LITE usa só duas afirmações, de 1 a 7: se as funcionalidades atendem o que a pessoa precisa e se é fácil de usar. É curto o bastante para entrar no fim de qualquer sessão e costuma acompanhar bem o resultado do SUS."
+   },
+   {
+    "type": "visual",
+    "id": "m-umux",
+    "caption": "Duas perguntas e uma nota. Ideal quando não dá para pedir mais tempo de quem responde."
    },
    {
     "type": "h2",
@@ -2588,7 +2639,23 @@ export const mediumPosts: Post[] = [
    },
    {
     "type": "p",
-    "text": "Propósito: Avalia a satisfação do usuário em sites complexos ou com grande tráfego.  Exemplo: Uma rede social usa o WAMMI para medir a reação dos usuários às mudanças na interface."
+    "lead": "Propósito:",
+    "text": "Avalia a satisfação do usuário em sites complexos ou com grande tráfego."
+   },
+   {
+    "type": "p",
+    "lead": "Exemplo:",
+    "text": "Uma rede social usa o WAMMI para medir a reação dos usuários às mudanças na interface."
+   },
+   {
+    "type": "p",
+    "lead": "Como funciona:",
+    "text": "São 20 afirmações sobre o site, resumidas em cinco dimensões: atratividade, controle, eficiência, utilidade e facilidade de aprender. O resultado mostra o perfil da experiência, não só uma nota."
+   },
+   {
+    "type": "visual",
+    "id": "m-wammi",
+    "caption": "As afirmações formam um perfil em cinco dimensões. A dimensão afundada é o ponto fraco."
    },
    {
     "type": "h2",
@@ -2596,7 +2663,23 @@ export const mediumPosts: Post[] = [
    },
    {
     "type": "p",
-    "text": "Propósito: Mede a experiência do usuário em cenários específicos de uso.  Exemplo: Uma plataforma SaaS usa o PSSUQ para entender se as configurações de integração são fáceis para os usuários."
+    "lead": "Propósito:",
+    "text": "Mede a experiência do usuário em cenários específicos de uso."
+   },
+   {
+    "type": "p",
+    "lead": "Exemplo:",
+    "text": "Uma plataforma SaaS usa o PSSUQ para entender se as configurações de integração são fáceis para os usuários."
+   },
+   {
+    "type": "p",
+    "lead": "Como funciona:",
+    "text": "Na versão atual são 16 itens, de 1 a 7, divididos em três subescalas: utilidade do sistema, qualidade da informação e qualidade da interface. Aqui a lógica é inversa: quanto menor a nota, melhor."
+   },
+   {
+    "type": "visual",
+    "id": "m-pssuq",
+    "caption": "Três subescalas, onde menor é melhor. Separar a nota mostra se o problema é a interface ou a informação."
    },
    {
     "type": "h2",
@@ -2604,7 +2687,23 @@ export const mediumPosts: Post[] = [
    },
    {
     "type": "p",
-    "text": "Propósito: Avaliação detalhada de software com 50 itens.  Exemplo: Uma empresa de TI aplica o SUMI para testar a usabilidade de seu ERP entre clientes corporativos."
+    "lead": "Propósito:",
+    "text": "Avaliação detalhada de software com 50 itens."
+   },
+   {
+    "type": "p",
+    "lead": "Exemplo:",
+    "text": "Uma empresa de TI aplica o SUMI para testar a usabilidade de seu ERP entre clientes corporativos."
+   },
+   {
+    "type": "p",
+    "lead": "Como funciona:",
+    "text": "São 50 itens respondidos com concordo, indeciso ou discordo, agrupados em cinco subescalas: eficiência, afeto, utilidade, controle e aprendizagem. É longo, mas detalha bem softwares complexos."
+   },
+   {
+    "type": "visual",
+    "id": "m-sumi",
+    "caption": "Muitos itens, cinco subescalas. Vale o esforço quando o software é usado o dia inteiro."
    },
    {
     "type": "h2",
@@ -2612,7 +2711,23 @@ export const mediumPosts: Post[] = [
    },
    {
     "type": "p",
-    "text": "Propósito: Avalia o feedback, aprendizado e engajamento com interfaces.  Exemplo: Um app de aprendizado usa o QUIS para medir o que os alunos pensam sobre a navegação nas aulas interativas."
+    "lead": "Propósito:",
+    "text": "Avalia o feedback, aprendizado e engajamento com interfaces."
+   },
+   {
+    "type": "p",
+    "lead": "Exemplo:",
+    "text": "Um app de aprendizado usa o QUIS para medir o que os alunos pensam sobre a navegação nas aulas interativas."
+   },
+   {
+    "type": "p",
+    "lead": "Como funciona:",
+    "text": "Usa pares de palavras opostas em escalas de 1 a 9, organizados por partes da interface, como tela, terminologia, aprendizado e capacidades do sistema."
+   },
+   {
+    "type": "visual",
+    "id": "m-quis",
+    "caption": "Cada parte da interface recebe sua própria escala, e fica claro qual delas mais atrapalha."
    },
    {
     "type": "h2",
@@ -2620,7 +2735,23 @@ export const mediumPosts: Post[] = [
    },
    {
     "type": "p",
-    "text": "Propósito: Foco na facilidade de tarefas principais.  Exemplo: Uma empresa de logística usa o PURE para verificar como os motoristas acessam informações cruciais, como status de entregas e rotas."
+    "lead": "Propósito:",
+    "text": "Foco na facilidade de tarefas principais."
+   },
+   {
+    "type": "p",
+    "lead": "Exemplo:",
+    "text": "Uma empresa de logística usa o PURE para verificar como os motoristas acessam informações cruciais, como status de entregas e rotas."
+   },
+   {
+    "type": "p",
+    "lead": "Como funciona:",
+    "text": "Não é um questionário para usuários. Especialistas dividem a tarefa em passos e dão a cada um nota 1 (fácil), 2 (algum esforço) ou 3 (difícil). A soma é a nota da tarefa, e quanto menor, melhor."
+   },
+   {
+    "type": "visual",
+    "id": "m-pure",
+    "caption": "Cada passo recebe 1, 2 ou 3. O passo vermelho é o primeiro a redesenhar."
    },
    {
     "type": "h2",
@@ -2628,7 +2759,23 @@ export const mediumPosts: Post[] = [
    },
    {
     "type": "p",
-    "text": "Propósito: Avalia a carga cognitiva e física.  Exemplo: Um hospital mede o impacto do sistema de prontuário eletrônico na carga de trabalho dos enfermeiros com o NASA-TLX."
+    "lead": "Propósito:",
+    "text": "Avalia a carga cognitiva e física."
+   },
+   {
+    "type": "p",
+    "lead": "Exemplo:",
+    "text": "Um hospital mede o impacto do sistema de prontuário eletrônico na carga de trabalho dos enfermeiros com o NASA-TLX."
+   },
+   {
+    "type": "p",
+    "lead": "Como funciona:",
+    "text": "Mede a carga de trabalho em seis dimensões, de 0 a 100: demanda mental, demanda física, pressão de tempo, desempenho, esforço e frustração. É muito usado para comparar um sistema atual com uma versão nova."
+   },
+   {
+    "type": "visual",
+    "id": "m-nasatlx",
+    "caption": "As seis dimensões, antes e depois. A queda mostra quanto peso o novo sistema tirou de quem usa."
    },
    {
     "type": "h2",
@@ -2636,7 +2783,23 @@ export const mediumPosts: Post[] = [
    },
    {
     "type": "p",
-    "text": "Propósito: Captura rapidamente aspectos de experiência do usuário.  Exemplo: Um app de streaming usa o UEQ para medir a intuição da busca e filtros no catálogo de filmes."
+    "lead": "Propósito:",
+    "text": "Captura rapidamente aspectos de experiência do usuário."
+   },
+   {
+    "type": "p",
+    "lead": "Exemplo:",
+    "text": "Um app de streaming usa o UEQ para medir a intuição da busca e filtros no catálogo de filmes."
+   },
+   {
+    "type": "p",
+    "lead": "Como funciona:",
+    "text": "São 26 pares de adjetivos opostos, de 1 a 7, agrupados em seis escalas: atratividade, clareza, eficiência, confiabilidade, estimulação e novidade. Cobre tanto a parte prática quanto a emocional da experiência."
+   },
+   {
+    "type": "visual",
+    "id": "m-ueq",
+    "caption": "Um par de adjetivos de cada escala. Dá para ver que um produto pode agradar e mesmo assim parecer lento."
    },
    {
     "type": "h2",
@@ -2699,7 +2862,7 @@ export const mediumPosts: Post[] = [
     "text": "E você? Já usou alguma dessas métricas? Qual delas te trouxe os insights mais valiosos? Vamos trocar ideias nos comentários!"
    }
   ],
-  "updated": "2026-10-01",
+  "updated": "2026-10-02",
   "updateNote": "Revisado em outubro de 2026: incluí o que mudou desde a publicação e um novo visual para explicar a ideia central."
  },
  {
