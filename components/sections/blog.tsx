@@ -86,7 +86,7 @@ export function Blog() {
   };
 
   return (
-    <section id="blog" data-nav-theme="light" className="relative bg-white py-24 md:py-32">
+    <section id="blog" data-nav-theme="light" className="relative bg-surface py-24 md:py-32">
       <div className="container">
         {/* Cabeçalho */}
         <FadeIn className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
@@ -94,16 +94,16 @@ export function Blog() {
             <p className="font-sans text-xs font-semibold uppercase tracking-[0.22em] text-primary">
               {t.home.blog.eyebrow}
             </p>
-            <h2 className="max-w-xl font-display text-[32px] font-semibold leading-[1.08] tracking-tight text-[#0A0A0A] md:text-[44px]">
+            <h2 className="max-w-xl font-display text-[32px] font-semibold leading-[1.08] tracking-tight text-ink md:text-[44px]">
               {t.home.blog.title}
             </h2>
-            <p className="max-w-md font-sans text-base leading-relaxed text-[#0A0A0A]/65 md:text-lg">
+            <p className="max-w-md font-sans text-base leading-relaxed text-ink/65 md:text-lg">
               {posts.length} {t.home.blog.descriptionSuffix}
             </p>
           </div>
           <a
             href="/blog"
-            className="group inline-flex h-11 shrink-0 items-center gap-2 rounded-full border border-black/[0.1] px-6 text-sm font-semibold text-[#0A0A0A] transition-colors duration-250 hover:border-primary hover:text-primary"
+            className="group inline-flex h-11 shrink-0 items-center gap-2 rounded-full border border-ink/[0.1] px-6 text-sm font-semibold text-ink transition-colors duration-250 hover:border-primary hover:text-primary"
           >
             {t.home.blog.viewAllLabel}
             <ArrowUpRight
@@ -135,7 +135,7 @@ export function Blog() {
                 key={article.slug}
                 data-card
                 href={`/blog/${article.slug}`}
-                className="group relative flex w-[280px] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-black/[0.08] bg-white transition hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_24px_60px_rgba(98,47,253,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:w-[320px]"
+                className="group relative flex w-[280px] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-ink/[0.08] bg-surface transition hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_24px_60px_rgba(98,47,253,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:w-[320px]"
               >
                 <div className="aspect-[16/9] w-full overflow-hidden bg-[#0d0d12]">
                   {article.coverArt ? (
@@ -153,13 +153,13 @@ export function Blog() {
                 </div>
                 <div className="flex flex-1 flex-col p-6">
                   <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-primary">{CATEGORIES[article.category]}</p>
-                  <p className="mt-3 font-display text-lg font-semibold leading-snug text-[#0A0A0A] group-hover:text-primary">{article.title}</p>
-                  <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-[#0A0A0A]/65">{article.description}</p>
-                  <div className="mt-auto flex items-center justify-between pt-5 text-xs text-[#0A0A0A]/60">
+                  <p className="mt-3 font-display text-lg font-semibold leading-snug text-ink group-hover:text-primary">{article.title}</p>
+                  <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-ink/65">{article.description}</p>
+                  <div className="mt-auto flex items-center justify-between pt-5 text-xs text-ink/60">
                     <span>
                       {new Date(article.date).toLocaleDateString("pt-BR", { day: "2-digit", month: "short", year: "numeric" })} · {article.readMinutes} min
                     </span>
-                    <span className="inline-flex items-center gap-1 font-semibold text-[#0A0A0A]/70 group-hover:text-primary">
+                    <span className="inline-flex items-center gap-1 font-semibold text-ink/70 group-hover:text-primary">
                       {t.home.blog.readArticleLabel}
                       <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
                     </span>
@@ -176,7 +176,7 @@ export function Blog() {
               onClick={() => scrollByCard(-1)}
               disabled={atStart}
               aria-label={t.home.blog.prevAria}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-black/[0.1] text-[#0A0A0A]/65 transition disabled:opacity-30 enabled:hover:border-primary enabled:hover:text-primary"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/[0.1] text-ink/65 transition disabled:opacity-30 enabled:hover:border-primary enabled:hover:text-primary"
             >
               <ChevronLeft className="h-4 w-4" />
             </button>
@@ -184,7 +184,7 @@ export function Blog() {
               onClick={() => scrollByCard(1)}
               disabled={atEnd}
               aria-label={t.home.blog.nextAria}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-black/[0.1] text-[#0A0A0A]/65 transition disabled:opacity-30 enabled:hover:border-primary enabled:hover:text-primary"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/[0.1] text-ink/65 transition disabled:opacity-30 enabled:hover:border-primary enabled:hover:text-primary"
             >
               <ChevronRight className="h-4 w-4" />
             </button>

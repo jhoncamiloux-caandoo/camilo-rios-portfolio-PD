@@ -14,25 +14,25 @@ export function NextCase({
   href: string;
 }) {
   return (
-    <section className="border-t border-black/[0.06] bg-white py-20 md:py-28" aria-label="Próximo case">
+    <section className="border-t border-ink/[0.06] bg-surface py-20 md:py-28" aria-label="Próximo case">
       <div className="container">
         <Reveal>
           <Link
             href={href}
-            className="group flex flex-col items-start justify-between gap-6 rounded-2xl border border-black/[0.07] p-8 transition-colors duration-300 hover:border-primary/30 md:flex-row md:items-center md:p-12"
+            className="group flex flex-col items-start justify-between gap-6 rounded-2xl border border-ink/[0.07] p-8 transition-colors duration-300 hover:border-primary/30 md:flex-row md:items-center md:p-12"
           >
             <div className="flex flex-col gap-3">
               <span className="font-sans text-xs font-semibold uppercase tracking-[0.22em] text-primary">
                 {eyebrow}
               </span>
-              <h3 className="font-display text-2xl font-semibold leading-snug tracking-tight text-[#0A0A0A] md:text-4xl">
+              <h3 className="font-display text-2xl font-semibold leading-snug tracking-tight text-ink md:text-4xl">
                 {title}
               </h3>
-              <p className="max-w-lg font-sans text-sm leading-relaxed text-[#0A0A0A]/65 md:text-base">
+              <p className="max-w-lg font-sans text-sm leading-relaxed text-ink/65 md:text-base">
                 {description}
               </p>
             </div>
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-black/[0.1] text-[#0A0A0A] transition-all duration-300 group-hover:border-primary group-hover:bg-primary group-hover:text-white">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-ink/[0.1] text-ink transition-all duration-300 group-hover:border-primary group-hover:bg-primary group-hover:text-white">
               <svg
                 viewBox="0 0 24 24"
                 className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"

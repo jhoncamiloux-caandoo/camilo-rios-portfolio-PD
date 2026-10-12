@@ -172,17 +172,17 @@ export function Cases() {
   };
 
   return (
-    <section id="cases" data-nav-theme="light" className="bg-light pb-28 pt-20 text-dark">
+    <section id="cases" data-nav-theme="light" className="bg-canvas pb-28 pt-20 text-ink">
       <div className="container">
         <FadeIn className="max-w-4xl">
-          <p className="mb-6 text-caption uppercase tracking-[0.22em] text-dark/65">{c.eyebrow}</p>
+          <p className="mb-6 text-caption uppercase tracking-[0.22em] text-ink/65">{c.eyebrow}</p>
           <h2 className="font-display text-[48px] font-semibold leading-[1.08] md:text-h2">{c.title}</h2>
         </FadeIn>
 
         {/* Seletor de foco: uma escolha reorganiza os 3 primeiros */}
         <fieldset className="mt-10">
           <legend className="font-display text-xl font-semibold md:text-2xl">{p.question}</legend>
-          <p className="mt-1 text-sm text-dark/65">{p.helper}</p>
+          <p className="mt-1 text-sm text-ink/65">{p.helper}</p>
           <div className="mt-5 grid grid-cols-1 gap-3 md:grid-cols-3">
             {FOCUSES.map((id) => {
               const on = focus === id;
@@ -193,7 +193,7 @@ export function Cases() {
                   onClick={() => choose(on ? null : id)}
                   aria-pressed={on}
                   className={`group flex items-start gap-3 rounded-2xl border p-4 text-left transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 md:p-5 ${
-                    on ? "border-primary bg-primary/[0.06] shadow-[0_0_0_3px_rgba(98,47,253,0.12)]" : "border-dark/10 bg-white hover:border-primary/40"
+                    on ? "border-primary bg-primary/[0.06] shadow-[0_0_0_3px_rgba(98,47,253,0.12)]" : "border-dark/10 bg-surface hover:border-primary/40"
                   }`}
                 >
                   <span
@@ -203,17 +203,17 @@ export function Cases() {
                     <Check className="h-3 w-3" strokeWidth={3} />
                   </span>
                   <span>
-                    <span className={`block font-display text-lg font-semibold ${on ? "text-primary" : "text-dark"}`}>{p.options[id].label}</span>
-                    <span className="mt-1 block text-sm leading-snug text-dark/65">{p.options[id].desc}</span>
+                    <span className={`block font-display text-lg font-semibold ${on ? "text-primary" : "text-ink"}`}>{p.options[id].label}</span>
+                    <span className="mt-1 block text-sm leading-snug text-ink/65">{p.options[id].desc}</span>
                   </span>
                 </button>
               );
             })}
           </div>
-          <p className="mt-3 min-h-[20px] text-sm text-dark/65" aria-live="polite">
+          <p className="mt-3 min-h-[20px] text-sm text-ink/65" aria-live="polite">
             {focus && (
               <>
-                {p.showingFor} <strong className="font-semibold text-dark">{p.options[focus].label}</strong>
+                {p.showingFor} <strong className="font-semibold text-ink">{p.options[focus].label}</strong>
                 <span aria-hidden="true"> · </span>
                 <button type="button" onClick={() => choose(null)} className="font-semibold text-primary underline-offset-4 hover:underline">
                   {p.reset}
@@ -230,7 +230,7 @@ export function Cases() {
             onClick={() => page(-1)}
             disabled={edges.start}
             aria-label={p.prev}
-            className="absolute -left-3 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-dark/10 bg-white text-dark shadow-lg transition-all hover:border-primary hover:text-primary disabled:pointer-events-none disabled:opacity-0 md:flex lg:-left-6"
+            className="absolute -left-3 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-dark/10 bg-surface text-ink shadow-lg transition-all hover:border-primary hover:text-primary disabled:pointer-events-none disabled:opacity-0 md:flex lg:-left-6"
           >
             <ChevronLeft className="h-5 w-5" aria-hidden="true" />
           </button>
@@ -239,7 +239,7 @@ export function Cases() {
             onClick={() => page(1)}
             disabled={edges.end}
             aria-label={p.next}
-            className="absolute -right-3 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-dark/10 bg-white text-dark shadow-lg transition-all hover:border-primary hover:text-primary disabled:pointer-events-none disabled:opacity-0 md:flex lg:-right-6"
+            className="absolute -right-3 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-dark/10 bg-surface text-ink shadow-lg transition-all hover:border-primary hover:text-primary disabled:pointer-events-none disabled:opacity-0 md:flex lg:-right-6"
           >
             <ChevronRight className="h-5 w-5" aria-hidden="true" />
           </button>
@@ -261,12 +261,12 @@ export function Cases() {
                 >
                   <Link
                     href={item.href}
-                    className="group relative flex h-full flex-col rounded-md border border-dark/10 bg-white p-7 text-left shadow-[0_24px_80px_rgba(10,10,10,0.06)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_32px_80px_rgba(98,47,253,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                    className="group relative flex h-full flex-col rounded-md border border-dark/10 bg-surface p-7 text-left shadow-[0_24px_80px_rgba(10,10,10,0.06)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_32px_80px_rgba(98,47,253,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                     aria-label={`${c.ariaPrefix}: ${item.project}`}
                   >
                     <span
                       aria-hidden="true"
-                      className="absolute right-6 top-6 flex h-9 w-9 items-center justify-center rounded-full border border-dark/10 text-dark/65 transition-all duration-300 group-hover:rotate-45 group-hover:border-primary group-hover:bg-primary group-hover:text-white"
+                      className="absolute right-6 top-6 flex h-9 w-9 items-center justify-center rounded-full border border-dark/10 text-ink/65 transition-all duration-300 group-hover:rotate-45 group-hover:border-primary group-hover:bg-primary group-hover:text-white"
                     >
                       <ArrowUpRight className="h-4 w-4" strokeWidth={2} />
                     </span>
@@ -288,23 +288,23 @@ export function Cases() {
                     <h3 className={`${match ? "mt-4" : "mt-7"} font-display text-[28px] font-semibold leading-[1.14] transition-colors duration-300 group-hover:text-primary`}>
                       {item.project}
                     </h3>
-                    <p className="mt-1 text-sm text-dark/65">
+                    <p className="mt-1 text-sm text-ink/65">
                       {item.company} · <span className="sr-only">{c.labels.role}: </span>
                       {c.labels.roleValue}
                     </p>
-                    <p className="mt-5 text-[11px] font-semibold uppercase tracking-[0.16em] text-dark/65">{c.labels.challenge}</p>
-                    <p className="mt-1.5 text-sm leading-6 text-dark/80">{item.body}</p>
+                    <p className="mt-5 text-[11px] font-semibold uppercase tracking-[0.16em] text-ink/65">{c.labels.challenge}</p>
+                    <p className="mt-1.5 text-sm leading-6 text-ink/80">{item.body}</p>
 
                     <div className="mt-auto pt-7">
-                      <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-dark/65">{c.labels.result}</p>
+                      <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-ink/65">{c.labels.result}</p>
                       <div className="grid grid-cols-3 divide-x divide-dark/[0.08] rounded-md border border-dark/[0.08] bg-dark/[0.015] py-4">
                         {item.stats.map((stat) => {
                           const Icon = stat.icon;
                           return (
                             <div key={stat.label} className="flex flex-col items-center gap-1.5 px-2 text-center">
                               <Icon className="h-4 w-4 text-primary/60" strokeWidth={1.8} aria-hidden="true" />
-                              <span className="font-display text-lg font-semibold leading-none tracking-tight tabular-nums text-dark">{stat.value}</span>
-                              <span className="text-[10.5px] leading-tight tracking-wide text-dark/65">{stat.label}</span>
+                              <span className="font-display text-lg font-semibold leading-none tracking-tight tabular-nums text-ink">{stat.value}</span>
+                              <span className="text-[10.5px] leading-tight tracking-wide text-ink/65">{stat.label}</span>
                             </div>
                           );
                         })}

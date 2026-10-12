@@ -25,6 +25,22 @@
   --input: 0 0% 16%;
   --ring: 255 98% 59%;
   --radius: 0.5rem;
+
+  /* ── Design tokens de tema (canais RGB para aceitar opacidade: bg-card/80, text-ink/65).
+     Valores do tema claro = cores atuais do site; o tema escuro só redefine estes canais. ── */
+  --c-canvas: 248 248 248;          /* background: fundo das seções claras (#F8F8F8) */
+  --c-surface: 255 255 255;         /* surface: cards e painéis (#FFFFFF) */
+  --c-surface-elevated: 255 255 255;/* surface-elevated: menus, popovers */
+  --c-ink: 10 10 10;                /* text-primary (#0A0A0A) */
+  --c-ink-secondary: 64 64 64;      /* text-secondary (#404040, 10,4:1 no canvas) */
+  --c-ink-muted: 102 102 102;       /* text-muted (#666666, 5,4:1 no canvas) */
+  --c-line: 229 229 229;            /* border (#E5E5E5) */
+  --c-accent: 98 47 253;            /* accent: roxo da marca (#622FFD) */
+  --c-link: 98 47 253;              /* link (#622FFD, 6,3:1 no branco) */
+  --c-focus: 98 47 253;             /* focus-ring */
+  --c-success: 21 128 61;           /* #15803D, 5,0:1 no branco */
+  --c-warning: 180 83 9;            /* #B45309, 5,0:1 no branco */
+  --c-error: 185 28 28;             /* #B91C1C, 6,5:1 no branco */
 }
 
 * {
@@ -99,6 +115,6 @@ body {
 /* Foco visível global (WCAG 2.4.7 / 2.4.11). Vence os `outline-none` dos componentes.
    #622FFD tem contraste 6,3:1 no branco e 3,2:1 no #0A0A0A. O offset deixa o anel sobre o fundo, não sobre o botão. */
 :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
-  outline: 2px solid #622ffd !important;
+  outline: 2px solid rgb(var(--c-focus)) !important;
   outline-offset: 3px !important;
 }

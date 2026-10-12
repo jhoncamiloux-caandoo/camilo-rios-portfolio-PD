@@ -80,14 +80,14 @@ export function Header() {
     <header
       ref={headerRef}
       className={`fixed inset-x-0 top-0 z-30 border-b backdrop-blur-xl transition-colors duration-300 ${
-        dark ? "border-white/10 bg-black/25" : "border-black/5 bg-white/10"
+        dark ? "border-white/10 bg-black/25" : "border-ink/5 bg-white/10"
       }`}
     >
       <div className="container flex h-14 items-center justify-between md:h-16">
         <a
           href="#inicio"
           className={`flex items-center gap-2.5 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${
-            dark ? "focus-visible:ring-offset-[#0A0A0A]" : "focus-visible:ring-offset-light"
+            dark ? "focus-visible:ring-offset-[#0A0A0A]" : "focus-visible:ring-offset-canvas"
           }`}
           aria-label={t.home.header.logoAria}
         >
@@ -99,7 +99,7 @@ export function Header() {
           />
           <span
             className={`font-display text-base font-semibold transition-colors duration-300 md:text-lg ${
-              dark ? "text-white" : "text-dark"
+              dark ? "text-white" : "text-ink"
             }`}
           >
             Jhon
@@ -110,7 +110,7 @@ export function Header() {
         <nav
           aria-label={t.home.header.navAriaDesktop}
           className={`hidden items-center gap-8 text-sm transition-colors duration-300 lg:flex ${
-            dark ? "text-white/60" : "text-dark/65"
+            dark ? "text-white/60" : "text-ink/65"
           }`}
         >
           {navLinks.map((link) => (
@@ -118,7 +118,7 @@ export function Header() {
               key={link.href}
               href={link.href}
               className={`rounded-sm transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
-                dark ? "hover:text-white" : "hover:text-dark"
+                dark ? "hover:text-white" : "hover:text-ink"
               }`}
             >
               {link.label}
@@ -129,7 +129,7 @@ export function Header() {
             target="_blank"
             rel="noopener noreferrer"
             className={`inline-flex h-9 items-center rounded-full border px-4 font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
-              dark ? "border-white/20 text-white hover:bg-white/10" : "border-black/10 text-dark hover:bg-black/5"
+              dark ? "border-white/20 text-white hover:bg-white/10" : "border-ink/10 text-ink hover:bg-ink/5"
             }`}
           >
             {h.ctaResume}
@@ -157,7 +157,7 @@ export function Header() {
             className={`flex h-9 w-9 items-center justify-center rounded-full border backdrop-blur-sm transition-colors duration-300 md:h-10 md:w-10 ${
               dark
                 ? "border-white/15 bg-white/10 text-white hover:bg-white/20"
-                : "border-black/8 bg-white/60 text-dark hover:bg-white/90"
+                : "border-ink/8 bg-white/60 text-ink hover:bg-white/90"
             }`}
           >
             {menuOpen ? <X className="h-[18px] w-[18px]" aria-hidden="true" /> : <Menu className="h-[18px] w-[18px]" aria-hidden="true" />}
@@ -175,7 +175,7 @@ export function Header() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease }}
-            className="overflow-hidden border-t border-black/5 bg-white/95 backdrop-blur-xl lg:hidden"
+            className="overflow-hidden border-t border-ink/5 bg-white/95 backdrop-blur-xl lg:hidden"
           >
             <div className="container flex flex-col gap-1 py-3">
               {navLinks.map((link) => (
@@ -183,13 +183,13 @@ export function Header() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="rounded-lg px-3 py-3 text-base font-medium text-dark transition-colors hover:bg-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  className="rounded-lg px-3 py-3 text-base font-medium text-ink transition-colors hover:bg-ink/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                 >
                   {link.label}
                 </a>
               ))}
               <div className="mt-2 grid grid-cols-2 gap-2 px-1 pb-1">
-                <a href={RESUME_URL} target="_blank" rel="noopener noreferrer" className="inline-flex h-11 items-center justify-center rounded-full border border-black/10 text-sm font-semibold text-dark">
+                <a href={RESUME_URL} target="_blank" rel="noopener noreferrer" className="inline-flex h-11 items-center justify-center rounded-full border border-ink/10 text-sm font-semibold text-ink">
                   {h.ctaResume}
                 </a>
                 <a href={CALENDAR_URL} target="_blank" rel="noopener noreferrer" className="inline-flex h-11 items-center justify-center rounded-full bg-primary text-sm font-semibold text-white">

@@ -72,7 +72,7 @@ export function Hero() {
                     href={CALENDAR_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex h-[42px] shrink-0 items-center gap-1 whitespace-nowrap rounded-full border border-black/10 bg-white/40 px-4 text-sm font-semibold text-[#1c1c1c] backdrop-blur-md transition hover:bg-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary md:h-[52px] md:px-6 md:text-base"
+                    className="inline-flex h-[42px] shrink-0 items-center gap-1 whitespace-nowrap rounded-full border border-ink/10 bg-white/40 px-4 text-sm font-semibold text-[#1c1c1c] backdrop-blur-md transition hover:bg-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary md:h-[52px] md:px-6 md:text-base"
                   >
                     {t.home.hero.ctaContact}
                     <Caret />

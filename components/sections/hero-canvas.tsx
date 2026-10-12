@@ -215,7 +215,7 @@ export function HeroCanvas({ children }: { children: ReactNode }) {
       id="inicio"
       ref={sectionRef}
       data-nav-theme="light"
-      className="relative h-[240vh] bg-light text-dark"
+      className="relative h-[240vh] bg-canvas text-ink"
     >
       {/*
         Mobile: coluna — texto em cima (fluxo), imagem animada num box embaixo.
@@ -228,7 +228,7 @@ export function HeroCanvas({ children }: { children: ReactNode }) {
         </div>
 
         {/* IMAGEM ANIMADA — box emoldurado embaixo (mobile) / full-bleed atrás (desktop) */}
-        <div className="relative z-0 mx-4 mb-4 min-h-0 flex-1 overflow-hidden rounded-3xl border border-black/[0.06] bg-[#f2f2f4] shadow-[0_20px_60px_-24px_rgba(10,10,10,0.18)] md:absolute md:inset-0 md:m-0 md:flex-none md:rounded-none md:border-0 md:shadow-none">
+        <div className="relative z-0 mx-4 mb-4 min-h-0 flex-1 overflow-hidden rounded-3xl border border-ink/[0.06] bg-[#f2f2f4] shadow-[0_20px_60px_-24px_rgba(10,10,10,0.18)] md:absolute md:inset-0 md:m-0 md:flex-none md:rounded-none md:border-0 md:shadow-none">
           <canvas
             ref={canvasRef}
             aria-label="Sequência animada de Jhon Camilo Rios"
