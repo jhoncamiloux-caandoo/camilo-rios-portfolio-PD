@@ -16,7 +16,7 @@ export function CaseFooter() {
         <SocialLinks dark={false} />
         <Link
           href="/"
-          className="font-sans text-xs font-semibold text-ink/65 transition-colors hover:text-primary"
+          className="font-sans text-xs font-semibold text-ink/65 transition-colors hover:text-link"
         >
           {t.home.common.backToPortfolio}
         </Link>

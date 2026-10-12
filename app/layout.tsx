@@ -130,6 +130,13 @@ export default function RootLayout({
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: JSON.stringify([personJsonLd, websiteJsonLd]) }}
         />
+        {/* Tema antes da primeira pintura: escolha salva > preferência do sistema. Evita flash. */}
+        <script
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.getItem("theme");if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=t}catch(e){}`,
+          }}
+        />
         <Script id="no-flash-locale" strategy="beforeInteractive">
           {NO_FLASH_LOCALE_SCRIPT}
         </Script>

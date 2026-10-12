@@ -22,7 +22,7 @@ export function NextCase({
             className="group flex flex-col items-start justify-between gap-6 rounded-2xl border border-ink/[0.07] p-8 transition-colors duration-300 hover:border-primary/30 md:flex-row md:items-center md:p-12"
           >
             <div className="flex flex-col gap-3">
-              <span className="font-sans text-xs font-semibold uppercase tracking-[0.22em] text-primary">
+              <span className="font-sans text-xs font-semibold uppercase tracking-[0.22em] text-link">
                 {eyebrow}
               </span>
               <h3 className="font-display text-2xl font-semibold leading-snug tracking-tight text-ink md:text-4xl">

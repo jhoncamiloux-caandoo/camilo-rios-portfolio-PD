@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { useLocale } from "@/lib/i18n/locale-context";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { LanguageSwitcher } from "@/components/language-switcher";
 
 export function CaseHeader({
@@ -14,7 +15,7 @@ export function CaseHeader({
   const c = t.home.common;
 
   return (
-    <header className="fixed inset-x-0 top-0 z-30 border-b border-ink/[0.06] bg-white/80 backdrop-blur-xl">
+    <header className="fixed inset-x-0 top-0 z-30 border-b border-ink/[0.06] bg-canvas/80 backdrop-blur-xl">
       <div className="container flex h-14 items-center justify-between md:h-16">
 
         {/* Voltar ao portfólio */}
@@ -51,6 +52,7 @@ export function CaseHeader({
           <span className="hidden text-[11px] font-semibold uppercase tracking-[0.2em] text-ink/65 lg:block">
             {label}
           </span>
+          <ThemeToggle />
           <LanguageSwitcher />
         </div>
       </div>

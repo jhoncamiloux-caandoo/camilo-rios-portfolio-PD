@@ -26,7 +26,7 @@ export function BlogList({ posts }: { posts: Post[] }) {
               aria-pressed={on}
               onClick={() => setCat(k)}
               className={`h-10 rounded-full border px-4 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#622FFD] focus-visible:ring-offset-2 ${
-                on ? "border-[#622FFD] bg-[#622FFD] text-white" : "border-ink/10 bg-surface text-ink hover:border-[#622FFD]/50 hover:text-[#622FFD]"
+                on ? "border-[#622FFD] bg-[#622FFD] text-white" : "border-ink/10 bg-surface text-ink hover:border-[#622FFD]/50 hover:text-link"
               }`}
             >
               {k === ALL ? "Todos" : CATEGORIES[k]}
@@ -45,14 +45,14 @@ export function BlogList({ posts }: { posts: Post[] }) {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               {p.coverArt ? <CoverArt icons={p.coverArt.icons} label={CATEGORIES[p.category]} /> : <img src={p.cover?.replace(/\.webp$/, "-800.webp")} alt="" loading="lazy" decoding="async" className="aspect-[16/9] w-full object-cover" />}
               <div className="flex flex-1 flex-col p-6">
-                <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-[#622FFD]">{CATEGORIES[p.category]}</p>
-                <h2 className="mt-3 font-display text-xl font-semibold leading-snug text-ink group-hover:text-[#622FFD]">{p.title}</h2>
+                <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-link">{CATEGORIES[p.category]}</p>
+                <h2 className="mt-3 font-display text-xl font-semibold leading-snug text-ink group-hover:text-link">{p.title}</h2>
                 <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-ink/65">{p.description}</p>
                 <div className="mt-auto flex items-center justify-between pt-5 text-xs text-ink/60">
                   <span>
                     {new Date(p.date).toLocaleDateString("pt-BR", { day: "2-digit", month: "short", year: "numeric" })} · {p.readMinutes} min
                   </span>
-                  <ArrowUpRight className="h-4 w-4 transition group-hover:text-[#622FFD]" aria-hidden="true" />
+                  <ArrowUpRight className="h-4 w-4 transition group-hover:text-link" aria-hidden="true" />
                 </div>
               </div>
             </Link>

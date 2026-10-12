@@ -46,7 +46,7 @@ export function SocialLinks({ dark = true }: { dark?: boolean }) {
             rel="noopener noreferrer"
             aria-label={aria}
             className={`inline-flex h-10 items-center gap-2 rounded-full border px-4 font-sans text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
-              dark ? "border-white/10 text-white/70 hover:border-primary/50 hover:text-white" : "border-black/10 text-[#0A0A0A]/70 hover:border-primary/50 hover:text-primary"
+              dark ? "border-white/10 text-white/70 hover:border-primary/50 hover:text-white" : "border-ink/10 text-ink/70 hover:border-primary/50 hover:text-link"
             }`}
           >
             <Icon className="h-4 w-4" />

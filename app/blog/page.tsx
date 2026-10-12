@@ -41,9 +41,9 @@ export default function BlogPage() {
       <CaseHeader label="Blog" />
       <main className="container pb-24 pt-28 md:pt-36">
         <nav aria-label="Breadcrumb" className="mb-8 text-sm text-ink/60">
-          <Link href="/" className="hover:text-[#622FFD]">Início</Link> <span aria-hidden="true">/</span> <span aria-current="page">Blog</span>
+          <Link href="/" className="hover:text-link">Início</Link> <span aria-hidden="true">/</span> <span aria-current="page">Blog</span>
         </nav>
-        <p className="font-mono text-xs uppercase tracking-[0.22em] text-[#622FFD]">Blog</p>
+        <p className="font-mono text-xs uppercase tracking-[0.22em] text-link">Blog</p>
         <h1 className="mt-4 max-w-3xl font-display text-[40px] font-semibold leading-[1.05] tracking-tight md:text-[64px]">
           Design, dados e IA, explicados com exemplos.
         </h1>

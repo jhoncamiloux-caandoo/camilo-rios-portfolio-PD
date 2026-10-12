@@ -72,13 +72,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       <main className="pb-24 pt-28 md:pt-36">
         <article className="container max-w-3xl">
           <nav aria-label="Breadcrumb" className="mb-8 flex flex-wrap gap-1 text-sm text-ink/60">
-            <Link href="/" className="hover:text-[#622FFD]">Início</Link>
+            <Link href="/" className="hover:text-link">Início</Link>
             <span aria-hidden="true">/</span>
-            <Link href="/blog" className="hover:text-[#622FFD]">Blog</Link>
+            <Link href="/blog" className="hover:text-link">Blog</Link>
             <span aria-hidden="true">/</span>
             <span aria-current="page" className="line-clamp-1">{p.title}</span>
           </nav>
-          <p className="font-mono text-xs uppercase tracking-[0.18em] text-[#622FFD]">{CATEGORIES[p.category]}</p>
+          <p className="font-mono text-xs uppercase tracking-[0.18em] text-link">{CATEGORIES[p.category]}</p>
           {p.lab ? (
             <KineticTitle text={p.title} className="mt-4 font-display text-[38px] font-semibold leading-[1.04] tracking-tight md:text-[64px]" />
           ) : (
@@ -108,7 +108,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               if (b.type === "h2") return <h2 key={i} className="mt-14 font-display text-2xl font-semibold leading-snug md:text-[32px]">{b.text}</h2>;
               if (b.type === "ul")
                 return (
-                  <ul key={i} className="mt-3 list-disc space-y-2 pl-6 text-[17px] leading-relaxed text-ink/80 marker:text-[#622FFD]">
+                  <ul key={i} className="mt-3 list-disc space-y-2 pl-6 text-[17px] leading-relaxed text-ink/80 marker:text-link">
                     {b.items.map((it) => <li key={it}>{it}</li>)}
                   </ul>
                 );
@@ -148,16 +148,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <p className="font-mono text-xs uppercase tracking-[0.18em] text-ink/60">Case relacionado</p>
             <Link href={p.related.href} className="group mt-3 flex items-start justify-between gap-6 rounded-2xl border border-ink/10 bg-canvas p-6 transition hover:border-[#622FFD]/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#622FFD]">
               <span>
-                <span className="block font-display text-2xl font-semibold group-hover:text-[#622FFD]">{p.related.title}</span>
+                <span className="block font-display text-2xl font-semibold group-hover:text-link">{p.related.title}</span>
                 <span className="mt-2 block text-sm leading-relaxed text-ink/70">{p.related.body}</span>
               </span>
-              <ArrowUpRight className="h-5 w-5 shrink-0 text-ink/50 group-hover:text-[#622FFD]" aria-hidden="true" />
+              <ArrowUpRight className="h-5 w-5 shrink-0 text-ink/50 group-hover:text-link" aria-hidden="true" />
             </Link>
           </aside>
 
           {p.mediumUrl && <p className="mt-10 text-sm text-ink/60">
             Também publicado no{" "}
-            <a href={p.mediumUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-[#622FFD]">Medium</a>.
+            <a href={p.mediumUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-link">Medium</a>.
           </p>}
         </article>
       </main>

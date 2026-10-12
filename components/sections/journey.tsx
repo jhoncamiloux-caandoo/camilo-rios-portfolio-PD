@@ -66,7 +66,7 @@ export function Journey() {
                 <h3 className="font-display text-xl font-semibold tracking-tight text-ink">
                   {r.company}
                 </h3>
-                <p className="mt-1 text-sm font-medium text-primary">{r.role}</p>
+                <p className="mt-1 text-sm font-medium text-link">{r.role}</p>
                 <p className="mt-3 max-w-xl text-sm leading-relaxed text-ink/65">
                   {r.highlight}
                 </p>

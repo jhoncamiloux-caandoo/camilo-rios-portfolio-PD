@@ -91,7 +91,7 @@ export function Blog() {
         {/* Cabeçalho */}
         <FadeIn className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div className="flex flex-col gap-4">
-            <p className="font-sans text-xs font-semibold uppercase tracking-[0.22em] text-primary">
+            <p className="font-sans text-xs font-semibold uppercase tracking-[0.22em] text-link">
               {t.home.blog.eyebrow}
             </p>
             <h2 className="max-w-xl font-display text-[32px] font-semibold leading-[1.08] tracking-tight text-ink md:text-[44px]">
@@ -103,7 +103,7 @@ export function Blog() {
           </div>
           <a
             href="/blog"
-            className="group inline-flex h-11 shrink-0 items-center gap-2 rounded-full border border-ink/[0.1] px-6 text-sm font-semibold text-ink transition-colors duration-250 hover:border-primary hover:text-primary"
+            className="group inline-flex h-11 shrink-0 items-center gap-2 rounded-full border border-ink/[0.1] px-6 text-sm font-semibold text-ink transition-colors duration-250 hover:border-primary hover:text-link"
           >
             {t.home.blog.viewAllLabel}
             <ArrowUpRight
@@ -152,14 +152,14 @@ export function Blog() {
                   )}
                 </div>
                 <div className="flex flex-1 flex-col p-6">
-                  <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-primary">{CATEGORIES[article.category]}</p>
-                  <p className="mt-3 font-display text-lg font-semibold leading-snug text-ink group-hover:text-primary">{article.title}</p>
+                  <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-link">{CATEGORIES[article.category]}</p>
+                  <p className="mt-3 font-display text-lg font-semibold leading-snug text-ink group-hover:text-link">{article.title}</p>
                   <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-ink/65">{article.description}</p>
                   <div className="mt-auto flex items-center justify-between pt-5 text-xs text-ink/60">
                     <span>
                       {new Date(article.date).toLocaleDateString("pt-BR", { day: "2-digit", month: "short", year: "numeric" })} · {article.readMinutes} min
                     </span>
-                    <span className="inline-flex items-center gap-1 font-semibold text-ink/70 group-hover:text-primary">
+                    <span className="inline-flex items-center gap-1 font-semibold text-ink/70 group-hover:text-link">
                       {t.home.blog.readArticleLabel}
                       <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
                     </span>
@@ -176,7 +176,7 @@ export function Blog() {
               onClick={() => scrollByCard(-1)}
               disabled={atStart}
               aria-label={t.home.blog.prevAria}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/[0.1] text-ink/65 transition disabled:opacity-30 enabled:hover:border-primary enabled:hover:text-primary"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/[0.1] text-ink/65 transition disabled:opacity-30 enabled:hover:border-primary enabled:hover:text-link"
             >
               <ChevronLeft className="h-4 w-4" />
             </button>
@@ -184,7 +184,7 @@ export function Blog() {
               onClick={() => scrollByCard(1)}
               disabled={atEnd}
               aria-label={t.home.blog.nextAria}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/[0.1] text-ink/65 transition disabled:opacity-30 enabled:hover:border-primary enabled:hover:text-primary"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/[0.1] text-ink/65 transition disabled:opacity-30 enabled:hover:border-primary enabled:hover:text-link"
             >
               <ChevronRight className="h-4 w-4" />
             </button>

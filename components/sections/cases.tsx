@@ -203,7 +203,7 @@ export function Cases() {
                     <Check className="h-3 w-3" strokeWidth={3} />
                   </span>
                   <span>
-                    <span className={`block font-display text-lg font-semibold ${on ? "text-primary" : "text-ink"}`}>{p.options[id].label}</span>
+                    <span className={`block font-display text-lg font-semibold ${on ? "text-link" : "text-ink"}`}>{p.options[id].label}</span>
                     <span className="mt-1 block text-sm leading-snug text-ink/65">{p.options[id].desc}</span>
                   </span>
                 </button>
@@ -215,7 +215,7 @@ export function Cases() {
               <>
                 {p.showingFor} <strong className="font-semibold text-ink">{p.options[focus].label}</strong>
                 <span aria-hidden="true"> · </span>
-                <button type="button" onClick={() => choose(null)} className="font-semibold text-primary underline-offset-4 hover:underline">
+                <button type="button" onClick={() => choose(null)} className="font-semibold text-link underline-offset-4 hover:underline">
                   {p.reset}
                 </button>
               </>
@@ -230,7 +230,7 @@ export function Cases() {
             onClick={() => page(-1)}
             disabled={edges.start}
             aria-label={p.prev}
-            className="absolute -left-3 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-dark/10 bg-surface text-ink shadow-lg transition-all hover:border-primary hover:text-primary disabled:pointer-events-none disabled:opacity-0 md:flex lg:-left-6"
+            className="absolute -left-3 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-dark/10 bg-surface text-ink shadow-lg transition-all hover:border-primary hover:text-link disabled:pointer-events-none disabled:opacity-0 md:flex lg:-left-6"
           >
             <ChevronLeft className="h-5 w-5" aria-hidden="true" />
           </button>
@@ -239,7 +239,7 @@ export function Cases() {
             onClick={() => page(1)}
             disabled={edges.end}
             aria-label={p.next}
-            className="absolute -right-3 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-dark/10 bg-surface text-ink shadow-lg transition-all hover:border-primary hover:text-primary disabled:pointer-events-none disabled:opacity-0 md:flex lg:-right-6"
+            className="absolute -right-3 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-dark/10 bg-surface text-ink shadow-lg transition-all hover:border-primary hover:text-link disabled:pointer-events-none disabled:opacity-0 md:flex lg:-right-6"
           >
             <ChevronRight className="h-5 w-5" aria-hidden="true" />
           </button>
@@ -272,20 +272,20 @@ export function Cases() {
                     </span>
 
                     <div className="flex items-center gap-3 pr-12">
-                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-primary/8 text-primary">
+                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-primary/8 text-link">
                         <LeadIcon className="h-5 w-5" strokeWidth={1.8} aria-hidden="true" />
                       </span>
-                      <p className="font-mono text-[11px] font-medium uppercase leading-snug tracking-[0.12em] text-primary">{item.specialty}</p>
+                      <p className="font-mono text-[11px] font-medium uppercase leading-snug tracking-[0.12em] text-link">{item.specialty}</p>
                     </div>
 
                     {match && (
-                      <span className="mt-5 inline-flex w-fit items-center gap-1.5 rounded-full bg-primary/10 px-2.5 py-1 text-[11px] font-semibold text-primary">
+                      <span className="mt-5 inline-flex w-fit items-center gap-1.5 rounded-full bg-primary/10 px-2.5 py-1 text-[11px] font-semibold text-link">
                         <Sparkles className="h-3 w-3" aria-hidden="true" />
                         {p.because} {p.options[focus].label}
                       </span>
                     )}
 
-                    <h3 className={`${match ? "mt-4" : "mt-7"} font-display text-[28px] font-semibold leading-[1.14] transition-colors duration-300 group-hover:text-primary`}>
+                    <h3 className={`${match ? "mt-4" : "mt-7"} font-display text-[28px] font-semibold leading-[1.14] transition-colors duration-300 group-hover:text-link`}>
                       {item.project}
                     </h3>
                     <p className="mt-1 text-sm text-ink/65">
@@ -302,7 +302,7 @@ export function Cases() {
                           const Icon = stat.icon;
                           return (
                             <div key={stat.label} className="flex flex-col items-center gap-1.5 px-2 text-center">
-                              <Icon className="h-4 w-4 text-primary/60" strokeWidth={1.8} aria-hidden="true" />
+                              <Icon className="h-4 w-4 text-link/60" strokeWidth={1.8} aria-hidden="true" />
                               <span className="font-display text-lg font-semibold leading-none tracking-tight tabular-nums text-ink">{stat.value}</span>
                               <span className="text-[10.5px] leading-tight tracking-wide text-ink/65">{stat.label}</span>
                             </div>

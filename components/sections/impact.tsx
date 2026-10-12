@@ -154,7 +154,7 @@ export function Impact() {
     <section
       id="impacto"
       data-nav-theme="light"
-      className="relative overflow-hidden border-b border-line bg-canvas py-32 text-ink"
+      className="force-light relative overflow-hidden border-b border-line bg-canvas py-32 text-ink"
     >
       <CyberneticGridShader />
 

@@ -50,6 +50,48 @@
 html {
   scroll-behavior: smooth;
   background: #0a0a0a;
+  color-scheme: light;
+}
+
+/* ── Tema escuro. As seções que já são escuras (#0A0A0A) ficam iguais; as seções claras
+   viram um cinza-grafite um tom acima (#111113), para manter o ritmo entre seções. ── */
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --c-canvas: 17 17 19;             /* #111113 */
+  --c-surface: 26 26 30;            /* #1A1A1E */
+  --c-surface-elevated: 34 34 39;   /* #222227 */
+  --c-ink: 242 242 245;             /* #F2F2F5, 17,0:1 no canvas */
+  --c-ink-secondary: 196 196 204;   /* #C4C4CC, 11,4:1 */
+  --c-ink-muted: 152 152 163;       /* #9898A3, 6,6:1 */
+  --c-line: 44 44 50;               /* #2C2C32 */
+  --c-accent: 98 47 253;            /* roxo da marca mantido em fundos de botão */
+  --c-link: 164 139 255;            /* #A48BFF, 7,0:1 no canvas */
+  --c-focus: 164 139 255;
+  --c-success: 74 222 128;          /* #4ADE80 */
+  --c-warning: 251 191 36;          /* #FBBF24 */
+  --c-error: 248 113 113;           /* #F87171 */
+}
+
+/* Áreas que são "foto" (o hero tem fundo claro embutido nos frames) mantêm o tema claro. */
+html[data-theme="dark"] .force-light {
+  color-scheme: light;
+  --c-canvas: 248 248 248;
+  --c-surface: 255 255 255;
+  --c-surface-elevated: 255 255 255;
+  --c-ink: 10 10 10;
+  --c-ink-secondary: 64 64 64;
+  --c-ink-muted: 102 102 102;
+  --c-line: 229 229 229;
+  --c-link: 98 47 253;
+  --c-focus: 98 47 253;
+}
+
+/* Transição suave só durante a troca de tema (a classe é adicionada e removida pelo botão). */
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *::before,
+html.theme-transition *::after {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease !important;
 }
 
 body {
@@ -57,7 +99,7 @@ body {
   overflow-x: hidden;
   background:
     radial-gradient(circle at 48% 0%, rgba(98, 47, 253, 0.14), transparent 32rem),
-    linear-gradient(180deg, #0a0a0a 0%, #0a0a0a 54%, #f8f8f8 54%, #f8f8f8 100%);
+    linear-gradient(180deg, #0a0a0a 0%, #0a0a0a 54%, rgb(var(--c-canvas)) 54%, rgb(var(--c-canvas)) 100%);
   color: #f8f8f8;
   font-family: var(--font-dm-sans);
   text-rendering: geometricPrecision;

@@ -25,7 +25,7 @@ export function AiProcess() {
             <p className="font-sans text-base leading-relaxed text-ink/70 md:text-lg">{c.message}</p>
             <div className="mt-2 flex flex-wrap gap-4 text-sm text-ink/70">
               <span className="inline-flex items-center gap-2">
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary"><Sparkles className="h-3.5 w-3.5" aria-hidden="true" /></span>
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-link"><Sparkles className="h-3.5 w-3.5" aria-hidden="true" /></span>
                 {c.legendAi}
               </span>
               <span className="inline-flex items-center gap-2">
@@ -51,13 +51,13 @@ export function AiProcess() {
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center justify-between gap-2">
                       <h3 className="font-display text-base font-semibold">{step.title}</h3>
-                      <span className={`inline-flex shrink-0 items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold ${me ? "bg-white/15 text-white" : "bg-primary/10 text-primary"}`}>
+                      <span className={`inline-flex shrink-0 items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold ${me ? "bg-white/15 text-white" : "bg-primary/10 text-link"}`}>
                         {me ? <UserRound className="h-3 w-3" aria-hidden="true" /> : <Sparkles className="h-3 w-3" aria-hidden="true" />}
                         {me ? c.legendMe : c.legendAi}
                       </span>
                     </div>
                     <p className={`mt-1 text-sm leading-snug ${me ? "text-white/70" : "text-ink/65"}`}>{step.body}</p>
-                    {TOOLS[i] && <p className="mt-2 font-mono text-[11px] text-primary">{TOOLS[i]}</p>}
+                    {TOOLS[i] && <p className="mt-2 font-mono text-[11px] text-link">{TOOLS[i]}</p>}
                   </div>
                 </motion.li>
               );
@@ -75,10 +75,10 @@ export function AiProcess() {
                 className="group flex items-start justify-between gap-4 rounded-xl border border-dark/10 bg-surface p-5 transition hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
               >
                 <span>
-                  <span className="block font-display text-lg font-semibold group-hover:text-primary">{proof.case}</span>
+                  <span className="block font-display text-lg font-semibold group-hover:text-link">{proof.case}</span>
                   <span className="mt-1 block text-sm leading-snug text-ink/65">{proof.body}</span>
                 </span>
-                <ArrowUpRight className="h-4 w-4 shrink-0 text-ink/50 transition group-hover:text-primary" aria-hidden="true" />
+                <ArrowUpRight className="h-4 w-4 shrink-0 text-ink/50 transition group-hover:text-link" aria-hidden="true" />
               </Link>
             ))}
           </div>

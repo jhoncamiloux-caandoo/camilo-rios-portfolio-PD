@@ -215,7 +215,7 @@ export function HeroCanvas({ children }: { children: ReactNode }) {
       id="inicio"
       ref={sectionRef}
       data-nav-theme="light"
-      className="relative h-[240vh] bg-canvas text-ink"
+      className="force-light relative h-[240vh] bg-canvas text-ink"
     >
       {/*
         Mobile: coluna — texto em cima (fluxo), imagem animada num box embaixo.
