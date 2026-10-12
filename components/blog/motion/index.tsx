@@ -7,6 +7,7 @@ import { SceneAgentFeed, SceneAgentPanel, SceneCaseFile, SceneCircleQuestions, S
 import { SceneA11ySimulator, SceneA11yStats, SceneAnnotatedLine, SceneFunnelMath, SceneHourglass, SceneLens, ScenePageFlip, SceneRings, SceneSpeedBrake, SceneStamps, SceneStoryboard } from "./scenes-13-16";
 import { SceneAdaptiveRows, SceneFlipCases, SceneGears, SceneKpiDials, SceneLiveFix, SceneMenuSimplify, ScenePortalToSearch, SceneProactiveHelp, SceneThinkAloud, SceneThinkMeter, SceneTimerTips, SceneWhiteboard } from "./scenes-17-20";
 import { SceneBigStat, SceneBlinkTest, SceneCareerElevator, SceneDsToggle, SceneExploded, SceneGovernance, SceneMicroPlayground, SceneOrderFromChaos, SceneSharedTransition, SceneStateMachine, SceneTrajectories } from "./scenes-21-24";
+import { SceneConversionMath, SceneCroLoop, SceneDiagnosticFlow, SceneFunnelReading, SceneMessageMatch, SceneMetricBuckets, SceneMetricTree, SceneMobileKeyboard, ScenePeeking, ScenePostClick, ScenePriorityMatrix, SceneSignalToAction } from "./scenes-cro";
 import { SceneCriteriaMorph, SceneFiveInterfaces, SceneGapFiller, SceneIntentMorph, SceneOrdersStory, SceneTwoRoutes } from "./scenes-3-4";
 
 /* Registro das cenas de motion: o artigo aponta um id e passa o texto como dados. */
@@ -85,6 +86,18 @@ const SCENES: Record<string, React.FC<any>> = {
   "big-stat": SceneBigStat,
   "blink-test": SceneBlinkTest,
   "order-chaos": SceneOrderFromChaos,
+  "conversion-math": SceneConversionMath,
+  "diagnostic-flow": SceneDiagnosticFlow,
+  "funnel-reading": SceneFunnelReading,
+  "cro-loop": SceneCroLoop,
+  "priority-matrix": ScenePriorityMatrix,
+  "peeking": ScenePeeking,
+  "message-match": SceneMessageMatch,
+  "mobile-keyboard": SceneMobileKeyboard,
+  "post-click": ScenePostClick,
+  "metric-buckets": SceneMetricBuckets,
+  "metric-tree": SceneMetricTree,
+  "signal-to-action": SceneSignalToAction,
 };
 
 export function BlogScene({ id, data }: { id: string; data: Record<string, unknown> }) {
