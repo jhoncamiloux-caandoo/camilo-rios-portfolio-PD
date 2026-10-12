@@ -35,7 +35,7 @@ export function SceneConversionMath() {
             <p className="text-6xl md:text-8xl">{k >= 1 ? <CountUp to={300} /> : "0"}</p>
             <p className="mt-1 font-sans text-sm font-normal tracking-normal text-[#0A0A0A]/60">leads</p>
           </motion.div>
-          <span className="pb-6 text-4xl text-[#0A0A0A]/30 md:text-6xl">÷</span>
+          <span aria-hidden="true" className="pb-6 text-4xl text-[#0A0A0A]/40 md:text-6xl">÷</span>
           <motion.div initial={false} animate={{ opacity: k >= 2 ? 1 : 0.4 }}>
             <p className="text-6xl md:text-8xl">10.000</p>
             <p className="mt-1 font-sans text-sm font-normal tracking-normal text-[#0A0A0A]/60">sessões</p>
@@ -117,7 +117,7 @@ export function SceneFunnelReading({ steps }: { steps: { t: string; q: string }[
           ))}
         </ol>
         <div className="flex flex-col justify-center rounded-[22px] bg-[#622FFD] p-8 text-white" role="tabpanel">
-          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/70">Pergunta da etapa</p>
+          <p className="font-mono text-xs uppercase tracking-[0.18em] text-white/90">Pergunta da etapa</p>
           <AnimatePresence mode="wait">
             <motion.p key={i} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="mt-3 font-display text-3xl font-semibold leading-tight md:text-4xl">{steps[i].q}</motion.p>
           </AnimatePresence>

@@ -47,7 +47,7 @@ export function AiProcess() {
                   transition={{ duration: 0.45, delay: reduce ? 0 : (i % 2) * 0.08 }}
                   className={`flex items-start gap-3 rounded-xl border p-4 ${me ? "border-dark/80 bg-dark text-white" : "border-dark/10 bg-white"}`}
                 >
-                  <span className={`font-mono text-xs ${me ? "text-white/60" : "text-dark/50"}`}>{String(i + 1).padStart(2, "0")}</span>
+                  <span className={`font-mono text-xs ${me ? "text-white/75" : "text-dark/70"}`}>{String(i + 1).padStart(2, "0")}</span>
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center justify-between gap-2">
                       <h3 className="font-display text-base font-semibold">{step.title}</h3>

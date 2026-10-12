@@ -95,3 +95,10 @@ body {
 .kt-word { display: inline-block; animation: kt-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
 @keyframes kt-up { from { transform: translateY(105%); } to { transform: none; } }
 @media (prefers-reduced-motion: reduce) { .kt-word { animation: none; } }
+
+/* Foco visível global (WCAG 2.4.7 / 2.4.11). Vence os `outline-none` dos componentes.
+   #622FFD tem contraste 6,3:1 no branco e 3,2:1 no #0A0A0A. O offset deixa o anel sobre o fundo, não sobre o botão. */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid #622ffd !important;
+  outline-offset: 3px !important;
+}
