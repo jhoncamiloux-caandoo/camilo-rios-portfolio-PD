@@ -45,6 +45,7 @@ import { mediumPosts } from "./posts-medium";
 import { promptPosts } from "./posts-prompt";
 import { croPosts } from "./posts-cro";
 import { advancedPosts } from "./posts-advanced";
+import { trendPosts } from "./posts-2026";
 
 export const posts: Post[] = [
   {
@@ -147,6 +148,7 @@ export const posts: Post[] = [
   ...mediumPosts,
   ...promptPosts,
   ...croPosts,
+  ...trendPosts,
   ...advancedPosts,
 ];
 
