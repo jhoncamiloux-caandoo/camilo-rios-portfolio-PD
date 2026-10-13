@@ -5,7 +5,7 @@ import { useEffect, useRef, type ReactNode } from "react";
 const FRAME_COUNT = 100;
 // Quantos frames baixar em paralelo. Mantém a rede livre no primeiro paint
 // (fonte/JS/LCP) em vez de disparar 100 requisições de uma vez.
-const LOAD_CONCURRENCY = 8;
+const LOAD_CONCURRENCY = 12;
 
 const frameSrc = (index: number) =>
   `/frames/camilo_${String(index).padStart(3, "0")}.webp`;
@@ -128,27 +128,9 @@ export function HeroCanvas({ children }: { children: ReactNode }) {
       images[0].fetchPriority = "high";
       await load(0);
 
-      // O resto espera a página terminar de carregar e o navegador ficar livre,
-      // para não disputar banda com textos, fontes e JS. Se a pessoa começar a
-      // rolar antes disso, a fila começa na hora. Mesmos frames, mesma qualidade.
-      await new Promise<void>((resolve) => {
-        let done = false;
-        const go = () => {
-          if (done) return;
-          done = true;
-          window.removeEventListener("scroll", go);
-          window.removeEventListener("pointerdown", go);
-          resolve();
-        };
-        window.addEventListener("scroll", go, { passive: true, once: true });
-        window.addEventListener("pointerdown", go, { once: true });
-        const idle = () => {
-          if (typeof window.requestIdleCallback === "function") window.requestIdleCallback(go, { timeout: 1500 });
-          else setTimeout(go, 300);
-        };
-        if (document.readyState === "complete") idle();
-        else window.addEventListener("load", idle, { once: true });
-      });
+      // O restante começa logo em seguida: o efeito depende do scroll desde o
+      // primeiro gesto, e esperar o "load"/idle deixava o rosto congelado em
+      // redes reais. São ~3 MB no total.
       if (cancelled) return;
 
       // Restante em fila ascendente, com concorrência limitada.
