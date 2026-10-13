@@ -36,18 +36,18 @@ export default function BlogPage() {
     blogPost: sorted.map((p) => ({ "@type": "BlogPosting", headline: p.title, url: `${SITE}/blog/${p.slug}`, datePublished: p.date, dateModified: p.updated ?? p.date })),
   };
   return (
-    <div className="min-h-screen bg-[#F8F8F8] text-[#0A0A0A]">
+    <div className="min-h-screen bg-canvas text-ink">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumb, blog]) }} />
       <CaseHeader label="Blog" />
       <main className="container pb-24 pt-28 md:pt-36">
-        <nav aria-label="Breadcrumb" className="mb-8 text-sm text-[#0A0A0A]/60">
-          <Link href="/" className="hover:text-[#622FFD]">Início</Link> <span aria-hidden="true">/</span> <span aria-current="page">Blog</span>
+        <nav aria-label="Breadcrumb" className="mb-8 text-sm text-ink/60">
+          <Link href="/" className="hover:text-link">Início</Link> <span aria-hidden="true">/</span> <span aria-current="page">Blog</span>
         </nav>
-        <p className="font-mono text-xs uppercase tracking-[0.22em] text-[#622FFD]">Blog</p>
+        <p className="font-mono text-xs uppercase tracking-[0.22em] text-link">Blog</p>
         <h1 className="mt-4 max-w-3xl font-display text-[40px] font-semibold leading-[1.05] tracking-tight md:text-[64px]">
           Design, dados e IA, explicados com exemplos.
         </h1>
-        <p className="mt-5 max-w-2xl text-base leading-relaxed text-[#0A0A0A]/70 md:text-lg">
+        <p className="mt-5 max-w-2xl text-base leading-relaxed text-ink/70 md:text-lg">
           O que aprendo construindo produtos, em textos curtos e visuais que mostram a ideia em vez de só descrever.
         </p>
         <div className="mt-12">

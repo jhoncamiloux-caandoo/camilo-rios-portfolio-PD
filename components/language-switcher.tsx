@@ -48,7 +48,7 @@ export function LanguageSwitcher({ dark = false }: { dark?: boolean }) {
           "flex h-9 w-9 items-center justify-center rounded-full border text-base leading-none backdrop-blur-sm transition-colors duration-300 md:h-10 md:w-10",
           dark
             ? "border-white/15 bg-white/10 hover:bg-white/20"
-            : "border-black/8 bg-white/60 hover:bg-white/90"
+            : "border-ink/8 bg-white/60 hover:bg-white/90"
         )}
       >
         <span aria-hidden="true">{LOCALE_FLAG[locale]}</span>
@@ -63,7 +63,7 @@ export function LanguageSwitcher({ dark = false }: { dark?: boolean }) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -6, scale: 0.96 }}
             transition={{ duration: 0.16, ease }}
-            className="absolute right-0 top-full z-10 mt-2 flex flex-col gap-1 rounded-2xl border border-black/8 bg-white/95 p-1.5 shadow-[0_12px_32px_-8px_rgba(10,10,10,0.28)] backdrop-blur-xl"
+            className="absolute right-0 top-full z-10 mt-2 flex flex-col gap-1 rounded-2xl border border-ink/8 bg-white/95 p-1.5 shadow-[0_12px_32px_-8px_rgba(10,10,10,0.28)] backdrop-blur-xl"
           >
             {otherLocales.map((l) => (
               <li key={l}>
@@ -72,7 +72,7 @@ export function LanguageSwitcher({ dark = false }: { dark?: boolean }) {
                   role="option"
                   aria-selected={false}
                   onClick={() => handleSelect(l)}
-                  className="flex w-full items-center gap-2 whitespace-nowrap rounded-xl px-3 py-2 text-left text-sm font-medium text-[#0A0A0A] transition-colors hover:bg-black/5"
+                  className="flex w-full items-center gap-2 whitespace-nowrap rounded-xl px-3 py-2 text-left text-sm font-medium text-ink transition-colors hover:bg-ink/5"
                 >
                   <span aria-hidden="true" className="text-base leading-none">
                     {LOCALE_FLAG[l]}

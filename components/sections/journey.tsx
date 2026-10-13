@@ -21,10 +21,10 @@ export function Journey() {
   }));
 
   return (
-    <section id="trajetoria" data-nav-theme="light" className="bg-[#F8F8F8] py-28 text-dark">
+    <section id="trajetoria" data-nav-theme="light" className="bg-canvas py-28 text-ink">
       <div className="container">
         <div className="mb-16 flex flex-col gap-3 md:mb-20">
-          <span className="font-sans text-xs font-semibold uppercase tracking-[0.22em] text-dark/65">
+          <span className="font-sans text-xs font-semibold uppercase tracking-[0.22em] text-ink/65">
             {t.home.journey.eyebrow}
           </span>
           <h2 className="max-w-2xl font-display text-[40px] font-semibold leading-[1.08] tracking-tight md:text-5xl">
@@ -57,17 +57,17 @@ export function Journey() {
               />
 
               <div className="md:col-span-3">
-                <p className="font-display text-sm font-semibold text-dark/65">
+                <p className="font-display text-sm font-semibold text-ink/65">
                   {r.period}
                 </p>
               </div>
 
               <div className="md:col-span-9">
-                <h3 className="font-display text-xl font-semibold tracking-tight text-dark">
+                <h3 className="font-display text-xl font-semibold tracking-tight text-ink">
                   {r.company}
                 </h3>
-                <p className="mt-1 text-sm font-medium text-primary">{r.role}</p>
-                <p className="mt-3 max-w-xl text-sm leading-relaxed text-dark/65">
+                <p className="mt-1 text-sm font-medium text-link">{r.role}</p>
+                <p className="mt-3 max-w-xl text-sm leading-relaxed text-ink/65">
                   {r.highlight}
                 </p>
               </div>

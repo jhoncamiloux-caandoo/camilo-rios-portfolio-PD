@@ -66,26 +66,26 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   ];
 
   return (
-    <div className="min-h-screen overflow-x-clip bg-white text-[#0A0A0A]">
+    <div className="min-h-screen overflow-x-clip bg-surface text-ink">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
       <CaseHeader label="Blog" />
       <main className="pb-24 pt-28 md:pt-36">
         <article className="container max-w-3xl">
-          <nav aria-label="Breadcrumb" className="mb-8 flex flex-wrap gap-1 text-sm text-[#0A0A0A]/60">
-            <Link href="/" className="hover:text-[#622FFD]">Início</Link>
+          <nav aria-label="Breadcrumb" className="mb-8 flex flex-wrap gap-1 text-sm text-ink/60">
+            <Link href="/" className="hover:text-link">Início</Link>
             <span aria-hidden="true">/</span>
-            <Link href="/blog" className="hover:text-[#622FFD]">Blog</Link>
+            <Link href="/blog" className="hover:text-link">Blog</Link>
             <span aria-hidden="true">/</span>
             <span aria-current="page" className="line-clamp-1">{p.title}</span>
           </nav>
-          <p className="font-mono text-xs uppercase tracking-[0.18em] text-[#622FFD]">{CATEGORIES[p.category]}</p>
+          <p className="font-mono text-xs uppercase tracking-[0.18em] text-link">{CATEGORIES[p.category]}</p>
           {p.lab ? (
             <KineticTitle text={p.title} className="mt-4 font-display text-[38px] font-semibold leading-[1.04] tracking-tight md:text-[64px]" />
           ) : (
             <h1 className="mt-4 font-display text-[34px] font-semibold leading-[1.1] tracking-tight md:text-[52px]">{p.title}</h1>
           )}
-          <p className="mt-5 text-lg leading-relaxed text-[#0A0A0A]/70">{p.description}</p>
-          <p className="mt-6 text-sm text-[#0A0A0A]/60">
+          <p className="mt-5 text-lg leading-relaxed text-ink/70">{p.description}</p>
+          <p className="mt-6 text-sm text-ink/60">
             Jhon Camilo Rios · <time dateTime={p.date}>{new Date(p.date).toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" })}</time> · {p.readMinutes} min de leitura
             {p.updated && p.updated !== p.date && (
               <> · Atualizado em <time dateTime={p.updated}>{new Date(p.updated).toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" })}</time></>
@@ -100,7 +100,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           ) : null}
 
           {p.updateNote && (
-            <p className="mt-8 rounded-2xl border border-[#622FFD]/20 bg-[#622FFD]/[0.05] px-5 py-4 text-sm leading-relaxed text-[#0A0A0A]/80">{p.updateNote}</p>
+            <p className="mt-8 rounded-2xl border border-[#622FFD]/20 bg-[#622FFD]/[0.05] px-5 py-4 text-sm leading-relaxed text-ink/80">{p.updateNote}</p>
           )}
 
           <div className="mt-12">
@@ -108,7 +108,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               if (b.type === "h2") return <h2 key={i} className="mt-14 font-display text-2xl font-semibold leading-snug md:text-[32px]">{b.text}</h2>;
               if (b.type === "ul")
                 return (
-                  <ul key={i} className="mt-3 list-disc space-y-2 pl-6 text-[17px] leading-relaxed text-[#0A0A0A]/80 marker:text-[#622FFD]">
+                  <ul key={i} className="mt-3 list-disc space-y-2 pl-6 text-[17px] leading-relaxed text-ink/80 marker:text-link">
                     {b.items.map((it) => <li key={it}>{it}</li>)}
                   </ul>
                 );
@@ -116,13 +116,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               if (b.type === "visual") return <BlogVisual key={i} id={b.id} data={b.data} caption={b.caption} />;
               if (b.type === "quote")
                 return (
-                  <blockquote key={i} className="mt-6 border-l-4 border-[#622FFD] bg-[#F8F8F8] px-5 py-4 text-[17px] leading-relaxed text-[#0A0A0A]/85">
+                  <blockquote key={i} className="mt-6 border-l-4 border-[#622FFD] bg-canvas px-5 py-4 text-[17px] leading-relaxed text-ink/85">
                     {b.text}
                   </blockquote>
                 );
               return (
-                <p key={i} className="mt-5 text-[17px] leading-[1.75] text-[#0A0A0A]/80">
-                  {b.lead && <strong className="font-semibold text-[#0A0A0A]">{b.lead} </strong>}
+                <p key={i} className="mt-5 text-[17px] leading-[1.75] text-ink/80">
+                  {b.lead && <strong className="font-semibold text-ink">{b.lead} </strong>}
                   {b.text}
                 </p>
               );
@@ -130,9 +130,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </div>
 
           {p.sources && (
-            <section aria-label="Fontes" className="mt-12 rounded-2xl border border-black/[0.08] p-5">
-              <p className="font-mono text-xs uppercase tracking-[0.18em] text-[#0A0A0A]/60">Fontes e leituras</p>
-              <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm text-[#0A0A0A]/75">
+            <section aria-label="Fontes" className="mt-12 rounded-2xl border border-ink/[0.08] p-5">
+              <p className="font-mono text-xs uppercase tracking-[0.18em] text-ink/60">Fontes e leituras</p>
+              <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm text-ink/75">
                 {p.sources.map((s) => <li key={s}>{s}</li>)}
               </ul>
             </section>
@@ -140,24 +140,24 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
           <div className="mt-12 flex flex-wrap gap-2">
             {p.tags.map((tag) => (
-              <span key={tag} className="rounded-full border border-black/10 px-3 py-1 text-xs text-[#0A0A0A]/65">{tag}</span>
+              <span key={tag} className="rounded-full border border-ink/10 px-3 py-1 text-xs text-ink/65">{tag}</span>
             ))}
           </div>
 
           <aside aria-label="Case relacionado" className="mt-14">
-            <p className="font-mono text-xs uppercase tracking-[0.18em] text-[#0A0A0A]/60">Case relacionado</p>
-            <Link href={p.related.href} className="group mt-3 flex items-start justify-between gap-6 rounded-2xl border border-black/10 bg-[#F8F8F8] p-6 transition hover:border-[#622FFD]/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#622FFD]">
+            <p className="font-mono text-xs uppercase tracking-[0.18em] text-ink/60">Case relacionado</p>
+            <Link href={p.related.href} className="group mt-3 flex items-start justify-between gap-6 rounded-2xl border border-ink/10 bg-canvas p-6 transition hover:border-[#622FFD]/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#622FFD]">
               <span>
-                <span className="block font-display text-2xl font-semibold group-hover:text-[#622FFD]">{p.related.title}</span>
-                <span className="mt-2 block text-sm leading-relaxed text-[#0A0A0A]/70">{p.related.body}</span>
+                <span className="block font-display text-2xl font-semibold group-hover:text-link">{p.related.title}</span>
+                <span className="mt-2 block text-sm leading-relaxed text-ink/70">{p.related.body}</span>
               </span>
-              <ArrowUpRight className="h-5 w-5 shrink-0 text-[#0A0A0A]/50 group-hover:text-[#622FFD]" aria-hidden="true" />
+              <ArrowUpRight className="h-5 w-5 shrink-0 text-ink/50 group-hover:text-link" aria-hidden="true" />
             </Link>
           </aside>
 
-          {p.mediumUrl && <p className="mt-10 text-sm text-[#0A0A0A]/60">
+          {p.mediumUrl && <p className="mt-10 text-sm text-ink/60">
             Também publicado no{" "}
-            <a href={p.mediumUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-[#622FFD]">Medium</a>.
+            <a href={p.mediumUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-link">Medium</a>.
           </p>}
         </article>
       </main>

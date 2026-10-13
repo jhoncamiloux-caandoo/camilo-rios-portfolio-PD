@@ -154,7 +154,7 @@ export function Impact() {
     <section
       id="impacto"
       data-nav-theme="light"
-      className="relative overflow-hidden border-b border-neutral-200 bg-[#F8F8F8] py-32 text-[#0A0A0A]"
+      className="force-light relative overflow-hidden border-b border-line bg-canvas py-32 text-ink"
     >
       <CyberneticGridShader />
 
@@ -165,7 +165,7 @@ export function Impact() {
             <span className="block font-sans text-xs font-semibold uppercase tracking-[0.22em] text-neutral-600">
               {t.home.impact.eyebrow}
             </span>
-            <h2 className="font-display text-[48px] font-semibold leading-[1.05] tracking-tight text-[#0A0A0A] md:text-[56px]">
+            <h2 className="font-display text-[48px] font-semibold leading-[1.05] tracking-tight text-ink md:text-[56px]">
               {t.home.impact.title}
             </h2>
           </div>
@@ -190,9 +190,9 @@ export function Impact() {
                 delay: i * 0.1,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="group flex flex-col gap-4 rounded-2xl border border-neutral-200/60 bg-white/50 p-8 shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-neutral-300 hover:bg-white/80 hover:shadow-md"
+              className="group flex flex-col gap-4 rounded-2xl border border-line/60 bg-white/50 p-8 shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-neutral-300 hover:bg-white/80 hover:shadow-md"
             >
-              <h3 className="font-display text-2xl font-semibold tracking-tight text-[#0A0A0A] transition-colors duration-300 group-hover:text-primary">
+              <h3 className="font-display text-2xl font-semibold tracking-tight text-ink transition-colors duration-300 group-hover:text-primary">
                 {item.title}
               </h3>
               <p className="font-sans text-sm leading-relaxed text-neutral-600">

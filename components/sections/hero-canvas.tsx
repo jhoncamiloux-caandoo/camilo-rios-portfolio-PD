@@ -5,7 +5,7 @@ import { useEffect, useRef, type ReactNode } from "react";
 const FRAME_COUNT = 100;
 // Quantos frames baixar em paralelo. Mantém a rede livre no primeiro paint
 // (fonte/JS/LCP) em vez de disparar 100 requisições de uma vez.
-const LOAD_CONCURRENCY = 8;
+const LOAD_CONCURRENCY = 12;
 
 const frameSrc = (index: number) =>
   `/frames/camilo_${String(index).padStart(3, "0")}.webp`;
@@ -128,27 +128,9 @@ export function HeroCanvas({ children }: { children: ReactNode }) {
       images[0].fetchPriority = "high";
       await load(0);
 
-      // O resto espera a página terminar de carregar e o navegador ficar livre,
-      // para não disputar banda com textos, fontes e JS. Se a pessoa começar a
-      // rolar antes disso, a fila começa na hora. Mesmos frames, mesma qualidade.
-      await new Promise<void>((resolve) => {
-        let done = false;
-        const go = () => {
-          if (done) return;
-          done = true;
-          window.removeEventListener("scroll", go);
-          window.removeEventListener("pointerdown", go);
-          resolve();
-        };
-        window.addEventListener("scroll", go, { passive: true, once: true });
-        window.addEventListener("pointerdown", go, { once: true });
-        const idle = () => {
-          if (typeof window.requestIdleCallback === "function") window.requestIdleCallback(go, { timeout: 1500 });
-          else setTimeout(go, 300);
-        };
-        if (document.readyState === "complete") idle();
-        else window.addEventListener("load", idle, { once: true });
-      });
+      // O restante começa logo em seguida: o efeito depende do scroll desde o
+      // primeiro gesto, e esperar o "load"/idle deixava o rosto congelado em
+      // redes reais. São ~3 MB no total.
       if (cancelled) return;
 
       // Restante em fila ascendente, com concorrência limitada.
@@ -215,7 +197,7 @@ export function HeroCanvas({ children }: { children: ReactNode }) {
       id="inicio"
       ref={sectionRef}
       data-nav-theme="light"
-      className="relative h-[240vh] bg-light text-dark"
+      className="force-light relative h-[240vh] bg-canvas text-ink"
     >
       {/*
         Mobile: coluna — texto em cima (fluxo), imagem animada num box embaixo.
@@ -228,7 +210,7 @@ export function HeroCanvas({ children }: { children: ReactNode }) {
         </div>
 
         {/* IMAGEM ANIMADA — box emoldurado embaixo (mobile) / full-bleed atrás (desktop) */}
-        <div className="relative z-0 mx-4 mb-4 min-h-0 flex-1 overflow-hidden rounded-3xl border border-black/[0.06] bg-[#f2f2f4] shadow-[0_20px_60px_-24px_rgba(10,10,10,0.18)] md:absolute md:inset-0 md:m-0 md:flex-none md:rounded-none md:border-0 md:shadow-none">
+        <div className="relative z-0 mx-4 mb-4 min-h-0 flex-1 overflow-hidden rounded-3xl border border-ink/[0.06] bg-[#f2f2f4] shadow-[0_20px_60px_-24px_rgba(10,10,10,0.18)] md:absolute md:inset-0 md:m-0 md:flex-none md:rounded-none md:border-0 md:shadow-none">
           <canvas
             ref={canvasRef}
             aria-label="Sequência animada de Jhon Camilo Rios"
