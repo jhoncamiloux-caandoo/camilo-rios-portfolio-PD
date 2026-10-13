@@ -13,13 +13,6 @@ export const croPosts: Post[] = [
    "Landing Page",
    "Métricas"
   ],
-  "coverArt": {
-   "icons": [
-    "chart",
-    "filter",
-    "search"
-   ]
-  },
   "readMinutes": 4,
   "lab": true,
   "related": {
@@ -186,7 +179,8 @@ export const croPosts: Post[] = [
    "Unbounce, Conversion Benchmark Report: https://unbounce.com/conversion-benchmark-report/",
    "Unbounce, What is the average landing page conversion rate?: https://unbounce.com/average-conversion-rates-landing-pages/",
    "Unbounce Documentation, Understanding Industry Benchmarks: https://documentation.unbounce.com/hc/en-us/articles/4418424059796-Understanding-Industry-Benchmarks"
-  ]
+  ],
+  "cover": "/blog/landing-page-entender-por-que-nao-converte.webp"
  },
  {
   "slug": "cro-transformar-duvidas-em-experimentos",
@@ -199,13 +193,6 @@ export const croPosts: Post[] = [
    "Experimentos",
    "Teste A/B"
   ],
-  "coverArt": {
-   "icons": [
-    "flask",
-    "repeat",
-    "target"
-   ]
-  },
   "readMinutes": 4,
   "lab": true,
   "related": {
@@ -360,7 +347,8 @@ export const croPosts: Post[] = [
     "type": "p",
     "text": "No fim, trocar a cor de um botão é fácil. Mais difícil é entender por que alguém hesita, o que precisa saber para confiar e qual mudança realmente remove essa barreira."
    }
-  ]
+  ],
+  "cover": "/blog/cro-transformar-duvidas-em-experimentos.webp"
  },
  {
   "slug": "landing-page-promessa-experiencia-acao",
@@ -373,13 +361,6 @@ export const croPosts: Post[] = [
    "UX",
    "Conversão"
   ],
-  "coverArt": {
-   "icons": [
-    "megaphone",
-    "click",
-    "checkCircle"
-   ]
-  },
   "readMinutes": 4,
   "lab": true,
   "related": {
@@ -545,7 +526,8 @@ export const croPosts: Post[] = [
   "sources": [
    "Unbounce, Conversion Benchmark Report: https://unbounce.com/conversion-benchmark-report/",
    "Unbounce, What is the average landing page conversion rate?: https://unbounce.com/average-conversion-rates-landing-pages/"
-  ]
+  ],
+  "cover": "/blog/landing-page-promessa-experiencia-acao.webp"
  },
  {
   "slug": "dashboard-metricas-em-prioridades",
@@ -558,13 +540,6 @@ export const croPosts: Post[] = [
    "Dashboard",
    "Produto"
   ],
-  "coverArt": {
-   "icons": [
-    "chart",
-    "branch",
-    "target"
-   ]
-  },
   "readMinutes": 4,
   "lab": true,
   "related": {
@@ -749,6 +724,7 @@ export const croPosts: Post[] = [
     "type": "p",
     "text": "Essa é uma diferença importante entre reportar métricas e trabalhar de forma orientada por dados. O objetivo não é produzir mais gráficos. É diminuir a distância entre perceber um problema e tomar uma decisão fundamentada."
    }
-  ]
+  ],
+  "cover": "/blog/dashboard-metricas-em-prioridades.webp"
  }
 ];

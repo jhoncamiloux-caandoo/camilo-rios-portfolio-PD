@@ -8,6 +8,7 @@ import { SceneA11ySimulator, SceneA11yStats, SceneAnnotatedLine, SceneFunnelMath
 import { SceneAdaptiveRows, SceneFlipCases, SceneGears, SceneKpiDials, SceneLiveFix, SceneMenuSimplify, ScenePortalToSearch, SceneProactiveHelp, SceneThinkAloud, SceneThinkMeter, SceneTimerTips, SceneWhiteboard } from "./scenes-17-20";
 import { SceneBigStat, SceneBlinkTest, SceneCareerElevator, SceneDsToggle, SceneExploded, SceneGovernance, SceneMicroPlayground, SceneOrderFromChaos, SceneSharedTransition, SceneStateMachine, SceneTrajectories } from "./scenes-21-24";
 import { SceneConversionMath, SceneCroLoop, SceneDiagnosticFlow, SceneFunnelReading, SceneMessageMatch, SceneMetricBuckets, SceneMetricTree, SceneMobileKeyboard, ScenePeeking, ScenePostClick, ScenePriorityMatrix, SceneSignalToAction } from "./scenes-cro";
+import { SceneAiMetricTree, SceneAiValueDashboard, SceneChartChooser, SceneCroInvestigationMap, SceneDashboardHierarchy, SceneCroQuestions, SceneEvidenceMethods, SceneHumanCorrection, SceneHypothesisCard, SceneImpactNarrative, SceneNumberContext, SceneUxImpactEvidence } from "./scenes-advanced";
 import { SceneCriteriaMorph, SceneFiveInterfaces, SceneGapFiller, SceneIntentMorph, SceneOrdersStory, SceneTwoRoutes } from "./scenes-3-4";
 
 /* Registro das cenas de motion: o artigo aponta um id e passa o texto como dados. */
@@ -98,6 +99,18 @@ const SCENES: Record<string, React.FC<any>> = {
   "metric-buckets": SceneMetricBuckets,
   "metric-tree": SceneMetricTree,
   "signal-to-action": SceneSignalToAction,
+  "ai-value-dashboard": SceneAiValueDashboard,
+  "ai-metric-tree": SceneAiMetricTree,
+  "human-correction": SceneHumanCorrection,
+  "number-context": SceneNumberContext,
+  "chart-chooser": SceneChartChooser,
+  "dashboard-hierarchy": SceneDashboardHierarchy,
+  "cro-questions": SceneCroQuestions,
+  "cro-investigation-map": SceneCroInvestigationMap,
+  "hypothesis-card": SceneHypothesisCard,
+  "ux-impact-evidence": SceneUxImpactEvidence,
+  "evidence-methods": SceneEvidenceMethods,
+  "impact-narrative": SceneImpactNarrative,
 };
 
 export function BlogScene({ id, data }: { id: string; data: Record<string, unknown> }) {

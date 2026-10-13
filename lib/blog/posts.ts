@@ -44,6 +44,7 @@ export type Post = {
 import { mediumPosts } from "./posts-medium";
 import { promptPosts } from "./posts-prompt";
 import { croPosts } from "./posts-cro";
+import { advancedPosts } from "./posts-advanced";
 
 export const posts: Post[] = [
   {
@@ -146,6 +147,7 @@ export const posts: Post[] = [
   ...mediumPosts,
   ...promptPosts,
   ...croPosts,
+  ...advancedPosts,
 ];
 
 export const allPosts = posts;
