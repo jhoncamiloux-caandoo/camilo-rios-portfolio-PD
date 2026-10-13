@@ -198,7 +198,7 @@ export function Testimonials() {
                   aria-selected={i === index}
                   aria-label={`${t.home.testimonials.dotAriaPrefix} ${item.name}`}
                   onClick={() => go(i)}
-                  className="group flex h-5 w-5 items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#622FFD]"
+                  className="group flex h-6 w-6 items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#622FFD]"
                 >
                   <span
                     className={`block rounded-full transition-all duration-300 ${

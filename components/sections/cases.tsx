@@ -193,7 +193,7 @@ export function Cases() {
                   onClick={() => choose(on ? null : id)}
                   aria-pressed={on}
                   className={`group flex items-start gap-3 rounded-2xl border p-4 text-left transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 md:p-5 ${
-                    on ? "border-primary bg-primary/[0.06] shadow-[0_0_0_3px_rgba(98,47,253,0.12)]" : "border-dark/10 bg-surface hover:border-primary/40"
+                    on ? "border-primary bg-primary/[0.06] shadow-[0_0_0_3px_rgba(98,47,253,0.12)]" : "border-ink/10 bg-surface hover:border-primary/40"
                   }`}
                 >
                   <span
@@ -230,7 +230,7 @@ export function Cases() {
             onClick={() => page(-1)}
             disabled={edges.start}
             aria-label={p.prev}
-            className="absolute -left-3 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-dark/10 bg-surface text-ink shadow-lg transition-all hover:border-primary hover:text-link disabled:pointer-events-none disabled:opacity-0 md:flex lg:-left-6"
+            className="absolute -left-3 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-ink/10 bg-surface text-ink shadow-lg transition-all hover:border-primary hover:text-link disabled:pointer-events-none disabled:opacity-0 md:flex lg:-left-6"
           >
             <ChevronLeft className="h-5 w-5" aria-hidden="true" />
           </button>
@@ -239,7 +239,7 @@ export function Cases() {
             onClick={() => page(1)}
             disabled={edges.end}
             aria-label={p.next}
-            className="absolute -right-3 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-dark/10 bg-surface text-ink shadow-lg transition-all hover:border-primary hover:text-link disabled:pointer-events-none disabled:opacity-0 md:flex lg:-right-6"
+            className="absolute -right-3 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-ink/10 bg-surface text-ink shadow-lg transition-all hover:border-primary hover:text-link disabled:pointer-events-none disabled:opacity-0 md:flex lg:-right-6"
           >
             <ChevronRight className="h-5 w-5" aria-hidden="true" />
           </button>
@@ -261,12 +261,11 @@ export function Cases() {
                 >
                   <Link
                     href={item.href}
-                    className="group relative flex h-full flex-col rounded-md border border-dark/10 bg-surface p-7 text-left shadow-[0_24px_80px_rgba(10,10,10,0.06)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_32px_80px_rgba(98,47,253,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                    aria-label={`${c.ariaPrefix}: ${item.project}`}
+                    className="group relative flex h-full flex-col rounded-md border border-ink/10 bg-surface p-7 text-left shadow-[0_24px_80px_rgba(10,10,10,0.06)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_32px_80px_rgba(98,47,253,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                   >
                     <span
                       aria-hidden="true"
-                      className="absolute right-6 top-6 flex h-9 w-9 items-center justify-center rounded-full border border-dark/10 text-ink/65 transition-all duration-300 group-hover:rotate-45 group-hover:border-primary group-hover:bg-primary group-hover:text-white"
+                      className="absolute right-6 top-6 flex h-9 w-9 items-center justify-center rounded-full border border-ink/10 text-ink/65 transition-all duration-300 group-hover:rotate-45 group-hover:border-primary group-hover:bg-primary group-hover:text-white"
                     >
                       <ArrowUpRight className="h-4 w-4" strokeWidth={2} />
                     </span>
@@ -304,7 +303,7 @@ export function Cases() {
                             <div key={stat.label} className="flex flex-col items-center gap-1.5 px-2 text-center">
                               <Icon className="h-4 w-4 text-link/60" strokeWidth={1.8} aria-hidden="true" />
                               <span className="font-display text-lg font-semibold leading-none tracking-tight tabular-nums text-ink">{stat.value}</span>
-                              <span className="text-[10.5px] leading-tight tracking-wide text-ink/65">{stat.label}</span>
+                              <span className="text-[11.5px] leading-tight tracking-wide text-ink/70">{stat.label}</span>
                             </div>
                           );
                         })}

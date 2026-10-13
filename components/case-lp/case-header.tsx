@@ -21,7 +21,7 @@ export function CaseHeader({
         {/* Voltar ao portfólio */}
         <Link
           href="/"
-          className="group flex items-center gap-2 text-sm font-medium text-ink/65 transition-colors hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#622FFD]"
+          className="group flex min-h-11 items-center gap-2 text-sm font-medium text-ink/65 transition-colors hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#622FFD]"
         >
           <ArrowLeft
             className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-0.5"

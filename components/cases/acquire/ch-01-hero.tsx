@@ -138,6 +138,7 @@ export function Ch01Hero() {
           >
             <BrowserMockup
               src="/lp-hero.webp"
+              priority
               alt={c.imageAlt}
               url="clintdigital.com.br/agente-ia"
             />

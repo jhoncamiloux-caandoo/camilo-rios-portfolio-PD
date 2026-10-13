@@ -42,10 +42,11 @@ export function Sticky({ height = 300, children, className = "" }: { height?: nu
   }, []);
   const { scrollYProgress } = useScroll({ target: ref, offset: pin ? ["start start", "end end"] : ["start 0.85", "end 0.55"] });
   const done = useTransform(scrollYProgress, () => 1);
-  const sticky = pin && !reduce;
+  // O layout (altura e pin) vem do CSS (.scene-sticky em globals.css), então o HTML do servidor
+  // já chega certo em qualquer tela e não há salto de layout (CLS) na hidratação. O `pin` só ajusta o scroll.
   return (
-    <div ref={ref} className={`relative ${className}`} style={{ height: sticky ? `${height}vh` : "auto" }}>
-      <div className={sticky ? "sticky top-0 flex h-[100svh] items-center overflow-hidden py-10" : "py-16"}>{children(reduce ? done : scrollYProgress)}</div>
+    <div ref={ref} className={`scene-sticky relative ${className}`} style={{ ["--scene-h" as string]: `${height}vh` }}>
+      <div className="scene-sticky-inner">{children(reduce ? done : scrollYProgress)}</div>
     </div>
   );
 }

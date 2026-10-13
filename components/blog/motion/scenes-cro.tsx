@@ -31,22 +31,22 @@ export function SceneConversionMath() {
       <div ref={ref} className="container max-w-6xl py-20 md:py-28">
         <Eyebrow color={M.p}>Exemplo ilustrativo do texto</Eyebrow>
         <div className="mt-6 flex flex-wrap items-end gap-x-6 gap-y-4 font-display font-semibold tracking-[-0.03em]">
-          <motion.div initial={false} animate={{ opacity: k >= 1 ? 1 : 0.4 }}>
+          <motion.div initial={false} animate={{ opacity: k >= 1 ? 1 : 0.55 }}>
             <p className="text-6xl md:text-8xl">{k >= 1 ? <CountUp to={300} /> : "0"}</p>
-            <p className="mt-1 font-sans text-sm font-normal tracking-normal text-[#0A0A0A]/60">leads</p>
+            <p className="mt-1 font-sans text-sm font-normal tracking-normal text-[#0A0A0A]/70">leads</p>
           </motion.div>
           <span aria-hidden="true" className="pb-6 text-4xl text-[#0A0A0A]/40 md:text-6xl">÷</span>
-          <motion.div initial={false} animate={{ opacity: k >= 2 ? 1 : 0.4 }}>
+          <motion.div initial={false} animate={{ opacity: k >= 2 ? 1 : 0.55 }}>
             <p className="text-6xl md:text-8xl">10.000</p>
-            <p className="mt-1 font-sans text-sm font-normal tracking-normal text-[#0A0A0A]/60">sessões</p>
+            <p className="mt-1 font-sans text-sm font-normal tracking-normal text-[#0A0A0A]/70">sessões</p>
           </motion.div>
-          <span className="pb-6 text-4xl text-[#0A0A0A]/30 md:text-6xl">=</span>
-          <motion.div initial={false} animate={{ opacity: k >= 3 ? 1 : 0.4, scale: k >= 3 ? 1 : 0.9 }} style={{ transformOrigin: "left bottom" }}>
+          <span aria-hidden="true" className="pb-6 text-4xl text-[#0A0A0A]/40 md:text-6xl">=</span>
+          <motion.div initial={false} animate={{ opacity: k >= 3 ? 1 : 0.55, scale: k >= 3 ? 1 : 0.9 }} style={{ transformOrigin: "left bottom" }}>
             <p className="text-6xl text-[#622FFD] md:text-8xl">{k >= 3 ? <CountUp to={3} /> : 0}%</p>
-            <p className="mt-1 font-sans text-sm font-normal tracking-normal text-[#0A0A0A]/60">conversão</p>
+            <p className="mt-1 font-sans text-sm font-normal tracking-normal text-[#0A0A0A]/70">conversão</p>
           </motion.div>
         </div>
-        <motion.p initial={false} animate={{ opacity: k >= 3 ? 1 : 0.4 }} className="mt-8 max-w-2xl font-display text-2xl font-semibold leading-snug">
+        <motion.p initial={false} animate={{ opacity: k >= 3 ? 1 : 0.55 }} className="mt-8 max-w-2xl font-display text-2xl font-semibold leading-snug">
           O número descreve o resultado. <span className="text-[#622FFD]">Não aponta a causa.</span>
         </motion.p>
       </div>
@@ -105,10 +105,10 @@ export function SceneFunnelReading({ steps }: { steps: { t: string; q: string }[
   return (
     <Bleed tone="light">
       <div className="container grid max-w-6xl grid-cols-1 gap-8 py-20 md:grid-cols-[1fr_1.2fr] md:py-28">
-        <ol className="flex flex-col gap-1.5" role="tablist" aria-label="Etapas da jornada">
+        <ol className="flex flex-col gap-1.5" aria-label="Etapas da jornada">
           {steps.map((s, k) => (
             <li key={s.t}>
-              <button type="button" role="tab" aria-selected={i === k} onClick={() => setI(k)} onMouseEnter={() => setI(k)}
+              <button type="button" aria-pressed={i === k} onClick={() => setI(k)} onMouseEnter={() => setI(k)}
                 className={`flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#622FFD] ${i === k ? "bg-[#0A0A0A] text-white" : "text-[#0A0A0A]/75 hover:bg-black/[0.04]"}`}>
                 <span className={`font-mono text-xs ${i === k ? "text-[#A3E635]" : "text-[#622FFD]"}`}>{String(k + 1).padStart(2, "0")}</span>
                 <span className="font-display text-lg font-semibold">{s.t}</span>

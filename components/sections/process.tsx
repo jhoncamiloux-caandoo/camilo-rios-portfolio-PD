@@ -441,7 +441,7 @@ function StepRow({
 
         {/* Text */}
         <motion.div
-          animate={{ opacity: isActive ? 1 : 0.35 }}
+          animate={{ opacity: isActive ? 1 : 0.55 }}
           transition={{ duration: 0.4 }}
           className="flex flex-col gap-4 pb-8 pt-1.5"
         >

@@ -160,3 +160,14 @@ body {
   outline: 2px solid rgb(var(--c-focus)) !important;
   outline-offset: 3px !important;
 }
+
+/* Cenas com pin (components/blog/motion/primitives.tsx → Sticky). Em CSS para o servidor já
+   renderizar a altura certa: telas pequenas/baixas ou movimento reduzido não prendem a cena. */
+.scene-sticky-inner { padding-block: 4rem; }
+@media (min-width: 768px) and (min-height: 640px) and (prefers-reduced-motion: no-preference) {
+  .scene-sticky { height: var(--scene-h); }
+  .scene-sticky-inner {
+    position: sticky; top: 0; display: flex; height: 100svh; align-items: center;
+    overflow: hidden; padding-block: 2.5rem;
+  }
+}

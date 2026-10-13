@@ -371,11 +371,14 @@ export function FlowDiagram({
 /* ── Browser mockup genérico — chrome + screenshot real ───────────── */
 export function BrowserMockup({
   src,
+  priority = false,
   alt,
   url = "clintdigital.com.br",
   className = "",
 }: {
   src: string;
+  /** Imagem acima da dobra (LCP): carrega sem lazy e com prioridade alta. */
+  priority?: boolean;
   alt: string;
   url?: string;
   className?: string;
@@ -396,7 +399,7 @@ export function BrowserMockup({
           </div>
         </div>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img loading="lazy" decoding="async" src={src} alt={alt} className="block w-full object-cover object-top" draggable={false} />
+        <img loading={priority ? "eager" : "lazy"} fetchPriority={priority ? "high" : "auto"} decoding="async" src={src} alt={alt} className="block w-full object-cover object-top" draggable={false} />
       </div>
     </div>
   );
