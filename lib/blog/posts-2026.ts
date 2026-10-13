@@ -13,13 +13,6 @@ export const trendPosts: Post[] = [
    "Agentes",
    "UX"
   ],
-  "coverArt": {
-   "icons": [
-    "bot",
-    "hand",
-    "undo"
-   ]
-  },
   "readMinutes": 4,
   "lab": true,
   "related": {
@@ -191,7 +184,8 @@ export const trendPosts: Post[] = [
    "Nielsen Norman Group, tópicos sobre IA e interação humano-computador: https://www.nngroup.com/topic/artificial-intelligence/",
    "OpenAI, documentação de avaliações de sistemas com IA: https://platform.openai.com/docs/guides/evals",
    "W3C, WCAG: https://www.w3.org/WAI/standards-guidelines/wcag/"
-  ]
+  ],
+  "cover": "/blog/ia-agentes-ux-desenhar-limites.webp"
  },
  {
   "slug": "descoberta-de-produtos-pesquisa-com-ia",
@@ -205,13 +199,6 @@ export const trendPosts: Post[] = [
    "Arquitetura da informação",
    "Conteúdo"
   ],
-  "coverArt": {
-   "icons": [
-    "search",
-    "sparkles",
-    "compass"
-   ]
-  },
   "readMinutes": 4,
   "lab": true,
   "related": {
@@ -360,7 +347,8 @@ export const trendPosts: Post[] = [
    "Google Search Central, conteúdo útil e confiável: https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
    "Google Search Central, dados estruturados: https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data",
    "Nielsen Norman Group, arquitetura da informação: https://www.nngroup.com/topic/information-architecture/"
-  ]
+  ],
+  "cover": "/blog/descoberta-de-produtos-pesquisa-com-ia.webp"
  },
  {
   "slug": "personalizacao-sem-contexto-piora-experiencia",
@@ -373,13 +361,6 @@ export const trendPosts: Post[] = [
    "UX",
    "Privacidade"
   ],
-  "coverArt": {
-   "icons": [
-    "user",
-    "settings",
-    "eye"
-   ]
-  },
   "readMinutes": 4,
   "lab": true,
   "related": {
@@ -531,7 +512,8 @@ export const trendPosts: Post[] = [
    "Comissão Europeia, proteção de dados e GDPR: https://commission.europa.eu/law/law-topic/data-protection/data-protection-eu_en",
    "W3C, WCAG: https://www.w3.org/WAI/standards-guidelines/wcag/",
    "Nielsen Norman Group: https://www.nngroup.com/"
-  ]
+  ],
+  "cover": "/blog/personalizacao-sem-contexto-piora-experiencia.webp"
  },
  {
   "slug": "acessibilidade-qualidade-de-produto",
@@ -544,13 +526,6 @@ export const trendPosts: Post[] = [
    "Design Systems",
    "Qualidade"
   ],
-  "coverArt": {
-   "icons": [
-    "accessibility",
-    "keyboard",
-    "contrast"
-   ]
-  },
   "readMinutes": 4,
   "lab": true,
   "related": {
@@ -709,6 +684,7 @@ export const trendPosts: Post[] = [
    "W3C, Web Content Accessibility Guidelines: https://www.w3.org/WAI/standards-guidelines/wcag/",
    "W3C, WAI Tutorials: https://www.w3.org/WAI/tutorials/",
    "W3C, Accessibility Fundamentals: https://www.w3.org/WAI/fundamentals/"
-  ]
+  ],
+  "cover": "/blog/acessibilidade-qualidade-de-produto.webp"
  }
 ];
