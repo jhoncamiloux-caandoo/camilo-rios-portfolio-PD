@@ -20,3 +20,21 @@ for (const l of ["en", "es"]) {
   console.log(l, Object.keys(index).length, "artigos");
 }
 process.exitCode = bad ? 1 : 0;
+
+/* Dicionário das cenas: junta i18n-work/ui/<lote>.<idioma>.json em public/blog-i18n/<idioma>/ui.json. */
+for (const l of ["en", "es"]) {
+  const dict = {};
+  if (fs.existsSync("i18n-work/ui"))
+    for (const f of fs.readdirSync("i18n-work/ui").filter((f) => f.endsWith(`.${l}.json`) && !f.startsWith("._"))) {
+      const d = JSON.parse(fs.readFileSync(`i18n-work/ui/${f}`));
+      for (const [k, v] of Object.entries(d)) {
+        if (typeof v !== "string" || v.includes("—")) { console.log("ui inválido", l, f, k); bad++; continue; }
+        const vars = (s) => (s.match(/\{\w+\}/g) || []).sort().join();
+        if (vars(k) !== vars(v)) { console.log("marcadores", l, f, k); bad++; continue; }
+        dict[k] = v;
+      }
+    }
+  fs.writeFileSync(`public/blog-i18n/${l}/ui.json`, JSON.stringify(dict));
+  console.log(l, "ui", Object.keys(dict).length, "textos");
+}
+process.exitCode = bad ? 1 : 0;

@@ -75,3 +75,12 @@ export function PostDate({ date, month = "long" }: { date: string; month?: "long
   const { locale } = useLocale();
   return <time dateTime={date}>{new Date(date + "T12:00:00").toLocaleDateString(DATE_LOCALE[locale], { day: "2-digit", month, year: "numeric" })}</time>;
 }
+
+/* Textos das cenas e visuais: o português é a chave; inglês e espanhol vêm de /blog-i18n/<idioma>/ui.json.
+   Uso: const t = useT(); t("Arraste o tempo") ou t("quadro {n} de 180", { n }). */
+type Vars = Record<string, string | number>;
+const fill = (s: string, v?: Vars) => (v ? s.replace(/\{(\w+)\}/g, (m, k) => (k in v ? String(v[k]) : m)) : s);
+export function useT() {
+  const dict = useJson<Record<string, string>>((l) => `/blog-i18n/${l}/ui.json`);
+  return (pt: string, v?: Vars) => fill(dict?.[pt] ?? pt, v);
+}

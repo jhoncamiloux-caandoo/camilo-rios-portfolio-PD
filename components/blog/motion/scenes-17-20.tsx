@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useInView, useReducedMotion, useTransform, type MotionValue } from "framer-motion";
 import { Bleed, Eyebrow, M, Sticky, useRange, useStep } from "./primitives";
+import { useT } from "../i18n";
 
 function useTimeline(times: number[]) {
   const ref = useRef<HTMLDivElement>(null);
@@ -40,10 +41,11 @@ function BoardInner({ p, title, note }: { p: MotionValue<number>; title: string;
   ];
   const EDGES = [[0, 1], [1, 2], [1, 3], [3, 4], [4, 5], [2, 5]];
   const s = useStep(useRange(p, 0.05, 0.9), NODES.length + 1);
+  const t = useT();
   return (
     <div className="container grid max-w-6xl grid-cols-1 items-center gap-8 md:grid-cols-[0.8fr_1.2fr]">
       <div>
-        <Eyebrow color={M.p}>Quadro ao vivo</Eyebrow>
+        <Eyebrow color={M.p}>{t("Quadro ao vivo")}</Eyebrow>
         <p className="mt-3 font-display text-3xl font-semibold leading-tight md:text-5xl">{title}</p>
         <p className="mt-4 text-[15px] text-[#0A0A0A]/70">{note}</p>
       </div>
@@ -59,7 +61,7 @@ function BoardInner({ p, title, note }: { p: MotionValue<number>; title: string;
               <g key={n.t}>
                 <motion.path d={`M${n.x - 50} ${n.y - 22} C ${n.x - 20} ${n.y - 27}, ${n.x + 30} ${n.y - 25}, ${n.x + 52} ${n.y - 20} C ${n.x + 56} ${n.y}, ${n.x + 53} ${n.y + 16}, ${n.x + 48} ${n.y + 22} C ${n.x + 10} ${n.y + 26}, ${n.x - 30} ${n.y + 24}, ${n.x - 52} ${n.y + 20} C ${n.x - 56} ${n.y + 2}, ${n.x - 54} ${n.y - 12}, ${n.x - 50} ${n.y - 22}`}
                   fill="none" stroke={i === NODES.length - 1 ? "#16a34a" : "#0A0A0A"} strokeWidth="2.5" strokeLinecap="round" initial={false} animate={{ pathLength: on ? 1 : 0 }} transition={{ duration: 0.7 }} />
-                <motion.text x={n.x} y={n.y + 6} textAnchor="middle" fontSize="17" fontFamily={HAND} fill="#0A0A0A" initial={false} animate={{ opacity: on ? 1 : 0 }} transition={{ delay: on ? 0.4 : 0 }}>{n.t}</motion.text>
+                <motion.text x={n.x} y={n.y + 6} textAnchor="middle" fontSize="17" fontFamily={HAND} fill="#0A0A0A" initial={false} animate={{ opacity: on ? 1 : 0 }} transition={{ delay: on ? 0.4 : 0 }}>{t(n.t)}</motion.text>
               </g>
             );
           })}
@@ -74,6 +76,7 @@ export function SceneTimerTips({ lead, tips }: { lead: string; tips: string[] })
   const { ref, k } = useTimeline(tips.map((_, i) => 500 + i * 900));
   const reduce = useReducedMotion();
   const [sec, setSec] = useState(45 * 60);
+  const t = useT();
   useEffect(() => {
     if (k === 0 || reduce) return;
     const id = setInterval(() => setSec((v) => Math.max(0, v - 37)), 60);
@@ -99,7 +102,7 @@ export function SceneTimerTips({ lead, tips }: { lead: string; tips: string[] })
             );
           })}
         </ul>
-        <p className="mt-3 text-xs text-white/45">Relógio ilustrativo.</p>
+        <p className="mt-3 text-xs text-white/45">{t("Relógio ilustrativo.")}</p>
       </div>
     </Bleed>
   );
@@ -108,12 +111,13 @@ export function SceneTimerTips({ lead, tips }: { lead: string; tips: string[] })
 /* Pensar em voz alta: as frases do texto aparecem como fala, com o microfone pulsando. */
 export function SceneThinkAloud({ lines }: { lines: string[] }) {
   const { ref, k } = useTimeline(lines.map((_, i) => 400 + i * 1100));
+  const t = useT();
   return (
     <Bleed tone="violet">
       <div ref={ref} className="container flex max-w-5xl flex-col gap-4 py-20 md:py-28">
         <div className="flex items-center gap-3" aria-hidden="true">
           <motion.span className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-xl" animate={{ boxShadow: ["0 0 0 0 rgba(163,230,53,0.6)", "0 0 0 18px rgba(163,230,53,0)"] }} transition={{ duration: 1.4, repeat: Infinity }}>🎙️</motion.span>
-          <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/80">pensando em voz alta</span>
+          <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/80">{t("pensando em voz alta")}</span>
         </div>
         {lines.map((l, i) => (
           <motion.p key={l} initial={false} animate={{ opacity: i < k ? 1 : 0.4, x: i < k ? 0 : -10 }} transition={{ duration: 0.5 }}
@@ -246,19 +250,20 @@ export function SceneAdaptiveRows({ title, note }: { title: string; note: string
   const ROWS1 = ["Ficção científica", "Porque você assistiu", "Em alta", "Comédia"];
   const { ref, k } = useTimeline([1200, 2600]);
   const rows = k >= 2 ? ROWS1 : ROWS0;
+  const t = useT();
   return (
     <Bleed>
       <div ref={ref} className="container grid max-w-6xl grid-cols-1 items-center gap-10 py-20 md:grid-cols-2 md:py-28">
         <div>
-          <Eyebrow>Interface adaptativa</Eyebrow>
+          <Eyebrow>{t("Interface adaptativa")}</Eyebrow>
           <p className="mt-3 font-display text-3xl font-semibold leading-tight md:text-5xl">{title}</p>
           <p className="mt-4 text-white/75">{note}</p>
-          <p className="mt-4 font-mono text-xs text-white/50">{k >= 1 ? "▶ assistiu: 3 títulos de ficção científica" : "…"}</p>
+          <p className="mt-4 font-mono text-xs text-white/50">{k >= 1 ? t("▶ assistiu: 3 títulos de ficção científica") : "…"}</p>
         </div>
         <div className="rounded-[22px] border border-white/10 bg-[#111118] p-4" aria-hidden="true">
           {rows.map((r) => (
             <motion.div key={r} layout transition={{ duration: 0.7, ease: M.ease }} className="mb-3">
-              <p className={`mb-1.5 text-xs font-semibold ${r === "Porque você assistiu" || r === "Ficção científica" ? "text-[#A3E635]" : "text-white/70"}`}>{r}</p>
+              <p className={`mb-1.5 text-xs font-semibold ${r === "Porque você assistiu" || r === "Ficção científica" ? "text-[#A3E635]" : "text-white/70"}`}>{t(r)}</p>
               <div className="flex gap-1.5">{[0, 1, 2, 3, 4].map((n) => <div key={n} className={`aspect-[2/3] flex-1 rounded-md ${r === "Ficção científica" ? "bg-[#622FFD]/50" : r === "Porque você assistiu" ? "bg-[#A3E635]/30" : "bg-white/[0.08]"}`} />)}</div>
             </motion.div>
           ))}
@@ -278,31 +283,32 @@ export function SceneLiveFix({ title, steps }: { title: string; steps: string[] 
 }
 function FixInner({ p, title, steps }: { p: MotionValue<number>; title: string; steps: string[] }) {
   const s = useStep(p, 4);
+  const t = useT();
   return (
     <div className="container grid max-w-6xl grid-cols-1 items-center gap-10 md:grid-cols-2">
       <div>
         <p className="font-display text-3xl font-semibold leading-tight md:text-4xl">{title}</p>
         <ol className="mt-6 flex flex-col gap-2">
-          {steps.map((t, i) => <li key={t} className={`flex items-center gap-3 text-[15px] transition-opacity duration-500 ${i <= s ? "opacity-100" : "opacity-40"}`}><span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#622FFD] font-mono text-[11px] text-white">{i + 1}</span>{t}</li>)}
+          {steps.map((x, i) => <li key={x} className={`flex items-center gap-3 text-[15px] transition-opacity duration-500 ${i <= s ? "opacity-100" : "opacity-40"}`}><span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#622FFD] font-mono text-[11px] text-white">{i + 1}</span>{x}</li>)}
         </ol>
-        <p className="mt-4 text-xs text-[#0A0A0A]/50">Exemplo ilustrativo.</p>
+        <p className="mt-4 text-xs text-[#0A0A0A]/50">{t("Exemplo ilustrativo.")}</p>
       </div>
       <div className="relative h-[340px] overflow-hidden rounded-[22px] border border-black/10 bg-white p-5 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.25)]" aria-hidden="true">
         <div className="h-3 w-1/2 rounded bg-[#0A0A0A]/80" />
         <div className="mt-2 h-2 w-3/4 rounded bg-[#0A0A0A]/20" />
         <motion.div layout className="mt-4 h-20 rounded-xl bg-[#0A0A0A]/[0.06]" />
         <motion.div layout className="mt-3 space-y-1.5">{[0, 1, 2].map((n) => <div key={n} className="h-2 rounded bg-[#0A0A0A]/12" />)}</motion.div>
-        <motion.span layout className={`absolute left-5 rounded-full bg-[#622FFD] px-5 py-2.5 text-sm font-semibold text-white ${s >= 2 ? "top-[78px]" : "top-[290px]"}`}>Começar agora</motion.span>
+        <motion.span layout className={`absolute left-5 rounded-full bg-[#622FFD] px-5 py-2.5 text-sm font-semibold text-white ${s >= 2 ? "top-[78px]" : "top-[290px]"}`}>{t("Começar agora")}</motion.span>
         <motion.div className="pointer-events-none absolute left-0 right-0 top-0 h-1/2 bg-gradient-to-b from-[#f87171]/35 to-transparent" initial={false} animate={{ opacity: s === 1 ? 1 : 0 }} />
         <motion.div className="pointer-events-none absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-[#93c5fd]/40 to-transparent" initial={false} animate={{ opacity: s === 1 ? 1 : 0 }} />
         <AnimatePresence>
           {s >= 1 && s < 3 && (
             <motion.p initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="absolute right-4 top-4 max-w-[180px] rounded-xl bg-[#0d0d12] px-3 py-2 text-xs text-white">
-              {s === 1 ? "A maioria para de rolar antes do botão." : "Sugestão: subir o botão para a primeira dobra."}
+              {s === 1 ? t("A maioria para de rolar antes do botão.") : t("Sugestão: subir o botão para a primeira dobra.")}
             </motion.p>
           )}
         </AnimatePresence>
-        {s >= 3 && <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="absolute bottom-4 right-4 rounded-full bg-[#A3E635] px-3 py-1 text-xs font-semibold text-[#0d0d12]">Teste A/B no ar</motion.p>}
+        {s >= 3 && <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="absolute bottom-4 right-4 rounded-full bg-[#A3E635] px-3 py-1 text-xs font-semibold text-[#0d0d12]">{t("Teste A/B no ar")}</motion.p>}
       </div>
     </div>
   );
@@ -311,6 +317,7 @@ function FixInner({ p, title, steps }: { p: MotionValue<number>; title: string; 
 /* Prevendo a dúvida: o checkout oferece ajuda antes da pessoa travar. */
 export function SceneProactiveHelp({ title, note }: { title: string; note: string }) {
   const { ref, k } = useTimeline([600, 1800, 3000]);
+  const t = useT();
   return (
     <Bleed>
       <div ref={ref} className="container grid max-w-6xl grid-cols-1 items-center gap-10 py-20 md:grid-cols-2 md:py-28">
@@ -320,29 +327,29 @@ export function SceneProactiveHelp({ title, note }: { title: string; note: strin
         </div>
         <div className="rounded-[22px] border border-white/10 bg-[#111118] p-5" aria-hidden="true">
           <div className="flex items-center gap-2">
-            {["Carrinho", "Entrega", "Pagamento", "Pronto"].map((t, i) => (
-              <div key={t} className="flex flex-1 flex-col gap-1">
+            {["Carrinho", "Entrega", "Pagamento", "Pronto"].map((x, i) => (
+              <div key={x} className="flex flex-1 flex-col gap-1">
                 <div className={`h-1.5 rounded-full ${i < 1 || (i === 1 && k >= 3) ? "bg-[#A3E635]" : i === 1 ? "bg-[#fbbf24]" : "bg-white/15"}`} />
-                <span className="text-[10px] text-white/60">{t}</span>
+                <span className="text-[10px] text-white/60">{t(x)}</span>
               </div>
             ))}
           </div>
           <div className="mt-5 space-y-2">
             <div className="h-9 rounded-lg bg-white/[0.06]" />
             <div className={`relative h-9 rounded-lg border ${k >= 1 && k < 3 ? "border-[#fbbf24]" : "border-white/10"} bg-white/[0.04]`}>
-              <span className="absolute left-3 top-2 text-xs text-white/50">Frete</span>
+              <span className="absolute left-3 top-2 text-xs text-white/50">{t("Frete")}</span>
             </div>
           </div>
           <AnimatePresence>
             {k >= 2 && k < 3 && (
               <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="mt-3 flex items-start gap-2 rounded-xl bg-[#622FFD]/25 p-3 text-sm text-white">
                 <img src="/cases/clint/ai-logo.webp" alt="" className="h-6 w-6 rounded-full" />
-                Muita gente para aqui. Quer comparar o frete expresso e o normal?
+                {t("Muita gente para aqui. Quer comparar o frete expresso e o normal?")}
               </motion.div>
             )}
           </AnimatePresence>
-          {k >= 3 && <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mt-3 text-sm text-[#A3E635]">✓ Etapa concluída sem travar</motion.p>}
-          <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.14em] text-white/40">exemplo fictício</p>
+          {k >= 3 && <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mt-3 text-sm text-[#A3E635]">✓ {t("Etapa concluída sem travar")}</motion.p>}
+          <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.14em] text-white/40">{t("exemplo fictício")}</p>
         </div>
       </div>
     </Bleed>
@@ -366,30 +373,31 @@ function MeterInner({ p, title }: { p: MotionValue<number>; title: string }) {
   const fill = useTransform(p, [0, 0.6, 0.7, 0.8], ["0%", "92%", "92%", "12%"]);
   const sOp = useTransform(simple, [0, 1], [0, 1]);
   const cOp = useTransform(simple, [0, 1], [1, 0]);
+  const t = useT();
   return (
     <div className="container grid max-w-6xl grid-cols-1 items-center gap-10 md:grid-cols-2">
       <div>
         <p className="font-display text-3xl font-semibold leading-tight md:text-5xl">{title}</p>
-        <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.2em] text-white/60">esforço mental</p>
+        <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.2em] text-white/60">{t("esforço mental")}</p>
         <div className="mt-2 h-4 w-full overflow-hidden rounded-full bg-white/10" aria-hidden="true">
           <motion.div className="h-full rounded-full bg-gradient-to-r from-[#A3E635] via-[#fbbf24] to-[#f87171]" style={{ width: fill }} />
         </div>
-        <p className="mt-3 text-sm text-white/60">Ilustração da ideia de Krug: cada pergunta que o usuário faz a si mesmo é um custo.</p>
+        <p className="mt-3 text-sm text-white/60">{t("Ilustração da ideia de Krug: cada pergunta que o usuário faz a si mesmo é um custo.")}</p>
       </div>
       <div className="relative h-[320px] rounded-[22px] border border-white/10 bg-[#111118] p-5" aria-hidden="true">
         <motion.div style={{ opacity: cOp }} className="absolute inset-5">
-          <div className="flex gap-1.5">{["Shows", "Teatro", "Esportes", "Mais", "Ofertas", "Ajuda"].map((m) => <span key={m} className="rounded bg-white/[0.08] px-1.5 py-1 text-[10px] text-white/60">{m}</span>)}</div>
+          <div className="flex gap-1.5">{["Shows", "Teatro", "Esportes", "Mais", "Ofertas", "Ajuda"].map((m) => <span key={m} className="rounded bg-white/[0.08] px-1.5 py-1 text-[10px] text-white/60">{t(m)}</span>)}</div>
           <div className="mt-3 grid grid-cols-3 gap-2">{[0, 1, 2, 3, 4, 5].map((n) => <div key={n} className="h-14 rounded-lg bg-white/[0.06]" />)}</div>
-          <div className="mt-3 flex gap-2">{["Ver", "Saiba mais", "Comprar?", "Detalhes"].map((b) => <span key={b} className="rounded-full border border-white/20 px-2.5 py-1 text-[10px] text-white/70">{b}</span>)}</div>
-          {THOUGHTS.map((t, i) => (
-            <motion.span key={t} className="absolute rounded-2xl bg-white px-3 py-1.5 text-xs font-semibold text-[#0d0d12] shadow-lg" style={{ left: `${[8, 46, 18, 52, 30][i]}%`, top: `${[46, 30, 70, 62, 14][i]}%` }}
-              initial={false} animate={{ scale: i < s ? 1 : 0, opacity: i < s ? 1 : 0 }} transition={{ type: "spring", stiffness: 380, damping: 18 }}>{t}</motion.span>
+          <div className="mt-3 flex gap-2">{["Ver", "Saiba mais", "Comprar?", "Detalhes"].map((b) => <span key={b} className="rounded-full border border-white/20 px-2.5 py-1 text-[10px] text-white/70">{t(b)}</span>)}</div>
+          {THOUGHTS.map((x, i) => (
+            <motion.span key={x} className="absolute rounded-2xl bg-white px-3 py-1.5 text-xs font-semibold text-[#0d0d12] shadow-lg" style={{ left: `${[8, 46, 18, 52, 30][i]}%`, top: `${[46, 30, 70, 62, 14][i]}%` }}
+              initial={false} animate={{ scale: i < s ? 1 : 0, opacity: i < s ? 1 : 0 }} transition={{ type: "spring", stiffness: 380, damping: 18 }}>{t(x)}</motion.span>
           ))}
         </motion.div>
         <motion.div style={{ opacity: sOp }} className="absolute inset-5 flex flex-col items-center justify-center gap-4 text-center">
-          <p className="font-display text-xl font-semibold">Show de sexta · 21h</p>
-          <span className="rounded-full bg-[#622FFD] px-8 py-3 font-semibold text-white">Comprar ingresso</span>
-          <span className="text-xs text-[#A3E635]">Uma ação clara. Nenhuma dúvida.</span>
+          <p className="font-display text-xl font-semibold">{t("Show de sexta · 21h")}</p>
+          <span className="rounded-full bg-[#622FFD] px-8 py-3 font-semibold text-white">{t("Comprar ingresso")}</span>
+          <span className="text-xs text-[#A3E635]">{t("Uma ação clara. Nenhuma dúvida.")}</span>
         </motion.div>
       </div>
     </div>
@@ -399,6 +407,7 @@ function MeterInner({ p, title }: { p: MotionValue<number>; title: string }) {
 /* O cardápio que explica demais vira uma lista simples. */
 export function SceneMenuSimplify({ title }: { title: string }) {
   const { ref, k } = useTimeline([1600]);
+  const t = useT();
   const ITEMS = [
     { n: "Risoto de cogumelos", d: "Arroz arbóreo cozido lentamente em caldo de legumes caseiro, finalizado com manteiga, parmesão envelhecido e uma seleção de cogumelos frescos salteados no azeite com alho e tomilho." },
     { n: "Salmão grelhado", d: "Filé de salmão grelhado na brasa, servido sobre purê de batata-doce com toque de gengibre, legumes da estação e um molho cítrico de laranja e mel." },
@@ -409,15 +418,15 @@ export function SceneMenuSimplify({ title }: { title: string }) {
       <div ref={ref} className="container grid max-w-6xl grid-cols-1 items-center gap-10 py-20 md:grid-cols-2 md:py-28">
         <p className="font-display text-3xl font-semibold leading-tight md:text-5xl">{title}</p>
         <div className="rounded-[22px] border border-black/10 bg-white p-6 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.25)]" aria-hidden="true">
-          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#622FFD]">{k >= 1 ? "cardápio simples" : "cardápio que faz pensar"}</p>
+          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#622FFD]">{k >= 1 ? t("cardápio simples") : t("cardápio que faz pensar")}</p>
           <ul className="mt-3 divide-y divide-black/[0.06]">
             {ITEMS.map((it) => (
               <motion.li key={it.n} layout className="flex items-baseline justify-between gap-4 py-3">
                 <div>
-                  <p className="font-display text-lg font-semibold">{it.n}</p>
-                  <AnimatePresence initial={false}>{k < 1 && <motion.p initial={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="text-xs leading-relaxed text-[#0A0A0A]/60">{it.d}</motion.p>}</AnimatePresence>
+                  <p className="font-display text-lg font-semibold">{t(it.n)}</p>
+                  <AnimatePresence initial={false}>{k < 1 && <motion.p initial={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="text-xs leading-relaxed text-[#0A0A0A]/60">{t(it.d)}</motion.p>}</AnimatePresence>
                 </div>
-                {k >= 1 && <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="shrink-0 rounded-full bg-[#622FFD] px-3 py-1 text-xs font-semibold text-white">Pedir</motion.span>}
+                {k >= 1 && <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="shrink-0 rounded-full bg-[#622FFD] px-3 py-1 text-xs font-semibold text-white">{t("Pedir")}</motion.span>}
               </motion.li>
             ))}
           </ul>
@@ -436,10 +445,11 @@ export function ScenePortalToSearch({ title }: { title: string }) {
   );
 }
 function PortalInner({ p, title }: { p: MotionValue<number>; title: string }) {
-  const t = useRange(p, 0.2, 0.7);
-  const clutter = useTransform(t, [0, 1], [1, 0]);
-  const scale = useTransform(t, [0, 1], [1, 0.85]);
-  const search = useTransform(t, [0.5, 1], [0, 1]);
+  const tp = useRange(p, 0.2, 0.7);
+  const clutter = useTransform(tp, [0, 1], [1, 0]);
+  const scale = useTransform(tp, [0, 1], [1, 0.85]);
+  const search = useTransform(tp, [0.5, 1], [0, 1]);
+  const t = useT();
   return (
     <div className="container grid max-w-6xl grid-cols-1 items-center gap-10 md:grid-cols-2">
       <p className="font-display text-3xl font-semibold leading-tight md:text-5xl">{title}</p>
@@ -448,8 +458,8 @@ function PortalInner({ p, title }: { p: MotionValue<number>; title: string }) {
           {Array.from({ length: 20 }, (_, i) => <div key={i} className="rounded" style={{ background: ["#fde68a", "#bfdbfe", "#fecaca", "#e9d5ff", "#bbf7d0"][i % 5] }} />)}
         </motion.div>
         <motion.div style={{ opacity: search }} className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-          <div className="flex w-3/4 items-center gap-2 rounded-full border border-black/15 px-4 py-3 shadow-sm"><span className="text-[#0A0A0A]/40">⌕</span><span className="text-sm text-[#0A0A0A]/45">Buscar</span></div>
-          <span className="text-xs text-[#0A0A0A]/50">só o que importa</span>
+          <div className="flex w-3/4 items-center gap-2 rounded-full border border-black/15 px-4 py-3 shadow-sm"><span className="text-[#0A0A0A]/40">⌕</span><span className="text-sm text-[#0A0A0A]/45">{t("Buscar")}</span></div>
+          <span className="text-xs text-[#0A0A0A]/50">{t("só o que importa")}</span>
         </motion.div>
       </div>
     </div>

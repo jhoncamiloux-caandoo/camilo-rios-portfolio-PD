@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { AnimatePresence, motion, useInView } from "framer-motion";
 import { Bleed, Eyebrow, M } from "./primitives";
 import { Segmented } from "./scenes-advanced";
+import { useT } from "../i18n";
 
 /* Série "Tutoriais de motion com IA". Exemplos vêm do carrossel real da Clint feito para estes tutoriais. */
 
@@ -26,6 +27,7 @@ const STEPS = [
 
 /* Linha de produção + régua de tempo: arrastar t mostra que o quadro depende só do tempo. */
 export function SceneVideoPipeline() {
+  const tr = useT();
   const [t, setT] = useState(1.2);
   const [mode, setMode] = useState<"cru" | "regras">("regras");
   const f = mode === "regras" ? spring : linear;
@@ -36,34 +38,34 @@ export function SceneVideoPipeline() {
       <div className="container grid max-w-6xl grid-cols-1 gap-10 py-20 md:grid-cols-[1fr_0.9fr] md:py-28">
         <div>
           <Eyebrow>video-pipeline</Eyebrow>
-          <p className="mt-3 font-display text-3xl font-semibold leading-tight md:text-5xl">A IA não filma. Ela escreve uma página que sabe desenhar qualquer instante.</p>
+          <p className="mt-3 font-display text-3xl font-semibold leading-tight md:text-5xl">{tr("A IA não filma. Ela escreve uma página que sabe desenhar qualquer instante.")}</p>
           <ol className="mt-8 flex flex-col gap-3">
             {STEPS.map((s, i) => (
               <motion.li key={s.t} initial={{ opacity: 0, x: -12 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.12, duration: 0.4, ease: M.ease }}
                 className="flex gap-4 rounded-2xl border border-white/12 bg-white/[0.03] p-4">
                 <span className="grid h-8 w-8 flex-none place-items-center rounded-full bg-[#622FFD] text-sm font-bold">{i + 1}</span>
-                <span><b className="block text-white">{s.t}</b><span className="text-[15px] text-white/70">{s.d}</span></span>
+                <span><b className="block text-white">{tr(s.t)}</b><span className="text-[15px] text-white/70">{tr(s.d)}</span></span>
               </motion.li>
             ))}
           </ol>
         </div>
         <div className="flex flex-col items-center gap-5">
-          <Segmented label="Tipo de movimento" value={mode} onChange={setMode} options={[{ v: "cru", l: "Sem regras" }, { v: "regras", l: "Com regras" }]} />
+          <Segmented label={tr("Tipo de movimento")} value={mode} onChange={setMode} options={[{ v: "cru", l: tr("Sem regras") }, { v: "regras", l: tr("Com regras") }]} />
           <div className="relative aspect-[4/5] w-full max-w-[340px] overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-b from-[#2a1d6b] via-[#0e0d16] to-[#07060c] p-5">
-            <p className="text-center text-lg font-semibold">Seu lead <span className="text-[#c4b0ff]">não espera.</span></p>
+            <p className="text-center text-lg font-semibold">{tr("Seu lead")} <span className="text-[#c4b0ff]">{tr("não espera.")}</span></p>
             <div className="mt-6 flex flex-col gap-3 rounded-2xl border border-white/10 bg-black/40 p-4">
               {["Oi! 👋", "Vocês ainda estão atendendo?", "Alguém aí?"].map((m, i) => (
                 <p key={m} style={{ opacity: msgs[i], transform: `translateY(${16 * (1 - msgs[i])}px) scale(${0.92 + 0.08 * msgs[i]})`, transformOrigin: "0% 100%" }}
-                  className="self-start rounded-2xl border border-white/10 bg-white/10 px-3 py-2 text-sm">{m}</p>
+                  className="self-start rounded-2xl border border-white/10 bg-white/10 px-3 py-2 text-sm">{tr(m)}</p>
               ))}
             </div>
-            <p className="absolute bottom-4 left-0 right-0 text-center font-mono text-[11px] text-white/60">quadro {frame} de 180 · t = {t.toFixed(2)} s</p>
+            <p className="absolute bottom-4 left-0 right-0 text-center font-mono text-[11px] text-white/60">{tr("quadro {frame} de 180", { frame })} · t = {t.toFixed(2)} s</p>
           </div>
           <label className="w-full max-w-[340px] text-sm text-white/75">
-            Arraste o tempo
+            {tr("Arraste o tempo")}
             <input type="range" min={0} max={6} step={1 / 30} value={t} onChange={(e) => setT(Number(e.target.value))} className="mt-2 w-full accent-[#A3E635]" />
           </label>
-          <p className="max-w-[340px] text-center text-[13px] text-white/60">As mensagens entram em 1,0 s, 1,5 s e 3,0 s, na batida da música. Volte o tempo: o quadro é sempre o mesmo para o mesmo t.</p>
+          <p className="max-w-[340px] text-center text-[13px] text-white/60">{tr("As mensagens entram em 1,0 s, 1,5 s e 3,0 s, na batida da música. Volte o tempo: o quadro é sempre o mesmo para o mesmo t.")}</p>
         </div>
       </div>
     </Bleed>
@@ -113,6 +115,7 @@ const DEFECTS = [
 
 /* Defeito visto na folha de contato → regra que entrou no CLAUDE.md. */
 export function SceneRuleFixes() {
+  const t = useT();
   const [d, setD] = useState<(typeof DEFECTS)[number]["v"]>("pequeno");
   const cur = DEFECTS.find((x) => x.v === d)!;
   return (
@@ -120,24 +123,24 @@ export function SceneRuleFixes() {
       <div className="container grid max-w-6xl grid-cols-1 gap-10 py-20 md:grid-cols-[0.8fr_1.2fr] md:py-28">
         <div>
           <Eyebrow>defeito-vira-regra</Eyebrow>
-          <p className="mt-3 font-display text-3xl font-semibold leading-tight md:text-5xl">Todo defeito que aparece duas vezes vira uma linha no arquivo.</p>
+          <p className="mt-3 font-display text-3xl font-semibold leading-tight md:text-5xl">{t("Todo defeito que aparece duas vezes vira uma linha no arquivo.")}</p>
           <div className="mt-6 flex flex-col gap-2">
             {DEFECTS.map((x) => (
               <button key={x.v} type="button" aria-pressed={d === x.v} onClick={() => setD(x.v)}
-                className={`rounded-xl border px-4 py-3 text-left text-[15px] font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A3E635] ${d === x.v ? "border-white bg-white text-[#0d0d12]" : "border-white/15 text-white/80 hover:border-white/40"}`}>{x.l}</button>
+                className={`rounded-xl border px-4 py-3 text-left text-[15px] font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A3E635] ${d === x.v ? "border-white bg-white text-[#0d0d12]" : "border-white/15 text-white/80 hover:border-white/40"}`}>{t(x.l)}</button>
             ))}
           </div>
         </div>
         <AnimatePresence mode="wait">
           <motion.div key={d} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} transition={{ duration: 0.3, ease: M.ease }} className="flex flex-col gap-4 self-center">
             <div className="rounded-2xl border border-[#ff2d6f]/40 bg-[#ff2d6f]/10 p-5">
-              <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#ffb3c8]">O que eu vi</p>
-              <p className="mt-2 text-[16px] leading-relaxed text-white">{cur.seen}</p>
+              <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#ffb3c8]">{t("O que eu vi")}</p>
+              <p className="mt-2 text-[16px] leading-relaxed text-white">{t(cur.seen)}</p>
             </div>
             <motion.div aria-hidden="true" initial={{ scaleY: 0 }} animate={{ scaleY: 1 }} transition={{ delay: 0.15, duration: 0.3 }} className="mx-auto h-8 w-px origin-top bg-white/40" />
             <div className="rounded-2xl border border-[#A3E635]/40 bg-[#0d0d12] p-5">
-              <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#A3E635]">CLAUDE.md · regra nova</p>
-              <pre className="mt-2 whitespace-pre-wrap font-mono text-[14px] leading-relaxed text-white/90">{cur.rule.split("\n").map((l) => `- ${l}`).join("\n")}</pre>
+              <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#A3E635]">CLAUDE.md · {t("regra nova")}</p>
+              <pre className="mt-2 whitespace-pre-wrap font-mono text-[14px] leading-relaxed text-white/90">{t(cur.rule).split("\n").map((l) => `- ${l}`).join("\n")}</pre>
             </div>
           </motion.div>
         </AnimatePresence>
@@ -166,6 +169,8 @@ const BOARD: { n: number; t: string; d: number; cues: Cue[] }[] = [
 
 /* Partitura do slide: grade de batidas (0,5 s), compassos (2 s) e cada som com o que acontece na tela. */
 export function SceneBeatBoard() {
+  const t = useT();
+  const tr = t;
   const [n, setN] = useState("1");
   const s = BOARD[Number(n) - 1];
   const beats = Array.from({ length: s.d * 2 + 1 }, (_, i) => i / 2);
@@ -173,9 +178,9 @@ export function SceneBeatBoard() {
     <Bleed>
       <div className="container max-w-6xl py-20 md:py-28">
         <Eyebrow>partitura-por-batida</Eyebrow>
-        <p className="mt-3 max-w-3xl font-display text-3xl font-semibold leading-tight md:text-5xl">120 batidas por minuto. Uma a cada meio segundo. Tudo que se mexe cai numa delas.</p>
-        <div className="mt-8"><Segmented label="Slide" value={n} onChange={setN} options={BOARD.map((b) => ({ v: String(b.n), l: `Slide ${b.n}` }))} /></div>
-        <p className="mt-5 text-lg font-semibold text-white">{s.t} <span className="font-normal text-white/60">· {s.d} s · {s.d / 2} compassos</span></p>
+        <p className="mt-3 max-w-3xl font-display text-3xl font-semibold leading-tight md:text-5xl">{t("120 batidas por minuto. Uma a cada meio segundo. Tudo que se mexe cai numa delas.")}</p>
+        <div className="mt-8"><Segmented label={t("Slide")} value={n} onChange={setN} options={BOARD.map((b) => ({ v: String(b.n), l: t("Slide {n}", { n: b.n }) }))} /></div>
+        <p className="mt-5 text-lg font-semibold text-white">{t(s.t)} <span className="font-normal text-white/60">· {s.d} s · {t("{n} compassos", { n: s.d / 2 })}</span></p>
         <div className="mt-6 overflow-x-auto pb-2">
           <div className="relative h-16 min-w-[640px]">
             {beats.map((b) => (
@@ -195,8 +200,8 @@ export function SceneBeatBoard() {
           {s.cues.filter((c) => c[2]).map(([t, k, l]) => (
             <li key={`${n}-${t}`} className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-2.5 text-[15px]">
               <span className="w-12 font-mono text-sm text-white/60">{t.toFixed(1)}s</span>
-              <span className="inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-xs font-semibold text-[#0d0d12]" style={{ background: SOUND[k].c }}>{SOUND[k].l}</span>
-              <span className="text-white/85">{l}</span>
+              <span className="inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-xs font-semibold text-[#0d0d12]" style={{ background: SOUND[k].c }}>{tr(SOUND[k].l)}</span>
+              <span className="text-white/85">{tr(l)}</span>
             </li>
           ))}
         </ul>
@@ -211,6 +216,7 @@ const easeInOut = (x: number) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x 
 
 /* Três bolinhas, mesma distância e mesmo tempo: linear, suavizada e mola. Achatar é opcional. */
 export function SceneEasingLab() {
+  const tr = useT();
   const [t, setT] = useState(0);
   const [squash, setSquash] = useState("sim");
   const play = () => {
@@ -231,17 +237,17 @@ export function SceneEasingLab() {
     <Bleed>
       <div className="container max-w-5xl py-20 md:py-28">
         <Eyebrow>linear-suave-mola</Eyebrow>
-        <p className="mt-3 max-w-3xl font-display text-3xl font-semibold leading-tight md:text-5xl">Mesma distância, mesmo tempo. Só a curva muda.</p>
+        <p className="mt-3 max-w-3xl font-display text-3xl font-semibold leading-tight md:text-5xl">{tr("Mesma distância, mesmo tempo. Só a curva muda.")}</p>
         <div className="mt-6 flex flex-wrap items-center gap-3">
-          <button type="button" onClick={play} className="rounded-xl bg-white px-5 py-2.5 text-sm font-semibold text-[#0d0d12] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A3E635]">▶ Rodar</button>
-          <Segmented label="Achatar ao chegar" value={squash} onChange={setSquash} options={[{ v: "sim", l: "Com achatamento" }, { v: "nao", l: "Sem achatamento" }]} />
+          <button type="button" onClick={play} className="rounded-xl bg-white px-5 py-2.5 text-sm font-semibold text-[#0d0d12] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A3E635]">▶ {tr("Rodar")}</button>
+          <Segmented label={tr("Achatar ao chegar")} value={squash} onChange={setSquash} options={[{ v: "sim", l: tr("Com achatamento") }, { v: "nao", l: tr("Sem achatamento") }]} />
         </div>
         <div className="mt-8 flex flex-col gap-6">
           {rows.map((r) => {
             const vel = r.sq && squash === "sim" && t > 0 && t < 1.4 ? Math.round(Math.max(-0.15, Math.min(0.15, (spring(t + 0.016) - spring(t)) * 4)) * 1000) / 1000 : 0;
             return (
               <div key={r.l}>
-                <div className="flex items-baseline justify-between gap-4"><b className="text-white">{r.l}</b><span className="text-right text-[14px] text-white/60">{r.d}</span></div>
+                <div className="flex items-baseline justify-between gap-4"><b className="text-white">{tr(r.l)}</b><span className="text-right text-[14px] text-white/60">{tr(r.d)}</span></div>
                 <div className="relative mt-2 h-14 rounded-full border border-white/10 bg-white/[0.03]">
                   <span aria-hidden="true" className="absolute top-1/2 h-10 w-10 rounded-full bg-gradient-to-br from-[#c4b0ff] to-[#622FFD]"
                     style={{ left: `calc(${(r.v * 100).toFixed(2)}% - ${(r.v * 48).toFixed(1)}px + 4px)`, transform: `translateY(-50%) scale(${1 + vel}, ${1 - vel})` }} />
@@ -250,7 +256,7 @@ export function SceneEasingLab() {
             );
           })}
         </div>
-        <p className="mt-6 text-[14px] text-white/60">O achatamento conserva o volume: estica de um lado o que encolhe do outro. Fica sutil de propósito.</p>
+        <p className="mt-6 text-[14px] text-white/60">{tr("O achatamento conserva o volume: estica de um lado o que encolhe do outro. Fica sutil de propósito.")}</p>
       </div>
     </Bleed>
   );
@@ -268,6 +274,7 @@ const TOKENS = [
 
 /* Antes e depois de olhar a marca de verdade, com o que foi extraído dela. */
 export function SceneReferenceExtract() {
+  const tr = useT();
   const [slide, setSlide] = useState("01");
   const [side, setSide] = useState<"antes" | "depois">("depois");
   return (
@@ -275,25 +282,25 @@ export function SceneReferenceExtract() {
       <div className="container grid max-w-6xl grid-cols-1 gap-10 py-20 md:grid-cols-[1fr_0.9fr] md:py-28">
         <div>
           <Eyebrow>referencia-sem-copia</Eyebrow>
-          <p className="mt-3 font-display text-3xl font-semibold leading-tight md:text-5xl">Da referência eu levo o sistema, não a tela.</p>
+          <p className="mt-3 font-display text-3xl font-semibold leading-tight md:text-5xl">{tr("Da referência eu levo o sistema, não a tela.")}</p>
           <ul className="mt-8 flex flex-col gap-3">
             {TOKENS.map((t, i) => (
               <motion.li key={t.k} initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
                 className="flex items-center gap-4 rounded-2xl border border-white/12 bg-white/[0.03] p-3">
                 <span aria-hidden="true" className="h-11 w-11 flex-none rounded-xl border border-white/20" style={{ background: t.sw }} />
-                <span><b className="block text-white">{t.k}</b><span className="text-[14px] text-white/65">{t.v}</span></span>
+                <span><b className="block text-white">{tr(t.k)}</b><span className="text-[14px] text-white/65">{tr(t.v)}</span></span>
               </motion.li>
             ))}
           </ul>
         </div>
         <div className="flex flex-col items-center gap-4">
           <div className="flex flex-wrap justify-center gap-2">
-            <Segmented label="Slide" value={slide} onChange={setSlide} options={[{ v: "01", l: "Slide 1" }, { v: "05", l: "Slide 5" }]} />
-            <Segmented label="Versão" value={side} onChange={setSide} options={[{ v: "antes", l: "Antes" }, { v: "depois", l: "Depois" }]} />
+            <Segmented label={tr("Slide")} value={slide} onChange={setSlide} options={[{ v: "01", l: tr("Slide {n}", { n: 1 }) }, { v: "05", l: tr("Slide {n}", { n: 5 }) }]} />
+            <Segmented label={tr("Versão")} value={side} onChange={setSide} options={[{ v: "antes", l: tr("Antes") }, { v: "depois", l: tr("Depois") }]} />
           </div>
           <AnimatePresence mode="wait">
             <motion.img key={slide + side} src={`/blog/carrossel-clint/${side}-${slide}.webp`} width={720} height={900} loading="lazy"
-              alt={`Slide ${Number(slide)} do carrossel da Clint, versão ${side === "antes" ? "anterior, escura e lisa" : "com a identidade da marca"}`}
+              alt={side === "antes" ? tr("Slide {n} do carrossel da Clint, versão anterior, escura e lisa", { n: Number(slide) }) : tr("Slide {n} do carrossel da Clint, versão com a identidade da marca", { n: Number(slide) })}
               initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}
               className="aspect-[4/5] w-full max-w-[360px] rounded-2xl border border-white/15" />
           </AnimatePresence>
@@ -317,24 +324,25 @@ const SCORES = [
 
 /* Ficha do crítico: notas de 1 a 10 por slide (rodada 1 do carrossel). Abaixo de 8 volta para o diretor. */
 export function SceneCritiqueScores() {
+  const t = useT();
   const { ref, k } = useTimelineLocal();
   return (
     <Bleed>
       <div ref={ref} className="container max-w-5xl py-20 md:py-28">
         <Eyebrow>ficha-do-critico</Eyebrow>
-        <p className="mt-3 max-w-3xl font-display text-3xl font-semibold leading-tight md:text-5xl">Abaixo de 8, volta para a mesa.</p>
+        <p className="mt-3 max-w-3xl font-display text-3xl font-semibold leading-tight md:text-5xl">{t("Abaixo de 8, volta para a mesa.")}</p>
         <div className="mt-8 overflow-x-auto">
           <table className="w-full min-w-[560px] border-separate border-spacing-1 text-center text-[14px]">
-            <caption className="sr-only">Notas de 1 a 10 por critério e por slide</caption>
-            <thead><tr><th className="text-left font-normal text-white/60">Critério</th>{[1, 2, 3, 4, 5, 6].map((n) => <th key={n} scope="col" className="font-semibold text-white/80">S{n}</th>)}</tr></thead>
+            <caption className="sr-only">{t("Notas de 1 a 10 por critério e por slide")}</caption>
+            <thead><tr><th className="text-left font-normal text-white/60">{t("Critério")}</th>{[1, 2, 3, 4, 5, 6].map((n) => <th key={n} scope="col" className="font-semibold text-white/80">S{n}</th>)}</tr></thead>
             <tbody>
               {CRIT.map((c, i) => (
                 <tr key={c}>
-                  <th scope="row" className="pr-3 text-left font-normal text-white/80">{c}</th>
+                  <th scope="row" className="pr-3 text-left font-normal text-white/80">{t(c)}</th>
                   {SCORES[i].map((s, j) => (
                     <motion.td key={j} initial={{ opacity: 0, scale: 0.6 }} animate={k ? { opacity: 1, scale: 1 } : {}} transition={{ delay: (i * 6 + j) * 0.02 }}
                       className={`rounded-lg py-2 font-semibold ${s < 8 ? "bg-[#ff2d6f]/20 text-[#ffb3c8] ring-1 ring-[#ff2d6f]/50" : "bg-white/[0.05] text-white"}`}>
-                      {s}{s < 8 && <span className="sr-only"> (abaixo da meta)</span>}
+                      {s}{s < 8 && <span className="sr-only"> ({t("abaixo da meta")})</span>}
                     </motion.td>
                   ))}
                 </tr>
@@ -342,7 +350,7 @@ export function SceneCritiqueScores() {
             </tbody>
           </table>
         </div>
-        <p className="mt-5 text-[14px] text-white/60">Notas da rodada que antecedeu a mudança de identidade. As duas notas 7 vinham do texto pequeno dentro das capturas reais. A correção foi redesenhar esses slides com elementos nativos, maiores.</p>
+        <p className="mt-5 text-[14px] text-white/60">{t("Notas da rodada que antecedeu a mudança de identidade. As duas notas 7 vinham do texto pequeno dentro das capturas reais. A correção foi redesenhar esses slides com elementos nativos, maiores.")}</p>
       </div>
     </Bleed>
   );

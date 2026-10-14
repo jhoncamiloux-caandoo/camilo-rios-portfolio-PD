@@ -3,6 +3,13 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView, useReducedMotion, useTransform, type MotionValue } from "framer-motion";
 import { Bleed, CountUp, Eyebrow, FocusText, M, Marker, SceneRail, Sticky, useRange, useStep } from "./primitives";
+import { useT } from "../i18n";
+
+/* Acha a frase destacada dentro do texto (que pode vir traduzido); sem achar, o texto aparece inteiro, sem marca-texto. */
+function splitAt(text: string, phrase: string): [string, string, string] | null {
+  const i = text.indexOf(phrase);
+  return i < 0 ? null : [text.slice(0, i), phrase, text.slice(i + phrase.length)];
+}
 
 /* ─────────────── POST 7 · Dados em decisão: ruído virando sinal ─────────────── */
 
@@ -167,13 +174,16 @@ function FocusInner({ p, intro, l1, info, l2, insight, l3, l4, test, l5, l6, l7,
 
 /* A pergunta central com marca-texto desenhado. */
 export function SceneMarkedQuestion({ lead, q, after }: { lead: string; q: string; after: string }) {
+  const t = useT();
   const [a, rest] = q.split(", quem decide");
   return (
     <Bleed tone="light">
       <div className="container flex min-h-[70vh] max-w-5xl flex-col justify-center py-20">
         <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#0A0A0A]/50">{lead}</p>
         <p className="mt-5 font-display text-4xl font-semibold leading-[1.05] tracking-[-0.02em] md:text-7xl">
-          {a}, <Marker color={M.g}>quem decide</Marker>{rest.replace(" realmente boa?", " ")}<Marker color="#c4b5fd" delay={0.7}>realmente boa?</Marker>
+          {rest !== undefined ? (
+            <>{a}, <Marker color={M.g}>{t("quem decide")}</Marker>{rest.replace(" realmente boa?", " ")}<Marker color="#c4b5fd" delay={0.7}>{t("realmente boa?")}</Marker></>
+          ) : q}
         </p>
         <p className="mt-8 max-w-2xl text-lg text-[#0A0A0A]/75">{after}</p>
       </div>
@@ -237,7 +247,8 @@ export function SceneCritique({ lead, shallow, lead2, deep }: { lead: string; sh
     const ts = [setTimeout(() => setK(1), 500), setTimeout(() => setK(2), 1500), setTimeout(() => setK(3), 2500)];
     return () => ts.forEach(clearTimeout);
   }, [inView, reduce]);
-  const [good, bad] = deep.replace(/[“”]/g, "").split(", mas ");
+  const t = useT();
+  const [good, bad = ""] = deep.replace(/[“”]/g, "").split(/, (?:mas|but|pero) /);
   return (
     <Bleed tone="light">
       <div ref={ref} className="container grid max-w-6xl grid-cols-1 items-center gap-10 py-20 md:grid-cols-2 md:py-28">
@@ -246,15 +257,15 @@ export function SceneCritique({ lead, shallow, lead2, deep }: { lead: string; sh
           <p className={`mt-2 font-display text-3xl font-semibold transition-colors duration-500 ${k >= 1 ? "text-[#0A0A0A]/25" : "text-[#0A0A0A]"}`}>{shallow}</p>
           <p className="mt-8 text-[15px] text-[#0A0A0A]/60">{lead2}</p>
           <p className="mt-2 font-display text-2xl font-semibold leading-snug md:text-3xl">
-            “<span className={`transition-colors duration-500 ${k >= 2 ? "bg-[#A3E635]/40" : ""}`}>{good}</span>, mas <span className={`transition-colors duration-500 ${k >= 3 ? "bg-[#f87171]/30" : ""}`}>{bad}</span>”
+            “<span className={`transition-colors duration-500 ${k >= 2 ? "bg-[#A3E635]/40" : ""}`}>{good}</span>, {t("mas")} <span className={`transition-colors duration-500 ${k >= 3 ? "bg-[#f87171]/30" : ""}`}>{bad}</span>”
           </p>
         </div>
         <div className="relative rounded-[22px] border border-black/[0.08] bg-white p-6 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.25)]" aria-hidden="true">
-          <p className="font-display text-lg font-semibold">Solicitar orçamento</p>
-          <div className="mt-4 space-y-2.5">{["Nome", "E-mail", "Mensagem"].map((f) => <div key={f}><p className="text-xs text-[#0A0A0A]/50">{f}</p><div className="mt-1 h-9 rounded-lg border border-black/10" /></div>)}</div>
+          <p className="font-display text-lg font-semibold">{t("Solicitar orçamento")}</p>
+          <div className="mt-4 space-y-2.5">{["Nome", "E-mail", "Mensagem"].map((f) => <div key={f}><p className="text-xs text-[#0A0A0A]/50">{t(f)}</p><div className="mt-1 h-9 rounded-lg border border-black/10" /></div>)}</div>
           <div className="mt-4 h-10 w-32 rounded-full bg-[#622FFD]" />
-          <motion.div initial={false} animate={{ opacity: k >= 2 ? 1 : 0, x: k >= 2 ? 0 : 10 }} className="absolute -right-3 top-16 max-w-[180px] rounded-xl bg-[#A3E635] px-3 py-2 text-xs font-semibold text-[#0d0d12] shadow-lg">Só 3 campos: menos carga cognitiva</motion.div>
-          <motion.div initial={false} animate={{ opacity: k >= 3 ? 1 : 0, x: k >= 3 ? 0 : 10 }} className="absolute -right-3 bottom-6 max-w-[190px] rounded-xl bg-[#f87171] px-3 py-2 text-xs font-semibold text-[#0d0d12] shadow-lg">E depois do envio? Nada diz o que acontece.</motion.div>
+          <motion.div initial={false} animate={{ opacity: k >= 2 ? 1 : 0, x: k >= 2 ? 0 : 10 }} className="absolute -right-3 top-16 max-w-[180px] rounded-xl bg-[#A3E635] px-3 py-2 text-xs font-semibold text-[#0d0d12] shadow-lg">{t("Só 3 campos: menos carga cognitiva")}</motion.div>
+          <motion.div initial={false} animate={{ opacity: k >= 3 ? 1 : 0, x: k >= 3 ? 0 : 10 }} className="absolute -right-3 bottom-6 max-w-[190px] rounded-xl bg-[#f87171] px-3 py-2 text-xs font-semibold text-[#0d0d12] shadow-lg">{t("E depois do envio? Nada diz o que acontece.")}</motion.div>
         </div>
       </div>
     </Bleed>
@@ -270,6 +281,7 @@ export function SceneContactSheet({ lead, process, steps, a, b }: { lead: string
   );
 }
 function SheetInner({ p, lead, process, steps, a, b }: { p: MotionValue<number>; lead: string; process: string; steps: string[]; a: string; b: string }) {
+  const t = useT();
   const labels = process.split(" → ");
   const s = useStep(useRange(p, 0, 0.92), labels.length);
   const FLAG = new Set([1, 4, 6, 9, 10]);
@@ -287,7 +299,7 @@ function SheetInner({ p, lead, process, steps, a, b }: { p: MotionValue<number>;
           ))}
         </ol>
         <ul className="sr-only">{steps.map((t) => <li key={t}>{t}</li>)}</ul>
-        <p className="mt-8 font-display text-2xl font-semibold md:text-3xl">{a.replace(" hipótese.", " ")}<Marker color={M.g}>hipótese.</Marker></p>
+        <p className="mt-8 font-display text-2xl font-semibold md:text-3xl">{(() => { const m = splitAt(a, " hipótese.") ?? splitAt(a, " " + t("hipótese.")); return m ? <>{m[0]} <Marker color={M.g}>{m[1].trim()}</Marker>{m[2]}</> : a; })()}</p>
         <p className="mt-1 text-white/60">{b}</p>
       </div>
       <div className="grid grid-cols-4 gap-2.5" aria-hidden="true">
@@ -308,7 +320,7 @@ function SheetInner({ p, lead, process, steps, a, b }: { p: MotionValue<number>;
             </motion.div>
           );
         })}
-        <motion.p initial={false} animate={{ opacity: s >= 4 ? 1 : 0 }} className="col-span-4 mt-2 text-center font-mono text-[11px] uppercase tracking-[0.18em] text-[#A3E635]">↺ aprender e gerar de novo, com mais contexto</motion.p>
+        <motion.p initial={false} animate={{ opacity: s >= 4 ? 1 : 0 }} className="col-span-4 mt-2 text-center font-mono text-[11px] uppercase tracking-[0.18em] text-[#A3E635]">↺ {t("aprender e gerar de novo, com mais contexto")}</motion.p>
       </div>
     </div>
   );
