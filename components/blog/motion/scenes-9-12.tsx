@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useInView, useReducedMotion, useTransform, type MotionValue } from "framer-motion";
 import { Bleed, Eyebrow, M, Sticky, useRange, useStep } from "./primitives";
+import { useT } from "../i18n";
 
 /* Dispara uma sequência de passos quando entra na tela (sem scroll preso). */
 function useTimeline(times: number[]) {
@@ -70,6 +71,7 @@ function PresenceInner({ p, intro, ai, saves, diff, notice, cues, context, a, b 
 /* Usuário sintético × usuário real: o contorno pontilhado não sente o que a pessoa sente. */
 export function SceneSynthetic({ lead, prompt, notes, lacks, a, b }: { lead: string; prompt: string; notes: string[]; lacks: string[]; a: string; b: string }) {
   const { ref, k } = useTimeline([400, 1200, 2000, 2800, 3600]);
+  const t = useT();
   return (
     <Bleed tone="light">
       <div ref={ref} className="container grid max-w-6xl grid-cols-1 items-center gap-10 py-20 md:grid-cols-[1.1fr_1fr] md:py-28">
@@ -93,7 +95,7 @@ export function SceneSynthetic({ lead, prompt, notes, lacks, a, b }: { lead: str
                 <path d="M14 136 C14 96 30 76 50 76 C70 76 86 96 86 136 Z" fill={side ? M.p : "none"} stroke={side ? "none" : "#0A0A0A"} strokeWidth="2" strokeDasharray={side ? undefined : "4 5"} />
                 {side === 1 && <motion.path d="M30 110 L42 110 L47 98 L54 122 L60 104 L64 110 L72 110" fill="none" stroke={M.g} strokeWidth="3" strokeLinejoin="round" animate={k >= 3 ? { pathLength: [0, 1] } : { pathLength: 0 }} transition={{ duration: 1.2, repeat: Infinity }} />}
               </svg>
-              <span className={`font-mono text-[11px] uppercase tracking-[0.16em] ${side ? "text-[#622FFD]" : "text-[#0A0A0A]/60"}`}>{side ? "pessoa real" : "simulação"}</span>
+              <span className={`font-mono text-[11px] uppercase tracking-[0.16em] ${side ? "text-[#622FFD]" : "text-[#0A0A0A]/60"}`}>{side ? t("pessoa real") : t("simulação")}</span>
             </div>
           ))}
         </div>
@@ -145,6 +147,7 @@ export function SceneOrbit({ lead, msg, options, a, b, c }: { lead: string; msg:
 }
 function OrbitInner({ p, lead, msg, options, a, b, c }: { p: MotionValue<number>; lead: string; msg: string; options: string[]; a: string; b: string; c: string }) {
   const spin = useTransform(p, [0, 1], [0, 220]);
+  const t = useT();
   const s = useStep(p, 4);
   const pick = 1; // a assinatura, escolhida pelo contexto
   const CTX = ["plano ativo: Pro", "último acesso: hoje", "fidelidade: não"];
@@ -157,7 +160,7 @@ function OrbitInner({ p, lead, msg, options, a, b, c }: { p: MotionValue<number>
         <p className="mt-2 font-display text-4xl font-semibold md:text-6xl">{msg}</p>
         <p className="mt-6 text-white/80">{a}</p>
         <motion.ul initial={false} animate={{ opacity: s >= 2 ? 1 : 0 }} className="mt-4 flex flex-wrap gap-2" aria-hidden="true">
-          {CTX.map((x) => <li key={x} className="rounded-full border border-[#A3E635]/50 px-3 py-1 font-mono text-[11px] text-[#A3E635]">{x}</li>)}
+          {CTX.map((x) => <li key={x} className="rounded-full border border-[#A3E635]/50 px-3 py-1 font-mono text-[11px] text-[#A3E635]">{t(x)}</li>)}
         </motion.ul>
         <p className="mt-6 text-white/80">{b} <span className="text-[#A3E635]">{c}</span></p>
       </div>
@@ -233,6 +236,7 @@ export function SceneAgentPanel({ lead, questions, after }: { lead: string; ques
 }
 function PanelInner({ p, lead, questions, after }: { p: MotionValue<number>; lead: string; questions: string[]; after: string }) {
   const s = useStep(p, questions.length);
+  const t = useT();
   const ANS = [
     "Você quer cancelar a assinatura Pro.",
     "Verificando cobranças pendentes e a data de renovação.",
@@ -249,17 +253,17 @@ function PanelInner({ p, lead, questions, after }: { p: MotionValue<number>; lea
         <p className="mt-6 text-sm text-white/70">{after}</p>
       </div>
       <div className="rounded-[22px] border border-white/10 bg-[#111118] p-5" aria-hidden="true">
-        <div className="flex items-center gap-3"><img src="/cases/clint/ai-logo.webp" alt="" className="h-8 w-8 rounded-full" /><p className="font-semibold text-white">Agente</p><span className="ml-auto rounded-full bg-[#A3E635]/15 px-2 py-0.5 font-mono text-[10px] text-[#A3E635]">ATIVO</span></div>
+        <div className="flex items-center gap-3"><img src="/cases/clint/ai-logo.webp" alt="" className="h-8 w-8 rounded-full" /><p className="font-semibold text-white">{t("Agente")}</p><span className="ml-auto rounded-full bg-[#A3E635]/15 px-2 py-0.5 font-mono text-[10px] text-[#A3E635]">{t("ATIVO")}</span></div>
         <div className="mt-4 min-h-[150px] space-y-2">
-          {ANS.slice(0, Math.min(s + 1, 4)).map((t, i) => (
-            <motion.p key={t} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className={`rounded-xl px-3 py-2 text-sm ${i === Math.min(s, 3) ? "bg-[#622FFD]/25 text-white" : "bg-white/[0.04] text-white/60"}`}>{t}</motion.p>
+          {ANS.slice(0, Math.min(s + 1, 4)).map((x, i) => (
+            <motion.p key={x} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className={`rounded-xl px-3 py-2 text-sm ${i === Math.min(s, 3) ? "bg-[#622FFD]/25 text-white" : "bg-white/[0.04] text-white/60"}`}>{t(x)}</motion.p>
           ))}
         </div>
         <div className="mt-4 flex gap-2">
-          <span className="rounded-full bg-[#622FFD] px-4 py-2 text-xs font-semibold text-white">Confirmar</span>
-          <motion.span initial={false} animate={{ scale: s >= 4 ? [1, 1.08, 1] : 1, borderColor: s >= 4 ? M.red : "rgba(255,255,255,0.2)" }} transition={{ duration: 0.6 }} className="rounded-full border px-4 py-2 text-xs font-semibold text-white">Interromper</motion.span>
+          <span className="rounded-full bg-[#622FFD] px-4 py-2 text-xs font-semibold text-white">{t("Confirmar")}</span>
+          <motion.span initial={false} animate={{ scale: s >= 4 ? [1, 1.08, 1] : 1, borderColor: s >= 4 ? M.red : "rgba(255,255,255,0.2)" }} transition={{ duration: 0.6 }} className="rounded-full border px-4 py-2 text-xs font-semibold text-white">{t("Interromper")}</motion.span>
         </div>
-        <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.14em] text-white/40">exemplo fictício</p>
+        <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.14em] text-white/40">{t("exemplo fictício")}</p>
       </div>
     </div>
   );
@@ -307,6 +311,7 @@ export function SceneRespondVsAct({ lead1, q1, a1, lead2, q2, a2, steps, maybe, 
 export function SceneAgentFeed({ lead, msgs, a, b }: { lead: string; msgs: string[]; a: string; b: string }) {
   const { ref, k } = useTimeline([400, 1400, 2400, 3400, 4400]);
   const [choice, setChoice] = useState<"" | "ok" | "no">("");
+  const t = useT();
   return (
     <Bleed tone="light">
       <div ref={ref} className="container grid max-w-6xl grid-cols-1 items-center gap-10 py-20 md:grid-cols-2 md:py-28">
@@ -316,7 +321,7 @@ export function SceneAgentFeed({ lead, msgs, a, b }: { lead: string; msgs: strin
           <p className="mt-2 font-display text-2xl font-semibold leading-snug md:text-3xl">{b}</p>
         </div>
         <div className="rounded-[22px] border border-black/[0.08] bg-white p-5 shadow-[0_30px_80px_-30px_rgba(98,47,253,0.35)]">
-          <div className="flex items-center gap-3 border-b border-black/[0.06] pb-3"><img src="/cases/clint/ai-logo.webp" alt="" className="h-7 w-7 rounded-full" /><span className="font-semibold">Agente</span></div>
+          <div className="flex items-center gap-3 border-b border-black/[0.06] pb-3"><img src="/cases/clint/ai-logo.webp" alt="" className="h-7 w-7 rounded-full" /><span className="font-semibold">{t("Agente")}</span></div>
           <ul className="mt-3 space-y-2">
             {msgs.map((m, i) => (
               <motion.li key={m} initial={false} animate={{ opacity: i < k ? 1 : 0, y: i < k ? 0 : 8 }} transition={{ duration: 0.4 }} className={`rounded-2xl px-3.5 py-2.5 text-[15px] ${i === msgs.length - 1 ? "bg-[#622FFD]/10 font-semibold text-[#0A0A0A]" : "bg-[#F4F4F6] text-[#0A0A0A]/85"}`}>{m}</motion.li>
@@ -326,15 +331,15 @@ export function SceneAgentFeed({ lead, msgs, a, b }: { lead: string; msgs: strin
           <AnimatePresence mode="wait">
             {k >= msgs.length && !choice && (
               <motion.div key="btns" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="mt-4 flex gap-2">
-                <button type="button" onClick={() => setChoice("ok")} className="rounded-full bg-[#622FFD] px-4 py-2 text-sm font-semibold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#622FFD] focus-visible:ring-offset-2">Confirmar</button>
-                <button type="button" onClick={() => setChoice("no")} className="rounded-full border border-black/15 px-4 py-2 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#622FFD]">Cancelar</button>
-                <span className="self-center text-xs text-[#0A0A0A]/50">experimente</span>
+                <button type="button" onClick={() => setChoice("ok")} className="rounded-full bg-[#622FFD] px-4 py-2 text-sm font-semibold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#622FFD] focus-visible:ring-offset-2">{t("Confirmar")}</button>
+                <button type="button" onClick={() => setChoice("no")} className="rounded-full border border-black/15 px-4 py-2 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#622FFD]">{t("Cancelar")}</button>
+                <span className="self-center text-xs text-[#0A0A0A]/50">{t("experimente")}</span>
               </motion.div>
             )}
             {choice && (
               <motion.p key="res" role="status" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className={`mt-4 rounded-xl px-3.5 py-2.5 text-sm font-semibold ${choice === "ok" ? "bg-[#A3E635]/30 text-[#0A0A0A]" : "bg-[#F4F4F6] text-[#0A0A0A]/80"}`}>
-                {choice === "ok" ? "✓ Feito. Você aprovou antes de o agente agir." : "Nada foi executado. O controle continua com você."}
-                <button type="button" onClick={() => setChoice("")} className="ml-2 underline">refazer</button>
+                {choice === "ok" ? t("✓ Feito. Você aprovou antes de o agente agir.") : t("Nada foi executado. O controle continua com você.")}
+                <button type="button" onClick={() => setChoice("")} className="ml-2 underline">{t("refazer")}</button>
               </motion.p>
             )}
           </AnimatePresence>
@@ -348,6 +353,10 @@ export function SceneAgentFeed({ lead, msgs, a, b }: { lead: string; msgs: strin
 export function SceneRecoveryBar({ lead, actions, a, b }: { lead: string; actions: string[]; a: string; b: string }) {
   const [log, setLog] = useState(["Reserva feita: sábado, 20h", "Convite enviado a 4 pessoas", "Lembrete criado"]);
   const [last, setLast] = useState<string>("");
+  const t = useT();
+  const tl = (l: string) => (l.endsWith(" (cancelado)") ? t("{item} (cancelado)", { item: t(l.slice(0, -" (cancelado)".length)) }) : t(l));
+  /* Os rótulos chegam traduzidos pelo artigo; a ação vem da posição do botão, não do texto. */
+  const KEYS = ["Desfazer", "Editar", "Cancelar", "Reverter", "Revisar histórico", "Assumir controle manual"];
   const run = (act: string) => {
     setLast(act);
     if (act === "Desfazer" || act === "Reverter") setLog((l) => l.slice(0, -1));
@@ -368,25 +377,25 @@ export function SceneRecoveryBar({ lead, actions, a, b }: { lead: string; action
         <div>
           <p className="text-white/80">{lead}</p>
           <div className="mt-5 flex flex-wrap gap-2">
-            {actions.map((a2) => (
-              <button key={a2} type="button" onClick={() => run(a2)} className={`rounded-full border px-4 py-2 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A48BFF] ${last === a2 ? "border-[#A3E635] bg-[#A3E635] text-[#0d0d12]" : "border-white/20 text-white hover:border-white/50"}`}>{a2}</button>
+            {actions.map((a2, i) => (
+              <button key={a2} type="button" onClick={() => run(KEYS[i] ?? a2)} className={`rounded-full border px-4 py-2 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A48BFF] ${last === (KEYS[i] ?? a2) ? "border-[#A3E635] bg-[#A3E635] text-[#0d0d12]" : "border-white/20 text-white hover:border-white/50"}`}>{t(a2)}</button>
             ))}
           </div>
-          <p className="mt-2 text-xs text-white/45">Clique nos controles.</p>
+          <p className="mt-2 text-xs text-white/45">{t("Clique nos controles.")}</p>
           <p className="mt-8 text-white/70">{a}</p>
           <p className="font-display text-2xl font-semibold md:text-3xl">{b}</p>
         </div>
         <div className="rounded-[22px] border border-white/10 bg-[#111118] p-5">
-          <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-white/45">Ações do agente · exemplo</p>
+          <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-white/45">{t("Ações do agente · exemplo")}</p>
           <ul className="mt-3 space-y-2">
             <AnimatePresence initial={false}>
               {log.map((l) => (
-                <motion.li key={l} layout initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }} className={`rounded-xl px-3 py-2.5 text-sm ${l.includes("cancelado") ? "bg-white/[0.03] text-white/40 line-through" : "bg-white/[0.06] text-white"}`}>{l}</motion.li>
+                <motion.li key={l} layout initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }} className={`rounded-xl px-3 py-2.5 text-sm ${l.includes("cancelado") ? "bg-white/[0.03] text-white/40 line-through" : "bg-white/[0.06] text-white"}`}>{tl(l)}</motion.li>
               ))}
             </AnimatePresence>
           </ul>
-          <p role="status" className="mt-4 min-h-[1.5em] text-sm text-[#A3E635]">{last ? out[last] : ""}</p>
-          <button type="button" onClick={() => { setLog(["Reserva feita: sábado, 20h", "Convite enviado a 4 pessoas", "Lembrete criado"]); setLast(""); }} className="mt-2 text-xs text-white/50 underline">reiniciar exemplo</button>
+          <p role="status" className="mt-4 min-h-[1.5em] text-sm text-[#A3E635]">{last && out[last] ? t(out[last]) : ""}</p>
+          <button type="button" onClick={() => { setLog(["Reserva feita: sábado, 20h", "Convite enviado a 4 pessoas", "Lembrete criado"]); setLast(""); }} className="mt-2 text-xs text-white/50 underline">{t("reiniciar exemplo")}</button>
         </div>
       </div>
     </Bleed>

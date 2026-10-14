@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView, useReducedMotion, useTransform, type MotionValue } from "framer-motion";
 import { Bleed, CountUp, Eyebrow, M, Sticky, useRange, useStep } from "./primitives";
+import { useT } from "../i18n";
 
 function useTimeline(times: number[]) {
   const ref = useRef<HTMLDivElement>(null);
@@ -58,6 +59,7 @@ function SpeedInner({ p, a, b, list, c, d, q, e }: { p: MotionValue<number>; a: 
 /* Mais ideias, mais coisas para avaliar: barras proporcionais aos números do texto. */
 export function SceneFunnelMath({ beforeLabel, before, afterLabel, after }: { beforeLabel: string; before: string; afterLabel: string; after: string }) {
   const parse = (s: string) => s.split(" → ").map((t) => ({ n: parseInt(t, 10), l: t.replace(/^\d+\s*/, "") }));
+  const t = useT();
   const B = parse(before), A = parse(after);
   const { ref, k } = useTimeline([300, 1100]);
   const w = (n: number) => `${Math.max(4, (Math.log10(n) + 1) * 33)}%`;
@@ -77,7 +79,7 @@ export function SceneFunnelMath({ beforeLabel, before, afterLabel, after }: { be
         <div><Eyebrow color="#0A0A0A99">{beforeLabel}</Eyebrow><Row items={B} on={k >= 1} color="rgba(10,10,10,0.18)" /></div>
         <div><Eyebrow color={M.p}>{afterLabel}</Eyebrow><Row items={A} on={k >= 2} color={M.p} /></div>
         <p className="sr-only">{before} · {after}</p>
-        <p className="text-sm text-[#0A0A0A]/55 md:col-span-2">Barras em escala logarítmica, com os números do texto.</p>
+        <p className="text-sm text-[#0A0A0A]/55 md:col-span-2">{t("Barras em escala logarítmica, com os números do texto.")}</p>
       </div>
     </Bleed>
   );
@@ -92,6 +94,7 @@ export function SceneHourglass({ items, a, b, c }: { items: { lead: string; q: s
   );
 }
 function GlassInner({ p, items, a, b, c }: { p: MotionValue<number>; items: { lead: string; q: string }[]; a: string; b: string; c: string }) {
+  const t = useT();
   const s = useStep(p, items.length + 1);
   const fall = useTransform(p, [0, 1], [0, 1]);
   return (
@@ -108,8 +111,8 @@ function GlassInner({ p, items, a, b, c }: { p: MotionValue<number>; items: { le
       </div>
       <svg viewBox="0 0 200 300" className="mx-auto h-auto w-full max-w-[260px]" aria-hidden="true">
         <path d="M30 20 H170 C170 90 112 120 106 150 C112 180 170 210 170 280 H30 C30 210 88 180 94 150 C88 120 30 90 30 20 Z" fill="none" stroke="rgba(255,255,255,0.5)" strokeWidth="2" />
-        <text x="100" y="14" textAnchor="middle" fill="rgba(255,255,255,0.6)" fontSize="10" fontFamily="ui-monospace">PRODUÇÃO</text>
-        <text x="100" y="296" textAnchor="middle" fill={M.amb} fontSize="10" fontFamily="ui-monospace">DECISÃO</text>
+        <text x="100" y="14" textAnchor="middle" fill="rgba(255,255,255,0.6)" fontSize="10" fontFamily="ui-monospace">{t("PRODUÇÃO")}</text>
+        <text x="100" y="296" textAnchor="middle" fill={M.amb} fontSize="10" fontFamily="ui-monospace">{t("DECISÃO")}</text>
         {Array.from({ length: 40 }, (_, i) => {
           const sx = 50 + ((i * 37) % 100), sy = 30 + ((i * 23) % 70);
           const ex = 60 + ((i * 29) % 80), ey = 270 - ((i * 17) % 40);
@@ -130,6 +133,7 @@ function Grain({ p, i, sx, sy, ex, ey }: { p: MotionValue<number>; i: number; sx
 
 /* Uma tela "perfeita" e uma lupa que revela o que a estética esconde (segue o mouse). */
 export function SceneLens({ intro, lead, questions, outro }: { intro: string[]; lead: string; questions: string[]; outro: string }) {
+  const t = useT();
   const box = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
   const [pos, setPos] = useState({ x: 30, y: 30 });
@@ -165,7 +169,7 @@ export function SceneLens({ intro, lead, questions, outro }: { intro: string[]; 
             animate={{ left: `${at.x}%`, top: `${at.y}%` }} transition={{ type: "spring", stiffness: manual ? 600 : 90, damping: manual ? 40 : 18 }}>
             {near >= 0 && <span className={`absolute left-1/2 w-44 -translate-x-1/2 rounded-lg bg-[#A3E635] px-2 py-1 text-center text-[11px] font-semibold text-[#0d0d12] ${at.y > 60 ? "bottom-full mb-2" : "top-full mt-2"}`}>{questions[near]}</span>}
           </motion.div>
-          <span className="absolute bottom-3 right-4 font-mono text-[10px] uppercase tracking-[0.14em] text-white/40">passe o mouse</span>
+          <span className="absolute bottom-3 right-4 font-mono text-[10px] uppercase tracking-[0.14em] text-white/40">{t("passe o mouse")}</span>
         </div>
       </div>
     </Bleed>
@@ -174,6 +178,7 @@ export function SceneLens({ intro, lead, questions, outro }: { intro: string[]; 
 
 /* Opinião × análise: dois carimbos. */
 export function SceneStamps({ say, opinion, isOpinion, say2, analysis, isAnalysis }: { say: string; opinion: string; isOpinion: string; say2: string; analysis: string; isAnalysis: string }) {
+  const t = useT();
   const { ref, k } = useTimeline([300, 1300]);
   const Stamp = ({ on, label, color }: { on: boolean; label: string; color: string }) => (
     <motion.span initial={false} animate={{ scale: on ? 1 : 2.2, opacity: on ? 1 : 0, rotate: on ? -8 : -20 }} transition={{ type: "spring", stiffness: 300, damping: 14 }}
@@ -186,13 +191,13 @@ export function SceneStamps({ say, opinion, isOpinion, say2, analysis, isAnalysi
           <p className="text-sm text-[#0A0A0A]/55">{say}</p>
           <p className="mt-2 font-display text-3xl font-semibold">{opinion}</p>
           <p className="mt-3 text-sm text-[#0A0A0A]/60">{isOpinion}</p>
-          <Stamp on={k >= 1} label="opinião" color="#e11d48" />
+          <Stamp on={k >= 1} label={t("opinião")} color="#e11d48" />
         </div>
         <div className="relative rounded-2xl border border-[#622FFD]/30 bg-white p-6">
           <p className="text-sm text-[#0A0A0A]/55">{say2}</p>
           <p className="mt-2 font-display text-xl font-semibold leading-snug md:text-2xl">{analysis}</p>
           <p className="mt-3 text-sm text-[#0A0A0A]/60">{isAnalysis}</p>
-          <Stamp on={k >= 2} label="análise" color={M.p} />
+          <Stamp on={k >= 2} label={t("análise")} color={M.p} />
         </div>
       </div>
     </Bleed>
@@ -291,7 +296,8 @@ export function ScenePageFlip({ first, items, close }: { first: string; items: {
   );
 }
 function FlipInner({ p, first, items, close }: { p: MotionValue<number>; first: string; items: { lead: string; q: string }[]; close: string }) {
-  const all = [{ lead: first, q: "O que aconteceu?" }, ...items];
+  const t = useT();
+  const all = [{ lead: first, q: t("O que aconteceu?") }, ...items];
   const s = useStep(useRange(p, 0, 0.9), all.length);
   return (
     <div className="container grid max-w-6xl grid-cols-1 items-center gap-10 md:grid-cols-2">
@@ -379,6 +385,7 @@ export function SceneA11ySimulator({ title, body }: { title: string; body: strin
     { id: "kbd", l: "Só teclado" },
     { id: "sr", l: "Leitor de tela" },
   ];
+  const t = useT();
   const [mode, setMode] = useState("normal");
   const [focus, setFocus] = useState(0);
   useEffect(() => {
@@ -394,38 +401,38 @@ export function SceneA11ySimulator({ title, body }: { title: string; body: strin
       <svg width="0" height="0" className="absolute" aria-hidden="true"><filter id="protanopia"><feColorMatrix type="matrix" values="0.567 0.433 0 0 0  0.558 0.442 0 0 0  0 0.242 0.758 0 0  0 0 0 1 0" /></filter></svg>
       <div className="container grid max-w-6xl grid-cols-1 items-center gap-10 py-20 md:grid-cols-2 md:py-28">
         <div>
-          <Eyebrow>Experimente</Eyebrow>
+          <Eyebrow>{t("Experimente")}</Eyebrow>
           <p className="mt-3 font-display text-3xl font-semibold leading-tight md:text-5xl">{title}</p>
           <p className="mt-4 text-white/75">{body}</p>
-          <div role="group" aria-label="Simulações" className="mt-6 flex flex-wrap gap-2">
+          <div role="group" aria-label={t("Simulações")} className="mt-6 flex flex-wrap gap-2">
             {MODES.map((m) => (
               <button key={m.id} type="button" aria-pressed={mode === m.id} onClick={() => setMode(m.id)}
-                className={`rounded-full border px-4 py-2 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A3E635] ${mode === m.id ? "border-[#A3E635] bg-[#A3E635] text-[#0d0d12]" : "border-white/20 text-white hover:border-white/50"}`}>{m.l}</button>
+                className={`rounded-full border px-4 py-2 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A3E635] ${mode === m.id ? "border-[#A3E635] bg-[#A3E635] text-[#0d0d12]" : "border-white/20 text-white hover:border-white/50"}`}>{t(m.l)}</button>
             ))}
           </div>
-          <p className="mt-3 text-xs text-white/50">Simulações aproximadas, só para ilustrar.</p>
+          <p className="mt-3 text-xs text-white/50">{t("Simulações aproximadas, só para ilustrar.")}</p>
         </div>
         <div className="relative">
           <div className="rounded-[22px] bg-white p-5 text-[#0A0A0A] transition-[filter] duration-500" style={{ filter }} aria-hidden="true">
-            <p className="font-display text-lg font-semibold">Seu pedido</p>
-            <p className="mt-1 text-sm text-[#0A0A0A]/60">Chega em 35 min</p>
-            <div className="mt-4 flex items-center gap-2"><span className="rounded-full bg-[#16a34a] px-2 py-0.5 text-xs font-semibold text-white">Confirmado</span><span className="rounded-full bg-[#dc2626] px-2 py-0.5 text-xs font-semibold text-white">Atrasado</span></div>
+            <p className="font-display text-lg font-semibold">{t("Seu pedido")}</p>
+            <p className="mt-1 text-sm text-[#0A0A0A]/60">{t("Chega em 35 min")}</p>
+            <div className="mt-4 flex items-center gap-2"><span className="rounded-full bg-[#16a34a] px-2 py-0.5 text-xs font-semibold text-white">{t("Confirmado")}</span><span className="rounded-full bg-[#dc2626] px-2 py-0.5 text-xs font-semibold text-white">{t("Atrasado")}</span></div>
             <div className="mt-5 flex flex-wrap gap-2">
-              <span className={`rounded-full bg-[#622FFD] px-4 py-2 text-sm font-semibold text-white ${ring(0)}`}>Acompanhar</span>
-              <span className={`rounded-full border border-black/15 px-4 py-2 text-sm font-semibold ${ring(1)}`}>Ajuda</span>
-              <span className={`rounded-full px-2 py-2 text-xs text-[#0A0A0A]/40 ${ring(2)}`}>cancelar pedido</span>
-              <span className={`rounded-full border border-black/15 px-4 py-2 text-sm ${ring(3)}`}>Voltar</span>
+              <span className={`rounded-full bg-[#622FFD] px-4 py-2 text-sm font-semibold text-white ${ring(0)}`}>{t("Acompanhar")}</span>
+              <span className={`rounded-full border border-black/15 px-4 py-2 text-sm font-semibold ${ring(1)}`}>{t("Ajuda")}</span>
+              <span className={`rounded-full px-2 py-2 text-xs text-[#0A0A0A]/40 ${ring(2)}`}>{t("cancelar pedido")}</span>
+              <span className={`rounded-full border border-black/15 px-4 py-2 text-sm ${ring(3)}`}>{t("Voltar")}</span>
             </div>
           </div>
           {mode === "sr" && (
             <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="mt-3 rounded-xl bg-[#111118] p-4 font-mono text-xs leading-6 text-[#A3E635]" role="status">
-              🔊 “Seu pedido, título” · “Chega em 35 min” · “Confirmado” · “Atrasado” · “Acompanhar, botão” · “Ajuda, botão” · “cancelar pedido, botão” · “Voltar, botão”
+              {t("🔊 “Seu pedido, título” · “Chega em 35 min” · “Confirmado” · “Atrasado” · “Acompanhar, botão” · “Ajuda, botão” · “cancelar pedido, botão” · “Voltar, botão”")}
             </motion.div>
           )}
-          {mode === "cb" && <p className="mt-3 text-sm text-white/70">“Confirmado” e “Atrasado” ficam quase iguais: cor sozinha não basta para dar status.</p>}
-          {mode === "low" && <p className="mt-3 text-sm text-white/70">O link cinza claro “cancelar pedido” praticamente desaparece.</p>}
-          {mode === "kbd" && <p className="mt-3 text-sm text-white/70">O foco precisa ficar visível em cada parada, inclusive no “cancelar pedido”.</p>}
-          {mode === "sr" && <p className="mt-3 text-sm text-white/70">Sem rótulos claros, o leitor de tela só lê textos soltos.</p>}
+          {mode === "cb" && <p className="mt-3 text-sm text-white/70">{t("“Confirmado” e “Atrasado” ficam quase iguais: cor sozinha não basta para dar status.")}</p>}
+          {mode === "low" && <p className="mt-3 text-sm text-white/70">{t("O link cinza claro “cancelar pedido” praticamente desaparece.")}</p>}
+          {mode === "kbd" && <p className="mt-3 text-sm text-white/70">{t("O foco precisa ficar visível em cada parada, inclusive no “cancelar pedido”.")}</p>}
+          {mode === "sr" && <p className="mt-3 text-sm text-white/70">{t("Sem rótulos claros, o leitor de tela só lê textos soltos.")}</p>}
         </div>
       </div>
     </Bleed>

@@ -3,16 +3,18 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useInView, useReducedMotion, type MotionValue } from "framer-motion";
 import { Bleed, Eyebrow, M, SceneRail, Sticky, SwapText, useRange, useStep } from "./primitives";
+import { useT } from "../i18n";
 
 /* ─────────────── POST 3 · Interface ganhando vida ─────────────── */
 
 /* Janela de produto no estilo Clint: barra de prompt com o logo da IA. */
 function ProductWindow({ prompt, typed, children, title = "Clint · Gerador de telas" }: { prompt: string; typed: number; children: React.ReactNode; title?: string }) {
+  const t = useT();
   return (
     <div className="overflow-hidden rounded-[22px] border border-white/10 bg-[#111118] shadow-[0_40px_120px_-30px_rgba(98,47,253,0.55)]">
       <div className="flex items-center gap-2 border-b border-white/[0.07] px-4 py-3">
         <span className="h-2.5 w-2.5 rounded-full bg-white/15" /><span className="h-2.5 w-2.5 rounded-full bg-white/15" /><span className="h-2.5 w-2.5 rounded-full bg-white/15" />
-        <span className="ml-3 font-mono text-[10px] uppercase tracking-[0.16em] text-white/45">{title}</span>
+        <span className="ml-3 font-mono text-[10px] uppercase tracking-[0.16em] text-white/45">{t(title)}</span>
       </div>
       <div className="p-4 md:p-5">{children}</div>
       <div className="flex items-center gap-3 border-t border-white/[0.07] px-4 py-3">
@@ -21,7 +23,7 @@ function ProductWindow({ prompt, typed, children, title = "Clint · Gerador de t
           {prompt.slice(0, typed)}
           <span className="ml-0.5 inline-block h-4 w-[2px] translate-y-0.5 animate-pulse bg-[#A48BFF]" aria-hidden="true" />
         </p>
-        <span className="rounded-full bg-[#622FFD] px-3 py-1.5 text-xs font-semibold text-white">Gerar</span>
+        <span className="rounded-full bg-[#622FFD] px-3 py-1.5 text-xs font-semibold text-white">{t("Gerar")}</span>
       </div>
     </div>
   );
@@ -47,6 +49,7 @@ export function SceneGapFiller({ lead, prompt, open, questions, fills, close }: 
   );
 }
 function GapInner({ p, lead, prompt, open, questions, fills, close }: { p: MotionValue<number>; lead: string; prompt: string; open: string; questions: string[]; fills: string; close: string[] }) {
+  const t = useT();
   const typed = useTyped(p, 0.02, 0.16, prompt.length);
   const qStep = useStep(useRange(p, 0.18, 0.5), questions.length + 1);
   const fStep = useStep(useRange(p, 0.55, 0.92), 8);
@@ -83,7 +86,7 @@ function GapInner({ p, lead, prompt, open, questions, fills, close }: { p: Motio
               <motion.div key={i} className={`${b.c} flex items-end rounded-xl border p-2`} initial={false}
                 animate={{ opacity: on ? 1 : 0.5, backgroundColor: on ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0)", borderColor: on ? "rgba(255,255,255,0.12)" : "rgba(251,191,36,0.35)", borderStyle: on ? "solid" : "dashed" }}
                 transition={{ duration: 0.5 }}>
-                <span className={`font-mono text-[9px] uppercase tracking-[0.14em] ${on ? "text-white/45" : "text-[#fbbf24]"}`}>{on ? `suposição · ${b.l}` : "?"}</span>
+                <span className={`font-mono text-[9px] uppercase tracking-[0.14em] ${on ? "text-white/45" : "text-[#fbbf24]"}`}>{on ? t("suposição · {l}", { l: t(b.l) }) : "?"}</span>
               </motion.div>
             );
           })}
@@ -105,6 +108,7 @@ export function SceneOrdersStory({ lead, shortP, lead2, context, close }: { lead
 }
 function OrdersInner({ p, lead, shortP, lead2, context, close }: { p: MotionValue<number>; lead: string; shortP: string; lead2: string; context: string; close: string[] }) {
   const sentences = context.split(". ").map((c, i, a) => (i < a.length - 1 ? `${c}.` : c));
+  const t = useT();
   const typed = useTyped(p, 0.02, 0.14, shortP.length);
   const ctx = useStep(useRange(p, 0.24, 0.7), sentences.length + 1);
   const live = useStep(useRange(p, 0.72, 0.98), 3);
@@ -129,7 +133,7 @@ function OrdersInner({ p, lead, shortP, lead2, context, close }: { p: MotionValu
         <p className="mt-6 text-sm text-white/70">{close[0]} {close[1]}</p>
         <p className="mt-1 text-sm text-white/70">{close[2]} <span className="text-[#A3E635]">{close[3]}</span></p>
       </div>
-      <ProductWindow prompt={ctx > 0 ? `${shortP} + contexto (${Math.min(ctx, sentences.length)}/${sentences.length})` : shortP} typed={ctx > 0 ? 999 : typed} title="Clint · Pedidos">
+      <ProductWindow prompt={ctx > 0 ? t("{p} + contexto ({n}/{total})", { p: shortP, n: Math.min(ctx, sentences.length), total: sentences.length }) : shortP} typed={ctx > 0 ? 999 : typed} title="Clint · Pedidos">
         <div className="relative h-[280px] md:h-[330px]" aria-hidden="true">
           <AnimatePresence mode="wait">
             {!specific ? (
@@ -143,15 +147,15 @@ function OrdersInner({ p, lead, shortP, lead2, context, close }: { p: MotionValu
               <motion.div key="specific" className="flex h-full flex-col gap-2" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: M.ease }}>
                 <div className="flex gap-2">
                   {["Todos", "Novos", "Atrasados", "Intervir"].map((f, i) => (
-                    <span key={f} className={`rounded-full px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.12em] ${ctx >= 5 && i === 2 ? "bg-[#f87171]/20 text-[#f87171]" : "bg-white/[0.06] text-white/55"}`}>{f}</span>
+                    <span key={f} className={`rounded-full px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.12em] ${ctx >= 5 && i === 2 ? "bg-[#f87171]/20 text-[#f87171]" : "bg-white/[0.06] text-white/55"}`}>{t(f)}</span>
                   ))}
                 </div>
                 <AnimatePresence initial={false}>
                   {live >= 1 && (
                     <motion.div key="new" initial={{ opacity: 0, x: 30, height: 0 }} animate={{ opacity: 1, x: 0, height: "auto" }} className="flex items-center gap-3 rounded-xl border border-[#A3E635]/50 bg-[#A3E635]/[0.08] px-3 py-2.5">
-                      <span className="rounded-full px-2 py-0.5 font-mono text-[9px] font-bold text-[#0d0d12]" style={{ background: M.g }}>NOVO</span>
-                      <span className="font-mono text-xs text-white">#2484</span><span className="text-xs text-white/50">agora</span>
-                      <span className="ml-auto rounded-full bg-[#622FFD] px-2.5 py-1 text-[10px] font-semibold text-white">Aceitar</span>
+                      <span className="rounded-full px-2 py-0.5 font-mono text-[9px] font-bold text-[#0d0d12]" style={{ background: M.g }}>{t("NOVO")}</span>
+                      <span className="font-mono text-xs text-white">#2484</span><span className="text-xs text-white/50">{t("agora")}</span>
+                      <span className="ml-auto rounded-full bg-[#622FFD] px-2.5 py-1 text-[10px] font-semibold text-white">{t("Aceitar")}</span>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -159,9 +163,9 @@ function OrdersInner({ p, lead, shortP, lead2, context, close }: { p: MotionValu
                   const late = o.s === "ATRASADO" && live >= 2;
                   return (
                     <motion.div key={o.n} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0, borderColor: late ? "rgba(248,113,113,0.7)" : "rgba(255,255,255,0.08)" }} transition={{ delay: i * 0.06 }} className="flex items-center gap-3 rounded-xl border bg-white/[0.03] px-3 py-2.5">
-                      <motion.span animate={late ? { scale: [1, 1.12, 1] } : { scale: 1 }} transition={late ? { duration: 1, repeat: 2 } : undefined} className="rounded-full px-2 py-0.5 font-mono text-[9px] font-bold text-[#0d0d12]" style={{ background: o.c }}>{o.s}</motion.span>
+                      <motion.span animate={late ? { scale: [1, 1.12, 1] } : { scale: 1 }} transition={late ? { duration: 1, repeat: 2 } : undefined} className="rounded-full px-2 py-0.5 font-mono text-[9px] font-bold text-[#0d0d12]" style={{ background: o.c }}>{t(o.s)}</motion.span>
                       <span className="font-mono text-xs text-white">{o.n}</span><span className="text-xs text-white/50">{o.t}</span>
-                      {ctx >= 4 && <span className="ml-auto rounded-full border border-white/15 px-2.5 py-1 text-[10px] text-white/80">1 clique</span>}
+                      {ctx >= 4 && <span className="ml-auto rounded-full border border-white/15 px-2.5 py-1 text-[10px] text-white/80">{t("1 clique")}</span>}
                     </motion.div>
                   );
                 })}
@@ -170,7 +174,7 @@ function OrdersInner({ p, lead, shortP, lead2, context, close }: { p: MotionValu
           </AnimatePresence>
         </div>
       </ProductWindow>
-      <div className="md:col-span-2"><SceneRail p={p} labels={["Pedido genérico", "Contexto entra", "Status primeiro", "Ao vivo"]} /></div>
+      <div className="md:col-span-2"><SceneRail p={p} labels={["Pedido genérico", "Contexto entra", "Status primeiro", "Ao vivo"].map((l) => t(l))} /></div>
     </div>
   );
 }
@@ -317,43 +321,47 @@ function CriteriaInner({ p, lead, vague, lead2, open, intro, criteria, close }: 
   );
 }
 function DemoFilter() {
+  const t = useT();
   return (
     <div>
-      <div className="flex items-center gap-2"><span className="rounded-lg bg-[#622FFD] px-3 py-2 text-xs font-semibold text-white">Filtrar</span><span className="h-8 flex-1 rounded-lg bg-white/[0.06]" /></div>
+      <div className="flex items-center gap-2"><span className="rounded-lg bg-[#622FFD] px-3 py-2 text-xs font-semibold text-white">{t("Filtrar")}</span><span className="h-8 flex-1 rounded-lg bg-white/[0.06]" /></div>
       <motion.div className="mt-6 h-1.5 rounded-full bg-[#A3E635]" initial={{ width: "0%" }} animate={{ width: "38%" }} transition={{ duration: 1.6 }} />
-      <p className="mt-2 font-mono text-[10px] text-white/55">ENCONTRADO EM 1,9 S · META &lt; 5 S</p>
+      <p className="mt-2 font-mono text-[10px] text-white/55">{t("ENCONTRADO EM 1,9 S · META < 5 S")}</p>
       <div className="mt-5 space-y-2">{[0, 1, 2].map((r) => <div key={r} className="h-6 rounded bg-white/[0.04]" />)}</div>
     </div>
   );
 }
 function DemoError() {
+  const t = useT();
   return (
     <div className="space-y-3">
-      <div className="rounded-xl border border-white/10 p-3 font-mono text-xs text-white/40 line-through">Erro 504.</div>
+      <div className="rounded-xl border border-white/10 p-3 font-mono text-xs text-white/40 line-through">{t("Erro 504.")}</div>
       <motion.div initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }} className="rounded-xl border border-[#f87171]/50 bg-[#f87171]/10 p-3 text-sm text-white">
-        Não conseguimos salvar suas alterações.
-        <span className="mt-2 block w-fit rounded-full bg-white px-3 py-1 text-xs font-semibold text-[#0d0d12]">Tentar novamente</span>
+        {t("Não conseguimos salvar suas alterações.")}
+        <span className="mt-2 block w-fit rounded-full bg-white px-3 py-1 text-xs font-semibold text-[#0d0d12]">{t("Tentar novamente")}</span>
       </motion.div>
     </div>
   );
 }
 function DemoTable() {
+  const t = useT();
   return (
     <div className="space-y-1.5">
       {[["Pedido", "Status", "Tempo"], ["#2481", "Novo", "2 min"], ["#2477", "Atrasado", "18 min"], ["#2475", "Em preparo", "9 min"]].map((r, i) => (
         <motion.div key={i} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: i * 0.12 }} className={`grid grid-cols-3 rounded-lg px-3 py-2 text-xs ${i === 0 ? "font-mono text-[10px] uppercase text-white/45" : "bg-white/[0.04] text-white/85"}`}>
-          {r.map((c) => <span key={c} className={c === "Atrasado" ? "text-[#f87171]" : ""}>{c}</span>)}
+          {r.map((c) => <span key={c} className={c === "Atrasado" ? "text-[#f87171]" : ""}>{/^[#\d]/.test(c) ? c : t(c)}</span>)}
         </motion.div>
       ))}
     </div>
   );
 }
 function DemoCta() {
+  const t = useT();
   return (
     <div className="flex h-full flex-col justify-center gap-3">
-      <motion.span initial={{ scale: 0.9 }} animate={{ scale: 1 }} className="w-full rounded-full bg-[#622FFD] py-3 text-center text-sm font-semibold text-white shadow-[0_0_40px_rgba(98,47,253,0.5)]">Confirmar pedido</motion.span>
-      <span className="text-center text-xs text-white/45 underline">Salvar rascunho</span>
-      <span className="text-center text-xs text-white/35">Cancelar</span>
+      <motion.span initial={{ scale: 0.9 }} animate={{ scale: 1 }} className="w-full rounded-full bg-[#622FFD] py-3 text-center text-sm font-semibold text-white shadow-[0_0_40px_rgba(98,47,253,0.5)]">{t("Confirmar pedido")}</motion.span>
+      <span className="text-center text-xs text-white/45 underline">{t("Salvar rascunho")}</span>
+      <span className="text-center text-xs text-white/35">{t("Cancelar")}</span>
     </div>
   );
 }

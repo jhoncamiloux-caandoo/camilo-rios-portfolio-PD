@@ -2,12 +2,14 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Volume2, VolumeX } from "lucide-react";
+import { useT } from "@/components/blog/i18n";
 
 export type VideoItem = { src: string; poster: string; label?: string; sound?: boolean };
 
 /* Vídeo leve do blog: nada baixa antes de chegar perto da tela (preload none + poster),
    toca mudo em loop só enquanto visível e respeita "reduzir movimento" (fica no poster com controles). */
 function LazyVideo({ item }: { item: VideoItem }) {
+  const t = useT();
   const ref = useRef<HTMLVideoElement>(null);
   const [muted, setMuted] = useState(true);
   const [reduce, setReduce] = useState(false);
@@ -57,7 +59,7 @@ function LazyVideo({ item }: { item: VideoItem }) {
               if (muted) v.play().catch(() => {});
             }}
             aria-pressed={!muted}
-            aria-label={muted ? "Ligar som" : "Desligar som"}
+            aria-label={muted ? t("Ligar som") : t("Desligar som")}
             className="absolute bottom-3 right-3 grid h-10 w-10 place-items-center rounded-full bg-black/60 text-white backdrop-blur"
           >
             {muted ? <VolumeX size={18} aria-hidden="true" /> : <Volume2 size={18} aria-hidden="true" />}

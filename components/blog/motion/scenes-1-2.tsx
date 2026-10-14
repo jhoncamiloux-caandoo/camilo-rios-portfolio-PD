@@ -2,6 +2,7 @@
 
 import { motion, useTransform, type MotionValue } from "framer-motion";
 import { Bleed, CountUp, Eyebrow, KineticQuote, M, SceneRail, ScrollWords, Sticky, useRange, useStep } from "./primitives";
+import { useT } from "../i18n";
 
 /* ─────────────── POST 1 · Tipografia cinética ─────────────── */
 
@@ -17,6 +18,7 @@ export function SceneSpecExpand({ intro, vague, joiner, spec }: { intro: string;
   );
 }
 function SpecExpandInner({ p, intro, vague, joiner, spec }: { p: MotionValue<number>; intro: string; vague: string; joiner: string; spec: string }) {
+  const t = useT();
   const strike = useTransform(useRange(p, 0.12, 0.26), [0, 1], ["0%", "100%"]);
   const vagueOp = useTransform(p, [0.26, 0.34], [1, 0.35]);
   const vagueScale = useTransform(p, [0.26, 0.36], [1, 0.62]);
@@ -33,10 +35,10 @@ function SpecExpandInner({ p, intro, vague, joiner, spec }: { p: MotionValue<num
         from={0.34}
         to={0.92}
         text={`“${spec}”`}
-        marks={["gestores", "SaaS B2B", "receita, churn e conversão", "aparecer primeiro", "desktop", "leitura rápida", "comparar períodos", "Evite gráficos decorativos", "design system existente"]}
+        marks={["gestores", "SaaS B2B", "receita, churn e conversão", "aparecer primeiro", "desktop", "leitura rápida", "comparar períodos", "Evite gráficos decorativos", "design system existente"].map((m) => t(m))}
         className="mt-3 max-w-4xl font-display text-[19px] leading-[1.45] md:text-[30px]"
       />
-      <div className="mt-10"><SceneRail p={p} labels={["Pedido", "Ambiguidade", "Especificação"]} /></div>
+      <div className="mt-10"><SceneRail p={p} labels={[t("Pedido"), t("Ambiguidade"), t("Especificação")]} /></div>
     </div>
   );
 }
@@ -81,6 +83,7 @@ export function SceneProcessMorph({ beforeLabel, before, afterLabel, after }: { 
   );
 }
 function ProcessInner({ p, beforeLabel, afterLabel, B, A }: { p: MotionValue<number>; beforeLabel: string; afterLabel: string; B: string[]; A: string[] }) {
+  const t = useT();
   const step = useStep(p, 3);
   const NEW = new Set(["Contexto", "Prompt", "Crítica"]);
   return (
@@ -110,7 +113,7 @@ function ProcessInner({ p, beforeLabel, afterLabel, B, A }: { p: MotionValue<num
           );
         })}
       </ol>
-      <div className="mt-12"><SceneRail p={p} labels={["Antes", "O que sai", "O que entra"]} /></div>
+      <div className="mt-12"><SceneRail p={p} labels={[t("Antes"), t("O que sai"), t("O que entra")]} /></div>
     </div>
   );
 }
@@ -129,6 +132,7 @@ export function ScenePossibilitySpace({ shortP, longP, notes }: { shortP: string
   );
 }
 function SpaceInner({ p, shortP, longP, notes }: { p: MotionValue<number>; shortP: string; longP: string; notes: string[] }) {
+  const t = useT();
   const clauses = longP.split(". ").map((c, i, a) => (i < a.length - 1 ? `${c}.` : c));
   const step = useStep(useRange(p, 0.18, 0.95), clauses.length + 1);
   const words = (s: string) => s.split(/\s+/).length;
@@ -139,7 +143,7 @@ function SpaceInner({ p, shortP, longP, notes }: { p: MotionValue<number>; short
       <div>
         <Eyebrow>{notes[0]}</Eyebrow>
         <blockquote className="mt-3 rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-[15px] text-white/70">
-          “{shortP}” <span className="ml-2 font-mono text-[11px] text-white/40">{words(shortP)} palavras</span>
+          “{shortP}” <span className="ml-2 font-mono text-[11px] text-white/40">{t("{n} palavras", { n: words(shortP) })}</span>
         </blockquote>
         <p className="mt-2 text-sm text-white/55">{notes[1]} {notes[2]}</p>
         <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.2em] text-white/45">{notes[3]}</p>
@@ -147,12 +151,12 @@ function SpaceInner({ p, shortP, longP, notes }: { p: MotionValue<number>; short
           {clauses.map((c, i) => (
             <span key={i} className={`transition-colors duration-500 ${i < step ? "text-white" : "text-white/30"}`}>{i === 0 ? "“" : ""}{c}{i === clauses.length - 1 ? "”" : ""} </span>
           ))}
-          <span className="ml-1 font-mono text-[11px] text-white/40">{words(longP)} palavras</span>
+          <span className="ml-1 font-mono text-[11px] text-white/40">{t("{n} palavras", { n: words(longP) })}</span>
         </blockquote>
         <p className="mt-2 text-sm text-white/70">{notes[4]} <span className="text-[#A3E635]">{notes[5]}</span></p>
       </div>
       <div>
-        <svg viewBox="0 0 320 320" className="h-auto w-full" role="img" aria-label="Campo de possibilidades que encolhe a cada informação do prompt">
+        <svg viewBox="0 0 320 320" className="h-auto w-full" role="img" aria-label={t("Campo de possibilidades que encolhe a cada informação do prompt")}>
           {Array.from({ length: N }, (_, i) => {
             const x = 20 + (i % 12) * 25.5, y = 20 + Math.floor(i / 12) * 38;
             const keep = i < alive;
@@ -161,7 +165,7 @@ function SpaceInner({ p, shortP, longP, notes }: { p: MotionValue<number>; short
             return <motion.circle key={i} r={keep && alive <= 3 ? 9 : 5} initial={false} animate={{ cx: Math.round(cx * 10) / 10, cy: Math.round(cy * 10) / 10, opacity: keep ? 1 : 0.08, fill: keep && alive <= 3 ? M.g : keep ? M.p2 : "#ffffff" }} transition={{ duration: 0.7, ease: M.ease }} />;
           })}
         </svg>
-        <p className="text-center font-mono text-[11px] uppercase tracking-[0.18em] text-white/55">possibilidades em aberto · <span className="text-white">{alive}</span></p>
+        <p className="text-center font-mono text-[11px] uppercase tracking-[0.18em] text-white/55">{t("possibilidades em aberto")} · <span className="text-white">{alive}</span></p>
       </div>
     </div>
   );
@@ -178,7 +182,8 @@ export function SceneDecisionSequence({ intro, overloaded, outro, steps, close }
   );
 }
 function DecisionInner({ p, intro, overloaded, outro, steps, close }: { p: MotionValue<number>; intro: string; overloaded: string; outro: string[]; steps: { title: string; prompt: string }[]; close: string[] }) {
-  const items = overloaded.replace(/^Crie o produto completo, com /, "").replace(/\.\.\.$/, "").split(", ");
+  const t = useT();
+  const items = overloaded.replace(/^(Crie o produto completo, com|Create the complete product, with|Crea el producto completo, con) /, "").replace(/\.\.\.$/, "").split(", ");
   const phase = useStep(p, 6); // 0 nuvem, 1 caos, 2..5 passos
   const line = useTransform(useRange(p, 0.34, 0.95), [0, 1], [0, 1]);
   return (
@@ -223,7 +228,7 @@ function DecisionInner({ p, intro, overloaded, outro, steps, close }: { p: Motio
           <p className="mt-5 text-sm text-white/70">{close[0]} <span className="text-white/45">{close[1]}</span></p>
         </div>
       </div>
-      <div className="mt-10"><SceneRail p={p} labels={["Tudo de uma vez", "Caos", "Estrutura", "Experiência", "Comportamento", "Interface"]} /></div>
+      <div className="mt-10"><SceneRail p={p} labels={[t("Tudo de uma vez"), t("Caos"), t("Estrutura"), t("Experiência"), t("Comportamento"), t("Interface")]} /></div>
     </div>
   );
 }

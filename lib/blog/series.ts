@@ -150,8 +150,6 @@ const BRIDGES: [string, string, string, string][] = [
   ["design-thinking-resolver-problemas", "cro-transformar-duvidas-em-experimentos", "Da empatia ao experimento: o mesmo ciclo aplicado à conversão.", "A raiz do método: Design Thinking."],
 ];
 
-export type Next = { post: Post; reason: string };
-
 export const postBySlug = (slug: string) => posts.find((p) => p.slug === slug);
 
 export function seriesOf(slug: string) {
@@ -162,15 +160,62 @@ export function seriesOf(slug: string) {
   return { series: s, index: i, items, prev: i > 0 ? postBySlug(s.slugs[i - 1]) : undefined, next: postBySlug(s.slugs[i + 1]) };
 }
 
-/* "Para ampliar": pontes com motivo primeiro; completa com artigos que dividem uma tag, fora da mesma série. */
-export function widen(slug: string, n = 3): Next[] {
+export const coverSmall = (p: Post) => (p.cover ? p.cover.replace(/\.webp$/, "-800.webp") : undefined);
+
+/* Traduções de séries e pontes (a ordem das pontes segue BRIDGES). */
+export const SERIES_I18N: Record<string, { en: [string, string]; es: [string, string] }> = {
+  "motion-ia": { en: ["Motion with AI", "From code to video: how to make AI animate with rhythm, weight and brand, using a real carousel as the example."], es: ["Motion con IA", "Del código al video: cómo hacer que la IA anime con ritmo, peso y marca, usando un carrusel real como ejemplo."] },
+  prompt: { en: ["Prompting as a design process", "Asking AI well is a design skill: clarity, context and economy."], es: ["El prompt como proceso de diseño", "Pedirle bien a la IA es una habilidad de diseño: claridad, contexto y economía."] },
+  "design-era-ia": { en: ["Design in the age of AI", "What changes in a designer's work when AI generates, speeds things up and starts to act."], es: ["Diseño en la era de la IA", "Qué cambia en el trabajo del diseñador cuando la IA genera, acelera y empieza a actuar."] },
+  "tendencias-2026": { en: ["UX and 2026 trends", "Agents, AI search, personalization and accessibility as product quality."], es: ["UX y tendencias de 2026", "Agentes, búsqueda con IA, personalización y accesibilidad como calidad de producto."] },
+  "dados-decisao": { en: ["From data to decision", "Having data is the start. Telling the story, prioritizing and proving impact is the work."], es: ["De los datos a la decisión", "Tener datos es el comienzo. Contar la historia, priorizar y demostrar impacto es el trabajo."] },
+  cro: { en: ["Conversion with method", "From UX and Growth working together to experiments that investigate decisions, not buttons."], es: ["Conversión con método", "De UX y Growth trabajando juntos a experimentos que investigan decisiones, no botones."] },
+  "fundamentos-ux": { en: ["UX fundamentals", "Process, usability, research and metrics: the foundation that still holds."], es: ["Fundamentos de UX", "Proceso, usabilidad, investigación y métricas: la base que sigue vigente."] },
+  "ia-primeiros-passos": { en: ["AI in design: first steps", "How AI started to change research, prototyping, interfaces and product management."], es: ["IA en el diseño: primeros pasos", "Cómo la IA empezó a cambiar la investigación, el prototipado, la interfaz y la gestión de producto."] },
+  carreira: { en: ["Product Design career", "From hiring process to leadership: what helps a designer grow."], es: ["Carrera en Product Design", "Del proceso de selección al liderazgo: lo que hace crecer a un diseñador."] },
+};
+
+/* [en a→b, en b→a, es a→b, es b→a], na mesma ordem de BRIDGES. */
+const BRIDGES_I18N: [string, string, string, string][] = [
+  ["Video starts with a well-written request. Here is the prompt as a step of the process.", "See the prompt become video: AI writing code that animates itself.", "El video empieza con un pedido bien escrito. Aquí está el prompt como etapa del proceso.", "Mira el prompt convertirse en video: la IA escribiendo código que se anima."],
+  ["CLAUDE.md is knowing what you want, written down once and for good.", "In practice: a rules file the AI reads before every task.", "El CLAUDE.md es saber lo que quieres, por escrito y para siempre.", "En la práctica: un archivo de reglas que la IA lee antes de cada tarea."],
+  ["Rules written once also save tokens: less repetition in every conversation.", "One way to stop repeating context: keep the rules in a project file.", "Las reglas escritas una vez también ahorran: menos repetición en cada conversación.", "Una forma de no repetir contexto: dejar las reglas en un archivo del proyecto."],
+  ["The same question outside motion: who decides whether what AI made is good?", "A method to answer it: separate who creates from who evaluates, with a scorecard.", "La misma pregunta fuera del motion: ¿quién decide si lo que hizo la IA es bueno?", "Un método para responder: separar quien crea de quien evalúa, con una ficha de notas."],
+  ["Why a critical eye, not the tool, decided the result.", "The critical eye applied: critique rounds on a real carousel.", "Por qué la mirada crítica, y no la herramienta, decidió el resultado.", "La mirada crítica aplicada: rondas de crítica en un carrusel real."],
+  ["Tools that bring motion into the prototype, with the same curves.", "Behind these tools: why a spring feels alive and linear feels mechanical.", "Herramientas que llevan movimiento al prototipo, con las mismas curvas.", "Detrás de estas herramientas: por qué el resorte parece vivo y lo lineal parece máquina."],
+  ["Pulling reusable pieces out of a brand is the start of a design system.", "The same reasoning applied to motion: brand tokens in a carousel.", "Extraer piezas reutilizables de una marca es el comienzo de un design system.", "El mismo razonamiento aplicado al motion: tokens de marca en un carrusel."],
+  ["Why the brand's look matters: design is judged as credibility.", "A practical example of bringing brand identity into motion.", "Por qué importa la cara de la marca: el diseño se juzga como credibilidad.", "Un ejemplo práctico de llevar la identidad de la marca al movimiento."],
+  ["Storyboard and character are the same idea as telling a story with data.", "The same narrative logic applied to a carousel, slide by slide.", "Storyboard y personaje son la misma idea que contar una historia con datos.", "La misma lógica narrativa aplicada a un carrusel, slide por slide."],
+  ["If the question needs context, context becomes design material.", "Context starts in the question: why a generic request produces a generic interface.", "Si la pregunta necesita contexto, el contexto se vuelve material de diseño.", "El contexto empieza en la pregunta: por qué un pedido genérico genera una interfaz genérica."],
+  ["The next step: levels of autonomy, confirmation and failure recovery.", "Where the idea started: when AI acts, the designer has to design control.", "El siguiente paso: niveles de autonomía, confirmación y recuperación de fallas.", "El origen de la idea: cuando la IA actúa, el diseñador tiene que diseñar control."],
+  ["To organize what research finds, in reusable pieces.", "Research is still essential with AI. Here's why.", "Para organizar lo que encuentra la investigación, en piezas reutilizables.", "La investigación sigue siendo esencial con IA. Mira por qué."],
+  ["When users themselves search with AI, discovery changes.", "Understanding the user is still the starting point.", "Cuando el propio usuario busca con IA, el descubrimiento cambia.", "Entender al usuario sigue siendo el punto de partida."],
+  ["The basics of experience metrics, before measuring AI.", "Applying metrics to AI features: usage is not value.", "La base de las métricas de experiencia, antes de medir IA.", "Aplicando métricas a funcionalidades de IA: uso no es valor."],
+  ["The other side: the business metrics that UX moves.", "When ROI doesn't add up: other ways to prove impact.", "El otro lado: las métricas de negocio que mueve el UX.", "Cuando el ROI no cierra la cuenta: otras formas de demostrar impacto."],
+  ["Before the visuals, the question: what decision does this data help make?", "How to design the dashboard that leads to the decision.", "Antes de lo visual, la pregunta: ¿qué decisión ayuda a tomar este dato?", "Cómo diseñar el panel que lleva a la decisión."],
+  ["The career view behind bringing design, growth and business together.", "In practice: UX and Growth on the same team.", "La visión de carrera detrás de unir diseño, growth y negocio.", "En la práctica: UX y Growth en el mismo equipo."],
+  ["Investigating decisions starts with understanding where the landing page loses people.", "The next level: experiments that investigate decisions.", "Investigar decisiones empieza por entender dónde la landing pierde gente.", "El siguiente nivel: experimentos que investigan decisiones."],
+  ["Personalization uses personal data. Privacy law says how to handle it.", "Privacy applied: personalization with context and consent.", "Personalizar usa datos personales. La ley de privacidad dice cómo cuidarlos.", "Privacidad aplicada: personalización con contexto y consentimiento."],
+  ["The why before the how: accessibility improves the experience for everyone.", "From why to process: accessibility as quality, not an audit.", "El porqué antes del cómo: la accesibilidad mejora la experiencia de todos.", "Del porqué al proceso: accesibilidad como calidad, no como auditoría."],
+  ["Usability is the foundation. What changed in user-centered design?", "The foundation that still holds: the lessons of Don't Make Me Think.", "La usabilidad es la base. ¿Qué cambió en el diseño centrado en el usuario?", "La base que sigue vigente: las lecciones de No me hagas pensar."],
+  ["Two years later: the prototype became a conversation with code.", "Where this story began: AI arriving in prototyping.", "Dos años después: el prototipo se volvió conversación con código.", "Dónde empezó esta historia: la IA llegando al prototipado."],
+  ["The 2025 question revisited: AI speeds things up, but how far?", "Where the conversation began: how AI would change UX work.", "La pregunta de 2025, revisitada: la IA acelera, pero ¿hasta dónde?", "El comienzo de la conversación: cómo la IA iba a cambiar el trabajo de UX."],
+  ["After adopting AI, the product question: does it create value?", "The context: how AI entered product management.", "Después de adoptar IA, la pregunta de producto: ¿genera valor?", "El contexto: cómo la IA entró en la gestión de productos."],
+  ["What recruiters look for in the challenge: a critical eye.", "How that eye shows up in the hiring process.", "Lo que el reclutador busca en el desafío: la mirada crítica.", "Cómo esa mirada aparece en el proceso de selección."],
+  ["From empathy to experiment: the same cycle applied to conversion.", "The root of the method: Design Thinking.", "De la empatía al experimento: el mismo ciclo aplicado a la conversión.", "La raíz del método: Design Thinking."],
+];
+
+export type Reason = { pt: string; en: string; es: string };
+
+export function widenI18n(slug: string, n = 3): { post: Post; reason: Reason }[] {
   const own = seriesOf(slug)?.series.slugs ?? [slug];
-  const out: Next[] = [];
-  for (const [a, b, ab, ba] of BRIDGES) {
+  const out: { post: Post; reason: Reason }[] = [];
+  BRIDGES.forEach(([a, b, ab, ba], i) => {
     const other = a === slug ? b : b === slug ? a : null;
     const p = other && postBySlug(other);
-    if (p && !out.some((o) => o.post.slug === p.slug)) out.push({ post: p, reason: a === slug ? ab : ba });
-  }
+    const [eab, eba, sab, sba] = BRIDGES_I18N[i];
+    if (p && !out.some((o) => o.post.slug === p.slug)) out.push({ post: p, reason: a === slug ? { pt: ab, en: eab, es: sab } : { pt: ba, en: eba, es: sba } });
+  });
   const me = postBySlug(slug);
   if (me && out.length < n) {
     const cand = posts
@@ -178,9 +223,10 @@ export function widen(slug: string, n = 3): Next[] {
       .map((p) => ({ p, shared: p.tags.filter((t) => me.tags.includes(t)) }))
       .filter((x) => x.shared.length)
       .sort((a, b) => b.shared.length - a.shared.length || b.p.date.localeCompare(a.p.date));
-    for (const { p, shared } of cand.slice(0, n - out.length)) out.push({ post: p, reason: `Também trata de ${shared.slice(0, 2).join(" e ")}, por outro ângulo.` });
+    for (const { p, shared } of cand.slice(0, n - out.length)) {
+      const tg = shared.slice(0, 2);
+      out.push({ post: p, reason: { pt: `Também trata de ${tg.join(" e ")}, por outro ângulo.`, en: `Also about ${tg.join(" and ")}, from another angle.`, es: `También trata de ${tg.join(" y ")}, desde otro ángulo.` } });
+    }
   }
   return out.slice(0, n);
 }
-
-export const coverSmall = (p: Post) => (p.cover ? p.cover.replace(/\.webp$/, "-800.webp") : undefined);

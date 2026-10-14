@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { AnimationItem } from "lottie-web";
+import { useT } from "@/components/blog/i18n";
 
 /* Player de Lottie editorial: carrega só quando chega perto da tela, toca uma vez
    e para no estado final. As etapas (markers do arquivo) viram botões para rever
@@ -11,6 +12,7 @@ import type { AnimationItem } from "lottie-web";
 type Marker = { tm: number; cm: string; dr: number };
 
 export function LottieDemo({ name, mode = "view" }: { name: string; mode?: "view" | "scroll" }) {
+  const t = useT();
   const box = useRef<HTMLDivElement>(null);
   const wrap = useRef<HTMLDivElement>(null);
   const anim = useRef<AnimationItem | null>(null);
@@ -97,7 +99,7 @@ export function LottieDemo({ name, mode = "view" }: { name: string; mode?: "view
     <div ref={wrap}>
       <div ref={box} className="aspect-[16/9] w-full" aria-hidden="true" />
       {markers.length > 0 && (
-        <ol className="mt-3 flex flex-wrap gap-2" aria-label="Etapas da animação">
+        <ol className="mt-3 flex flex-wrap gap-2" aria-label={t("Etapas da animação")}>
           {markers.map((m, i) => (
             <li key={m.cm}>
               <button
@@ -109,7 +111,7 @@ export function LottieDemo({ name, mode = "view" }: { name: string; mode?: "view
                 }`}
               >
                 <span className="mr-1.5 text-[#A3E635]">{String(i + 1).padStart(2, "0")}</span>
-                {m.cm}
+                {t(m.cm)}
               </button>
             </li>
           ))}

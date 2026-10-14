@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useInView, useReducedMotion, useTransform, type MotionValue } from "framer-motion";
 import { Bleed, Eyebrow, FillText, HorizontalTrack, M, SceneRail, Sticky, SwapText, useRange, useStep, WeightWords } from "./primitives";
+import { useT } from "../i18n";
 
 /* ─────────────── POST 5 · UX e Growth: tipografia em duelo ─────────────── */
 
@@ -198,8 +199,9 @@ function GlossaryInner({ p, lead, questions, close }: { p: MotionValue<number>; 
   );
 }
 function Btn({ s }: { s: string }) {
+  const t = useT();
   const cls: Record<string, string> = { default: "bg-[#622FFD]", hover: "bg-[#7447FF] shadow-[0_0_30px_rgba(98,47,253,0.6)]", loading: "bg-[#622FFD]/60", erro: "bg-[#f87171]" };
-  return <span className={`inline-flex min-w-[130px] items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white transition ${cls[s]}`}>{s === "loading" && <span className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-white/40 border-t-white" />}{s === "loading" ? "Salvando" : s === "erro" ? "Tentar de novo" : "Salvar"}</span>;
+  return <span className={`inline-flex min-w-[130px] items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white transition ${cls[s]}`}>{s === "loading" && <span className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-white/40 border-t-white" />}{s === "loading" ? t("Salvando") : s === "erro" ? t("Tentar de novo") : t("Salvar")}</span>;
 }
 function useCycle(n: number, ms = 900) {
   const reduce = useReducedMotion();
@@ -208,12 +210,13 @@ function useCycle(n: number, ms = 900) {
   return k;
 }
 function TechDemo({ i }: { i: number }) {
+  const t = useT();
   const k = useCycle(4, 1000);
   if (i === 0) return (
     <div className="flex flex-col items-center gap-3">
       <div className="rounded-xl border border-dashed border-[#A48BFF]/60 p-3"><Btn s="default" /></div>
-      <div className="flex gap-2">{["Salvar", "Enviar", "Continuar"].map((l) => <span key={l} className="rounded-full bg-[#622FFD] px-3 py-1.5 text-xs font-semibold text-white">{l}</span>)}</div>
-      <p className="font-mono text-[10px] text-white/45">1 COMPONENTE · N USOS</p>
+      <div className="flex gap-2">{["Salvar", "Enviar", "Continuar"].map((l) => <span key={l} className="rounded-full bg-[#622FFD] px-3 py-1.5 text-xs font-semibold text-white">{t(l)}</span>)}</div>
+      <p className="font-mono text-[10px] text-white/45">{t("1 COMPONENTE · N USOS")}</p>
     </div>
   );
   if (i === 1) return (
@@ -223,7 +226,7 @@ function TechDemo({ i }: { i: number }) {
       <p className="mt-1 text-white/60">{"[{ id: 2481, status: \"novo\" }]"}</p>
     </div>
   );
-  if (i === 2) return <div className="flex flex-col items-center gap-3"><Btn s={["default", "hover", "loading", "erro"][k]} /><p className="font-mono text-[10px] uppercase text-white/45">estado: {["default", "hover", "loading", "erro"][k]}</p></div>;
+  if (i === 2) return <div className="flex flex-col items-center gap-3"><Btn s={["default", "hover", "loading", "erro"][k]} /><p className="font-mono text-[10px] uppercase text-white/45">{t("estado: {s}", { s: t(["default", "hover", "loading", "erro"][k]) })}</p></div>;
   if (i === 3) return (
     <motion.div className="rounded-xl border border-white/15 p-2" animate={{ width: ["100%", "45%", "100%"] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}>
       <div className="grid gap-1.5" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(60px, 1fr))" }}>{[0, 1, 2, 3].map((n) => <div key={n} className="h-12 rounded bg-white/[0.08]" />)}</div>
@@ -231,14 +234,14 @@ function TechDemo({ i }: { i: number }) {
   );
   if (i === 4 || i === 5) {
     const c = ["#622FFD", "#0EA5E9", "#16A34A", "#e11d48"][k];
-    return <div className="flex flex-col items-center gap-3"><p className="font-mono text-xs text-white/70">--color-primary: <span style={{ color: c }}>{c}</span></p><span className="rounded-full px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-500" style={{ background: c }}>Botão</span></div>;
+    return <div className="flex flex-col items-center gap-3"><p className="font-mono text-xs text-white/70">--color-primary: <span style={{ color: c }}>{c}</span></p><span className="rounded-full px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-500" style={{ background: c }}>{t("Botão")}</span></div>;
   }
-  if (i === 6) return <div className="w-full space-y-2">{[0, 1, 2].map((n) => <motion.div key={n} className="h-8 rounded-lg bg-white/[0.08]" animate={{ opacity: [0.35, 0.8, 0.35] }} transition={{ duration: 1.2, repeat: Infinity, delay: n * 0.15 }} />)}<p className="font-mono text-[10px] text-white/45">CARREGANDO… (SKELETON EM VEZ DE TELA EM BRANCO)</p></div>;
+  if (i === 6) return <div className="w-full space-y-2">{[0, 1, 2].map((n) => <motion.div key={n} className="h-8 rounded-lg bg-white/[0.08]" animate={{ opacity: [0.35, 0.8, 0.35] }} transition={{ duration: 1.2, repeat: Infinity, delay: n * 0.15 }} />)}<p className="font-mono text-[10px] text-white/45">{t("CARREGANDO… (SKELETON EM VEZ DE TELA EM BRANCO)")}</p></div>;
   return (
     <div className="w-full">
-      <p className="text-xs text-white/60">E-mail</p>
+      <p className="text-xs text-white/60">{t("E-mail")}</p>
       <div className="mt-1 rounded-lg border border-[#f87171] bg-[#f87171]/10 px-3 py-2 text-sm text-white">camilo@</div>
-      <p className="mt-1.5 text-xs text-[#f87171]">Falta o domínio. Exemplo: nome@empresa.com</p>
+      <p className="mt-1.5 text-xs text-[#f87171]">{t("Falta o domínio. Exemplo: nome@empresa.com")}</p>
     </div>
   );
 }
@@ -288,6 +291,7 @@ export function SceneCompile({ a, b }: { a: string; b: string }) {
   );
 }
 function CompileInner({ p, a, b }: { p: MotionValue<number>; a: string; b: string }) {
+  const t = useT();
   const s = useStep(useRange(p, 0.1, 0.85), 5);
   const LOG = ["› compilando componentes", "› aplicando tokens", "› conectando a API", "✓ no ar"];
   return (
@@ -296,7 +300,7 @@ function CompileInner({ p, a, b }: { p: MotionValue<number>; a: string; b: strin
         <p className="text-xl text-white/80 md:text-2xl">{a}</p>
         <p className="mt-4 font-display text-4xl font-semibold leading-[1.02] md:text-6xl">{b}</p>
         <div className="mt-8 font-mono text-xs leading-6">
-          {LOG.map((l, i) => <motion.p key={l} initial={false} animate={{ opacity: i < s ? 1 : 0.4 }} className={i === 3 ? "text-[#A3E635]" : "text-white/70"}>{l}</motion.p>)}
+          {LOG.map((l, i) => <motion.p key={l} initial={false} animate={{ opacity: i < s ? 1 : 0.4 }} className={i === 3 ? "text-[#A3E635]" : "text-white/70"}>{t(l)}</motion.p>)}
         </div>
       </div>
       <div className="relative aspect-[4/3] rounded-2xl" aria-hidden="true">
