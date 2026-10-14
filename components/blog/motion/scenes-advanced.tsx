@@ -8,7 +8,7 @@ import { Bleed, Eyebrow, M } from "./primitives";
    Regras: números são sempre ilustrativos e marcados como tal, nenhuma animação sugere
    causalidade, nada depende só de cor, e todo estado final é legível sem movimento. */
 
-function useTimeline(times: number[]) {
+export function useTimeline(times: number[]) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-25% 0px" });
   const reduce = useReducedMotion();
@@ -21,11 +21,11 @@ function useTimeline(times: number[]) {
   return { ref, k };
 }
 
-const Illustrative = ({ dark = true }: { dark?: boolean }) => (
+export const Illustrative = ({ dark = true }: { dark?: boolean }) => (
   <p className={`font-mono text-[11px] uppercase tracking-[0.16em] ${dark ? "text-white/60" : "text-[#0A0A0A]/65"}`}>Dados ilustrativos</p>
 );
 
-function Segmented<T extends string>({ value, options, onChange, label }: { value: T; options: { v: T; l: string }[]; onChange: (v: T) => void; label: string }) {
+export function Segmented<T extends string>({ value, options, onChange, label }: { value: T; options: { v: T; l: string }[]; onChange: (v: T) => void; label: string }) {
   return (
     <div role="group" aria-label={label} className="inline-flex flex-wrap gap-1 rounded-2xl border border-white/15 p-1">
       {options.map((o) => (

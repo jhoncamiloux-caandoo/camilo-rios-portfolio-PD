@@ -9,6 +9,8 @@ import { SceneAdaptiveRows, SceneFlipCases, SceneGears, SceneKpiDials, SceneLive
 import { SceneBigStat, SceneBlinkTest, SceneCareerElevator, SceneDsToggle, SceneExploded, SceneGovernance, SceneMicroPlayground, SceneOrderFromChaos, SceneSharedTransition, SceneStateMachine, SceneTrajectories } from "./scenes-21-24";
 import { SceneConversionMath, SceneCroLoop, SceneDiagnosticFlow, SceneFunnelReading, SceneMessageMatch, SceneMetricBuckets, SceneMetricTree, SceneMobileKeyboard, ScenePeeking, ScenePostClick, ScenePriorityMatrix, SceneSignalToAction } from "./scenes-cro";
 import { SceneAiMetricTree, SceneAiValueDashboard, SceneChartChooser, SceneCroInvestigationMap, SceneDashboardHierarchy, SceneCroQuestions, SceneEvidenceMethods, SceneHumanCorrection, SceneHypothesisCard, SceneImpactNarrative, SceneNumberContext, SceneUxImpactEvidence } from "./scenes-advanced";
+import { SceneA11yMethods, SceneA11yQualityLoop, SceneAgentTaskState, SceneAnswerMatrix, SceneAutonomyLadder, SceneConfirmationDial, SceneDeclaredInferred, SceneDecisionComparison, SceneDiscoveryMap, SceneFeedbackNarrowing, SceneFlowNotComponent, ScenePersonalizationLoop } from "./scenes-2026";
+import { SceneBeatBoard, SceneCritiqueScores, SceneEasingLab, SceneReferenceExtract, SceneRuleFixes, SceneVideoPipeline } from "./scenes-tutoriais";
 import { SceneCriteriaMorph, SceneFiveInterfaces, SceneGapFiller, SceneIntentMorph, SceneOrdersStory, SceneTwoRoutes } from "./scenes-3-4";
 
 /* Registro das cenas de motion: o artigo aponta um id e passa o texto como dados. */
@@ -111,6 +113,24 @@ const SCENES: Record<string, React.FC<any>> = {
   "ux-impact-evidence": SceneUxImpactEvidence,
   "evidence-methods": SceneEvidenceMethods,
   "impact-narrative": SceneImpactNarrative,
+  "autonomy-ladder": SceneAutonomyLadder,
+  "confirmation-dial": SceneConfirmationDial,
+  "agent-task-state": SceneAgentTaskState,
+  "discovery-map": SceneDiscoveryMap,
+  "decision-comparison": SceneDecisionComparison,
+  "answer-matrix": SceneAnswerMatrix,
+  "declared-inferred": SceneDeclaredInferred,
+  "personalization-loop": ScenePersonalizationLoop,
+  "feedback-narrowing": SceneFeedbackNarrowing,
+  "flow-not-component": SceneFlowNotComponent,
+  "a11y-quality-loop": SceneA11yQualityLoop,
+  "a11y-methods": SceneA11yMethods,
+  "video-pipeline": SceneVideoPipeline,
+  "rule-fixes": SceneRuleFixes,
+  "beat-board": SceneBeatBoard,
+  "easing-lab": SceneEasingLab,
+  "reference-extract": SceneReferenceExtract,
+  "critique-scores": SceneCritiqueScores,
 };
 
 export function BlogScene({ id, data }: { id: string; data: Record<string, unknown> }) {
