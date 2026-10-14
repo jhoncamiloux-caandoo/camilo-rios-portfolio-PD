@@ -4,12 +4,11 @@ import { notFound } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
 import { CaseHeader } from "@/components/case-lp/case-header";
 import { CaseFooter } from "@/components/case-lp/case-footer";
-import { BlogVisual } from "@/components/blog/visuals";
 import { CoverArt } from "@/components/blog/visuals-kit";
-import { BlogScene } from "@/components/blog/motion";
-import { BlogVideo } from "@/components/blog/blog-video";
-import { PostLinkCard, SeriesBar, SeriesEnd, Widen } from "@/components/blog/series";
-import { KineticTitle } from "@/components/blog/motion/primitives";
+import { SeriesBar, SeriesEnd, Widen } from "@/components/blog/series";
+import { ArticleBlocks, ArticleTitle, type LinkInfo } from "@/components/blog/article-body";
+import { ArticleField, ArticleI18nProvider, CategoryLabel, L, PostDate } from "@/components/blog/i18n";
+import { coverSmall, postBySlug, seriesOf } from "@/lib/blog/series";
 import { CATEGORIES, getPost, posts } from "@/lib/blog/posts";
 
 const SITE = "https://camilo-rios-portfolio.vercel.app";
@@ -67,30 +66,34 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     },
   ];
 
+  const links: Record<string, LinkInfo> = {};
+  for (const b of p.blocks) if (b.type === "link") {
+    const q = postBySlug(b.slug);
+    const s = seriesOf(b.slug);
+    if (q) links[b.slug] = { title: q.title, thumb: q.cover ? coverSmall(q) : undefined, chapter: s ? s.index + 1 : undefined };
+  }
+
   return (
     <div className="min-h-screen overflow-x-clip bg-surface text-ink">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
       <CaseHeader label="Blog" />
       <main className="pb-24 pt-28 md:pt-36">
+        <ArticleI18nProvider slug={p.slug}>
         <article className="container max-w-3xl">
           <nav aria-label="Breadcrumb" className="mb-8 flex flex-wrap gap-1 text-sm text-ink/60">
-            <Link href="/" className="hover:text-link">Início</Link>
+            <Link href="/" className="hover:text-link"><L pt="Início" en="Home" es="Inicio" /></Link>
             <span aria-hidden="true">/</span>
             <Link href="/blog" className="hover:text-link">Blog</Link>
             <span aria-hidden="true">/</span>
-            <span aria-current="page" className="line-clamp-1">{p.title}</span>
+            <span aria-current="page" className="line-clamp-1"><ArticleField field="title" pt={p.title} /></span>
           </nav>
-          <p className="font-mono text-xs uppercase tracking-[0.18em] text-link">{CATEGORIES[p.category]}</p>
-          {p.lab ? (
-            <KineticTitle text={p.title} className="mt-4 font-display text-[38px] font-semibold leading-[1.04] tracking-tight md:text-[64px]" />
-          ) : (
-            <h1 className="mt-4 font-display text-[34px] font-semibold leading-[1.1] tracking-tight md:text-[52px]">{p.title}</h1>
-          )}
-          <p className="mt-5 text-lg leading-relaxed text-ink/70">{p.description}</p>
+          <p className="font-mono text-xs uppercase tracking-[0.18em] text-link"><CategoryLabel c={p.category} /></p>
+          <ArticleTitle pt={p.title} lab={p.lab} className={p.lab ? "mt-4 font-display text-[38px] font-semibold leading-[1.04] tracking-tight md:text-[64px]" : "mt-4 font-display text-[34px] font-semibold leading-[1.1] tracking-tight md:text-[52px]"} />
+          <p className="mt-5 text-lg leading-relaxed text-ink/70"><ArticleField field="description" pt={p.description} /></p>
           <p className="mt-6 text-sm text-ink/60">
-            Jhon Camilo Rios · <time dateTime={p.date}>{new Date(p.date).toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" })}</time> · {p.readMinutes} min de leitura
+            Jhon Camilo Rios · <PostDate date={p.date} /> · {p.readMinutes} <L pt="min de leitura" en="min read" es="min de lectura" />
             {p.updated && p.updated !== p.date && (
-              <> · Atualizado em <time dateTime={p.updated}>{new Date(p.updated).toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" })}</time></>
+              <> · <L pt="Atualizado em" en="Updated on" es="Actualizado el" /> <PostDate date={p.updated} /></>
             )}
           </p>
 
@@ -104,50 +107,17 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <SeriesBar slug={p.slug} />
 
           {p.updateNote && (
-            <p className="mt-8 rounded-2xl border border-[#622FFD]/20 bg-[#622FFD]/[0.05] px-5 py-4 text-sm leading-relaxed text-ink/80">{p.updateNote}</p>
+            <p className="mt-8 rounded-2xl border border-[#622FFD]/20 bg-[#622FFD]/[0.05] px-5 py-4 text-sm leading-relaxed text-ink/80"><ArticleField field="updateNote" pt={p.updateNote} /></p>
           )}
 
-          <div className="mt-12">
-            {p.blocks.map((b, i) => {
-              if (b.type === "h2") return <h2 key={i} className="mt-14 font-display text-2xl font-semibold leading-snug md:text-[32px]">{b.text}</h2>;
-              if (b.type === "ul")
-                return (
-                  <ul key={i} className="mt-3 list-disc space-y-2 pl-6 text-[17px] leading-relaxed text-ink/80 marker:text-link">
-                    {b.items.map((it) => <li key={it}>{it}</li>)}
-                  </ul>
-                );
-              if (b.type === "scene") return <BlogScene key={i} id={b.id} data={b.data} />;
-              if (b.type === "visual") return <BlogVisual key={i} id={b.id} data={b.data} caption={b.caption} />;
-              if (b.type === "link") return <PostLinkCard key={i} slug={b.slug} text={b.text} />;
-              if (b.type === "video") return <BlogVideo key={i} items={b.items} caption={b.caption} />;
-              if (b.type === "code")
-                return (
-                  <figure key={i} className="mt-6">
-                    {b.label && <figcaption className="mb-2 font-mono text-xs uppercase tracking-[0.14em] text-ink-muted">{b.label}</figcaption>}
-                    <pre className="overflow-x-auto rounded-2xl border border-line bg-[#0d0d12] p-5 text-[14px] leading-relaxed text-white/90"><code>{b.text}</code></pre>
-                  </figure>
-                );
-              if (b.type === "quote")
-                return (
-                  <blockquote key={i} className="mt-6 border-l-4 border-[#622FFD] bg-canvas px-5 py-4 text-[17px] leading-relaxed text-ink/85">
-                    {b.text}
-                  </blockquote>
-                );
-              return (
-                <p key={i} className="mt-5 text-[17px] leading-[1.75] text-ink/80">
-                  {b.lead && <strong className="font-semibold text-ink">{b.lead} </strong>}
-                  {b.text}
-                </p>
-              );
-            })}
-          </div>
+          <ArticleBlocks blocks={p.blocks} links={links} />
 
           <SeriesEnd slug={p.slug} />
           <Widen slug={p.slug} />
 
           {p.sources && (
             <section aria-label="Fontes" className="mt-12 rounded-2xl border border-ink/[0.08] p-5">
-              <p className="font-mono text-xs uppercase tracking-[0.18em] text-ink/60">Fontes e leituras</p>
+              <p className="font-mono text-xs uppercase tracking-[0.18em] text-ink/60"><L pt="Fontes e leituras" en="Sources and further reading" es="Fuentes y lecturas" /></p>
               <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm text-ink/75">
                 {p.sources.map((s) => <li key={s}>{s}</li>)}
               </ul>
@@ -161,21 +131,22 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </div>
 
           <aside aria-label="Case relacionado" className="mt-14">
-            <p className="font-mono text-xs uppercase tracking-[0.18em] text-ink/60">Case relacionado</p>
+            <p className="font-mono text-xs uppercase tracking-[0.18em] text-ink/60"><L pt="Case relacionado" en="Related case study" es="Caso relacionado" /></p>
             <Link href={p.related.href} className="group mt-3 flex items-start justify-between gap-6 rounded-2xl border border-ink/10 bg-canvas p-6 transition hover:border-[#622FFD]/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#622FFD]">
               <span>
-                <span className="block font-display text-2xl font-semibold group-hover:text-link">{p.related.title}</span>
-                <span className="mt-2 block text-sm leading-relaxed text-ink/70">{p.related.body}</span>
+                <span className="block font-display text-2xl font-semibold group-hover:text-link"><ArticleField field="relatedTitle" pt={p.related.title} /></span>
+                <span className="mt-2 block text-sm leading-relaxed text-ink/70"><ArticleField field="relatedBody" pt={p.related.body} /></span>
               </span>
               <ArrowUpRight className="h-5 w-5 shrink-0 text-ink/50 group-hover:text-link" aria-hidden="true" />
             </Link>
           </aside>
 
           {p.mediumUrl && <p className="mt-10 text-sm text-ink/60">
-            Também publicado no{" "}
+            <L pt="Também publicado no" en="Also published on" es="También publicado en" />{" "}
             <a href={p.mediumUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-link">Medium</a>.
           </p>}
         </article>
+        </ArticleI18nProvider>
       </main>
       <CaseFooter />
     </div>

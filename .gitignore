@@ -34,3 +34,4 @@ yarn-error.log*
 # (fonts live in /public/fonts; frames live in /public/frames)
 /*.otf
 /camilo video/
+i18n-work/
