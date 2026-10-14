@@ -8,6 +8,7 @@ import { BlogVisual } from "@/components/blog/visuals";
 import { CoverArt } from "@/components/blog/visuals-kit";
 import { BlogScene } from "@/components/blog/motion";
 import { BlogVideo } from "@/components/blog/blog-video";
+import { PostLinkCard, SeriesBar, SeriesEnd, Widen } from "@/components/blog/series";
 import { KineticTitle } from "@/components/blog/motion/primitives";
 import { CATEGORIES, getPost, posts } from "@/lib/blog/posts";
 
@@ -100,6 +101,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <img src={p.cover} srcSet={`${p.cover.replace(/\.webp$/, "-800.webp")} 800w, ${p.cover} 1600w`} sizes="(min-width: 768px) 720px, 100vw" width={1600} height={800} fetchPriority="high" decoding="async" alt="" className="mt-10 aspect-[2/1] w-full rounded-3xl object-cover" />
           ) : null}
 
+          <SeriesBar slug={p.slug} />
+
           {p.updateNote && (
             <p className="mt-8 rounded-2xl border border-[#622FFD]/20 bg-[#622FFD]/[0.05] px-5 py-4 text-sm leading-relaxed text-ink/80">{p.updateNote}</p>
           )}
@@ -115,6 +118,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 );
               if (b.type === "scene") return <BlogScene key={i} id={b.id} data={b.data} />;
               if (b.type === "visual") return <BlogVisual key={i} id={b.id} data={b.data} caption={b.caption} />;
+              if (b.type === "link") return <PostLinkCard key={i} slug={b.slug} text={b.text} />;
               if (b.type === "video") return <BlogVideo key={i} items={b.items} caption={b.caption} />;
               if (b.type === "code")
                 return (
@@ -137,6 +141,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               );
             })}
           </div>
+
+          <SeriesEnd slug={p.slug} />
+          <Widen slug={p.slug} />
 
           {p.sources && (
             <section aria-label="Fontes" className="mt-12 rounded-2xl border border-ink/[0.08] p-5">

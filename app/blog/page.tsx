@@ -4,6 +4,7 @@ import { CaseHeader } from "@/components/case-lp/case-header";
 import { CaseFooter } from "@/components/case-lp/case-footer";
 import { BlogList } from "@/components/blog/blog-list";
 import { posts } from "@/lib/blog/posts";
+import { SeriesShowcase } from "@/components/blog/series";
 
 export const metadata: Metadata = {
   title: "Blog: Product Design, UX, Growth e IA",
@@ -50,7 +51,9 @@ export default function BlogPage() {
         <p className="mt-5 max-w-2xl text-base leading-relaxed text-ink/70 md:text-lg">
           O que aprendo construindo produtos, em textos curtos e visuais que mostram a ideia em vez de só descrever.
         </p>
-        <div className="mt-12">
+        <SeriesShowcase />
+        <h2 className="mt-16 font-display text-2xl font-semibold md:text-3xl">Todos os artigos</h2>
+        <div className="mt-6">
           <BlogList posts={sorted} />
         </div>
       </main>

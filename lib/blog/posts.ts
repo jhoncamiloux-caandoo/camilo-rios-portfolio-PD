@@ -18,6 +18,7 @@ export type Block =
   | { type: "ul"; items: string[] }
   | { type: "quote"; text: string }
   | { type: "code"; text: string; label?: string }
+  | { type: "link"; slug: string; text: string }
   | { type: "video"; items: import("@/components/blog/blog-video").VideoItem[]; caption?: string }
   | { type: "scene"; id: string; data: Record<string, unknown> }
   | { type: "visual"; id?: string; data?: import("@/components/blog/visuals-kit").VisualData; caption: string };

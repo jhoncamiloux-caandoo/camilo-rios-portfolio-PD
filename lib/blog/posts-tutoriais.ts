@@ -88,6 +88,7 @@ export const tutorialPosts: Post[] = [
         type: "p",
         text: "Repara na direita. As mensagens chegam com uma mola: aceleram, passam um tiquinho do ponto e assentam. O balão achata de leve quando chega, como se tivesse peso. O fundo respira. Nada disso é sorte. Cada detalhe veio de uma regra escrita antes de a IA começar.",
       },
+      { type: "link", slug: "movimento-com-peso-linear-suave-mola", text: "Quer entender por que a mola parece ter peso?" },
       { type: "h2", text: "O passo a passo que eu segui" },
       { type: "p", lead: "1. Briefing.", text: "Para quem é, o que cada slide precisa dizer e qual o CTA. No caso da Clint: um lead chega no WhatsApp, a IA responde, vira oportunidade no CRM, a reunião é marcada, a Aura acompanha e o carrossel fecha com \"Comece seu teste grátis\"." },
       { type: "p", lead: "2. Storyboard por batida.", text: "Cada meio segundo de cada slide numa tabela: o que aparece, o que se mexe, onde está o cursor e qual som toca. Parece exagero, mas é o que deixa a IA sem espaço para inventar." },
@@ -108,6 +109,7 @@ export const tutorialPosts: Post[] = [
         ],
         caption: "Os 6 slides em 1080×1350, 30 quadros por segundo, cada um com loop próprio. Aqui no blog estão em versão reduzida para carregar rápido. Dados e conversas são ilustrativos.",
       },
+      { type: "link", slug: "claude-md-regras-para-ia-animar-bem", text: "As regras que a IA lê antes de começar estão aqui." },
       {
         type: "p",
         text: "E aí, faz mais sentido agora? A IA não é um editor de vídeo. Ela é ótima em escrever código que segue regras. Quanto melhores as regras, melhor o vídeo. No próximo tutorial eu abro o arquivo onde essas regras moram, o CLAUDE.md, e mostro cada defeito que virou uma linha nele.",
@@ -187,6 +189,7 @@ export const tutorialPosts: Post[] = [
         type: "p",
         text: "Essa é a parte que eu mais gosto. Depois de cada render, eu monto uma folha com um quadro por batida e olho com calma. Na primeira rodada do carrossel da Clint apareceram cinco defeitos. Escolha um e veja a regra que ele gerou.",
       },
+      { type: "link", slug: "o-diretor-e-o-critico-ia-com-rodadas-de-critica", text: "Como funciona a rodada de crítica, com a ficha de notas real:" },
       { type: "scene", id: "rule-fixes", data: {} },
       {
         type: "p",
@@ -260,6 +263,7 @@ export const tutorialPosts: Post[] = [
         type: "p",
         text: "E um personagem que atravessa tudo. No nosso caso, o Beto, um lead fictício. Ele aparece no slide 1 esperando resposta, no 2 conversando com a Aura, no 3 virando cartão no CRM e no 4 marcando a reunião. Sem personagem, cada slide vira um anúncio solto.",
       },
+      { type: "link", slug: "referencia-sem-copia-identidade-da-marca", text: "Como o Beto e os slides ganharam a cara da Clint:" },
       { type: "h2", text: "2. A música define o relógio" },
       {
         type: "p",
@@ -297,6 +301,7 @@ export const tutorialPosts: Post[] = [
         type: "p",
         text: "Uma coisa que aprendi do jeito difícil: quando eu redesenhei o slide 1, as mensagens mudaram de tempo e o som continuou no tempo antigo. Ficou estranho, mesmo sem ninguém saber dizer por quê. Atualizei a lista de sons e regerei a trilha. Storyboard, tela e som têm que andar juntos sempre.",
       },
+      { type: "link", slug: "movimento-com-peso-linear-suave-mola", text: "Som e curva andam juntos. As curvas estão explicadas aqui:" },
       { type: "h2", text: "O carrossel completo" },
       {
         type: "video",
@@ -377,6 +382,7 @@ function spring(x, w = 15, z = 0.8) {
         type: "p",
         text: "Um detalhe que faz diferença: essa mola é uma fórmula, não uma simulação. Ela responde só ao tempo. Isso combina com o que vimos no primeiro tutorial: o mesmo instante sempre gera o mesmo quadro.",
       },
+      { type: "link", slug: "como-a-ia-faz-video-carrossel-animado", text: "Por que o quadro depende só do tempo:" },
       { type: "h2", text: "As duas regras de peso" },
       {
         type: "p",
@@ -467,6 +473,7 @@ function spring(x, w = 15, z = 0.8) {
         type: "p",
         text: "Também foi assim com a tipografia. Testei três opções no mesmo slide: Sora, Poppins e Poppins Light. A decisão final foi Sora nos textos, Poppins Light nas pílulas de etapa e o símbolo da Clint nelas. Rótulos como \"Interface real da Clint\" saíram da fonte mono e foram para Sora.",
       },
+      { type: "link", slug: "o-diretor-e-o-critico-ia-com-rodadas-de-critica", text: "Foi a crítica que mostrou que faltava marca:" },
       { type: "h2", text: "O passo a passo" },
       { type: "p", lead: "1.", text: "Junte prints, arquivo de design e o guia de marca. Sem guia, o site em produção é a referência." },
       { type: "p", lead: "2.", text: "Liste as peças: luz ou fundo, superfície, forma de selo, símbolo, tipografia, uma cor de destaque." },
@@ -564,6 +571,7 @@ function spring(x, w = 15, z = 0.8) {
         type: "p",
         text: "É isso. Seis tutoriais, um carrossel, e a lição que mais me marcou: a IA não substitui a direção. Ela executa muito bem quando alguém diz com clareza o que é bom. E aí, qual vai ser o seu primeiro carrossel vivo?",
       },
+      { type: "link", slug: "claude-md-regras-para-ia-animar-bem", text: "Fechando o ciclo: como cada defeito vira regra." },
     ],
   },
 ];
