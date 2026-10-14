@@ -10,6 +10,7 @@ import { SceneBigStat, SceneBlinkTest, SceneCareerElevator, SceneDsToggle, Scene
 import { SceneConversionMath, SceneCroLoop, SceneDiagnosticFlow, SceneFunnelReading, SceneMessageMatch, SceneMetricBuckets, SceneMetricTree, SceneMobileKeyboard, ScenePeeking, ScenePostClick, ScenePriorityMatrix, SceneSignalToAction } from "./scenes-cro";
 import { SceneAiMetricTree, SceneAiValueDashboard, SceneChartChooser, SceneCroInvestigationMap, SceneDashboardHierarchy, SceneCroQuestions, SceneEvidenceMethods, SceneHumanCorrection, SceneHypothesisCard, SceneImpactNarrative, SceneNumberContext, SceneUxImpactEvidence } from "./scenes-advanced";
 import { SceneA11yMethods, SceneA11yQualityLoop, SceneAgentTaskState, SceneAnswerMatrix, SceneAutonomyLadder, SceneConfirmationDial, SceneDeclaredInferred, SceneDecisionComparison, SceneDiscoveryMap, SceneFeedbackNarrowing, SceneFlowNotComponent, ScenePersonalizationLoop } from "./scenes-2026";
+import { SceneRuleFixes, SceneVideoPipeline } from "./scenes-tutoriais";
 import { SceneCriteriaMorph, SceneFiveInterfaces, SceneGapFiller, SceneIntentMorph, SceneOrdersStory, SceneTwoRoutes } from "./scenes-3-4";
 
 /* Registro das cenas de motion: o artigo aponta um id e passa o texto como dados. */
@@ -124,6 +125,8 @@ const SCENES: Record<string, React.FC<any>> = {
   "flow-not-component": SceneFlowNotComponent,
   "a11y-quality-loop": SceneA11yQualityLoop,
   "a11y-methods": SceneA11yMethods,
+  "video-pipeline": SceneVideoPipeline,
+  "rule-fixes": SceneRuleFixes,
 };
 
 export function BlogScene({ id, data }: { id: string; data: Record<string, unknown> }) {

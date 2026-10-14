@@ -7,6 +7,7 @@ import { CaseFooter } from "@/components/case-lp/case-footer";
 import { BlogVisual } from "@/components/blog/visuals";
 import { CoverArt } from "@/components/blog/visuals-kit";
 import { BlogScene } from "@/components/blog/motion";
+import { BlogVideo } from "@/components/blog/blog-video";
 import { KineticTitle } from "@/components/blog/motion/primitives";
 import { CATEGORIES, getPost, posts } from "@/lib/blog/posts";
 
@@ -114,6 +115,14 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 );
               if (b.type === "scene") return <BlogScene key={i} id={b.id} data={b.data} />;
               if (b.type === "visual") return <BlogVisual key={i} id={b.id} data={b.data} caption={b.caption} />;
+              if (b.type === "video") return <BlogVideo key={i} items={b.items} caption={b.caption} />;
+              if (b.type === "code")
+                return (
+                  <figure key={i} className="mt-6">
+                    {b.label && <figcaption className="mb-2 font-mono text-xs uppercase tracking-[0.14em] text-ink-muted">{b.label}</figcaption>}
+                    <pre className="overflow-x-auto rounded-2xl border border-line bg-[#0d0d12] p-5 text-[14px] leading-relaxed text-white/90"><code>{b.text}</code></pre>
+                  </figure>
+                );
               if (b.type === "quote")
                 return (
                   <blockquote key={i} className="mt-6 border-l-4 border-[#622FFD] bg-canvas px-5 py-4 text-[17px] leading-relaxed text-ink/85">
