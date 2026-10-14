@@ -14,6 +14,7 @@ const FONTES = [
 export const tutorialPosts: Post[] = [
   {
     slug: "como-a-ia-faz-video-carrossel-animado",
+    cover: "/blog/como-a-ia-faz-video-carrossel-animado.webp",
     title: "Como a IA faz vídeo: o carrossel animado por dentro",
     description:
       "A IA não filma nada. Ela escreve uma página que sabe desenhar qualquer instante, e o navegador fotografa 30 vezes por segundo. Passo a passo, com o carrossel real da Clint.",
@@ -119,6 +120,7 @@ export const tutorialPosts: Post[] = [
   },
   {
     slug: "claude-md-regras-para-ia-animar-bem",
+    cover: "/blog/claude-md-regras-para-ia-animar-bem.webp",
     title: "O CLAUDE.md: as regras que fazem a IA animar bem",
     description:
       "Um arquivo de texto com as regras do projeto é o que separa uma animação de robô de um carrossel com peso e ritmo. Cada regra nasceu de um defeito real.",
@@ -225,6 +227,7 @@ export const tutorialPosts: Post[] = [
 
   {
     slug: "carrossel-vivo-do-briefing-a-batida",
+    cover: "/blog/carrossel-vivo-do-briefing-a-batida.webp",
     title: "Carrossel vivo do briefing à batida da música",
     description:
       "Como sair de uma ideia e chegar em 6 slides animados com uma trilha só: briefing, storyboard por meio segundo e som sincronizado. Com o carrossel da Clint aberto, slide por slide.",
@@ -315,6 +318,7 @@ export const tutorialPosts: Post[] = [
   },
   {
     slug: "movimento-com-peso-linear-suave-mola",
+    cover: "/blog/movimento-com-peso-linear-suave-mola.webp",
     title: "Movimento com peso: linear, suavizado e mola",
     description:
       "Por que algumas animações parecem vivas e outras parecem máquina. Um laboratório interativo com as três curvas e o achatamento que dá peso, usando o carrossel da Clint como exemplo.",
@@ -411,6 +415,7 @@ function spring(x, w = 15, z = 0.8) {
   },
   {
     slug: "referencia-sem-copia-identidade-da-marca",
+    cover: "/blog/referencia-sem-copia-identidade-da-marca.webp",
     title: "Referência sem cópia: como levar a identidade da marca para o motion",
     description:
       "A primeira versão do carrossel estava correta e sem cara de Clint. Como eu usei o site, o Figma e o sistema de marca da Aura para extrair um sistema visual, sem copiar telas.",
@@ -480,6 +485,7 @@ function spring(x, w = 15, z = 0.8) {
   },
   {
     slug: "o-diretor-e-o-critico-ia-com-rodadas-de-critica",
+    cover: "/blog/o-diretor-e-o-critico-ia-com-rodadas-de-critica.webp",
     title: "O diretor e o crítico: como fazer a IA melhorar o próprio trabalho",
     description:
       "Separar quem cria de quem avalia muda o resultado. As rodadas de crítica do carrossel da Clint, a ficha de notas, a folha de contato e a skill que organiza tudo isso.",
