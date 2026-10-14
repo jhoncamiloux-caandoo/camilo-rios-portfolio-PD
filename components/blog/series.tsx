@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import type { Post } from "@/lib/blog/posts";
-import { SERIES, coverSmall, postBySlug, seriesOf, widen } from "@/lib/blog/series";
+import { coverSmall, postBySlug, seriesOf, widen } from "@/lib/blog/series";
 
 function Thumb({ p, className = "" }: { p: Post; className?: string }) {
   const src = coverSmall(p);
@@ -66,9 +66,22 @@ export function SeriesEnd({ slug }: { slug: string }) {
   const last = !s.next;
   return (
     <section aria-label={`Continuar a série ${s.series.title}`} className="mt-14">
-      <p className="font-mono text-xs uppercase tracking-[0.18em] text-ink/60">Série {s.series.title}</p>
+      <h2 className="font-display text-2xl font-semibold md:text-3xl">Leia em ordem</h2>
+      <p className="mt-2 text-ink-secondary">Os artigos conversam entre si. Este é o capítulo {s.index + 1} da série <strong className="font-semibold text-ink">{s.series.title}</strong>, que segue um raciocínio do primeiro ao último capítulo.</p>
+      <ol className="mt-5 flex flex-col gap-1.5">
+        {s.items.map((p, i) => (
+          <li key={p.slug}>
+            <Link href={`/blog/${p.slug}`} aria-current={i === s.index ? "page" : undefined}
+              className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-[15px] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus ${i === s.index ? "bg-link/10 font-semibold text-ink" : "text-ink-secondary hover:bg-ink/5 hover:text-ink"}`}>
+              <span className={`grid h-7 w-7 flex-none place-items-center rounded-full text-xs font-bold ${i === s.index ? "bg-link text-white" : i < s.index ? "bg-link/25 text-link" : "border border-line text-ink-muted"}`}>{i < s.index ? "✓" : i + 1}</span>
+              <span className="min-w-0 flex-1">{p.title}</span>
+              {i === s.index && <span className="text-xs font-normal text-link">você está aqui</span>}
+            </Link>
+          </li>
+        ))}
+      </ol>
       {s.next && (
-        <Link href={`/blog/${s.next.slug}`} className="group mt-3 grid gap-5 rounded-3xl border border-line bg-canvas p-4 transition hover:border-link/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus md:grid-cols-[1fr_1.1fr] md:items-center">
+        <Link href={`/blog/${s.next.slug}`} className="group mt-6 grid gap-5 rounded-3xl border border-line bg-canvas p-4 transition hover:border-link/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus md:grid-cols-[1fr_1.1fr] md:items-center">
           <Thumb p={s.next} />
           <span className="px-1 pb-1">
             <span className="text-sm text-link">Próximo · Capítulo {s.index + 2} de {s.items.length}</span>
@@ -79,18 +92,10 @@ export function SeriesEnd({ slug }: { slug: string }) {
         </Link>
       )}
       {last && (
-        <div className="mt-3 rounded-3xl border border-line bg-canvas p-5">
+        <div className="mt-6 rounded-3xl border border-line bg-canvas p-5">
           <p className="font-display text-xl font-semibold">Você chegou ao fim da série.</p>
+          <p className="mt-1 text-sm text-ink-secondary">Quer continuar? As leituras abaixo ampliam o raciocínio por outros caminhos.</p>
           <p className="mt-1 text-sm text-ink-secondary">{s.series.intro}</p>
-          <ol className="mt-4 grid gap-2 sm:grid-cols-2">
-            {s.items.map((p, i) => (
-              <li key={p.slug}>
-                <Link href={`/blog/${p.slug}`} aria-current={i === s.index ? "page" : undefined} className="block rounded-xl px-3 py-2 text-sm hover:bg-ink/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus">
-                  <span className="text-link">{i + 1}.</span> {p.title}
-                </Link>
-              </li>
-            ))}
-          </ol>
         </div>
       )}
       {s.prev && (
@@ -120,41 +125,6 @@ export function Widen({ slug }: { slug: string }) {
           </li>
         ))}
       </ul>
-    </section>
-  );
-}
-
-/* Página do blog: as séries em ordem de leitura. */
-export function SeriesShowcase() {
-  return (
-    <section aria-label="Séries" className="mt-12">
-      <h2 className="font-display text-2xl font-semibold md:text-3xl">Leia em ordem</h2>
-      <p className="mt-2 max-w-2xl text-ink-secondary">Os artigos conversam entre si. Cada série segue um raciocínio, do primeiro ao último capítulo.</p>
-      <div className="mt-6 flex flex-col gap-8">
-        {SERIES.map((s) => {
-          const items = s.slugs.map(postBySlug).filter((p): p is Post => !!p);
-          return (
-            <div key={s.id}>
-              <div className="flex flex-wrap items-baseline justify-between gap-2">
-                <h3 className="font-display text-xl font-semibold">{s.title} <span className="text-base font-normal text-ink-muted">· {items.length} capítulos</span></h3>
-                <Link href={`/blog/${items[0].slug}`} className="text-sm font-semibold text-link hover:underline">Começar pelo capítulo 1 →</Link>
-              </div>
-              <p className="mt-1 text-sm text-ink-secondary">{s.intro}</p>
-              <ol className="-mx-4 mt-3 flex snap-x gap-3 overflow-x-auto px-4 pb-2">
-                {items.map((p, i) => (
-                  <li key={p.slug} className="w-[220px] flex-none snap-start">
-                    <Link href={`/blog/${p.slug}`} className="group block rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus">
-                      <Thumb p={p} />
-                      <span className="mt-2 block text-[13px] text-link">Capítulo {i + 1}</span>
-                      <span className="block text-[15px] font-semibold leading-snug text-ink group-hover:text-link">{p.title}</span>
-                    </Link>
-                  </li>
-                ))}
-              </ol>
-            </div>
-          );
-        })}
-      </div>
     </section>
   );
 }
